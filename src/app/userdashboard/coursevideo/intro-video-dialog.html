@@ -1,0 +1,17 @@
+<div class="card"> <button type="button" class="close" aria-label="Close" (click)="onNoClick()" tabindex="-1"> <span
+            aria-hidden="true">&times;</span> </button>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" id="videoform" name="videoform" method="post">
+        <div class="form-1-header">
+            <h1>Add New Videos</h1>
+        </div>
+        <div class="card-content margin-top-20 margin-bottom-20"> 
+            <!-- <label> Browse Video </label> <input (change)="onChange($event)" #image type="file" accept="video/*" required> -->
+                <span class="btn-file">Browse Video <input (change)="onChange($event)" #image type="file" accept="video/*" required></span>
+            <!-- <mat-form-field class="example-full-width mat-size"> <input type="text" matInput placeholder=" Enter video title" [formControl]="video_title" name="video_title" [(ngModel)]="model.video_title" required> <mat-error *ngIf="video_title.hasError('required')"> Video title is <strong>required</strong> </mat-error> <mat-error *ngIf="video_title.hasError('pattern')"> Please enter a valid video title </mat-error> </mat-form-field> -->
+            <!-- <div class="checkbox checkbox-warning"> <input id="video_isPrivate" name="video_isPrivate" type="checkbox" (click)="isClick()" [(ngModel)]="isActive" class="styled" checked> <label for="video_isPrivate"> Private Video </label> </div>-->
+        </div><!-- <div id="myProgress"> <div id="myBar"></div></div>-->
+        <div class="footer text-center mb-2 col-sm-12">
+            <button class="btn-style" type="submit" id="submit" tabindex="2"> Add Video</button>
+        </div>
+    </form>
+</div>

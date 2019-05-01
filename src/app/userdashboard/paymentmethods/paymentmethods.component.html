@@ -1,0 +1,224 @@
+<div class="container-fluid margin-bottom-20 width-90">
+    <div class="row my-5">
+        <div class="margin-auto user-profile margin-top117 width-36">
+            <div class="checkout">
+                <div [className]="flipclass">
+                    <div class="flip">
+                        <div class="front">
+                            <div class="chip"></div>
+                            <div class="logo"> <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="47.834px"
+                                    height="47.834px" viewBox="0 0 47.834 47.834"
+                                    style="enable-background:new 0 0 47.834 47.834;">
+                                    <g>
+                                        <g> </g>
+                                    </g>
+                                </svg> </div>
+                            <div class="card-holder sh"> <label>Card Holder Name</label>
+                                <div>{{form.controls.cardnickname.value}}</div>
+                            </div>
+                            <div class="card-holder"> <label>Card Number</label>
+                                <div>{{form.controls.cardnumber.value}}</div>
+                            </div>
+                            <div class="card-expiration-date"> <label>Expiry Date</label>
+                                <div>{{form.controls.expirydate.value}}</div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="strip"></div>
+                            <div class="logo"> <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="47.834px"
+                                    height="47.834px" viewBox="0 0 47.834 47.834"
+                                    style="enable-background:new 0 0 47.834 47.834;">
+                                    <g>
+                                        <g> </g>
+                                    </g>
+                                </svg> </div>
+                            <div class="card-expiration-date"> <label>Expiry Date</label>
+                                <div>{{form.controls.expirydate.value}}</div>
+                            </div>
+                            <div class="ccv"> <label>CVV</label>
+                                <div>{{form.controls.ccv.value}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="user-add-ingo-form" [formGroup]="form">
+                    <mat-form-field> <input matInput type="text" placeholder="Card Holder Name"
+                            formControlName="cardnickname">
+                        <mat-error *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
+                            <mat-error *ngIf="form.controls.cardnickname.errors.required"> Card Holder Name cannot be
+                                empty </mat-error>
+                            <mat-error *ngIf="form.controls.cardnickname.hasError('pattern')"> Alphabets Only
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Card Holder Name must be
+                                atleast{{form.controls.cardnickname.errors.minlength.requiredLength}}characters long.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnickname.errors.maxlength"> Card Holder Name must be at
+                                atmost{{form.controls.cardnickname.errors.maxlength.requiredLength}}characters long.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace"> Card Holder Name
+                                cannot contain spaces </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="Card Type" [formControl]="card_type"
+                            (change)="ShowButton(card_type.value)">
+                            <mat-option *ngFor="let card_get_datat of card_opeation" [value]="card_get_datat.value">
+                                {{card_get_datat.viewValue}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.controls.cardnickname.touched && form.controls.card_type.invalid">
+                            <mat-error *ngIf="form.controls.card_type.errors.required"> Card Type cannot be empty
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="" *ngIf="cardnumber"> <input matInput type="text"
+                            placeholder="16 digit card number" formControlName="cardnumber"
+                            [textMask]="{mask: cardmask}">
+                        <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
+                            <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be empty
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnumber.errors.minlength"> Card number must be
+                                atleast{{form.controls.cardnumber.errors.minlength.requiredLength}}digits long.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnumber.errors.maxlength"> Card Number must be at
+                                atmost{{form.controls.cardnumber.errors.maxlength.requiredLength}}digits long.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnumber.hasError('pattern')"> Card number must be only
+                                in digits. </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="" *ngIf="cardnumber4"> <input matInput type="text"
+                            placeholder="15 digit card number" formControlName="cardnumber4"
+                            [textMask]="{mask: cardmask}">
+                        <mat-error *ngIf="form.controls.cardnumber4.touched && form.controls.cardnumber4.invalid">
+                            <mat-error *ngIf="form.controls.cardnumber4.errors.required"> Card number cannot be empty
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnumber4.errors.minlength"> Card number must be
+                                atleast{{form.controls.cardnumber4.errors.minlength.requiredLength}}digits long.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnumber4.errors.maxlength"> Card Number must be at
+                                atmost{{form.controls.cardnumber4.errors.maxlength.requiredLength}}digits long.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.cardnumber4.hasError('pattern')"> Card number must be only
+                                in digits. </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="" *ngIf="ccv"> <input matInput type="text" maxlength="3" minlength="3"
+                            placeholder="CVV" formControlName="ccv">
+                        <mat-error *ngIf="form.controls.ccv.touched && form.controls.ccv.invalid">
+                            <mat-error *ngIf="form.controls.ccv.errors.required"> CCV cannot be empty </mat-error>
+                            <mat-error *ngIf="form.controls.ccv.errors.minlength"> CCV must be
+                                atleast{{form.controls.ccv.errors.minlength.requiredLength}}digits long. </mat-error>
+                            <mat-error *ngIf="form.controls.ccv.errors.maxlength"> CCV must be at
+                                atmost{{form.controls.ccv.errors.maxlength.requiredLength}}digits long. </mat-error>
+                            <mat-error *ngIf="form.controls.ccv.hasError('pattern')"> CCV must be only in digits.
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="" *ngIf="ccv4"> <input matInput type="text" maxlength="4" minlength="4"
+                            placeholder="CCV No." formControlName="ccv4">
+                        <mat-error *ngIf="form.controls.ccv4.touched && form.controls.ccv4.invalid">
+                            <mat-error *ngIf="form.controls.ccv4.errors.required"> CCV cannot be empty </mat-error>
+                            <mat-error *ngIf="form.controls.ccv4.errors.minlength"> CCV must be
+                                atleast{{form.controls.ccv4.errors.minlength.requiredLength}}digits long. </mat-error>
+                            <mat-error *ngIf="form.controls.ccv4.errors.maxlength"> CCV must be at
+                                atmost{{form.controls.ccv4.errors.maxlength.requiredLength}}digits long. </mat-error>
+                            <mat-error *ngIf="form.controls.ccv4.hasError('pattern')"> CCV must be only in digits.
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class=""> <input matInput placeholder="Expiry Date (MM/YYYY)"
+                            [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
+                            (change)="chek(exp.value)">
+                        <mat-error *ngIf="form.controls.expirydate.touched && form.controls.expirydate.invalid">
+                            <mat-error *ngIf="form.controls.expirydate.errors.required"> Expiry date cannot be empty
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.expirydate.hasError('pattern')"> Expiry date must be in
+                                MM/YYYY format. </mat-error>
+                        </mat-error><span class="card-error" *ngIf="expirydate <= '2018'">
+                            Invalid Expiry Date
+                        </span>
+                    </mat-form-field>
+                    <mat-slide-toggle [checked]="false" formControlName="check">Set as default payment method
+                    </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add()">Add</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table credit-card-info">
+            <tr class="payment-heading">
+                <th>
+                    <h3>Nick name</h3>
+                </th>
+                <th>
+                    <h3>Card Number</h3>
+                </th>
+                <th>
+                    <h3>Expiry Date</h3>
+                </th>
+                <th>
+                    <h3>Default Credit Card</h3>
+                </th>
+                <th>
+                    <h3>Edit</h3>
+                </th>
+                <th>
+                    <h3>Delete</h3>
+                </th>
+            </tr>
+            <tr class="payment-details" *ngFor="let card of res">
+                <td>
+                    <h3>{{card?.nickname}}</h3>
+                </td>
+                <td>
+                    <h3>{{card.cardNumber}}</h3>
+                </td>
+                <td>
+                    <h3>{{card.expiryDate | slice:0:2}}/20{{card.expiryDate | slice:2:4}}</h3>
+                </td>
+                <td *ngIf="!card.default; then uncheck else check"></td>
+                <ng-template #check>
+                    <td>
+                        <h3> <i class="fas fa-check-circle"></i> </h3>
+                    </td>
+                </ng-template>
+                <ng-template #uncheck>
+                    <td>
+                        <h3> <i class="fas fa-times-circle"></i> </h3>
+                    </td>
+                </ng-template>
+                <td>
+                    <h3 class="edit-payment"> <a (click)="getSingleCard1( card.nickname,card.default , card.id)"
+                            data-target="#edit-card-modal" data-toggle="modal"> <i class="fas fa-edit"></i> </a> </h3>
+                </td>
+                <td>
+                    <h3 class="edit-payment"> <a (click)="deleteSingleCard(card.id)"> <i class="fas fa-trash-alt"></i>
+                        </a> </h3>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- <div class="row payment-heading"> <div class="col-md-3"> <h3>Nick name</h3> </div><div class="col-md-3"> <h3>Card Number</h3> </div><div class="col-md-2"> <h3>Expiry Date</h3> </div><div class="col-md-2"> <h3>Default Credit Card</h3> </div><div class="col-md-1"> <h3>Edit</h3> </div><div class="col-md-1"> <h3>Delete</h3> </div></div><div class="row payment-details" *ngFor="let card of res"> <div class="col-md-3"> <h3>{{card.nickname}}</h3> </div><div class="col-md-3"> <h3>{{card.cardNumber}}</h3> </div><div class="col-md-2"> <h3>{{card.expiryDate | date:'MM/yyyy'}}</h3> </div><div *ngIf="!card.default; then uncheck else check"></div><ng-template #check> <div class="col-md-2"> <h3> <i class="fas fa-check-circle"></i> </h3> </div></ng-template> <ng-template #uncheck> <div class="col-md-2"> <h3> <i class="fas fa-times-circle"></i> </h3> </div></ng-template> <div class="col-md-1"> <h3 class="edit-payment"> <a (click)="getSingleCard(card.id)" data-target="#edit-card-modal" data-toggle="modal"> <i class="fas fa-edit"></i> </a> </h3> </div><div class="col-md-1"> <h3 class="edit-payment"> <a (click)="deleteSingleCard(card.id)"> <i class="fas fa-trash-alt"></i> </a> </h3> </div></div>-->
+</div>
+<div class="modal fade modal-form" id="edit-card-modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="form-1-header">
+                    <h1>Edit your Credit Card Information</h1>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form class="user-add-ingo-form">
+                    <mat-form-field> <input matInput type="text" placeholder="Card Nick Name"
+                            [(ngModel)]="model.cardnickname2" name="cardnickname2"> </mat-form-field>
+                    <mat-slide-toggle class="margin-top-30" [(ngModel)]="model.status" name="status">Set as default
+                        payment method</mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10"
+                        (click)="updateSingleCard()">Update</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

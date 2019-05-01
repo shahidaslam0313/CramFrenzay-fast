@@ -1,0 +1,1 @@
+var compression=require("compression"),express=require("express"),history=require("connect-history-api-fallback"),app=express();app.use(history()),app.use(compression()),app.use(express.static("dist")),app.listen(4200,function(){console.log("\n",'Serving "dist/" on http://localhost:4200. [Ctrl+C] to disconnect.')});

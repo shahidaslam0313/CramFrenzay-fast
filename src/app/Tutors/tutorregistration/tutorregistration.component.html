@@ -1,0 +1,37 @@
+<section class="tutor-reg padding-top-20">
+    <div class="container padding-bottom-50">
+        <div class="row">
+            <div class="col-lg-offset-7 col-md-offset-6 col-xs-12 col-sm-12 col-md-12 col-lg-6 tutor-form">
+                <h1>Become A Tutor</h1>
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm" [formGroup]="updataform" enctype="multipart/form-data">
+                    <mat-form-field> <input matInput type="text" placeholder="First Name" readonly value="{{firstname}}"
+                            required> </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Last Name" value="{{lastname}}" readonly
+                            required> </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="School" formControlName="school_attended"
+                            [(ngModel)]="modal.school_attended" name="school_attended" required> </mat-form-field>
+                    <input type="date" placeholder="Graduation Year" formControlName="graduation_year" [(ngModel)]="modal.graduation_year"
+                        name="graduation_year" required>
+                    <mat-form-field> <input matInput type="text" placeholder="Major" formControlName="major"
+                            [(ngModel)]="modal.major" name="major" required> </mat-form-field>
+                    <mat-form-field>
+                        <mat-select type="number" placeholder="Subject" (ngModelchange)="check($event)" formControlName="subject"
+                            [(ngModel)]="modal.subject" name="subject" required>
+                            <mat-option *ngFor="let data of sub_category_name" [value]="data.id">{{data.sub_category_name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Country of Residance" formControlName="state_of_residence"
+                            [(ngModel)]="modal.state_of_residence" name="state_of_residence" required> </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Experience" formControlName="Experience"
+                            [(ngModel)]="modal.Experience" name="Experience" required> </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Interview" formControlName="interview"
+                            [(ngModel)]="modal.interview" name="interview" required> </mat-form-field>
+                    <mat-form-field> <textarea matInput type="text" placeholder="Tell about your self" formControlName="description"
+                            [(ngModel)]="modal.description" name="description" required></textarea> </mat-form-field>
+                    <span class="btn-file">Upload resume <input (change)="onChange($event)" #image type="file" accept="application/pdf" required> </span>
+                  <button class="tutor-reg-btn" (click)="onSubmit(f)"> Register </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

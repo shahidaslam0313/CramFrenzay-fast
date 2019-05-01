@@ -1,0 +1,43 @@
+.container-wide-1{
+  max-width: 1300px;
+}
+
+.table-1 thead th{
+  border-top: none;
+}
+
+.table-1 thead th h2{
+  color: #cc0000;
+  font-size: 32px;
+}
+
+.table-1 thead th h4{
+  margin-top: 0;
+  color: #cc0000;
+  text-transform: capitalize;
+  font-size: 22px;
+}
+.table-1 tbody tr{
+  cursor: pointer;
+}
+
+.table-1 tbody tr td{
+  vertical-align: 30px;
+}
+
+.table-1 tbody tr td h4{
+  color: #777777;
+  text-transform: capitalize;
+}
+
+.table-1 tbody tr td h5{
+  font-size: 18px;
+}
+
+.table-1 tbody tr td:last-child h5{
+  font-weight: 600;
+}
+
+.table-1 thead,.table-1 tbody,.table-1 th,.table-1 tr,.table-1 tr td{
+  outline: none;
+}

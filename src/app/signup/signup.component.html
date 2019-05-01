@@ -1,0 +1,188 @@
+<div class="form-1-img">
+    <div class="row">
+        <div class="form-1 form-width">
+            <div class="form-1-header">
+                <h1>Sign Up and Start Learning</h1>
+                <ul class="form-1-sl">
+                    <li> <a > <img src="../../assets/img/icon-facebook.png"> </a> </li>
+                    <li> <a> <img src="../../assets/img/icon-Google.png"> </a> </li>
+                </ul>
+            </div>
+            <ul class="nav nav-tabs nav-justified padding-top-20">
+                <li class="nav-item">
+                    <a href="#user_signup" data-toggle="tab" class="active nav-link nav-active" title="User"> User </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#inst_signup" data-toggle="tab" class="nav-link nav-active" title="Institute"> Institute </a>
+                </li>
+            </ul>
+            <div class="tab-content pt-3">
+                <div id="user_signup" class="form-1-body sh padding-top-10 tab-pane fade in active show">
+                    <form class="sh-signup-form-fix" [formGroup]="register" id="notesbidnow" #form=ngForm>
+                        <div [ngClass]="displayFieldCss(register, 'firstname')">
+                            <mat-form-field>
+                                <input matInput type="text" id="firstname" #firstname formControlName="firstname" placeholder="First name" pattern="[a-zA-Z ]+" name="firstname" (keydown.space)="$event.preventDefault()"
+                                    required>
+                                <mat-error *ngIf="register.controls.firstname.value==''">
+                                    <strong>First Name cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="register.controls.firstname.hasError('pattern')">Alphabets Only</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(register, 'lastname')">
+                            <mat-form-field class="margin-top-10">
+                                <input matInput type="text" id="lastname" #lastname formControlName="lastname" placeholder="Last name" pattern="[a-zA-Z ]+" name="lastname" (keydown.space)="$event.preventDefault()"
+                                    required>
+                                <mat-error *ngIf="register.controls.lastname.value==''">
+                                    <strong>Last Name cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="register.controls.lastname.hasError('pattern')"> Alphabets Only </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(register, 'username')">
+                            <mat-form-field class="margin-top-10">
+                                <input matInput type="text" id="username" (focusout)="getusername(username1.value)" #username1
+                                    formControlName="username" placeholder="Username" required>
+                                <mat-error *ngIf="register.controls.username.value==''">
+                                    <strong>Username cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="register.controls.username.hasError('pattern')"> Invalid Username </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(register, 'email')">
+                            <mat-form-field class="singup-feilds-padding margin-top-10">
+                                <input class="signup-input-font" matInput type="text" id="email" (focusout)="getemail(email1.value)"
+                                    formControlName="email" #email1 placeholder="Email" required>
+                                <mat-error *ngIf="register.controls.email.value==''">
+                                    <strong>Email cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="register.controls.email.hasError('pattern')"> Please enter a valid email address </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(register, 'password')">
+                            <mat-form-field class="margin-top-10">
+                                <input matInput type="password" id="password" [type]="hide ? 'password' : 'text'" #password formControlName="password" pattern="(?=.*[A-Z])(?=.*[a-z]).*$" name=password
+                                    placeholder="Password" required>
+                                <mat-icon class="pointer" data-toggle="tooltip" title="{{hide? 'hide' : 'show'}}Password"
+                                    matSuffix (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="register.controls.password.value==''">
+                                    <strong>Password cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="register.controls.password.errors?.minlength"> Password must be at least 8 characters long. </mat-error>
+                                <mat-error *ngIf="register.controls.password.hasError('pattern')">Password should contains atleast one Upper Case and One Lower case Letter</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(register, 'confirmPassword')">
+                            <mat-form-field class="margin-top-20">
+                                <input matInput [type]="hide2 ? 'password' : 'text'" #password type="password" id="confirmPassword"
+                                    formControlName="confirmPassword" placeholder="Confirm Password" required>
+                                <mat-icon class="pointer" data-toggle="tooltip" title="{{hide2? 'hide2' : 'show'}}Password"
+                                    matSuffix (click)="hide2=!hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="(register.controls.confirmPassword.value !=register.controls.password.value) || register.controls.confirmPassword.value==''">
+                                    <strong>Password must match </strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                      <!-- <mat-slide-toggle formControlName="agreement"> I have read and agreed to Terms of Use and Privacy Policy.</mat-slide-toggle> -->
+                      <mat-checkbox  (change)="changeCheck($event)" > I have read and agreed to Terms of Use and Privacy Policy.</mat-checkbox>
+                      <app-recapcha></app-recapcha>
+                        <!--<blackgeeks-recaptcha></blackgeeks-recaptcha>-->
+                        
+                        <div class="float_left width100"><button [disabled]="disabledAgreement" class="form-1-btn mt-3" (click)="onRegister()" >Sign Up</button></div>
+                        <div class="have-account">Already have an account?
+                            <a routerLink="/login">Sign in</a>
+                        </div>
+                    </form>
+                </div>
+                <div id="inst_signup" class="form-1-body padding-top-10 tab-pane fade">
+                    <form class="sh-signup-form-fix" [formGroup]="institute">
+                        <div [ngClass]="displayFieldCss(institute, 'username')">
+                            <mat-form-field>
+                                <input matInput type="text" (focusout)="getusername(username1.value)" #username formControlName="username"
+                                    placeholder="Username" required>
+                                <mat-error *ngIf="institute.controls.username.value==''">
+                                    <strong>Username cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="institute.controls.username.hasError('pattern')"> Invalid Username </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'name')">
+                            <mat-form-field class="singup-feilds-padding margin-top-10">
+                                <input class="signup-input-font" matInput type="text" placeholder="Institute Name" formControlName="name"
+                                    #name required>
+                                    <mat-error *ngIf="institute.controls.name.value==''">
+                                        <strong>Institue Name cannot be empty</strong>
+                                    </mat-error>
+                                 </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'location')">
+                            <mat-form-field class="singup-feilds-padding margin-top-10">
+                                <input class="signup-input-font" matInput type="text" placeholder="City/State" formControlName="location"
+                                    #location required>
+                                    <mat-error *ngIf="institute.controls.location.value==''">
+                                        <strong>City/State cannot be empty</strong>
+                                    </mat-error> </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'address')" required>
+                            <mat-form-field class="singup-feilds-padding margin-top-10">
+                                <input class="signup-input-font" matInput type="text" placeholder="Address" formControlName="address"
+                                    #address required>
+                                    <mat-error *ngIf="institute.controls.address.value==''">
+                                        <strong>Address cannot be empty</strong>
+                                    </mat-error> </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'contact')">
+                            <mat-form-field class="singup-feilds-padding margin-top-10">
+                                <input class="signup-input-font" matInput type="text" placeholder="Contact Number" formControlName="contact" pattern="^[0-9]*$" name="contact"
+                                    #contact required>
+                                    <mat-error *ngIf="institute.controls.contact.value==''">
+                                        <strong>Contact Number cannot be empty</strong>
+                                    </mat-error>
+                                    <mat-error *ngIf="institute.controls.contact.hasError('pattern')">Numbers Only</mat-error> 
+                                </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'email')">
+                            <mat-form-field class="singup-feilds-padding margin-top-10">
+                                <input class="signup-input-font" matInput type="text" (focusout)="getemail(email1.value)" formControlName="email"
+                                    required #email1 placeholder="Email">
+                                <mat-error *ngIf="institute.controls.email.value==''">
+                                    <strong>Email cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="institute.controls.email.hasError('pattern')"> Please enter a valid email address </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'password')">
+                            <mat-form-field class="margin-top-10">
+                                <input matInput type="password" [type]="hide ? 'password' : 'text'" #password formControlName="password" pattern="(?=.*[A-Z])(?=.*[a-z]).*$" name=password
+                                    placeholder="Password" required>
+                                <mat-icon class="pointer" data-toggle="tooltip" title="{{hide? 'hide' : 'show'}}Password"
+                                    matSuffix (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="institute.controls.password.value==''">
+                                    <strong>Password cannot be empty</strong>
+                                </mat-error>
+                                <mat-error *ngIf="institute.controls.password.errors?.minlength"> Password must be at least 8 characters long. </mat-error>
+                                <mat-error *ngIf="institute.controls.password.hasError('pattern')">Password should contains atleast one upper Case and One lower case letter</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div [ngClass]="displayFieldCss(institute, 'confirmPassword')">
+                            <mat-form-field class="margin-top-20">
+                                <input matInput [type]="hide2 ? 'password' : 'text'" #password type="password" formControlName="confirmPassword"
+                                    placeholder="Confirm Password" required>
+                                <mat-icon class="pointer" data-toggle="tooltip" title="{{hide2? 'hide2' : 'show'}}Password"
+                                    matSuffix (click)="hide2=!hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="(institute.controls.confirmPassword.value !=institute.controls.password.value) || institute.controls.confirmPassword.value==''">
+                                    <strong>Password must match </strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <mat-checkbox  (change)="changeCheck($event)"> I have read and agreed to Terms of Use and Privacy Policy.</mat-checkbox>
+                      <app-recapcha></app-recapcha>
+                        <!--<blackgeeks-recaptcha></blackgeeks-recaptcha>-->
+                        <div class="float_left width100"><button [disabled]="disabledAgreement" class="form-1-btn mt-3" (click)="instituteRegister()">Sign Up</button></div>
+                        <div id="instituteDetails"> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

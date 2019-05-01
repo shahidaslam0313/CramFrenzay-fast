@@ -1,0 +1,140 @@
+<div class="container">
+  <h1  class="mainbanner bg-Bid-Notes">Nested Categories in {{name}}</h1 >
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
+      <div class="product-list__item">
+        <figure class="product-list__img">
+          <!--<a routerLink="/eachcourse/{{data?.id}}">-->
+            <a routerLink="/nestedcategorylist/{{data?.id}}" (click)="nestedcatname(data.name)">
+            <!--<img src="{{Imageurl}}{{data?.icon_class}}" alt="Course">-->
+            <img src="/assets/img/CramFrenzy.png" > </a>
+
+          <div class="wishlist-overlay">
+            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+        </figure>
+        <div class="product-list__content">
+          <div class="product-list__category">
+            <a  title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a>
+          </div>
+          <!-- <div class="product-list__title tutor-subject mb-3">
+              <span title="Author Name:{{data?.author | titlecase}}">{{data?.author | titlecase}}</span>
+          </div>
+          <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
+          <br> -->
+          <!-- <p class="product-list__price">{{data?.price | currency:'USD'}}</p> -->
+        </div>
+        <!-- <div class="product-list__item-info-1">
+            <a class="btn-style" (click)="courses(data.id)"> Buy Now </a>
+            <a class="btn-style" (click)="courses(data.id)" *ngIf="data.bid_status==true"> Bid Now </a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- notes sb category-->
+
+<div class="container"  *ngIf="nameID == 'notes'">
+  <h1  class="mainbanner bg-Bid-Notes">Notes Nested Categories in {{name}}</h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of notes; let i=index">
+      <div class="product-list__item">
+        <figure class="product-list__img">
+          <a routerLink="/notes/{{data?.id}}">
+            <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes"> </a>
+          <div class="wishlist-overlay">
+            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+        </figure>
+        <div class="product-list__content">
+          <div class="product-list__category">
+            <a routerLink="/notes/{{data.id}}" title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- course sb category-->
+
+<div class="container" *ngIf="nameID == 'course'">
+  <h1  class="mainbanner bg-Bid-Notes">Course Nested Categories in {{name}}</h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of course; let i=index">
+      <div class="product-list__item">
+        <figure class="product-list__img">
+          <a routerLink="/eachcourse/{{data?.id}}" (click)="sliderClick(data.name)">
+            <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course"> </a>
+          <div class="wishlist-overlay">
+            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+        </figure>
+        <div class="product-list__content">
+          <div class="product-list__category">
+            <a routerLink="/eachcourse/{{data.id}}" title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- crads sb category-->
+
+<div class="container"  *ngIf="nameID == 'flashcard'">
+  <h1 class="mainbanner bg-Bid-Notes">Flash Cards Nested Categories in {{name}}</h1>
+  <div class="row" >
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of card; let i=index">
+      <div class="product-list__item">
+        <figure class="product-list__img">
+          <a routerLink="/fcdetail/{{data?.id}}" (click)="sliderClick(data.name)">
+            <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards"> </a>
+          <div class="wishlist-overlay">
+            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+        </figure>
+        <div class="product-list__content">
+          <div class="product-list__category">
+            <a routerLink="/fcdetail/{{data.id}}" title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- book sb category-->
+
+<div class="container"  *ngIf="nameID == 'books'"> 
+  <h1  class="mainbanner bg-Bid-Notes">Books Nested Categories in {{name}}</h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of book; let i=index">
+      <div class="product-list__item">
+        <figure class="product-list__img">
+          <a routerLink="/detail/{{data?.id}}" (click)="sliderClick(data.name)">
+            <img src="{{Imageurl}}{{data?.book_image}}" alt="book"> </a>
+          <div class="wishlist-overlay">
+            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
+              <i class="far fa-heart"></i>
+            </a>
+          </div>
+        </figure>
+        <div class="product-list__content">
+          <div class="product-list__category">
+            <a routerLink="/detail/{{data.id}}" title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

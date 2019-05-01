@@ -1,0 +1,515 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs nav-justified padding-top-20">
+                <li class="nav-item"> <a class="active nav-link nav-active" data-toggle="tab" href="#one" title="Notes">
+                        Pending </a> </li>
+                <li class="nav-item"> <a class="nav-link nav-active" data-toggle="tab" href="#two" title="Courses">
+                        Accepted </a> </li>
+                <li class="nav-item"> <a class="nav-link nav-active" data-toggle="tab" href="#three" title="Courses">
+                        Rejected </a> </li>
+            </ul>
+            <div class="tab-content">
+                <div class="form-1-body padding-top-10 tab-pane fade in active" id="one">
+                    <div class="board width100">
+                        <div class="board-1">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="nav-item"> <a href="#notes" data-toggle="tab" class="active nav-link" title="Purchased Notes">
+                                        <i class="fa fa-edit"></i> Notes </a> </li>
+                                <li class="nav-item"> <a href="#courses" data-toggle="tab" class="nav-link" title="Purchased Courses">
+                                        <i class="material-icons">library_books</i> Courses </a> </li>
+                                <li class="nav-item"> <a href="#flashcards" data-toggle="tab" class="nav-link" title="Purchased FlashCards">
+                                        <i class="fa fa-columns"></i> Flash Cards </a> </li>
+                                <li class="nav-item"> <a href="#book" data-toggle="tab" class="nav-link" title="Purchased Books">
+                                        <i class="fas fa-book"></i> Books </a> </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active mt-5" id="notes">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getingnotes, let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/notes/{{item.id}}"> <img
+                                                        src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/notes/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div><button class="btn btn-success" (click)="appronote(item.id)">Approve</button>
+                                        <button class="btn btn-danger" (click)="rejectednote(item.id)">Reject</button>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="courses">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of appcourse; let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/eachcourse/{{item.id}}">
+                                                    <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*"
+                                                        alt="Course"> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/eachcourse/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div><button class="btn btn-success" (click)="approcourse(item?.id)">Approve</button>
+                                        <button class="btn btn-danger" (click)="rejectecourse(item?.id)">Reject</button>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="flashcards">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getingcards, let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}">
+                                                    <img src="{{Imageurl}}{{item?.flashcard_image}}" data-filter="*"
+                                                        alt=""> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/fcdetail/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div><button class="btn btn-success" (click)="approcard(item?.id)">Approve</button>
+                                        <button class="btn btn-danger" (click)="rejectecard(item?.id)">Reject</button>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="book">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getingbook; let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}">
+                                                    <img src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a>
+                                            </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/detail/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div><button class="btn btn-success" (click)="approbook(item?.id)">Approve</button>
+                                        <button class="btn btn-danger" (click)="rejectedbook(item?.id)">Reject</button>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-1-body padding-top-10 tab-pane fade" id="two">
+                    <div class="board width100">
+                        <div class="board-1">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="nav-item"> <a href="#notes1" data-toggle="tab" class="active nav-link" title="Purchased Notes">
+                                        <i class="fa fa-edit"></i> Notes </a> </li>
+                                <li class="nav-item"> <a href="#courses1" data-toggle="tab" class="nav-link" title="Purchased Courses">
+                                        <i class="material-icons">library_books</i> Courses </a> </li>
+                                <li class="nav-item"> <a href="#flashcards1" data-toggle="tab" class="nav-link" title="Purchased FlashCards">
+                                        <i class="fa fa-columns"></i> Flash Cards </a> </li>
+                                <li class="nav-item"> <a href="#book1" data-toggle="tab" class="nav-link" title="Purchased Books">
+                                        <i class="fas fa-book"></i> Books </a> </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active mt-5" id="notes1">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of acpnote, let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/notes/{{item.id}}"> <img
+                                                        src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/notes/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="courses1">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of acptcourses; let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/eachcourse/{{item.id}}">
+                                                    <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*"
+                                                        alt="Course"> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/eachcourse/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="flashcards1">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of acptcards, let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}">
+                                                    <img src="{{Imageurl}}{{item?.flashcard_image}}" data-filter="*"
+                                                        alt=""> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/fcdetail/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="book1">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of book; let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}">
+                                                    <img src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a>
+                                            </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/detail/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-1-body padding-top-10 tab-pane fade" id="three">
+                    <div class="board width100">
+                        <div class="board-1">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="nav-item"> <a href="#notes2" data-toggle="tab" class="active nav-link" title="Purchased Notes">
+                                        <i class="fa fa-edit"></i> Notes </a> </li>
+                                <li class="nav-item"> <a href="#courses2" data-toggle="tab" class="nav-link" title="Purchased Courses">
+                                        <i class="material-icons">library_books</i> Courses </a> </li>
+                                <li class="nav-item"> <a href="#flashcards2" data-toggle="tab" class="nav-link" title="Purchased FlashCards">
+                                        <i class="fa fa-columns"></i> Flash Cards </a> </li>
+                                <li class="nav-item"> <a href="#book2" data-toggle="tab" class="nav-link" title="Purchased Books">
+                                        <i class="fas fa-book"></i> Books </a> </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active mt-5" id="notes2">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of rejectn, let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/notes/{{item.id}}"> <img
+                                                        src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/notes/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="courses2">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of rejcourses; let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/eachcourse/{{item.id}}">
+                                                    <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*"
+                                                        alt="Course"> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/eachcourse/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="flashcards2">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of rejectcards, let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}">
+                                                    <img src="{{Imageurl}}{{item?.flashcard_image}}" data-filter="*"
+                                                        alt=""> </a> </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/fcdetail/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-5" id="book2">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of rbook; let i=index">
+                                        <div class="product-list__item">
+                                            <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}">
+                                                    <img src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a>
+                                            </figure>
+                                            <div class="product-list__content">
+                                                <div class="product-list__category"> <a title="{{item?.name}}"
+                                                        routerLink="/detail/{{item.id}}">{{item?.name}}</a>
+                                                    <div class="product-list__title tutor-subject"> <span title="User ID :{{item?.userid}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <p class="sell-days-text" title="{{item?.sell_days}}">{{item?.sell_days}}</p>
+                                                    <p class="product-list__price margin-top-10">{{item?.price}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(1)"
+                                            class="page-link">First</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPage(pager.currentPage - 1)"
+                                            class="page-link">Previous</a> </li>
+                                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                                        <a (click)="setPage(page)" class="page-link">{{page}}</a> </li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a>Of</a></li>
+                                    <li *ngIf="pager.currentPage===pager.totalPages"> <a (click)="setPage(pager.totalPages)"
+                                            class="view-plan-details" type="Last">{{pager.totalPages}}</a> </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.currentPage + 1)" class="page-link" type="Next">Next</a>
+                                    </li>
+                                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                            (click)="setPage(pager.totalPages)" class="page-link" type="Last">Last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

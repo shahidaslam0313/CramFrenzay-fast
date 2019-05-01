@@ -1,0 +1,76 @@
+.ratingq {
+  border: none;
+  float: left;
+}
+
+.ratingq > input { display: none; }
+.ratingq > label:before {
+  margin: 5px;
+  font-size: 30px;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  content: "\f005";
+}
+
+.ratingq > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.ratingq > label {
+  color: #ddd;
+  float: right;
+  cursor: pointer;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratingq > input:checked ~ label, /* show gold star when clicked */
+.ratingq:not(:checked) > label:hover, /* hover current star */
+.ratingq:not(:checked) > label:hover ~ label { color: #ffb000;  } /* hover previous stars in list */
+
+.ratingq > input:checked + label:hover, /* hover current star when changing rating */
+.ratingq > input:checked ~ label:hover,
+.ratingq > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratingq > input:checked ~ label:hover ~ label { color: #ffb000;  }
+
+.ratingp > input { display: none; }
+.ratingp > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.ratingp > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.ratingp > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratingp > input:checked ~ label, /* show gold star when clicked */
+.ratingp:not(:checked) > label:hover, /* hover current star */
+.ratingp:not(:checked) > label:hover ~ label { color: red;  } /* hover previous stars in list */
+
+.ratingp > input:checked + label:hover, /* hover current star when changing rating */
+.ratingp > input:checked ~ label:hover,
+.ratingp > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratingp > input:checked ~ label:hover ~ label { color: red;  }
+
+
+.glyphicon { margin-right:5px;}
+.rating .glyphicon {font-size: 22px;}
+.rating-num { margin-top:0px;font-size: 54px; }
+.progress { margin-bottom: 5px;height: 20px !important;}
+.progress-bar { text-align: left; }
+.rating-desc .col-md-3 {padding-right: 0px;}
+.sr-only { margin-left: 5px;overflow: visible;clip: auto; }
+.progress .progress-bar:after{display: none;}
+

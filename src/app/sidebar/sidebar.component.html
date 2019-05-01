@@ -1,0 +1,30 @@
+<div class="wraper-sidebar"  *ngIf="check_login() && admin()">
+    <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left sidebar-dashboard" id="mySidebar"> <button
+            class="w3-bar-item w3-button w3-large w3-hide-large close-button" (click)="w3_close()"> <i
+                class="fa fa-times-circle"></i>
+        </button> <a routerLinkActive="active" class="w3-bar-item w3-button"><i class="material-icons">dashboard</i>
+            Dashboard</a> <a routerLink="/dashboard" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">description</i>
+            All Material</a> <a href="" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">account_circle</i>
+            All Instructors</a> <a href="" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">account_circle</i>
+            Winning Bidders</a> <a href="" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">contact_mail</i>
+            Contact Requests</a> <a href="/partners" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">business</i>
+            Partnerships Requests</a> <a href="" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">person_add</i>
+            Add Sub-Admins</a> <a href="" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">mode_edit</i>
+            Edit Categories</a> <a href="" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">mode_edit</i>
+            Add or Edit FAQs</a> <a href="/change-password" routerLinkActive="active" class="w3-bar-item w3-button"><i
+                class="material-icons">lock</i> Change Password</a> <a onclick="topFunction()" routerLink="/login"
+            (click)="logout()"> <i class="fa fa-sign-out-alt logout-icon"></i>Logout </a> </div>
+    <!-- <div class="w3-main sh">
+        <div class="w3-teal"> <button class="w3-button w3-teal w3-xlarge w3-hide-large btn-open-sidebar"
+                (click)="w3_open()">&#9776;</button>
+        </div>
+    </div> -->
+</div>

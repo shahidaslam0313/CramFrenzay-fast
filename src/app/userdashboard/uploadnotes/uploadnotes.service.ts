@@ -1,0 +1,110 @@
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Config } from '../../Config';
+import { isPlatformBrowser } from '@angular/common';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Router } from '@angular/router';
+@Injectable()
+
+export class uploadnotesservice {
+model;
+  months: any[];
+  public username;
+  current;
+  currentuser;
+  constructor(private http: Http, private http2: Http, @Inject(PLATFORM_ID) private platformId: Object) {
+    this.username = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
+    this.currentuser = this.username.asObservable();
+    this.current = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+
+  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer, sell_days,  end_time , bid_status) {
+
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'notesgenie/postnotes/',
+      JSON.stringify({
+        userid: this.current.user_id,
+        name: model.name,
+        detail: model.detail,
+        categories: notessubcategories,
+          subcategory : subcategory,
+        nestedcategory : nestedcategory,
+        sell_status : sell_status,
+        price: model.price,
+        sell_days: sell_days,
+        notes_thumbnail: model.notes_thumbnail,
+        accept_offer : accept_offer,
+        min_amount: model.min_amount,
+        max_amount : model.max_amount,
+        data : model.datafile,
+        bidnotes: {
+          initial_amount: model.initial_amount,
+          end_time : end_time,
+          isreserved : model.isreserved,
+          reservedprice : model.reservedprice,
+          start_time : model.start_time,
+          bid_status : bid_status
+        }
+
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+  }
+
+  Coursesonnotes() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'course/categorylist/', { headers: headers }).map((response: Response) => response.json());
+  }
+  notesTypes(id) {
+    // alert()
+    const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api +'notesgenie/usernotes/' + this.current.user_id , { headers: headers }).map((response: Response) => response.json());
+  }
+  //////////////bid notes///////////
+  bidnotes(model, notes, flashcard, course, book) {
+
+    const headers = new Headers( );
+    headers.append('Content-Type', 'application/json');
+    return this.http.post( Config.api + 'bid/notesbids',
+      JSON.stringify({
+        initial_amount: model.initial_amount,
+        start_time: model.start_time,
+        end_time: model.end_time,
+        isreserved: model.isreserved,
+        reservedprice: model.reservedprice,
+        notes: notes,
+        flashcard: flashcard,
+        course: course,
+        book: book,
+
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+  }
+  Catwisenotes(Cid) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'course/subcategory/' + Cid + '', { headers: headers }).map((response: Response) => response.json());
+  }
+  nestedwisenotes(Cid) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'course/nestedcategory/' + Cid + '', { headers: headers }).map((response: Response) => response.json());
+  }
+  uploadNotesType(note , notestype, examNote , lectureNumber,  chapter ) {
+    const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token } );
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'notesgenie/notesTypePost/',
+      JSON.stringify({
+        'note': note,
+        'type' : notestype,
+        'kind' : examNote,
+        'lecture' : lectureNumber,
+        'chapter' : chapter,
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+  }
+}

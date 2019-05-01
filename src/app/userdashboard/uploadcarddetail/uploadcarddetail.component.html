@@ -1,0 +1,57 @@
+<div class="container user-dashboard">
+  <div class="row my-5">
+    <div class="col-md-3 user-profile">
+      <nav>
+        <div>
+          <img src="{{profilePhoto}}" width="250" height="300">
+        </div>
+
+        <h4 class="user-name">{{firstname}} {{lastname}}</h4>
+        <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1">Add Notes</a>
+        <a class="user-link" routerLink="/upload" routerLinkActive="active1">Add Courses</a>
+        <a class="user-link" routerLink="/uploadcard" routerLinkActive="active1">Add Flash Cards</a>
+        <a class="user-link user-link-detail" routerLink="/uploadcarddetail" routerLinkActive="active1">FlashCard Detail</a>
+        <a class="user-link" routerLink="/uploadbook" routerLinkActive="active1">Add Books</a>
+        <!--<a class="user-link" routerLink="/uploadchapter" routerLinkActive="active1">Upload Chapters</a>-->
+      </nav>
+    </div>
+    <div class="col-md-9 user-profile">
+      <h1 class="user-heading">Add FlashCard Detail</h1>
+
+      <form method="post"  [formGroup]="fcdetail"    class="user-add-ingo-form" enctype="multipart/form-data">
+
+        <div  [ngClass]="displayFieldCss(fcdetail, 'flashcard')">
+        <mat-form-field>
+          <mat-select placeholder="Select FlashCard" (ngModelChange)="check($event)" type="number" formControlName="flashcard" >
+            <mat-option *ngFor="let data of name" [value]="data.id" >{{data.name}}</mat-option>
+         </mat-select>
+          <mat-error *ngIf="fcdetail.controls.flashcard.value == ''"><strong>Name cannot be empty</strong></mat-error>
+       </mat-form-field>
+       </div>
+       <mat-form-field>
+         <input matInput type="text" placeholder="Title" formControlName="title" name="title"  />
+       </mat-form-field>
+
+       <!-- <mat-form-field>
+           <input value="hello" matInput type="text" placeholder="user_ids"  name="user_id" #user_id="ngModel" required autofocus />
+         </mat-form-field> -->
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Definition" formControlName="definition" name="definition"   />
+        </mat-form-field>
+
+
+
+
+        <!--<input value=" " type="hidden" [(ngModel)]="model.user_id" />-->
+        <span class="btn-file">Upload Image
+          <input (change)="onChange($event)" formControlName="image" name="image" #image type="file" accept="image/gif, image/jpeg, image/png" required>
+        </span>
+
+        <a class="user-add-ingo-form-btn margin-top-10" (click)="onSubmit()" >Submit</a>
+
+      </form>
+
+    </div>
+  </div>
+</div>
