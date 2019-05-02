@@ -8,7 +8,7 @@
                     <li> <a> <img src="../../assets/img/icon-Google.png"> </a> </li>
                 </ul>
             </div>
-            <ul class="nav nav-tabs nav-justified padding-top-20">
+            <ul class="nav nav-tabs nav-justified padding-top-10">
                 <li class="nav-item">
                     <a href="#user_signup" data-toggle="tab" class="active nav-link nav-active" title="User"> User </a>
                 </li>
@@ -18,10 +18,10 @@
             </ul>
             <div class="tab-content pt-3">
                 <div id="user_signup" class="form-1-body sh padding-top-10 tab-pane fade in active show">
-                    <form class="sh-signup-form-fix" [formGroup]="register" id="notesbidnow" #form=ngForm>
+                    <form class="sh-signup-form-fix signup-login-fonts" [formGroup]="register" id="notesbidnow" #form=ngForm>
                         <div [ngClass]="displayFieldCss(register, 'firstname')">
                             <mat-form-field>
-                                <input matInput type="text" id="firstname" #firstname formControlName="firstname" placeholder="First name" pattern="[a-zA-Z ]+" name="firstname" (keydown.space)="$event.preventDefault()"
+                                <input class="text_cap" matInput type="text" id="firstname" #firstname formControlName="firstname" placeholder="First name" pattern="[a-zA-Z ]+" name="firstname" (keydown.space)="$event.preventDefault()"
                                     required>
                                 <mat-error *ngIf="register.controls.firstname.value==''">
                                     <strong>First Name cannot be empty</strong>
@@ -31,7 +31,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(register, 'lastname')">
                             <mat-form-field class="margin-top-10">
-                                <input matInput type="text" id="lastname" #lastname formControlName="lastname" placeholder="Last name" pattern="[a-zA-Z ]+" name="lastname" (keydown.space)="$event.preventDefault()"
+                                <input class="text_cap" matInput type="text" id="lastname" #lastname formControlName="lastname" placeholder="Last name" pattern="[a-zA-Z ]+" name="lastname" (keydown.space)="$event.preventDefault()"
                                     required>
                                 <mat-error *ngIf="register.controls.lastname.value==''">
                                     <strong>Last Name cannot be empty</strong>
@@ -51,7 +51,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(register, 'email')">
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input class="signup-input-font" matInput type="text" id="email" (focusout)="getemail(email1.value)"
+                                <input  matInput type="text" id="email" (focusout)="getemail(email1.value)"
                                     formControlName="email" #email1 placeholder="Email" required>
                                 <mat-error *ngIf="register.controls.email.value==''">
                                     <strong>Email cannot be empty</strong>
@@ -84,18 +84,19 @@
                             </mat-form-field>
                         </div>
                       <!-- <mat-slide-toggle formControlName="agreement"> I have read and agreed to Terms of Use and Privacy Policy.</mat-slide-toggle> -->
-                      <mat-checkbox  (change)="changeCheck($event)" > I have read and agreed to Terms of Use and Privacy Policy.</mat-checkbox>
+                      <mat-checkbox  (change)="changeCheck($event)" > I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
+                        Privacy Policy</a></mat-checkbox>
                       <app-recapcha></app-recapcha>
                         <!--<blackgeeks-recaptcha></blackgeeks-recaptcha>-->
                         
-                        <div class="float_left width100"><button [disabled]="disabledAgreement" class="form-1-btn mt-3" (click)="onRegister()" >Sign Up</button></div>
+                        <div class="float_left width100"><button [disabled]="disabledAgreement" class="form-1-btn " (click)="onRegister()" >Sign Up</button></div>
                         <div class="have-account">Already have an account?
                             <a routerLink="/login">Sign in</a>
                         </div>
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane fade">
-                    <form class="sh-signup-form-fix" [formGroup]="institute">
+                    <form class="sh-signup-form-fix signup-login-fonts" [formGroup]="institute">
                         <div [ngClass]="displayFieldCss(institute, 'username')">
                             <mat-form-field>
                                 <input matInput type="text" (focusout)="getusername(username1.value)" #username formControlName="username"
@@ -108,7 +109,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'name')">
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input class="signup-input-font" matInput type="text" placeholder="Institute Name" formControlName="name"
+                                <input class="text_cap"  matInput type="text" placeholder="Institute Name" formControlName="name"
                                     #name required>
                                     <mat-error *ngIf="institute.controls.name.value==''">
                                         <strong>Institue Name cannot be empty</strong>
@@ -117,7 +118,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'location')">
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input class="signup-input-font" matInput type="text" placeholder="City/State" formControlName="location"
+                                <input class="text_uper"  matInput type="text" placeholder="City/State" formControlName="location"
                                     #location required>
                                     <mat-error *ngIf="institute.controls.location.value==''">
                                         <strong>City/State cannot be empty</strong>
@@ -125,7 +126,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'address')" required>
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input class="signup-input-font" matInput type="text" placeholder="Address" formControlName="address"
+                                <input  matInput type="text" placeholder="Address" formControlName="address"
                                     #address required>
                                     <mat-error *ngIf="institute.controls.address.value==''">
                                         <strong>Address cannot be empty</strong>
@@ -133,7 +134,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'contact')">
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input class="signup-input-font" matInput type="text" placeholder="Contact Number" formControlName="contact" pattern="^[0-9]*$" name="contact"
+                                <input  matInput type="text" placeholder="Contact Number" formControlName="contact" pattern="^[0-9]*$" name="contact"
                                     #contact required>
                                     <mat-error *ngIf="institute.controls.contact.value==''">
                                         <strong>Contact Number cannot be empty</strong>
@@ -143,7 +144,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'email')">
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input class="signup-input-font" matInput type="text" (focusout)="getemail(email1.value)" formControlName="email"
+                                <input  matInput type="text" (focusout)="getemail(email1.value)" formControlName="email"
                                     required #email1 placeholder="Email">
                                 <mat-error *ngIf="institute.controls.email.value==''">
                                     <strong>Email cannot be empty</strong>

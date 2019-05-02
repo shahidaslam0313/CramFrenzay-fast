@@ -10,7 +10,7 @@
 
 #mainpage-slider {
     max-height: 612px;
-    background-color: rgba(0, 0, 0, 0.47843137254901963);
+    background-color: rgba(0, 0, 0, .47843137254901963)
 }
 
 .slider-hight {
@@ -202,12 +202,6 @@ html {
 :before {
     -webkit-box-sizing: inherit;
     box-sizing: inherit
-}
-
-body {
-    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif!important;
-    font-weight: 400;
-    background-color: rgba(252, 248, 248, 0)
 }
 
 .h1,
@@ -2101,7 +2095,8 @@ mat-form-field input {
 }
 
 .form-1-body>form>mat-checkbox>label {
-    padding: 10px 0
+    padding:  0;
+    margin: 0;
 }
 
 .form-1-body>form>a {
@@ -4185,11 +4180,8 @@ nav a.user-link.active1 {
     border-bottom: none!important;
     color: #000;
     background: #e3e3e3;
-    margin-right: 2px!important;
     font-weight: 600;
     padding: 5px 0;
-    border: 1px solid #000!important;
-    border-radius: 5px!important
 }
 
 .nav-tabs .nav-item .nav-active.active {
@@ -5427,15 +5419,6 @@ fieldset {
     top: 1.28125em!important
 }
 
-#cover {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: #ccc;
-    z-index: 9999
-}
 
 .item {
     min-width: 240px
@@ -5538,8 +5521,9 @@ fieldset {
 }
 
 .have-account a {
-    color: #007dff;
-    text-decoration: underline!important
+    color: #0275d8;
+    text-decoration: underline!important;
+    
 }
 
 .user-profile-form {
@@ -5595,7 +5579,7 @@ fieldset {
     top: 1.28125em!important
 }
 
-rating {
+.rating {
     font-size: 9px!important;
     display: block
 }
@@ -6194,6 +6178,39 @@ countdown .countdown {
     color: #fff;
     font-weight: 600
 }
+.signup-login-fonts .mat-input-element{
+    padding: 4px 0;
+    font-size: 24px;
+}
+.mat-form-field-empty.mat-form-field-label {
+    display: block;
+    font-size: 16px;
+    color: #616161 !important;
+}
+.signup-login-fonts .mat-form-field-label {
+    top: 1.8em;
+}
+.sh-signup-form-fix .mat-error strong{
+    font-weight: 100;
+}
+.sh-signup-form-fix.signup-login-fonts .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder{
+    font-size: 16px!important;
+    -webkit-transform: translateY(-18px) scale(.75) perspective(100px) translateZ(0)!important;
+    transform: translateY(-18px) scale(.75) perspective(100px) translateZ(0)!important;
+    -ms-transform: translateY(5px) scale(.75)!important;
+}
+.text_cap{
+    text-transform: capitalize;
+}
+.text_uper{
+    text-transform: uppercase;
+}
+body {
+    display: block!important;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    font-weight: 400;
+    background-color: rgba(252, 248, 248, 0)
+}
 
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
@@ -6351,22 +6368,22 @@ countdown .countdown {
         vertical-align: middle;
         text-align: left;
         margin: 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #ccc
     }
     .main-nav__list>li>a {
         font-size: 20px;
-        padding: 25px 8px;
+        padding: 25px 8px
     }
     .main-nav__list>li>a>i {
-        font-size: 30px;
+        font-size: 30px
     }
     .main-nav__list li:last-child {
-        border-bottom: none;
+        border-bottom: none
     }
     .parallax-title {
         font-size: 35px;
         margin-bottom: 30px;
-        line-height: 38px;
+        line-height: 38px
     }
 }
 
