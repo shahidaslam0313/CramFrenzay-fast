@@ -57,6 +57,7 @@ export class MainpageComponent implements OnInit {
   cardid;
   chapter_id;
   message: string;
+  cartitem: any;
   constructor(private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
@@ -67,7 +68,8 @@ export class MainpageComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getwishlis();
+    this.getcartitems
     this.global.currentMessage.subscribe(message => this.message = message);
     const mainSearch = $('.main-search');
     const formSearch = $('.form-search');
@@ -398,11 +400,21 @@ export class MainpageComponent implements OnInit {
       }
     }
   }
+  cart
   getwishlis(){
     this.mainpage.showwishlist().subscribe(data =>{
-      // console.log(data);
     })
   }
+  getcartitems(){
+    this.mainpage.showCartItem().subscribe(data =>{
+    })
+  }
+  // getcart(){
+  //   this.mainpage.showCartItem().subscribe(data=>{
+  //     this.cart=data
+
+  //   })
+  // }
 
   sweetalertsignin() {
     swal({
@@ -622,6 +634,7 @@ export class MainpageComponent implements OnInit {
         this.bidcourse();
         this.headServ.showwishlist().subscribe(wishList => {
           this.wishlist = wishList;
+          console.log(this.wishlist,'wishlist');
           this.Data.emittedData(this.wishlist);
         })
 
@@ -802,4 +815,52 @@ f.reset();
       );
     f.resetForm();
   }
+  addcart( notes, course, book, flashcard){
+    if (this.check_login() == true) {
+      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+        this.global = data;
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 4500
+        });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          console.log(this.cartitem,'cartitem');
+          this.Data.emittedData(this.cartitem);
+        })
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 4500
+          })
+          else if ( error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 4500
+          })
+        });
+  }
+  else if (this.check_login() == false) {
+    this.sweetalertsignin();
+    this.router.navigate(['/login']);
+  }
+}
+delfromcart(event) {
+  this.global.delcart(event.cart).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.BidBuynotes();
+  });
+}
 }

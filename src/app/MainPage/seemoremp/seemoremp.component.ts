@@ -399,4 +399,45 @@ export class SeemorempComponent implements OnInit {
         }
       );
   }
+  addcart( notes, course, book, flashcard){
+    if (this.check_login() == true) {
+      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 4500
+        });
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 4500
+          })
+          else if ( error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 4500
+          })
+        });
+  }
+  else if (this.check_login() == false) {
+    this.sweetalertsignin();
+    this.router.navigate(['/login']);
+  }
+}
+delfromcart(event) {
+  this.global.delcart(event.cart).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+}
 }

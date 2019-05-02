@@ -61,6 +61,7 @@ export class HeaderComponent implements OnInit {
   Logedin;
   wishlistCourses;
   emptyWishlist;
+  totalprice: any;
   constructor( private route: ActivatedRoute, public router: Router,  public header: headerservice, private wish: WishlistService, private Data: DataService, public global: GlobalService , private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -126,7 +127,9 @@ export class HeaderComponent implements OnInit {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Data.getEmittedValue().subscribe(data => {
       this.count = data.count;
+      this.itemscount = data.counts;
       this.Data = data.Wishlist;
+      this.Data = data.Cart;
       for (let val in this.Data) {
         if (this.Data[val].course) {
           this.wishId.push(this.Data[val])
@@ -139,6 +142,9 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
+    this.Data.getEmittedValue().subscribe(data =>{
+      
+    })
     if (this.Logedin === '1'){
     }
 
@@ -156,6 +162,7 @@ export class HeaderComponent implements OnInit {
 
       });
     }
+    
     this.sub = this.route.params.subscribe(params => {
       this.name = +params['name'];
     });
@@ -473,7 +480,7 @@ deletenotification(id){
   }
 
   clearCart() {
-    this.itemscount = null;
+    // this.itemscount = null;
     this.sum = null;
     this.items = null;
     this.clearWishList();
@@ -604,7 +611,8 @@ deletenotification(id){
 
   showCartItems() {
     this.header.showCartItem().subscribe(Data => {
-      this.itemscount = Data.count;
+      this.itemscount = Data.counts;
+      this.totalprice = Data.sum
 
       for (let vall in Data.Cart) {
         if (Data.Cart[vall].course) {
@@ -621,5 +629,6 @@ deletenotification(id){
         }
       }
     })
+    this.showlist();
   }
 }
