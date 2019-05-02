@@ -5523,9 +5523,13 @@ fieldset {
 .have-account a {
     color: #0275d8;
     text-decoration: underline!important;
-    
 }
-
+.terms-cond a{
+    color: #0275d8;
+    font-weight: normal;
+    font-size: 13px;
+    margin-left:5px;
+}
 .user-profile-form {
     padding: 20px 10px 0
 }
