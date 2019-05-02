@@ -2114,8 +2114,8 @@ mat-form-field input {
     transition: .2s all;
     margin: 0;
     font-weight: 600;
-    font-size: 25px;
-    padding: 5px 0;
+    font-size: 20px;
+    padding: 3px 0;
     -webkit-box-shadow: 0 0 20px -2px #000;
     box-shadow: 0 0 20px -2px #000;
     margin: 0 auto;
@@ -4212,7 +4212,7 @@ nav a.user-link.active1 {
 }
 
 .width100 {
-    width: 100%
+    width: 100% !important;
 }
 
 .margin-top117 {
@@ -5647,7 +5647,32 @@ body.modal-open {
     margin-bottom: 10px;
     padding: 10px 15px
 }
-
+.form-1-body>form>div{
+    width: 48%;
+    display: inline-block;
+    margin: 0 5px;
+}
+.signup-tabs{
+    width: 60%;
+}
+.signup-comp .form-width {
+    width: 60%;
+}
+.signup-comp .form-1-header{
+    margin-top: -50px ;
+    border-radius: 3px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4)!important;
+    padding: 15px;
+}
+.signup-comp .form-1-header h1{
+    text-align: left;
+}
+.signup-comp app-recapcha .mat-card {
+    float: none;
+}
+.padding-0 {
+    padding: 0
+}
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
         width: 85%;
