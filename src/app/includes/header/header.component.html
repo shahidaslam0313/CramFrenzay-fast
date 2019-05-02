@@ -448,7 +448,7 @@
                                                 routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Add
                                                 Material </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
-                                                routerLink="/mylibrary"> <i class="fa fa-book"></i>My Library </a> </li>
+                                                routerLink="/mylibrary"> <i class="fa fa-book"></i>Listed for Sale </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
                                                 routerLink="/paymentmethods"> <i class="far fa-credit-card"></i>Payment
                                                 Methods </a> </li>
@@ -456,14 +456,13 @@
                                                 routerLink="/Bought"> <i class="far fa-money-bill-alt"></i>Bought Items</a>
                                         </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/winloss"
-                                                onclick="topFunction()"> <i class="fa fa-dollar-sign"></i>Completed
-                                                Bidding activity</a> </li>
+                                                onclick="topFunction()"> <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
-                                                routerLink="/biddingactivity"> <i class="fa fa-gavel"></i>Current
-                                                Bidding Activity </a> </li>
+                                                routerLink="/biddingactivity"> <i class="fa fa-gavel"></i> My Bidding Activity </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
-                                                    routerLink="/offeractivity"> <i class="fa fa-gavel"></i>Accept
-                                                    Offer Activity </a> </li>
+                                                    routerLink="/offeractivity"> <i class="fa fa-gavel"></i> My Offer Activity
+
+                                                </a> </li>
                                         <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/institutedetail">
                                                 <i class="fa fa-pencil-alt"></i>My Profile </a> </li>
                                         <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/addevents">

@@ -35,7 +35,8 @@
                                                 routerLink="/notes/{{item?.id}}"
                                                 *ngIf="item?.status != true || item?.status == null">Pending By Admin</a>
                                         </div>
-                                        <a class="btn-style" *ngIf="item?.status == true" (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)">Publish</a>
+                                        <a class="btn-style" *ngIf="item?.status == true && item?.publish == false " (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)">Publish</a>
+                                        <a class="btn-style" *ngIf="item?.publish == true">Alread publised</a>
                                         <p class="product-list__price">${{item?.price}}</p>
                                     </div>
                                 </div>
@@ -63,7 +64,12 @@
                                                 routerLink="/eachcourse/{{data?.id}}"
                                                 *ngIf="item?.status != true || item?.status == null">Pending By Admin</a>
                                         </div>
-                                        <a class="btn-style" *ngIf="item?.status == true" (click)="publish(nullvalue,item?.id,nullvalue,nullvalue)">Publish</a>
+
+
+                                        
+                                        <a class="btn-style" *ngIf="item?.status == true && item?.publish == false" (click)="publish(nullvalue,item?.id,nullvalue,nullvalue)">Publish</a>
+                                        <a><button *ngIf="item?.publish == true">done</button></a>
+
                                         <p class="product-list__price">{{data?.price | currency:'USD'}}</p><button
                                             class="btn-style width100 float_left display-block mt-2 mb-2"
                                             [routerLink]="['/coursevideo/']" [queryParams]="{id : data.id}"
@@ -95,7 +101,9 @@
                                                 *ngIf="item?.status != true || item?.status == null">Pending By Admin
                                             </a>
                                         </div>
-                                        <a class="btn-style" *ngIf="item?.status == true" (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Publish</a>
+                                        <a class="btn-style" *ngIf="item?.status == true && item?.publish == false " (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Publish</a>
+                                        <a class="btn-style" *ngIf="item?.publish == true">Alread publised</a>
+
                                         <p class="product-list__price">Price:{{item.price | currency:'USD'}}</p>
                                     </div>
                                 </div>
@@ -123,8 +131,10 @@
                                                 routerLink="/detail/{{item?.id}}"
                                                 *ngIf="item?.status != true || item?.status == null">Pending By Admin</a>
                                         </div>
-                                        <a class="btn-style" *ngIf="item?.status == true" (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)">Publish</a>
+                                        <a class="btn-style" *ngIf="item?.status == true && item?.publish == false" (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)">Publish</a>
                                         <p class="product-list__price">{{item?.price | currency:'USD'}}</p>
+                                        <a class="btn-style" *ngIf="item?.publish == true">Alread publised</a>
+
                                     </div>
                                 </div>
                             </div>
