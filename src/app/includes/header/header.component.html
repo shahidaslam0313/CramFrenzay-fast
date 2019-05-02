@@ -1,4 +1,4 @@
-<div class="main-search search-outer "><i class="fas fa-times" id="closeSearch"></i>
+<div class="main-search search-outer "> <i class="fas fa-times" id="closeSearch"></i>
     <div class="container">
         <div class="search-holder">
             <form (ngSubmit)="onsubmit(query)"> <input type="search" autofocus placeholder="Search CramFrenzy" id="input-searchbar" name="name" (keyup)="filter(query)"  [(ngModel)]="query"> </form>
@@ -10,7 +10,7 @@
                 <div class="product-list__item">
                     <figure class="product-list__img"> <a onclick="topFunction()" routerLink="/detail/{{data?.id}}">
                             <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes Image"> </a>
-                        <div class="wishlist-overlay"> <a onclick="topFunction()" class="product-list__wishlist"><i
+                        <div class="wishlist-overlay"> <a onclick="topFunction()" class="product-list__wishlist"> <i
                                     class="far fa-heart"></i> </a> </div>
                     </figure>
                     <div class="product-list__content">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="navbar-collapse main-nav__div" id="mainNav">
                     <ul class="main-nav__list main-nav__width navbar-right float_left width100">
-                        <li class="active"> <a onclick="topFunction()" routerLink="/notesgenie"><i class="fa fa-file-alt"></i>NotesGenie
+                        <li class="active"> <a onclick="topFunction()" routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie
                             </a>
                             <div class="sub-menu">
                                 <ul>
@@ -68,7 +68,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li> <a onclick="topFunction()" routerLink="/course"><i class="fa fa-th-large"></i>Courses </a>
+                        <li> <a onclick="topFunction()" routerLink="/course"> <i class="fa fa-th-large"></i>Courses </a>
                             <div class="sub-menu">
                                 <ul>
                                     <li> <a onclick="topFunction()" routerLink="/course"> <img class="course" alt=""
@@ -83,7 +83,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li> <a onclick="topFunction()" routerLink="/tutor"><i class="fa fa-users"></i>Tutors </a>
+                        <li> <a onclick="topFunction()" routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
                             <div class="sub-menu">
                                 <ul>
                                     <li> <a onclick="topFunction()" routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
@@ -99,7 +99,8 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_flash_cards"> <a onclick="topFunction()" routerLink="/flashcardlist"><i class="fa fa-book-open"></i>Flash Cards </a>
+                        <li class="main-nav__list_flash_cards"> <a onclick="topFunction()" routerLink="/flashcardlist">
+                                <i class="fa fa-book-open"></i> Flash Cards </a>
                             <div class="sub-menu">
                                 <ul>
                                     <li> <a onclick="topFunction()" routerLink="/flashcardlist"> <img class="flash-card"
@@ -114,7 +115,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_books"> <a onclick="topFunction()" routerLink="/allbooks"><i class="fa fa-book"></i>Books
+                        <li class="main-nav__list_books"> <a onclick="topFunction()" routerLink="/allbooks"> <i class="fa fa-book"></i>Books
                             </a>
                             <div class="sub-menu">
                                 <ul>
@@ -130,9 +131,9 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_books"> <a onclick="topFunction()" (click)="selllogin()"><i class="far fa-money-bill-alt"></i>
+                        <li class="main-nav__list_books"> <a onclick="topFunction()" (click)="selllogin()"> <i class="far fa-money-bill-alt"></i>
                                 Sell Now </a> </li>
-                        <li class="main-nav__list_events"> <a onclick="topFunction()" routerLink="/events"><i class="fa fa-calendar-alt"></i>
+                        <li class="main-nav__list_events"> <a onclick="topFunction()" routerLink="/events"> <i class="fa fa-calendar-alt"></i>
                                 Events </a>
                             <div class="sub-menu">
                                 <ul>
@@ -146,7 +147,8 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_scholarship"> <a onclick="topFunction()" routerLink="/scholarship"><i class="fa fa-graduation-cap"></i>Scholarships </a>
+                        <li class="main-nav__list_scholarship"> <a onclick="topFunction()" routerLink="/scholarship">
+                                <i class="fa fa-graduation-cap"></i>Scholarships </a>
                             <div class="sub-menu">
                                 <ul>
                                     <li> <a onclick="topFunction()" routerLink="/scholarship">Scholarships</a> </li>
@@ -157,11 +159,12 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list-bars"> <a onclick="topFunction()" href="javascript:void(0)"><i class="fas fa-bars"></i>
+                        <li class="main-nav__list-bars"> <a onclick="topFunction()" href="javascript:void(0)"> <i class="fas fa-bars"></i>
                             </a>
                             <div class="sub-menu">
                                 <ul class="cutsom-pd-bars">
-                                    <li class="main-nav__list_flash_cards_1"> <a onclick="topFunction()" routerLink="/flashcardlist"><i class="fa fa-book-open"></i> Flash Cards </a>
+                                    <li class="main-nav__list_flash_cards_1"> <a onclick="topFunction()" routerLink="/flashcardlist">
+                                            <i class="fa fa-book-open"></i> Flash Cards </a>
                                         <div class="sub-sub-menu">
                                             <ul>
                                                 <li> <a onclick="topFunction()" routerLink="/flashcardlist">Flash Cards</a>
@@ -173,7 +176,8 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="main-nav__list_books_1"> <a onclick="topFunction()" routerLink="/allbooks"><i class="fa fa-book"></i>Books </a>
+                                    <li class="main-nav__list_books_1"> <a onclick="topFunction()" routerLink="/allbooks">
+                                            <i class="fa fa-book"></i>Books </a>
                                         <div class="sub-sub-menu">
                                             <ul>
                                                 <li> <a onclick="topFunction()" routerLink="/allbooks"> <img class="book"
@@ -188,9 +192,10 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="main-nav__list_books_1"> <a onclick="topFunction()" routerLink="/"><i
+                                    <li class="main-nav__list_books_1"> <a onclick="topFunction()" routerLink="/"> <i
                                                 class="far fa-money-bill-alt"></i> Sell Now</a> </li>
-                                    <li class="main-nav__list_events_1"> <a onclick="topFunction()" routerLink="/events"><i class="fa fa-calendar-alt"></i>Events </a>
+                                    <li class="main-nav__list_events_1"> <a onclick="topFunction()" routerLink="/events">
+                                            <i class="fa fa-calendar-alt"></i>Events </a>
                                         <div class="sub-sub-menu">
                                             <ul>
                                                 <li> <a onclick="topFunction()" routerLink="/events"> <img src="../../../assets/img/Events/Events.png"
@@ -202,7 +207,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li> <a onclick="topFunction()" routerLink="/scholarship"><i class="fa fa-graduation-cap"></i>Scholarships
+                                    <li> <a onclick="topFunction()" routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships
                                         </a>
                                         <div class="sub-sub-menu">
                                             <ul>
@@ -222,21 +227,21 @@
                             </div>
                         </li>
                         <li class="info-box-02__box-02 search-icon-responsive"> <a onclick="topFunction()" href="javascript:void(0)"
-                                class="search-block" id="searchIcon"><i class="fas fa-search search-size"></i> </a>
+                                class="search-block" id="searchIcon"> <i class="fas fa-search search-size"></i> </a>
                         </li>
                         <div class="main-nav__list-icons">
                             <li class="info-box-02__box-02"> <a onclick="topFunction()" href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8"
-                                    class="search-block" target="_blank"><i class="fab fa-apple"></i> </a> </li>
+                                    class="search-block" target="_blank"> <i class="fab fa-apple"></i> </a> </li>
                             <li class="info-box-02__box-02"> <a onclick="topFunction()" href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene"
-                                    class="search-block" target="_blank"><i class="fab fa-android"></i> </a> </li>
+                                    class="search-block" target="_blank"> <i class="fab fa-android"></i> </a> </li>
                             <li class="heart-li" *ngIf="check_login()"> <a onclick="topFunction()" routerLink="/wishlist"
-                                    title="Watchlist"><i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
+                                    title="Watchlist"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
                                 <div class="heart-sub-meun">
                                     <div class="heart-full-div" >
                                         <h1 class="dropdown-heading">Courses</h1>
                                         <div class="heart" *ngFor="let data of wishId; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
-                                                (click)="del(data.id)"><i class="fas fa-times"></i> </div>
+                                                (click)="del(data.id)"> <i class="fas fa-times"></i> </div>
                                             <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.course.course_thumbnail}}"
                                                     class="heart-img" alt="Course">
                                                 <div class="heart-contact">
@@ -255,7 +260,7 @@
                                         <h1 class="dropdown-heading">Notes</h1>
                                         <div class="heart" *ngFor="let data of wishnotesId; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
-                                                (click)="del(data.id)"><i class="fas fa-times"></i> </div>
+                                                (click)="del(data.id)"> <i class="fas fa-times"></i> </div>
                                             <div class="heart-main-div"> <img src="{{Imageurl}}{{data.notes.notes_thumbnail}}"
                                                     class="heart-img" alt="notes">
                                                 <div class="heart-contact">
@@ -274,7 +279,7 @@
                                         <h1 class="dropdown-heading">Books</h1>
                                         <div class="heart" *ngFor="let data of wishbook; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
-                                                (click)=" del(data.id)"><i class="fas fa-times"></i> </div>
+                                                (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
                                             <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.book.book_image}}"
                                                     class="heart-img" alt="Course">
                                                 <div class="heart-contact">
@@ -293,7 +298,7 @@
                                         <h1 class="dropdown-heading">Flash Cards</h1>
                                         <div class="heart" *ngFor="let data of cardwish; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
-                                                (click)=" del(data.id)"><i class="fas fa-times"></i> </div>
+                                                (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
                                             <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.flashcard.flashcard_image}}"
                                                     class="heart-img" alt="flashcard_image">
                                                 <div class="heart-contact">
@@ -314,13 +319,13 @@
                                 </div>
                             </li>
                             <li class="addtocart-li" *ngIf="check_login()"> <a onclick="topFunction()" routerLink="/addtocart"
-                                    title="Cart"><i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
+                                    title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
                                         <h1 class="dropdown-heading">Courses</h1>
                                         <div *ngFor="let cartitems of Courses">
                                             <div class="addtocart" *ngIf="cartitems.course !=null">
-                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"><i
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.course.course_thumbnail}}"
                                                         class="addtocart-img" alt="Course">
@@ -340,7 +345,7 @@
                                         <h1 class="dropdown-heading">Books</h1>
                                         <div *ngFor="let cartitems of Book">
                                             <div class="addtocart" *ngIf="cartitems.book !=null">
-                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"><i
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.book.book_image}}"
                                                         class="addtocart-img" alt="Course">
@@ -378,7 +383,7 @@
                                         <h1 class="dropdown-heading">Notes</h1>
                                         <div *ngFor="let cartitems of Notes">
                                             <div class="addtocart" *ngIf="cartitems.notes !=null">
-                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"><i
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.notes.notes_thumbnail}}"
                                                         class="addtocart-img" alt="Course">
@@ -399,7 +404,7 @@
                                     <div class="addtocart-btn-div">
                                         <div class="addtocart-main-total">
                                             <div class="addtocart-main-total-title"> Total: </div>
-                                            <div class="addtocart-main-total-price"> ${{sum}}</div>
+                                            <div class="addtocart-main-total-price"> ${{totalprice}}</div>
                                         </div><a onclick="topFunction()" routerLink="/addtocart" class="addtocart-btn">Go
                                             to Cart</a>
                                     </div>
@@ -428,9 +433,10 @@
                             </li>
                         </div>
                         <div class="main-nav__list main-nav__list_right">
-                            <li *ngIf="!check_login()"> <a onclick="topFunction()" routerLink="/signup"> <i class="fas fa-user-plus"></i>Sign Up </a> </li>
+                            <li *ngIf="!check_login()"> <a onclick="topFunction()" routerLink="/signup"> <i class="fas fa-user-plus"></i>
+                                    Sign Up </a> </li>
                             <li *ngIf="!check_login()" class="list-user"> <a onclick="topFunction()" routerLink="/login">
-                                    <i class="fas fa-fingerprint" aria-hidden="true"></i>Sign in </a> </li>
+                                    <i class="fas fa-fingerprint" aria-hidden="true"></i> Sign in </a> </li>
                             <li *ngIf="check_login()"> <a onclick="topFunction()" routerLink="/userprofile"> <i class="fa fa-user-circle"></i>My
                                     CramFrenzy <span class="fa fa-angle-down"></span> </a>
                                 <div class="sub-menu adjustment">
