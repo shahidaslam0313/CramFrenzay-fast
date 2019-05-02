@@ -1,11 +1,11 @@
-import {EventEmitter, Inject, Injectable, Output, PLATFORM_ID} from '@angular/core';
+import { EventEmitter, Inject, Injectable, Output, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {Headers, Response} from '@angular/http';
-import {Config} from './Config';
-import {  Http  } from '@angular/http';
-import {isPlatformBrowser} from '@angular/common';
-import {HttpService} from './serv/http-service';
-import { Subject} from 'rxjs';
+import { Headers, Response } from '@angular/http';
+import { Config } from './Config';
+import { Http } from '@angular/http';
+import { isPlatformBrowser } from '@angular/common';
+import { HttpService } from './serv/http-service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class GlobalService {
@@ -14,6 +14,8 @@ export class GlobalService {
   private watchlist = new BehaviorSubject('default message');
   currentMessage = this.watchlist.asObservable();
 
+  private globalcart = new BehaviorSubject<any>('');
+  globalcart$ = this.globalcart.asObservable();
 
   private GlobalWishListCourses = new BehaviorSubject<any>('');
   GlobalWishListCourses$ = this.GlobalWishListCourses.asObservable();
@@ -85,6 +87,10 @@ export class GlobalService {
   getEmittedValue() {
     return this.fire;
   }
+  ////////// get cart items//////
+  getcart(data: any) {
+    this.globalcart.next(data)
+  }
   ///////////categories sliders fro whole site////////
 
   InnerslideronMainPage() {
@@ -94,61 +100,61 @@ export class GlobalService {
   }
 
   ////////////// nested category //////////
-    nestedcategory(id) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get(Config.api + 'course/nestedcategory/' +  id, {headers: headers}).map((response: Response) => response.json());
-    }
-        //////////////bid notes///////////
-  bidnotes(notes , bidamount) {
+  nestedcategory(id) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'course/nestedcategory/' + id, { headers: headers }).map((response: Response) => response.json());
+  }
+  //////////////bid notes///////////
+  bidnotes(notes, bidamount) {
 
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.post( Config.api + 'bid/BidUserNotes/',
+    return this.http.post(Config.api + 'bid/BidUserNotes/',
       JSON.stringify({
-        notes : notes,
-        bidamount : bidamount
+        notes: notes,
+        bidamount: bidamount
 
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
   ////////////bid on books///////
-  bidonbook(book ,bidamount) {
+  bidonbook(book, bidamount) {
 
     const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.post( Config.api + 'bid/BidUserBook/',
+    return this.http.post(Config.api + 'bid/BidUserBook/',
       JSON.stringify({
-        book : book,
-        bidamount : bidamount
+        book: book,
+        bidamount: bidamount
 
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
   ///////////// bid on course///////
 
-  bidoncourses(course , bidamount) {
+  bidoncourses(course, bidamount) {
 
     const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.post( Config.api + 'bid/BidUserCourse/',
+    return this.http.post(Config.api + 'bid/BidUserCourse/',
       JSON.stringify({
-        course : course,
-        bidamount : bidamount
+        course: course,
+        bidamount: bidamount
 
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
 
   /////////bid on falsh card //////
-  bidoncards(flashcard ,bidamount) {
+  bidoncards(flashcard, bidamount) {
 
     const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.post( Config.api + 'bid/BidUserFlashcard/',
+    return this.http.post(Config.api + 'bid/BidUserFlashcard/',
       JSON.stringify({
-        flashcard : flashcard,
-        bidamount : bidamount
+        flashcard: flashcard,
+        bidamount: bidamount
 
       }),
       { headers: headers }).map((response: Response) => response.json());
@@ -156,7 +162,7 @@ export class GlobalService {
   /////////////////// watch list //////////
   addwishlist(book, course, flashcard, notes) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
-    headers.append('Content-Type', 'application/json', );
+    headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'bid/postwishlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
       JSON.stringify({
         book: book,
@@ -171,8 +177,8 @@ export class GlobalService {
 
   acceptoffer(notes, course, book, flashcard, offer_price) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
-    headers.append('Content-Type', 'application/json', );
-    return this.http.post(Config.api + 'purchase/sendingOfferonCourse/' ,
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/sendingOfferonCourse/',
       JSON.stringify({
         notes: notes,
         course: course,
@@ -182,4 +188,24 @@ export class GlobalService {
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
+  //////////////////// Add to Cart/////////////////
+  addtocart(notes, course, book, flashcard) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://192.168.30.8:8000/purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
+      JSON.stringify({
+        notes: notes,
+        course: course,
+        book: book,
+        flashcard: flashcard,
+        userid: this.current.user_id
+      }),
+      { headers: headers }).map((response: Response) => response.json());
   }
+  ////////////////Delete From Cart///////////
+  delcart(id) {
+    const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(Config.api + 'purchase/deletecheckoutlist/' + id, { headers: headers }).map((response: Response) => response.json());
+  }
+}
