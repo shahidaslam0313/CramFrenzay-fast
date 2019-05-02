@@ -192,7 +192,7 @@ export class GlobalService {
   addtocart(notes, course, book, flashcard) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://192.168.30.8:8000/purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
+    return this.http.post(Config.api + 'purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
       JSON.stringify({
         notes: notes,
         course: course,

@@ -107,10 +107,10 @@ export class mainpageservice {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json');
-      return this.http.get('http://192.168.30.8:8000/purchase/purchase/getcheckoutlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, { headers: headers }).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'purchase/purchase/getcheckoutlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, { headers: headers }).map((response: Response) => response.json());
     }
     else {
-      return this.http.get('http://192.168.30.8:8000/purchase/purchase/getcheckoutlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'purchase/purchase/getcheckoutlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id).map((response: Response) => response.json());
 
     }
   }
