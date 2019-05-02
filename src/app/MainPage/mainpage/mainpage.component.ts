@@ -68,8 +68,6 @@ export class MainpageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getwishlis();
-    this.getcartitems
     this.global.currentMessage.subscribe(message => this.message = message);
     const mainSearch = $('.main-search');
     const formSearch = $('.form-search');
@@ -626,7 +624,7 @@ export class MainpageComponent implements OnInit {
           type: 'success',
           title: 'Add to Watch List',
           showConfirmButton: false,
-          timer: 4500
+          timer: 2000
         });
         this.BidBuynotes();
         this.BidBuyflashcards();
@@ -634,7 +632,6 @@ export class MainpageComponent implements OnInit {
         this.bidcourse();
         this.headServ.showwishlist().subscribe(wishList => {
           this.wishlist = wishList;
-          console.log(this.wishlist,'wishlist');
           this.Data.emittedData(this.wishlist);
         })
 
@@ -644,16 +641,17 @@ export class MainpageComponent implements OnInit {
             type: 'warning',
             title: 'This item is already exist in your watch list',
             showConfirmButton: false,
-            timer: 4500
+            timer: 2000
           })
           else if ( error.status === 406)
           swal({
             type: 'error',
             title: 'Item Already Purchased',
             showConfirmButton: false,
-            timer: 4500
+            timer: 2000
           })
       });
+      this.getcartitems()
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -662,7 +660,6 @@ export class MainpageComponent implements OnInit {
   }
   Check:boolean=false;
   check(notes, course, book, flashcard) {
-  //  this.Check = true;
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
 
@@ -675,12 +672,7 @@ export class MainpageComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 4500
               })  
-             
-          },
-              
-
-          ) 
-             
+          },)       
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -690,8 +682,6 @@ export class MainpageComponent implements OnInit {
   bidnotesid(id){
     if (this.check_login() == true) {
       this.bidonnotes = id
-
-
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -708,7 +698,6 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
-
   }
   bidc(f: NgForm) {
     this.global.bidoncourses(this.bidingcourse, this.model.bidamount, )
@@ -731,8 +720,6 @@ export class MainpageComponent implements OnInit {
       );
 f.reset();
   }
-
-  // bidamount;
   biding(f: NgForm) {
     this.global.bidnotes(this.bidonnotes, this.model.bidamount)
       .subscribe(Res => {
@@ -817,18 +804,17 @@ f.reset();
   }
   addcart( notes, course, book, flashcard){
     if (this.check_login() == true) {
-      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+      this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
         this.global = data;
         swal({
           type: 'success',
           title: 'Added to Cart',
           showConfirmButton: false,
-          timer: 4500
+          timer: 2000
         });
         this.headServ.showCartItem().subscribe(cartitem => {
           this.cartitem = cartitem;
-          console.log(this.cartitem,'cartitem');
-          this.Data.emittedData(this.cartitem);
+          this.Data.emittData(this.cartitem);
         })
       }, error => {
         if (error.status == 404)
@@ -836,16 +822,17 @@ f.reset();
             type: 'warning',
             title: 'This item is already exist in your Cart',
             showConfirmButton: false,
-            timer: 4500
+            timer: 2000
           })
           else if ( error.status === 406)
           swal({
             type: 'error',
             title: 'Item Already Purchased',
             showConfirmButton: false,
-            timer: 4500
+            timer: 2000
           })
         });
+        this.getwishlis()
   }
   else if (this.check_login() == false) {
     this.sweetalertsignin();
@@ -863,4 +850,5 @@ delfromcart(event) {
     this.BidBuynotes();
   });
 }
+
 }

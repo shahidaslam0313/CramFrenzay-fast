@@ -114,4 +114,17 @@ export class mainpageservice {
 
     }
   }
+  addtocart(notes, course, book, flashcard) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
+      JSON.stringify({
+        notes: notes,
+        course: course,
+        book: book,
+        flashcard: flashcard,
+        userid: this.current.user_id
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+  }
 }

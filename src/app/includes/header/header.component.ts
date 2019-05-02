@@ -123,13 +123,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Data.getEmittedValue().subscribe(data => {
+      this.showCartItems()
       this.count = data.count;
-      this.itemscount = data.counts;
-      this.Data = data.Wishlist;
-      this.Data = data.Cart;
       for (let val in this.Data) {
         if (this.Data[val].course) {
           this.wishId.push(this.Data[val])
@@ -142,12 +141,11 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
-    this.Data.getEmittedValue().subscribe(data =>{
+    this.Data.getEmittValue().subscribe(data =>{
+      this.showlist()
+      this.itemscount = data.counts;
       
     })
-    if (this.Logedin === '1'){
-    }
-
     if (this.Logedin === '1') {
       this.header.showwishlist().subscribe(response => {
         if(response.hasOwnProperty("status")) {
@@ -168,6 +166,7 @@ export class HeaderComponent implements OnInit {
     });
     this.notification();
     this.showCartItems();
+    this.showlist()
     const mainSearch = $('.main-search');
     const formSearch = $('.form-search');
 
@@ -629,6 +628,5 @@ deletenotification(id){
         }
       }
     })
-    this.showlist();
   }
 }
