@@ -8,7 +8,7 @@
     <div class="row" *ngIf="loaded">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-5" *ngFor="let data of result3.Tutors; let i=index">
             <div class="tutor-inner">
-                <div class="tutor-image"> <a (click)="onsubmit(data.id)"> <img class="tutor-img" src="{{Imageurl}}{{data.profile_picture}}"
+                <div class="tutor-image"> <a (click)="onsubmit(data.id)"> <img class="tutor-img" src="/assets/img/CramFrenzy.png"
                             alt="Tutor Image"> </a> </div>
                 <div class="tutor-contact">
                     <div class="tutor-title"> <a title="{{data.first_name | titlecase}}{{data.last_name | titlecase}}"

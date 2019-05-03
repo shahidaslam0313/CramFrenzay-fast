@@ -61,14 +61,13 @@ export class MainpageComponent implements OnInit {
   constructor(private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
-    this.bidcourse();
-    this.BidBuyflashcards();
-    this.BidBuybooks();
-
   }
 
   ngOnInit() {
     this.global.currentMessage.subscribe(message => this.message = message);
+    this.bidcourse();
+    this.BidBuyflashcards();
+    this.BidBuybooks();
     const mainSearch = $('.main-search');
     const formSearch = $('.form-search');
 
