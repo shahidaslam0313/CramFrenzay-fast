@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="user-add-ingo-form" [formGroup]="form">
+                <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm> 
                     <mat-form-field> <input matInput type="text" placeholder="Card Holder Name"
                             formControlName="cardnickname">
                         <mat-error *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
@@ -57,8 +57,8 @@
                             <mat-error *ngIf="form.controls.cardnickname.errors.maxlength"> Card Holder Name must be at
                                 atmost{{form.controls.cardnickname.errors.maxlength.requiredLength}}characters long.
                             </mat-error>
-                            <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace"> Card Holder Name
-                                cannot contain spaces </mat-error>
+                            <!-- <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace"> Card Holder Name
+                                cannot contain spaces </mat-error> -->
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field>
@@ -128,7 +128,7 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-                    <mat-form-field class=""> <input matInput placeholder="Expiry Date (MM/YYYY)"
+                    <mat-form-field class=""> <input matInput placeholder="Expiry Date (MM/YY)"
                             [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
                             (change)="chek(exp.value)">
                         <mat-error *ngIf="form.controls.expirydate.touched && form.controls.expirydate.invalid">
@@ -136,12 +136,13 @@
                             </mat-error>
                             <mat-error *ngIf="form.controls.expirydate.hasError('pattern')"> Expiry date must be in
                                 MM/YYYY format. </mat-error>
-                        </mat-error><span class="card-error" *ngIf="expirydate <= '2018'">
+                        </mat-error>
+                        <span class="card-error" *ngIf="expirydate <= '19'">
                             Invalid Expiry Date
                         </span>
                     </mat-form-field>
                     <mat-slide-toggle [checked]="false" formControlName="check">Set as default payment method
-                    </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add()">Add</a>
+                    </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add(f)">Add</a>
                 </form>
             </div>
         </div>

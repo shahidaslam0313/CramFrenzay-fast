@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { DataService } from '../../data.service';
 import { HttpClient } from "@angular/common/http";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -23,7 +23,7 @@ export class PaymentmethodsComponent implements OnInit {
   card_opeation = [
     { value: 'Visa', viewValue: 'Visa' },
     { value: 'Master', viewValue: 'Master' },
-    { value: 'Divcover', viewValue: 'Divcover' },
+    { value: 'Divcover', viewValue: 'Discover' },
     { value: 'American Express', viewValue: 'American Express' }
   ];
   form = new FormGroup({
@@ -65,7 +65,6 @@ export class PaymentmethodsComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(25),
       Validators.required,
-      noSpaceValidator.cannotContainSpace,
       Validators.pattern("[a-zA-Z ]+")
     ]),
     check: new FormControl(),
@@ -277,7 +276,7 @@ this.status=status;
       })
   }
   date;
-  add() {
+  add(f:NgForm) {
     if (this.cardtype == "American Express") {
       if ( this.form.controls.ccv4.valid &&  this.form.controls.cardnumber4.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
@@ -400,6 +399,7 @@ this.status=status;
         })
       }
     }
+    f.resetForm()
   }
   res;
   getCards() {

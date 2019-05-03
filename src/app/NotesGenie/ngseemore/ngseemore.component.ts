@@ -60,7 +60,6 @@ export class NgseemoreComponent implements OnInit {
 
   ngOnInit() {}
   checkmainpage(id) {
-    // alert(id)
     if (this.check_login() == true) {
       this.router.navigate(['/payment'], {queryParams: {notesid : id}});
       // localStorage.setItem('notesid', id);
@@ -142,7 +141,6 @@ export class NgseemoreComponent implements OnInit {
 
     this.seemore.BidbuyNotes(page).subscribe(data => {
       this.bidnotes = data;
-      console.log(this.bidnotes);
       this.pager = this.pagerService.getPager(this.bidnotes['totalItems'], page, 10);
 
     });
@@ -154,7 +152,6 @@ export class NgseemoreComponent implements OnInit {
 
     this.seemore.TrendingNotes(page).subscribe(data => {
       this.trendingnotes = data;
-      console.log(this.trendingnotes);
       this.pager = this.pagerService.getPager(this.trendingnotes['totalItems'], page, 10);
 
     });
@@ -215,11 +212,8 @@ export class NgseemoreComponent implements OnInit {
       );
   }
   notesss(id) {
-    console.log(this.bidonnotes);
     this.seemore.getnotesid(id).subscribe(notes => {
       this.bidonnotes = notes;
-      console.log(this.bidnotes)
-
     });
   }
   openDialog3(notes): void {
