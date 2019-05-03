@@ -11,8 +11,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
-
-declare const $: any;
 @Component({
   selector: 'app-notesgenie',
   templateUrl: './notesgenie.component.html',
@@ -44,87 +42,13 @@ export class NotesgenieComponent implements OnInit {
   notes;
   message: string;
   allbidid;
-  slideConfig2 = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    prevArrow: '<button class="leftRs1"><i class="fa fa-chevron-left"></i></button>',
-    nextArrow: '<button class="rightRs1"><i class="fa fa-chevron-right"></i></button>',
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-  slideConfig = {
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    autoplay: true,
-    prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-angle-left"></i></button>',
-    nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-angle-right"></i></button>',
-    infinite: true,
-    responsive: [
-      {
-        breakpoint: 1154,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          infinite: true
-        }
-      },
-      {
-        breakpoint: 942,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true
-        }
-      },
-      {
-        breakpoint: 730,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 512,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-
-    ]
-  };
+  slideConfig2;
+  slideConfig;
+ 
   isreserved: boolean = false;
   constructor(private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router,  public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Slider();
-    this.bidnote();
-    this.trendingnote();
-    this.topratednote();
-    this.recentnote();
     this.bidbuynotes();
   }
   openDialog3(chapter_id): void {
@@ -147,11 +71,46 @@ export class NotesgenieComponent implements OnInit {
 
   ngOnInit() {
     this.global.currentMessage.subscribe(message => this.message = message);
-
+    this.bidnote();
+    this.trendingnote();
+    this.topratednote();
+    this.recentnote();
   }
   Slider() {
     this.global.InnerslideronMainPage().subscribe(Res => {
       this.inner = Res;
+      this.slideConfig2 = {
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        prevArrow: '<button class="leftRs1"><i class="fa fa-chevron-left"></i></button>',
+        nextArrow: '<button class="rightRs1"><i class="fa fa-chevron-right"></i></button>',
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
     });
   }
   checkmainpage(id) {
@@ -184,12 +143,94 @@ export class NotesgenieComponent implements OnInit {
   bidbuynotes() {
     this.newservice.Bidnote().subscribe(Res => {
       this.result = Res;
+      this.slideConfig = {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-angle-left"></i></button>',
+        nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-angle-right"></i></button>',
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 1154,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 942,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 730,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 512,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+    
+        ]
+      };
     })
   }
   bidnote() {
     this.newservice.Bidonnotes().subscribe(Res => {
       this.bidnotes = Res.courses;
       this.bidnotesLength = this.bidnotes;
+      this.slideConfig = {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-angle-left"></i></button>',
+        nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-angle-right"></i></button>',
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 1154,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 942,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 730,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 512,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+    
+        ]
+      };
     });
   }
   sweetalertlogin() {
@@ -205,16 +246,139 @@ export class NotesgenieComponent implements OnInit {
   trendingnote() {
     this.newservice.Trendingnotes().subscribe(Res => {
       this.trendingnotes = Res.notes;
+      this.slideConfig = {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-angle-left"></i></button>',
+        nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-angle-right"></i></button>',
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 1154,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 942,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 730,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 512,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+    
+        ]
+      };
     });
   }
   topratednote() {
     this.newservice.Topratednotes().subscribe(Res => {
       this.topratednotes = Res.notes;
+      this.slideConfig = {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-angle-left"></i></button>',
+        nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-angle-right"></i></button>',
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 1154,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 942,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 730,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 512,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+    
+        ]
+      };
     });
   }
   recentnote() {
     this.newservice.Recentnotes().subscribe(Res => {
       this.recentnotes = Res;
+      this.slideConfig = {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-angle-left"></i></button>',
+        nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-angle-right"></i></button>',
+        infinite: true,
+        responsive: [
+          {
+            breakpoint: 1154,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 942,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true
+            }
+          },
+          {
+            breakpoint: 730,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 512,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+    
+        ]
+      };
     });
   }
   filter(query) {

@@ -123,7 +123,7 @@ export class mainpageservice {
         course: course,
         book: book,
         flashcard: flashcard,
-        userid: this.current.user_id
+        userid: JSON.parse(localStorage.getItem('currentUser')).user_id
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
