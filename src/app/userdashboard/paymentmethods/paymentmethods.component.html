@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="user-add-ingo-form" [formGroup]="form">
+                <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm> 
                     <mat-form-field> <input matInput type="text" placeholder="Card Holder Name"
                             formControlName="cardnickname">
                         <mat-error *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
@@ -142,7 +142,7 @@
                         </span>
                     </mat-form-field>
                     <mat-slide-toggle [checked]="false" formControlName="check">Set as default payment method
-                    </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add()">Add</a>
+                    </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add(f)">Add</a>
                 </form>
             </div>
         </div>
