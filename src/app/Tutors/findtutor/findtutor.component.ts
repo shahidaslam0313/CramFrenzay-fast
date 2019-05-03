@@ -34,7 +34,7 @@ export class FindtutorComponent implements OnInit {
 
   name;
   onSubmit(name) {
-    this.router.navigate(['/tutorsearch/' + name]);
+    this.router.navigate(['/teachers/' + name]);
   }
 
   ngOnInit() {

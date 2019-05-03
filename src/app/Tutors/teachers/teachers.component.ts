@@ -18,13 +18,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class TeachersComponent implements OnInit {
 
-  public Imageurl = Config.Imageurlget;
+  public Imageurl = Config.Imageurleach;
   public teacherId: any;
   public sub: Subscription;
   public result1: any;
   private productsSource;
   currentProducts;
-
+  totalTutorReviews;
+  totalCourses;
+  students;
   constructor(private teachers: TeachersService, private router: Router, private route: ActivatedRoute, private sg: SimpleGlobal, private data: DataService, private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -41,7 +43,10 @@ export class TeachersComponent implements OnInit {
   Showteachers(teacherId) {
     this.teachers.ourteachers(teacherId)
       .subscribe(data => {
-        this.result1 = data;
+        this.result1 = data.profile;
+        this.totalTutorReviews= data.totalTutorReviews;
+        this.totalCourses = data.totalCourses;
+        this.students = data.students;
         console.log(this.result1);
       });
   }

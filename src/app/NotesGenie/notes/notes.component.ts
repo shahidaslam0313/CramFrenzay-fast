@@ -36,6 +36,7 @@ export class NotesComponent implements OnInit {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
       this.currentProducts = this.productsSource.asObservable();
     }
+    window.scroll(0,0);
   }
 
   nullvalue = null;

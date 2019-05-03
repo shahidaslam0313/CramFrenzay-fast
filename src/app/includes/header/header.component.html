@@ -52,6 +52,8 @@
                 </div>
                 <div class="navbar-collapse main-nav__div" id="mainNav">
                     <ul class="main-nav__list main-nav__width navbar-right float_left width100">
+                            <li class="main-nav__list_books"> <a onclick="topFunction()" (click)="selllogin()"> <i class="far fa-money-bill-alt"></i>Sell or Auction Now </a> </li>
+
                         <li class="active"> <a onclick="topFunction()" routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie
                             </a>
                             <div class="sub-menu">
@@ -83,22 +85,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li> <a onclick="topFunction()" routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
-                            <div class="sub-menu">
-                                <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                            Tutors</a> </li>
-                                    <li *ngIf="!tutor()"> <a onclick="topFunction()" (click)="becometutor()"> <img
-                                                class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                            Become a Tutor </a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/findtutor"> <img class="find-tutors"
-                                                alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                            Find a Tutor</a> </li>
-                                    <!--<li> <a onclick="topFunction()" href=""> <img class="q-a-expert" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
-                                            <!--Q/A Experts</a> </li>-->
-                                </ul>
-                            </div>
-                        </li>
+                        
                         <li class="main-nav__list_flash_cards"> <a onclick="topFunction()" routerLink="/flashcardlist">
                                 <i class="fa fa-book-open"></i>Flash Cards </a>
                             <div class="sub-menu">
@@ -131,7 +118,22 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_books"> <a onclick="topFunction()" (click)="selllogin()"> <i class="far fa-money-bill-alt"></i>Sell Now </a> </li>
+                        <li> <a onclick="topFunction()" routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li> <a onclick="topFunction()" routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
+                                            Tutors</a> </li>
+                                    <li *ngIf="!tutor()"> <a onclick="topFunction()" (click)="becometutor()"> <img
+                                                class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
+                                            Become a Tutor </a> </li>
+                                    <li> <a onclick="topFunction()" routerLink="/findtutor"> <img class="find-tutors"
+                                                alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
+                                            Find a Tutor</a> </li>
+                                    <!--<li> <a onclick="topFunction()" href=""> <img class="q-a-expert" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
+                                            <!--Q/A Experts</a> </li>-->
+                                </ul>
+                            </div>
+                        </li>
                         <li class="main-nav__list_events"> <a onclick="topFunction()" routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events </a>
                             <div class="sub-menu">
                                 <ul>
@@ -156,6 +158,7 @@
                                             Scholarships</a> </li>
                                 </ul>
                             </div>
+                            
                         </li>
                         <li class="main-nav__list-bars"> <a onclick="topFunction()" href="javascript:void(0)"> <i class="fas fa-bars"></i>
                             </a>
@@ -190,8 +193,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="main-nav__list_books_1"> <a onclick="topFunction()" routerLink="/"> <i
-                                                class="far fa-money-bill-alt"></i>Sell Now</a> </li>
+                                    
                                     <li class="main-nav__list_events_1"> <a onclick="topFunction()" routerLink="/events">
                                             <i class="fa fa-calendar-alt"></i>Events </a>
                                         <div class="sub-sub-menu">
@@ -455,9 +457,9 @@
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/winloss"
                                                 onclick="topFunction()"> <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
-                                                routerLink="/biddingactivity"> <i class="fa fa-gavel"></i>My Bidding Activity </a> </li>
+                                                routerLink="/biddingactivity"> <i class="fa fa-gavel"></i>current Bidding Activity </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
-                                                    routerLink="/offeractivity"> <i class="fa fa-gavel"></i>My Offer Activity
+                                                    routerLink="/offeractivity"> <i class="fa fa-gavel"></i>Current Offers Activity
 
                                                 </a> </li>
                                         <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/institutedetail">
