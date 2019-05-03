@@ -618,8 +618,6 @@ export class MainpageComponent implements OnInit {
     if (this.check_login() == true) {
       this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(data => {
         this.global = data;
-        // this.Data.changeMessage(this.data);
-        // this.Data.changeMessage(this.Data);
         swal({
           type: 'success',
           title: 'Add to Watch List',

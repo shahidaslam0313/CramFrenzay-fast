@@ -11,6 +11,9 @@ import {GlobalService} from '../../global.service';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { headerservice } from 'app/includes/header/header.service';
+import { DataService } from 'app/data.service';
+import { mainpageservice } from '../mainpage/mainpage.service';
 
 
 @Component({
@@ -31,8 +34,10 @@ export class SeemorempComponent implements OnInit {
   model: any = {};
   nullvalue = null;
   id;
+  cartitem;
+  wishlist;
   private sub: Subscription;
-  constructor(private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
+  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
     this.route.params.subscribe(params => { });
     this.sub = this.route.params.subscribe(params => {
       this.name = +params['name'];
@@ -232,6 +237,10 @@ export class SeemorempComponent implements OnInit {
         showConfirmButton: false,
         timer: 4500
       })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
+      })
     }, error => {
       if (error.status == 404)
         swal({
@@ -408,6 +417,10 @@ export class SeemorempComponent implements OnInit {
           showConfirmButton: false,
           timer: 4500
         });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          this.Data.emittData(this.cartitem);
+        })
       }, error => {
         if (error.status == 404)
           swal({
@@ -439,5 +452,9 @@ delfromcart(event) {
       timer: 1500
     });
   });
+}
+getcartitems(){
+  this.mainpage.showCartItem().subscribe(data =>{
+  })
 }
 }

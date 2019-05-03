@@ -66,6 +66,16 @@
                                 *ngIf="!data.wishlist==true">
                                 <i class="far fa-heart"></i>
                             </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
+                            </div>
                         </div>
                         <div class="text-center margin-top-10">
                             <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer Now</a>
@@ -124,6 +134,16 @@
                             <div class="product-list__wishlist wishlist_icon" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
                                 *ngIf="!data.wishlist==true">
                                 <i class="far fa-heart"></i>
+                            </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
@@ -184,6 +204,16 @@
                                 *ngIf="!data.wishlist==true">
                                 <i class="far fa-heart"></i>
                             </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
+                            </div>
                         </div>
                         <div class="text-center margin-top-10">
                             <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased"  (click)="openDialog3(data?.id)">Offer Now</a>
@@ -242,6 +272,16 @@
                             <div class="product-list__wishlist wishlist_icon" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
                                 *ngIf="!data.wishlist==true">
                                 <i class="far fa-heart"></i>
+                            </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
