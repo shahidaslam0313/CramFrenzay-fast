@@ -7,10 +7,12 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable()
 export class TeachersService {
 
-  constructor(private http: Http, @Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(private http: Http, @Inject(PLATFORM_ID) private platformId: Object) { 
+    
+  }
 
   ourteachers(teacherId) {
-    const headers = new Headers();
+    const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'tutor/tutorProfileData/' + teacherId + '', { headers: headers }).map((response: Response) => response.json());
   }

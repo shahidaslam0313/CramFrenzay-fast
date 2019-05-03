@@ -11,6 +11,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import { headerservice } from 'app/includes/header/header.service';
+import { DataService } from 'app/data.service';
 
 declare const $: any;
 @Component({
@@ -44,6 +46,7 @@ export class NotesgenieComponent implements OnInit {
   notes;
   message: string;
   allbidid;
+  wishlist;
   slideConfig2 = {
     infinite: true,
     slidesToShow: 5,
@@ -118,7 +121,7 @@ export class NotesgenieComponent implements OnInit {
     ]
   };
   isreserved: boolean = false;
-  constructor(private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router,  public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private headServ: headerservice,private Data: DataService,private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router,  public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Slider();
     this.bidnote();
@@ -266,6 +269,10 @@ export class NotesgenieComponent implements OnInit {
         title: 'Added to watchlist',
         showConfirmButton: false,
         timer: 1500
+      })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
       })
     }, error => {
       if (error.status == 404){

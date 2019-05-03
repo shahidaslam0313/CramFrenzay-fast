@@ -61,9 +61,6 @@ else {
       }
       else {
           return this.http.get(Config.api + 'book/bidbooks/?page=' + page + '', ).map((response: Response) => response.json());
-
-
       }
   }
-
 }

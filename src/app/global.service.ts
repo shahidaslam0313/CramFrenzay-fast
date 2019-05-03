@@ -83,8 +83,14 @@ export class GlobalService {
     // console.log(data);
     this.fire.emit(data);
   }
+  public emittData(data){
+    this.fire.emit(data);
+  }
 
   getEmittedValue() {
+    return this.fire;
+  }
+  getEmittValue(){
     return this.fire;
   }
   ////////// get cart items//////
