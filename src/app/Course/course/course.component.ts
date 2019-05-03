@@ -10,6 +10,7 @@ import { headerservice } from '../../includes/header/header.service';
 import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import { DataService } from 'app/data.service';
 
 declare const $: any;
 
@@ -111,7 +112,8 @@ export class CourseComponent implements OnInit {
   bidingcourse;
   message: string;
   model: any = {};
-  constructor(private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  cartitem;
+  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.Showbidcourses();
     this.TrendingNow();
     this.Showtopratedcourses();
@@ -138,9 +140,7 @@ export class CourseComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.global.currentMessage.subscribe(message => this.message = message);
-
-
+    window.scroll(0,0)
   }
 
   Innerslider() {
@@ -310,6 +310,45 @@ id;
           });
         }
       );
-
   }
+  null;
+  addcart( notes, course, book, flashcard){
+    notes = null;
+    book = null;
+    flashcard=null;
+    if (this.check_login() == true) {
+      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 4500
+        });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          this.Data.emittData(this.cartitem);
+        })
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 4500
+          })
+          else if ( error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 4500
+          })
+        });
+  }
+  else if (this.check_login() == false) {
+    this.sweetalertlogin();
+    this.router.navigate(['/login']);
+  }
+}
 }

@@ -7,10 +7,12 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 import swal from "sweetalert2";
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {GlobalService} from '../../global.service';
+import { GlobalService } from '../../global.service';
 import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import { headerservice } from 'app/includes/header/header.service';
+import { DataService } from 'app/data.service';
 
 @Component({
   selector: 'app-flashcardlist',
@@ -108,8 +110,8 @@ export class FlashcardlistComponent implements OnInit {
   currentProducts;
   query;
   searchResult: any = [];
-
-  constructor(private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService,public dialogRef: MatDialog) {
+  cartitem;
+  constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
 
     this.bidflash();
     this.trendingflash();
@@ -135,7 +137,7 @@ export class FlashcardlistComponent implements OnInit {
     }
   }
   ngOnInit() {
-
+    window.scroll(0,0)
   }
 
   Slider() {
@@ -161,12 +163,12 @@ export class FlashcardlistComponent implements OnInit {
     });
   }
   recentflash() {
-      this.newService.Recentflashcards().subscribe(Res => {
-          this.recentflashcards = Res;
-          for (let item of this.recentflashcards) {
-              console.log(item);
-          }
-      });
+    this.newService.Recentflashcards().subscribe(Res => {
+      this.recentflashcards = Res;
+      for (let item of this.recentflashcards) {
+        console.log(item);
+      }
+    });
   }
 
   filter(query) {
@@ -186,7 +188,7 @@ export class FlashcardlistComponent implements OnInit {
     }
   }
 
-id;
+  id;
   flashcard(id) {
 
     if (this.check_login() == true) {
@@ -197,18 +199,18 @@ id;
   checkbuy(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.flashcard(this.id)
-        },
+        this.flashcard(this.id)
+      },
         error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Flashcard Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
+          if (error.status === 406)
+            swal({
+              type: 'error',
+              title: 'Flashcard Already Purchased',
+              showConfirmButton: false,
+              timer: 4500
+            })
+        },
+      )
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -226,16 +228,16 @@ id;
     }
   }
 
-getcardid(id){
+  getcardid(id) {
 
-    if (this.check_login() == true){
+    if (this.check_login() == true) {
       this.cardid = id;
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
-}
+  }
 
   sweetalertsignin() {
     swal({
@@ -249,15 +251,15 @@ getcardid(id){
     });
   }
   bidc() {
-    this.global.bidoncards( this.cardid, this.model.bidamount, )
+    this.global.bidoncards(this.cardid, this.model.bidamount)
       .subscribe(Res => {
-          swal({
-            type: 'success',
-            title: 'Your bid is listed',
-            showConfirmButton: false,
-            timer: 5500
-          });
-        },
+        swal({
+          type: 'success',
+          title: 'Your bid is listed',
+          showConfirmButton: false,
+          timer: 5500
+        });
+      },
         error => {
           swal({
             type: 'error',
@@ -282,7 +284,7 @@ getcardid(id){
         timer: 1500
       })
     }, error => {
-      if (error.status == 404){
+      if (error.status == 404) {
         swal({
           type: 'warning',
           title: 'This flashcard is already in your watchlist',
@@ -290,7 +292,7 @@ getcardid(id){
           timer: 1500
         })
       }
-      else if(error.status==406){
+      else if (error.status == 406) {
         swal({
           type: 'error',
           title: 'Flashcard Already Purchased',
@@ -298,8 +300,48 @@ getcardid(id){
           timer: 1500
         })
       }
-       
+
     });
 
+  }
+  addcart(notes, course, book, flashcard) {
+    if (this.check_login() == true) {
+      notes = null;
+      course = null;
+      book = null;
+      this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
+        this.global = data;
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          this.Data.emittData(this.cartitem);
+        })
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        else if (error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 2000
+          })
+      });
+      // this.getwishlis()
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertsignin();
+      this.router.navigate(['/login']);
+    }
   }
 }

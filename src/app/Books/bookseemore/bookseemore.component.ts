@@ -10,6 +10,9 @@ import { isPlatformBrowser } from '@angular/common';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import { GlobalService } from 'app/global.service';
+import { headerservice } from 'app/includes/header/header.service';
+import { DataService } from 'app/data.service';
+import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 
 
 @Component({
@@ -31,8 +34,9 @@ export class BookseemoreComponent implements OnInit {
   Eid;
   bidbookid;
   model: any={};
+  cartitem;
   private sub: Subscription;
-  constructor(private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
+  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.name = +params['name'];
           if (params['name'] == "Bid&BuyBooks") {
@@ -212,5 +216,45 @@ export class BookseemoreComponent implements OnInit {
           });
         }
       );
+  }
+  addcart(notes, course, book, flashcard) {
+    if (this.check_login() == true) {
+      notes = null;
+      course = null;
+      flashcard = null;
+      this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
+        this.global = data;
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          this.Data.emittData(this.cartitem);
+        })
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        else if (error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 2000
+          })
+      });
+      // this.getwishlis()
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
 }
