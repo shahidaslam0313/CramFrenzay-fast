@@ -23,7 +23,7 @@ export class PaymentmethodsComponent implements OnInit {
   card_opeation = [
     { value: 'Visa', viewValue: 'Visa' },
     { value: 'Master', viewValue: 'Master' },
-    { value: 'Divcover', viewValue: 'Divcover' },
+    { value: 'Divcover', viewValue: 'Discover' },
     { value: 'American Express', viewValue: 'American Express' }
   ];
   form = new FormGroup({
@@ -65,7 +65,6 @@ export class PaymentmethodsComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(25),
       Validators.required,
-      noSpaceValidator.cannotContainSpace,
       Validators.pattern("[a-zA-Z ]+")
     ]),
     check: new FormControl(),
