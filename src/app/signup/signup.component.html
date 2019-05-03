@@ -17,7 +17,7 @@
                 </li>
             </ul>
             <div class="tab-content ">
-                <div id="user_signup" class="form-1-body sh padding-top-0 tab-pane fade in active show">
+                <div id="user_signup" class="form-1-body sh padding-top-10 tab-pane fade in active show">
                     <form class="sh-signup-form-fix signup-login-fonts" [formGroup]="register" id="notesbidnow" #form=ngForm>
                         <div [ngClass]="displayFieldCss(register, 'firstname')">
                             <mat-form-field>
@@ -83,7 +83,24 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="row width100">
+
+                        <div class="width100 display-flex">
+                            <div >
+                                <app-recapcha></app-recapcha>
+                            </div>
+                            <div class="agree-button-div ">
+                                <mat-checkbox  (change)="changeCheck($event)">I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
+                                    Privacy Policy</a></mat-checkbox>
+                                    <button [disabled]="disabledAgreement" class="form-1-btn " (click)="onRegister()" >Sign Up</button>
+                                <div class="have-account">Already have an account?
+                                    <a routerLink="/login">Sign In</a>
+                                </div> 
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="row width100">
                             <div class="col-sm-3 col-md-2 display-inline-block">
                                 <app-recapcha></app-recapcha>
                             </div>
@@ -95,7 +112,7 @@
                                     <a routerLink="/login">Sign In</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
                       <!-- <mat-slide-toggle formControlName="agreement"> I have read and agreed to Terms of Use and Privacy Policy.</mat-slide-toggle> -->
@@ -140,7 +157,7 @@
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'address')" required>
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input  matInput type="text" placeholder="Address" formControlName="address"
+                                <input class="text_cap"  matInput type="text" placeholder="Address" formControlName="address"
                                     #address required>
                                     <mat-error *ngIf="institute.controls.address.value==''">
                                         <strong>Address cannot be empty</strong>
@@ -190,12 +207,13 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="row width100">
-                            <div class="col-sm-3 col-md-2 display-inline-block">
+                        <div class="width100 display-flex margin-top-15">
+                            <div >
                                 <app-recapcha></app-recapcha>
                             </div>
-                            <div class="col-sm-9 col-md-10 display-inline-block">
-                                <mat-checkbox  (change)="changeCheck($event)"> I have read and agreed to Terms of Use and Privacy Policy.</mat-checkbox>
+                            <div class="agree-button-div ">
+                                <mat-checkbox  (change)="changeCheck($event)">I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
+                                    Privacy Policy</a></mat-checkbox>
                                 <button [disabled]="disabledAgreement" class="form-1-btn " (click)="instituteRegister()">Sign Up</button>
                                 <div class="have-account">Already have an account?
                                     <a routerLink="/login">Sign In</a>

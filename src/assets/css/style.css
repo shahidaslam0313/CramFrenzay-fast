@@ -586,7 +586,9 @@ blockquote .blockquote-author {
 .margin-top-20 {
     margin-top: 20px!important
 }
-
+.margin-top-15 {
+    margin-top: 15px!important
+}
 .margin-top-30 {
     margin-top: 30px
 }
@@ -1630,241 +1632,6 @@ blockquote .blockquote-author {
 .events-pagination {
     padding-top: 44px
 }
-
-.footer-top {
-    padding: 30px 0;
-    background-color: #282828
-}
-
-.container-wide {
-    max-width: 1500px
-}
-
-.footer-logo {
-    display: inline-block;
-    vertical-align: middle
-}
-
-.footer-logo img {
-    width: 200px
-}
-
-.footer-widget {
-    font-size: 20px;
-    color: #7c7c7c;
-    line-height: 21px
-}
-
-.footer-widget p {
-    text-align: left;
-    font-weight: 400;
-    color: #ddd;
-    font-size: 14px;
-    font-weight: 600
-}
-
-.footer-widget ul {
-    list-style: none;
-    padding: 0
-}
-
-.footer-widget ul li:last-child {
-    margin-bottom: 0
-}
-
-.footer-widget ul li a {
-    color: #ddd;
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: 600;
-    display: inline-block
-}
-
-.footer-widget ul li a:hover {
-    margin-left: 10px
-}
-
-.footer-widget ul li a i {
-    color: #c00;
-    margin-right: 5px
-}
-
-.footer-widget h3 {
-    margin-top: 0;
-    font-weight: 800;
-    font-size: 28px;
-    color: #fff
-}
-
-.footer-cate,
-.subscribe-form>p {
-    font-weight: 400
-}
-
-.footer-widget h4 {
-    font-weight: 600;
-    margin: 0;
-    color: #fff
-}
-
-.footer-cate {
-    color: #ddd;
-    text-decoration: none;
-    font-size: 16px;
-    float: left;
-    white-space: nowrap;
-    font-weight: 600
-}
-
-.footer-cate:hover {
-    color: #c00
-}
-
-.footer-cate:focus {
-    color: #7c7c7c
-}
-
-.social-icons>li>a>i {
-    font-size: 16px;
-    color: #ddd!important;
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
-    text-align: center;
-    padding: 10px;
-    -webkit-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s
-}
-
-.subscribe-form-1>button,
-.subscribe-form-1>input {
-    font-size: 18px;
-    height: 34px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    color: #000;
-    font-weight: 600
-}
-
-.social-icons>li>.facebook:hover>i {
-    background: #3b5998!important
-}
-
-.social-icons>li>.twitter:hover>i {
-    background: #0084b4!important
-}
-
-.social-icons>li>.pinterest:hover>i {
-    background: #c92228!important
-}
-
-.social-icons>li>.google-plus:hover>i {
-    background: #dd4b39!important
-}
-
-.social-icons>li>.linkedin:hover>i {
-    background: #0077b5!important
-}
-
-.subscribe-form {
-    width: 100%;
-    margin-bottom: 10px
-}
-
-.subscribe-form-1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%
-}
-
-.subscribe-form-1>input {
-    border: 1px solid #fff;
-    padding: 5px;
-    width: 70%;
-    border-radius: 5px 0 0 5px
-}
-
-.subscribe-form-1>input:focus {
-    border: 1px solid #c00;
-    -webkit-box-shadow: 10px 10px 10px #c00;
-    box-shadow: 10px 10px 10px #c00
-}
-
-.subscribe-form-1>button {
-    background: #c00;
-    color: #fff;
-    border: 1px solid #c00;
-    width: 30%;
-    border-radius: 0 5px 5px 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center
-}
-
-.subscribe-form-1>button:hover {
-    background: #b00;
-    border: 1px solid #b00
-}
-
-.adroid-badge,
-.ios-badge {
-    width: 123px;
-    height: 37px;
-    display: inline-block;
-    margin: 5px 5px 0 0
-}
-
-.footer-bottom {
-    background-color: #1d1d1d;
-    color: #7c7c7c;
-    padding: 15px 0;
-    font-size: 14px
-}
-
-.left-arrow-slider,
-.right-arrow-slider {
-    padding: 5px 30px;
-    border-radius: 5px;
-    position: absolute;
-    bottom: 0;
-    outline: 0
-}
-
-.copyright-info {
-    font-weight: 600
-}
-
-.footer-bottom a {
-    color: #7c7c7c;
-    cursor: pointer;
-    font-weight: 600
-}
-
-.footer-bottom a:hover {
-    color: #c00!important
-}
-
-.footer-bottom a:focus {
-    color: #7c7c7c!important
-}
-
-.footer-bottom span a {
-    margin: 0 12px;
-    text-decoration: none
-}
-
-.footer_bottom_border {
-    border-left: 2px solid #7c7c7c
-}
-
 .left-arrow-slider {
     background: #fff;
     color: #000;
@@ -1889,8 +1656,6 @@ blockquote .blockquote-author {
     background: #c00;
     color: #fff!important;
     border-color: #c00;
-    -webkit-box-shadow: 0 0 13px -2px #c00;
-    box-shadow: 0 0 13px -2px #c00
 }
 
 .right-arrow-slider {
@@ -1962,8 +1727,8 @@ mat-form-field input {
 }
 
 .form-1 {
-    -webkit-box-shadow: 0 0 17px #828282;
-    box-shadow: 0 0 17px #828282;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
     background: #fff;
     padding: 30px;
     border-radius: 5px;
@@ -1986,7 +1751,8 @@ mat-form-field input {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin-top: -60px;
-    border-radius: 5px
+    border-radius: 5px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4);
 }
 
 .form-1-btn,
@@ -2116,8 +1882,6 @@ mat-form-field input {
     font-weight: 600;
     font-size: 20px;
     padding: 3px 0;
-    -webkit-box-shadow: 0 0 20px -2px #000;
-    box-shadow: 0 0 20px -2px #000;
     margin: 0 auto;
     width: 80%
 }
@@ -4179,7 +3943,7 @@ nav a.user-link.active1 {
     font-size: 20px!important;
     border-bottom: none!important;
     color: #000;
-    background: #e3e3e3;
+    background: #f3f3f3;
     font-weight: 600;
     padding: 5px 0;
 }
@@ -4367,7 +4131,9 @@ focus {
 .display-block {
     display: block
 }
-
+.display-flex{
+    display: flex !important;
+}
 .display-inline-block {
     display: inline-block
 }
@@ -4779,7 +4545,7 @@ fieldset {
 }
 
 .form-width {
-    width: 450px
+    width: 442px
 }
 
 .card-holder.sh {
@@ -5352,8 +5118,7 @@ fieldset {
     font-size: 16px;
     color: #fff!important;
     text-align: center;
-    -webkit-box-shadow: 0 0 20px -2px #c00;
-    box-shadow: 0 0 20px -2px #c00
+    border: 2px solid #c00;
 }
 
 .back2top>i {
@@ -5390,7 +5155,8 @@ fieldset {
 }
 
 .sh-signup-form-fix .mat-input-element {
-    font-size: 22px
+    font-size: 24px;
+    padding: 4px 0;
 }
 
 .sh-signup-form-fix .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
@@ -5522,7 +5288,10 @@ fieldset {
 
 .have-account a {
     color: #0275d8;
-    text-decoration: underline!important;
+}
+.have-account a:hover,.terms-cond a:hover {
+    color: #c00;
+    text-decoration: underline;
 }
 .terms-cond a{
     color: #0275d8;
@@ -5652,16 +5421,13 @@ body.modal-open {
     display: inline-block;
     margin: 0 5px;
 }
-.signup-tabs{
-    width: 60%;
-}
+
 .signup-comp .form-width {
     width: 60%;
 }
 .signup-comp .form-1-header{
     margin-top: -50px ;
     border-radius: 3px;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4)!important;
     padding: 15px;
 }
 .signup-comp .form-1-header h1{
@@ -5672,6 +5438,40 @@ body.modal-open {
 }
 .padding-0 {
     padding: 0
+}
+.user-dashboard .user-heading {
+    background: #000;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    margin: -50px 0 0;
+}
+button,.btn{
+    border-radius: 50px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+}
+button:hover,.btn:hover{
+    background: #c00 !important;
+    border: 1px solid #c00 !important;
+    box-shadow: none !important;
+}
+
+.user-dashboard .sidebar{
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 10px 5px;
+}
+
+.login-comp .mat-form-field-label {
+    top: 1.8em;
+}
+.agree-button-div .have-account{
+    text-align: left;
+}
+.agree-button-div .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 24px;
+    font-size: 14px;
 }
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
@@ -6208,7 +6008,7 @@ countdown .countdown {
     font-weight: 600
 }
 .signup-login-fonts .mat-input-element{
-    padding: 4px 0;
+    padding: 6px 0;
     font-size: 24px;
 }
 .mat-form-field-empty.mat-form-field-label {
@@ -6240,7 +6040,16 @@ body {
     font-weight: 400;
     background-color: rgba(252, 248, 248, 0)
 }
-
+.agree-button-div{
+    text-align: left;
+    padding-left: 20px;
+}
+.agree-button-div mat-checkbox{
+    display: block;
+}
+.agree-button-div .form-1-btn {
+    width: 300px !important;
+}
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px
