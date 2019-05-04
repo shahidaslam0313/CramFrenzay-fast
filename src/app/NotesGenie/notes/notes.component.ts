@@ -23,20 +23,20 @@ export class NotesComponent implements OnInit {
   length;
   private productsSource;
   currentProducts;
-  model: any ={};
+  model: any = {};
   role;
   rate;
   pager: any = {};
   review;
   id;
-  view : any = [];
+  view: any = [];
   comment;
   constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private each: NotesService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
       this.currentProducts = this.productsSource.asObservable();
     }
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
 
   nullvalue = null;
@@ -49,30 +49,15 @@ export class NotesComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.sub = this.route.queryParams.subscribe(params => {
-      this.Eid = +params['noteidget'];
+    this.sub = this.route.params.subscribe(params => {
+      this.Eid = +params['id'];
     });
-    // this.route.queryParams.subscribe(params => {
-      this.singlenotes(this.Eid);
-    // });
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.Eid = +params['id'];
-    // });
-
-
+    this.singlenotes();
     this.reviewsss(this.pager);
   }
-  singlenotes(Eid) {
-    this.each.Eachnotes(this.Eid).subscribe(data => {
-      this.result = data;
-    });
-    }
-
-
   checkmainpage(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'], {queryParams: {notesid : id}});
+      this.router.navigate(['/payment'], { queryParams: { notesid: id } });
       // localStorage.setItem('notesid',id );
       // localStorage.setItem('price' , price)
     }
@@ -94,17 +79,26 @@ export class NotesComponent implements OnInit {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-    this.each.getreview(this.Eid).subscribe(data =>{
+    this.each.getreview(this.Eid).subscribe(data => {
+
       this.view = data;
-      console.log(data);
       this.pager = this.pagerService.getPager(this.view['totalItems'], page, 10);
     },
       error => {
-        if(error.status==400){
-          this.view=0;
+        if (error.status == 400) {
+          this.view = 0;
         }
       });
   }
+  singlenotes() {
+    this.each.Eachnotes(this.Eid).subscribe(data => {
+
+      this.result = data;
+      console.log(data, 'Each Notes')
+
+    });
+  }
+
 
   checkcate() {
     if (this.check_login() == true) {
@@ -139,12 +133,12 @@ export class NotesComponent implements OnInit {
     this.rate = rating;
   }
 
-  reviews(rate, comment, result, book, course, flashcard ) {
+  reviews(rate, comment, result, book, course, flashcard) {
     // alert(this.id);
     // this.id = result;
     if (this.check_login()) {
       console.log(this.result.id);
-      this.each.review(this.rate , this.model.comment, this.result.id , book, course, flashcard, ).subscribe(data => {
+      this.each.review(this.rate, this.model.comment, this.result.id, book, course, flashcard).subscribe(data => {
         swal({
           type: 'success',
           title: 'Thanks for your Review.',

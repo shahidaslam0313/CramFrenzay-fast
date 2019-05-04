@@ -92,6 +92,9 @@ export class NotessearchComponent implements OnInit {
       this.result = data.Notes;
   
       this.setPagenotes(1, data.totalItems)
+      if (this.result.length <= 0) {
+        this.searchResultStatus = false;
+      }
     }
     );
   }

@@ -31,6 +31,7 @@ export class AllbooksComponent implements OnInit {
   booktrend;
   token;
   trends;
+  public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
     slidesToShow: 5,
@@ -301,10 +302,18 @@ export class AllbooksComponent implements OnInit {
 
     });
   }
+  submit(nestedname) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('nestedname', nestedname);
+    }
+  }
   filter(query) {
     if (query != "") {
       this.book.searchbooks(query).subscribe(data => {
         this.searchResult = data.Books;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }

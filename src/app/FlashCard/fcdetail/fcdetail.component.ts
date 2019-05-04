@@ -60,6 +60,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.sub = this.route.params.subscribe(params => {
       this.flashId = +params['id'] || 0;
     });

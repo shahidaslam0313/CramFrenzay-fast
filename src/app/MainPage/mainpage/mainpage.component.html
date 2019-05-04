@@ -119,12 +119,10 @@
                             </div>
                         </figure>
                         <div class="product-list__content">
-                            <div class="product-list__category"> <a [routerLink]="['/notes']"
-                                    [queryParams]="{noteidget : data.id}" title="{{data.name}}">{{data.name}}</a>
+                            <div class="product-list__category"> <a routerLink="/notes/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
                             </div>
-                            <div class="product-list__title tutor-subject"> <span title="User Name :{{data.userid}}"
-                                    [routerLink]="['/notes']"
-                                    [queryParams]="{noteidget : data.id}">{{data.userid}}</span>
+                            <div class="product-list__title tutor-subject"> <span title="User Name :{{data?.userid}}"
+                                routerLink="/notes/{{data?.id}}">{{data.userid}}</span>
                             </div>
                             <rating class="rating-star-icons float_left" ngModel="{{data.rating}}" [readonly]="true"
                                 titles="{{data.rating}}"></rating>
