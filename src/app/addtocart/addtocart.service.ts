@@ -24,19 +24,18 @@ export class AddtocartService {
       this.token = this.currentUser && this.currentUser.token;
     }
   }
-
   addToCart(Book, Course, FlashCard, Notes) {
-    const header = new Headers({ 'Authorization': 'JWT ' + this.token });
-    header.append('Content-Type', 'application/json');
-    return this.http.post(Config.api + 'purchase/postcheckout/' + this.current.user_id,
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
       JSON.stringify({
         book: Book,
         course: Course,
         flashcard: FlashCard,
         notes: Notes,
-        userid: this.current.user_id
+        userid: JSON.parse(localStorage.getItem('currentUser')).user_id
       }),
-      { headers: header }).map((response: Response) => response.json());
+      { headers: headers }).map((response: Response) => response.json());
   }
 
   removeFromCart(cartID) {

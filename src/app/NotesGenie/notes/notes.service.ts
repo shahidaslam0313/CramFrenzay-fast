@@ -22,15 +22,16 @@ export class NotesService {
       this.token = this.current && this.current.token;
     }
   }
-
-  Eachnotes(id) {
+  Eachnotes(id)
+  {
     if (localStorage.getItem('currentUser')) {
-      const headers = new Headers({'Authorization': 'JWT ' + this.token});
-      headers.append('Content-Type', 'application/json');
-      return this.http.get(Config.api + 'notesgenie/eachnotes/' + id + '', {headers: headers}).map((response: Response) => response.json());
-    } else {
-      return this.http.get(Config.api + 'notesgenie/eachnotes/' + id + '', ).map((response: Response) => response.json());
 
+      const headers = new Headers({'Authorization': 'JWT ' + this.token});
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'notesgenie/eachnotes/' + id + '',{headers: headers}).map((response: Response) => response.json());
+  }
+  else {
+      return this.http.get(Config.api + 'notesgenie/eachnotes/' + id+ '' ).map((response: Response) => response.json());
     }
   }
   getreview(id)
