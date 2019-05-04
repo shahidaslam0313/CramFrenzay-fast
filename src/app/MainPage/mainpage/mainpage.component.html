@@ -90,7 +90,7 @@
         </ngx-slick>
     </div>
 </div>
-<div class="container-fluid padding-l-r-60 mb-5">
+<div class="container-fluid padding-l-r-60">
     <div class="row">
         <div class="col-lg-12">
             <h2 class="mainbanner bg-Bid-Notes">Buy & Bid on Notes</h2>
@@ -128,6 +128,7 @@
                                 titles="{{data.rating}}"></rating>
                             <div class="float_right">
                                 <p class="product-list__price">${{data.price}}</p>
+                                
                                 <a class="product-list__wishlist wishlist_icon margin-left-10"
                                     title="Click and remove from wishlist">
                                     <div *ngIf="!data.wishlist==false" class="sh-red"> <i class="fas fa-heart"
@@ -155,9 +156,7 @@
                                 *ngIf="data?.accept_offer==true && !data.Purchased "
                                 (click)="checkOffer(data?.id,nullvalue,nullvalue,nullvalue)">Offer Now</a>
                         </div>
-                        <div class="product-list__item-info-1"> <a class="btn-style"
-                                (click)="checkmainpage(data?.id,nullvalue,nullvalue,nullvalue)"
-                                *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
+                       <div>
                             <a class="btn-style" data-toggle="modal" (click)="bidnotesid(data?.id)"
                                 *ngIf="data.bid_status==true && !data.Purchased" data-target="#notesbid"> Bid Now </a>
                             <a class="btn-style" *ngIf="data.Purchased == true" data-target="#notesbid">Note Already
@@ -208,8 +207,10 @@
                             </div>
                             <rating class="rating-star-icons float_left" ngModel="{{data.rating}}" [readonly]="true"
                                 titles="{{data.rating}}"></rating>
-                            <div class="float_right">
                                 <p class="product-list__price">${{data?.price}}</p>
+
+                                
+                            <div class="float_right">
                                 <a class="product-list__wishlist wishlist_icon margin-left-10" title="Add to wishlist"
                                     (click)="delCourseFwishList(data)">
                                     <div *ngIf="!data.wishlist==false" class="sh-red"> <i class="fas fa-heart"></i>
@@ -230,13 +231,18 @@
                                     <a _ngcontent-c1="" class="wishlist material-icons"
                                         title="Add to Cart">add_shopping_cart</a></div>
                             </div>
+                            <div class="product-list__item-info-1"> <a class="btn-style" (click)="courses(data?.id)"
+                                *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a> 
+                            </div>
                         </div>
                         <div class="text-center margin-top-10"> <a class="btn-style"
                                 *ngIf="data?.accept_offer==true && !data.Purchased"
                                 (click)="checkOffer2(nullvalue,data?.id,nullvalue,nullvalue)">Offer Now</a>
                         </div>
-                        <div class="product-list__item-info-1"> <a class="btn-style" (click)="courses(data?.id)"
-                                *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a> <a class="btn-style"
+                        
+                                
+                                <div>
+                                <a class="btn-style"
                                 data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
                             <a class="btn-style" *ngIf="data.Purchased == true" data-target="#notesbid">Course Already

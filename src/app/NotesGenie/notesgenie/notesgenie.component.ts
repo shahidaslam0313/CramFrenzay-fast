@@ -36,7 +36,8 @@ export class NotesgenieComponent implements OnInit {
   watchnotes;
   pager: any = {};
   public name;
-  searchResult: any = [];
+  public searchResult: any;
+  public searchResultStatus = true;
   query;
   bidonnotes;
   model: any = {};
@@ -224,6 +225,9 @@ export class NotesgenieComponent implements OnInit {
     if (query !== "") {
       this.newservice.notessearch(query).subscribe(Res => {
         this.searchResult = Res.Notes;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }

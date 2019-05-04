@@ -12,8 +12,10 @@
                     <a routerLink="/notes/{{data.id}}" (click)="filter(query)">
                         <i class="material-icons">arrow_forward</i>{{data.name}}</a>
                 </li>
-                <li *ngIf="searchResult.length==0"> </li>
             </ul>
+        </div>        
+        <div class="row search-results" *ngIf="!searchResultStatus">            
+            <p class="results-found"> No results found. Please use keywords.</p>
         </div>
     </div>
 </div>
@@ -56,8 +58,7 @@
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                             <p class="product-list__price">{{data?.price | currency:'USD'}}</p>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="bididget(data?.id)">
+                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="bididget(data?.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
                                 </div>
@@ -73,18 +74,20 @@
                             <div *ngIf="!data.cart==true">
                                 <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
                                     title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
+                                    <a _ngcontent-c1="" class="wishlist material-icons" title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer Now</a>
+                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer
+                                Now</a>
                         </div>
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                            <a class="btn-style"  *ngIf="data.Purchased == true" data-target="#notesbid">Note Already Bought</a>
+                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased">
+                                Buy Now </a>
+                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow" (click)="bidnotesid(data?.id)"
+                                data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
+                            <a class="btn-style" *ngIf="data.Purchased == true" data-target="#notesbid">Note Already
+                                Bought</a>
 
                         </div>
                     </div>
@@ -118,15 +121,16 @@
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
+                                <a [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}" title="{{data.name | titlecase}}">{{data.name
+                                    | titlecase}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
-                                <span title="User Name :{{data.userid | titlecase}}" [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}">{{data.userid | titlecase}}</span>
+                                <span title="User Name :{{data.userid | titlecase}}" [routerLink]="['/notes']"
+                                    [queryParams]="{noteidget : data.id}">{{data.userid | titlecase}}</span>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                             <p class="product-list__price">{{data.price | currency:'USD'}}</p>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="allbids(data.id)">
+                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="allbids(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
                                 </div>
@@ -142,18 +146,20 @@
                             <div *ngIf="!data.cart==true">
                                 <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
                                     title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
+                                    <a _ngcontent-c1="" class="wishlist material-icons" title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer Now</a>
+                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer
+                                Now</a>
                         </div>
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                            <a class="btn-style"  *ngIf="data.Purchased == true" data-target="#notesbid">Note Already Bought</a>
+                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased">
+                                Buy Now </a>
+                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow" (click)="bidnotesid(data?.id)"
+                                data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
+                            <a class="btn-style" *ngIf="data.Purchased == true" data-target="#notesbid">Note Already
+                                Bought</a>
 
                         </div>
                     </div>
@@ -187,15 +193,16 @@
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
+                                <a [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}" title="{{data.name | titlecase}}">{{data.name
+                                    | titlecase}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
-                                <span title="User Name :{{data.userid | titlecase}}" [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}">{{data.userid | titlecase}}</span>
+                                <span title="User Name :{{data.userid | titlecase}}" [routerLink]="['/notes']"
+                                    [queryParams]="{noteidget : data.id}">{{data.userid | titlecase}}</span>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                             <p class="product-list__price">{{data.price | currency:'USD'}}</p>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="allbids(data.id)">
+                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="allbids(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
                                 </div>
@@ -211,18 +218,20 @@
                             <div *ngIf="!data.cart==true">
                                 <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
                                     title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
+                                    <a _ngcontent-c1="" class="wishlist material-icons" title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased"  (click)="openDialog3(data?.id)">Offer Now</a>
+                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer
+                                Now</a>
                         </div>
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                            <a class="btn-style"  *ngIf="data.Purchased == true " data-target="#notesbid">Note Already Bought</a>
+                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased">
+                                Buy Now </a>
+                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow" (click)="bidnotesid(data?.id)"
+                                data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
+                            <a class="btn-style" *ngIf="data.Purchased == true " data-target="#notesbid">Note Already
+                                Bought</a>
 
                         </div>
                     </div>
@@ -256,15 +265,16 @@
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
+                                <a [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}" title="{{data.name | titlecase}}">{{data.name
+                                    | titlecase}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
-                                <span title="User Name :{{data.userid | titlecase}}" [routerLink]="['/notes']" [queryParams]="{noteidget : data.id}">{{data.userid | titlecase}}</span>
+                                <span title="User Name :{{data.userid | titlecase}}" [routerLink]="['/notes']"
+                                    [queryParams]="{noteidget : data.id}">{{data.userid | titlecase}}</span>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                             <p class="product-list__price">{{data.price | currency:'USD'}}</p>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="allbids(data.id)">
+                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="allbids(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
                                 </div>
@@ -280,18 +290,20 @@
                             <div *ngIf="!data.cart==true">
                                 <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
                                     title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
+                                    <a _ngcontent-c1="" class="wishlist material-icons" title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer Now</a>
+                            <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer
+                                Now</a>
                         </div>
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                            <a class="btn-style"  *ngIf="data.Purchased == true" data-target="#notesbid">Note Already Bought</a>
+                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased">
+                                Buy Now </a>
+                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow" (click)="bidnotesid(data?.id)"
+                                data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
+                            <a class="btn-style" *ngIf="data.Purchased == true" data-target="#notesbid">Note Already
+                                Bought</a>
 
                         </div>
                     </div>
@@ -317,7 +329,8 @@
                 </div>
             </div>
             <div class="modal-body">
-              <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" class="view-bid">view bid history </a>
+                <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" class="view-bid">view
+                    bid history </a>
                 <form name="form" role="form" method="post" class="user-add-ingo-form">
                     <label>Place Your own bid:</label>
                     <mat-form-field>
