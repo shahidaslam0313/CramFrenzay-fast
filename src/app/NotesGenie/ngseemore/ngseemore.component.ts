@@ -93,7 +93,7 @@ export class NgseemoreComponent implements OnInit {
   sweetalertnotes() {
     swal({
       text: 'Please Login First',
-      title: 'CramFrenzy!',
+      title: 'CramFrenzy',
       type: 'error',
       showConfirmButton: false,
       confirmButtonColor: '#cc0000', timer: 2000,
@@ -175,7 +175,7 @@ export class NgseemoreComponent implements OnInit {
   sweetalertlogin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,

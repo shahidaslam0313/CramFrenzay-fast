@@ -208,8 +208,8 @@ export class HeaderComponent implements OnInit {
       this.role = localStorage.getItem('role');
       if (this.role == "U") {
         swal({
-          title: 'CramFrenzy!',
-          text: 'Only admin and teacher can upload courses!',
+          title: 'CramFrenzy',
+          text: 'Only admin and teacher can Add courses',
           type: 'error',
           showConfirmButton: false,
           confirmButtonColor: "#cc0000",
@@ -241,8 +241,8 @@ export class HeaderComponent implements OnInit {
       this.role = localStorage.getItem('role');
       if (this.role == "U") {
         swal({
-          title: 'CramFrenzy!',
-          text: 'Only admin and teacher can upload flash cards!',
+          title: 'CramFrenzy',
+          text: 'Only admin and teacher can Add Flash Card',
           type: 'error',
           showConfirmButton: false,
           confirmButtonColor: "#cc0000",
@@ -264,8 +264,8 @@ export class HeaderComponent implements OnInit {
       this.role = localStorage.getItem('role');
       if (this.role == "U") {
         swal({
-          title: 'CramFrenzy!',
-          text: 'Only admin and teacher can upload books!',
+          title: 'CramFrenzy',
+          text: 'Only admin and teacher can Add Book',
           type: 'error',
           showConfirmButton: false,
           confirmButtonColor: "#cc0000",
@@ -333,7 +333,7 @@ export class HeaderComponent implements OnInit {
   sweetalertlogin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       confirmButtonColor: "#cc0000", timer: 2000,
@@ -373,7 +373,7 @@ export class HeaderComponent implements OnInit {
   logoutsweetalert() {
 
       swal({
-        title: "CramFrenzy!<br> Thanks for visting us",
+        title: "CramFrenzy<br> Thanks for visting us",
         type: "success",
         showConfirmButton: false,
         timer: 2000,
@@ -513,7 +513,7 @@ deletenotification(id){
       },
         error => {
           swal(
-            'CramFrenzy!',
+            'CramFrenzy',
             'Item is already in your watchlist',
             'error'
           )
@@ -525,15 +525,15 @@ deletenotification(id){
       error => {
         if (error.status === 500) {
           swal(
-            'CramFrenzy!',
-            'Server is under maintenance!',
+            'CramFrenzy',
+            'Server is under maintenance',
             'error'
           )
         }
         else {
           swal(
-            'CramFrenzy!',
-            'Some thing went worrng!',
+            'CramFrenzy',
+            'Some thing went worrng',
             'error'
           )
         }
@@ -552,7 +552,7 @@ deletenotification(id){
       },
         error => {
           swal(
-            'CramFrenzy!',
+            'CramFrenzy',
             'Item is already in your cart',
             'error'
           )
@@ -564,15 +564,15 @@ deletenotification(id){
       error => {
         if (error.status === 500) {
           swal(
-            'CramFrenzy!',
-            'Server is under maintenance!',
+            'CramFrenzy',
+            'Server is under maintenance',
             'error'
           )
         }
         else {
           swal(
-            'CramFrenzy!',
-            'Some thing went worrng!',
+            'CramFrenzy',
+            'Some thing went worrng',
             'error'
           )
         }

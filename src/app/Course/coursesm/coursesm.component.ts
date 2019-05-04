@@ -101,7 +101,7 @@ export class CoursesmComponent implements OnInit {
   sweetalertlogin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,

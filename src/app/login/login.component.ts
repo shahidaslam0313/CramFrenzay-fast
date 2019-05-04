@@ -99,6 +99,7 @@ export class LoginComponent {
       this.current = localStorage.getItem('currentUser');
       this.token = this.current && this.current.token;
     }
+    window.scroll(0,0);
   }
   signOut(): void {
     this.authService.signOut();

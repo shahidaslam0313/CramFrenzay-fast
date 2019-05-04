@@ -98,8 +98,8 @@ export class EachcourseComponent implements OnInit {
       this.role = localStorage.getItem('role');
       if (this.role == "U") {
         swal({
-          title: 'CramFrenzy!',
-          text: 'Only admin and teacher can upload courses!',
+          title: 'CramFrenzy',
+          text: 'Only admin and teacher can upload courses',
           type: 'error',
           showConfirmButton: false,
           confirmButtonColor: "#cc0000",
@@ -170,7 +170,7 @@ export class EachcourseComponent implements OnInit {
   sweetalertlogin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,
@@ -214,7 +214,7 @@ book = null;
     else {
       swal({
         type: 'error',
-        title: 'CramFrenzy!',
+        title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
         width: '512px',

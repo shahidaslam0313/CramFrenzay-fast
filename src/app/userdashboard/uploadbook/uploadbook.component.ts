@@ -165,7 +165,7 @@ uploadfile(){
   CourseSuccess() {
     swal({
       type: 'success',
-      title: 'Book Added ! <br> Request is sent to admin you will be notified after approval.',
+      title: 'Your Book has been successfully added. It will be listed for sale upon approval.',
       width: '512px'
     })
   }
