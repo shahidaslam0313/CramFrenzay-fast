@@ -327,7 +327,7 @@ export class NotesgenieComponent implements OnInit {
 
       );
   }
-  cartitem;
+  cartitems;
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
@@ -337,9 +337,9 @@ export class NotesgenieComponent implements OnInit {
           showConfirmButton: false,
           timer: 4500
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)

@@ -31,7 +31,7 @@ export class NgseemoreComponent implements OnInit {
   model: any = {};
   newid;
   message;
-  cartitem;
+  cartitems;
   wishlist;
   private sub: Subscription;
   constructor(private headServ: headerservice,private Data: DataService,private mainpage: mainpageservice,private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global:GlobalService) {
@@ -149,11 +149,9 @@ export class NgseemoreComponent implements OnInit {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-
     this.seemore.TrendingNotes(page).subscribe(data => {
       this.trendingnotes = data;
       this.pager = this.pagerService.getPager(this.trendingnotes['totalItems'], page, 10);
-
     });
   };
   setToprated(page: number) {
@@ -242,9 +240,9 @@ export class NgseemoreComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)

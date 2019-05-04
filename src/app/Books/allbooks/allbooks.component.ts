@@ -118,7 +118,7 @@ export class AllbooksComponent implements OnInit {
   currentuser;
   current;
   currentUser;
-  cartitem;
+  cartitems;
   constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
     this.BidBuybooks();
     this.Innerslider();
@@ -277,6 +277,10 @@ export class AllbooksComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
+      })
     }, error => {
       if (error.status == 404) {
         swal({
@@ -349,9 +353,9 @@ export class AllbooksComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)
