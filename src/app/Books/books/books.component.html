@@ -12,7 +12,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/bookcategory/{{data.id}}" (click)="submit(data?.c_name)"> <img
-                            src="../../../assets/img/Categories%20Web%20Images/{{data.image}}" alt="Book Category"
+                            src="https://storage.cramfrenzy.com/Categories%20Web%20Images/{{data.image}}" alt="Book Category"
                             class="categories-img"> </a> </figure>
                 <div class="product-list__content">
                     <div class="product-list__category"> <a routerLink="/bookcategory/{{data.id}}"
