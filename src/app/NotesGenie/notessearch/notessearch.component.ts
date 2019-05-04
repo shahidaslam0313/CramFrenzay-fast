@@ -26,7 +26,7 @@ export class NotessearchComponent implements OnInit {
   Eid;
   query;
   searchResult: any = [];
-
+  searchResultStatus;
 
 
   currentuser;
@@ -90,6 +90,7 @@ export class NotessearchComponent implements OnInit {
     this.full = query;
     this.search.notessearch(query, 1).subscribe(data => {
       this.result = data.Notes;
+  
       this.setPagenotes(1, data.totalItems)
     }
     );
@@ -98,6 +99,9 @@ export class NotessearchComponent implements OnInit {
     if (query != "") {
       this.newservice.notessearch(query).subscribe(data => {
         this.searchResult = data.Notes;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }

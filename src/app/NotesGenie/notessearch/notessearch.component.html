@@ -9,11 +9,12 @@
         <li *ngFor="let data of searchResult;">
           <a routerLink="/eachcourse/{{data.id}}" (click)="filter(query)"> <i class="material-icons">arrow_forward</i>{{data.name}}</a>
         </li>
-        <li *ngIf="searchResult.length==0">
-          <div class="no-result-found"> </div>
-        </li>
       </ul>
     </div>
+        <div class="row search-results" *ngIf="!searchResultStatus">            
+            <p class="results-found"> No results found. Please use keywords.</p>
+        </div>
+     
   </div>
 </div>
 <div class="container">
