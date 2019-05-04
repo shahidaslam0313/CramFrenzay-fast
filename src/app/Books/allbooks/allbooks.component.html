@@ -15,6 +15,9 @@
                 <li *ngIf="searchResult.length==0"> </li>
             </ul>
         </div>
+        <div class="row search-results" *ngIf="!searchResultStatus">            
+            <p class="results-found"> No results found. Please use keywords.</p>
+        </div>
     </div>
 </div>
 <ngx-slick class="carousel homeSlider innerpages" #slickModal="slick-modal" [config]="slideConfig2">

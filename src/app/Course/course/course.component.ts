@@ -31,6 +31,7 @@ export class CourseComponent implements OnInit {
   toprated;
   recent;
   public name;
+  public searchResultStatus = true;
   courseid;
   query;
   wishlist;
@@ -235,6 +236,9 @@ id;
     if (query != "") {
       this.course.coursesearch(query).subscribe(Res => {
         this.searchResult = Res.Course;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }

@@ -32,6 +32,7 @@ export class FlashcardlistComponent implements OnInit {
   watchflashcards;
   cardid;
   wishlist;
+  public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
     slidesToShow: 5,
@@ -177,6 +178,9 @@ export class FlashcardlistComponent implements OnInit {
 
       this.newService.flashsearch(query).subscribe(Res => {
         this.searchResult = Res.Flashcard;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }
