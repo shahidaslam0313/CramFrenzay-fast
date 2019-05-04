@@ -360,4 +360,10 @@ id;
     this.router.navigate(['/login']);
   }
 }
+submit(nestedname) {
+  if (isPlatformBrowser(this.platformId)) {
+    localStorage.setItem('nestedname', nestedname);
+    localStorage.setItem('nameID', 'notes');
+  }
+}
 }

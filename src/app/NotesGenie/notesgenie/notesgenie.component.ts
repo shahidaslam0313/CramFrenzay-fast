@@ -367,4 +367,9 @@ export class NotesgenieComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+  submit(nestedname) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('nestedname', nestedname);
+    }
+  }
 }

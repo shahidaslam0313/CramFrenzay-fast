@@ -302,6 +302,11 @@ export class AllbooksComponent implements OnInit {
 
     });
   }
+  submit(nestedname) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('nestedname', nestedname);
+    }
+  }
   filter(query) {
     if (query != "") {
       this.book.searchbooks(query).subscribe(data => {
