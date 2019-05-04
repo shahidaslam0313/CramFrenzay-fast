@@ -398,7 +398,6 @@ blockquote .blockquote-author {
 #mainpage-slider .item:before,
 .events-list::after,
 .main-nav::after,
-.mainbanner::before,
 .product-list__content::after,
 .product-list__item-info-1::after,
 .product-list__item-info::after {
@@ -465,8 +464,8 @@ blockquote .blockquote-author {
     display: inline-block;
     border: 1px solid #000;
     font-weight: 600;
-    -webkit-box-shadow: 0 0 20px -5px #000;
-    box-shadow: 0 0 20px -5px #000
+    -webkit-box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important;
+    box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important;
 }
 
 .btn-style,
@@ -478,8 +477,6 @@ blockquote .blockquote-author {
 .btn-01:hover {
     background-color: #c00;
     border-color: #c00;
-    -webkit-box-shadow: 0 0 20px -5px #c00;
-    box-shadow: 0 0 20px -5px #c00
 }
 
 .mat-select-panel .mat-option {
@@ -756,114 +753,6 @@ blockquote .blockquote-author {
 .padding-bottom-100 {
     padding-bottom: 100px
 }
-
-.bg-Bid-Notes {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Bid-Courses {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Bid-FlashCards {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Bid-Books {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Trending-Now {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Top-Rated-Course {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Most-Popular-Courses {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Recommended-Courses {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Notes-Trending-Now {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Top-Rated-Notes {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Recently-Visited-Notes {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-My-Watched-Notes {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Courses-Trending-Now {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Top-Rated-Courses {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-Recently-Visited-Courses {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-My-Watched-Courses {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-BooksTrendingNow {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-MyWatchedBooks {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-RecentlyVisitedBooks {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-TopRatedBooks {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-FlashCardsTrendingNow {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-MyWatchedFlashCards {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-RecentlyVisitedFlashCards {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.bg-TopRatedFlashCards {
-    background-image: linear-gradient(to right top, #000, #37141b, #6a1c23, #9c2a21, #c94308)
-}
-
-.mainbanner::before {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, .3);
-    z-index: -1;
-    border-radius: 8px
-}
-
 .slick-list {
     max-width: 1300px;
     margin: 0 auto!important
@@ -1404,16 +1293,14 @@ blockquote .blockquote-author {
     -o-transition: .4s;
     transition: .4s;
     cursor: pointer;
-    -webkit-box-shadow: 0 0 20px -5px #000;
-    box-shadow: 0 0 20px -5px #000
+    -webkit-box-shadow:0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important;
+    box-shadow:0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important
 }
 
 .btn-style:focus,
 .btn-style:hover {
     background: #c00;
     border-color: #c00;
-    -webkit-box-shadow: 0 0 20px -5px #c00;
-    box-shadow: 0 0 20px -5px #c00
 }
 
 .btn-red {
@@ -4669,11 +4556,11 @@ fieldset {
     background-size: 100% 100%!important;
     position: relative;
     z-index: 1;
-    padding: 10px 0;
-    font-size: 48px;
-    margin: 7px 0 20px!important;
-    color: #fff;
-    border-radius: 8px
+    padding: 20px 0;
+    font-size: 44px;
+    margin: 0;
+    color: #333;
+    border-radius: 8px;
 }
 
 #closeSearch,
@@ -5161,8 +5048,8 @@ fieldset {
 
 .sh-signup-form-fix .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
     font-size: 16px!important;
-    -webkit-transform: translateY(-15px) scale(.75) perspective(100px) translateZ(0)!important;
-    transform: translateY(-15px) scale(.75) perspective(100px) translateZ(0)!important;
+    -webkit-transform: translateY(-17px) scale(.75) perspective(100px) translateZ(0)!important;
+    transform: translateY(-17px) scale(.75) perspective(100px) translateZ(0)!important;
     -ms-transform: translateY(5px) scale(.75)!important
 }
 
@@ -5297,7 +5184,7 @@ fieldset {
     color: #0275d8;
     font-weight: normal;
     font-size: 13px;
-    margin-left:5px;
+    margin-left:15px;
 }
 .user-profile-form {
     padding: 20px 10px 0
@@ -6054,7 +5941,9 @@ body {
 .color_white{
     color: #fff;
 }
-
+ngx-slick.slick-initialized{
+    padding: 0 10px;
+}
 
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
