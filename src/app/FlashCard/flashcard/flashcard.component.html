@@ -14,7 +14,7 @@
                     <div *ngFor="let items of data?.subcategory">
                         <div *ngFor="let item of items?.Flashcard">
                             <li> <i class="fa fa-arrow-right flash-arrow-style"></i>
-                                <a (click)="onsubmit(item?.name, item?.id)" routerLink="/nestedcateroy/{{data?.id}}"
+                                <a routerLink="/fcdetail/{{data?.id}}"
                                     class="flashcard-a">{{item.name | titlecase}}</a>
 
                             </li>

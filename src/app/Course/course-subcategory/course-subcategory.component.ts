@@ -22,6 +22,7 @@ export class CourseSubcategoryComponent implements OnInit {
   private username;
   currentuser;
   eachnotes;
+  eachcourse;
   catId;
   name;
   constructor(public subcatservice: categorywisecourseservice, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object) {
@@ -58,7 +59,8 @@ export class CourseSubcategoryComponent implements OnInit {
   }
   courseSubcat(catId) {
     this.subcatservice.courseSubcat(this.catId).subscribe(data => {
-      this.eachnotes = data.notes;
+      this.eachcourse = data.courses;
+      console.log('Course', data.courses)
     });
 
   }
