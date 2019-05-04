@@ -3,7 +3,7 @@ import { notesgenieservice } from '../notesgenie/notesgenie.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from "@angular/router";
 import 'rxjs/add/operator/map'
-import { GlobalService} from '../../global.service';
+import { GlobalService } from '../../global.service';
 import { Config } from "../../Config";
 import swal from 'sweetalert2';
 import { PagerService } from '../../paginator.service';
@@ -121,7 +121,7 @@ export class NotesgenieComponent implements OnInit {
     ]
   };
   isreserved: boolean = false;
-  constructor(private headServ: headerservice,private Data: DataService,private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router,  public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Slider();
     this.bidnote();
@@ -150,7 +150,7 @@ export class NotesgenieComponent implements OnInit {
 
   ngOnInit() {
     this.global.currentMessage.subscribe(message => this.message = message);
-
+    window.scroll(0, 0)
   }
   Slider() {
     this.global.InnerslideronMainPage().subscribe(Res => {
@@ -160,24 +160,24 @@ export class NotesgenieComponent implements OnInit {
   checkmainpage(id) {
     // alert(id)
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'], {queryParams: {notesid : id}});
+      this.router.navigate(['/payment'], { queryParams: { notesid: id } });
     }
   }
   checkbuy(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.checkmainpage(this.id)
-        },
+        this.checkmainpage(this.id)
+      },
         error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Item Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
+          if (error.status === 406)
+            swal({
+              type: 'error',
+              title: 'Item Already Purchased',
+              showConfirmButton: false,
+              timer: 4500
+            })
+        },
+      )
     }
     else if (this.check_login() == false) {
       this.sweetalertlogin();
@@ -257,12 +257,11 @@ export class NotesgenieComponent implements OnInit {
     this.addwishlist(this.book, this.course, this.flashcard, this.notes);
   }
   bididget(id) {
-
     this.newid = id;
     this.addwishlist(this.book, this.course, this.flashcard, this.notes);
   }
   addwishlist(book, course, flashcard, notes) {
-    this.mainpage.addwishlist(book, course, flashcard, notes ).subscribe(Res => {
+    this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(Res => {
       this.global = Res;
       swal({
         type: 'success',
@@ -275,7 +274,7 @@ export class NotesgenieComponent implements OnInit {
         this.Data.emittedData(this.wishlist);
       })
     }, error => {
-      if (error.status == 404){
+      if (error.status == 404) {
         swal({
           type: 'warning',
           title: 'This item is already in your watchlist',
@@ -283,7 +282,7 @@ export class NotesgenieComponent implements OnInit {
           timer: 1500
         })
       }
-      else if(error.status==406){
+      else if (error.status == 406) {
         swal({
           type: 'error',
           title: 'Note Already Purchased',
@@ -291,7 +290,7 @@ export class NotesgenieComponent implements OnInit {
           timer: 1500
         })
       }
-      
+
     });
 
   }
@@ -307,7 +306,7 @@ export class NotesgenieComponent implements OnInit {
   }
   bidamount;
   biding() {
-    this.global.bidnotes( this.bidonnotes, this.model.bidamount)
+    this.global.bidnotes(this.bidonnotes, this.model.bidamount)
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -317,15 +316,51 @@ export class NotesgenieComponent implements OnInit {
         });
       },
         error => {
-        if(error.status == 403 && error.status == 500 )
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
+          if (error.status == 403 && error.status == 500)
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 5500
+            });
         },
 
       );
+  }
+  cartitem;
+  addcart(notes, course, book, flashcard) {
+    if (this.check_login() == true) {
+      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 4500
+        });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          this.Data.emittData(this.cartitem);
+        })
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 4500
+          })
+        else if (error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 4500
+          })
+      });
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
 }

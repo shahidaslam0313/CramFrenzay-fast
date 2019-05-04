@@ -829,7 +829,6 @@ f.reset();
             timer: 2000
           })
         });
-        this.getwishlis()
   }
   else if (this.check_login() == false) {
     this.sweetalertsignin();

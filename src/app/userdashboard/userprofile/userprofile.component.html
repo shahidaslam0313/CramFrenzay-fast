@@ -15,10 +15,7 @@
         </div>
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">My Profile</h1>
-            <a class="btn-style main-nav__list_right margin-top-10" value="Delete" data-toggle="modal" data-target="#myModal5"
-                (click)=" userdatainfo(id )">
-                <i class="fa fa-edit"></i>
-            </a>
+           
             <form class="user-add-ingo-form modal-form margin-top-50" enctype="multipart/form-data" [formGroup]="user">
                 <div [ngClass]="displayFieldCss(user, 'firstname')">
                 <mat-form-field>
@@ -51,10 +48,7 @@
                         value="{{profile.language}}" [(ngModel)]="profile.language" pattern="[a-zA-Z ]+">
                         <mat-error *ngIf="user.controls.language.hasError('pattern')">Alphabets Only</mat-error> </mat-form-field></div>
                 <h2 class="font-weight-bold">Links</h2>
-                <a class="btn-style main-nav__list_right mg-top-33" value="Delete" data-toggle="modal" data-target="#myModal6"
-                    (click)=" userdatainfo(id )">
-                    <i class="fa fa-edit"></i>
-                </a>
+              
                 <mat-form-field class="mg-top-15px">
                     <input matInput type="text" placeholder="Website Link" id="website" formControlName="website" name="website"
                         value="{{profile.website}}" [(ngModel)]="profile.website"> </mat-form-field>
@@ -82,7 +76,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade modal-form" id="myModal5" role="dialog">
+<!-- <div class="modal fade modal-form" id="myModal5" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content mg-top-53">
             <div class="modal-header">
@@ -109,7 +103,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="modal fade modal-form" id="myModal6" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content mg-top-53">

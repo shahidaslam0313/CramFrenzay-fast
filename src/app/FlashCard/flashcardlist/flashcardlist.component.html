@@ -29,8 +29,7 @@
 <div class="container-fluid padding-l-r-60 mb-5">
     <div class="row">
         <div class="col-lg-12 ">
-            <h2 class="mainbanner bg-Bid-Notes">Bid & Buy on
-                Flash Cards
+            <h2 class="mainbanner bg-Bid-Notes">Buy & Bid on Flash Cards
             </h2>
         </div>
     </div>
@@ -65,6 +64,16 @@
                             </a>
                             <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
                                 <i class="far fa-heart"></i>
+                            </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,nullvalue,data.id)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">
@@ -126,6 +135,16 @@
                             <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
                                 <i class="far fa-heart"></i>
                             </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,nullvalue,data.id)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
+                            </div>
                         </div>
                         <div class="text-center margin-top-10">
                             <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer Now</a>
@@ -185,6 +204,16 @@
                             <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
                                 <i class="far fa-heart"></i>
                             </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,nullvalue,data.id)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
+                            </div>
                         </div>
                         <div class="text-center margin-top-10">
                             <a class="btn-style" *ngIf="data?.accept_offer == true && !data.Purchased" (click)="openDialog3(data?.id)">Offer Now</a>
@@ -216,7 +245,7 @@
     <div class="row" *ngIf="check_login()">
         <div class="col-lg-12 slider-hight">
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-                <div ngxSlickItem class="slide item" *ngFor="let data of recentflashcards.flashcards; let i=index">
+                <div ngxSlickItem class="slide item" *ngFor="let data of recentflashcards?.flashcards; let i=index">
                     <div class="product-list__item">
                         <figure class="product-list__img">
                             <a routerLink="/fcdetail/{{data.id}}">
@@ -243,6 +272,16 @@
                             </a>
                             <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
                                 <i class="far fa-heart"></i>
+                            </div>
+                            <div *ngIf="!data.cart==false">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
+                            </div>
+                            <div *ngIf="!data.cart==true">
+                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
+                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,nullvalue,data.id)">
+                                    <a _ngcontent-c1="" class="wishlist material-icons"
+                                        title="Add to Cart">add_shopping_cart</a></div>
                             </div>
                         </div>
                         <div class="text-center margin-top-10">

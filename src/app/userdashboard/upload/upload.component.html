@@ -16,7 +16,7 @@
             </nav>
         </div>
         <div class="col-md-9 user-profile">
-            <h1 class="user-heading">Add Course</h1>
+            <h1 class="user-heading">List Course for Sale</h1>
             <form class="user-add-ingo-form" enctype="multipart/form-data">
                 <mat-form-field class="margin-top-20"> <input matInput type="text" placeholder="Name" id="name"
                         [(ngModel)]="model.name" name="name" required>
@@ -46,7 +46,7 @@
 
 
                 <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
-                    Offer</mat-slide-toggle>
+                    Offers</mat-slide-toggle>
                 <div id="showdiv6" style="display: none;">
                     <mat-form-field> <input matInput type="text" placeholder="Minimum Price" [(ngModel)]="model.min_amount"
                             name="min_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>

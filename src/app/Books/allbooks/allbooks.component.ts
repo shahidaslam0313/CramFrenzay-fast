@@ -7,10 +7,12 @@ import swal from 'sweetalert2';
 import { PagerService } from '../../paginator.service';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {GlobalService} from '../../global.service';
+import { GlobalService } from '../../global.service';
 import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import { headerservice } from 'app/includes/header/header.service';
+import { DataService } from 'app/data.service';
 
 declare const $: any;
 @Component({
@@ -116,8 +118,8 @@ export class AllbooksComponent implements OnInit {
   currentuser;
   current;
   currentUser;
-
-  constructor(private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute,@Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
+  cartitem;
+  constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
     this.BidBuybooks();
     this.Innerslider();
     this.trendbooks();
@@ -188,7 +190,7 @@ export class AllbooksComponent implements OnInit {
       timer: 2000,
     });
   }
-id;
+  id;
   books(id) {
     if (this.check_login() == true) {
       this.router.navigate(['/payment']);
@@ -198,18 +200,18 @@ id;
   checkbuy(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.books(this.id)
-        },
+        this.books(this.id)
+      },
         error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Book Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
+          if (error.status === 406)
+            swal({
+              type: 'error',
+              title: 'Book Already Purchased',
+              showConfirmButton: false,
+              timer: 4500
+            })
+        },
+      )
     }
     else if (this.check_login() == false) {
       this.sweetalertlogin();
@@ -276,7 +278,7 @@ id;
         timer: 1500
       })
     }, error => {
-      if (error.status == 404){
+      if (error.status == 404) {
         swal({
           type: 'warning',
           title: 'This book is already in your watchlist',
@@ -284,7 +286,7 @@ id;
           timer: 1500
         })
       }
-      else if(error.status == 406){
+      else if (error.status == 406) {
         swal({
           type: 'error',
           title: 'Book Already Purchased',
@@ -292,7 +294,7 @@ id;
           timer: 1500
         })
       }
-        
+
     });
   }
   filter(query) {
@@ -315,15 +317,15 @@ id;
 
 
   bidc() {
-    this.global.bidonbook( this.bidbookid, this.model.bidamount, )
+    this.global.bidonbook(this.bidbookid, this.model.bidamount)
       .subscribe(Res => {
-          swal({
-            type: 'success',
-            title: 'Your bid is listed',
-            showConfirmButton: false,
-            timer: 5500
-          });
-        },
+        swal({
+          type: 'success',
+          title: 'Your bid is listed',
+          showConfirmButton: false,
+          timer: 5500
+        });
+      },
         error => {
           swal({
             type: 'error',
@@ -333,6 +335,46 @@ id;
           });
         }
       );
+  }
+  addcart(notes, course, book, flashcard) {
+    if (this.check_login() == true) {
+      notes = null;
+      course = null;
+      flashcard = null;
+      this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
+        this.global = data;
+        swal({
+          type: 'success',
+          title: 'Added to Cart',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.headServ.showCartItem().subscribe(cartitem => {
+          this.cartitem = cartitem;
+          this.Data.emittData(this.cartitem);
+        })
+      }, error => {
+        if (error.status == 404)
+          swal({
+            type: 'warning',
+            title: 'This item is already exist in your Cart',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        else if (error.status === 406)
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 2000
+          })
+      });
+      // this.getwishlis()
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
 }
 
