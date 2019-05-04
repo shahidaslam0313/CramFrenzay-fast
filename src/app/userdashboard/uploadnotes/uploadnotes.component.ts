@@ -216,8 +216,9 @@ export class UploadnotesComponent implements OnInit {
   CourseSuccess() {
     swal({
       type: 'success',
-      title: 'Note Added ! <br> Request is sent to admin you will be notified after approval.',
-      width: '512px'
+      title:
+        'Your Note has been successfully added. It will be listed for sale upon approval.',
+      width: '512px',
     })
   }
 

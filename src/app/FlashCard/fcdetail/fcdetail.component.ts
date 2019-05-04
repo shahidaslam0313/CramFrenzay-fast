@@ -96,7 +96,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   sweetalertsignin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,
@@ -184,7 +184,7 @@ console.log('FLASHCARD', data)
     else {
       swal({
         type: 'error',
-        title: 'CramFrenzy!',
+        title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
         width: '512px',

@@ -416,10 +416,10 @@ export class MainpageComponent implements OnInit {
   sweetalertsignin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
-      timer: 2000,
+      timer: 2500,
     });
   }
   bidcourse() {

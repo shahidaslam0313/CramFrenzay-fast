@@ -225,7 +225,7 @@ console.log(this.model); });
   CourseSuccess() {
     swal({
       type: 'success',
-      title: 'Flash Card Added ! <br> Request is sent to admin you will be notified after approval.',
+      title: 'Your Flash Card has been successfully added. It will be listed for sale upon approval.',
       width: '512px'
     });
   }

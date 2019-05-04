@@ -69,7 +69,7 @@ export class NotesComponent implements OnInit {
   sweetalertsignin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,
@@ -121,7 +121,7 @@ export class NotesComponent implements OnInit {
   sweetalertnotes() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,
@@ -169,7 +169,7 @@ export class NotesComponent implements OnInit {
     else {
       swal({
         type: 'error',
-        title: 'CramFrenzy!',
+        title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
         width: '512px',

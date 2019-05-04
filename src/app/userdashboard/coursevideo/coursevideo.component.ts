@@ -202,7 +202,7 @@ postrequirment(f: NgForm){
     });
     dialogRef.afterClosed().subscribe(result => {
     });
-    alert(video_url)
+    // alert(video_url)
   }
   openDialog2(chapter_id): void {
     const dialogRef = this.dialog.open(AddVideoComponent, {

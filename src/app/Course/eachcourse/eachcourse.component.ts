@@ -8,6 +8,8 @@ import {EachcourseService} from '../eachcourse/eachcourse.service';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {AddtocartComponent} from './../../addtocart/addtocart.component';
 import { PagerService } from '../../paginator.service';
+import {VideoShowDialogComponent} from "../../userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
+import {MatDialog} from "@angular/material";
 @Component({
   selector: 'app-eachcourse',
   templateUrl: './eachcourse.component.html',
@@ -28,8 +30,13 @@ export class EachcourseComponent implements OnInit {
   view;
   comment;
   id;
+  chapter_name;
+  videos;
+  totalvideos;
+  all_video;
+  totalvid;
   model: any = {};
-  constructor(private pagerService: PagerService, private eachcourse: EachcourseService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object, public addtocart: AddtocartComponent) {
+  constructor(private pagerService: PagerService, private eachcourse: EachcourseService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object,  public dialog: MatDialog ,public addtocart: AddtocartComponent) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
       this.currentProducts = this.productsSource.asObservable();
@@ -43,6 +50,7 @@ export class EachcourseComponent implements OnInit {
     });
     this.eachcourseshow();
     this.reviewsss(this.pager);
+    this.getchaptername();
   }
   get(rating) {
     this.rate = rating;
@@ -90,8 +98,8 @@ export class EachcourseComponent implements OnInit {
       this.role = localStorage.getItem('role');
       if (this.role == "U") {
         swal({
-          title: 'CramFrenzy!',
-          text: 'Only admin and teacher can upload courses!',
+          title: 'CramFrenzy',
+          text: 'Only admin and teacher can upload courses',
           type: 'error',
           showConfirmButton: false,
           confirmButtonColor: "#cc0000",
@@ -107,7 +115,31 @@ export class EachcourseComponent implements OnInit {
       this.sweetalertlogin();
     }
   }
-
+  getchapter;
+  chpt;
+  time;
+  getchaptername(){
+    this.eachcourse.getchaptername(this.courseId).subscribe(data => {
+      this.getchapter = data.data;
+      this.videos = data.vedios;
+      this.chpt = data.chapters;
+      this.time = data['Total Hours'];
+      this.totalvideos = data.totalvideos;
+      this.totalvid = data['Total Lectures'];
+      console.log(this.getchapter);
+    });
+  }
+  SetVideoURL(video_url, SetVideoURL){
+    const dialogRef = this.dialog.open(VideoShowDialogComponent, {
+      width: '800px',
+      data: {
+        video_url: video_url,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+    // alert(video_url)
+  }
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {
     //   return;
@@ -138,7 +170,7 @@ export class EachcourseComponent implements OnInit {
   sweetalertlogin() {
     swal({
       text: "Please Login First",
-      title: "CramFrenzy!",
+      title: "CramFrenzy",
       type: "error",
       showConfirmButton: false,
       timer: 2000,
@@ -182,7 +214,7 @@ book = null;
     else {
       swal({
         type: 'error',
-        title: 'CramFrenzy!',
+        title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
         width: '512px',

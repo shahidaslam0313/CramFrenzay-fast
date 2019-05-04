@@ -49,4 +49,11 @@ export class EachcourseService {
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
+  getchaptername(id){
+    if(this.token){
+      let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
+      headers.append('Content-Type', 'application/json', );
+      return this.http.get(Config.api + 'course/ChaptersWithVideosList/' + id , {headers : headers}).map((res: Response) => res.json());
+    }
+  }
 }
