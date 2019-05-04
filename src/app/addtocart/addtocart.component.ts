@@ -5,6 +5,8 @@ import { Config } from '../Config';
 import {isPlatformBrowser} from '@angular/common';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { headerservice } from 'app/includes/header/header.service';
+import { DataService } from 'app/data.service';
 
 declare const $: any;
 
@@ -28,6 +30,7 @@ export class AddtocartComponent implements OnInit {
   res;
   CardNo;
   eachcardid;
+  cartitems
   CCV;
   EXP;
   SUM;
@@ -139,7 +142,7 @@ export class AddtocartComponent implements OnInit {
     }
   }
   notesid;
-  constructor(private _serv: AddtocartService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private _serv: AddtocartService, @Inject(PLATFORM_ID) private platformId: Object, private headServ: headerservice, private Data:DataService  ) {
     if (isPlatformBrowser(this.platformId)) {
       this.username = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentuser = this.username.asObservable();
@@ -163,6 +166,10 @@ export class AddtocartComponent implements OnInit {
         title: 'Item added in cart',
         showConfirmButton: false,
         timer: 1500
+      })
+      this.headServ.showCartItem().subscribe(cartitems => {
+        this.cartitems = cartitems;
+        this.Data.emittData(this.cartitems);
       })
     }, error => {
       if (error.status == 404)

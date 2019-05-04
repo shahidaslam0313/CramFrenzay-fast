@@ -8,6 +8,7 @@ import swal from 'sweetalert2';
 import {isPlatformBrowser} from '@angular/common';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {PagerService} from '../../paginator.service';
+import { headerservice } from 'app/includes/header/header.service';
 
 declare const $: any;
 
@@ -30,7 +31,7 @@ public item;
   rate;
   view;
   pager;
-  constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private detail: detailservice, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private detail: detailservice, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object,private headServ: headerservice, ) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
@@ -48,6 +49,7 @@ public item;
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.sub = this.route.params.subscribe(params => {
       this.bookID = +params['id'] || 0;
     });
