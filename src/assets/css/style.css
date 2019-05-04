@@ -4546,9 +4546,8 @@ fieldset {
     background-size: 100% 100%!important;
     position: relative;
     z-index: 1;
-    padding: 20px 0;
+    margin: 20px 0;
     font-size: 44px;
-    margin: 0;
     color: #333;
     text-shadow: 0 2px 3px #ccc;
     border-radius: 8px;
@@ -5381,13 +5380,18 @@ button:hover,.btn:hover{
 .already-bought{
     font-size: 14px;
     font-weight: 600;
-    color: #008000;
+    color: #008000 !important;
+}
+.already-bought:hover{
+    color: #008000 !important;
 }
 .already-bought img{
     display: inline !important;
     width: 25px;
 }
-
+.heart_cart i{
+    font-size:24px;
+}
 /* .........Course div End.............. */
 /* ------------Notesgenie start----------------- */
 .innerpages {
@@ -5396,6 +5400,7 @@ button:hover,.btn:hover{
 }
 .innerpages.homeSlider{
     padding: 0 50px !important;
+    margin: 20px auto 0;
 }
 /* ----------------------Notesgenie---------------------- */
 
