@@ -31,6 +31,7 @@ export class FlashcardlistComponent implements OnInit {
   recentflashcards;
   watchflashcards;
   cardid;
+  wishlist;
   slideConfig2 = {
     infinite: true,
     slidesToShow: 5,
@@ -110,7 +111,7 @@ export class FlashcardlistComponent implements OnInit {
   currentProducts;
   query;
   searchResult: any = [];
-  cartitem;
+  cartitems;
   constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
 
     this.bidflash();
@@ -275,13 +276,17 @@ export class FlashcardlistComponent implements OnInit {
     let book = null;
     let notes = null;
 
-    this.global.addwishlist(book, course, flashcard, notes).subscribe(Res => {
+    this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(Res => {
 
       swal({
         type: 'success',
         title: 'Added to watchlist',
         showConfirmButton: false,
         timer: 1500
+      })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
       })
     }, error => {
       if (error.status == 404) {
@@ -317,9 +322,9 @@ export class FlashcardlistComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)

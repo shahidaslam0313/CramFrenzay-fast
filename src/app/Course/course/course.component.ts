@@ -33,6 +33,7 @@ export class CourseComponent implements OnInit {
   public name;
   courseid;
   query;
+  wishlist;
   searchResult: any = [];
   slideConfig2 = {
     infinite: true,
@@ -112,7 +113,7 @@ export class CourseComponent implements OnInit {
   bidingcourse;
   message: string;
   model: any = {};
-  cartitem;
+  cartitems;
   constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.Showbidcourses();
     this.TrendingNow();
@@ -258,6 +259,10 @@ id;
         showConfirmButton: false,
         timer: 1500
       })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
+      })
     }, error => {
       if (error.status == 404){
         swal({
@@ -325,9 +330,9 @@ id;
           showConfirmButton: false,
           timer: 4500
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)

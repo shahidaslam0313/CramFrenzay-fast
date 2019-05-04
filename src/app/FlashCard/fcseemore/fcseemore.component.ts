@@ -36,7 +36,8 @@ export class FcseemoreComponent implements OnInit {
   username;
   currentuser;
   current;
-  cartitem;
+  cartitems;
+  wishlist;
   constructor(private headServ: headerservice, private Data: DataService,private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.Eid = +params['id'];
@@ -187,6 +188,10 @@ export class FcseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
+      })
     }, error => {
       if (error.status == 404){
         swal({
@@ -221,9 +226,9 @@ export class FcseemoreComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)
