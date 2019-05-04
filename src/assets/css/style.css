@@ -4560,6 +4560,7 @@ fieldset {
     font-size: 44px;
     margin: 0;
     color: #333;
+    text-shadow: 0 2px 3px #ccc;
     border-radius: 8px;
 }
 
@@ -5267,7 +5268,8 @@ body.modal-open {
 
 .star-icon {
     color: #f7c90b!important;
-    font-weight: 600
+    font-weight: 600;
+    text-shadow: 0 1px rgba(41,41,41,.3);
 }
 
 .card.payment-methods-dialog {
