@@ -61,6 +61,7 @@ export class CategoryWiseNotesComponent implements OnInit {
   notecategory(catId) {
     this.subcatservice.notesSubcat(this.catId).subscribe(data => {
       this.eachnotes = data.notes;
+      console.log(data.notes,'NOTES')
     });
 
   }

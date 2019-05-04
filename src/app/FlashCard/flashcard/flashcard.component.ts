@@ -42,6 +42,7 @@ export class FlashcardComponent implements OnInit {
   newflashcard() {
     this.newService.Flashcardlist().subscribe(data => {
       this.result = data;
+      console.log('CARd', data)
     });
   }
 }
