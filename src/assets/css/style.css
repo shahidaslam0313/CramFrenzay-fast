@@ -6050,6 +6050,12 @@ body {
 .agree-button-div .form-1-btn {
     width: 300px !important;
 }
+
+.color_white{
+    color: #fff;
+}
+
+
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px
