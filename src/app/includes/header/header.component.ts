@@ -144,6 +144,7 @@ export class HeaderComponent implements OnInit {
     this.Data.getEmittValue().subscribe(data =>{
       this.showlist()
       this.itemscount = data.counts;
+      console.log(this.itemscount,'Shameem')
       
     })
     if (this.Logedin === '1') {

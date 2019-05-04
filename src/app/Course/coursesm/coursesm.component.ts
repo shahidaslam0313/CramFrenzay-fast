@@ -30,12 +30,13 @@ export class CoursesmComponent implements OnInit {
   recent;
   watch;
   bidingcourse;
-  model: any={};
-  cartitem;
-  constructor(private headServ: headerservice, private Data: DataService,private global: GlobalService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: CoursesmService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object,public dialogRef: MatDialog) { }
+  model: any = {};
+  cartitems;
+  wishlist;
+  constructor(private headServ: headerservice, private Data: DataService, private global: GlobalService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: CoursesmService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
     this.route.params.subscribe(params => {
     });
     this.sub = this.route.params.subscribe(params => {
@@ -59,7 +60,7 @@ export class CoursesmComponent implements OnInit {
   }
   checknotes(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'],{queryParams: {id : id}});
+      this.router.navigate(['/payment'], { queryParams: { id: id } });
 
     }
   }
@@ -67,18 +68,18 @@ export class CoursesmComponent implements OnInit {
   checkbuy(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.checknotes(this.id)
-        },
+        this.checknotes(this.id)
+      },
         error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Item Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
+          if (error.status === 406)
+            swal({
+              type: 'error',
+              title: 'Item Already Purchased',
+              showConfirmButton: false,
+              timer: 4500
+            })
+        },
+      )
     }
     // else if (this.check_login() == false) {
     //   this.sweetalertlogin();
@@ -173,15 +174,15 @@ export class CoursesmComponent implements OnInit {
     }
   }
   bidc() {
-    this.seemore.bidoncourses( this.bidingcourse, this.model.bidamount, )
+    this.seemore.bidoncourses(this.bidingcourse, this.model.bidamount)
       .subscribe(Res => {
-          swal({
-            type: 'success',
-            title: 'Your bid is listed',
-            showConfirmButton: false,
-            timer: 5500
-          });
-        },
+        swal({
+          type: 'success',
+          title: 'Your bid is listed',
+          showConfirmButton: false,
+          timer: 5500
+        });
+      },
         error => {
           swal({
             type: 'error',
@@ -228,42 +229,46 @@ export class CoursesmComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      this.headServ.showwishlist().subscribe(wishList => {
+        this.wishlist = wishList;
+        this.Data.emittedData(this.wishlist);
+      })
     }, error => {
-      if (error.status == 404){
+      if (error.status == 404) {
         swal({
-        type: 'warning',
-        title: 'This course is already in your watchlist',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    }
-    else if(error.status===406){
-      swal({
-        type: 'error',
-        title: 'Course Already Purchased',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    }  
+          type: 'warning',
+          title: 'This course is already in your watchlist',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      else if (error.status === 406) {
+        swal({
+          type: 'error',
+          title: 'Course Already Purchased',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
     }
     );
   }
-  addcart( notes, course, book, flashcard){
+  addcart(notes, course, book, flashcard) {
     notes = null;
     book = null;
-    flashcard=null;
+    flashcard = null;
     if (this.check_login() == true) {
-      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
-
+      this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
+        this.global = data;
         swal({
           type: 'success',
           title: 'Added to Cart',
           showConfirmButton: false,
           timer: 4500
         });
-        this.headServ.showCartItem().subscribe(cartitem => {
-          this.cartitem = cartitem;
-          this.Data.emittData(this.cartitem);
+        this.headServ.showCartItem().subscribe(cartitems => {
+          this.cartitems = cartitems;
+          this.Data.emittData(this.cartitems);
         })
       }, error => {
         if (error.status == 404)
@@ -273,18 +278,18 @@ export class CoursesmComponent implements OnInit {
             showConfirmButton: false,
             timer: 4500
           })
-          else if ( error.status === 406)
+        else if (error.status === 406)
           swal({
             type: 'error',
             title: 'Item Already Purchased',
             showConfirmButton: false,
             timer: 4500
           })
-        });
+      });
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
-  else if (this.check_login() == false) {
-    this.sweetalertlogin();
-    this.router.navigate(['/login']);
-  }
-}
 }

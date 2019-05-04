@@ -18,5 +18,6 @@ public static uploadfile = 'https://storage.cramfrenzy.com/upload.php';
   // public static Imageurlget = 'https://s3-us-west-1.amazonaws.com/cramfrenzy/Thumbnail/';
   public static Imageurlupload = 'https://storage.cramfrenzy.com/upload_image.php';
   public static VideoUrl = 'https://storage.cramfrenzy.com/video/';
+  
 
 }
