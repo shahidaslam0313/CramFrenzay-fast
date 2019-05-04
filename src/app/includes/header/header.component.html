@@ -8,32 +8,32 @@
 
           <div class="col-lg-3" *ngFor="let data of notes; let i=index">
                 <div class="product-list__item">
-                    <figure class="product-list__img"> <a onclick="topFunction()" routerLink="/detail/{{data?.id}}">
+                    <figure class="product-list__img"> <a  routerLink="/detail/{{data?.id}}">
                             <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes Image"> </a>
-                        <div class="wishlist-overlay"> <a onclick="topFunction()" class="product-list__wishlist"> <i
+                        <div class="wishlist-overlay"> <a  class="product-list__wishlist"> <i
                                     class="far fa-heart"></i> </a> </div>
                     </figure>
                     <div class="product-list__content">
-                        <div class="product-list__category"> <a onclick="topFunction()" routerLink="/detail/{{data.id}}"
+                        <div class="product-list__category"> <a  routerLink="/detail/{{data.id}}"
                                 title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a> </div>
                         <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data?.userid | titlecase}}">{{data?.userid
                                 | titlecase}}</span> </div>
                         <ul class="product-list__star-list">
-                            <li> <a onclick="topFunction()" href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                            <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
-                            <li> <a onclick="topFunction()" href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                            <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
-                            <li> <a onclick="topFunction()" href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                            <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
-                            <li> <a onclick="topFunction()" href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                            <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
-                            <li> <a onclick="topFunction()" href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                            <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
                         </ul>
                         <p class="product-list__price">{{data?.price | currency:'USD'}}</p>
                     </div>
-                    <div class="product-list__item-info-1"> <a onclick="topFunction()" routerLink="/login" class="btn-style"
-                            (click)="checkmainpage()"> Buy Now </a> <a onclick="topFunction()" routerLink="/login"
+                    <div class="product-list__item-info-1"> <a  routerLink="/login" class="btn-style"
+                            (click)="checkmainpage()"> Buy Now </a> <a  routerLink="/login"
                             class="btn-style" (click)="checkmainpage()"> Bid Now </a> </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
     <div class="main-nav">
         <div class="container-fluid padding-zero">
             <div class="padding-0 float_left width100">
-                <div class="width-20-percent float_logo"> <a onclick="topFunction()" routerLink="/" class="logo"> <img
+                <div class="width-20-percent float_logo"> <a  routerLink="/" class="logo"> <img
                             src="/assets/img/CramFrenzyLogoBlackColor.png" alt="CramFrenzy" /> </a> </div>
                 <div class="main-nav__btn" data-toggle="collapse" data-target="#mainNav">
                     <div class="icon-left"></div>
@@ -53,19 +53,19 @@
                 <div class="navbar-collapse main-nav__div" id="mainNav">
                     <ul class="main-nav__list main-nav__width navbar-right float_left width100">
                             <li > 
-                                <button class="btn sellnowbtn" onclick="topFunction()" (click)="selllogin()"> 
+                                <button class="btn sellnowbtn"  (click)="selllogin()"> 
                                     <i class="far fa-money-bill-alt">
                                 </i>Sell or Auction Now </button> 
                             </li>
 
-                        <li class="active"> <a onclick="topFunction()" routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie
+                        <li class="active"> <a  routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie
                             </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/notesgenie"> <img class="notes" alt=""
+                                    <li> <a  routerLink="/notesgenie"> <img class="notes" alt=""
                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes</a>
                                     </li>
-                                    <li> <a onclick="topFunction()" routerLink="/notes-category"> <img class="notes-categories"
+                                    <li> <a  routerLink="/notes-category"> <img class="notes-categories"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes
                                             Categories </a> </li>
                                     <li routerLink="/uploadnotes"> <a (click)="checkNotes()"> <img class="add-notes"
@@ -74,154 +74,154 @@
                                 </ul>
                             </div>
                         </li>
-                        <li> <a onclick="topFunction()" routerLink="/course"> <i class="fa fa-th-large"></i>Courses </a>
+                        <li> <a  routerLink="/course"> <i class="fa fa-th-large"></i>Courses </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/course"> <img class="course" alt=""
+                                    <li> <a  routerLink="/course"> <img class="course" alt=""
                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Courses</a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/categories"> <img class="course-categories"
+                                    <li> <a  routerLink="/categories"> <img class="course-categories"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Course Categories </a> </li>
-                                    <li (click)="checkcourse()"> <a onclick="topFunction()"> <img class="add-course"
+                                    <li (click)="checkcourse()"> <a > <img class="add-course"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Add Course</a> </li>
                                 </ul>
                             </div>
                         </li>
                         
-                        <li class="main-nav__list_flash_cards"> <a onclick="topFunction()" routerLink="/flashcardlist">
+                        <li class="main-nav__list_flash_cards"> <a  routerLink="/flashcardlist">
                                 <i class="fa fa-book-open"></i>Flash Cards </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/flashcardlist"> <img class="flash-card"
+                                    <li> <a  routerLink="/flashcardlist"> <img class="flash-card"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Flash Cards</a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/flashcard"> <img class="flash-categories"
+                                    <li> <a  routerLink="/flashcard"> <img class="flash-categories"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Flash Card Categories</a> </li>
-                                    <li> <a onclick="topFunction()" (click)="checkflashcard()"> <img class="add-flash-card"
+                                    <li> <a  (click)="checkflashcard()"> <img class="add-flash-card"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Add Flash Card</a> </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_books"> <a onclick="topFunction()" routerLink="/allbooks"> <i class="fa fa-book"></i>Books
+                        <li class=""> <a  routerLink="/allbooks"> <i class="fa fa-book"></i>Books
                             </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/allbooks"> <img class="book" alt=""
+                                    <li> <a  routerLink="/allbooks"> <img class="book" alt=""
                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Books</a>
                                     </li>
-                                    <li> <a onclick="topFunction()" routerLink="/books"> <img class="book-categories"
+                                    <li> <a  routerLink="/books"> <img class="book-categories"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Book
                                             Categories</a> </li>
-                                    <li> <a onclick="topFunction()" (click)="checkbooks()"> <img class="add-book" alt=""
+                                    <li> <a  (click)="checkbooks()"> <img class="add-book" alt=""
                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Add Book</a> </li>
                                 </ul>
                             </div>
                         </li>
-                        <li> <a onclick="topFunction()" routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
+                        <li> <a  routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
+                                    <li> <a  routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Tutors</a> </li>
-                                    <li *ngIf="!tutor()"> <a onclick="topFunction()" (click)="becometutor()"> <img
+                                    <li *ngIf="!tutor()"> <a  (click)="becometutor()"> <img
                                                 class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Become a Tutor </a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/findtutor"> <img class="find-tutors"
+                                    <li> <a  routerLink="/findtutor"> <img class="find-tutors"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Find a Tutor</a> </li>
-                                    <!--<li> <a onclick="topFunction()" href=""> <img class="q-a-expert" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
+                                    <!--<li> <a  href=""> <img class="q-a-expert" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
                                             <!--Q/A Experts</a> </li>-->
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_events"> <a onclick="topFunction()" routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events </a>
+                        <li class="main-nav__list_events"> <a  routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/events"> <img src="../../../assets/img/Events/Events.png"
+                                    <li> <a  routerLink="/events"> <img src="../../../assets/img/Events/Events.png"
                                                 alt="img">Events</a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/institute"> <img class="institute-2"
+                                    <li> <a  routerLink="/institute"> <img class="institute-2"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Event By Institutes</a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png"
+                                    <li> <a  routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png"
                                                 alt="img">Upcoming Events</a> </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-nav__list_scholarship"> <a onclick="topFunction()" routerLink="/scholarship">
+                        <li class="main-nav__list_scholarship"> <a  routerLink="/scholarship">
                                 <i class="fa fa-graduation-cap"></i>Scholarships </a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li> <a onclick="topFunction()" routerLink="/scholarship">Scholarships</a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/scholarshiplist">Scholarship By
+                                    <li> <a  routerLink="/scholarship">Scholarships</a> </li>
+                                    <li> <a  routerLink="/scholarshiplist">Scholarship By
                                             Institutes</a> </li>
-                                    <li> <a onclick="topFunction()" routerLink="/upcomingscholarship">Upcoming
+                                    <li> <a  routerLink="/upcomingscholarship">Upcoming
                                             Scholarships</a> </li>
                                 </ul>
                             </div>
                             
                         </li>
-                        <li class="main-nav__list-bars"> <a onclick="topFunction()" href="javascript:void(0)"> <i class="fas fa-bars"></i>
+                        <li class="main-nav__list-bars"> <a  href="javascript:void(0)"> <i class="fas fa-bars"></i>
                             </a>
                             <div class="sub-menu">
                                 <ul class="cutsom-pd-bars">
-                                    <li class="main-nav__list_flash_cards_1"> <a onclick="topFunction()" routerLink="/flashcardlist">
+                                    <li class="main-nav__list_flash_cards_1"> <a  routerLink="/flashcardlist">
                                             <i class="fa fa-book-open"></i>Flash Cards </a>
                                         <div class="sub-sub-menu">
                                             <ul>
-                                                <li> <a onclick="topFunction()" routerLink="/flashcardlist">Flash Cards</a>
+                                                <li> <a  routerLink="/flashcardlist">Flash Cards</a>
                                                 </li>
-                                                <li> <a onclick="topFunction()" routerLink="/flashcard">Flash Card
+                                                <li> <a  routerLink="/flashcard">Flash Card
                                                         Categories</a> </li>
-                                                <li> <a onclick="topFunction()" (click)="checkflashcard()">Add Flash
+                                                <li> <a  (click)="checkflashcard()">Add Flash
                                                         Card</a> </li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="main-nav__list_books_1"> <a onclick="topFunction()" routerLink="/allbooks">
+                                    <li class="main-nav__list_books_1"> <a  routerLink="/allbooks">
                                             <i class="fa fa-book"></i>Books </a>
                                         <div class="sub-sub-menu">
                                             <ul>
-                                                <li> <a onclick="topFunction()" routerLink="/allbooks"> <img class="book"
+                                                <li> <a  routerLink="/allbooks"> <img class="book"
                                                             alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                                         Book</a> </li>
-                                                <li> <a onclick="topFunction()" routerLink="/books"> <img class="book-categories"
+                                                <li> <a  routerLink="/books"> <img class="book-categories"
                                                             alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                                         Book Categories</a> </li>
-                                                <li> <a onclick="topFunction()" (click)="checkbooks()"> <img class="add-book"
+                                                <li> <a  (click)="checkbooks()"> <img class="add-book"
                                                             alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Add
                                                         Book</a> </li>
                                             </ul>
                                         </div>
                                     </li>
                                     
-                                    <li class="main-nav__list_events_1"> <a onclick="topFunction()" routerLink="/events">
+                                    <li class="main-nav__list_events_1"> <a  routerLink="/events">
                                             <i class="fa fa-calendar-alt"></i>Events </a>
                                         <div class="sub-sub-menu">
                                             <ul>
-                                                <li> <a onclick="topFunction()" routerLink="/events"> <img src="../../../assets/img/Events/Events.png"
+                                                <li> <a  routerLink="/events"> <img src="../../../assets/img/Events/Events.png"
                                                             alt="img">Events</a> </li>
-                                                <li> <a onclick="topFunction()" routerLink="/institute"> <img src="../../../assets/img/Events/Institute.png"
+                                                <li> <a  routerLink="/institute"> <img src="../../../assets/img/Events/Institute.png"
                                                             alt="img">Event By Institutes</a> </li>
-                                                <li> <a onclick="topFunction()" routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png"
+                                                <li> <a  routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png"
                                                             alt="img">Upcoming Events</a> </li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li> <a onclick="topFunction()" routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships
+                                    <li> <a  routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships
                                         </a>
                                         <div class="sub-sub-menu">
                                             <ul>
-                                                <li> <a onclick="topFunction()" routerLink="/scholarship"> <img class="scholorships"
+                                                <li> <a  routerLink="/scholarship"> <img class="scholorships"
                                                             alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                                         Scholarships</a> </li>
-                                                <li> <a onclick="topFunction()" routerLink="/scholarshiplist"> <img
+                                                <li> <a  routerLink="/scholarshiplist"> <img
                                                             class="scholorship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Scholarship
                                                         By Institutes</a> </li>
-                                                <li> <a onclick="topFunction()" routerLink="/upcomingscholarship"> <img
+                                                <li> <a  routerLink="/upcomingscholarship"> <img
                                                             class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                                         Upcoming Scholarships</a> </li>
                                             </ul>
@@ -230,15 +230,15 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="info-box-02__box-02 search-icon-responsive"> <a onclick="topFunction()"  href="javascript:void(0)"
+                        <li class="info-box-02__box-02 search-icon-responsive"> <a   href="javascript:void(0)"
                                 class="search-block" id="searchIcon"> <i class="fas fa-search search-size"></i> </a>
                         </li>
                         <div class="main-nav__list-icons">
-                            <li class="info-box-02__box-02"> <a onclick="topFunction()" href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8"
+                            <li class="info-box-02__box-02"> <a  href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8"
                                     class="search-block" target="_blank"> <i class="fab fa-apple"></i> </a> </li>
-                            <li class="info-box-02__box-02"> <a onclick="topFunction()" href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene"
+                            <li class="info-box-02__box-02"> <a  href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene"
                                     class="search-block" target="_blank"> <i class="fab fa-android"></i> </a> </li>
-                            <li class="heart-li" *ngIf="check_login()"> <a onclick="topFunction()" routerLink="/wishlist"
+                            <li class="heart-li" *ngIf="check_login()"> <a  routerLink="/wishlist"
                                     title="Watchlist"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
                                 <div class="heart-sub-meun">
                                     <div class="heart-full-div" >
@@ -257,7 +257,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -276,7 +276,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -295,7 +295,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -313,16 +313,16 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
                                                 Move to Cart </a>
                                         </div>
                                     </div>
-                                    <div class="wishlist-btn-div" *ngIf="check_login()"> <a onclick="topFunction()"
+                                    <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
                                             routerLink="/wishlist" class="addtocart-btn">Go to Watchlist</a> </div>
                                 </div>
                             </li>
-                            <li class="addtocart-li" *ngIf="check_login()"> <a onclick="topFunction()" routerLink="/addtocart"
+                            <li class="addtocart-li" *ngIf="check_login()"> <a  routerLink="/addtocart"
                                     title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
@@ -341,7 +341,7 @@
                                                             <span class="discount-p">${{cartitems.course.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.course.id,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -361,7 +361,7 @@
                                                             <span class="discount-p">${{cartitems.book.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                     (click)="moveToWishlist(cartitems.book.id,null,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -379,7 +379,7 @@
                                                             <span class="discount-p">${{cartitems.flashcard.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,cartitems.flashcard.id,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -399,7 +399,7 @@
                                                             <span class="discount-p">${{cartitems.notes.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a onclick="topFunction()" routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,null,cartitems.notes.id,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -409,12 +409,12 @@
                                         <div class="addtocart-main-total">
                                             <div class="addtocart-main-total-title"> Total: </div>
                                             <div class="addtocart-main-total-price"> ${{totalprice}}</div>
-                                        </div><a onclick="topFunction()" routerLink="/addtocart" class="addtocart-btn">Go
+                                        </div><a  routerLink="/addtocart" class="addtocart-btn">Go
                                             to Cart</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="addtocart-li" *ngIf="check_login()"> <a onclick="topFunction()" title="Cart"> <i
+                            <li class="addtocart-li" *ngIf="check_login()"> <a  title="Cart"> <i
                                         class="fas fa-bell"></i><sup>{{getnotifi?.unread}}</sup> </a>
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
@@ -437,48 +437,48 @@
                             </li>
                         </div>
                         <div class="main-nav__list main-nav__list_right">
-                            <li *ngIf="!check_login()"> <a onclick="topFunction()" routerLink="/signup"> <i class="fas fa-user-plus"></i>Sign Up </a> </li>
-                            <li *ngIf="!check_login()" class="list-user"> <a onclick="topFunction()" routerLink="/login">
+                            <li *ngIf="!check_login()"> <a  routerLink="/signup"> <i class="fas fa-user-plus"></i>Sign Up </a> </li>
+                            <li *ngIf="!check_login()" class="list-user"> <a  routerLink="/login">
                                     <i class="fas fa-fingerprint" aria-hidden="true"></i>Sign in </a> </li>
-                            <li *ngIf="check_login()"> <a onclick="topFunction()" routerLink="/userprofile"> <i class="fa fa-user-circle"></i>My
+                            <li *ngIf="check_login()"> <a  routerLink="/userprofile"> <i class="fa fa-user-circle"></i>My
                                     CramFrenzy <span class="fa fa-angle-down"></span> </a>
                                 <div class="sub-menu adjustment">
                                     <ul class="cutom-pd">
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile
                                             </a> </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Add
                                                 Material </a> </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/mylibrary"> <i class="fa fa-book"></i>Listed for Sale </a> </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/paymentmethods"> <i class="far fa-credit-card"></i>Payment
                                                 Methods </a> </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/Bought"> <i class="far fa-money-bill-alt"></i>Bought Items</a>
                                         </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/winloss"
-                                                onclick="topFunction()"> <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a> </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                                > <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a> </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/biddingactivity"> <i class="fa fa-gavel"></i>current Bidding Activity </a> </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a onclick="topFunction()"
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                     routerLink="/offeractivity"> <i class="fa fa-gavel"></i>Current Offers Activity
 
                                                 </a> </li>
-                                        <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/institutedetail">
+                                        <li *ngIf="institute() && check_login()"> <a  routerLink="/institutedetail">
                                                 <i class="fa fa-pencil-alt"></i>My Profile </a> </li>
-                                        <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/addevents">
+                                        <li *ngIf="institute() && check_login()"> <a  routerLink="/addevents">
                                                 <i class="fa fa-pencil-alt"></i>Add Events </a> </li>
-                                        <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/addscholarship">
+                                        <li *ngIf="institute() && check_login()"> <a  routerLink="/addscholarship">
                                                 <i class="fa fa-pencil-alt"></i>Add Scholarship </a> </li>
-                                        <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/institutelibrary">
+                                        <li *ngIf="institute() && check_login()"> <a  routerLink="/institutelibrary">
                                                 <i class="fa fa-pencil-alt"></i>My Library </a> </li>
-                                        <li *ngIf="institute() && check_login()"> <a onclick="topFunction()" routerLink="/change-password">
+                                        <li *ngIf="institute() && check_login()"> <a  routerLink="/change-password">
                                                 <i class="fa fa-pencil-alt"></i>Change Password </a> </li>
-                                        <li *ngIf="admin() && check_login()"> <a onclick="topFunction()" routerLink="/dashboard">
+                                        <li *ngIf="admin() && check_login()"> <a  routerLink="/dashboard">
                                                 <i class="fa fa-pencil-alt"></i>Admin Dashboard </a> </li>
-                                        <li> <a onclick="topFunction()" routerLink="/login" (click)="logout()"> <i
+                                        <li> <a  routerLink="/login" (click)="logout()"> <i
                                                     class="fa fa-sign-out-alt"></i>Logout </a> </li>
                                     </ul>
                                 </div>

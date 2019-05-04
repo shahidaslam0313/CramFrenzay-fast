@@ -99,7 +99,7 @@
 .homeSlider {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 80px
+    padding: 0 80px !important;
 }
 
 .homeSlider.banner {
@@ -125,9 +125,6 @@
     height: 100%
 }
 
-.innerpages {
-    margin: 20px auto 0!important
-}
 
 .homeSlider .item .item-inner .homesilder-title {
     position: absolute;
@@ -1215,18 +1212,10 @@ blockquote .blockquote-author {
 }
 
 .product-list__price {
-    font-size: 14px;
-    line-height: 16px;
-    color: #fe3f4c;
-    border: 1px solid #fe3f4c;
-    padding: 3px;
-    float: left;
-    border-radius: 30px;
+    font-size: 18px;
+    color: #333;
     margin: 0;
     font-weight: 700;
-    width: 54px;
-    overflow: hidden;
-    text-align: center
 }
 
 .product-list__item-info {
@@ -1254,7 +1243,8 @@ blockquote .blockquote-author {
     align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center
+    justify-content: center;
+    border-top: 1px solid #e2e2e2;
 }
 
 .product-list__item-info-1::after {
@@ -1284,7 +1274,7 @@ blockquote .blockquote-author {
     color: #fff!important;
     padding: 3px 12px;
     border-radius: 50px;
-    margin-right: 5px;
+    margin-right: 0;
     font-size: 16px;
     font-weight: 700;
     white-space: nowrap;
@@ -3972,7 +3962,7 @@ focus {
 .sub-sub-menu ul li a img {
     width: 20px;
     height: 100%;
-    margin-right: 10px
+    margin-right: 5px
 }
 
 .carousel-inner .slick-list {
@@ -4603,13 +4593,13 @@ fieldset {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4), 0 6px 20px 0 rgba(0, 0, 0, .2)
 }
 
-.fa-android,
+/* .fa-android,
 .fa-apple,
 .fa-cart-plus,
 .fa-heart,
 .search-size {
     font-size: 22px!important
-}
+} */
 
 .list-normal {
     padding: 0;
@@ -4670,7 +4660,7 @@ fieldset {
 }
 
 .heart-li sup {
-    top: -20px;
+    top: -15px;
     left: -5px
 }
 
@@ -4754,13 +4744,12 @@ fieldset {
 }
 
 .heart-card-btn {
-    padding: 5px 10px;
+  
     text-align: center;
+    padding: 5px 10px;
     background: #000;
     border: 1px solid #000;
-    -webkit-box-shadow: 0 0 15px -1px #000;
-    box-shadow: 0 0 15px -1px #000;
-    border-radius: 5px;
+    border-radius: 50px;
     color: #fff;
     display: inline-block;
     font-size: 14px;
@@ -4780,8 +4769,7 @@ fieldset {
     background: #c00;
     color: #fff;
     border-color: #c00;
-    -webkit-box-shadow: 0 0 15px -1px #c00;
-    box-shadow: 0 0 15px -1px #c00
+
 }
 
 .wishlist-btn-div {
@@ -4793,8 +4781,9 @@ fieldset {
 
 .wishlist-btn {
     color: #fff;
-    background: #c00;
+    background: #000;
     padding: 15px;
+    border-radius: 50px;
     display: block
 }
 
@@ -4812,7 +4801,7 @@ fieldset {
 }
 
 .addtocart-li sup {
-    top: -20px;
+    top: -15px;
     left: -5px
 }
 
@@ -5218,7 +5207,8 @@ fieldset {
 }
 
 .user-add-ingo-form .mat-input-element {
-    font-size: 20px
+    font-size: 16;
+    color:#333;
 }
 
 .user-add-ingo-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
@@ -5263,7 +5253,7 @@ body.modal-open {
 }
 
 .min-height-product-list {
-    min-height: 330px
+    min-height: 320px
 }
 
 .star-icon {
@@ -5362,6 +5352,55 @@ button:hover,.btn:hover{
     line-height: 24px;
     font-size: 14px;
 }
+.product-list__item-info-1 .btn-style {
+    margin-right: 5px;
+    font-size: 13px;
+}
+.buy_btn .btn-style{
+    font-size: 13px;
+}
+/* .........Course div Start.............. */
+.rating_and_price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.heart_cart_buy{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.wishlist.material-icons{
+    vertical-align: sub;
+    margin-left: 5px;
+}
+.heart_cart i:hover{
+    color: #c00;
+    cursor: pointer;
+}
+.already-bought{
+    font-size: 14px;
+    font-weight: 600;
+    color: #008000;
+}
+.already-bought img{
+    display: inline !important;
+    width: 25px;
+}
+
+/* .........Course div End.............. */
+/* ------------Notesgenie start----------------- */
+.innerpages {
+    margin: 20px 20px 0;
+    min-height: 160px
+}
+.innerpages.homeSlider{
+    padding: 0 50px !important;
+}
+/* ----------------------Notesgenie---------------------- */
+
+
+
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
         width: 85%;
