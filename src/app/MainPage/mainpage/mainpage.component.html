@@ -207,7 +207,7 @@
                             </div>
                             <rating class="rating-star-icons float_left" ngModel="{{data.rating}}" [readonly]="true"
                                 titles="{{data.rating}}"></rating>
-                                <p class="product-list__price">${{data?.price}}</p>
+                                <a class="product-list__price" routerLink="/eachcourse/{{data.id}}">${{data?.price}}</a>
 
                                 
                             <div class="float_right">
@@ -299,7 +299,7 @@
                                 <div class="rating_and_price">
                                         <rating class="rating-star-icons " ngModel="{{data.rating}}" [readonly]="true"
                                         titles="{{data.rating}}"></rating>
-                                        <p class="product-list__price">{{data.price | currency:'USD'}}</p>
+                                        <a class="product-list__price" routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                                 </div>
                                 <!-- ------Rating and Price End------- -->
     
@@ -403,7 +403,7 @@
                                     <rating class="rating-star-icons " ngModel="{{data.rating}}" [readonly]="true"
                                     titles="{{data.rating}}">
                                 </rating>
-                                    <p class="product-list__price ">{{data.price | currency:'USD'}}</p>
+                                    <a class="product-list__price " routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                             </div>
                             <!-- ------Rating and Price End------- -->
 
