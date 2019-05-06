@@ -75,6 +75,7 @@ export const appRoutes: Routes = [
       { path: 'notes/:id', loadChildren: './NotesGenie/notes/notes.module#NotesModule' },
       { path: 'ngseemore/:name', loadChildren: './NotesGenie/ngseemore/ngseemore.module#NgseemoreModule' },
       //FlashCard Module
+      { path: 'flashcard-subactegory/:id', loadChildren: './FlashCard/flashcard-subcategory/flashcard-subcategory.module#cardsubcategoryModule' },
       { path: 'fcseemore/:id', loadChildren: './FlashCard/fcseemore/fcseemore.module#FcseemoreModule' },
       { path: 'flashcard', loadChildren: './FlashCard/flashcard/flashcard.module#FlashcardModule' },
       { path: 'fcdetail/:id', loadChildren: './FlashCard/fcdetail/fcdetail.module#FcdetailModule' },

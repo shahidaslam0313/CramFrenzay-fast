@@ -91,6 +91,7 @@ import { FlashsearchService } from './FlashCard/flashsearch/flashsearch.service'
 import { FcseemoreService } from './FlashCard/fcseemore/fcseemore.service';
 import { fcdetailservice } from './FlashCard/fcdetail/fcdetail.service';
 import { MainpageComponent } from './MainPage/mainpage/mainpage.component';
+import { cardsubcategoryeservice } from './FlashCard/flashcard-subcategory/flashcard-subcategory.service'
 //Tutors Module
 import { TeachersService } from './Tutors/teachers/teachers.service';
 import { TutorregistrationService } from './Tutors/tutorregistration/tutorregistration.service';
@@ -136,6 +137,7 @@ import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategory
 import {NestedcategorylistService} from './nestedcategorylist/nestedcategorylist.service';
 import { categorywisecourseservice } from './Course/course-subcategory/course-subcategory.service';
 import {CoursesmService} from './Course/coursesm/coursesm.service';
+// import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
 // import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
 export function provideConfig() {
@@ -174,6 +176,7 @@ export function provideConfig() {
 
 
   // CourseSubcategoryComponent
+// FlashcardSubcategoryComponent
 ],
 })
 
@@ -309,6 +312,7 @@ export class MaterialModule { }
     flashcardservice,
     FlashcardlistService,
     FlashsearchService,
+    cardsubcategoryeservice,
     fcdetailservice,
     FcseemoreService,
     //Tutors Module
