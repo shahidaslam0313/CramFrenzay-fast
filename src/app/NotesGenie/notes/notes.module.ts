@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {LoaderModule} from '../../loader/loader.module';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 const notesRoutes: Routes = [
   { path: '', component: NotesComponent }
@@ -17,7 +18,8 @@ const notesRoutes: Routes = [
     CommonModule,
     MaterialModule,
     LoaderModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    PdfViewerModule
   ],
   declarations: [
     NotesComponent

@@ -16,7 +16,8 @@ import { PagerService } from '../../paginator.service';
 })
 export class NotesComponent implements OnInit {
   @ViewChild(AddtocartComponent)
-  public Imageurl = Config.Imageurleach;
+  public Imageurl = Config.Imageurlget;
+  public pdfview = Config.pdf;
   result;
   public Eid: any;
   private sub: Subscription;

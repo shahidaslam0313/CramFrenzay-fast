@@ -25,6 +25,7 @@ import {
   MatSelectModule,
   MatTabsModule, MatSlideToggleModule, MatNativeDateModule, MatButtonModule,
 } from '@angular/material';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { Routing } from './app.routing';
 import { HttpModule } from '@angular/http';
@@ -105,7 +106,7 @@ import { BecomepartnerService } from './Footer/becomepartner/becomepartner.servi
 import { PurchaseService } from './userdashboard/purchase/purchase.service';
 import { uploadservice } from './userdashboard/upload/upload.service';
 import { uploadnotesservice } from './userdashboard/uploadnotes/uploadnotes.service';
-import { UserprofileService } from './userdashboard/userprofile/userprofile.service';
+// import { UserprofileService } from './../userdashboard/userprofile/userprofile.service';
 import { ChangePasswordService } from './userdashboard/change-password/change-password.service';
 import { MylibraryService } from './userdashboard/mylibrary/mylibrary.service';
 import { ChangePasswordComponent } from './userdashboard/change-password/change-password.component';
@@ -136,6 +137,8 @@ import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategory
 import {NestedcategorylistService} from './nestedcategorylist/nestedcategorylist.service';
 import { categorywisecourseservice } from './Course/course-subcategory/course-subcategory.service';
 import {CoursesmService} from './Course/coursesm/coursesm.service';
+import {UserprofileService} from "./userdashboard/userprofile/userprofile.service";
+// import { UsersidebarComponent } from './userdashboard/usersidebar/usersidebar.component';
 
 // import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
 export function provideConfig() {
@@ -198,6 +201,7 @@ export class MaterialModule { }
     MatButtonModule,
     HttpModule,
     Routing,
+    PdfViewerModule,
     HttpClientModule,
     RatingModule,
     SocialLoginModule,
@@ -223,7 +227,8 @@ export class MaterialModule { }
     OfferactivityComponent,
     OfferactivityPaymentComponent,
       NestedcateroyComponent,
-      NestedcategorylistComponent
+      NestedcategorylistComponent,
+    // UsersidebarComponent
   ],
   providers: [
     {
@@ -259,8 +264,9 @@ export class MaterialModule { }
     uploadnotesservice,
     uploadbookservice,
     uploadcardservice,
-    UserprofileService,
+    // UserprofileService,
     ChangePasswordService,
+    UserprofileService,
     paymentservice,
     MylibraryService,
     FlashcardetailService,
@@ -333,7 +339,8 @@ export class MaterialModule { }
     WinbidDialogComponent,
     AcceptofferComponent,
     OfferactivityPaymentComponent,
-      NestedcateroyComponent,NestedcategorylistComponent
+      NestedcateroyComponent,NestedcategorylistComponent,
+    // UsersidebarComponent
 
   ],
 
