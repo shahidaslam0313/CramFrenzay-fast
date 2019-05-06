@@ -228,7 +228,7 @@ postrequirment(f: NgForm){
 
     });
     // alert(this.id)
-    
+
   }
 }
 @Component({
