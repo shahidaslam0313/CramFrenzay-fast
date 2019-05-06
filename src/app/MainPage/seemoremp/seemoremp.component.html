@@ -35,7 +35,7 @@
                         <div class="heart_cart">
                             <!-- ---------------Heart start------------- -->
                             <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
-                                (click)="delCourseFwishList(data)">
+                                (click)="delNotesFtrendingNow(data)">
                             </i>
                             <i class=" far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data?.id)"
                                 *ngIf="!data.wishlist==true">
@@ -119,10 +119,10 @@
                     <!-- Cart Start -->
                     <div class="heart_cart_buy">
                         <div class="heart_cart">
-                            <i class="far fa-heart" title="Add to wishlist"
+                            <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true" 
                                 (click)="addwishlist(data.id,nullvalue,nullvalue,nullvalue)"> </i>
                             <i title="Delete from wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
-                                (click)="delBookFwishList(data)"></i>
+                                (click)="delCourseFwishList(data)"></i>
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
                                 (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart"
