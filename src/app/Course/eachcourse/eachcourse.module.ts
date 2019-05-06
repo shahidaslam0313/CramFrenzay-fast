@@ -9,7 +9,6 @@ import {VgBufferingModule} from "videogular2/buffering";
 import {VgCoreModule} from "videogular2/core";
 import {VgOverlayPlayModule} from "videogular2/overlay-play";
 import {VgControlsModule} from "videogular2/controls";
-import {CKEditorModule} from "ng2-ckeditor";
 import {AddVideoComponent, IntroVideoComponent} from "../../userdashboard/coursevideo/coursevideo.component";
 import {VideoShowDialogComponent} from "../../userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
 // import { AddtocartComponent } from './../../addtocart/addtocart.component';
@@ -27,7 +26,7 @@ const EachcourseRoutes: Routes = [
     VgCoreModule,
     VgOverlayPlayModule,
     VgControlsModule,
-    CKEditorModule
+
   ],
   declarations: [
     EachcourseComponent,

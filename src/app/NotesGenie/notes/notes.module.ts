@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { NotesComponent } from './notes.component';
 import {RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
@@ -17,7 +16,8 @@ const notesRoutes: Routes = [
     CommonModule,
     MaterialModule,
     LoaderModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+
   ],
   declarations: [
     NotesComponent

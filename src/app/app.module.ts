@@ -13,8 +13,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CountdownModule } from "ng2-countdown-timer";
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
-import { ImageViewerModule } from 'ng2-image-viewer';
-import { CKEditorModule } from 'ng2-ckeditor';
+
 import {
   MatCardModule,
   MatDatepickerModule,
@@ -195,19 +194,20 @@ export class MaterialModule { }
     BrowserAnimationsModule,
     MaterialModule,
     MatInputModule,
-    ImageViewerModule,
+
     LoaderModule,
     CountdownModule,
     MatButtonModule,
     HttpModule,
     Routing,
+
     HttpClientModule,
     RatingModule,
     SocialLoginModule,
     MatSlideToggleModule,
     MatNativeDateModule,
     TextMaskModule,
-    CKEditorModule
+
 
 
   ],
@@ -226,7 +226,8 @@ export class MaterialModule { }
     OfferactivityComponent,
     OfferactivityPaymentComponent,
       NestedcateroyComponent,
-      NestedcategorylistComponent
+      NestedcategorylistComponent,
+    // UsersidebarComponent
   ],
   providers: [
     {
@@ -262,8 +263,9 @@ export class MaterialModule { }
     uploadnotesservice,
     uploadbookservice,
     uploadcardservice,
-    UserprofileService,
+    // UserprofileService,
     ChangePasswordService,
+    UserprofileService,
     paymentservice,
     MylibraryService,
     FlashcardetailService,
@@ -337,7 +339,8 @@ export class MaterialModule { }
     WinbidDialogComponent,
     AcceptofferComponent,
     OfferactivityPaymentComponent,
-      NestedcateroyComponent,NestedcategorylistComponent
+      NestedcateroyComponent,NestedcategorylistComponent,
+    // UsersidebarComponent
 
   ],
 

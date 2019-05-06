@@ -45,7 +45,7 @@
         <div class="container-fluid padding-zero">
             <div class="padding-0 float_left width100">
                 <div class="width-20-percent float_logo"> <a  routerLink="/" class="logo"> <img
-                            src="/assets/img/CramFrenzyLogoBlackColor.png" alt="CramFrenzy" /> </a> </div>
+                            src="/assets/img/Logo.svg" alt="CramFrenzy" /> </a> </div>
                 <div class="main-nav__btn" data-toggle="collapse" data-target="#mainNav">
                     <div class="icon-left"></div>
                     <div class="icon-right"></div>
@@ -133,8 +133,6 @@
                                     <li> <a  routerLink="/findtutor"> <img class="find-tutors"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Find a Tutor</a> </li>
-                                    <!--<li> <a  href=""> <img class="q-a-expert" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
-                                            <!--Q/A Experts</a> </li>-->
                                 </ul>
                             </div>
                         </li>
@@ -181,6 +179,9 @@
                                             </ul>
                                         </div>
                                     </li>
+
+
+
                                     <li class="main-nav__list_books_1"> <a  routerLink="/allbooks">
                                             <i class="fa fa-book"></i>Books </a>
                                         <div class="sub-sub-menu">
@@ -311,15 +312,16 @@
                                                     <div class="heart-price"> <span class="heart-new-price">{{data?.flashcard.price
                                                             | currency:'USD'}}</span> <span class="discount-p">{{data?.flashcard.discount
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                    </div>
-                                                </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                            <a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
                                                 Move to Cart </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
-                                            routerLink="/wishlist" class="addtocart-btn">Go to Watchlist</a> </div>
+                                            routerLink="/wishlist" class="btn">Go to Watchlist</a> </div>
                                 </div>
                             </li>
                             <li class="addtocart-li" *ngIf="check_login()"> <a  routerLink="/addtocart"
@@ -405,11 +407,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="addtocart-btn-div">
+                                    <div class="btn-div">
                                         <div class="addtocart-main-total">
                                             <div class="addtocart-main-total-title"> Total: </div>
                                             <div class="addtocart-main-total-price"> ${{totalprice}}</div>
-                                        </div><a  routerLink="/addtocart" class="addtocart-btn">Go
+                                        </div><a  routerLink="/addtocart" class="btn">Go
                                             to Cart</a>
                                     </div>
                                 </div>
