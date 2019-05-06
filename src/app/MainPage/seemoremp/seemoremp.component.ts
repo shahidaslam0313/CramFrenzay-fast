@@ -235,20 +235,30 @@ export class SeemorempComponent implements OnInit {
         type: 'success',
         title: 'Added to Watch List',
         showConfirmButton: false,
-        timer: 4500
+        timer: 2000
       })
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
       })
     }, error => {
-      if (error.status == 404)
+      if (error.status == 404){
         swal({
           type: 'warning',
           title: 'This item is already exist in your watch list',
           showConfirmButton: false,
-          timer: 4500
+          timer: 2000
         })
+      }
+      else if(error.status == 406){
+        swal({
+          type: 'error',
+          title: 'Item Already Purchased',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }
+      
     });
 
   }
