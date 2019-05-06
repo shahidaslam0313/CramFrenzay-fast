@@ -39,6 +39,5 @@ const EachcourseRoutes: Routes = [
 
   ]
 
-  // providers: [AddtocartService]
 })
 export class EachcourseModule {}
