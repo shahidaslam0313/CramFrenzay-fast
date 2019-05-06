@@ -12,6 +12,7 @@ import { HeaderComponent } from './includes/header/header.component';
 import {FooterComponent} from './includes/footer/footer.component';
 import {NestedcateroyComponent} from './nestedcateroy/nestedcateroy.component';
 import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategorylist.component';
+// import {UsersidebarComponent} from "./userdashboard/usersidebar/usersidebar.component";
 
 export const appRoutes: Routes = [
   { path: '', component: MainpageComponent },
@@ -35,6 +36,8 @@ export const appRoutes: Routes = [
       { path : 'offeractivity' , component: OfferactivityComponent},
         { path : 'nestedcateroy/:id' , component: NestedcateroyComponent},
         { path : 'nestedcategorylist/:id' , component: NestedcategorylistComponent},
+      // { path : 'usersidebar' , component: UsersidebarComponent},
+
       { path: 'generalsearch/:name', loadChildren: './generalsearch/generalsearch.module#GeneralsearchModule' },
       { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
       { path: 'login', loadChildren: './login/login.module#LoginModule' },
@@ -75,6 +78,7 @@ export const appRoutes: Routes = [
       { path: 'notes/:id', loadChildren: './NotesGenie/notes/notes.module#NotesModule' },
       { path: 'ngseemore/:name', loadChildren: './NotesGenie/ngseemore/ngseemore.module#NgseemoreModule' },
       //FlashCard Module
+      { path: 'flashcard-subactegory/:id', loadChildren: './FlashCard/flashcard-subcategory/flashcard-subcategory.module#cardsubcategoryModule' },
       { path: 'fcseemore/:id', loadChildren: './FlashCard/fcseemore/fcseemore.module#FcseemoreModule' },
       { path: 'flashcard', loadChildren: './FlashCard/flashcard/flashcard.module#FlashcardModule' },
       { path: 'fcdetail/:id', loadChildren: './FlashCard/fcdetail/fcdetail.module#FcdetailModule' },
