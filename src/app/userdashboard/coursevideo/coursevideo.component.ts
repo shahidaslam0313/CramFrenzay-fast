@@ -120,7 +120,7 @@ postrequirment(f: NgForm){
     this.video.getchaptername(this.id).subscribe(data => {
       this.getchapter = data.data;
       this.videos = data.vedios;
-      this.chpt = data.chapters;
+      this.chpt = data['Total Chapter'];
       this.time = data['Total Hours'];
       this.totalvideos = data.totalvideos;
       this.totalvid = data['Total Lectures'];
@@ -227,7 +227,8 @@ postrequirment(f: NgForm){
     dialogRef.afterClosed().subscribe(result => {
 
     });
-    alert(this.id)
+    // alert(this.id)
+    
   }
 }
 @Component({

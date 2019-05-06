@@ -11,17 +11,6 @@
     <div class="col-lg-12">
       <h1>Course Lessons</h1>
       <div class="col-md-3 float-left">
-        <!--<ul class="nav nav-tabs" id="myTab" role="tablist">-->
-        <!--<li class="nav-item active">-->
-        <!--<a aria-controls="home" class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-expanded="true">Introduction</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-        <!--<a aria-controls="home" class="nav-link active" data-toggle="tab" href="#home1" role="tab" aria-expanded="true">Curriculum</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-        <!--<a aria-controls="home" class="nav-link active" data-toggle="tab" href="#home2" role="tab" aria-expanded="true">Course Overview</a>-->
-        <!--</li>-->
-        <!--</ul>-->
         <ul class="nav nav-tabs side-tabs">
           <li class="width100"><a data-toggle="tab" class="active" href="#home">Introduction</a></li>
           <li class="width100"><a data-toggle="tab" href="#home1">Curriculum</a></li>
@@ -78,8 +67,10 @@
               <span>Total Time: {{time}}</span>
               <!--<span *ngIf="!totalvideos">Total Video:00:00:00</span>-->
               <!--<span>Total Video: {{totalvideos}}</span>-->
-              <span *ngIf="!totalvid">Total Chapters: 0</span>
-              <span>Total Chapters:{{totalvid}} </span>
+              <span *ngIf="!totalvid">Total Videos: 0</span>
+              <span *ngIf="totalvid">Total Videos:{{totalvid}} </span>
+              <span *ngIf="!chpt">Total Chapters: 0</span>
+              <span *ngIf="chpt">Total Chapters:{{chpt}} </span>
             </div>
             <div class="panel-group float-left width100">
               <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
@@ -107,10 +98,10 @@
                       <tr *ngFor="let video of videos; let j=index">
                         <td *ngIf="data?.chapters.id===video.chapter_id"><i class="fa fa-play-circle"
                             (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
-                        <td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_minutes}}</a></td>
+                        <td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_size}}MB</a></td>
                         <td *ngIf="video.allow_to_view==true">
                           Preview</td>
-                        <td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_size}}Min
+                        <td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_minutes}}Min
                           <a data-toggle="modal" value="Delete" href="#delVideo" data-target="#delVideo"
                             (click)="deleteVideo(video?.id)" class="display-inline-block">
                             <i class="fas fa-trash-alt"></i>
@@ -147,12 +138,7 @@
                 <div class="col-lg-12">
                   <mat-form-field class="width100">
                   <textarea matInput placeholder="Description" [(ngModel)]="model.description" name="description">
-<!-- 
-                <ckeditor [(ngModel)]="model.description" name="description">
-                    <ckbutton [name]="'saveButton'" [command]="'saveCmd'" (click)="save($event)" [icon]="'save.png'"
-                      [label]="'Save Document'" [toolbar]="'clipboard,1'">
-                    </ckbutton>
-                  </ckeditor> -->
+
                   </textarea>
                   </mat-form-field>
                 </div>
