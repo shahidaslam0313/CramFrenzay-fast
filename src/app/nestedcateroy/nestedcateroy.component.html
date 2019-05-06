@@ -7,7 +7,7 @@
           <!--<a routerLink="/eachcourse/{{data?.id}}">-->
             <a routerLink="/nestedcategorylist/{{data?.id}}" (click)="nestedcatname(data.name)">
             <!--<img src="{{Imageurl}}{{data?.icon_class}}" alt="Course">-->
-            <img src="/assets/img/CramFrenzy.png" > </a>
+            <img src="/assets/img/Logo-gray.jpg" > </a>
 
           <div class="wishlist-overlay">
             <a class="product-list__wishlist" (click)="addwishlist(data.id)">
@@ -19,23 +19,13 @@
           <div class="product-list__category">
             <a  title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a>
           </div>
-          <!-- <div class="product-list__title tutor-subject mb-3">
-              <span title="Author Name:{{data?.author | titlecase}}">{{data?.author | titlecase}}</span>
-          </div>
-          <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-          <br> -->
-          <!-- <p class="product-list__price">{{data?.price | currency:'USD'}}</p> -->
+        
         </div>
-        <!-- <div class="product-list__item-info-1">
-            <a class="btn-style" (click)="courses(data.id)"> Buy Now </a>
-            <a class="btn-style" (click)="courses(data.id)" *ngIf="data.bid_status==true"> Bid Now </a>
-        </div> -->
+        
       </div>
     </div>
   </div>
 </div>
-<!-- notes sb category-->
-
 <div class="container"  *ngIf="nameID == 'notes' && notes?.length != '0'">
   <h1  class="mainbanner bg-Bid-Notes">Notes Nested Categories in {{name}}</h1>
   <div class="row">

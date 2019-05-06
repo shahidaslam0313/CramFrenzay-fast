@@ -1,6 +1,6 @@
 <div class="each-upper-banner">
     <div class="container">
-        <h1 class="text-center text-center">Course</h1>
+        <!-- <h1 class="text-center text-center">Course</h1> -->
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}</h1>
@@ -103,79 +103,69 @@
                 </div>
                 <hr>
                 <div class="card-footer">
-                    <h1 class="text-center">Share via:</h1>
+                    <h1 class="text-center">Share This Course:</h1>
                     <ul class="card-footer-social-icon">
-                        <li> <a routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
-                        <li> <a routerLink=""> <i class="fab fa-twitter"></i> </a> </li>
-                        <li> <a routerLink=""> <i class="fab fa-pinterest"></i> </a> </li>
+                        <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
+                        <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
+                        <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-8 col-sm-12">
-            <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
-                <div class="padding-10 float_left">
-                    <div *ngFor="let reviews of view?.reviews">
-                        <div *ngIf="reviews !=null">
-                            <div class="pull-left">
-                                <div class="review-container">
-                                    <div class="pull-left">
-                                        <div class="user-image">
-                                            <span>AT</span>
-                                        </div>
-                                        <div class="pull-left">
-                                            <div class="time-to-go">
-                                                <span>{{reviews?.commentDate}}</span>
-                                            </div>
-                                            <div class="user-name">
-                                                <span>Anas Tahir</span>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="pull-right review-box">
-                                        <div class="rating float_left width100">
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i>
+          <div class="background-grey review-section ">
+                        <h4>Reviews</h4>
+                      
+                            <div *ngFor="let reviews of view?.reviews">
+                                <div *ngIf="reviews !=null">
+                                 
+                                        <div class="review-container">
+                                            <div class="pull-left">
+                                                <div class="user-image">
+                                                    <span>AT</span>
+                                                </div>
+                                                <div class="pull-left">
+                                                    <div class="time-to-go">
+                                                        <span>{{reviews?.commentDate  | date:'medium'
+
+                                                          }}</span>
+                                                    </div>
+                                                    <div class="user-name">
+                                                        <span>Anas Tahir</span>
+                                                    </div>
+                                                </div>
+        
                                             </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i>
-                                            </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i>
-                                            </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star-half filled"></i>
-                                            </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i>
+                                            <div class="review-box">
+                                                <div class="rating float_left width100">
+                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                            class="fa fa-star filled"></i>
+                                                    </div>
+                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                            class="fa fa-star filled"></i>
+                                                    </div>
+                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                            class="fa fa-star filled"></i>
+                                                    </div>
+                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                            class="fa fa-star-half filled"></i>
+                                                    </div>
+                                                    <div class="float_left position-relative"> <i class="far fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p>{{reviews?.comment}}</p>
                                             </div>
                                         </div>
-                                        <p>{{reviews?.comment}}</p>
-                                    </div>
+                                   
+                                   
                                 </div>
+        
                             </div>
-                            <!-- <div class="col-md-12">
-                                <h3>Comment: {{reviews?.comment}}</h3>
-                                <h3>Post date: {{reviews?.commentDate}}</h3>
-                            </div> -->
-                        </div>
-
+                        
+                        
                     </div>
-                </div>
-                <!--<div class="text-center pull-left" *ngIf="view==0">-->
-                    <!--<img src="../../../assets/img/No-One-Reviewed-this-Course.gif">-->
-                  <!--&lt;!&ndash;<img  video.setWatermark('../../../assets/img/No-One-Reviewed-this-Course.gif')>&ndash;&gt;-->
-                  <!--&lt;!&ndash;"../../../assets/img/No-One-Reviewed-this-Course.gif">&ndash;&gt;-->
-
-
-                  <!--&lt;!&ndash;<video autoplay loop muted playsinline>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<source src="../../../assets/img/No-One-Reviewed-this-Course.gif" type="video/webm">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<source src="../../../assets/img/No-One-Reviewed-this-Course.gif" type="video/mp4">&ndash;&gt;-->
-                  <!--&lt;!&ndash;</video>&ndash;&gt;-->
-                <!--</div>-->
-            </div>
         </div>
     </div>
 </div>
@@ -189,9 +179,9 @@
       <span>Total Chapters:{{totalvid}} </span>
       <div class="col-md-3 float-left">
         <ul class="nav nav-tabs side-tabs">
-          <!--<li class="width100"><a data-toggle="tab" class="active" href="#home">Introduction</a></li>-->
+        
           <li class="width100"><a data-toggle="tab" href="#home1">Curriculum</a></li>
-          <!--<li class="width100"><a data-toggle="tab" href="#home2">Course Overview</a></li>-->
+         
         </ul>
       </div>
       <div class="col-md-9 float-right course-tab">
@@ -201,8 +191,7 @@
             <div class="lec-info float-right">
               <span *ngIf="!time">Total Time:00:00:00</span>
               <span>Total Time: {{time}}</span>
-              <!--<span *ngIf="!totalvideos">Total Video:00:00:00</span>-->
-              <!--<span>Total Video: {{totalvideos}}</span>-->
+            
               <span *ngIf="!totalvid">Total Chapters: 0</span>
               <span>Total Chapters:{{totalvid}} </span>
             </div>
@@ -214,7 +203,7 @@
                       <span>{{data?.chapters.chapter_name}}</span>
                       <div class="mr-5 float_right">
                         <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
-                        <!--<span *ngIf="data.chapter_name"> Total Video {{vid.chaptervideos}} </span>-->
+                       
                       </div>
                     </a>
                   </h4>
