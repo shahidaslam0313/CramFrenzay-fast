@@ -266,7 +266,7 @@
                                     *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
                                 <a class="btn-style" data-toggle="modal" data-target="#notesbidnow"
                                     (click)="bidcourseid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased">
-                                    Bid Now </a>
+                                    Bid Now at {{data.bid_price | currency:'USD'}}</a>
                                 <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already
                                     Bought</a>
@@ -365,7 +365,7 @@
                                     Buy Now at {{data.price | currency:'USD'}}</a>
                                 <a class="btn-style" data-toggle="modal" data-target="#cards"
                                     (click)="getcardid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased"> Bid
-                                    Now
+                                    Now at {{data.bid_price | currency:'USD'}}
                                 </a>
                                 <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
@@ -462,7 +462,7 @@
                         <div class="product-list__item-info-1"> <a class="btn-style" (click)="books(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a> <a class="btn-style"
                                 data-toggle="modal" data-target="#bookbiding" (click)="booksid(data?.id)"
-                                *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
+                                *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
                                 <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                 Book Already Bought</a>
