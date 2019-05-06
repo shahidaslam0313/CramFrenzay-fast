@@ -22,7 +22,7 @@
 <ngx-slick class="carousel homeSlider innerpages" #slickModal="slick-modal" [config]="slideConfig2">
     <div ngxSlickItem class="slide item" *ngFor="let data of inner; let i=index">
         <div class="item-inner">
-            <a routerLink="/subcategory/{{data.id}}">
+            <a routerLink="/flashcard-subactegory/{{data.id}}" (click)=submit(data?.c_name)>
                 <img src="https://storage.cramfrenzy.com/Categories%20Web%20Images/{{data.image}}" alt="FlashCard Category">
                 <h4 class="homesilder-title">{{data.c_name}}</h4>
             </a>
@@ -59,7 +59,7 @@
                                     | titlecase}}</a>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            <p class="product-list__price">{{data.price | currency:'USD'}}</p>
+                            <a class="product-list__price" routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                             <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="addwishlist(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
@@ -129,7 +129,7 @@
                                 <a title="User Name:{{data.user_id}}" routerLink="/fcdetail/{{data.id}}">{{data.user_id}}</a>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            <p class="product-list__price">{{data.price | currency:'USD'}}</p>
+                            <a class="product-list__price" routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                             <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="addwishlist(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
@@ -198,7 +198,7 @@
                                 <a title="User Name:{{data.user_id}}" routerLink="/fcdetail/{{data.id}}">{{data.user_id}}</a>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            <p class="product-list__price">{{data.price | currency:'USD'}}</p>
+                            <a class="product-list__price" routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                             <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="addwishlist(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>
@@ -267,7 +267,7 @@
                                 <a title="User Name:{{data.user_id}}" routerLink="/fcdetail/{{data.id}}">{{data.user_id}}</a>
                             </div>
                             <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            <p class="product-list__price">{{data.price | currency:'USD'}}</p>
+                            <a class="product-list__price" routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                             <a class="product-list__wishlist wishlist_icon" title="Add to wishlist" (click)="addwishlist(data.id)">
                                 <div *ngIf="data.wishlist !=null" class="sh-red">
                                     <i class="fas fa-heart"></i>

@@ -23,7 +23,7 @@ declare const $: any;
 })
 export class FcdetailComponent implements OnInit, AfterContentInit {
   @ViewChild(AddtocartComponent)
-  public Imageurl = Config.Imageurleach;
+  public Imageurl = Config.Imageurlget;
   model: any = {};
   public result;
   public flashcardDetail: any;

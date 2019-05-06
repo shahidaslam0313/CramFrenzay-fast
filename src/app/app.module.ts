@@ -13,8 +13,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CountdownModule } from "ng2-countdown-timer";
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
-import { ImageViewerModule } from 'ng2-image-viewer';
-import { CKEditorModule } from 'ng2-ckeditor';
+
 import {
   MatCardModule,
   MatDatepickerModule,
@@ -25,7 +24,6 @@ import {
   MatSelectModule,
   MatTabsModule, MatSlideToggleModule, MatNativeDateModule, MatButtonModule,
 } from '@angular/material';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { Routing } from './app.routing';
 import { HttpModule } from '@angular/http';
@@ -92,6 +90,7 @@ import { FlashsearchService } from './FlashCard/flashsearch/flashsearch.service'
 import { FcseemoreService } from './FlashCard/fcseemore/fcseemore.service';
 import { fcdetailservice } from './FlashCard/fcdetail/fcdetail.service';
 import { MainpageComponent } from './MainPage/mainpage/mainpage.component';
+import { cardsubcategoryeservice } from './FlashCard/flashcard-subcategory/flashcard-subcategory.service'
 //Tutors Module
 import { TeachersService } from './Tutors/teachers/teachers.service';
 import { TutorregistrationService } from './Tutors/tutorregistration/tutorregistration.service';
@@ -106,7 +105,7 @@ import { BecomepartnerService } from './Footer/becomepartner/becomepartner.servi
 import { PurchaseService } from './userdashboard/purchase/purchase.service';
 import { uploadservice } from './userdashboard/upload/upload.service';
 import { uploadnotesservice } from './userdashboard/uploadnotes/uploadnotes.service';
-// import { UserprofileService } from './../userdashboard/userprofile/userprofile.service';
+import { UserprofileService } from './userdashboard/userprofile/userprofile.service';
 import { ChangePasswordService } from './userdashboard/change-password/change-password.service';
 import { MylibraryService } from './userdashboard/mylibrary/mylibrary.service';
 import { ChangePasswordComponent } from './userdashboard/change-password/change-password.component';
@@ -137,8 +136,7 @@ import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategory
 import {NestedcategorylistService} from './nestedcategorylist/nestedcategorylist.service';
 import { categorywisecourseservice } from './Course/course-subcategory/course-subcategory.service';
 import {CoursesmService} from './Course/coursesm/coursesm.service';
-import {UserprofileService} from "./userdashboard/userprofile/userprofile.service";
-// import { UsersidebarComponent } from './userdashboard/usersidebar/usersidebar.component';
+// import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
 // import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
 export function provideConfig() {
@@ -177,6 +175,7 @@ export function provideConfig() {
 
 
   // CourseSubcategoryComponent
+// FlashcardSubcategoryComponent
 ],
 })
 
@@ -195,20 +194,20 @@ export class MaterialModule { }
     BrowserAnimationsModule,
     MaterialModule,
     MatInputModule,
-    ImageViewerModule,
+
     LoaderModule,
     CountdownModule,
     MatButtonModule,
     HttpModule,
     Routing,
-    PdfViewerModule,
+
     HttpClientModule,
     RatingModule,
     SocialLoginModule,
     MatSlideToggleModule,
     MatNativeDateModule,
     TextMaskModule,
-    CKEditorModule
+
 
 
   ],
@@ -315,6 +314,7 @@ export class MaterialModule { }
     flashcardservice,
     FlashcardlistService,
     FlashsearchService,
+    cardsubcategoryeservice,
     fcdetailservice,
     FcseemoreService,
     //Tutors Module

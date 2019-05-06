@@ -192,6 +192,12 @@ export class FlashcardlistComponent implements OnInit {
       localStorage.setItem('name', query);
     }
   }
+  submit(nestedname) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('nestedname', nestedname);
+      // localStorage.setItem('nameID', 'flashcard');
+    }
+  }
 
   id;
   flashcard(id) {
