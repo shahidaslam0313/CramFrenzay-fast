@@ -81,7 +81,7 @@
             <div class="item slide" ngxSlickItem *ngFor="let data of inner; let i=index">
                 <div class="item-inner">
                     <a class="cat-img" routerLink="/subcategory/{{data.id}}" (click)="sliderClick(data.c_name)">
-                        <img src="../../../assets/img/category/{{data.c_name}}.png" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                        <img src="https://storage.cramfrenzy.com/3d_category/{{data.c_name}}.png" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
                     </a>
                     <h4 class="homesilder-title">{{data.c_name}}</h4>
                 </div>

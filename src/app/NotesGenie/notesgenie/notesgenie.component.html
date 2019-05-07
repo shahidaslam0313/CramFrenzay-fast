@@ -23,7 +23,7 @@
     <div ngxSlickItem class="slide item" *ngFor="let data of inner; let i=index">
         <div class="item-inner">
             <a routerLink="/category-wise-notes/{{data.id}}" (click)="submit(data?.c_name)">
-                <img src="https://storage.cramfrenzy.com/Categories%20Web%20Images/{{data.image}}" alt="">
+                <img src="https://storage.cramfrenzy.com/3d_category/{{data.image}}" alt="">
                 <h4 class="homesilder-title">{{data.c_name}}</h4>
             </a>
         </div>
