@@ -2,8 +2,8 @@
 <div class="sh-allbooks search-fixed">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-40">
         <form class="search-bg">
-            <input placeholder="Search Books" type="search" name="querysearch" [(ngModel)]="query" #querysearch="ngModel"
-                (keyup)=filter(query) class="search-bg__text">
+            <input placeholder="Search Books" type="search" name="querysearch" [(ngModel)]="query"
+                #querysearch="ngModel" (keyup)=filter(query) class="search-bg__text">
             <button class="search-bg__btn" (click)="onsubmit(query)">Search</button>
         </form>
         <div class="search-results">
@@ -15,7 +15,7 @@
                 <li *ngIf="searchResult.length==0"> </li>
             </ul>
         </div>
-        <div class="row search-results" *ngIf="!searchResultStatus">            
+        <div class="row search-results" *ngIf="!searchResultStatus">
             <p class="results-found"> No results found. Please use keywords.</p>
         </div>
     </div>
@@ -43,55 +43,71 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of bidallbooks?.books; let i=index">
                     <div class="product-list__item">
+                        <!-- Img start -->
                         <figure class="product-list__img">
                             <a routerLink="/detail/{{data.id}}">
                                 <img src="{{Imageurl}}{{data.book_image}}" alt="Books Image"> </a>
                             <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist" (click)="addwishlist(data?.id,nullvalue,nullvalue,nullvalue)">
+                                <a class="product-list__wishlist" title="Add to wishlist"
+                                    (click)="addwishlist(data?.id,nullvalue,nullvalue,nullvalue)">
                                     <i class="far fa-heart"></i>
                                 </a>
                             </div>
                         </figure>
+                        <!-- Img end -->
+                        <!-- book and author name start -->
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a routerLink="/detail/{{data.id}}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
+                                <a routerLink="/detail/{{data.id}}"
+                                    title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
-                                <a title="Author Name:{{data.author_name | titlecase}}" routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
+                                <a title="Author Name:{{data.author_name | titlecase}}"
+                                    routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
                             </div>
-                            <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            
-                            <a class="product-list__price" routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="addwishlist(data.id)">
-                                <div *ngIf="data.wishlist !=null" class="sh-red">
-                                    <i class="fas fa-heart"></i>
+                            <!-- book and author name end -->
+                            <!-- rating and price start -->
+                            <div class="rating_and_price">
+                                <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
+                                <a class="product-list__price"
+                                    routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                            </div>
+                            <!-- rating and price end-->
+                            <!-- ------Cart Heart and Buy Now Button div start------- -->
+                            <div class="heart_cart_buy">
+                                <div class="heart_cart">
+                                    <!-- Heart start -->
+                                    <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
+                                        (click)="addwishlist(data.id)"></i>
+                                    <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                                        (click)="delBookFwishList(data)"></i>
+                                    <!-- Heart end -->
+                                    <!-- cart start -->
+                                    <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
+                                        title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                    <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart"
+                                        (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                                 </div>
-                            </a>
-                            <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
-                                <i class="far fa-heart"></i>
-                            </div>
-                            <div *ngIf="!data.cart==false">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
-                            </div>
-                            <div *ngIf="!data.cart==true">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
+                                <!-- cart end -->
+                                <div class="buy_btn">
+                                    <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                        (click)="openDialog3(data?.id)">Offer Now</a>
+                                </div>
+                                </div>
+                                <!-- ------Cart Heart and offer Now Button div End------- -->
+                                <!-- buy and bid now start -->
+                                <div class="product-list__item-info-1">
+                                    <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
+                                        *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                        (click)="booksid(data?.id)" data-dismiss="modal"
+                                        *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
+                                    <a class="already-bought" *ngIf="data.Purchased == true">
+                                            <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
+                                </div>
+                                <!-- buy and bid now end -->
                             </div>
                         </div>
-                        <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true" (click)="openDialog3(data?.id)">Offer Now</a>
-                        </div>
-                        <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="booksid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                                <a class="btn-style" *ngIf="data.Purchased == true">Book Already Bought</a>
-                        </div>
-                    </div>
                 </div>
             </ngx-slick>
         </div>
@@ -112,54 +128,70 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of trends?.books; let i=index">
                     <div class="product-list__item">
+                        <!-- Img start -->
                         <figure class="product-list__img">
                             <a routerLink="/detail/{{data.id}}">
                                 <img src="{{Imageurl}}{{data.book_image}}" alt="Books Image"> </a>
                             <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist" (click)="addwishlist(data.id)">
+                                <a class="product-list__wishlist" title="Add to wishlist"
+                                    (click)="addwishlist(data.id)">
                                     <i class="far fa-heart"></i>
                                 </a>
                             </div>
                         </figure>
+                        <!-- Img end -->
+                        <!-- book and author name start -->
                         <div class="product-list__content">
-                            <div class="product-list__category">
-                                <a routerLink="/detail/{{data.id}}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
-                            </div>
-                            <div class="product-list__title tutor-subject">
-                                <a title="Author Name:{{data.author_name | titlecase}}" routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
-                            </div>
-                            <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            
-                            <a class="product-list__price" routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="addwishlist(data.id)">
-                                <div *ngIf="data.wishlist !=null" class="sh-red">
-                                    <i class="fas fa-heart"></i>
+                                <div class="product-list__category">
+                                    <a routerLink="/detail/{{data.id}}"
+                                        title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
                                 </div>
-                            </a>
-                            <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
-                                <i class="far fa-heart"></i>
-                            </div>
-                            <div *ngIf="!data.cart==false">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
-                            </div>
-                            <div *ngIf="!data.cart==true">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
-                            </div>
-                        </div>
-                        <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true" (click)="openDialog3(data?.id)">Offer Now</a>
-                        </div>
-                        <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="booksid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                                <a class="btn-style" *ngIf="data.Purchased == true">Book Already Bought</a>
-                            </div>
+                                <div class="product-list__title tutor-subject">
+                                    <a title="Author Name:{{data.author_name | titlecase}}"
+                                        routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
+                                </div>
+                                <!-- book and author name end -->
+                                <!-- rating and price start -->
+                                <div class="rating_and_price">
+                                    <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
+                                    <a class="product-list__price"
+                                        routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                </div>
+                                <!-- rating and price end-->
+                                <!-- ------Cart Heart and Buy Now Button div start------- -->
+                                <div class="heart_cart_buy">
+                                    <div class="heart_cart">
+                                        <!-- Heart start -->
+                                        <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
+                                            (click)="addwishlist(data.id)"></i>
+                                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                                            (click)="delBookFwishList(data)"></i>
+                                        <!-- Heart end -->
+                                        <!-- cart start -->
+                                        <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
+                                            title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                        <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart"
+                                            (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
+                                    </div>
+                                    <!-- cart end -->
+                                    <div class="buy_btn">
+                                        <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                            (click)="openDialog3(data?.id)">Offer Now</a>
+                                    </div>
+                                    </div>
+                                    <!-- ------Cart Heart and offer Now Button div End------- -->
+                                    <!-- buy and bid now start -->
+                                    <div class="product-list__item-info-1">
+                                        <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
+                                            *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                        <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                            (click)="booksid(data?.id)" data-dismiss="modal"
+                                            *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
+                                        <a class="already-bought" *ngIf="data.Purchased == true">
+                                                <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
+                                    </div>
+                                    <!-- buy and bid now end -->
+                    </div>
                     </div>
                 </div>
             </ngx-slick>
@@ -182,54 +214,70 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of toprate?.books; let i=index">
                     <div class="product-list__item">
+                        <!-- Img start -->
                         <figure class="product-list__img">
                             <a routerLink="/detail/{{data.id}}">
                                 <img src="{{Imageurl}}{{data.book_image}}" alt="Books Image"> </a>
                             <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist" (click)="addwishlist(data.id)">
+                                <a class="product-list__wishlist" title="Add to wishlist"
+                                    (click)="addwishlist(data.id)">
                                     <i class="far fa-heart"></i>
                                 </a>
                             </div>
                         </figure>
+                        <!-- Img end -->
+                        <!-- book and author name start -->
                         <div class="product-list__content">
-                            <div class="product-list__category">
-                                <a routerLink="/detail/{{data.id}}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
-                            </div>
-                            <div class="product-list__title tutor-subject">
-                                <a title="Author Name:{{data.author_name | titlecase}}" routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
-                            </div>
-                            <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            
-                            <a class="product-list__price" routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="addwishlist(data.id)">
-                                <div *ngIf="data.wishlist !=null" class="sh-red">
-                                    <i class="fas fa-heart"></i>
+                                <div class="product-list__category">
+                                    <a routerLink="/detail/{{data.id}}"
+                                        title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
                                 </div>
-                            </a>
-                            <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
-                                <i class="far fa-heart"></i>
-                            </div>
-                            <div *ngIf="!data.cart==false">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
-                            </div>
-                            <div *ngIf="!data.cart==true">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
-                            </div>
-                        </div>
-                        <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true" (click)="openDialog3(data?.id)">Offer Now</a>
-                        </div>
-                        <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="booksid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                                <a class="btn-style" *ngIf="data.Purchased == true">Book Already Bought</a>
-                            </div>
+                                <div class="product-list__title tutor-subject">
+                                    <a title="Author Name:{{data.author_name | titlecase}}"
+                                        routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
+                                </div>
+                                <!-- book and author name end -->
+                                <!-- rating and price start -->
+                                <div class="rating_and_price">
+                                    <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
+                                    <a class="product-list__price"
+                                        routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                </div>
+                                <!-- rating and price end-->
+                                <!-- ------Cart Heart and Buy Now Button div start------- -->
+                                <div class="heart_cart_buy">
+                                    <div class="heart_cart">
+                                        <!-- Heart start -->
+                                        <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
+                                            (click)="addwishlist(data.id)"></i>
+                                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                                            (click)="delBookFwishList(data)"></i>
+                                        <!-- Heart end -->
+                                        <!-- cart start -->
+                                        <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
+                                            title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                        <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart"
+                                            (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
+                                    </div>
+                                    <!-- cart end -->
+                                    <div class="buy_btn">
+                                        <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                            (click)="openDialog3(data?.id)">Offer Now</a>
+                                    </div>
+                                    </div>
+                                    <!-- ------Cart Heart and offer Now Button div End------- -->
+                                    <!-- buy and bid now start -->
+                                    <div class="product-list__item-info-1">
+                                        <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
+                                            *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                        <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                            (click)="booksid(data?.id)" data-dismiss="modal"
+                                            *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
+                                        <a class="already-bought" *ngIf="data.Purchased == true">
+                                                <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
+                                    </div>
+                                    <!-- buy and bid now end -->
+                    </div>
                     </div>
                 </div>
             </ngx-slick>
@@ -252,54 +300,70 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of top; let i=index">
                     <div class="product-list__item">
+                        <!-- Img start -->
                         <figure class="product-list__img">
                             <a routerLink="/detail/{{data.id}}">
                                 <img src="{{Imageurl}}{{data.book_image}}" alt="Books Image"> </a>
                             <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist" (click)="addwishlist(data.id)">
+                                <a class="product-list__wishlist" title="Add to wishlist"
+                                    (click)="addwishlist(data.id)">
                                     <i class="far fa-heart"></i>
                                 </a>
                             </div>
                         </figure>
-                        <div class="product-list__content">
-                            <div class="product-list__category">
-                                <a routerLink="/detail/{{data.id}}" title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
-                            </div>
-                            <div class="product-list__title tutor-subject">
-                                <a title="Author Name:{{data.author_name | titlecase}}" routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
-                            </div>
-                            <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
-                            
-                            <a class="product-list__price" routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
-                            <a class="product-list__wishlist wishlist_icon" title="Add to wishlist"
-                                (click)="addwishlist(data.id)">
-                                <div *ngIf="data.wishlist !=null" class="sh-red">
-                                    <i class="fas fa-heart"></i>
+                        <!-- Img end -->
+                         <!-- book and author name start -->
+                         <div class="product-list__content">
+                                <div class="product-list__category">
+                                    <a routerLink="/detail/{{data.id}}"
+                                        title="{{data.name | titlecase}}">{{data.name | titlecase}}</a>
                                 </div>
-                            </a>
-                            <div class="product-list__wishlist wishlist_icon" *ngIf="!data.wishlist==true" (click)="addwishlist(data.id)">
-                                <i class="far fa-heart"></i>
-                            </div>
-                            <div *ngIf="!data.cart==false">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Click and remove from Cart" (click)="delfromcart(data)"><i class="fa fa-cart-plus"></i></div>
-                            </div>
-                            <div *ngIf="!data.cart==true">
-                                <div class="product-list__wishlist wishlist_icon margin-left-10" style="color:red"
-                                    title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">
-                                    <a _ngcontent-c1="" class="wishlist material-icons"
-                                        title="Add to Cart">add_shopping_cart</a></div>
-                            </div>
-                        </div>
-                        <div class="text-center margin-top-10">
-                            <a class="btn-style" *ngIf="data?.accept_offer == true" (click)="openDialog3(data?.id)">Offer Now</a>
-                        </div>
-                        <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
-                                (click)="booksid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now </a>
-                                <a class="btn-style" *ngIf="data.Purchased == true">Book Already Bought</a>
-                        </div>
+                                <div class="product-list__title tutor-subject">
+                                    <a title="Author Name:{{data.author_name | titlecase}}"
+                                        routerLink="/detail/{{data.id}}">{{data.author_name | titlecase}}</a>
+                                </div>
+                                <!-- book and author name end -->
+                                <!-- rating and price start -->
+                                <div class="rating_and_price">
+                                    <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
+                                    <a class="product-list__price"
+                                        routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                </div>
+                                <!-- rating and price end-->
+                                <!-- ------Cart Heart and Buy Now Button div start------- -->
+                                <div class="heart_cart_buy">
+                                    <div class="heart_cart">
+                                        <!-- Heart start -->
+                                        <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
+                                            (click)="addwishlist(data.id)"></i>
+                                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                                            (click)="delBookFwishList(data)"></i>
+                                        <!-- Heart end -->
+                                        <!-- cart start -->
+                                        <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
+                                            title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                        <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart"
+                                            (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
+                                    </div>
+                                    <!-- cart end -->
+                                    <div class="buy_btn">
+                                        <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                            (click)="openDialog3(data?.id)">Offer Now</a>
+                                    </div>
+                                    </div>
+                                    <!-- ------Cart Heart and offer Now Button div End------- -->
+                                    <!-- buy and bid now start -->
+                                    <div class="product-list__item-info-1">
+                                        <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
+                                            *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                        <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                            (click)="booksid(data?.id)" data-dismiss="modal"
+                                            *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
+                                        <a class="already-bought" *ngIf="data.Purchased == true">
+                                                <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
+                                    </div>
+                                    <!-- buy and bid now end -->
+                    </div>
                     </div>
                 </div>
             </ngx-slick>
@@ -312,23 +376,24 @@
     </div>
 </div>
 <div class="modal fade" id="notesbidnow">
-  <div class="modal-dialog">
-    <div class="modal-content margin-top-175">
-      <div class="modal-header">
-        <div class="form-1-header">
-          <h1>Bid on Book</h1>
+    <div class="modal-dialog">
+        <div class="modal-content margin-top-175">
+            <div class="modal-header">
+                <div class="form-1-header">
+                    <h1>Bid on Book</h1>
+                </div>
+            </div>
+            <div class="modal-body">
+                <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" class="view-bid">view bid
+                    history </a>
+                <form name="form" role="form" method="post" class="user-add-ingo-form">
+                    <label>Place Your own bid:</label>
+                    <mat-form-field>
+                        <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*"
+                            [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"> </mat-form-field>
+                    <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID NOW </a>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="modal-body">
-            <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" class="view-bid">view bid history </a>
-        <form name="form" role="form" method="post" class="user-add-ingo-form">
-          <label>Place Your own bid:</label>
-          <mat-form-field>
-            <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
-                   #bidamount="ngModel" name="bidamount"> </mat-form-field>
-          <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID NOW </a>
-        </form>
-      </div>
     </div>
-  </div>
 </div>

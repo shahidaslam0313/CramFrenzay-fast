@@ -6094,7 +6094,9 @@ font-size: 24px;
 .sidebar .user-name{
   color: #fff;
 }
-
+.text-transform-none{
+  text-transform:none!important
+}
 @media only screen and (max-width:1480px) {
   .main-nav__list>li>.sub-menu>ul {
       width: 250px
