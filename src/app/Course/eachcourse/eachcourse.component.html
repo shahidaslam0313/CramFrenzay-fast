@@ -122,44 +122,48 @@
                                 <div *ngIf="reviews !=null">
                                  
                                         <div class="review-container">
-                                            <div class="pull-left">
                                                 <div class="user-image">
                                                     <span>AT</span>
                                                 </div>
-                                                <div class="pull-left">
-                                                    <div class="time-to-go">
-                                                        <span>{{reviews?.commentDate  | date:'medium'
-
-                                                          }}</span>
-                                                    </div>
+                                                <div >
                                                     <div class="user-name">
                                                         <span>Anas Tahir</span>
                                                     </div>
+                                                    <div class="time-to-go">
+
+                                                      <div>
+                                                          <span>{{reviews?.commentDate  | date:'medium'}}</span>
+                                                      </div>
+                                                        
+                                                        <div class="review-box">
+                                                            <div class="rating float_left width100">
+                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                        class="fa fa-star filled"></i>
+                                                                </div>
+                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                        class="fa fa-star filled"></i>
+                                                                </div>
+                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                        class="fa fa-star filled"></i>
+                                                                </div>
+                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                        class="fa fa-star-half filled"></i>
+                                                                </div>
+                                                                <div class="float_left position-relative"> <i class="far fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </div>
         
-                                            </div>
-                                            <div class="review-box">
-                                                <div class="rating float_left width100">
-                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                            class="fa fa-star filled"></i>
-                                                    </div>
-                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                            class="fa fa-star filled"></i>
-                                                    </div>
-                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                            class="fa fa-star filled"></i>
-                                                    </div>
-                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                            class="fa fa-star-half filled"></i>
-                                                    </div>
-                                                    <div class="float_left position-relative"> <i class="far fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <p>{{reviews?.comment}}</p>
-                                            </div>
+                                           
                                         </div>
                                    
-                                   
+                                        <div class="review-body">
+                                            <p>{{reviews?.comment}}</p>
+                                        </div>
                                 </div>
         
                             </div>

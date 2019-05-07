@@ -260,8 +260,8 @@ export class MainpageComponent implements OnInit {
       // console.log(this.inner);
       this.slideConfig2 = {
         infinite: true,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: 6,
+        slidesToScroll: 6,
         autoplay: false,
         prevArrow: '<button class="leftRs" style="left: 30px;"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button class="rightRs" style="right: 30px;"><i class="fa fa-chevron-right"></i></button>',

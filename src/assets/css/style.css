@@ -117,9 +117,14 @@
 .homeSlider .item .item-inner {
     height: 140px;
     position: relative;
-    border-radius: 10px
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
-
+.homeSlider .item .item-inner:hover {
+    background-color: transparent;
+}
 .homeSlider .item .item-inner img {
     width: 100%;
     height: 100%
@@ -128,7 +133,8 @@
 
 .homeSlider .item .item-inner .homesilder-title {
     position: absolute;
-    bottom: 20px;
+    bottom: 5px;
+    font-size: 18px;
     left: 0;
     right: 0;
     z-index: 2;
@@ -3546,13 +3552,15 @@ mat-form-field textarea {
 
 .img-userprofile {
     height: 150px;
-    width: 150px
+    width: 150px;
+    object-fit: cover;
 }
 
 #showdiv3,
 #showdiv4 {
     display: none
 }
+
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
     background-color: rgba(0, 0, 0, .47)!important
@@ -3714,7 +3722,15 @@ focus {
 .position-relative {
     position: relative
 }
-
+.review-body{
+        padding: 5px 60px;
+}
+.review-body p{
+    margin: 0;
+}
+.time-to-go span{
+font-size: 12px;
+}
 .review-box h1 {
     font-size: 72px;
     font-weight: 600;
@@ -3799,7 +3815,7 @@ fieldset {
 }
 
 .review-container {
-    margin-bottom: 27px;
+    display: flex;
     padding-top: 24px;
     border-top: 1px solid #dedfe0;
 }
@@ -3817,20 +3833,23 @@ fieldset {
     overflow: hidden
 }
 
-.review-container .pull-left .user-image {
+.review-container .user-image {
     background-color: #686f7a;
     border-radius: 50%;
     border: 1px solid #fff;
     color: #fff;
     font-size: 15px;
-    float: left;
     width: 50px;
     height: 50px;
-    display: flex;
-    align-items: center;
-    margin-right: 15px
+    margin-right: 10px;
+    display: table;
 }
-
+.review-container .user-image span{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 600;
+}
 .review-container .pull-left .user-image span {
     width: 100%;
     text-align: center
@@ -4133,8 +4152,6 @@ fieldset {
     font-size: 20px;
     cursor: pointer
 }
-
-.homeSlider .item .item-inner,
 .search-bg {
     overflow: hidden;
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .5);
@@ -4390,8 +4407,9 @@ fieldset {
 }
 
 .heart-img {
-    height: 94px;
-    width: 21%
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
 }
 
 .heart-contact {
@@ -4407,7 +4425,6 @@ fieldset {
 .heart-detail {
     color: #767676;
     font-size: 14px;
-    margin-bottom: 10px
 }
 
 .heart-new-price {
@@ -4423,18 +4440,7 @@ fieldset {
 }
 
 .heart-card-btn {
-  
-    text-align: center;
-    padding: 5px 10px;
-    background: #000;
-    border: 1px solid #000;
-    border-radius: 50px;
-    color: #fff;
-    display: inline-block;
     font-size: 14px;
-    line-height: normal;
-    font-weight: 600;
-    text-transform: capitalize
 }
 
 .addtocart-btn,
@@ -4455,21 +4461,18 @@ fieldset {
 .wishlist-btn-div {
     display: block;
     background: #f2f3f5;
-    padding: 20px;
-    margin-top: 10px
+    padding: 5px;
+    text-align: center;
 }
-
+.wishlist-btn-div .btn{
+    width: 50%;
+}
 .wishlist-btn {
     color: #fff;
     background: #000;
     padding: 15px;
     border-radius: 50px;
     display: block
-}
-
-.wishlist-btn:hover {
-    color: #fff;
-    background: #a00
 }
 
 .wishlist-btn:focus {
@@ -4543,13 +4546,15 @@ fieldset {
 }
 
 .addtocart-img {
-    height: 94px;
-    width: 21%
+    height: 50px;
+    width: 50px;
+    object-fit: cover
 }
 
 .discount-p {
     float: right;
-    color: #6d6c6c
+    color: #6d6c6c;
+    line-height: 34px;
 }
 .discount-p i{
     margin-left:5px;
@@ -4654,7 +4659,8 @@ fieldset {
     justify-content: space-between;
     margin: 0 12px 0 0;
     font-size: 20px;
-    font-weight: 600
+    font-weight: 600;
+    background-color: #f2f3f5;
 }
 
 .addtocart-main-total-title {
@@ -4881,6 +4887,7 @@ fieldset {
 .user-profile-form img {
     width: 100%;
     object-fit: cover;
+    height: 100%;
 }
 
 .user-add-ingo-form mat-form-field {
@@ -4928,8 +4935,7 @@ fieldset {
     top: 1.28125em!important
 }
 
-.user-link,
-.user-name {
+.user-link {
     font-size: 25px;
     text-align: center
 }
@@ -4952,10 +4958,8 @@ fieldset {
 
 .user-name {
     font-weight: 600;
-    margin: 10px 0;
     font-weight: 600;
-    margin: 10px 0;
-    color: #fff;
+    color: #333;
 }
 
 .user-link {
@@ -5230,6 +5234,7 @@ button,.btn{
     color: #fff;
     font-weight: 600;
     padding: 5px 10px;
+    cursor: pointer;
 }
 button:hover,.btn:hover{
     background: #c00 !important;
@@ -5311,7 +5316,20 @@ button:hover,.btn:hover{
 /* ----------------------Each Course Start---------------------------- */
 
 /* ----------------------Each Course End---------------------------- */
-
+.cat-img{
+    width: 128px;
+    height: 128px;
+    margin: 0 auto;
+}
+.item-inner:after {
+    position: absolute;
+    background: rgba(0,0,0,.4);
+    -webkit-transition: .3s ease all 0s;
+    -moz-transition: .3s ease all 0s;
+    -ms-transition: .3s ease all 0s;
+    -o-transition: .3s ease all 0s;
+    transition: .3s ease all 0s;
+}
 
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
