@@ -874,9 +874,10 @@ delfromcart(event) {
   getcardbidhistory(id) {
     this.bidings.cardbidhistory(this.cardid).subscribe(data => {
         this.cardbid = data;
-        this.flashcard = data['Highest Bid'];
+        this.flashcardsbid = data['Highest Bid'];
       })
   }
+  flashcardsbid;
   ///////////book bid history//////
   getbook;
   getbooks;

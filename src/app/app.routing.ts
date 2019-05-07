@@ -12,6 +12,8 @@ import { HeaderComponent } from './includes/header/header.component';
 import {FooterComponent} from './includes/footer/footer.component';
 import {NestedcateroyComponent} from './nestedcateroy/nestedcateroy.component';
 import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategorylist.component';
+import {CoursevideoComponent} from "./userdashboard/coursevideo/coursevideo.component";
+import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
 // import {UsersidebarComponent} from "./userdashboard/usersidebar/usersidebar.component";
 
 export const appRoutes: Routes = [
@@ -53,7 +55,11 @@ export const appRoutes: Routes = [
       { path: 'addevents', loadChildren: './institutedashboard/addevents/addevents.module#AddeventsModule', canActivate: [Auth2Service] },
       { path: 'institutelibrary', loadChildren: './institutedashboard/institutelibrary/institutelibrary.module#InstitutedetailModule', canActivate: [Auth2Service] },
       //Userdashboard Module
-      { path: 'coursevideo', loadChildren: './userdashboard/coursevideo/coursevideo.module#CoursevideoModule', canActivate: [Auth2Service] },
+      // { path: 'coursevideo', loadChildren: './userdashboard/coursevideo/coursevideo.module#CoursevideoModule', canActivate: [Auth2Service] },
+
+      { path : 'coursevideo' , component: CoursevideoComponent},
+      { path: 'eachcourse/:id', component: EachcourseComponent },
+
       { path: 'experience', loadChildren: './userdashboard/experience/experience.module#ExperienceModule' },
       { path: 'paymentmethods', loadChildren: './userdashboard/paymentmethods/paymentmethods.module#PaymentmethodsModule' },
       { path: 'biddingactivity', loadChildren: './userdashboard/biditems/biditems.module#BiditemsModule', canActivate: [Auth2Service] },
@@ -101,7 +107,8 @@ export const appRoutes: Routes = [
       { path: 'subcategory/:id', loadChildren: './Course/subcategory/subcategory.module#SubcategoryModule' },
       { path: 'course-subactegory/:id', loadChildren: './Course/course-subcategory/course-subcategory.module#coursecategoryModule' },
       { path: 'coursesearch/:name', loadChildren: './Course/coursesearch/coursesearch.module#CoursesearchModule' },
-      { path: 'eachcourse/:id', loadChildren: './Course/eachcourse/eachcourse.module#EachcourseModule' },
+      // { path: 'eachcourse/:id', loadChildren: './Course/eachcourse/eachcourse.module#EachcourseModule' },
+
       { path: 'course', loadChildren: './Course/course/course.module#CourseModule' },
       { path: 'coursesm/:name', loadChildren: './Course/coursesm/coursesm.module#CoursesmModule' },
       { path: 'categories', loadChildren: './Course/categories/categories.module#CategoriesModule' },

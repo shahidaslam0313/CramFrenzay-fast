@@ -136,6 +136,15 @@ import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategory
 import {NestedcategorylistService} from './nestedcategorylist/nestedcategorylist.service';
 import { categorywisecourseservice } from './Course/course-subcategory/course-subcategory.service';
 import {CoursesmService} from './Course/coursesm/coursesm.service';
+import {VgBufferingModule} from "videogular2/buffering";
+import {VgCoreModule} from "videogular2/core";
+import {VgOverlayPlayModule} from "videogular2/overlay-play";
+import {VgControlsModule} from "videogular2/controls";
+import {AddVideoComponent, IntroVideoComponent} from "./userdashboard/coursevideo/coursevideo.component";
+import {VideoShowDialogComponent} from "./userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
+import {CoursevideoComponent} from "./userdashboard/coursevideo/coursevideo.component";
+import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
+
 // import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
 // import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
@@ -194,7 +203,10 @@ export class MaterialModule { }
     BrowserAnimationsModule,
     MaterialModule,
     MatInputModule,
-
+    VgBufferingModule,
+    VgCoreModule,
+    VgOverlayPlayModule,
+    VgControlsModule,
     LoaderModule,
     CountdownModule,
     MatButtonModule,
@@ -216,6 +228,7 @@ export class MaterialModule { }
     SidebarComponent,
     AppComponent,
     HeaderComponent,
+    CoursevideoComponent,
     FooterComponent,
     ChangePasswordComponent,
     PaymentComponent,
@@ -226,8 +239,11 @@ export class MaterialModule { }
     OfferactivityComponent,
     OfferactivityPaymentComponent,
       NestedcateroyComponent,
+    EachcourseComponent,
       NestedcategorylistComponent,
-    // UsersidebarComponent
+    AddVideoComponent,
+    IntroVideoComponent ,
+    VideoShowDialogComponent
   ],
   providers: [
     {
@@ -340,7 +356,9 @@ export class MaterialModule { }
     AcceptofferComponent,
     OfferactivityPaymentComponent,
       NestedcateroyComponent,NestedcategorylistComponent,
-    // UsersidebarComponent
+    AddVideoComponent,
+    IntroVideoComponent ,
+    VideoShowDialogComponent
 
   ],
 
