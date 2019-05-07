@@ -14,6 +14,7 @@ import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { WishlistService } from 'app/wishlist/wishlist.service';
 
 declare const $: any;
 @Component({
@@ -121,7 +122,8 @@ export class AllbooksComponent implements OnInit {
   current;
   currentUser;
   cartitems;
-  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
+
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private see: WishlistService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
     this.BidBuybooks();
     this.Innerslider();
     this.trendbooks();
@@ -147,7 +149,7 @@ export class AllbooksComponent implements OnInit {
     }
   }
   ngOnInit() {
-
+    window.scroll(0, 0)
     $('.slick-testimonial').slick({
       slidesToShow: 2,
       responsive: [
@@ -404,5 +406,27 @@ export class AllbooksComponent implements OnInit {
 
     })
   }
+  delBookFwishList(event) {
+    this.see.delwishlist(event.wishlist).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+  }
+
+  delfromcart(event) {
+    this.book.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+  }
 }
+
 

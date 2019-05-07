@@ -34,7 +34,8 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field> <textarea matInput placeholder="Description" id="detail" [(ngModel)]="model.detail"
-                                name="detail"></textarea> </mat-form-field>
+                                name="detail"></textarea> 
+                        </mat-form-field>
                         <mat-form-field id="categoties-font">
                             <mat-select placeholder="Select Categories" type="number"  id="notessubcategories"
                                 [(ngModel)]="model.notessubcategories" name="notessubcategories">
@@ -83,7 +84,7 @@
                                     <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserved!</mat-checkbox>
+                            <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction</mat-checkbox>
                             <div id="showdiv3">
                                 <mat-form-field> <input matInput type="text" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
                                         name="reservedprice"> <span matPrefix>$&nbsp;</span> </mat-form-field>
@@ -91,7 +92,7 @@
                             <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
                             <div id="showdiv4">
                                 <mat-form-field class="margin-top-10"> <input matInput [matDatepicker]="picker"
-                                        placeholder="Date&Time" [(ngModel)]="model.start_time" name="start_time"> <span
+                                        placeholder="Date & Time" [(ngModel)]="model.start_time" name="start_time"> <span
                                         placeholder="MM/DD/YYYY HH:MM AM"></span>
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>

@@ -2270,15 +2270,17 @@ mat-form-field textarea {
     position: relative;
     font-weight: 600;
     background: #000;
-    border-radius: 5px;
+    border-radius: 50px;
     color: #fff;
+    padding: 5px 10px;
     font-size: 16px;
     cursor: pointer;
     border: 1px solid #000;
     -webkit-transition: .4s;
     -o-transition: .4s;
     transition: .4s;
-    vertical-align: top
+    vertical-align: top;
+    cursor: pointer;
 }
 
 .btn-file:hover {
@@ -5003,7 +5005,7 @@ fieldset {
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     text-decoration: none;
-    padding: 5px 20px;
+    padding: 5px 10px;
     line-height: normal;
     font-size: 18px;
     font-weight: 600;
@@ -5048,7 +5050,6 @@ nav a.user-link.active1 {
 
 .user-add-ingo-form-btn {
     background-color: #000;
-    border: 1px solid #000;
     color: #fff!important;
     padding: 5px 0;
     text-align: center;
@@ -5396,6 +5397,14 @@ mat-error > strong{
 .changePassword{
   max-width: 400px;
   margin: 20px auto 0;
+}
+.mat-form-field-suffix .mat-icon{
+  font-size: 18px;
+}
+.user-dashboard .form-1-body>form>div {
+  width: 100%;
+  display: block;
+  margin: 0 5px;
 }
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
@@ -6144,7 +6153,9 @@ ngx-slick.slick-initialized {
 .sidebar .user-name {
     color: #fff
 }
-
+.text-transform-none{
+  text-transform:none!important
+}
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px

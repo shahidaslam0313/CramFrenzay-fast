@@ -97,9 +97,9 @@
                         <!-- heart, cart and offer now end -->
                         <!-- bid now and buy now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"
+                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"
                                 *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true " data-target="#notesbid">
@@ -186,9 +186,9 @@
                         <!-- heart, cart and offer now end -->
                         <!-- buy and bid now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"
+                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"
                                 *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
@@ -275,9 +275,9 @@
                         <!-- heart, cart and offer now end -->
                         <!-- bid and buy now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"> Buy Now at{{data.price | currency:'USD'}}
+                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"> Buy Now at{{data.price | currency:'USD'}}
                             </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}} </a>
                             <a class="already-bought" *ngIf="data.Purchased == true && !data.Purchased"
@@ -363,9 +363,9 @@
                     <!-- heart, cart and offer now end -->
                     <!-- buy an dbid now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"> Buy Now at {{data.price | currency:'USD'}}
+                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"> Buy Now at {{data.price | currency:'USD'}}
                             </a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a type="button" class="btn-style"  text-transform-nonedata-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">

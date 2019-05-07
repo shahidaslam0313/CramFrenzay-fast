@@ -58,10 +58,10 @@
                     <!-- heart, cart and offer now end -->
                     <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
-                        <a class="btn-style" (click)="courses(data?.id)"
+                        <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                             *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at
                             {{data.price | currency:'USD'}} </a>
-                        <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                        <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                             (click)="bidcourseid(data?.id)" data-dismiss="modal"
                             *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at
                             {{data.bid_price | currency:'USD'}}</a>
@@ -135,8 +135,8 @@
                     <!-- heart, cart and offer now end -->
                     <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
-                        <a class="btn-style" (click)="checknotes()"> Buy Now at {{data.price | currency:'USD'}}</a>
-                        <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                        <a class="btn-style text-transform-none" (click)="checknotes()"> Buy Now at {{data.price | currency:'USD'}}</a>
+                        <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                             (click)="bidcourseid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true"> Bid Now
                             at {{data.bid_price | currency:'USD'}}
                         </a>
@@ -246,9 +246,9 @@
                     <!-- heart, cart and offer now end -->
                     <!-- buy and bid now start -->
                 <div class="product-list__item-info-1">
-                    <a class="btn-style" (click)="courses(data?.id)"
+                    <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                         *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
-                    <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                         (click)="bidcourseid(data?.id)" data-dismiss="modal"
                         *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at {{data.bid_price | currency:'USD'}}</a>
             
@@ -342,9 +342,9 @@
                 </div>
 
                 <div class="product-list__item-info-1">
-                    <a class="btn-style" (click)="courses(data?.id)"
+                    <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                         *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
-                    <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                         (click)="bidcourseid(data?.id)" data-dismiss="modal"
                         *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                 
