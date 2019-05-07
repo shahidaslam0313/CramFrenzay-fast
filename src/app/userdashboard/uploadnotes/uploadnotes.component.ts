@@ -180,7 +180,7 @@ export class UploadnotesComponent implements OnInit {
     this.http.post(
       Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
         if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-          // this.sweetalertupload();
+          this.sweetalertupload();
         }
         else {
           this.model.notes_thumbnail = data;
