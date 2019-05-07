@@ -1,21 +1,21 @@
 <div class="container user-dashboard">
-    <div class="row my-3">
-        <div class="col-md-3">
+    <div class="row ">
+        <div class="col-md-3 sidebar">
             <nav>
-                <form class="user-profile-form"> <img src="{{profilePhoto}}">
+                <form class="user-profile-form">  <div class="profile-picture">
+                    <img src="{{profilePhoto}}">
+                </div>
                     <h4 class="user-name">{{firstname}}{{lastname}}</h4>
-                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="far fa-plus-square"></i>
-                    Add Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="far fa-plus-square"></i> Add Courses</a> <a class="user-link" routerLink="/uploadcard"
+                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
+                        class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
                     routerLinkActive="active1" data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i
-                        class="far fa-plus-square"></i> Add Flash Cards</a> <a class="user-link display-none"
+                        class="fa fa-book-open"></i>Add Flash Cards</a> <a class="user-link display-none"
                     routerLink="/uploadcarddetail" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="far fa-plus-square"></i> FlashCard Detail</a> <a class="user-link" routerLink="/uploadbook"
-                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="far fa-plus-square"></i>
-                    Add Books</a>
+                        class="fa fa-book-open"></i>FlashCard Detail</a> <a class="user-link" routerLink="/uploadbook"
+                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book"></i>Add Books</a>
             </nav>
         </div>
-        <div class="col-md-9 user-profile">
+        <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Course for Sale</h1>
             <form class="user-add-ingo-form" enctype="multipart/form-data">
                 <mat-form-field class="margin-top-20"> <input matInput type="text" placeholder="Name" id="name"
