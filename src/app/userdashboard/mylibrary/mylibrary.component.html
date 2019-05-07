@@ -33,7 +33,7 @@
                                             <a routerLink="/notes/{{item?.id}}" title="{{item?.name}}"
                                                 *ngIf="item?.status == true">Approved By Admin</a><a
                                                 routerLink="/notes/{{item?.id}}"
-                                                *ngIf="item?.status != true || item?.status == null">Pending By Admin</a>
+                                                *ngIf="item?.status != true || item?.status == null">Pending Approval </a>
                                         </div>
                                         <a class="btn-style" *ngIf="item?.status == true && item?.publish == false " (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)">Publish</a>
                                         <a class="btn-style" *ngIf="item?.publish == true">Alread publised</a>
@@ -62,7 +62,7 @@
                                             <a routerLink="/eachcourse/{{data?.id}}" title="{{data?.name}}"
                                                 *ngIf="item?.status == true">Approved By Admin</a><a
                                                 routerLink="/eachcourse/{{data?.id}}"
-                                                *ngIf="item?.status != true || item?.status == null">Pending By Admin</a>
+                                                *ngIf="item?.status != true || item?.status == null">Pending Approval</a>
                                         </div>
 
 
@@ -98,7 +98,7 @@
                                             <a routerLink="/flashcarddetail" title="{{item?.name}}"
                                                 *ngIf="item?.status == true">Approved By Admin</a><a
                                                 routerLink="/flashcarddetail"
-                                                *ngIf="item?.status != true || item?.status == null">Pending By Admin
+                                                *ngIf="item?.status != true || item?.status == null">Pending Approval
                                             </a>
                                         </div>
                                         <a class="btn-style" *ngIf="item?.status == true && item?.publish == false " (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Publish</a>
@@ -129,7 +129,7 @@
                                             <a routerLink="/detail/{{item?.id}}" title="{{item?.name}}"
                                                 *ngIf="item?.status == true">Approved By Admin</a><a
                                                 routerLink="/detail/{{item?.id}}"
-                                                *ngIf="item?.status != true || item?.status == null">Pending By Admin</a>
+                                                *ngIf="item?.status != true || item?.status == null">Pending Approval</a>
                                         </div>
                                         <a class="btn-style" *ngIf="item?.status == true && item?.publish == false" (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)">Publish</a>
                                         <p class="product-list__price">{{item?.price | currency:'USD'}}</p>

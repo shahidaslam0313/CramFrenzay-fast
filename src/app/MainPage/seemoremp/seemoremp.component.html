@@ -57,10 +57,10 @@
                     </div>
                     <!-- ------Cart Heart and Buy Now Button div end------- -->
                     <div class="product-list__item-info-1">
-                        <a class="btn-style" (click)="checkmainpage(data?.id, nullvalue , nullvalue, nullvalue)"
+                        <a class="btn-style text-transform-none" (click)="checkmainpage(data?.id, nullvalue , nullvalue, nullvalue)"
                             *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at
                             {{data.price | currency:'USD'}}</a>
-                        <a class="btn-style" data-target="#notesbid" data-toggle="modal" (click)="bidnotesid(data?.id)"
+                        <a class="btn-style text-transform-none" data-target="#notesbid" data-toggle="modal" (click)="bidnotesid(data?.id)"
                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at
                             {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased==true" data-target="#notesbid">
@@ -138,8 +138,8 @@
                     <!-- ------Cart Heart and offer Now Button div end------- -->
                 </div>
                 <!-- Buy and Bid now -->
-                <div class="product-list__item-info-1"> <a class="btn-style" (click)="courses(data?.id)"
-                        *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a> <a class="btn-style"
+                <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="courses(data?.id)"
+                        *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a> <a class="btn-style text-transform-none"
                         data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)"
                         *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                     <a class="already-bought" data-target="#notesbid" *ngIf="data.Purchased==true">
@@ -218,9 +218,9 @@
                         </div>
                     </div>
                     <!-- ------Cart Heart and offer Now Button div start------- -->
-                    <div class="product-list__item-info-1"> <a class="btn-style" (click)="flashcard(data.id)"
+                    <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="flashcard(data.id)"
                             *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at
-                            {{data.price | currency:'USD'}}</a> <a class="btn-style" data-toggle="modal"
+                            {{data.price | currency:'USD'}}</a> <a class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#cards" (click)="getcardid(data?.id)"
                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at
                             {{data.bid_price | currency:'USD'}}</a>
@@ -300,9 +300,9 @@
                             </div>
                         </div>
                         <!-- ------Cart Heart and Buy Now Button div end------- -->
-                        <div class="product-list__item-info-1"> <a class="btn-style" (click)="Books(data?.id)"
+                        <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="Books(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at
-                                {{data.price | currency:'USD'}} </a> <a class="btn-style" data-toggle="modal"
+                                {{data.price | currency:'USD'}} </a> <a class="btn-style text-transform-none" data-toggle="modal"
                                 data-target="#bookbiding" (click)="booksid(data?.id)"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at
                                 {{data.bid_price | currency:'USD'}} </a>
@@ -350,7 +350,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding(f)" data-dismiss="modal">BID NOW
+          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding()" data-dismiss="modal">BID NOW
         </a>
 
         </form>
@@ -369,7 +369,7 @@
       </div>
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"
                                   class="view-bid">view bid history </a>
-        <form name="form" role="form" method="post" (ngSubmit)="bidc(f)" #f="ngForm" class="user-add-ingo-form">
+        <form name="form" role="form" method="post" (ngSubmit)="bidc()"  class="user-add-ingo-form">
           <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
             <p>Higher bid amount:{{course?.bidamount}}</p>
           </a>
@@ -377,7 +377,7 @@
           <mat-form-field>
             <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc(f)" data-dismiss="modal">BID NOW
+          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID NOW
         </a>
         </form>
       </div>

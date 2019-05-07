@@ -13,6 +13,9 @@ import { GlobalService } from 'app/global.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import { WishlistService } from 'app/wishlist/wishlist.service';
+import { AllbooksModule } from '../allbooks/allbooks.module';
+import { AllbooksService } from '../allbooks/allbooks.service';
 
 
 @Component({
@@ -37,7 +40,7 @@ export class BookseemoreComponent implements OnInit {
   cartitems;
   wishlist;
   private sub: Subscription;
-  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
+  constructor(private headServ: headerservice, private Data: DataService,private see: WishlistService, private book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.name = +params['name'];
           if (params['name'] == "Bid&BuyBooks") {
@@ -171,7 +174,7 @@ export class BookseemoreComponent implements OnInit {
     let course = null;
     let flashcard = null;
     let notes = null;
-    this.global.addwishlist(book, course, flashcard, notes).subscribe(data => {
+    this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(data => {
       swal({
         type: 'success',
         title: 'Added to watchlist',
@@ -261,5 +264,25 @@ export class BookseemoreComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+  }
+  delBookFwishList(event) {
+    this.see.delwishlist(event.wishlist).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+  }
+  delfromcart(event) {
+    this.book.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
   }
 }
