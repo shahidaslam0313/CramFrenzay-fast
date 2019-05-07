@@ -133,8 +133,6 @@
                                     <li> <a  routerLink="/findtutor"> <img class="find-tutors"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
                                             Find a Tutor</a> </li>
-                                    <!--<li> <a  href=""> <img class="q-a-expert" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
-                                            <!--Q/A Experts</a> </li>-->
                                 </ul>
                             </div>
                         </li>
@@ -181,23 +179,26 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="main-nav__list_books_1"> <a  routerLink="/allbooks">
-                                            <i class="fa fa-book"></i>Books </a>
-                                        <div class="sub-sub-menu">
-                                            <ul>
-                                                <li> <a  routerLink="/allbooks"> <img class="book"
-                                                            alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                                        Book</a> </li>
-                                                <li> <a  routerLink="/books"> <img class="book-categories"
-                                                            alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                                        Book Categories</a> </li>
-                                                <li> <a  (click)="checkbooks()"> <img class="add-book"
-                                                            alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Add
-                                                        Book</a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    
+
+
+
+                                    <!--<li class="main-nav__list_books_1"> <a  routerLink="/allbooks">-->
+                                            <!--<i class="fa fa-book"></i>Books </a>-->
+                                        <!--<div class="sub-sub-menu">-->
+                                            <!--<ul>-->
+                                                <!--<li> <a  routerLink="/allbooks"> <img class="book"-->
+                                                            <!--alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
+                                                        <!--Book</a> </li>-->
+                                                <!--<li> <a  routerLink="/books"> <img class="book-categories"-->
+                                                            <!--alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">-->
+                                                        <!--Book Categories</a> </li>-->
+                                                <!--<li> <a  (click)="checkbooks()"> <img class="add-book"-->
+                                                            <!--alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Add-->
+                                                        <!--Book</a> </li>-->
+                                            <!--</ul>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
+
                                     <li class="main-nav__list_events_1"> <a  routerLink="/events">
                                             <i class="fa fa-calendar-alt"></i>Events </a>
                                         <div class="sub-sub-menu">
@@ -226,8 +227,38 @@
                                                         Upcoming Scholarships</a> </li>
                                             </ul>
                                         </div>
+
                                     </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/aboutus">
+                                     <i class="fa fa-leaf"></i> What is CramFrenzy?</a>
+                                  </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/who-are-we">
+                                     <i class="fa fa-plus" ></i> Who Are We?</a>
+                                  </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/how-it-works">
+                                     <i class="fa fa-fire"></i> How it Works?</a>
+                                  </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/becomepartner">
+                                      <i class="fas fa-handshake"></i>   Partnership</a>
+                                  </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/faqs">
+                                      <i class="fas fa-question-circle"></i> FAQs</a>
+                                  </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/comparison-matrix">
+                                      <i class="fab fa-angellist"></i> Comparison Matrix</a>
+                                  </li>
+                                  <li>
+                                    <a onclick="topFunction()" routerLink="/contactus">
+                                      <i class="fas fa-phone-volume"></i>  Establish Contact</a>
+                                  </li>
                                 </ul>
+
                             </div>
                         </li>
                         <li class="info-box-02__box-02 search-icon-responsive"> <a   href="javascript:void(0)"

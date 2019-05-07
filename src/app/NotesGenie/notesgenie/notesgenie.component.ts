@@ -13,6 +13,7 @@ import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
+import { WishlistService } from 'app/wishlist/wishlist.service';
 
 declare const $: any;
 @Component({
@@ -122,7 +123,7 @@ export class NotesgenieComponent implements OnInit {
     ]
   };
   isreserved: boolean = false;
-  constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private headServ: headerservice,private see: WishlistService, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Slider();
     this.bidnote();
@@ -331,10 +332,30 @@ export class NotesgenieComponent implements OnInit {
 
       );
   }
+  deleteFWL(event) {
+    this.see.delwishlist(event.wishlist).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+}
+delfromcart(event) {
+  this.global.delcart(event.cart).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+}
   cartitems;
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {
-      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+      this.newservice.addtocart(notes, course, book, flashcard).subscribe(data => {
         swal({
           type: 'success',
           title: 'Added to Cart',

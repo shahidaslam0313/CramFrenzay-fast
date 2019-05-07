@@ -105,15 +105,12 @@
                               <!--style="display: block;"-->
                   <!--&gt;</pdf-viewer>-->
 
-                 <a  *ngIf="result?.bidpaid==true || result?.paid==true"> <button
-                    data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf"
-                    type="application/pdf"
-                    width="100%"
-                    height="100%">
-                    <p>
-                      <a  class="card-btn" href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>.</p>
+                  <button class="card-btn"  *ngIf="result?.bidpaid==true || result?.paid==true && result?.data== true" data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf"
+                    type="application/pdf">
+
+                      <a   href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>
                   </button>
-                 </a>
+
                     <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
                 </div>
                 <hr>
@@ -234,7 +231,7 @@
                       </div>
                       <div class="pull-left">
                         <div class="time-to-go">
-                          <span>{{reviews?.commentDate}}</span>
+                          <span>{{reviews?.commentDate  | date:'medium' }}</span>
                         </div>
                         <div class="user-name">
                           <span>Anas Tahir</span>

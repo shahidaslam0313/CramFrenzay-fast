@@ -14,6 +14,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from '../mainpage/mainpage.service';
+import { WishlistService } from 'app/wishlist/wishlist.service';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class SeemorempComponent implements OnInit {
   cartitem;
   wishlist;
   private sub: Subscription;
-  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
+  constructor(private headServ: headerservice, private Data: DataService,private see: WishlistService,private mainpage: mainpageservice, private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
     this.route.params.subscribe(params => { });
     this.sub = this.route.params.subscribe(params => {
       this.name = +params['name'];
@@ -235,20 +236,30 @@ export class SeemorempComponent implements OnInit {
         type: 'success',
         title: 'Added to Watch List',
         showConfirmButton: false,
-        timer: 4500
+        timer: 2000
       })
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
       })
     }, error => {
-      if (error.status == 404)
+      if (error.status == 404){
         swal({
           type: 'warning',
           title: 'This item is already exist in your watch list',
           showConfirmButton: false,
-          timer: 4500
+          timer: 2000
         })
+      }
+      else if(error.status == 406){
+        swal({
+          type: 'error',
+          title: 'Item Already Purchased',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }
+      
     });
 
   }
@@ -456,5 +467,46 @@ delfromcart(event) {
 getcartitems(){
   this.mainpage.showCartItem().subscribe(data =>{
   })
+}
+delCourseFwishList(event) {
+  this.see.delwishlist(event.wishlist).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+}
+delFlaskFwishList(event) {
+  this.see.delwishlist(event.wishlist).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+}
+delBookFwishList(event) {
+  this.see.delwishlist(event.wishlist).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+}
+delNotesFtrendingNow(event){
+  this.mainpage.delwishlist(event.wishlist).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Item deleted from watchlist',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+  });
 }
 }
