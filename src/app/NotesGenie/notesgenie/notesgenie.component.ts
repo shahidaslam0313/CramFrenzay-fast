@@ -14,6 +14,7 @@ import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 declare const $: any;
 @Component({
@@ -123,7 +124,7 @@ export class NotesgenieComponent implements OnInit {
     ]
   };
   isreserved: boolean = false;
-  constructor(private headServ: headerservice,private see: WishlistService, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice,private see: WishlistService, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Slider();
     this.bidnote();
@@ -303,6 +304,7 @@ export class NotesgenieComponent implements OnInit {
   bidnotesid(id) {
     if (this.check_login() == true) {
       this.bidonnotes = id;
+      this.getnotebidhistory(this.bidonnotes);
     }
     else if (this.check_login() == false) {
       this.sweetalertlogin();
@@ -393,4 +395,10 @@ delfromcart(event) {
       localStorage.setItem('nestedname', nestedname);
     }
   }
+  notebid;
+  ////////////note biding history ///////////////
+  getnotebidhistory(id) {
+    this.bidings.notebidhistory(this.bidonnotes).subscribe(data => {
+      this.notebid = data;
+      this.notes = data['Highest Bid'];})}
 }

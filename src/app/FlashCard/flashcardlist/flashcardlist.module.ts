@@ -6,6 +6,7 @@ import { MaterialModule } from '../../app.module';
 import { CommonModule} from "@angular/common";
 import {LoaderModule} from '../../loader/loader.module';
 import { SlickModule } from 'ngx-slick';
+import {CountdownModule} from "ng2-countdown-timer";
 const flashcardlistRoutes: Routes = [
   { path: '', component: FlashcardlistComponent }
 ];
@@ -17,7 +18,8 @@ const flashcardlistRoutes: Routes = [
     LoaderModule,
     RatingModule,
     MaterialModule,
-    SlickModule
+    SlickModule,
+    CountdownModule
   ],
   declarations: [
     FlashcardlistComponent,

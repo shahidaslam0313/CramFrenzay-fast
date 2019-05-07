@@ -13,8 +13,9 @@ import { GlobalService } from 'app/global.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { WishlistService } from 'app/wishlist/wishlist.service';
-import { AllbooksModule } from '../allbooks/allbooks.module';
+// import { AllbooksModule } from '../allbooks/allbooks.module';
 import { AllbooksService } from '../allbooks/allbooks.service';
 
 
@@ -40,7 +41,10 @@ export class BookseemoreComponent implements OnInit {
   cartitems;
   wishlist;
   private sub: Subscription;
-  constructor(private headServ: headerservice, private Data: DataService,private see: WishlistService, private book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
+
+
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
+
       this.sub = this.route.params.subscribe(params => {
           this.name = +params['name'];
           if (params['name'] == "Bid&BuyBooks") {
@@ -142,7 +146,13 @@ export class BookseemoreComponent implements OnInit {
 
 /////////////biding in books/////////
   booksid(id) {
-    this.bidbookid = id;
+    if (this.check_login() == true) {
+      this.bidbookid = id;
+      this.getbookbidhistory(this.bidbookid);
+    } else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
   sweetalertlogin() {
     swal({
@@ -265,6 +275,17 @@ export class BookseemoreComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
+  getbooks;
+
+  getbookbidhistory(id)
+    {
+      this.bidings.bookbidhistory(this.bidbookid).subscribe(data => {
+        this.book = data;
+        this.getbooks = data['Highest Bid'];
+
+      })
+    }
   delBookFwishList(event) {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({

@@ -12,6 +12,7 @@ import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 declare const $: any;
 
@@ -116,7 +117,7 @@ export class CourseComponent implements OnInit {
   message: string;
   model: any = {};
   cartitems;
-  constructor(private headServ: headerservice,private see: WishlistService, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice,private see: WishlistService, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.Showbidcourses();
     this.TrendingNow();
     this.Showtopratedcourses();
@@ -292,8 +293,7 @@ id;
   bidcourseid(id) {
     if (this.check_login() == true) {
       this.bidingcourse = id;
-      // alert(this.bidingcourse);
-      console.log(this.bidingcourse);
+      this.getcoursebidhistory(this.bidingcourse);
     }
     else if (this.check_login() == false) {
       this.sweetalertlogin();
@@ -387,4 +387,12 @@ delfromcart(event) {
     });
   });
 }
+  coursebid;
+  ////////////course  biding history////////
+  getcoursebidhistory(id) {
+    this.bidings.coursebidhistory(this.bidingcourse).subscribe(data => {
+      this.coursebid = data;
+      this.course = data['Highest Bid'];
+    })
+  }
 }

@@ -14,6 +14,7 @@ import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 @Component({
   selector: 'app-flashcardlist',
@@ -114,7 +115,7 @@ export class FlashcardlistComponent implements OnInit {
   query;
   searchResult: any = [];
   cartitems;
-  constructor(private headServ: headerservice, private Data: DataService,private see: WishlistService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
 
     this.bidflash();
     this.trendingflash();
@@ -244,6 +245,7 @@ export class FlashcardlistComponent implements OnInit {
 
     if (this.check_login() == true) {
       this.cardid = id;
+      this.getcardbidhistory(this.cardbid);
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -379,5 +381,14 @@ export class FlashcardlistComponent implements OnInit {
         timer: 1500
       });
     });
+  }
+  cardbid;
+  flashcardsbid;
+  /////////// card bid history/////////
+  getcardbidhistory(id) {
+    this.bidings.cardbidhistory(this.cardid).subscribe(data => {
+      this.cardbid = data;
+      this.flashcardsbid = data['Highest Bid'];
+    })
   }
 }

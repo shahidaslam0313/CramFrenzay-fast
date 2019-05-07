@@ -5,6 +5,7 @@ import { NgseemoreComponent }   from './ngseemore.component';
 import { RouterModule, Routes } from "@angular/router";
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {CountdownModule} from "ng2-countdown-timer";
 
 const ngseemoreRoutes: Routes = [
   { path: '', component: NgseemoreComponent }
@@ -16,7 +17,8 @@ const ngseemoreRoutes: Routes = [
     MaterialModule,
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    RatingModule
+    RatingModule,
+    CountdownModule
   ],
   declarations: [
     NgseemoreComponent,

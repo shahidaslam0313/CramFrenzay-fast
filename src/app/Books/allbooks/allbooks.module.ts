@@ -7,6 +7,7 @@ import {MaterialModule} from '../../app.module';
 import {LoaderModule} from '../../loader/loader.module';
 import {RatingModule} from 'ng2-rating';
 import { SlickModule } from 'ngx-slick';
+import {CountdownModule} from "ng2-countdown-timer";
 const allbooksRoutes: Routes = [
   { path: '', component: AllbooksComponent }
 ];
@@ -19,7 +20,8 @@ const allbooksRoutes: Routes = [
     MaterialModule,
     LoaderModule,
     RatingModule,
-    SlickModule
+    SlickModule,
+    CountdownModule
 
 
 

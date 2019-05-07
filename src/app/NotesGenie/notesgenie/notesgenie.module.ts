@@ -7,6 +7,7 @@ import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {LoaderModule} from '../../loader/loader.module';
 import { SlickModule } from 'ngx-slick';
+import {CountdownModule} from "ng2-countdown-timer";
 const notesgenieRoutes: Routes = [
   { path: '', component: NotesgenieComponent }
 ];
@@ -19,7 +20,8 @@ const notesgenieRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     LoaderModule,
     RatingModule,
-    SlickModule
+    SlickModule,
+    CountdownModule
   ],
   declarations: [
     NotesgenieComponent

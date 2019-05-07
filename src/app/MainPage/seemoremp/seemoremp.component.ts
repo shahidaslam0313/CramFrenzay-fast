@@ -267,7 +267,13 @@ export class SeemorempComponent implements OnInit {
   bidbookid
   /////////////biding in books/////////
   booksid(id) {
-    this.bidbookid = id;
+    if (this.check_login() == true) {
+      this.bidbookid = id;
+      this.getbookbidhistory(this.bidbookid);
+    } else if (this.check_login() == false) {
+      this.sweetalertsignin();
+      this.router.navigate(['/login']);
+    }
   }
   sweetalertsignin() {
     swal({
@@ -370,21 +376,13 @@ export class SeemorempComponent implements OnInit {
       );
 
   }
-  // form= new FormGroup({
-  //   notebid: new FormControl('',[
-  //     Validators.required,
-  //     Validators.pattern('^[0-9]*$'),
-  //   ]),
-  //   // cardbid: new FormControl('',[
-  //   //   Validators.pattern('^[0-9]*$'),
-  //   // ])
-  // })
-  
+
   cardid;
   getcardid(id){
 
     if (this.check_login() == true){
       this.cardid = id;
+      this.getcardbidhistory(this.cardbid);
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -535,9 +533,10 @@ delNotesFtrendingNow(event){
   getcardbidhistory(id) {
     this.bidings.cardbidhistory(this.cardid).subscribe(data => {
       this.cardbid = data;
-      this.flashcard = data['Highest Bid'];
+      this.flashcardsbid = data['Highest Bid'];
     })
   }
+  flashcardsbid;
   ///////////book bid history//////
   getbook;
   getbooks;
