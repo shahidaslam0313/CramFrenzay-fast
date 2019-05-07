@@ -231,31 +231,31 @@
                                     </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/aboutus">
-                                     <i class="fa fa-leaf"></i> What is CramFrenzy?</a>
+                                     <i class="fa fa-leaf"></i>What is CramFrenzy?</a>
                                   </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/who-are-we">
-                                     <i class="fa fa-plus" ></i> Who Are We?</a>
+                                     <i class="fa fa-plus" ></i>Who Are We?</a>
                                   </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/how-it-works">
-                                     <i class="fa fa-fire"></i> How it Works?</a>
+                                     <i class="fa fa-fire"></i>How it Works?</a>
                                   </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/becomepartner">
-                                      <i class="fas fa-handshake"></i>   Partnership</a>
+                                      <i class="fas fa-handshake"></i>Partnership</a>
                                   </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/faqs">
-                                      <i class="fas fa-question-circle"></i> FAQs</a>
+                                      <i class="fas fa-question-circle"></i>FAQs</a>
                                   </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/comparison-matrix">
-                                      <i class="fab fa-angellist"></i> Comparison Matrix</a>
+                                      <i class="fab fa-angellist"></i>Comparison Matrix</a>
                                   </li>
                                   <li>
                                     <a onclick="topFunction()" routerLink="/contactus">
-                                      <i class="fas fa-phone-volume"></i>  Establish Contact</a>
+                                      <i class="fas fa-phone-volume"></i>Establish Contact</a>
                                   </li>
                                 </ul>
 
@@ -342,12 +342,13 @@
                                                     <div class="heart-price"> <span class="heart-new-price">{{data?.flashcard.price
                                                             | currency:'USD'}}</span> <span class="discount-p">{{data?.flashcard.discount
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                            <a  routerLink="javascript:void(0)" class="heart-card-btn btn"
-                                                (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
-                                                Move to Cart </a>
+                                                           
                                                     </div>
                                                 </div>
                                             </div>
+                                            <a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                            (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
+                                            Move to Cart </a>
                                         </div>
                                     </div>
                                     <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
