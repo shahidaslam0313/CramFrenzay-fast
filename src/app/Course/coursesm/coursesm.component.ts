@@ -13,6 +13,7 @@ import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
+import { WishlistService } from 'app/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-coursesm',
@@ -33,7 +34,7 @@ export class CoursesmComponent implements OnInit {
   model: any = {};
   cartitems;
   wishlist;
-  constructor(private headServ: headerservice, private Data: DataService, private global: GlobalService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: CoursesmService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) { }
+  constructor(private headServ: headerservice, private Data: DataService, private global: GlobalService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: CoursesmService,private see: WishlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) { }
 
   ngOnInit() {
     window.scroll(0, 0)
@@ -291,5 +292,25 @@ export class CoursesmComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+  }
+  delCourseFwishList(event) {
+    this.see.delwishlist(event.wishlist).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+  }
+  delfromcart(event) {
+    this.global.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
   }
 }

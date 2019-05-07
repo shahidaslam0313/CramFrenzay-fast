@@ -88,7 +88,19 @@ export class CourseService {
   coursesearch(name) {
     return this._http1.get(Config.api + 'course/searchlist/' + name + '/').map((response: Response) => response.json());
   }
-
+  addtocart(notes, course, book, flashcard) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
+      JSON.stringify({
+        notes: notes,
+        course: course,
+        book: book,
+        flashcard: flashcard,
+        userid: JSON.parse(localStorage.getItem('currentUser')).user_id
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+  }
 
 }
 

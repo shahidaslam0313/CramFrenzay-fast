@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material';
 import { GlobalService } from 'app/global.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
+import { WishlistService } from 'app/wishlist/wishlist.service';
+import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 
 @Component({
   selector: 'app-fcseemore',
@@ -38,7 +40,7 @@ export class FcseemoreComponent implements OnInit {
   current;
   cartitems;
   wishlist;
-  constructor(private headServ: headerservice, private Data: DataService,private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
+  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private see: WishlistService, private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.Eid = +params['id'];
       });
@@ -180,7 +182,7 @@ export class FcseemoreComponent implements OnInit {
     let book = null;
     let notes = null;
 
-    this.global.addwishlist(book, course, flashcard, notes).subscribe(Res => {
+    this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(Res => {
 
       swal({
         type: 'success',
@@ -252,6 +254,26 @@ export class FcseemoreComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+  }
+  delfromcart(event) {
+    this.seemore.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+  }
+  delFlaskFwishList(event) {
+    this.see.delwishlist(event.wishlist).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
   }
 
 }
