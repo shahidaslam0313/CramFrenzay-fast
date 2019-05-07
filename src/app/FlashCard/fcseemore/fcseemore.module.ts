@@ -6,6 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RatingModule} from 'ng2-rating';
+import {CountdownModule} from "ng2-countdown-timer";
 
 const fcseemoreRoutes: Routes = [
   { path: '', component: FcseemoreComponent }
@@ -17,7 +18,8 @@ const fcseemoreRoutes: Routes = [
     MaterialModule,
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    RatingModule
+    RatingModule,
+    CountdownModule
   ],
   declarations: [
     FcseemoreComponent,

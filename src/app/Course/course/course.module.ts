@@ -7,6 +7,7 @@ import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {LoaderModule} from '../../loader/loader.module';
 import {SlickModule} from 'ngx-slick';
+import {CountdownModule} from "ng2-countdown-timer";
 const courseRoutes: Routes = [
   { path: '', component: CourseComponent }
 ];
@@ -18,7 +19,7 @@ const courseRoutes: Routes = [
     CommonModule,
     LoaderModule,
     RatingModule,
-
+    CountdownModule,
     FormsModule, ReactiveFormsModule,
     SlickModule
   ],

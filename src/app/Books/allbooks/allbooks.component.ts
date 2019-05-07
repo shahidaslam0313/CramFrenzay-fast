@@ -13,6 +13,7 @@ import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 declare const $: any;
 @Component({
@@ -120,7 +121,7 @@ export class AllbooksComponent implements OnInit {
   current;
   currentUser;
   cartitems;
-  constructor(private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
     this.BidBuybooks();
     this.Innerslider();
     this.trendbooks();
@@ -325,7 +326,13 @@ export class AllbooksComponent implements OnInit {
   }
   /////////////biding in books/////////
   booksid(id) {
-    this.bidbookid = id;
+    if (this.check_login() == true) {
+      this.bidbookid = id;
+      this.getbookbidhistory(this.bidbookid);
+    } else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
 
 
@@ -388,6 +395,14 @@ export class AllbooksComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+  }
+  getbooks;
+  getbookbidhistory(id) {
+    this.bidings.bookbidhistory(this.bidbookid).subscribe(data => {
+      this.book = data;
+      this.getbooks = data['Highest Bid'];
+
+    })
   }
 }
 

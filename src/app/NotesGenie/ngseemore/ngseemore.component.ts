@@ -14,6 +14,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 @Component({
   selector: 'app-ngseemore',
   templateUrl: './ngseemore.component.html',
@@ -35,7 +36,7 @@ export class NgseemoreComponent implements OnInit {
   cartitems;
   wishlist;
   private sub: Subscription;
-  constructor(private headServ: headerservice,private Data: DataService,private mainpage: mainpageservice,private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private see: WishlistService, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global:GlobalService) {
+  constructor(private bidings: BidHistoryService , private headServ: headerservice,private Data: DataService,private mainpage: mainpageservice,private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private see: WishlistService, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global:GlobalService) {
       this.global.currentMessage.subscribe(message => this.message = message);
       this.route.params.subscribe(params => {
       });
@@ -182,10 +183,16 @@ export class NgseemoreComponent implements OnInit {
       timer: 2000,
     });
   }
+  //////////////////bidind//////////
   bidnotesid(id) {
-
+    if (this.check_login() == true) {
       this.bidonnotes = id;
-
+      this.getnotebidhistory(this.bidonnotes);
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
   bidamount;
   biding() {
@@ -287,4 +294,11 @@ delfromcart(event) {
     this.router.navigate(['/login']);
   }
 }
+  notes;
+  notebid;
+  ////////////note biding history ///////////////
+  getnotebidhistory(id) {
+    this.bidings.notebidhistory(this.bidonnotes).subscribe(data => {
+      this.notebid = data;
+      this.notes = data['Highest Bid'];})}
 }

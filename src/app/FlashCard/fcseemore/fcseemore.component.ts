@@ -15,6 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 @Component({
   selector: 'app-fcseemore',
@@ -40,7 +41,7 @@ export class FcseemoreComponent implements OnInit {
   current;
   cartitems;
   wishlist;
-  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private see: WishlistService, private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private see: WishlistService, private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.Eid = +params['id'];
       });
@@ -109,6 +110,7 @@ export class FcseemoreComponent implements OnInit {
 
     if (this.check_login() == true){
       this.cardid = id;
+      this.getcardbidhistory(this.cardid);
     }
     else if (this.check_login() == false) {
       this.sweetalertnotes();
@@ -275,5 +277,13 @@ export class FcseemoreComponent implements OnInit {
       });
     });
   }
-
+  cardbid;
+  flashcardsbid;
+  /////////// card bid history/////////
+  getcardbidhistory(id) {
+    this.bidings.cardbidhistory(this.cardid).subscribe(data => {
+      this.cardbid = data;
+      this.flashcardsbid = data['Highest Bid'];
+    })
+  }
 }

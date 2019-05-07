@@ -5,6 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { CommonModule} from "@angular/common";
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {CountdownModule} from "ng2-countdown-timer";
 const bookseemoreRoutes: Routes = [
   { path: '', component: BookseemoreComponent }
 ];
@@ -15,7 +16,8 @@ const bookseemoreRoutes: Routes = [
     MaterialModule,
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    RatingModule
+    RatingModule,
+    CountdownModule
   ],
   declarations: [
     BookseemoreComponent

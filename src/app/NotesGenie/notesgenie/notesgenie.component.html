@@ -378,25 +378,30 @@
 <div *ngIf="bidnotesLength==0">
     <h2>NO Record Found</h2>
 </div>
+<!--- bid on notes-->
 <div class="modal fade" id="notesbidnow" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Bid on Notes</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" class="view-bid">view
-                    bid history </a>
-                <form name="form" role="form" method="post" class="user-add-ingo-form">
-                    <label>Place Your own bid:</label>
-                    <mat-form-field>
-                        <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*"
-                            [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"> </mat-form-field>
-                    <a class="user-add-ingo-form-btn" (click)="biding()">BID NOW </a>
-                </form>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content margin-top-175">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Bid on Note</h1>
         </div>
+      </div>
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
+                                  class="view-bid">view bid history </a>
+        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
+          <p>Higher bid amount:{{notes?.bidamount}}</p>
+        </a>
+        <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
+          <label>Place Your own bid:</label>
+          <mat-form-field>
+            <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
+                   #bidamount="ngModel" name="bidamount">
+          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding()" data-dismiss="modal">Bid Now
+        </a>
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>

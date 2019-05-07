@@ -311,7 +311,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="notesbidnow">
+<!-- bid on book -->
+<div class="modal fade" id="notesbidnow" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content margin-top-175">
       <div class="modal-header">
@@ -319,14 +320,21 @@
           <h1>Bid on Book</h1>
         </div>
       </div>
-      <div class="modal-body">
-            <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" class="view-bid">view bid history </a>
-        <form name="form" role="form" method="post" class="user-add-ingo-form">
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"
+                                  class="view-bid">view bid history </a>
+
+        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
+          <p>Higher bid amount:{{getbooks?.bidamount}}</p>
+        </a>
+
+
+        <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
           <label>Place Your own bid:</label>
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
-                   #bidamount="ngModel" name="bidamount"> </mat-form-field>
-          <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID NOW </a>
+                   #bidamount="ngModel" name="bidamount">
+          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">Bid
+          Now </a>
         </form>
       </div>
     </div>
