@@ -43,10 +43,6 @@ export class BidHistoryComponent implements OnInit {
 
       this.name = params.cat;
       this.id = params.id;
-      console.log(this.name );
-      // this.coursebid = +params['id'];
-      // this.cardbid = +params['id'];
-      // this.book = +params['id'];
       if (this.name === "notes") {
         this.getnotebidhistory(this.id);
 
@@ -62,10 +58,6 @@ export class BidHistoryComponent implements OnInit {
       }
     }
     );
-    // this.getnotebidhistory(this.notebid);
-    // this.getcoursebidhistory(this.coursebid);
-    // this.getcardbidhistory(this.cardbid);
-    // this.getbookbidhistory(this.book);
   }
 
   getnotebidhistory(id) {
@@ -97,8 +89,6 @@ export class BidHistoryComponent implements OnInit {
     this.biddinghistory.coursebidhistory(id).subscribe(data => {
       this.coursebid = data;
       this.course = data.bidhistory;
-      // console.log(this.coursebid);
-      // console.log(this.course);
     },
       error => {
         if (error.status === 400) {

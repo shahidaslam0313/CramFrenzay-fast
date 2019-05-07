@@ -15,6 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from '../mainpage/mainpage.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 
 @Component({
@@ -38,7 +39,7 @@ export class SeemorempComponent implements OnInit {
   cartitem;
   wishlist;
   private sub: Subscription;
-  constructor(private headServ: headerservice, private Data: DataService,private see: WishlistService,private mainpage: mainpageservice, private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
+  constructor( private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService,private mainpage: mainpageservice, private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
     this.route.params.subscribe(params => { });
     this.sub = this.route.params.subscribe(params => {
       this.name = +params['name'];
@@ -304,6 +305,7 @@ export class SeemorempComponent implements OnInit {
   bidnotesid(id) {
     if (this.check_login() == true) {
       this.bidonnotes = id;
+      this.getnotebidhistory(this.bidonnotes);
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -337,6 +339,7 @@ export class SeemorempComponent implements OnInit {
   bidcourseid(id) {
     if (this.check_login() == true) {
       this.bidingcourse = id;
+      this.getcoursebidhistory(this.bidingcourse);
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -509,4 +512,41 @@ delNotesFtrendingNow(event){
 
   });
 }
+
+  notebid;
+  coursebid;
+  notes;
+////////////note biding history ///////////////
+  getnotebidhistory(id) {
+    this.bidings.notebidhistory(this.bidonnotes).subscribe(data => {
+      this.notebid = data;
+      this.notes = data['Highest Bid'];})}
+  ////////////course  biding history////////
+  getcoursebidhistory(id) {
+    alert(this.bidingcourse);
+    this.bidings.coursebidhistory(this.bidingcourse).subscribe(data => {
+      this.coursebid = data;
+      this.course = data['Highest Bid'];
+    })
+  }
+  course;
+  cardbid;
+  /////////// card bid history/////////
+  getcardbidhistory(id) {
+    this.bidings.cardbidhistory(this.cardid).subscribe(data => {
+      this.cardbid = data;
+      this.flashcard = data['Highest Bid'];
+    })
+  }
+  ///////////book bid history//////
+  getbook;
+  getbooks;
+  book;
+  getbookbidhistory(id) {
+    this.bidings.bookbidhistory(id).subscribe(data => {
+      this.book = data;
+      this.getbooks = data['Highest Bid'];
+
+    })
+  }
 }
