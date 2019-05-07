@@ -6,6 +6,7 @@ import {CommonModule} from "@angular/common";
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RatingModule} from "ng2-rating";
+import {CountdownModule} from "ng2-countdown-timer";
 const seemorempRoutes: Routes = [
   { path: '', component: SeemorempComponent }
 ];
@@ -16,7 +17,8 @@ const seemorempRoutes: Routes = [
     MaterialModule,
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    RatingModule
+    RatingModule,
+    CountdownModule
   ],
   declarations: [
     SeemorempComponent

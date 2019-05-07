@@ -5,40 +5,17 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.html">
   <link rel="icon" type="image/x-icon" href="./assets/img/CramFrenzyFavicon.png">
 
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-  <noscript id="styles">
-      <link rel="stylesheet" href="assets/css/style.css">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" integrity="sha256-7rF6RaSKyh16288E3hVdzQtHyzatA2MQRGu0cf6pqqM=" crossorigin="anonymous" />
-      <link rel="stylesheet" href="assets/css/slick.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</noscript>
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 </head>
-<body style="display:none">
+<body >
   <div id="main">
     <app-root></app-root>
   </div>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js" defer></script>
-  <script src="assets/js/slick.min.js" defer></script>
-  <!--<script src="assets/js/ckeditor.min.js" defer></script>-->
-
   <a onclick="topFunction()" style="display: none" class="back2top" title="Back to Top"><i class="fa fa-angle-up"></i>Top</a>
 
   <script defer>
- var loadDeferredStyles = function () {
-      var addStylesNode = document.getElementById("styles");
-      var replacement = document.createElement("div");
-      replacement.innerHTML = addStylesNode.textContent;
-      document.body.appendChild(replacement);
-      addStylesNode.parentElement.removeChild(addStylesNode);
-  };
-  var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-      window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-  if (raf) raf(function () { window.setTimeout(loadDeferredStyles, 0); });
-  else window.addEventListener('load', loadDeferredStyles);
-
     function topFunction() {
       $('html, body').delay(0).animate({ scrollTop: 0 }, 400);
     }

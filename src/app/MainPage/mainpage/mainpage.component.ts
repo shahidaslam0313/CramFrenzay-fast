@@ -11,6 +11,7 @@ import { headerservice } from '../../includes/header/header.service';
 import {WishlistService} from '../../wishlist/wishlist.service';
 import {AcceptofferComponent} from '../../acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
+import {BidHistoryService} from "../../bid-history/bid-history.service";
 
 declare const $: any;
 
@@ -30,10 +31,6 @@ export class MainpageComponent implements OnInit {
   count;
   inner;
   Wishlist;
-  trendingCourse;
-  trendingFCards;
-  trendingBooks;
-  trendingNotes;
   toprated;
   currentProducts;
   public name;
@@ -58,7 +55,7 @@ export class MainpageComponent implements OnInit {
   chapter_id;
   message: string;
   cartitem: any;
-  constructor(private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
+  constructor( private bidings: BidHistoryService, private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
   }
@@ -68,6 +65,7 @@ export class MainpageComponent implements OnInit {
     this.bidcourse();
     this.BidBuyflashcards();
     this.BidBuybooks();
+
     const mainSearch = $('.main-search');
     const formSearch = $('.form-search');
 
@@ -260,8 +258,8 @@ export class MainpageComponent implements OnInit {
       // console.log(this.inner);
       this.slideConfig2 = {
         infinite: true,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         autoplay: false,
         prevArrow: '<button class="leftRs" style="left: 30px;"><i class="fa fa-chevron-left"></i></button>',
         nextArrow: '<button class="rightRs" style="right: 30px;"><i class="fa fa-chevron-right"></i></button>',
@@ -678,7 +676,9 @@ export class MainpageComponent implements OnInit {
   }
   bidnotesid(id){
     if (this.check_login() == true) {
-      this.bidonnotes = id
+      this.bidonnotes = id;
+      this.getnotebidhistory(this.bidonnotes);
+
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -690,6 +690,7 @@ export class MainpageComponent implements OnInit {
   bidcourseid(id) {
     if (this.check_login() == true) {
       this.bidingcourse = id;
+      this.getcoursebidhistory(this.bidingcourse);
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -744,6 +745,7 @@ f.reset();
 
     if (this.check_login() == true) {
       this.cardid = id;
+      this.getcardbidhistory(this.cardid);
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -774,7 +776,13 @@ f.reset();
   bidbookid;
   /////////////biding in books/////////
   booksid(id) {
-    this.bidbookid = id;
+    if (this.check_login() == true) {
+      this.bidbookid = id;
+      this.getbookbidhistory(this.bidbookid);
+    } else if (this.check_login() == false) {
+      this.sweetalertsignin();
+      this.router.navigate(['/login']);
+    }
   }
 
 
@@ -846,5 +854,37 @@ delfromcart(event) {
     this.BidBuynotes();
   });
 }
+  notebid;
+  coursebid;
+////////////note biding history ///////////////
+  getnotebidhistory(id) {
+    this.bidings.notebidhistory(this.bidonnotes).subscribe(data => {
+        this.notebid = data;
+        this.notes = data['Highest Bid'];})}
+  ////////////course  biding history////////
+  getcoursebidhistory(id) {
+    alert(this.bidingcourse);
+    this.bidings.coursebidhistory(this.bidingcourse).subscribe(data => {
+        this.coursebid = data;
+        this.course = data['Highest Bid'];
+      })
+  }
+  cardbid;
+  /////////// card bid history/////////
+  getcardbidhistory(id) {
+    this.bidings.cardbidhistory(this.cardid).subscribe(data => {
+        this.cardbid = data;
+        this.flashcard = data['Highest Bid'];
+      })
+  }
+  ///////////book bid history//////
+  getbook;
+  getbooks;
+  getbookbidhistory(id) {
+    this.bidings.bookbidhistory(id).subscribe(data => {
+        this.book = data;
+        this.getbooks = data['Highest Bid'];
 
+      })
+  }
 }
