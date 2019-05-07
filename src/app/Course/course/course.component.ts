@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { DataService } from 'app/data.service';
+import { WishlistService } from 'app/wishlist/wishlist.service';
 
 declare const $: any;
 
@@ -115,7 +116,7 @@ export class CourseComponent implements OnInit {
   message: string;
   model: any = {};
   cartitems;
-  constructor(private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private headServ: headerservice,private see: WishlistService, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.Showbidcourses();
     this.TrendingNow();
     this.Showtopratedcourses();
@@ -326,7 +327,7 @@ id;
     book = null;
     flashcard=null;
     if (this.check_login() == true) {
-      this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
+      this.course.addtocart(notes, course, book, flashcard).subscribe(data => {
 
         swal({
           type: 'success',
@@ -365,5 +366,25 @@ submit(nestedname) {
     localStorage.setItem('nestedname', nestedname);
     localStorage.setItem('nameID', 'notes');
   }
+}
+delCourseFwishList(event) {
+  this.see.delwishlist(event.wishlist).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+}
+delfromcart(event) {
+  this.global.delcart(event.cart).subscribe(data => {
+    swal({
+      type: 'success',
+      title: 'Successfully deleted',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
 }
 }
