@@ -82,9 +82,6 @@
                 <div class="item-inner">
                     <a class="cat-img" routerLink="/subcategory/{{data.id}}" (click)="sliderClick(data.c_name)">
                         <img src="../../../assets/img/category/{{data.c_name}}.png" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
-
-                        <!-- <img src="https://storage.cramfrenzy.com/Categories%20Web%20Images/{{data.image}}" alt=""
-                            onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> -->
                     </a>
                     <h4 class="homesilder-title">{{data.c_name}}</h4>
                 </div>
@@ -167,7 +164,7 @@
                                     Buy Now at {{data.price | currency:'USD'}} </a>
                                 <a class="btn-style" data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased"
                                     data-target="#notesbid"> Bid
-                                    Now </a>
+                                    Now  </a>
                                 <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Note Already Bought</a>
@@ -502,6 +499,7 @@
         </div>
     </div>
 </div>
+<!----bid on course---->
 <div class="modal fade" id="notesbidnow" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content margin-top-175">
@@ -513,6 +511,9 @@
             <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"
                     class="view-bid">view bid history </a>
                 <form name="form" role="form" method="post" (ngSubmit)="bidc(f)" #f="ngForm" class="user-add-ingo-form">
+                  <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
+                  <p>Higher bid amount:{{course?.bidamount}}</p>
+                  </a>
                     <label>Place Your own bid:</label>
                     <mat-form-field>
                         <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
@@ -524,6 +525,7 @@
         </div>
     </div>
 </div>
+<!--- bid on notes-->
 <div class="modal fade" id="notesbid" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content margin-top-175">
@@ -534,19 +536,23 @@
             </div>
             <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
                     class="view-bid">view bid history </a>
+             <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
+              <p>Higher bid amount:{{notes?.bidamount}}</p>
+             </a>
                 <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
                     <label>Place Your own bid:</label>
                     <mat-form-field>
                         <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                             #bidamount="ngModel" name="bidamount">
-                    </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding(f)" data-dismiss="modal">BID
-                        NOW
+                    </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding(f)" data-dismiss="modal">BID NOW
                     </a>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
+<!--bid on cards-->
 <div class="modal fade" id="cards" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content margin-top-175">
@@ -557,7 +563,10 @@
             </div>
             <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}"
                     class="view-bid">view bid history </a>
-                <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
+
+              <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{cardbid?.endtime}}"></countdown>
+                <p>Higher bid amount:{{flashcard?.bidamount}}</p>
+              </a>                <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
                     <label>Place Your own bid:</label>
                     <mat-form-field>
                         <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
@@ -569,6 +578,7 @@
         </div>
     </div>
 </div>
+<!-- bid on book -->
 <div class="modal fade" id="bookbiding" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content margin-top-175">
@@ -579,6 +589,12 @@
             </div>
             <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"
                     class="view-bid">view bid history </a>
+
+              <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
+                <p>Higher bid amount:{{getbooks?.bidamount}}</p>
+              </a>
+
+
                 <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
                     <label>Place Your own bid:</label>
                     <mat-form-field>
