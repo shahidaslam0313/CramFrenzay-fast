@@ -288,7 +288,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                 (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -307,7 +307,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                 (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -326,7 +326,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                 (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -342,7 +342,7 @@
                                                     <div class="heart-price"> <span class="heart-new-price">{{data?.flashcard.price
                                                             | currency:'USD'}}</span> <span class="discount-p">{{data?.flashcard.discount
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                            <a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                            <a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                 (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
                                                 Move to Cart </a>
                                                     </div>
@@ -373,7 +373,7 @@
                                                             <span class="discount-p">${{cartitems.course.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(null,cartitems.course.id,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -393,7 +393,7 @@
                                                             <span class="discount-p">${{cartitems.book.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(cartitems.book.id,null,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -411,7 +411,7 @@
                                                             <span class="discount-p">${{cartitems.flashcard.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(null,null,cartitems.flashcard.id,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -431,7 +431,7 @@
                                                             <span class="discount-p">${{cartitems.notes.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(null,null,null,cartitems.notes.id,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -441,8 +441,9 @@
                                         <div class="addtocart-main-total">
                                             <div class="addtocart-main-total-title"> Total: </div>
                                             <div class="addtocart-main-total-price"> ${{totalprice}}</div>
-                                        </div><a  routerLink="/addtocart" class="btn">Go
-                                            to Cart</a>
+                                        </div>
+                                        <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
+                                            routerLink="/addtocart" class="btn">Go to Cart</a> </div>
                                     </div>
                                 </div>
                             </li>

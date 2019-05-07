@@ -33,7 +33,9 @@ export class BidHistoryComponent implements OnInit {
     MilliSeconds: "MilliSeconds"
   };
   name;
-  constructor(private biddinghistory: BidHistoryService, private route: ActivatedRoute) { }
+  constructor(private biddinghistory: BidHistoryService, private route: ActivatedRoute) {
+    window.scroll(0,0);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => { });
@@ -95,8 +97,8 @@ export class BidHistoryComponent implements OnInit {
     this.biddinghistory.coursebidhistory(id).subscribe(data => {
       this.coursebid = data;
       this.course = data.bidhistory;
-      console.log(this.coursebid);
-      console.log(this.course);
+      // console.log(this.coursebid);
+      // console.log(this.course);
     },
       error => {
         if (error.status === 400) {
