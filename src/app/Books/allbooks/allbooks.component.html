@@ -290,7 +290,7 @@
     </div>
     <div class="row" *ngIf="check_login()">
         <div class="col-lg-12 ">
-            <h2 class="mainbanner bg-RecentlyVisitedBooks">Recently Visited
+            <h2 class="mainbanner bg-RecentlyVisitedBooks">Recently Viewed
                 Books
             </h2>
         </div>
@@ -384,10 +384,10 @@
           <h1>Bid on Book</h1>
         </div>
       </div>
-      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal"
                                   class="view-bid">view bid history </a>
 
-        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
+        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
           <p>Higher bid amount:{{getbooks?.bidamount}}</p>
         </a>
 

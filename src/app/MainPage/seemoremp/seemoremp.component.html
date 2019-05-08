@@ -231,6 +231,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <div class="row">
                 <div class="col-lg-12">
                     <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
@@ -247,7 +248,7 @@
                     </ul>
                 </div>
             </div>
-    </div>
+   
 </div>
     <div class="container" *ngIf="bidbooks?.books">
         <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Books</h1>
@@ -312,23 +313,23 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                    <div class="col-lg-12">
-                        <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
-                            <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagebooks(1)"
-                                    class="page-link">First</a> </li>
-                            <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
-                                    (click)="setPagebooks(pager.currentPage - 1)" class="page-link">Previous</a> </li>
-                            <li class="page-item" *ngFor="let page of pager.pages"
-                                [ngClass]="{active:pager.currentPage===page}"> <a (click)="setPagebooks(page)"
-                                    class="page-link">{{page}}</a> </li>
-                            <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                                    (click)="setPagebooks(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
-                            <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                                    (click)="setPagebooks(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagebooks(1)"
+                            class="page-link">First</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
+                            (click)="setPagebooks(pager.currentPage - 1)" class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages"
+                        [ngClass]="{active:pager.currentPage===page}"> <a (click)="setPagebooks(page)"
+                            class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                            (click)="setPagebooks(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                            (click)="setPagebooks(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
+                </ul>
+            </div>
         </div>
     </div>
 <!--- bid on notes-->
@@ -340,9 +341,9 @@
           <h1>Bid on Note</h1>
         </div>
       </div>
-      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal"
                                   class="view-bid">view bid history </a>
-        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
+        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
           <p>Higher bid amount:{{notes?.bidamount}}</p>
         </a>
         <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
@@ -367,10 +368,10 @@
           <h1>Bid on Course</h1>
         </div>
       </div>
-      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal"
                                   class="view-bid">view bid history </a>
         <form name="form" role="form" method="post" (ngSubmit)="bidc()"  class="user-add-ingo-form">
-          <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
+          <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
             <p>Higher bid amount:{{course?.bidamount}}</p>
           </a>
           <label>Place Your own bid:</label>
@@ -393,10 +394,10 @@
           <h1>Bid on Book</h1>
         </div>
       </div>
-      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal"
                                   class="view-bid">view bid history </a>
 
-        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
+        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
           <p>Higher bid amount:{{getbooks?.bidamount}}</p>
         </a>
 
@@ -422,10 +423,10 @@
           <h1>Bid on Flash card</h1>
         </div>
       </div>
-      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}"
+      <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}" data-dismiss="modal"
                                   class="view-bid">view bid history </a>
 
-        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{cardbid?.endtime}}"></countdown>
+        <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{cardbid?.endtime}}"></countdown>
           <p>Higher bid amount:{{flashcardsbid?.bidamount}}</p>
         </a>                <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
           <label>Place Your own bid:</label>
