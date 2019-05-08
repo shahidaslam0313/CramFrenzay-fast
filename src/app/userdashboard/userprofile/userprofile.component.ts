@@ -36,7 +36,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   profilePhoto;
   Logedin;
   public UserRole: any;
-
+  url: any = 'JPG,GIF,PNG';
   firstnameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z ]+'),
@@ -95,11 +95,6 @@ export class UserprofileComponent implements OnInit, OnDestroy {
 
     });
     this.userdatainfo(this.id);
-
-
-    // if (isPlatformBrowser(this.platformId)) {
-    //   this.username = localStorage.getItem('currentUser');
-    // }
 
   }
   ngOnDestroy() {
@@ -164,11 +159,31 @@ imageGet='https://storage.cramfrenzy.com/images/'
       }
     });
   }
+  ImgSrc;
+  file;
+  base64textString;
+  files;
   onChange(event: EventTarget) {
     this.input = new FormData();
-    const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
-    const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
+
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
     this.input.append('fileToUpload', target.files[0]);
+    this.files = target.files;
+    this.file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    const reader1 = new FileReader();
+    reader1.onload = (e: any) => {
+      this.ImgSrc = (e.target.result);
+    };
+    reader1.readAsDataURL(this.file);
+  }
+  _handleReaderLoaded(readerEvt) {
+    console.log('base64');
+    const binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+    // console.log(this.base64textString);
   }
   userdatainfo(id) {
     this.userprofile.getuser(id).subscribe(data => {
