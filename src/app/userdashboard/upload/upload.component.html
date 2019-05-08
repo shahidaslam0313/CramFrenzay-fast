@@ -22,7 +22,7 @@
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Course for Sale</h1>
             <form class="user-add-ingo-form" enctype="multipart/form-data">
-                <mat-form-field class="margin-top-20"> <input matInput type="text" placeholder="Name" id="name"
+                <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Name" id="name"
                         [(ngModel)]="model.name" name="name" required>
                     <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
                     </mat-error>

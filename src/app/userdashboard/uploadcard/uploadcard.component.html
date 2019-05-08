@@ -30,7 +30,7 @@
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
                     <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm" class="user-add-ingo-form" enctype="multipart/form-data">
-                        <mat-form-field> <input matInput type="text" placeholder="Title" [(ngModel)]="model.name" name="name"
+                        <mat-form-field> <input matInput type="text" class="Input-capitalize" placeholder="Title" [(ngModel)]="model.name" name="name"
                                 #name="ngModel" required autofocus />
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
                             </mat-error>

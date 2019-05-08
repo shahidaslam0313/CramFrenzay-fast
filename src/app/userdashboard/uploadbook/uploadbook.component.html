@@ -22,13 +22,13 @@
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Book for Sale</h1>
             <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm" class="user-add-ingo-form" enctype="multipart/form-data">
-                <mat-form-field class="margin-top-20"> <input matInput type="text" placeholder="Title" [(ngModel)]="model.name"
+                <mat-form-field class="margin-top-20"> <input matInput type="text" class="Input-capitalize" placeholder="Title" [(ngModel)]="model.name"
                         name="name" #name="ngModel" required autofocus />
                     <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
                     </mat-error>
                     <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid Title </mat-error>
                 </mat-form-field>
-                <mat-form-field> <input matInput type="text" placeholder="Author" [(ngModel)]="model.author_name" name="author_name"
+                <mat-form-field> <input matInput type="text" class="Input-capitalize" placeholder="Author" [(ngModel)]="model.author_name" name="author_name"
                         #author_name="ngModel" required />
                     <mat-error *ngIf="authernameFormControl.hasError('required')"> Author is <strong>Required</strong>
                     </mat-error>
