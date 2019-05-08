@@ -3,12 +3,12 @@
         <div class="col-md-3 sidebar">
             <nav>
                 <form class="user-profile-form">
-                    <div class="profile-picture">
-                        <img src="{{profilePhoto}}" *ngIf="profilePhoto">
-                        <img src="../assets/img/default-user-icon-profile.png" *ngIf="!profilePhoto">
-                        <button class="btn"><i class="fa fa-camera"></i></button>
+                    <div class="profile-picture" *ngIf="profilePhoto">
+                        <img src="{{profilePhoto}}">
                     </div>
-                 
+                    <div class="profile-picture" *ngIf="!profilePhoto">
+                        <img src="../assets/img/default-user-icon-profile.png">
+                    </div>
                     <h4 class="user-name">{{profile.firstname}} {{profile.lastname}}</h4>
                 </form>
                 <a class="user-link" routerLink="/userprofile" routerLinkActive="active1"><i class="fas fa-user"></i>
@@ -113,65 +113,22 @@
                                 [(ngModel)]="profile.linkedIn">
                         </mat-form-field>
                     </div>
-                    <!-- <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+                            <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
+                                    <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
+                                  </div>
                             <span class="btn-file btn">Upload Profile Image
                                     <input type="file" (change)="onChange($event)" formControlName="image" #image
-                                        accept="image/gif, image/jpeg, image/png">
+                                        accept="image/gif, image/jpeg, image/png" required>
                             </span>
                             
-                            <img src="{{profile.profilePhoto}}" class="img-userprofile">
-                    </div> -->
+                            <!-- <img src="{{profile.profilePhoto}}" class="img-userprofile" *ngIf="profilePhoto"> -->
+                            <!-- <img src="../assets/img/default-user-icon-profile.png" *ngIf="!profilePhoto">  -->
+                    </div>
                 </div>
                 <button type="submit" class="user-add-ingo-form-btn margin-top-10 width100"
                     (click)="onSubmit()">save</button>
             </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade modal-form" id="myModal6" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content mg-top-53">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Edit Profile Links</h1>
-                </div>
-            </div>
-            <div class="modal-body modal-scroll">
-                <form class="user-add-ingo-form" enctype="multipart/form-data" [formGroup]="user">
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="Language" formControlName="language" name="language"
-                            value="{{profile.language}}" [(ngModel)]="profile.language"> </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="Website Link" formControlName="website" name="website"
-                            value="{{profile.website}}" [(ngModel)]="profile.website"> </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="GIT Profile" formControlName="Git" name="Git"
-                            value="{{profile.Git}}" [(ngModel)]="profile.Git"> </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="YouTube Channel" formControlName="youtube"
-                            name="youtube" value="{{profile.youtube}}" [(ngModel)]="profile.youtube"> </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="Twitter Handle" formControlName="twitter"
-                            name="twitter" value="{{profile.twitter}}" [(ngModel)]="profile.twitter"> </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="Facebook Profile" formControlName="facebook"
-                            name="facebook" value="{{profile.facebook}}" [(ngModel)]="profile.facebook">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" placeholder="LinkedIn Profile" formControlName="linkedIn"
-                            name="linkedIn" value="{{profile.linkedIn}}" [(ngModel)]="profile.linkedIn">
-                    </mat-form-field>
-                    <span class="btn-file">Upload Image
-                        <input type="file" (change)="onChange($event)" formControlName="image" #image
-                            accept="image/gif, image/jpeg, image/png">
-                    </span>
-                    <br>
-                    <img src="{{profilePhoto}}" height="120">
-                    <br>
-                    <button type="submit" class="user-add-ingo-form-btn width100" (click)="onSubmit()">Update</button>
-                </form>
-            </div>
         </div>
     </div>
 </div>

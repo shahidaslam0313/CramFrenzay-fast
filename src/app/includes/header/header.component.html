@@ -481,6 +481,9 @@
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile
                                             </a> </li>
+                                            <li *ngIf="check_login() && !institute() && !admin()"> <a 
+                                                routerLink="/mycart"> <i class="fa fa-cart-plus"></i>My Cart
+                                            </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Add
                                                 Material </a> </li>

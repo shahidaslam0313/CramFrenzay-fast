@@ -14,7 +14,7 @@ import {NestedcateroyComponent} from './nestedcateroy/nestedcateroy.component';
 import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategorylist.component';
 import {CoursevideoComponent} from "./userdashboard/coursevideo/coursevideo.component";
 import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
-// import {UsersidebarComponent} from "./userdashboard/usersidebar/usersidebar.component";
+import { MycartComponent } from './userdashboard/mycart/mycart.component';
 
 export const appRoutes: Routes = [
   { path: '', component: MainpageComponent },
@@ -38,7 +38,7 @@ export const appRoutes: Routes = [
       { path : 'offeractivity' , component: OfferactivityComponent},
         { path : 'nestedcateroy/:id' , component: NestedcateroyComponent},
         { path : 'nestedcategorylist/:id' , component: NestedcategorylistComponent},
-      // { path : 'usersidebar' , component: UsersidebarComponent},
+      { path : 'mycart' , component: MycartComponent},
 
       { path: 'generalsearch/:name', loadChildren: './generalsearch/generalsearch.module#GeneralsearchModule' },
       { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },

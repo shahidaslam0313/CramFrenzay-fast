@@ -144,6 +144,7 @@ import {AddVideoComponent, IntroVideoComponent} from "./userdashboard/coursevide
 import {VideoShowDialogComponent} from "./userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
 import {CoursevideoComponent} from "./userdashboard/coursevideo/coursevideo.component";
 import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
+import { MycartComponent } from './userdashboard/mycart/mycart.component';
 
 // import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
@@ -181,10 +182,6 @@ export function provideConfig() {
     MatNativeDateModule,
   ],
   declarations: [
-
-
-  // CourseSubcategoryComponent
-// FlashcardSubcategoryComponent
 ],
 })
 
@@ -243,7 +240,8 @@ export class MaterialModule { }
       NestedcategorylistComponent,
     AddVideoComponent,
     IntroVideoComponent ,
-    VideoShowDialogComponent
+    VideoShowDialogComponent,
+    MycartComponent
   ],
   providers: [
     {
