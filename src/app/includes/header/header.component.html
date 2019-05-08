@@ -352,7 +352,7 @@
                                         </div>
                                     </div>
                                     <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
-                                            routerLink="/wishlist" class="btn">Go to Watchlist</a> </div>
+                                            routerLink="/watchlist" class="btn">Go to Watchlist</a> </div>
                                 </div>
                             </li>
                             <li class="addtocart-li" *ngIf="check_login()"> <a  routerLink="/addtocart"
@@ -374,7 +374,7 @@
                                                             <span class="discount-p">${{cartitems.course.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(null,cartitems.course.id,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -394,7 +394,7 @@
                                                             <span class="discount-p">${{cartitems.book.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(cartitems.book.id,null,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -412,7 +412,7 @@
                                                             <span class="discount-p">${{cartitems.flashcard.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(null,null,cartitems.flashcard.id,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -432,7 +432,7 @@
                                                             <span class="discount-p">${{cartitems.notes.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn btn"
                                                     (click)="moveToWishlist(null,null,null,cartitems.notes.id,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>

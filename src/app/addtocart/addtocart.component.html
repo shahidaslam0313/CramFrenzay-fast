@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes">Notes</h2>
+            <h2 class="mainbanner bg-Bid-Notes" *ngIf="Notes?.length != '0'">Notes</h2>
         </div>
     </div>
     <div class="row">
@@ -19,17 +19,20 @@
                     <a routerLink="/notes/{{cartitems.notes.id}}">
                         <img src="{{Imageurl}}{{cartitems.notes.notes_thumbnail}}" alt="Notes Image"> </a>
                     <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal" (click)="removeFromCart(cartitems.id)">
+                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.id)">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </div>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
-                        <a routerLink="" title="{{cartitems.notes.name}}" routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.name}}</a>
+                        <a routerLink="" title="{{cartitems.notes.name}}"
+                            routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.name}}</a>
                     </div>
                     <div class="product-list__title tutor-subject mb-3">
-                        <span title="Author Name:{{cartitems.notes.author_name}}" routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.author_name}}</span>
+                        <span title="Author Name:{{cartitems.notes.author_name}}"
+                            routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.author_name}}</span>
                     </div>
                     <ul class="product-list__star-list">
                         <li>
@@ -70,7 +73,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Courses">Courses</h2>
+            <h2 class="mainbanner bg-Bid-Courses" *ngIf="Courses?.length != '0'">Courses</h2>
         </div>
     </div>
     <div class="row">
@@ -80,17 +83,20 @@
                     <a routerLink="">
                         <img src="{{Imageurl}}{{cartitems.course.course_thumbnail}}" alt="Course Image"> </a>
                     <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal" (click)="removeFromCart(cartitems.id)">
+                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.id)">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </div>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
-                        <a routerLink="" title="{{cartitems.course.name}}" routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.name}}</a>
+                        <a routerLink="" title="{{cartitems.course.name}}"
+                            routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.name}}</a>
                     </div>
                     <div class="product-list__title tutor-subject mb-3">
-                        <span title="Author Name:{{cartitems.course.author}}" routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.author}}</span>
+                        <span title="Author Name:{{cartitems.course.author}}"
+                            routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.author}}</span>
                     </div>
                     <ul class="product-list__star-list">
                         <li>
@@ -131,7 +137,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-FlashCards">Flash Cards</h2>
+            <h2 class="mainbanner bg-Bid-FlashCards" *ngIf="FlashCard?.length != '0'">Flash Cards</h2>
         </div>
     </div>
     <div class="row">
@@ -141,17 +147,20 @@
                     <a routerLink="">
                         <img src="{{Imageurl}}{{cartitems.flashcard.flashcard_image}}" alt="FlashCard Image"> </a>
                     <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal" (click)="removeFromCart(cartitems.id)">
+                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.id)">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </div>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
-                        <a routerLink="" title="{{cartitems.flashcard.name}}" routerLink="/fcdetail/{{cartitems.flashcard.id}}">{{cartitems.flashcard.name}}</a>
+                        <a routerLink="" title="{{cartitems.flashcard.name}}"
+                            routerLink="/fcdetail/{{cartitems.flashcard.id}}">{{cartitems.flashcard.name}}</a>
                     </div>
                     <div class="product-list__title tutor-subject mb-3">
-                        <span title="Author Name:{{cartitems.flashcard.author_name}}" routerLink="/fcdetail/{{cartitems.flashcard.id}}">{{cartitems.flashcard.author_name}}</span>
+                        <span title="Author Name:{{cartitems.flashcard.author_name}}"
+                            routerLink="/fcdetail/{{cartitems.flashcard.id}}">{{cartitems.flashcard.author_name}}</span>
                     </div>
                     <ul class="product-list__star-list">
                         <li>
@@ -192,7 +201,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Books">Books</h2>
+            <h2 class="mainbanner bg-Bid-Books" *ngIf="Book?.length != '0'">Books</h2>
         </div>
     </div>
     <div class="row">
@@ -202,17 +211,20 @@
                     <a routerLink="">
                         <img src="{{Imageurl}}{{cartitems.book.book_image}}" alt="Books Image"> </a>
                     <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal" (click)="removeFromCart(cartitems.id)">
+                        <a class="product-list__wishlist" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.id)">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </div>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
-                        <a routerLink="" title="{{cartitems.book.name}}" routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.name}}</a>
+                        <a routerLink="" title="{{cartitems.book.name}}"
+                            routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.name}}</a>
                     </div>
                     <div class="product-list__title tutor-subject mb-3">
-                        <span title="Author Name:{{cartitems.book.author_name}}" routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.author_name}}</span>
+                        <span title="Author Name:{{cartitems.book.author_name}}"
+                            routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.author_name}}</span>
                     </div>
                     <ul class="product-list__star-list">
                         <li>
@@ -398,14 +410,17 @@
                             </div>
                             <form class="user-add-ingo-form" [formGroup]="form">
                                 <mat-form-field>
-                                    <mat-select placeholder="Card Type" formControlName="card_type" #value (change)="ShowButton(value.value)">
+                                    <mat-select placeholder="Card Type" formControlName="card_type" #value
+                                        (change)="ShowButton(value.value)">
                                         <mat-option *ngFor="let card_get_datat of card_opeation"
                                             [value]="card_get_datat.value">{{card_get_datat.viewValue}}</mat-option>
                                     </mat-select>
+                                    <!-- <mat-error *ngIf="form.controls.card_type.errors.required"> Card Type cannot be empty
+                                        </mat-error> -->
                                 </mat-form-field>
-                                <mat-form-field class="margin-top-30"> <input matInput type="text" minlength="15"
-                                        maxlength="16" placeholder="Credit Card number" formControlName="creditno"
-                                        [(ngModel)]="CardNo">
+                                <mat-form-field class="margin-top-30"> <input matInput type="text"
+                                        placeholder="Credit Card number" formControlName="creditno"
+                                        [textMask]="{mask: cardmask}">
                                     <mat-error *ngIf="form.controls.creditno.touched && form.controls.creditno.invalid">
                                         <mat-error *ngIf="form.controls.creditno.errors.required"> Card number cannot be
                                             empty </mat-error>
@@ -415,6 +430,28 @@
                                         <mat-error *ngIf="form.controls.creditno.errors.maxlength"> Card Number must be
                                             at atmost{{form.controls.creditno.errors.maxlength.requiredLength}}digits
                                             long. </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="margin-top-30" *ngIf="creditno4"> <input matInput type="text"
+                                        placeholder="15 digit card number" formControlName="creditno4"
+                                        [textMask]="{mask: cardmask}">
+                                    <mat-error
+                                        *ngIf="form.controls.creditno4.touched && form.controls.creditno4.invalid">
+                                        <mat-error *ngIf="form.controls.creditno4.errors.required"> Card number cannot
+                                            be empty
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.creditno4.errors.minlength"> Card number must be
+                                            atleast{{form.controls.creditno4.errors.minlength.requiredLength}}digits
+                                            long.
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.creditno4.errors.maxlength"> Card Number must be
+                                            at
+                                            atmost{{form.controls.creditno4.errors.maxlength.requiredLength}}digits
+                                            long.
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.creditno4.hasError('pattern')"> Card number must
+                                            be only
+                                            in digits. </mat-error>
                                     </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="margin-top-30"> <input matInput type="text" maxlength="4"
@@ -430,10 +467,36 @@
                                         </mat-error>
                                     </mat-error>
                                 </mat-form-field>
+                                <mat-form-field class="mt-3" *ngIf="ccv4"> <input matInput type="text" maxlength="4"
+                                        minlength="4" placeholder="CCV No." formControlName="ccv4">
+                                    <mat-error *ngIf="form.controls.ccv4.touched && form.controls.ccv4.invalid">
+                                        <mat-error *ngIf="form.controls.ccv4.errors.required"> CCV cannot be empty
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.ccv4.errors.minlength"> CCV must be
+                                            atleast{{form.controls.ccv4.errors.minlength.requiredLength}}digits long.
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.ccv4.errors.maxlength"> CCV must be at
+                                            atmost{{form.controls.ccv4.errors.maxlength.requiredLength}}digits long.
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.ccv4.hasError('pattern')"> CCV must be only in
+                                            digits.
+                                        </mat-error>
+                                    </mat-error>
+                                </mat-form-field>
                                 <mat-form-field class="margin-top-30"> <input matInput
-                                        placeholder="Expiry Date (MMYYYY)" type="text" formControlName="exp"
-                                        [(ngModel)]="EXP"> </mat-form-field> <a
-                                    class="user-add-ingo-form-btn margin-top-10" (click)="buywithcard()">Buy</a>
+                                        placeholder="Expiry Date (MM/YYYY)" type="text" formControlName="exp" #exp
+                                        [textMask]="{mask: masks}">
+                                    <mat-error *ngIf="form.controls.exp.touched && form.controls.exp.invalid">
+                                        <mat-error *ngIf="form.controls.exp.errors.required"> Expiry date cannot be
+                                            empty
+                                        </mat-error>
+                                        <mat-error *ngIf="form.controls.exp.hasError('pattern')"> Expiry date must be in
+                                            MM/YYYY format. </mat-error>
+                                    </mat-error><span class="card-error" *ngIf="exp <= '19'">
+                                        Invalid Expiry Date
+                                    </span>
+                                </mat-form-field>
+                                <a class="user-add-ingo-form-btn margin-top-10" (click)="buywithcard()">Buy</a>
                             </form>
                         </div>
                     </div>
