@@ -43,8 +43,8 @@ export class CourseComponent implements OnInit {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    prevArrow: '<button class="leftRs1"><i class="fa fa-chevron-left"></i></button>',
-    nextArrow: '<button class="rightRs1"><i class="fa fa-chevron-right"></i></button>',
+    prevArrow: '<button class="slick-main-btn-left"><i class="fa fa-chevron-left"></i></button>',
+    nextArrow: '<button class="slick-main-btn-right"><i class="fa fa-chevron-right"></i></button>',
     responsive: [
       {
         breakpoint: 1024,
