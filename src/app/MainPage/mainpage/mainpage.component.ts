@@ -165,7 +165,6 @@ export class MainpageComponent implements OnInit {
     }
   }
   openDialog5(notes): void {
-    // alert(this.chapter_id)
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
@@ -176,9 +175,6 @@ export class MainpageComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
 
       });
-      
-      // console.log(this.notes)
-      // alert(chapter_id)
     }
     else if (this.check_login() == false) {
       this.sweetalertsignin();
@@ -187,7 +183,6 @@ export class MainpageComponent implements OnInit {
   }
   checkOffer(notes, course, book, flashcard) {
     if (this.check_login() == true) {
-      // alert(notes);
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
        this.openDialog5(notes)
         },
@@ -209,7 +204,6 @@ export class MainpageComponent implements OnInit {
   }
   checkOffer2(notes, course, book, flashcard) {
     if (this.check_login() == true) {
-      // alert(notes);
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
        this.openDialog2(course)
         },
@@ -863,7 +857,6 @@ delfromcart(event) {
         this.notes = data['Highest Bid'];})}
   ////////////course  biding history////////
   getcoursebidhistory(id) {
-    alert(this.bidingcourse);
     this.bidings.coursebidhistory(this.bidingcourse).subscribe(data => {
         this.coursebid = data;
         this.course = data['Highest Bid'];
