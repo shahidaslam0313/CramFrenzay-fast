@@ -3675,7 +3675,12 @@ focus {
 .cutom-pd .fa-gavel {
     padding: 3px 10px 0 5px
 }
-
+.cutom-pd .fa-hand-holding-usd{
+    padding: 3px 10px 0 5px
+}
+.cutom-pd .fa-cart-plus{
+    padding: 3px 10px 0 5px
+}
 .cutom-pd .fa-sign-out-alt {
     padding: 3px 12px 0 5px
 }
