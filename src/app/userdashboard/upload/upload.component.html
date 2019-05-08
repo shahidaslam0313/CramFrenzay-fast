@@ -2,10 +2,14 @@
     <div class="row ">
         <div class="col-md-3 sidebar">
             <nav>
-                <form class="user-profile-form">  <div class="profile-picture">
-                    <img src="{{profilePhoto}}">
-                </div>
-                    <h4 class="user-name">{{firstname}}{{lastname}}</h4>
+                <form class="user-profile-form"> 
+                        <div class="profile-picture" *ngIf="profilePhoto" >
+                                <img src="{{profilePhoto}}">
+                            </div>
+                            <div class="profile-picture" *ngIf="!profilePhoto" >
+                                <img src="../assets/img/default-user-icon-profile.png">
+                            </div>>
+                    <h4 class="user-name">{{firstname}} {{lastname}}</h4>
                 </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
                         class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
                     routerLinkActive="active1" data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i

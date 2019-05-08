@@ -3,8 +3,11 @@
         <div class="col-md-3 sidebar">
             <nav>
                 <form class="user-profile-form">
-                    <div class="profile-picture">
+                    <div class="profile-picture" *ngIf="profilePhoto">
                         <img src="{{profilePhoto}}">
+                    </div>
+                    <div class="profile-picture" *ngIf="!profilePhoto">
+                        <img src="../assets/img/default-user-icon-profile.png">
                     </div>
                     <h4 class="user-name">{{profile.firstname}} {{profile.lastname}}</h4>
                 </form>
@@ -110,14 +113,14 @@
                                 [(ngModel)]="profile.linkedIn">
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+                    <!-- <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
                             <span class="btn-file btn">Upload Profile Image
                                     <input type="file" (change)="onChange($event)" formControlName="image" #image
                                         accept="image/gif, image/jpeg, image/png">
                             </span>
                             
                             <img src="{{profile.profilePhoto}}" class="img-userprofile">
-                    </div>
+                    </div> -->
                 </div>
                 <button type="submit" class="user-add-ingo-form-btn margin-top-10 width100"
                     (click)="onSubmit()">save</button>
