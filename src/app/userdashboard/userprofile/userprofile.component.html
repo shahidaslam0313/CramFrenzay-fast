@@ -3,12 +3,12 @@
         <div class="col-md-3 sidebar">
             <nav>
                 <form class="user-profile-form">
-                    <div class="profile-picture" *ngIf="profilePhoto">
-                        <img src="{{profilePhoto}}">
+                    <div class="profile-picture">
+                        <img src="{{profilePhoto}}" *ngIf="profilePhoto">
+                        <img src="../assets/img/default-user-icon-profile.png" *ngIf="!profilePhoto">
+                        <button class="btn"><i class="fa fa-camera"></i></button>
                     </div>
-                    <div class="profile-picture" *ngIf="!profilePhoto">
-                        <img src="../assets/img/default-user-icon-profile.png">
-                    </div>
+                 
                     <h4 class="user-name">{{profile.firstname}} {{profile.lastname}}</h4>
                 </form>
                 <a class="user-link" routerLink="/userprofile" routerLinkActive="active1"><i class="fas fa-user"></i>

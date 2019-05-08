@@ -4912,9 +4912,25 @@ fieldset {
     border: 1px solid #ccc;
     padding: 5px;
     border-radius: 10px;
-    background: #fff
+    background: #fff;
+    position: relative;
 }
-
+.profile-picture .btn{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 40px;
+    height: 40px;
+    transition: 0.2s ease-in-out all;
+    display: none;
+}
+.profile-picture:hover .btn{
+    display: block;
+}
+.profile-picture .btn i{
+    margin: 0;
+    vertical-align: inherit;
+}
 .user-profile-form img {
     width: 100%;
     object-fit: cover;
@@ -5279,7 +5295,8 @@ button {
 button:hover {
     background: #c00!important;
     border: 1px solid #c00!important;
-    box-shadow: none!important
+    box-shadow: none!important;
+    color: #fff;
 }
 
 .user-dashboard .sidebar {
@@ -5402,6 +5419,15 @@ mat-error > strong{
   display: block;
   margin: 0 5px;
 }
+.int-property h1{
+text-align: center;
+}
+.int-property h2{
+    text-align: left !important;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
