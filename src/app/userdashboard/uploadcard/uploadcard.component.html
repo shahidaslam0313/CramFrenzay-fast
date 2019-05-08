@@ -38,7 +38,7 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field>
-                          <mat-select placeholder="Select Categories" type="number"  id="category"
+                          <mat-select placeholder="Select Category" type="number"  id="category"
                                       [(ngModel)]="model.category" name="category">
                             <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
                           </mat-select>
@@ -46,12 +46,12 @@
 
 
                       <mat-form-field id="font" *ngIf="result" >
-                        <mat-select placeholder="Select Subcategories" type="number" [(ngModel)]="model.subcategory" name="subcategory" id="subcategory">
+                        <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategory" name="subcategory" id="subcategory">
                           <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
                         </mat-select>
                       </mat-form-field>
                       <mat-form-field id="fonts" *ngIf="nestedresult" >
-                        <mat-select placeholder="Select Nested Subcategories" type="number" [(ngModel)]="model.nestedcategory" name="nestedcategory" id="nestedcategory">
+                        <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory" name="nestedcategory" id="nestedcategory">
                           <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -60,9 +60,9 @@
                         <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                             Offers</mat-slide-toggle>
                         <div id="showdiv6" style="display: none;">
-                            <mat-form-field> <input matInput type="text" placeholder="Minimum Price" [(ngModel)]="model.min_amount"
+                            <mat-form-field> <input matInput type="text" placeholder="Automatically accept offers of at least $" [(ngModel)]="model.min_amount"
                                     name="min_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
-                            <mat-form-field> <input matInput type="text" placeholder="Maximum Price" [(ngModel)]="model.max_amount"
+                            <mat-form-field> <input matInput type="text" placeholder="Automatically decline offers lower then $" [(ngModel)]="model.max_amount"
                                     name="max_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                         </div>
                         <mat-slide-toggle id="showhide" [checked]="true" [(ngModel)]="sell_status" name="sell_status">List
