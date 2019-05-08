@@ -15,7 +15,6 @@ import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { WishlistService } from 'app/wishlist/wishlist.service';
-// import { AllbooksModule } from '../allbooks/allbooks.module';
 import { AllbooksService } from '../allbooks/allbooks.service';
 
 
@@ -41,10 +40,7 @@ export class BookseemoreComponent implements OnInit {
   cartitems;
   wishlist;
   private sub: Subscription;
-
-
-  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
-
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, public book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.name = +params['name'];
           if (params['name'] == "Bid&BuyBooks") {
