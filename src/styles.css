@@ -3647,7 +3647,11 @@ focus {
     -moz-box-shadow: none;
     outline: 0
 }
-
+.cutom-pd li a i{
+    width: 20px;
+    margin: 0 3px;
+}
+/* 
 .cutom-pd .fa-cloud-upload-alt {
     padding: 3px 9px 0 2px
 }
@@ -3678,7 +3682,7 @@ focus {
 
 .cutom-pd .fa-sign-out-alt {
     padding: 3px 12px 0 5px
-}
+} */
 
 .sub-menu ul li a img,
 .sub-sub-menu ul li a img {
