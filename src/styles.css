@@ -5376,8 +5376,9 @@ button:hover {
 }
 
 .innerpages.homeSlider {
-    padding: 0 50px!important;
-    margin: 20px auto 0
+    padding: 0 10px!important;
+    margin: 20px auto 0;
+    overflow: visible;
 }
 
 .cat-img {

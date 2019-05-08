@@ -19,17 +19,17 @@
         </div>
     </div>
 </div>
-<ngx-slick class="carousel homeSlider innerpages" #slickModal="slick-modal" [config]="slideConfig2">
-    <div ngxSlickItem class="slide item" *ngFor="let data of inner; let i=index">
-        <div class="item-inner">
-            <a  class="cat-img" routerLink="/category-wise-notes/{{data.id}}" (click)="submit(data?.c_name)">
-                <img src="https://storage.cramfrenzy.com/3d_category/{{data.c_name}}.png" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
-                <h4 class="homesilder-title">{{data.c_name}}</h4>
-            </a>
-        </div>
-    </div>
-</ngx-slick>
 <div class="container-fluid padding-l-r-60 mb-5">
+        <ngx-slick class="carousel homeSlider innerpages" #slickModal="slick-modal" [config]="slideConfig2">
+                <div ngxSlickItem class="slide item" *ngFor="let data of inner; let i=index">
+                    <div class="item-inner">
+                        <a  class="cat-img" routerLink="/category-wise-notes/{{data.id}}" (click)="submit(data?.c_name)">
+                            <img src="https://storage.cramfrenzy.com/3d_category/{{data.c_name}}.png" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                            <h4 class="homesilder-title">{{data.c_name}}</h4>
+                        </a>
+                    </div>
+                </div>
+            </ngx-slick>
     <div class="row">
         <div class="col-lg-12">
             <h2 class="mainbanner bg-Bid-Notes">Buy & Bid on Notes </h2>
