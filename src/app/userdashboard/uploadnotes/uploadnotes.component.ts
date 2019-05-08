@@ -115,13 +115,7 @@ export class UploadnotesComponent implements OnInit {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
     }
-   // this.notesTypes = new FormGroup({
-     // name : new FormControl(),
-     // notes : new FormControl(),
-      //examNotes: new FormControl(),
-     // textBookNote: new FormControl(),
-
-    //})
+ 
   }
 
   ngOnInit() {
