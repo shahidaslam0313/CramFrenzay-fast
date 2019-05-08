@@ -614,7 +614,7 @@ blockquote .blockquote-author {
 }
 
 .margin-top-20 {
-    margin-top: 20px!important
+    margin-top: 20px!important;
 }
 
 .margin-top-15 {
@@ -5376,8 +5376,9 @@ button:hover {
 }
 
 .innerpages.homeSlider {
-    padding: 0 50px!important;
-    margin: 20px auto 0
+    padding: 0 10px!important;
+    margin: 20px auto 0;
+    overflow: visible;
 }
 
 .cat-img {
@@ -5418,6 +5419,13 @@ mat-error > strong{
   width: 100%;
   display: block;
   margin: 0 5px;
+}
+.watchlist-comp{
+    margin-top: 20px;
+}
+.watchlist-items{
+    float: right;
+    font-size: 20px;
 }
 .int-property h1{
 text-align: center;
@@ -6181,11 +6189,16 @@ ngx-slick.slick-initialized {
   text-transform:none!important
 }
 .pdf-btn{
-    color: #fff!important
-}
-.updated-course-tab .nav-tabs{
-    border: none;
-}
+        color: #fff!important
+    }
+    .updated-course-tab .nav-tabs{
+        border: none;
+
+        color: #ffffff!important
+    }
+    .Input-capitalize{
+        text-transform: capitalize;
+    }
 .updated-course-tab ul li a{
     border: none !important;
     color: #696767;

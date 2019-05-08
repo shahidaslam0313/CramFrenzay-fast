@@ -53,7 +53,7 @@ export class CoursesmComponent implements OnInit {
       else if (params['name'] == "TopRatedCourses") {
         this.setPagetoprated(1);
       }
-      else if (params['name'] == "RecentlyVisitedCourses") {
+      else if (params['name'] == "RecentlyViewedCourses") {
         this.recentnote();
       }
     });

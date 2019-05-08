@@ -44,7 +44,7 @@ export const appRoutes: Routes = [
       { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
       { path: 'login', loadChildren: './login/login.module#LoginModule' },
       { path: 'activateaccount/:code', loadChildren: './activate-account/activate_account.module#ActivateAccountModule' },
-      { path: 'wishlist', loadChildren: './wishlist/wishlist.module#WishlistModule' },
+      { path: 'watchlist', loadChildren: './wishlist/wishlist.module#WishlistModule' },
       { path: 'addtocart', loadChildren: './addtocart/addtocart.module#AddtocartModule' },
       { path: 'bid-history', loadChildren: './bid-history/bid-history.module#BidHistoryModule' },
       { path: 'bid-history', loadChildren: './recapcha/recapcha.module#RecapchaModule' },

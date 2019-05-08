@@ -55,8 +55,8 @@ export class NotesgenieComponent implements OnInit {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    prevArrow: '<button class="slick-main-btn-left " style="left:0;"><i class="fa fa-chevron-left"></i></button>',
-    nextArrow: '<button class="slick-main-btn-right " style="right:0;"><i class="fa fa-chevron-right"></i></button>',
+    prevArrow: '<button class="slick-main-btn-left "><i class="fa fa-chevron-left"></i></button>',
+    nextArrow: '<button class="slick-main-btn-right "><i class="fa fa-chevron-right"></i></button>',
     responsive: [
       {
         breakpoint: 1024,

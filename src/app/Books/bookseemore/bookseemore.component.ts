@@ -52,7 +52,7 @@ export class BookseemoreComponent implements OnInit {
           else if (params['name'] == "TopRatedBooks") {
               this.setToprated(1);
           }
-          else if (params['name'] == "RecentlyVisitedBooks") {
+          else if (params['name'] == "RecentlyViewedBooks") {
               this.recentnote();
           }
 

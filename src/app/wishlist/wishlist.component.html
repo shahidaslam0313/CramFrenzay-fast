@@ -1,15 +1,17 @@
-<div class="container">
+<div class="container watchlist-comp">
     <div class="row">
         <div class="col-lg-12">
             <div class="addtocart-heading">
-                <h2>Watchlist</h2>
-                <p><span>{{count}}</span> Items in Watchlist </p>
+                <h2 class="mainbanner">Watchlist
+                    <p class="watchlist-items"><span>{{count}}</span> Items in Watchlist </p>
+                </h2>
+                
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes">Notes</h2>
+            <h2 class="mainbanner bg-Bid-Notes" *ngIf="wishnotesId?.length != '0'">Notes</h2>
         </div>
     </div>
     <div class="row">
@@ -41,7 +43,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Courses">Courses</h2>
+            <h2 class="mainbanner bg-Bid-Courses" *ngIf="wishId?.length != '0'">Courses</h2>
         </div>
     </div>
     <div class="row">
@@ -73,7 +75,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes">FlashCard</h2>
+            <h2 class="mainbanner bg-Bid-Notes" *ngIf="cardwish?.length != '0'">Flash Card</h2>
         </div>
     </div>
     <div class="row">
@@ -105,7 +107,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes">Books</h2>
+            <h2 class="mainbanner bg-Bid-Notes" *ngIf="wishbook?.length != '0'">Books</h2>
         </div>
     </div>
     <div class="row">

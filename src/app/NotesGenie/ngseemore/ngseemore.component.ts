@@ -53,7 +53,7 @@ export class NgseemoreComponent implements OnInit {
           else if (params['name'] == "TopRatedNotes") {
               this.setToprated(1);
           }
-          else if (params['name'] == "RecentlyVisitedNotes") {
+          else if (params['name'] == "RecentlyViewedNotes") {
               this.recentnote();
           }
 
