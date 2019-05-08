@@ -5402,6 +5402,13 @@ mat-error > strong{
   display: block;
   margin: 0 5px;
 }
+.watchlist-comp{
+    margin-top: 20px;
+}
+.watchlist-items{
+    float: right;
+    font-size: 20px;
+}
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
