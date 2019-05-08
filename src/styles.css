@@ -5402,6 +5402,15 @@ mat-error > strong{
   display: block;
   margin: 0 5px;
 }
+.int-property h1{
+text-align: center;
+}
+.int-property h2{
+    text-align: left !important;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
