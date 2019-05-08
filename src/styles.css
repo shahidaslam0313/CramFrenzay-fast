@@ -6214,8 +6214,6 @@ ngx-slick.slick-initialized {
     width: 100%;
 }
 .updated-course-tab{
-    height: 100%;
-    position: fixed;
     left: 0;
     box-shadow: 0 0 5px #ccc;
     padding: 50px 5px;
