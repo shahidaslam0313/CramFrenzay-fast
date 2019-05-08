@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { AddtocartComponent } from './addtocart.component';
 import { AddtocartService } from '../addtocart/addtocart.service';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -17,7 +18,8 @@ const addtocartComponent: Routes = [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    TextMaskModule
   ],
   declarations: [
     AddtocartComponent,

@@ -1,4 +1,12 @@
 <div class="container-fluid">
+    <!-- <div class="row">
+        <div class="col-sm-3 updated-course-tab">
+
+        </div>
+        <div class="col-sm-9">
+
+        </div>
+    </div> -->
     <div class="row">
         <div class="col-sm-3 updated-course-tab">
             <ul class="nav nav-tabs ">
@@ -15,7 +23,7 @@
                         class="nav-link" title="Books"> <i class="fa fa-book"></i>Books Listed For Sale By Me </a> </li>
             </ul>
         </div>
-        <div class="col-sm-9 offset-3 ">
+        <div class="col-sm-9 ">
             <div class="tab-content">
                 <div class="tab-pane active" id="notes">
                     <h3 class="mainbanner">Notes Listed For Sale By Me </h3>
@@ -33,7 +41,7 @@
                                 </figure>
                                 <div class="product-list__content">
                                     <div class="product-list__category">{{item?.name}}<br></div>
-                                    <div class="product-list__title tutor-subject mb-3">
+                                    <div class="product-list__title tutor-subject ">
                                         <a routerLink="/notes/{{item?.id}}" title="{{item?.name}}"
                                             *ngIf="item?.status == true">Approved By Admin</a><a
                                             routerLink="/notes/{{item?.id}}"
@@ -62,7 +70,7 @@
                                         (click)="btndelcourse(data.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
                                 <div class="product-list__content">
                                     <div class="product-list__category">{{data?.name}}<br></div>
-                                    <div class="product-list__title tutor-subject mb-3">
+                                    <div class="product-list__title tutor-subject ">
                                         <a routerLink="/eachcourse/{{data?.id}}" title="{{data?.name}}"
                                             *ngIf="item?.status == true">Approved By Admin</a><a
                                             routerLink="/eachcourse/{{data?.id}}"
@@ -99,7 +107,7 @@
                                 </figure>
                                 <div class="product-list__content">
                                     <div class="product-list__category"> {{item?.name}}<br></div>
-                                    <div class="product-list__title tutor-subject mt-3 mb-3">
+                                    <div class="product-list__title tutor-subject mt-3 ">
                                         <a routerLink="/flashcarddetail" title="{{item?.name}}"
                                             *ngIf="item?.status == true">Approved By Admin</a><a
                                             routerLink="/flashcarddetail"
@@ -131,7 +139,7 @@
                                 </figure>
                                 <div class="product-list__content">
                                     <div class="product-list__category">{{item?.name}}<br></div>
-                                    <div class="product-list__title tutor-subject mb-3">
+                                    <div class="product-list__title tutor-subject ">
                                         <a routerLink="/detail/{{item?.id}}" title="{{item?.name}}"
                                             *ngIf="item?.status == true">Approved By Admin</a><a
                                             routerLink="/detail/{{item?.id}}"

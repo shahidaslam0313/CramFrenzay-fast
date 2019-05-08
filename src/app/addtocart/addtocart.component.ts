@@ -48,7 +48,7 @@ export class AddtocartComponent implements OnInit {
   card_opeation = [
     { value: 'Visa', viewValue: 'Visa' },
     { value: 'Master', viewValue: 'Master' },
-    { value: 'Divcover', viewValue: 'Divcover' },
+    { value: 'Divcover', viewValue: 'Discover' },
     { value: 'American Express', viewValue: 'American Express' }
   ];
   form = new FormGroup({
@@ -60,9 +60,9 @@ export class AddtocartComponent implements OnInit {
     ]),
     creditno: new FormControl('', [
       Validators.minLength(15),
-      Validators.maxLength(16),
+      // Validators.maxLength(16),
       Validators.required,
-      Validators.pattern('^[0-9]*$')
+      // Validators.pattern('^[0-9]*$')
     ]),
     creditno4: new FormControl('', [
       Validators.minLength(15),
@@ -99,11 +99,22 @@ export class AddtocartComponent implements OnInit {
     // ]),
     check: new FormControl(),
   });
+  public masks=function(rawValue) {
+    if (rawValue && rawValue.length > 0) {
+        if (rawValue[0] == '0' || rawValue[5] == '1') {
+            return [/[01]/, /[1-9]/, '/',  /[0-9]/, /[0123456789]/];
+        } else {
+            return [/[01]/, /[0-2]/, '/',  /[0-9]/, /[0123456789]/];
+        }
+    }
+    return [/[01]/, /[0-9]/, '/',   /[0-9]/, /[0123456789]/];
+    
+}
   ShowButton(card_type) {
     this.cardtype = card_type;
     if (card_type == "American Express") {
       this.cardtype = card_type;
-      this.cardmask = [/[3]/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/]
+      this.cardmask = [/[3]/, /\d/, /\d/, /\d/, '-',  /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.creditno = false;
       this.form.controls.creditno.reset();
@@ -113,7 +124,7 @@ export class AddtocartComponent implements OnInit {
       this.ccv4 = true;
     }
     else if (card_type == "Visa") {
-      this.cardmask=[/[4]/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/]
+      this.cardmask=[/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.creditno4 = false;
       this.form.controls.creditno4.reset();
@@ -122,7 +133,7 @@ export class AddtocartComponent implements OnInit {
       this.form.controls.ccv4.reset();
       this.ccv = true;
     }else if (card_type == "Master") {
-      this.cardmask=[/[5]/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/]
+      this.cardmask=[/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.creditno4 = false;
       this.form.controls.creditno4.reset();
@@ -131,7 +142,7 @@ export class AddtocartComponent implements OnInit {
       this.form.controls.ccv4.reset();
       this.ccv = true;
     } else{
-      this.cardmask=[/[6]/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/,  /\d/, /\d/, /\d/, /\d/]
+      this.cardmask=[/[6]/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.creditno4 = false;
       this.form.controls.creditno4.reset();
@@ -152,6 +163,7 @@ export class AddtocartComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.showCartItems();
     this.getCards();
     this.getcardid(this.id);
