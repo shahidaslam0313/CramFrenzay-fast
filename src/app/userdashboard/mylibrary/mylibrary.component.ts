@@ -113,6 +113,7 @@ export class MylibraryComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.sub = this.route.params.subscribe(params => {
       this.falshcardid = +params['id'] || 0;
     });

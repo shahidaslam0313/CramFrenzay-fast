@@ -139,7 +139,7 @@
 }
 
 .homeSlider .item:hover .homesilder-title {
-    background: #c00
+    color: #c00
 }
 
 .homeSlider .item .item-inner {
@@ -152,7 +152,8 @@
 }
 
 .homeSlider .item .item-inner:hover {
-    background-color: transparent
+    background-color: transparent;
+    border: none;
 }
 
 .homeSlider .item .item-inner img {
@@ -613,7 +614,7 @@ blockquote .blockquote-author {
 }
 
 .margin-top-20 {
-    margin-top: 20px!important
+    margin-top: 20px!important;
 }
 
 .margin-top-15 {
@@ -5089,15 +5090,13 @@ nav a.user-link.active1 {
     background: 0 0;
     border: none
 }
-
+/* .....................Course listed............................. */
 .board {
     width: 85%;
     margin: 20px auto;
     height: auto;
     padding: 20px;
     background: #fff;
-    -webkit-box-shadow: 0 1px 1px 1px #888;
-    box-shadow: 0 1px 1px 1px #888
 }
 
 .board-1 {
@@ -5111,7 +5110,8 @@ nav a.user-link.active1 {
     -webkit-box-shadow: 0 0 10px #000;
     box-shadow: 0 0 10px #000;
     border-radius: 5px;
-    overflow: hidden
+    overflow: hidden;
+    display: block;
 }
 
 .board-1 .nav-tabs>li {
@@ -5177,7 +5177,7 @@ nav a.user-link.active1 {
     border: 10px solid transparent;
     border-bottom-color: #000
 }
-
+/* ..............................Course Listed End................................. */
 .rating {
     font-size: 9px!important;
     display: block
@@ -5376,8 +5376,9 @@ button:hover {
 }
 
 .innerpages.homeSlider {
-    padding: 0 50px!important;
-    margin: 20px auto 0
+    padding: 0 10px!important;
+    margin: 20px auto 0;
+    overflow: visible;
 }
 
 .cat-img {
@@ -5561,7 +5562,9 @@ text-align: center;
         border-right: none
     }
     .float_logo {
-        width: 100%
+        width: 100%;
+        float: none !important;
+    margin: 0 auto !important;
     }
     .main-nav__list.main-nav__list_right {
         position: absolute;
@@ -6186,8 +6189,50 @@ ngx-slick.slick-initialized {
   text-transform:none!important
 }
 .pdf-btn{
-    color: white!important
+        color: #fff!important
+    }
+    .updated-course-tab .nav-tabs{
+        border: none;
+
+        color: #ffffff!important
+    }
+    .Input-capitalize{
+        text-transform: capitalize;
+    }
+.updated-course-tab ul li a{
+    border: none !important;
+    color: #696767;
+    outline: 0;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    padding: 10px;
+    line-height: normal;
+    font-size: 18px;
+    font-weight: 600;
 }
+.updated-course-tab ul li{
+    width: 100%;
+}
+.updated-course-tab{
+    height: 100%;
+    position: fixed;
+    left: 0;
+    box-shadow: 0 0 5px #ccc;
+    padding: 50px 5px;
+    z-index: 9;
+    max-width: 312px;
+    background: #fff;
+}
+.updated-course-tab ul li a i{
+    margin-right: 5px;
+}
+.updated-course-tab ul li:hover,.updated-course-tab .nav-tabs .nav-link.active {
+    font-weight: 600;
+    background: #efefef;
+    text-decoration: none;
+    color: #000;
+}
+
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px

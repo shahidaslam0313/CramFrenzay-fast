@@ -30,7 +30,7 @@
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
                     <form class="user-add-ingo-form" enctype="multipart/form-data">
-                        <mat-form-field class="margin-top-20"> <input matInput type="text" placeholder="Title" id="name"
+                        <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Title" id="name"
                                 [(ngModel)]="model.name" name="name" required>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
                             </mat-error>
