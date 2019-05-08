@@ -3679,7 +3679,12 @@ focus {
 .cutom-pd .fa-gavel {
     padding: 3px 10px 0 5px
 }
-
+.cutom-pd .fa-hand-holding-usd{
+    padding: 3px 10px 0 5px
+}
+.cutom-pd .fa-cart-plus{
+    padding: 3px 10px 0 5px
+}
 .cutom-pd .fa-sign-out-alt {
     padding: 3px 12px 0 5px
 } */
@@ -5439,7 +5444,10 @@ text-align: center;
     font-size: 24px;
     margin: 10px 0;
 }
-
+.fa-file-pdf{
+    content: "\f1c1";
+    color: #ffffff;
+}
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
