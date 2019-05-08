@@ -87,7 +87,7 @@
                     src="https://storage.cramfrenzy.com/images/{{result?.notes_thumbnail}}" alt="Notes Image">
                 <div class="card-body">
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.actual_price | currency:'USD'}}</h5> <a
+                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a
                         class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true">Note Already Bought</a> <a
                         class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false"
                         (click)="checkmainpage(result?.id)">Buy Now</a> <a class="card-btn btn-add-cart"
