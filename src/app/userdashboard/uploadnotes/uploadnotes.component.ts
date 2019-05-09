@@ -181,7 +181,7 @@ export class UploadnotesComponent implements OnInit {
           console.log(this.model.notes_thumbnail);
           this.uploadfiles();
           this.ifImageUpload(this.sell_days);
-          this.CourseSuccess();
+          
         }
       });
     // f.resetForm();
@@ -192,7 +192,7 @@ export class UploadnotesComponent implements OnInit {
 
     subcategory;
   nestedcategory;
-  ifImageUpload(sell_days) {
+  private ifImageUpload(sell_days) {
     console.log(this.sell_days);
     var date = moment(new Date, "YYYY-MM-DD");
     var new_date = moment(date).add(this.sell_days, 'days');
@@ -203,9 +203,8 @@ export class UploadnotesComponent implements OnInit {
       .subscribe(Res => {
         // this.date = Res
         // console.log(this.date);
-
-
       });
+      this.CourseSuccess();
   }
   CourseSuccess() {
     swal({

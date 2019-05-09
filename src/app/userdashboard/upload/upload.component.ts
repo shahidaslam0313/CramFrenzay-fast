@@ -215,7 +215,7 @@ role;
   CourseFailure() {
     swal({
       type: 'error',
-      title: 'Oops! <br>Failed to add course. Inccorrect Information!',
+      title: 'Oops <br>Failed to add course. Inccorrect Information',
       showConfirmButton: false,
       width: '512px',
       timer: 2500

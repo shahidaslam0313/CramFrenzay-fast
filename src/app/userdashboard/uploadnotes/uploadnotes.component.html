@@ -89,10 +89,10 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                <div *ngIf="sell_status == false">
+                        <div *ngIf="sell_status == false">
                         <mat-slide-toggle id="showhide2" class="margin-bottom-10" [checked]="true" [(ngModel)]="bid_status"
                             name="bid_status">List for Auction</mat-slide-toggle>
-                        
+                            <div id="showdiv2">
                             <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
                                     name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>
@@ -100,6 +100,7 @@
                                     <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
+                            </div>
                             </div>
                             <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction</mat-checkbox>
                             <div id="showdiv3">
