@@ -29,23 +29,8 @@ export class MycartComponent implements OnInit {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
 this.record = Data.Cart;
-console.log(this.record)
-      for (let vall in Data.Cart) {
-        if (Data.Cart[vall].course) {
-          this.Courses(Data.Cart[vall]);
-          console.log(this.Courses);
-        }
-        else if (Data.Cart[vall].notes) {
-          this.Notes(Data.Cart[vall]);
-          console.log(this.Notes);
-        }
-        // else if (Data.Cart[vall].book) {
-        //   this.Book(Data.Cart[vall]);
-        // }
-        // else if (Data.Cart[vall].flashcard) {
-        //   this.FlashCard(Data.Cart[vall]);
-        // }
-      }
+console.log(this.record,'Record')
+      
     })
   }
 }

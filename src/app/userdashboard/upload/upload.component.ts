@@ -189,7 +189,7 @@ role;
   CourseSuccess() {
     swal({
       type: 'success',
-      title: 'Your Coourse has been successfully added. It will be listed for sale upon approval.',
+      title: 'Your Course has been successfully added. It will be listed for sale upon approval.',
       width: '512px'
     });
   }
