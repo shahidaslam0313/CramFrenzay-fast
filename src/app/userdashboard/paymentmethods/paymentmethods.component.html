@@ -14,7 +14,7 @@
                                         <g> </g>
                                     </g>
                                 </svg> </div>
-                            <div class="card-holder sh"> <label>Card Holder Name</label>
+                            <div class="card-holder sh"> <label>Nick Name</label>
                                 <div>{{form.controls.cardnickname.value}}</div>
                             </div>
                             <div class="card-holder"> <label>Card Number</label>
@@ -43,21 +43,36 @@
                         </div>
                     </div>
                 </div>
-                <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm> 
+                <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm>
                     <mat-form-field> <input matInput type="text" placeholder="Card Holder Name"
+                        formControlName="cardHolderName">
+                    <mat-error *ngIf="form.controls.cardHolderName.touched && form.controls.cardHolderName.invalid">
+                        <mat-error *ngIf="form.controls.cardHolderName.errors.required"> Card Holder Name cannot be
+                            empty </mat-error>
+                        <mat-error *ngIf="form.controls.cardHolderName.hasError('pattern')"> Alphabets Only
+                        </mat-error>
+                        <mat-error *ngIf="form.controls.cardHolderName.errors.minlength"> Card Holder Name must be
+                            atleast{{form.controls.cardHolderName.errors.minlength.requiredLength}}characters long.
+                        </mat-error>
+                        <mat-error *ngIf="form.controls.cardHolderName.errors.maxlength"> Card Holder Name must be at
+                            atmost{{form.controls.cardHolderName.errors.maxlength.requiredLength}}characters long.
+                        </mat-error>
+                        <!-- <mat-error *ngIf="form.controls.cardHolderName.errors.cannotContainSpace"> Card Holder Name
+                            cannot contain spaces </mat-error> -->
+                    </mat-error>
+                </mat-form-field> 
+                    <mat-form-field> <input matInput type="text" placeholder="Nick Name"
                             formControlName="cardnickname">
                         <mat-error *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
-                            <mat-error *ngIf="form.controls.cardnickname.errors.required"> Card Holder Name cannot be
+                            <mat-error *ngIf="form.controls.cardnickname.errors.required"> Nick Name cannot be
                                 empty </mat-error>
-                            <mat-error *ngIf="form.controls.cardnickname.hasError('pattern')"> Alphabets Only
-                            </mat-error>
-                            <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Card Holder Name must be
+                            <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Nick Name must be
                                 atleast{{form.controls.cardnickname.errors.minlength.requiredLength}}characters long.
                             </mat-error>
-                            <mat-error *ngIf="form.controls.cardnickname.errors.maxlength"> Card Holder Name must be at
+                            <mat-error *ngIf="form.controls.cardnickname.errors.maxlength"> Nick Name must be at
                                 atmost{{form.controls.cardnickname.errors.maxlength.requiredLength}}characters long.
                             </mat-error>
-                            <!-- <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace"> Card Holder Name
+                            <!-- <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace"> Nick Name
                                 cannot contain spaces </mat-error> -->
                         </mat-error>
                     </mat-form-field>
@@ -140,6 +155,29 @@
                         <span class="card-error" *ngIf="expirydate <= '19'">
                             Invalid Expiry Date
                         </span>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Zip Code" formControlName="zipCode" type="text"/>
+                        <mat-error *ngIf="form.controls.zipCode.hasError('pattern')"> Zip Code must be only in digits.
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Street Address" formControlName="street" type="text"/>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="City" formControlName="city" type="text"/>
+                        <mat-error *ngIf="form.controls.city.hasError('pattern')"> City Name Must Be In Alphabets Only
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="State" formControlName="state" type="text"/>
+                        <mat-error *ngIf="form.controls.state.hasError('pattern')"> State Name Must Be In Alphabets Only
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Country" formControlName="country" type="text"/>
+                        <mat-error *ngIf="form.controls.country.hasError('pattern')"> Country Name Must Be In Alphabets Only
+                        </mat-error>
                     </mat-form-field>
                     <mat-slide-toggle [checked]="false" formControlName="check">Set as default payment method
                     </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add(f)">Add</a>

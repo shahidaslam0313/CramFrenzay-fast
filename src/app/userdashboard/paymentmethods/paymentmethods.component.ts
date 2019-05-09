@@ -18,7 +18,7 @@ import { noSpaceValidator } from '../../login/noSpaceValidator.component';
   styleUrls: ['./paymentmethods.component.scss']
 })
 export class PaymentmethodsComponent implements OnInit {
-  
+
   cardnickname2;
   card_opeation = [
     { value: 'Visa', viewValue: 'Visa' },
@@ -65,6 +65,32 @@ export class PaymentmethodsComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(25),
       Validators.required,
+    ]),
+    cardHolderName: new FormControl('', [
+      Validators.minLength(3),
+      Validators.maxLength(25),
+      Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
+    street: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
+    zipCode: new FormControl('',[
+      Validators.required,
+      Validators.pattern('^[0-9]*$')
+    ]),
+    city: new FormControl('',[
+      Validators.required,
+      Validators.maxLength(25),
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
+    state: new FormControl('',[
+      Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
+    country: new FormControl('',[
+      Validators.required,
       Validators.pattern("[a-zA-Z ]+")
     ]),
     check: new FormControl(),
@@ -106,25 +132,25 @@ export class PaymentmethodsComponent implements OnInit {
   cardtype;
   expirydate;
   ccv4;
-  public cardmask =[/[0-9]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public cardmask = [/[0-9]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private sub: Subscription;
-  chek(val){
-    this.expirydate=val.toString().slice(3,5);
-    console.log(this.expirydate,'jj')
+  chek(val) {
+    this.expirydate = val.toString().slice(3, 5);
+    console.log(this.expirydate, 'jj')
   }
-  public masks=function(rawValue) {
-   
+  public masks = function (rawValue) {
+
     // add logic to generate your mask array  
     if (rawValue && rawValue.length > 0) {
-        if (rawValue[0] == '0' || rawValue[5] == '1') {
-            return [/[01]/, /[1-9]/, '/',  /[0-9]/, /[0123456789]/];
-        } else {
-            return [/[01]/, /[0-2]/, '/',  /[0-9]/, /[0123456789]/];
-        }
+      if (rawValue[0] == '0' || rawValue[5] == '1') {
+        return [/[01]/, /[1-9]/, '/', /[0-9]/, /[0123456789]/];
+      } else {
+        return [/[01]/, /[0-2]/, '/', /[0-9]/, /[0123456789]/];
+      }
     }
-    return [/[01]/, /[0-9]/, '/',   /[0-9]/, /[0123456789]/];
-    
-}
+    return [/[01]/, /[0-9]/, '/', /[0-9]/, /[0123456789]/];
+
+  }
   flipclass = 'credit-card-box';
   constructor(private serv: PaymentmethodsService, private router: Router, private route: ActivatedRoute, private sg: SimpleGlobal, private data: DataService, private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     this.cardnumber = true;
@@ -148,16 +174,16 @@ export class PaymentmethodsComponent implements OnInit {
   cardnumber4;
   exp;
   ccv;
-  type;cardnum;nickname;
-  getSingleCard1(nickname,status,id){
+  type; cardnum; nickname;
+  getSingleCard1(nickname, status, id) {
     this.nickname = nickname;
-// this.check2=status;s
-this.status=status;
-    this.id=id;
-// this.exp=exp;
-// this.type=type;
-// this.cardnum=number;
-// this.ccv=ccv
+    // this.check2=status;s
+    this.status = status;
+    this.id = id;
+    // this.exp=exp;
+    // this.type=type;
+    // this.cardnum=number;
+    // this.ccv=ccv
   }
   // getSingleCard() {
   //   this.serv.singleCard(this.id,this.status,this.exp,this.type,this.cardnickname2,this.cardnum).subscribe(Data => {
@@ -190,7 +216,7 @@ this.status=status;
       this.ccv4 = true;
     }
     else if (card_type == "Visa") {
-      this.cardmask=[/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+      this.cardmask = [/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.cardnumber4 = false;
       this.form.controls.cardnumber4.reset();
@@ -198,8 +224,8 @@ this.status=status;
       this.ccv4 = false;
       this.form.controls.ccv4.reset();
       this.ccv = true;
-    }else if (card_type == "Master") {
-      this.cardmask=[/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+    } else if (card_type == "Master") {
+      this.cardmask = [/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.cardnumber4 = false;
       this.form.controls.cardnumber4.reset();
@@ -207,8 +233,8 @@ this.status=status;
       this.ccv4 = false;
       this.form.controls.ccv4.reset();
       this.ccv = true;
-    } else{
-      this.cardmask=[/[6]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+    } else {
+      this.cardmask = [/[6]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.cardnumber4 = false;
       this.form.controls.cardnumber4.reset();
@@ -220,26 +246,26 @@ this.status=status;
   }
   model: any = {};
   updateSingleCard() {
-      this.serv.updateCard(this.model.cardnickname2, this.model.status , this.id).subscribe(Data => {
-           swal({
-          type: 'success',
-          title: 'Credit card details are updated!',
-          showConfirmButton: false,
-          timer: 1500
-        });
-        this.getCards();
-      },
-        error => {
-          if (error.status == 400) {
-            swal({
-              type: 'error',
-              title: 'Credit card details are not correct!',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          }
-        })
-      }
+    this.serv.updateCard(this.model.cardnickname2, this.model.status, this.id).subscribe(Data => {
+      swal({
+        type: 'success',
+        title: 'Credit card details are updated!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.getCards();
+    },
+      error => {
+        if (error.status == 400) {
+          swal({
+            type: 'error',
+            title: 'Credit card details are not correct!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
+  }
   deleteSingleCard(id) {
     this.serv.deleteCard(id).subscribe(Data => {
       swal({
@@ -276,11 +302,15 @@ this.status=status;
       })
   }
   date;
-  add(f:NgForm) {
+  add(f: NgForm) {
     if (this.cardtype == "American Express") {
-      if ( this.form.controls.ccv4.valid &&  this.form.controls.cardnumber4.valid &&
-        this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
-        this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['ccv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['check']).subscribe(Data => {
+      if (this.form.controls.ccv4.valid && this.form.controls.cardnumber4.valid &&
+        this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid &&
+        this.form.controls.cardHolderName.valid && this.form.controls.zipCode.valid &&
+        this.form.controls.street.valid && this.form.controls.city.valid &&
+        this.form.controls.state.valid && this.form.controls.country.valid) {
+        this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['ccv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipCode'],
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
           swal({
             type: 'success',
             title: 'Payment method is listed!',
@@ -290,11 +320,11 @@ this.status=status;
           this.getCards();
         },
           error => {
-           if (error.status == 302) {
+            if (error.status == 302) {
               swal(
                 'Sorry',
                 'Crad Number Already Exist',
-                'error'  
+                'error'
               )
             }
             else if (error.status == 404) {
@@ -339,9 +369,10 @@ this.status=status;
       }
     }
     else {
-      if (this.form.controls.ccv.valid &&this.form.controls.cardnumber.valid &&
+      if (this.form.controls.ccv.valid && this.form.controls.cardnumber.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
-        this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['ccv'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['check']).subscribe(Data => {
+        this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['ccv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
           swal({
             type: 'success',
             title: 'Payment method is listed!',
