@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="mainbanner bg-Bid-Notes">Sub-Categories in {{name}}</h1>
-    <div class="row">
+    <div class="row slider-hight">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/nestedcateroy/{{data?.id}}" (click)="onsubmit(data?.sub_category_name)" > <img
@@ -19,7 +19,7 @@
 </div>
 <div class="container" *ngIf="eachnotes?.length != '0' ">
     <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{name}}</h1>
-    <div class="row">
+    <div class="row slider-hight">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachnotes; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img">

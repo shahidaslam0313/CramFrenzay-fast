@@ -549,7 +549,9 @@ blockquote .blockquote-author {
 .container-wide-3 {
     min-width: 1300px
 }
-
+.results-found{
+    color:#fff;
+}
 .no-result-found {
     font-size: 16px;
     font-weight: 900;
@@ -1205,7 +1207,8 @@ blockquote .blockquote-author {
 
 .product-list__category {
     color: #000;
-    margin: 0
+    margin: 0;
+    text-align: center;
 }
 
 .product-list__category a,
@@ -2092,11 +2095,12 @@ mat-form-field.mat-form-field {
     font-weight: 500;
     line-height: 24px;
     color: #fff!important;
-    text-transform: uppercase;
+    text-transform: capitalize;
     padding: 13px 42px;
     border-radius: 30px;
-    background-color: #c00;
+    background-color: #000;
     letter-spacing: 1px;
+    font-weight: 600;
     -webkit-transition: .5s all;
     -o-transition: .5s all;
     transition: .5s all;
@@ -2154,7 +2158,7 @@ mat-form-field.mat-form-field {
 }
 
 .counter_title {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     color: #727e85;
     font-weight: 200
@@ -5356,7 +5360,9 @@ button:hover {
     margin: 20px auto 0;
     overflow: visible;
 }
-
+.innerpages.homeSlider .item-inner:hover .homesilder-title{
+    background: #c00;
+}
 .cat-img {
     width: 128px;
     height: 128px;
@@ -5372,7 +5378,9 @@ button:hover {
     -o-transition: .3s ease all 0s;
     transition: .3s ease all 0s
 }
-
+.innerpages{
+    
+}
 .user-dashboard {
     margin: 50px auto 0
 }
@@ -5415,6 +5423,8 @@ text-align: center;
     content: "\f1c1";
     color: #ffffff;
 }
+
+
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
