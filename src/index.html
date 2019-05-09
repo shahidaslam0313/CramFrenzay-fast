@@ -13,20 +13,27 @@
   <div id="main">
     <app-root></app-root>
   </div>
-  <a onclick="topFunction()" style="display: none" class="back2top" title="Back to Top"><i class="fa fa-angle-up"></i>Top</a>
+  <!-- <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> -->
+  <a onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-angle-up"></i>Top</a>
 
-  <!-- <script defer>
-    function topFunction() {
-      $('html, body').delay(0).animate({ scrollTop: 0 }, 400);
-    }
-    $(window).on('scroll', function () {
-      if ($(window).scrollTop() > 300) {
-        $('.back2top').show();
-      } else {
-        $('.back2top').hide();
+  <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("myBtn").style.display = "block";
+        } else {
+          document.getElementById("myBtn").style.display = "none";
+        }
       }
-    })
-  </script> -->
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 10;
+        document.documentElement.scrollTop = 10;
+      }
+      </script>
 
 </body>
 </html>
