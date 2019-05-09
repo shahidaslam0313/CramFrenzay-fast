@@ -65,41 +65,28 @@
                     </mat-form-field>
                     <mat-form-field class="material-select">
                         <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
-                            <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
+                            <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div *ngIf="sell_status == true">
-                <mat-slide-toggle id="showhide2" class="margin-bottom-10" [checked]="true" [(ngModel)]="bid_status"
-                    name="bid_status">Also List for Auction</mat-slide-toggle>
-            
+                <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
+                        <span *ngIf="sell_status == true">Also List for Auction </span>
+                        <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
+                
+                <div id="showdiv2">
                     <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
                             name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                     <mat-form-field>
                         <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                            <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
+                            <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
                         </mat-select>
                     </mat-form-field>
                     </div>
-                    <div *ngIf="sell_status == false">
-                            <mat-slide-toggle id="showhide2" class="margin-bottom-10" [checked]="true" [(ngModel)]="bid_status"
-                                name="bid_status">List for Auction</mat-slide-toggle>
-                        
-                                <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
-                                        name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
-                                <mat-form-field>
-                                    <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                                        <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                </div>
-
                     <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction</mat-checkbox>
                     <div id="showdiv3">
                         <mat-form-field> <input matInput type="text" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
                                 name="reservedprice"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                     </div>
-                    
                     <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
                     <div id="showdiv4">
                         <mat-form-field class="margin-top-10"> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
@@ -109,36 +96,7 @@
                             <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
                         </mat-form-field>
                     </div>
-            
-
-                <!-- <div *ngIf="sell_status == fal">
-                        <mat-slide-toggle id="showhide2" class="margin-bottom-10" [checked]="true" [(ngModel)]="bid_status"
-                            name="bid_status">Also List for Auction</mat-slide-toggle>
-                        <div id="showdiv2">
-                            <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
-                                    name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
-                            <mat-form-field>
-                                <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction</mat-checkbox>
-                            <div id="showdiv3">
-                                <mat-form-field> <input matInput type="text" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
-                                        name="reservedprice"> <span matPrefix>$&nbsp;</span> </mat-form-field>
-                            </div>
-                            </div>
-                            <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
-                            <div id="showdiv4">
-                                <mat-form-field class="margin-top-10"> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
-                                        [(ngModel)]="model.start_time" name="start_time"> <span placeholder="MM/DD/YYYY HH:MM AM"></span>
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                    <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
-                                </mat-form-field>
-                            </div>
-                        </div> -->
-
+                
               <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
                 <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
               </div>

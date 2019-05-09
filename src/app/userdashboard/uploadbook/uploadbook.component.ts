@@ -156,7 +156,7 @@ uploadfile(){
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
 
-    this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.model.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.min_amount, this.model.max_amount, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date)
+    this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.min_amount, this.model.max_amount, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date)
       .subscribe(Res => {
         this.uploadfile();
         f.resetForm();
