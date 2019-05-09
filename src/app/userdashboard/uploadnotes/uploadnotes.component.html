@@ -80,7 +80,8 @@
                         </div>
                         <div *ngIf="sell_status == true">
                                 <mat-slide-toggle id="showhide2" class="margin-bottom-10" [checked]="true" [(ngModel)]="bid_status"
-                                name="bid_status">Also List for Auction</mat-slide-toggle> 
+                                name="bid_status">Also List for Auction
+                            </mat-slide-toggle> 
                                 <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
                                     name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>

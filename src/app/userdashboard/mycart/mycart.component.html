@@ -55,43 +55,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="flashcards">
-                        <h3 class="mainbanner">Flash Cards in my cart </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let cartitems of record; let i = index">
-                            <div class="product-list__item" *ngIf="cartitems?.flashcard !=null">
-                                <figure class="product-list__img"> <a routerLink="/fcdetail/{{cartitems?.flashcard.id}}"> <img
-                                            src="{{Imageurl}}{{cartitems?.flashcard.flashcard_image}}" alt="FlashCard"> </a> 
-                                </figure>
-                                <div class="product-list__content">
-                                  <a routerLink="/fcdetail/{{cartitems?.flashcard.id}}">  <div class="product-list__category"> {{cartitems?.flashcard.name}}<br></div>
-                                    <p class="product-list__price">Price:{{cartitems?.flashcard.price | currency:'USD'}}</p>
-                                    <p class="product-list__price">Discount:{{cartitems?.flashcard.discount | currency:'USD'}}</p>
-                                    </a>
-                                </div>
+
+            </div>
+            <div class="tab-pane" id="flashcards">
+                    <h3 class="mainbanner">Flash Cards in my cart </h3>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let cartitems of record; let i = index">
+                        <div class="product-list__item" *ngIf="cartitems?.flashcard !=null">
+                            <figure class="product-list__img"> <a routerLink="/fcdetail/{{cartitems?.flashcard.id}}"> <img
+                                        src="{{Imageurl}}{{cartitems?.flashcard.flashcard_image}}" alt="FlashCard"> </a> 
+                            </figure>
+                            <div class="product-list__content">
+                              <a routerLink="/fcdetail/{{cartitems?.flashcard.id}}">  <div class="product-list__category"> {{cartitems?.flashcard.name}}<br></div>
+                                <p class="product-list__price">Price:{{cartitems?.flashcard.price | currency:'USD'}}</p>
+                                <p class="product-list__price">Discount:{{cartitems?.flashcard.discount | currency:'USD'}}</p>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="book">
-                        <h3 class="mainbanner">Books in my cart </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of record; let i=index">
-                            <div class="product-list__item" *ngIf="item.book !=null">
-                                <figure class="product-list__img"> <a routerLink="/detail/{{item?.book.id}}"> <img
-                                            src="{{Imageurl}}{{item?.book.book_image}}" alt="Book"> </a> <a
-                                        class="product-list__edit-btn" value="Delete" data-toggle="modal"
-                                        data-target="#edit-book-modal" (click)="editbooks(item?.id)"> <i
-                                            class="fas fa-edit"></i> </a> <a class="product-list__delete-btn"
-                                        value="Delete" data-toggle="modal" data-target="#delete-book-modal"
-                                        (click)="btndelbook(item?.id)"> <i class="fas fa-trash-alt"></i> </a>
-                                </figure>
-                                <div class="product-list__content"><a routerLink="/detail/{{item?.book.id}}">
-                                    <div class="product-list__category">{{item?.book.name}}<br></div>
-                                   <p class="product-list__price" >price: {{item?.book.price | currency:'USD'}}</p>
-                                   <p class="product-list__price">Discount:{{item?.book.discount | currency:'USD'}}</p>
-                                   </a>
-                                </div>
+            </div>
+            <div class="tab-pane" id="book">
+                    <h3 class="mainbanner">Books in my cart </h3>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of record; let i=index">
+                        <div class="product-list__item" *ngIf="item.book !=null">
+                            <figure class="product-list__img"> <a routerLink="/detail/{{item?.book.id}}"> <img
+                                        src="{{Imageurl}}{{item?.book.book_image}}" alt="Book"> </a> <a
+                                    class="product-list__edit-btn" value="Delete" data-toggle="modal"
+                                    data-target="#edit-book-modal" (click)="editbooks(item?.id)"> <i
+                                        class="fas fa-edit"></i> </a> <a class="product-list__delete-btn"
+                                    value="Delete" data-toggle="modal" data-target="#delete-book-modal"
+                                    (click)="btndelbook(item?.id)"> <i class="fas fa-trash-alt"></i> </a>
+                            </figure>
+                            <div class="product-list__content"><a routerLink="/detail/{{item?.book.id}}">
+                                <div class="product-list__category">{{item?.book.name}}<br></div>
+                               <p class="product-list__price" >price: {{item?.book.price | currency:'USD'}}</p>
+                               <p class="product-list__price">Discount:{{item?.book.discount | currency:'USD'}}</p>
+                               </a>
                             </div>
                         </div>
                     </div>
