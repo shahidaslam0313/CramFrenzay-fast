@@ -50,6 +50,7 @@
     </div>
   </div>
 </div>
+<h2 *ngIf="nameID == 'notes' && notes?.length == '0'" class="mainbanner bg-Bid-Notes">No Notes Nested Categories in {{name}}</h2>
 
 <!-- course sb category-->
 
@@ -77,6 +78,8 @@
     </div>
   </div>
 </div>
+<h2 *ngIf="nameID == 'course' && course?.length == '0'" class="mainbanner bg-Bid-Notes">No Course Nested Categories in {{name}}</h2>
+
 <!-- crads sb category-->
 
 <div class="container"  *ngIf="nameID == 'flashcard' && card?.length != '0'">
@@ -102,6 +105,8 @@
     </div>
   </div>
 </div>
+<h2 *ngIf="nameID == 'flashcard' && card?.length == '0'" class="mainbanner bg-Bid-Notes">No Flash Cards Nested Categories in {{name}}</h2>
+
 <!-- book sb category-->
 
 <div class="container"  *ngIf="nameID == 'books' && book?.length != '0'"> 
@@ -128,3 +133,5 @@
     </div>
   </div>
 </div>
+<h2 *ngIf="nameID == 'books' && book?.length == '0'" class="mainbanner bg-Bid-Notes">No Books Nested Categories in {{name}}</h2>
+

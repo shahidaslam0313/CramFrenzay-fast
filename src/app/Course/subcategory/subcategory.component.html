@@ -53,7 +53,7 @@
         </div>
     </div>
 </div>
-
+<h2 class="mainbanner bg-Bid-Notes" *ngIf="eachnotes?.length =='0'">No Notes Sub-Categories in {{c_name}}</h2>
 <!-- course sb category-->
 
 <div class="container" *ngIf="eachcourse?.length != '0'">
@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+<h2  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse?.length =='0'">No Courses Sub-Categories in {{c_name}}</h2>
 <!-- crads sb category-->
 
 <div class="container" *ngIf="eachcards?.length !='0'">
@@ -106,6 +107,7 @@
         </div>
     </div>
 </div>
+<h2 class="mainbanner bg-Bid-Notes"*ngIf="eachcards?.length =='0'">No Flash Cards Sub-Categories in {{c_name}}</h2>
 <!-- book sb category-->
 
 <div class="container" *ngIf="eachbook?.length != '0'">
@@ -132,3 +134,5 @@
         </div>
     </div>
 </div>
+<h2 class="mainbanner bg-Bid-Notes" *ngIf="eachbook?.length =='0'">No Books Sub-Categories in {{c_name}}</h2>
+
