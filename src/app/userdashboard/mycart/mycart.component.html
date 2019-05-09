@@ -20,6 +20,8 @@
                     <h3 class="mainbanner">Notes in my cart </h3>
                     <div class="row" >
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of record; let i=index">
+                              
+                                <!-- <h1>   <p *ngIf="data.notes == 'null'">No notes ietm in your cart yet </p></h1> -->
                             <div class="product-list__item" *ngIf="data?.notes !=null">
                 
                                 <figure class="product-list__img"> <a routerLink="/notes/{{data?.notes.id}}"> <img
@@ -34,7 +36,7 @@
                                     <p class="product-list__price">Discount: ${{data?.notes?.price  | currency:'USD'}}</p>
                                     </a>
                                 </div>
-                             <h1>   <p *ngIf="data?.notes ==null">No notes ietm in your cart yet </p></h1>
+                                <h1 *ngIf="data?.notes ==null">No Notes in my cart yet</h1>
                             </div>
                         </div>
                     </div>
@@ -42,6 +44,7 @@
                 <div class="tab-pane" id="courses">
                     <h3 class="mainbanner">Courses in my cart </h3>
                     <div class="row">
+                       
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let cartitems of record; let i = index">
                             <div class="product-list__item" *ngIf="cartitems?.course !=null">
                                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{cartitems?.course.id}}"> <img
@@ -53,7 +56,9 @@
                                     <a class="addtocart-new-price" routerLink="/eachcourse/{{cartitems?.course.id}}">price: ${{cartitems?.course.price  | currency:'USD'}}<br></a>
                                     <a class="discount-p" routerLink="/eachcourse/{{cartitems?.course.id}}">Discount: ${{cartitems?.course.discount  | currency:'USD'}}<br></a>
                         </div>
+                       
                     </div>
+                    <h1 *ngIf="cartitems?.course ==null">No Course in my cart yet</h1>
                 </div>
 
             </div>
@@ -73,6 +78,7 @@
                             </div>
                         </div>
                     </div>
+                    <h1 *ngIf="cartitems?.flashcard ==null">No Flash Card in my cart yet</h1>
                 </div>
             </div>
             <div class="tab-pane" id="book">
@@ -96,6 +102,7 @@
                             </div>
                         </div>
                     </div>
+                    <h1 *ngIf="cartitems?.book ==null">No book in my cart yet</h1>
                 </div>
             </div>
         </div>
