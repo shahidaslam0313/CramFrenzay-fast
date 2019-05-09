@@ -400,9 +400,9 @@
       </div>
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal"
                                   class="view-bid">view bid history </a>
-        <form name="form" role="form" method="post" (ngSubmit)="bidc(f)" #f="ngForm" class="user-add-ingo-form">
+        <form name="form" role="form" method="post" (ngSubmit)="bidc()" #f="ngForm" class="user-add-ingo-form">
           <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
-            <p>Higher bid amount:{{course?.bidamount}}</p>
+            <p>Highest bid amount:{{coursesitem?.bidamount}}</p>
           </a>
           <label>Place Your own bid:</label>
           <mat-form-field>

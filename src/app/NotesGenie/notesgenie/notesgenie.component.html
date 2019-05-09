@@ -390,7 +390,7 @@
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
                                   class="view-bid">view bid history </a>
         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
-          <p>Higher bid amount:{{notes?.bidamount}}</p>
+          <p>Highest bid amount: {{notes?.bidamount}}</p>
         </a>
         <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form">
           <label>Place Your own bid:</label>

@@ -123,7 +123,7 @@ export class AllbooksComponent implements OnInit {
   currentUser;
   cartitems;
 
-  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private see: WishlistService, private mainpage: mainpageservice, private pagerservice: PagerService, private book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private see: WishlistService, private mainpage: mainpageservice, private pagerservice: PagerService, public book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
     this.BidBuybooks();
     this.Innerslider();
     this.trendbooks();
@@ -399,9 +399,10 @@ export class AllbooksComponent implements OnInit {
     }
   }
   getbooks;
+  booksendtime;
   getbookbidhistory(id) {
     this.bidings.bookbidhistory(this.bidbookid).subscribe(data => {
-      this.book = data;
+      this.booksendtime = data;
       this.getbooks = data['Highest Bid'];
 
     })

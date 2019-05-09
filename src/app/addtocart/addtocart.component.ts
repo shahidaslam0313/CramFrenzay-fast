@@ -229,7 +229,7 @@ export class AddtocartComponent implements OnInit {
         if (error.status === 404) {
           swal({
             type: 'error',
-            title: 'Credit card not found!',
+            title: 'Credit card not found',
             showConfirmButton: false,
             timer: 1500
           })
@@ -237,7 +237,7 @@ export class AddtocartComponent implements OnInit {
         else if (error.status === 500) {
           swal(
             'Sorry',
-            'Server is under maintenance!',
+            'Server is under maintenance',
             'error'
           )
         }
