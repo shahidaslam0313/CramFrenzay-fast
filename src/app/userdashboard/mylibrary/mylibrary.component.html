@@ -11,22 +11,22 @@
         <div class="col-sm-3 updated-course-tab">
             <ul class="nav nav-tabs ">
                 <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i
-                            class="fa fa-edit"></i>Notes Listed For Sale By Me </a> </li>
+                            class="fa fa-edit"></i>Notes Listed for Sale by Me </a> </li>
                 <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#courses" data-toggle="tab"
                         class="nav-link" title="Courses">
-                        <i class="fa fa-th-large"></i>Courses Listed For Sale By Me </a>
+                        <i class="fa fa-th-large"></i>Courses Listed for Sale by Me </a>
                 </li>
                 <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#flashcards" data-toggle="tab"
-                        class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>FlashCards Listed For Sale By
+                        class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>FlashCards Listed for Sale by
                         Me </a> </li>
                 <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#book" data-toggle="tab"
-                        class="nav-link" title="Books"> <i class="fa fa-book"></i>Books Listed For Sale By Me </a> </li>
+                        class="nav-link" title="Books"> <i class="fa fa-book"></i>Books Listed for Sale by Me </a> </li>
             </ul>
         </div>
         <div class="col-sm-9 ">
             <div class="tab-content">
                 <div class="tab-pane active" id="notes">
-                    <h3 class="mainbanner">Notes Listed For Sale By Me </h3>
+                    <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes, let i=index">
                             <div class="product-list__item">
@@ -43,7 +43,7 @@
                                     <div class="product-list__category">{{item?.name}}<br></div>
                                     <div class="product-list__title tutor-subject ">
                                         <a routerLink="/notes/{{item?.id}}" title="{{item?.name}}"
-                                            *ngIf="item?.status == true">Approved By Admin</a><a
+                                            *ngIf="item?.status == true">Approved by Admin</a><a
                                             routerLink="/notes/{{item?.id}}"
                                             *ngIf="item?.status != true || item?.status == null">Pending Approval </a>
                                     </div>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="courses">
-                    <h3 class="mainbanner">Courses Listed For Sale By Me </h3>
+                    <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
                             <div class="product-list__item">
@@ -72,7 +72,7 @@
                                     <div class="product-list__category">{{data?.name}}<br></div>
                                     <div class="product-list__title tutor-subject ">
                                         <a routerLink="/eachcourse/{{data?.id}}" title="{{data?.name}}"
-                                            *ngIf="item?.status == true">Approved By Admin</a><a
+                                            *ngIf="item?.status == true">Approved by Admin</a><a
                                             routerLink="/eachcourse/{{data?.id}}"
                                             *ngIf="item?.status != true || item?.status == null">Pending Approval</a>
                                     </div>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="flashcards">
-                        <h3 class="mainbanner">Flash Cards Listed For Sale By Me </h3>
+                        <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card, let i=index">
                             <div class="product-list__item">
@@ -109,7 +109,7 @@
                                     <div class="product-list__category"> {{item?.name}}<br></div>
                                     <div class="product-list__title tutor-subject mt-3 ">
                                         <a routerLink="/flashcarddetail" title="{{item?.name}}"
-                                            *ngIf="item?.status == true">Approved By Admin</a><a
+                                            *ngIf="item?.status == true">Approved by Admin</a><a
                                             routerLink="/flashcarddetail"
                                             *ngIf="item?.status != true || item?.status == null">Pending Approval
                                         </a>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="book">
-                        <h3 class="mainbanner">Books Listed For Sale By Me </h3>
+                        <h3 class="mainbanner">Books Listed for Sale by Me </h3>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books; let i=index">
                             <div class="product-list__item">
@@ -141,7 +141,7 @@
                                     <div class="product-list__category">{{item?.name}}<br></div>
                                     <div class="product-list__title tutor-subject ">
                                         <a routerLink="/detail/{{item?.id}}" title="{{item?.name}}"
-                                            *ngIf="item?.status == true">Approved By Admin</a><a
+                                            *ngIf="item?.status == true">Approved by Admin</a><a
                                             routerLink="/detail/{{item?.id}}"
                                             *ngIf="item?.status != true || item?.status == null">Pending Approval</a>
                                     </div>

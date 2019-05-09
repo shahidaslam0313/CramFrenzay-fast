@@ -59,8 +59,7 @@
           </div>
           <div class="tab-pane" id="home1">
             <div class="text-right">
-              <button type="button" class="btn-style margin-bottom-20" data-toggle="modal" data-target="#myModal">Create
-                New Chapter</button>
+              <button type="button" class="btn-style margin-bottom-20" data-toggle="modal" data-target="#myModal">Add Chapter</button>
             </div>
             <div class="lec-info float-right">
               <span *ngIf="!time">Total Time:00:00:00</span>
@@ -89,7 +88,7 @@
                   <div class="panel-body">
                     <div class="float_left">
                       <button type="button" class="btn-style" data-toggle="modal" data-target="#videoModal"
-                        (click)="openDialog2(data?.chapters.id)">Add
+                        (click)="openDialog2(data?.chapters.id)"  data-dismiss="modal">Add
                         Video</button>
                     </div>
                   </div>
@@ -123,13 +122,13 @@
               <form class="row sh-signup-form-fix" method="post" #f="ngForm">
                 <div class="col-lg-6">
                   <mat-form-field class="width100">
-                    <input matInput placeholder="Requirement" [(ngModel)]="model.requirement" name="requirement">
+                    <input matInput placeholder="About Course" [(ngModel)]="model.requirement" name="requirement">
                   </mat-form-field>
                 </div>
 
                 <div class="col-lg-6">
                   <mat-form-field class="width100">
-                    <mat-select placeholder="Select" [(ngModel)]="model.language" name="language">
+                    <mat-select placeholder="Select Language" [(ngModel)]="model.language" name="language">
                       <mat-option *ngFor="let card_get_datat of card_opeation" [value]="card_get_datat.value">
                         {{card_get_datat.viewValue}}</mat-option>
                     </mat-select>
@@ -171,7 +170,7 @@
             <mat-error *ngIf="chaptername.hasError('required')"> Chapter name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-          <a class="user-add-ingo-form-btn" type="submit" id="submit" (click)="onSubmit(f)">Add</a>
+          <a class="user-add-ingo-form-btn" type="submit" id="submit" (click)="onSubmit(f)" data-dismiss="modal">Add</a>
         </form>
       </div>
     </div>
@@ -188,7 +187,7 @@
       <div class="modal-body">
         <div>
           <h4 class="modal-title-cust"> Confirmation Alert </h4>
-          <p class="modal-para-cust"> Do you want to Delete this Video? </p>
+          <p class="modal-para-cust"> Do you want to delete this video? </p>
         </div>
       </div>
       <div class="modal-footer">
