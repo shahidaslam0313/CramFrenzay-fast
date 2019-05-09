@@ -73,21 +73,28 @@
                             </mat-form-field>
                             <mat-form-field class="material-select margin-top-10">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
-                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
+                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">List
+                        <div *ngIf="sell_status == true">
+                        <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">Also List
                             for Auction</mat-slide-toggle>
+                            </div>
+                            <div *ngIf="sell_status == false">
+                                    <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">List
+                                        for Auction</mat-slide-toggle>
+                                        </div>
                         <div id="showdiv2">
                             <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Starting Bid Price"
                                     [(ngModel)]="model.initial_amount" name="initial_amount"> <span matPrefix>$&nbsp;</span>
                             </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
+                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
+                        </div>
                             <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve
                                 Auction</mat-checkbox>
                             <div id="showdiv3">
@@ -105,7 +112,7 @@
                                     <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
                                 </mat-form-field>
                             </div>
-                        </div>
+                        
                       <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
                         <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
                       </div><span class="btn-file margin-top-10">Upload Flash card Image <input (change)="onChange($event)"
