@@ -13,7 +13,8 @@ export class PaymentmethodsService {
     }
   }
 
-  addCard(cardno, ccv, expiryDate, cardnickname, card_type, defaultCheck ) {
+  addCard(cardno, ccv, expiryDate,cardHolderName, cardnickname, card_type,zipCode, 
+    street, city, state,country, defaultCheck, ) {
     let header = new Headers({ 'Authorization': 'JWT ' + this.currentUser.token });
     header.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'purchase/addcard/' + this.currentUser.user_id,
@@ -23,9 +24,20 @@ export class PaymentmethodsService {
         "ccv": ccv,
         "expiryDate": expiryDate,
         "user": this.currentUser.user_id,
+        "card_holder": cardHolderName,
         "nickname": cardnickname,
         "default": defaultCheck,
-        "card_type": card_type
+        "card_type": card_type,
+        "zip_code": zipCode,
+        "street_adrress": street,
+        "city": city,
+        "state": state,
+        "country": country,
+
+
+
+
+
 
       }),
       { headers: header }).map((response: Response) => response.json());

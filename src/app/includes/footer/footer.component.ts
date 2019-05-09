@@ -39,7 +39,7 @@ export class FooterComponent implements OnInit {
     this.footer.sub(this.model)
       .subscribe(Res => {
         swal({
-          text: 'Subcribe Email successfully!',
+          text: 'Subscribed successfully',
           title: "CramFrenzy",
           type: "success",
           showConfirmButton: false,
