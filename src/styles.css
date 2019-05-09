@@ -3795,7 +3795,9 @@ focus {
 .review-box .fa-user {
     color: #000
 }
-
+.swal2-title{
+    font-size: 22px !important;
+}
 .padding-10 {
     padding: 10px
 }
