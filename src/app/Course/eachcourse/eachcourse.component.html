@@ -203,7 +203,7 @@
               <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
                 <div class="panel-heading">
                   <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" href="#collapse1" attr.data-target="#{{i}}">
+                    <a class="collapsed" data-toggle="collapse" href="#collapse1" attr.data-target="#a{{i}}">
                       <span>{{data?.chapters.chapter_name}}</span>
                       <div class="mr-5 float_right">
                         <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
@@ -212,7 +212,7 @@
                     </a>
                   </h4>
                 </div>
-                <div attr.id={{i}} class="panel-collapse collapse">
+                <div attr.id=a{{i}} class="panel-collapse collapse">
                   <div class="panel-body">
                     <div class="float_left">
                   </div>

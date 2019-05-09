@@ -6002,6 +6002,9 @@ countdown .countdown {
 .text_uper {
     text-transform: uppercase
 }
+.text_normal{
+    text-transform: none;
+}
 
 body {
     display: block!important;
