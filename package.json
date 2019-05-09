@@ -41,6 +41,7 @@
     "ngx-datetime-picker": "^2.0.0",
     "ngx-slick": "^0.2.1",
     "node-modules": "^1.0.1",
+    "popper.js": "^1.15.0",
     "rxjs": "^6.4.0",
     "rxjs-compat": "^6.4.0",
     "slick-carousel": "^1.8.1",
