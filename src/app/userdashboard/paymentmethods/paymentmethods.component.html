@@ -107,9 +107,9 @@
                             </mat-form-field>
                         </div>
                         
-                        <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field class="" *ngIf="cardnumber"> <input matInput type="text"
-                                    placeholder="16 digit card number" formControlName="cardnumber"
+                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber">
+                            <mat-form-field class="" > <input matInput type="text"
+                                    placeholder="16 Digit Card Number" formControlName="cardnumber"
                                     [textMask]="{mask: cardmask}">
                                 <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be
@@ -127,9 +127,9 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field class="" *ngIf="cardnumber4"> <input matInput type="text"
-                                    placeholder="15 digit card number" formControlName="cardnumber4"
+                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber4">
+                            <mat-form-field  > <input matInput type="text"
+                                    placeholder="15 Digit Card Number" formControlName="cardnumber4"
                                     [textMask]="{mask: cardmask}">
                                 <mat-error
                                     *ngIf="form.controls.cardnumber4.touched && form.controls.cardnumber4.invalid">
@@ -149,8 +149,8 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field class="" *ngIf="ccv"> <input matInput type="text" maxlength="3"
+                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="ccv">
+                            <mat-form-field > <input matInput type="text" maxlength="3"
                                     minlength="3" placeholder="CVV" formControlName="ccv">
                                 <mat-error *ngIf="form.controls.ccv.touched && form.controls.ccv.invalid">
                                     <mat-error *ngIf="form.controls.ccv.errors.required"> CCV cannot be empty
@@ -167,8 +167,8 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field class="" *ngIf="ccv4"> <input matInput type="text" maxlength="4"
+                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="ccv4">
+                            <mat-form-field  > <input matInput type="text" maxlength="4"
                                     minlength="4" placeholder="CCV No." formControlName="ccv4">
                                 <mat-error *ngIf="form.controls.ccv4.touched && form.controls.ccv4.invalid">
                                     <mat-error *ngIf="form.controls.ccv4.errors.required"> CCV cannot be empty
@@ -186,7 +186,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field class=""> <input matInput placeholder="Expiry Date (MM/YY"
+                            <mat-form-field > <input matInput placeholder="Expiry Date (MM/YY"
                                     [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
                                     (change)="chek(exp.value)">
                                 <mat-error *ngIf="form.controls.expirydate.touched && form.controls.expirydate.invalid">
@@ -240,7 +240,7 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <mat-slide-toggle [checked]="false" formControlName="check">Set as default payment method
+                    <mat-slide-toggle [checked]="false" formControlName="check">Set as Default Payment Method
                     </mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10" (click)="add(f)">Add</a>
                 </form>
             </div>
