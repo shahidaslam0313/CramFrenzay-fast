@@ -1,15 +1,17 @@
-<div class="container">
+<div class="container watchlist-comp" >
     <div class="row">
         <div class="col-lg-12">
             <div class="addtocart-heading">
-                <h2>Review Order</h2>
-                <p><span>{{itemscount}}</span> Items in Cart </p>
+                <h2 class="mainbanner">Review Order
+                <p class="watchlist-items"><span>{{itemscount}}</span> Items in Cart </p>
+            </h2>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes" *ngIf="Notes?.length != '0'">Notes</h2>
+            <h2 class="mainbanner bg-Bid-Notes">Notes</h2>
+            <h4 class="text-center bg-Bid-Notes" *ngIf="Notes?.length == '0'">No Notes In Cart</h4>
         </div>
     </div>
     <div class="row">
@@ -73,7 +75,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Courses" *ngIf="Courses?.length != '0'">Courses</h2>
+            <h2 class="mainbanner bg-Bid-Courses">Courses</h2>
+            <h4 class="text-center bg-Bid-Courses" *ngIf="Courses?.length == '0'">No Courses In Cart</h4>
         </div>
     </div>
     <div class="row">
@@ -137,7 +140,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-FlashCards" *ngIf="FlashCard?.length != '0'">Flash Cards</h2>
+            <h2 class="mainbanner bg-Bid-FlashCards">Flash Cards</h2>
+            <h4 class="text-center bg-Bid-FlashCards" *ngIf="FlashCard?.length == '0'">No Flash Card In Cart</h4>
         </div>
     </div>
     <div class="row">
@@ -201,7 +205,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Books" *ngIf="Book?.length != '0'">Books</h2>
+            <h2 class="mainbanner bg-Bid-Books">Books</h2>
+            <h4 class="text-center bg-Bid-Books" *ngIf="Book?.length == '0'">No Book In Cart</h4>
         </div>
     </div>
     <div class="row">

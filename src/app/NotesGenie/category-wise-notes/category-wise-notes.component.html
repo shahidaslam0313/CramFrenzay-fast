@@ -17,8 +17,9 @@
         </div>
     </div>
 </div>
-<div class="container" *ngIf="eachnotes?.length != '0' ">
+<div class="container">
     <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{name}}</h1>
+    <h4 class="text-center bg-Bid-Notes" *ngIf="eachnotes?.length =='0'">No Notes Sub-Categories in {{name}}</h4>
     <div class="row slider-hight">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachnotes; let i=index">
             <div class="product-list__item">
@@ -41,5 +42,4 @@
         </div>
     </div>
 </div>
-<h2 class="mainbanner bg-Bid-Notes" *ngIf="eachnotes?.length =='0'">No Notes Sub-Categories in {{name}}</h2>
 
