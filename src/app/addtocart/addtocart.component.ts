@@ -264,9 +264,8 @@ export class AddtocartComponent implements OnInit {
   }
 
   showCartItems() {
-    // alert(this.itemscount);
     this._serv.showCartItems().subscribe(Data => {
-      this.itemscount = Data.count;
+      this.itemscount = Data.counts;
       this.SUM = Data.sum;
 
       for (let val in Data.Cart) {
