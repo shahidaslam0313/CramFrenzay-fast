@@ -77,14 +77,11 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <div *ngIf="sell_status == true">
-                        <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">Also List
-                            for Auction</mat-slide-toggle>
-                            </div>
-                            <div *ngIf="sell_status == false">
-                                    <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">List
-                                        for Auction</mat-slide-toggle>
-                                        </div>
+                        
+                        <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
+                            <span *ngIf="sell_status == true">Also List for Auction </span>
+                            <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
+                    
                         <div id="showdiv2">
                             <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Starting Bid Price"
                                     [(ngModel)]="model.initial_amount" name="initial_amount"> <span matPrefix>$&nbsp;</span>

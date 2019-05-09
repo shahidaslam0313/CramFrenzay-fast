@@ -38,4 +38,5 @@ export class AppComponent {
       this._nav.navigate([url]);
     }
   }
+  
 }

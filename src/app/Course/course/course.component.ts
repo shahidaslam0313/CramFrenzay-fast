@@ -117,7 +117,7 @@ export class CourseComponent implements OnInit {
   message: string;
   model: any = {};
   cartitems;
-  constructor(private bidings: BidHistoryService,private headServ: headerservice,private see: WishlistService, private Data: DataService,private mainpage: mainpageservice,private course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService,private headServ: headerservice,private see: WishlistService, private Data: DataService,private mainpage: mainpageservice,public course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.Showbidcourses();
     this.TrendingNow();
     this.Showtopratedcourses();
@@ -388,11 +388,12 @@ delfromcart(event) {
   });
 }
   coursebid;
+  coursesitem;
   ////////////course  biding history////////
   getcoursebidhistory(id) {
     this.bidings.coursebidhistory(this.bidingcourse).subscribe(data => {
       this.coursebid = data;
-      this.course = data['Highest Bid'];
+      this.coursesitem = data['Highest Bid'];
     })
   }
 }
