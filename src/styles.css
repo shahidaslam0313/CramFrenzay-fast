@@ -3651,43 +3651,10 @@ focus {
     width: 20px;
     margin: 0 3px;
 }
-/* 
-.cutom-pd .fa-cloud-upload-alt {
-    padding: 3px 9px 0 2px
+.side-tabs {
+    background: #f2f2f2;
+    display: block;
 }
-
-.cutom-pd .fa-pencil-alt {
-    padding: 3px 10px 0 5px
-}
-
-.cutom-pd .fa-book {
-    padding: 3px 11px 0 5px
-}
-
-.cutom-pd .fa-credit-card {
-    padding: 3px 8px 0 5px
-}
-
-.cutom-pd .fa-money-bill-alt {
-    padding: 3px 8px 0 4px
-}
-
-.cutom-pd .fa-dollar-sign {
-    padding: 3px 15px 0 6px
-}
-
-.cutom-pd .fa-gavel {
-    padding: 3px 10px 0 5px
-}
-.cutom-pd .fa-hand-holding-usd{
-    padding: 3px 10px 0 5px
-}
-.cutom-pd .fa-cart-plus{
-    padding: 3px 10px 0 5px
-}
-.cutom-pd .fa-sign-out-alt {
-    padding: 3px 12px 0 5px
-} */
 
 .sub-menu ul li a img,
 .sub-sub-menu ul li a img {
