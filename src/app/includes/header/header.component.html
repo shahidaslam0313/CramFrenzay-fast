@@ -417,7 +417,7 @@
                                                     Move to Watchlist </a>
                                             </div>
                                         </div>
-                                        <h1 class="dropdown-heading">Notes</h1>
+                                        <h1 class="dropdown-heading" >Notes</h1>
                                         <div *ngFor="let cartitems of Notes">
                                             <div class="addtocart" *ngIf="cartitems.notes !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
@@ -448,7 +448,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="addtocart-li" *ngIf="check_login()"> <a  title="Cart"> <i
+                            <li class="addtocart-li" *ngIf="check_login()"> <a  title="Notifications"> <i
                                         class="fas fa-bell"></i><sup>{{getnotifi?.unread}}</sup> </a>
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
@@ -478,22 +478,22 @@
                                     CramFrenzy <span class="fa fa-angle-down"></span> </a>
                                 <div class="sub-menu adjustment">
                                     <ul class="cutom-pd">
-                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
-                                                routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile
-                                            </a> </li>
                                             <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/mycart"> <i class="fa fa-cart-plus"></i>My Cart
                                             </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a 
-                                                routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Add
-                                                Material </a> </li>
+                                                routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile
+                                            </a> </li>
+                                            
+                                        <li *ngIf="check_login() && !institute() && !admin()"> <a 
+                                                routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Sell Now </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/mylibrary"> <i class="fa fa-book"></i>Listed for Sale </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a 
                                                 routerLink="/paymentmethods"> <i class="far fa-credit-card"></i>Payment
                                                 Methods </a> </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a 
-                                                routerLink="/Bought"> <i class="far fa-money-bill-alt"></i>Bought Items</a>
+                                                routerLink="/Bought"> <i class="far fa-money-bill-alt"></i>My Bought Items</a>
                                         </li>
                                         <li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/winloss"
                                                 > <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a> </li>
