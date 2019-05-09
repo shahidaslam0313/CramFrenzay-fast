@@ -29,8 +29,9 @@
 </div>
 <!-- notes sb category-->
 
-<div class="container" *ngIf="eachnotes?.length !='0'">
+<div class="container">
     <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{c_name}}</h1>
+    <h4 class="text-center bg-Bid-Notes" *ngIf="eachnotes?.length =='0'">No Notes Sub-Categories in {{c_name}}</h4>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachnotes; let i=index">
             <div class="product-list__item">
@@ -53,11 +54,11 @@
         </div>
     </div>
 </div>
-
 <!-- course sb category-->
 
-<div class="container" *ngIf="eachcourse?.length != '0'">
+<div class="container">
     <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Sub-Categories in {{c_name}}</h1>
+    <h4  class="text-center bg-Bid-Notes" *ngIf="eachcourse?.length =='0'">No Courses Sub-Categories in {{c_name}}</h4>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachcourse; let i=index">
             <div class="product-list__item">
@@ -82,8 +83,9 @@
 </div>
 <!-- crads sb category-->
 
-<div class="container" *ngIf="eachcards?.length !='0'">
+<div class="container">
     <h1  class="mainbanner bg-Bid-Notes">Flash Cards Sub-Categories in {{c_name}}</h1>
+    <h4 class="text-center bg-Bid-Notes"*ngIf="eachcards?.length =='0'">No Flash Cards Sub-Categories in {{c_name}}</h4>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachcards; let i=index">
             <div class="product-list__item">
@@ -108,8 +110,9 @@
 </div>
 <!-- book sb category-->
 
-<div class="container" *ngIf="eachbook?.length != '0'">
+<div class="container">
     <h1  class="mainbanner bg-Bid-Notes">Books Sub-Categories in {{c_name}}</h1>
+    <h4 class="text-center bg-Bid-Notes" *ngIf="eachbook?.length =='0'">No Books Sub-Categories in {{c_name}}</h4>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachbook; let i=index">
             <div class="product-list__item">
@@ -132,3 +135,4 @@
         </div>
     </div>
 </div>
+
