@@ -34,6 +34,7 @@ export class ScholarshipdetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.sub = this.route.params.subscribe(params => {
       this.scholarshipId = +params['id'] || 0;
     });

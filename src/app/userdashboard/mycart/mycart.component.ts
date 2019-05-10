@@ -28,8 +28,8 @@ export class MycartComponent implements OnInit {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
-      this.record = Data;
-      // console.log(this.record, 'Record')
+      this.record = Data.Cart;
+      console.log(this.record, 'Record')
 
     })
   }
