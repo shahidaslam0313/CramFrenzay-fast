@@ -33,6 +33,7 @@ export class ScholarshiplistdetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.sub = this.route.params.subscribe(params => {
       this.scholarshiplistId = +params['id'];
     });
