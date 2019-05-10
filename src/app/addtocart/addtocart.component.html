@@ -10,8 +10,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes">Notes</h2>
-            <h4 class="text-center bg-Bid-Notes" *ngIf="Notes?.length == '0'">No Notes In Cart</h4>
+            <h2 class="mainbanner bg-Bid-Notes"  *ngIf="Notes?.length != '0'">Notes</h2>
+            <!-- <h4 class="text-center bg-Bid-Notes" *ngIf="Notes?.length == '0'">No Notes In Cart</h4> -->
         </div>
     </div>
     <div class="row">
@@ -75,8 +75,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Courses">Courses</h2>
-            <h4 class="text-center bg-Bid-Courses" *ngIf="Courses?.length == '0'">No Courses In Cart</h4>
+            <h2 class="mainbanner bg-Bid-Courses" *ngIf="Courses?.length != '0'">Courses</h2>
+            <!-- <h4 class="text-center bg-Bid-Courses" *ngIf="Courses?.length == '0'">No Courses In Cart</h4> -->
         </div>
     </div>
     <div class="row">
@@ -140,8 +140,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-FlashCards">Flash Cards</h2>
-            <h4 class="text-center bg-Bid-FlashCards" *ngIf="FlashCard?.length == '0'">No Flash Card In Cart</h4>
+            <h2 class="mainbanner bg-Bid-FlashCards" *ngIf="FlashCard?.length != '0'">Flash Cards</h2>
+            <!-- <h4 class="text-center bg-Bid-FlashCards" *ngIf="FlashCard?.length == '0'">No Flash Card In Cart</h4> -->
         </div>
     </div>
     <div class="row">
@@ -205,8 +205,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Books">Books</h2>
-            <h4 class="text-center bg-Bid-Books" *ngIf="Book?.length == '0'">No Book In Cart</h4>
+            <h2 class="mainbanner bg-Bid-Books" *ngIf="Book?.length != '0'">Books</h2>
+            <!-- <h4 class="text-center bg-Bid-Books" *ngIf="Book?.length == '0'">No Book In Cart</h4> -->
         </div>
     </div>
     <div class="row">
@@ -269,82 +269,9 @@
         </div>
     </div>
 </div>
-<!-- <div class="container-fluid width-90 margin-bottom-20">
-    <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 user-profile margin-auto float-none margin-top-20">
-            <div class="checkout">
-                <form class="user-add-ingo-form" [formGroup]="form">
-                    <h2 class="s-payment-heading"><i class="glyphicon glyphicon-lock"></i> SECURE PAYMENT</h2>
-                    <mat-form-field>
-                        <input matInput type="text" minlength="15" maxlength="16" placeholder="Credit Card number"
-                            formControlName="creditno" [(ngModel)]="CardNo">
-                        <mat-error *ngIf="form.controls.creditno.touched && form.controls.creditno.invalid">
-                            <mat-error *ngIf="form.controls.creditno.errors.required"> Card number cannot be empty
-                            </mat-error>
-                            <mat-error *ngIf="form.controls.creditno.errors.minlength">
-                                Card number must be
-                                atleast{{form.controls.creditno.errors.minlength.requiredLength}}digits long.
-                            </mat-error>
-                            <mat-error *ngIf="form.controls.creditno.errors.maxlength"> Card Number must be at
-                                atmost{{form.controls.creditno.errors.maxlength.requiredLength}}digits long.
-                            </mat-error>
-                            <mat-error *ngIf="form.controls.creditno.hasError('pattern')"> Card number must be only in digits. </mat-error>
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput type="text" maxlength="4" minlength="3" placeholder="CCV No." formControlName="ccv"
-                            [(ngModel)]="CCV">
-                        <mat-error *ngIf="form.controls.ccv.touched && form.controls.ccv.invalid">
-                            <mat-error *ngIf="form.controls.ccv.errors.required"> CCV cannot be empty </mat-error>
-                            <mat-error *ngIf="form.controls.ccv.errors.minlength"> CCV must be
-                                atleast{{form.controls.ccv.errors.minlength.requiredLength}}digits long. </mat-error>
-                            <mat-error *ngIf="form.controls.ccv.errors.maxlength"> CCV must be at
-                                atmost{{form.controls.ccv.errors.maxlength.requiredLength}}digits long. </mat-error>
-                            <mat-error *ngIf="form.controls.ccv.hasError('pattern')"> CCV must be only in digits. </mat-error>
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Expiry Date (MM/YYYY)" type="text" formControlName="exp"
-                            [(ngModel)]="EXP">
-                        <mat-error *ngIf="form.controls.expirydate.touched && form.controls.expirydate.invalid">
-                        <mat-error *ngIf="form.controls.expirydate.errors.required"> Expiry date cannot be empty </mat-error>
-                        <mat-error *ngIf="form.controls.expirydate.hasError('pattern')">
-                        Expiry date must be in MM/YYYY format. </mat-error>
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-slide-toggle [checked]="false" formControlName="check">Set as default payment method</mat-slide-toggle>
-                    <a class="user-add-ingo-form-btn margin-top-10" (click)="buy()">Pay ${{SUM}}</a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- <div class="table-responsive width50 margin-auto">
-    <table class="table credit-card-info">
-        <tr class="payment-heading">
-            <th>
-                <h3>Nick name</h3>
-            </th>
-            <th>
-                <h3>Card Number</h3>
-            </th>
-            <th>
-                <h3>Default Credit Card</h3>
-            </th>
-        </tr>
-        <tr class="payment-details" *ngFor="let card of res">
-            <td><h3>{{card.nickname}}</h3></td>
-            <td><h3>{{card.cardNumber}}</h3></td>
-            <td>
-                <h3><mat-slide-toggle [(ngModel)]="card.default" (change)="changeDefault(card.default,card.id,card.nickname)"></mat-slide-toggle></h3></td>
-        </tr>
-    </table>
-</div> -->
-
-
-
+<h4 class="text-center" *ngIf="Book?.length == '0' && FlashCard?.length == '0' && Courses?.length == '0' && Notes?.length == '0'">No Item In Cart</h4>
 <!-- new payment -->
-<div class="container-fluid width-90 margin-bottom-20 pt-5">
+<div class="container-fluid width-90 margin-bottom-20 pt-5" *ngIf="Book?.length != '0' && FlashCard?.length != '0' && Courses?.length != '0' && Notes?.length != '0'">
     <div class="row checkout-select-box">
         <div class="width100">
             <div id="section-pricing" class="text-center">

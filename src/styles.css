@@ -1881,7 +1881,8 @@ mat-form-field.mat-form-field {
     font-size: 15px;
     line-height: 26px;
     padding: 0;
-    font-weight: 600
+    font-weight: 600;
+    text-align: justify;
 }
 
 .how-it-works,
@@ -2373,7 +2374,8 @@ mat-form-field textarea {
 
 .contact_us_title>h1 {
     color: #000;
-    font-size: 40px
+    font-size: 40px;
+    margin-top: 20px;
 }
 
 .contact_us_title>p {
@@ -5482,7 +5484,9 @@ mat-error>strong {
     min-width: 260px;
     max-width: 260px;
 }
-
+.comparison{
+    margin-top: 25px;
+}
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {

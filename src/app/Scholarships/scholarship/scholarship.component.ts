@@ -39,7 +39,7 @@ export class ScholarshipComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    window.scroll(0,0)
     this.Showscholarship();
     this.setPage(1);
 
