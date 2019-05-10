@@ -5400,9 +5400,7 @@ button:hover {
     -o-transition: .3s ease all 0s;
     transition: .3s ease all 0s
 }
-.innerpages{
-    
-}
+
 .user-dashboard {
     margin: 50px auto 0
 }
@@ -5448,7 +5446,13 @@ text-align: center;
 .card-type{
     max-width: 30%;
 }
-
+.dash-divs{
+    width: 260px;
+    float: left;
+    margin: 0px 10px 0px;
+    min-width: 260px;
+    max-width: 260px;
+}
 /* ...................................................................................... */
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {

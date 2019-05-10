@@ -30,8 +30,8 @@
                         <div class="col-sm-9">
                                 <div class="tab-content" *ngIf="WinList">
                                         <div class="tab-pane active mt-3" id="notes">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
+                                        
+                                                <div class="dash-divs"
                                                     *ngFor="let winitem of WinList; let i=index;">
                                                     <div *ngIf="winitem?.bid?.notes !=null ">
                                                         <div class="product-list__item">
@@ -64,11 +64,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="tab-pane mt-3" id="courses">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let winitem of WinList">
+                                            
+                                                <div class="dash-divs" *ngFor="let winitem of WinList">
                                                     <div *ngIf="winitem.bid.course !=null ">
                                                         <div class="product-list__item">
                                                             <figure class="product-list__img"> <a
@@ -99,11 +99,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="tab-pane mt-3" id="flashcards">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
+                                            
+                                                <div class="dash-divs"
                                                     *ngFor="let winitem of WinList, let i=index">
                                                     <div *ngIf="winitem.bid.flashcard !=null ">
                                                         <div class="product-list__item">
@@ -136,11 +136,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="tab-pane mt-3" id="book">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let winitem of WinList">
+                                            
+                                                <div class="dash-divs" *ngFor="let winitem of WinList">
                                                     <div *ngIf="winitem.bid.book !=null ">
                                                         <div class="product-list__item">
                                                             <figure class="product-list__img"> <a
@@ -171,7 +171,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                         </div>
@@ -199,8 +199,8 @@
         <div class="col-sm-9">
                 <div class="tab-content">
                         <div class="tab-pane active mt-3" id="note">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
+                            
+                                <div class="dash-divs"
                                     *ngFor="let winitem of winlost, let i=index">
                                     <div *ngIf="winitem?.bid?.notes !=null ">
                                         <div class="product-list__item">
@@ -225,11 +225,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            
                         </div>
                         <div class="tab-pane mt-3" id="course">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let winitem of winlost">
+                    
+                                <div class="dash-divs" *ngFor="let winitem of winlost">
                                     <div *ngIf="winitem.bid.course !=null ">
                                         <div class="product-list__item">
                                             <figure class="product-list__img"> <a
@@ -253,11 +253,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            
                         </div>
                         <div class="tab-pane mt-3" id="flashcard">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
+                        
+                                <div class="dash-divs"
                                     *ngFor="let winitem of winlost, let i=index">
                                     <div *ngIf="winitem.bid.flashcard !=null ">
                                         <div class="product-list__item">
@@ -282,11 +282,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            
                         </div>
                         <div class="tab-pane mt-3" id="books">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let winitem of winlost">
+                            
+                                <div class="dash-divs" *ngFor="let winitem of winlost">
                                     <div *ngIf="winitem.bid.book !=null ">
                                         <div class="product-list__item">
                                             <figure class="product-list__img"> <a
@@ -310,7 +310,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            
                         </div>
                     </div>
         </div>
