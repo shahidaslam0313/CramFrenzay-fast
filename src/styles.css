@@ -2439,7 +2439,9 @@ mat-form-field textarea {
 }
 
 .contact-us-address h1 {
-    text-transform: capitalize
+    text-transform: capitalize;
+    font-size: 30px;
+    text-align: left !important;
 }
 
 .details-section,
