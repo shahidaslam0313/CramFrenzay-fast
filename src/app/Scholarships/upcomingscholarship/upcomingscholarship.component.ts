@@ -26,6 +26,7 @@ export class UpcomingscholarshipComponent implements OnInit {
   constructor(private serv: UpcomingscholarshipService) { }
 
   ngOnInit() {
+    window.scroll(0,0)
   }
   check(event) {
     this.show = false;

@@ -271,10 +271,10 @@
 </div>
 <h4 class="text-center" *ngIf="Book?.length == '0' && FlashCard?.length == '0' && Courses?.length == '0' && Notes?.length == '0'">No Item In Cart</h4>
 <!-- new payment -->
-<div class="container-fluid width-90 margin-bottom-20 pt-5" *ngIf="Book?.length != '0' && FlashCard?.length != '0' && Courses?.length != '0' && Notes?.length != '0'">
+<div class="container-fluid width-90 margin-bottom-20 pt-5" >
     <div class="row checkout-select-box">
         <div class="width100">
-            <div id="section-pricing" class="text-center">
+            <div id="section-pricing" class="text-center" >
                 <div class="pricing-tenure-switcher center" data-container="#pricing-switch"> <span class="pts-left"
                         *ngIf="!isright" style="color: black">Saved Cards</span> <span class="pts-left"
                         *ngIf="isright">Saved Cards</span>

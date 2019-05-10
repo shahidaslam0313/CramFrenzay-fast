@@ -35,6 +35,7 @@ export class ScholarshiplistComponent implements OnInit {
     this.router.navigate(['/searchscholarship/' + name]);
   }
   ngOnInit() {
+    window.scroll(0,0)
     this.Showscholarshiplist();
   }
 
