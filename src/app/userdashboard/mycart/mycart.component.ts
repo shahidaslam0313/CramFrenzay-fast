@@ -18,19 +18,19 @@ export class MycartComponent implements OnInit {
   Book;
   record;
   public Imageurl = Config.Imageurlget;
-  constructor(public header: headerservice,) { }
+  constructor(public header: headerservice, ) { }
 
   ngOnInit() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.showCartItems();
   }
   showCartItems() {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
-this.record = Data.Cart;
-console.log(this.record,'Record')
-      
+      this.record = Data;
+      // console.log(this.record, 'Record')
+
     })
   }
 }
