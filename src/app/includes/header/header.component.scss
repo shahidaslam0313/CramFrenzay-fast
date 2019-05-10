@@ -543,8 +543,12 @@
     background: #000;
     color: #fff;
     font-weight: 600;
-    margin: 20px 10px;}
-
+    margin: 20px 10px;
+}
+.sellnowbtn:focus {
+    outline: none;
+    box-shadow: none;
+}
 .sellnowbtn i {
     margin-right: 5px;
 }
