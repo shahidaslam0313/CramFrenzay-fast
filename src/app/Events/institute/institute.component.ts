@@ -1,18 +1,14 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { InstituteService } from './institute.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Http, Response, Headers } from '@angular/http';
-import { applyRedirects } from '@angular/router/src/apply_redirects';
+import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Config } from '../../Config';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SimpleGlobal } from 'ng2-simple-global';
 import { DataService } from '../../data.service';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// declare var localStorage: any;
 @Component({
   selector: 'app-institute',
   templateUrl: './institute.component.html',

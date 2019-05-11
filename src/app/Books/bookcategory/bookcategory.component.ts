@@ -104,7 +104,6 @@ export class BookcategoryComponent implements OnInit {
   bidb(){
     this.detail.bidonbooks(this.model,null,null,null,this.bidbookid)
       .subscribe(Res => {
-          // alert('Book ID: '+this.bidbookid);
           swal({
             type: 'success',
             title: 'Successful biding on Book',
@@ -113,7 +112,6 @@ export class BookcategoryComponent implements OnInit {
           });
         },
         error => {
-          // alert('Book ID: '+this.bidbookid);
           swal({
             type: 'error',
             title: 'error',

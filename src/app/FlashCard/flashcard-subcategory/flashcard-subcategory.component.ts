@@ -1,16 +1,11 @@
-// import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { cardsubcategoryeservice } from './flashcard-subcategory.service';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Config } from '../../Config';
-// import { NotesService } from '../notes/notes.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Http, Response, Headers } from '@angular/http';
 import { Router } from "@angular/router";
 import swal from 'sweetalert2';
 import { ActivatedRoute } from "@angular/router";
-// import { categorywisenotesservice } from "./category-wise-notes.service";
 import { isPlatformBrowser } from '@angular/common';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-flashcard-subcategory',
@@ -83,7 +78,6 @@ export class FlashcardSubcategoryComponent implements OnInit {
   cardsubcategory(catId) {
     this.subcatservice.notesSubcat(this.catId).subscribe(data => {
       this.eachcard = data.flashcards;
-      console.log(data.flashcards,'flashcard')
     });
 
   }

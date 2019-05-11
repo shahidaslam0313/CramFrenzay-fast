@@ -131,7 +131,6 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   fcdetail() {
     this.newService.newfcdetail(this.flashId).subscribe(data => {
       this.flashcardDetail = data;
-console.log('FLASHCARD', data)
     });
   }
   flipdetail() {
@@ -200,7 +199,6 @@ console.log('FLASHCARD', data)
 
     this.newService.getreview(this.flashId).subscribe(data =>{
       this.view = data;
-      console.log(data);
       this.pager = this.pagerService.getPager(this.view['totalItems'], page, 10);
 
     },

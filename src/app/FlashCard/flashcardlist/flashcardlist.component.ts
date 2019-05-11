@@ -3,10 +3,9 @@ import { FlashcardlistService } from './flashcardlist.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from "@angular/router";
 import { Config } from "../../Config";
-import { ActivatedRoute, RouterModule } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import swal from "sweetalert2";
 import { isPlatformBrowser } from '@angular/common';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { GlobalService } from '../../global.service';
 import { MatDialog } from '@angular/material';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
@@ -170,7 +169,6 @@ export class FlashcardlistComponent implements OnInit {
     this.newService.Recentflashcards().subscribe(Res => {
       this.recentflashcards = Res;
       for (let item of this.recentflashcards) {
-        console.log(item);
       }
     });
   }

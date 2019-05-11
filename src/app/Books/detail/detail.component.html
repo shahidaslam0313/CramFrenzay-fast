@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}<span>({{result?.book_edition}} Edition)</span></h1>
-                <p>{{result?.book_detail | titlecase}}</p>
-                <span>Author Name: {{result?.author_name | titlecase}}</span>
+                <h4>Author Name: {{result?.author_name | titlecase}}</h4>
+                <p class="detail">{{result?.book_detail | titlecase}}</p>
             </div>
         </div>
     </div>
