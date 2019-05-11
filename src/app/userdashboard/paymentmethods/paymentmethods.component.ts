@@ -163,6 +163,7 @@ export class PaymentmethodsComponent implements OnInit {
     }
   }
   ngOnInit() {
+    window.scroll(0,0)
     this.form.controls['check'].setValue(false);
     this.getCards();
   }
@@ -175,40 +176,9 @@ export class PaymentmethodsComponent implements OnInit {
   exp;
   ccv;
   type; cardnum; nickname;
-  getSingleCard1(nickname, status, id) {
-    this.nickname = nickname;
-    // this.check2=status;s
-    this.status = status;
-    this.id = id;
-    // this.exp=exp;
-    // this.type=type;
-    // this.cardnum=number;
-    // this.ccv=ccv
-  }
-  getSingleCard() {
-    this.serv.singleCard(this.id).subscribe(Data => {
-      this.card = Data;
-      console.log(this.card,'Single card')
-      //
-      // let expDate = this.card.expirydate2;
-      // // expDate = expDate.substring(0, expDate.length - 3);
-      // expDate = moment(expDate).format('MM/YY');
-  
-      // this.cardid = this.card.id;
-      // this.updateForm.controls['cardnickname2'].setValue(this.card.nickname);
-      // this.updateForm.controls['expirydate2'].setValue(expDate);
-      // this.updateForm.controls['check2'].setValue(this.card.default);
-      // this.updateForm.controls['ccv2'].setValue(this.card.ccv);
-      // this.updateForm.controls['cardnumber2'].setValue(this.card.cardNumber);
-      // this.updateForm.controls['card_type'].setValue(this.card.card_type);
-    })
-  }
- 
   Eachcard (id){
-    alert(id)
     this.serv.singleCard(id).subscribe(data=> {
       this.card = data
-      console.log(data)
     })
   }
   ShowButton(card_type) {
@@ -254,8 +224,8 @@ export class PaymentmethodsComponent implements OnInit {
     }
   }
   model: any = {};
-  updateSingleCard() {
-    this.serv.updateCard(this.model.cardnickname2, this.model.status, this.id).subscribe(Data => {
+  updateSingleCard(id) {
+    this.serv.updateCard(this.card.nickname, this.card.street_adrress, this.card.state, this.card.city, this.card.zip_code, this.card.country, this.card.default, id).subscribe(Data => {
       swal({
         type: 'success',
         title: 'Credit card details are updated!',

@@ -86,5 +86,7 @@ export class NestedcateroyComponent implements OnInit {
     nestedcatname(name) {
         // alert(name);
         localStorage.setItem('nestedcatgoeyname', name);
+        // localStorage.setItem('nameID', 'notes');
+
     }
 }

@@ -184,8 +184,9 @@
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field> <input matInput placeholder="Expiry Date (MM/YY)" [textMask]="{mask: masks}"
-                                    type="text" formControlName="expirydate" #exp (change)="chek(exp.value)">
+                            <mat-form-field> <input matInput placeholder="Expiry Date (MM/YY)"
+                                    [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
+                                    (change)="chek(exp.value)">
                                 <mat-error *ngIf="form.controls.expirydate.touched && form.controls.expirydate.invalid">
                                     <mat-error *ngIf="form.controls.expirydate.errors.required"> Expiry date cannot be
                                         empty
@@ -287,8 +288,8 @@
                     </td>
                 </ng-template>
                 <td>
-                    <h3 class="edit-payment"> <a (click)="Eachcard(card.id)"
-                            data-target="#edit-card-modal" data-toggle="modal"> <i class="fas fa-edit"></i> </a> </h3>
+                    <h3 class="edit-payment"> <a (click)="Eachcard(card.id)" data-target="#edit-card-modal"
+                            data-toggle="modal"> <i class="fas fa-edit"></i> </a> </h3>
                 </td>
                 <td>
                     <h3 class="edit-payment"> <a (click)="deleteSingleCard(card.id)"> <i class="fas fa-trash-alt"></i>
@@ -310,20 +311,23 @@
             <div class="modal-body">
                 <form class="user-add-ingo-form" *ngIf="card">
                     <mat-form-field> <input matInput type="text" placeholder="Card Nick Name"
-                            [(ngModel)]="card.nickname" name="cardnickname"> </mat-form-field>
+                            [(ngModel)]="card.nickname" name="nickname" #nickname="ngModel"> </mat-form-field>
                     <mat-form-field> <input matInput type="text" placeholder="Street Address"
-                        [(ngModel)]="street_address" name="street_address"> </mat-form-field>
-                    <mat-form-field> <input matInput type="text" placeholder="State"
-                        [(ngModel)]="state" name="state"> </mat-form-field>
-                    <mat-form-field> <input matInput type="text" placeholder="City"
-                        [(ngModel)]="city" name="city"> </mat-form-field>
-                    <mat-form-field> <input matInput type="text" placeholder="Zip Code"
-                        [(ngModel)]="zip_code" name="zip_code"> </mat-form-field>
-                    <mat-form-field> <input matInput type="text" placeholder="Country"
-                        [(ngModel)]="coutry" name="country"> </mat-form-field>
-                    <mat-slide-toggle class="margin-top-30" [(ngModel)]="status" [(ngModel)]="model.status" name="status">Set as default
+                            [(ngModel)]="card.street_adrress" name="street_address" #street_adrress="ngModel">
+                    </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="State" [(ngModel)]="card.state"
+                            name="state" #state="ngModel"> </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="City" [(ngModel)]="card.city" name="city"
+                            #city="ngModel">
+                    </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Zip Code" [(ngModel)]="card.zip_code"
+                            name="zip_code" #zip_code="ngModel"> </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Country" [(ngModel)]="card.country"
+                            name="country" #country="ngModel"> </mat-form-field>
+                    <mat-slide-toggle class="margin-top-30" [(ngModel)]="card.default" name="default"
+                        #default="ngModel">Set as default
                         payment method</mat-slide-toggle> <a class="user-add-ingo-form-btn margin-top-10"
-                        (click)="updateSingleCard()">Update</a>
+                        (click)="updateSingleCard(card.id)">Update</a>
                 </form>
             </div>
         </div>

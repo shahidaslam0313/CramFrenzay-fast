@@ -270,7 +270,7 @@
                     <span class="btn-file margin-top-10">Update Note Image <input (change)="onChange($event)"
                             type="file" [(ngModel)]="editnotes.notes_thumbnail" name="notes_thumbnail" #notes_thumbnail
                             accept="image/gif, image/jpeg, image/png" required> </span>
-                    <span class="btn-file margin-top-20 margin-left-10">Upload File <input (change)="onChange2($event)"
+                    <span class="btn-file margin-top-20 margin-left-10">Update Note File (PDF) <input (change)="onChange2($event)"
                             #updata type="file" accept="application/pdf" required> </span> <a
                         class="user-add-ingo-form-btn margin-top-10" (click)="updatenotes(bidnote.id)">Update Notes</a>
                 </form>
@@ -382,9 +382,7 @@
                     <span class="btn-file margin-top-10">Update FlashCard Image <input (change)="onChange($event)"
                             type="file" name="flashcard_image" #flashcard_image [(ngModel)]="cardedit.flashcard_image"
                             accept="image/gif, image/jpeg, image/png" required> </span>
-                    <span class="btn-file margin-top-20 margin-left-10">Upload File <input (change)="onChange2($event)"
-                            #updata type="file" accept="application/pdf" required> </span> <a
-                        class="user-add-ingo-form-btn margin-top-10" (click)="updatecard(bidflashcard.id)">Update
+                     <a class="user-add-ingo-form-btn margin-top-10" (click)="updatecard(bidflashcard.id)">Update
                         FlashCard</a>
                 </form>
             </div>
@@ -494,9 +492,7 @@
                     <span class="btn-file margin-top-10">Update Course Image <input (change)="onChange($event)"
                             type="file" [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail"
                             #course_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
-                    <span class="btn-file margin-top-20 margin-left-10">Upload File <input (change)="onChange2($event)"
-                            #updata type="file" accept="application/pdf" required></span> <a
-                        class="user-add-ingo-form-btn margin-top-10" (click)="update(editcourse.id)">Update Course</a>
+                    <a class="user-add-ingo-form-btn margin-top-10" (click)="update(editcourse.id)">Update Course</a>
                 </form>
             </div>
         </div>
