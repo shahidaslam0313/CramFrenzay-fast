@@ -27,7 +27,7 @@ export class UserprofileService {
   userinfo(modal, image) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.put(Config.api + 'user/userdetails/' + JSON.parse(localStorage.getItem('currentUser')).user_id + '/',
+    return this.http.put(Config.api + 'user/userdetails/' ,
       JSON.stringify({
         "profilePhoto": image,
         "headLine": modal.headLine,

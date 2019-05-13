@@ -153,10 +153,7 @@ role;
 
         console.log(this.response);
         this.CourseSuccess();
-      },
-        error => {
-          this.CourseFailure();
-        }
+      }
 
       );
   }
@@ -215,7 +212,7 @@ role;
   CourseFailure() {
     swal({
       type: 'error',
-      title: 'Oops <br>Failed to add course. Inccorrect Information',
+      title: 'Upload Image',
       showConfirmButton: false,
       width: '512px',
       timer: 2500

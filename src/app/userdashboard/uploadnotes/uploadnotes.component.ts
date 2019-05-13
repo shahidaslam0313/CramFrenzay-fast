@@ -218,7 +218,7 @@ export class UploadnotesComponent implements OnInit {
   CourseFailure() {
     swal({
       type: 'error',
-      title: 'Oops! <br>Failed to add Note. Inccorrect Information!',
+      title: 'Upload Image',
       showConfirmButton: false,
       width: '512px',
       timer: 4500

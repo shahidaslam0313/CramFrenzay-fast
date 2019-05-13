@@ -9,7 +9,7 @@
                     <div class="profile-picture" *ngIf="!profilePhoto">
                         <img src="../assets/img/default-user-icon-profile.png">
                     </div>
-                    <h4 class="user-name">{{profile.firstname}} {{profile.lastname}}</h4>
+                    <h4 class="user-name text_cap">{{profile.firstname}} {{profile.lastname}}</h4>
                 </form>
                 <a class="user-link" routerLink="/userprofile" routerLinkActive="active1"><i class="fas fa-user"></i>
                     Profile</a>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <button type="submit" class="user-add-ingo-form-btn margin-top-10 width100"
-                    (click)="onSubmit()">save</button>
+                    (click)="userdata()">save</button>
             </form>
         </div>
     </div>
