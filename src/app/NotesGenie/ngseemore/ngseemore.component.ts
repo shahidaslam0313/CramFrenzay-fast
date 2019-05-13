@@ -64,17 +64,6 @@ export class NgseemoreComponent implements OnInit {
   checkmainpage(id) {
     if (this.check_login() == true) {
       this.router.navigate(['/payment'], {queryParams: {notesid : id}});
-      // localStorage.setItem('notesid', id);
-      // localStorage.setItem('price' , price)
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertnotes();
-      this.router.navigate(['/login']);
-    }
-  }
-  checknotes() {
-    if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
     }
     else if (this.check_login() == false) {
       this.sweetalertnotes();

@@ -69,6 +69,12 @@
                             </div>
                             <form class="user-add-ingo-form" [formGroup]="form">
                                 <mat-form-field>
+                                    <input matInput placeholder="Card Holder Name" type="text" formControlName="cardHolderName" />
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Nick Name" type="text" formControlName="cardnickname" />
+                                </mat-form-field>
+                                <mat-form-field>
                                     <mat-select placeholder="Card Type" fromControlName="card_type" #value
                                         (change)="ShowButton(value.value)">
                                         <mat-option *ngFor="let card_get_datat of card_opeation"
@@ -152,17 +158,34 @@
                                     </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="margin-top-30"> <input matInput
-                                        placeholder="Expiry Date (MM/YYYY)" type="text" formControlName="exp" #exp  [textMask]="{mask: masks}">
+                                        placeholder="Expiry Date (MM/YY)" type="text" formControlName="exp" #exp  [textMask]="{mask: masks}">
                                     <mat-error *ngIf="form.controls.exp.touched && form.controls.exp.invalid">
                                         <mat-error *ngIf="form.controls.exp.errors.required"> Expiry date cannot be
                                             empty
                                         </mat-error>
                                         <mat-error *ngIf="form.controls.exp.hasError('pattern')"> Expiry date must be in
-                                            MM/YYYY format. </mat-error>
+                                            MM/YY format. </mat-error>
                                     </mat-error><span class="card-error" *ngIf="exp <= '19'">
                                         Invalid Expiry Date
                                     </span>
                                 </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Zip Code" type="text" formControlName="zipcode"/>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Street" type="text" formControlName="street"/>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="City" type="text" formControlName="city"/>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="State" type="text" formControlName="state"/>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Country" type="text" formControlName="country"/>
+                                </mat-form-field>
+                                <mat-slide-toggle [checked]="false" formControlName="check">Set as Default Payment Method
+                                    </mat-slide-toggle>
                                 <a class="user-add-ingo-form-btn margin-top-10" (click)="buywithcard()">Buy</a>
                             </form>
                         </div>

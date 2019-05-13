@@ -153,33 +153,15 @@ export class CourseComponent implements OnInit {
     });
   }
 id;
-  courses(id) {
-    if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
-      localStorage.setItem('course', id);
-    }
+courses(id) {
+  if (this.check_login() == true) {
+    this.router.navigate(['/payment'], {queryParams: {courseid : id}});
+    // localStorage.setItem('course', id);
+  } else if (this.check_login() == false) {
+    this.sweetalertlogin();
+    this.router.navigate(['/login']);
   }
-  checkbuy(notes, course, book, flashcard) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.courses(this.id)
-        },
-        error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Course Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertlogin();
-      this.router.navigate(['/login']);
-    }
-  }
+}
   check_login() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('currentUser')) {
