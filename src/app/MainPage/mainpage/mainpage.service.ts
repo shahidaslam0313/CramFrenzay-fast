@@ -12,6 +12,7 @@ export class mainpageservice {
   model;
   currentUser;
   token;
+  
   constructor(private http: HttpService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   BidCourseson() {

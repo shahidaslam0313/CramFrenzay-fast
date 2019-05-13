@@ -27,7 +27,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   public Imageurl = Config.Imageurleach;
   public profile: any = [];
   user: FormGroup;
-  model: any;
+  modal: any = {};
   image = {};
   role;
   id;
@@ -67,9 +67,6 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   isFieldValid(form: FormGroup, field: string) {
     return !form.get(field).valid && form.get(field).touched;
   }
-
-
-
   displayFieldCss(form: FormGroup, field: string) {
     return {
       'has-error': this.isFieldValid(form, field),
@@ -102,27 +99,36 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   }
 imagePost;
 imageGet='https://storage.cramfrenzy.com/images/'
-  onSubmit() {
+ private onSubmit() {
     this.http.post(
       Config.Imageurlupload,
       this.input, { responseType: 'text' }).subscribe(data => {
         if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
+          this.CourseFailure();
         }
         else {
           this.image = data;
           this.imagePost=this.imageGet+data
         }
-        this.userdata();
+        
       });
   }
-
-  public userdata() {
+  CourseFailure() {
+    swal({
+      type: 'error',
+      title: 'Upload Image',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 4500
+    })
+  }
+   userdata() {
     if (this.user.valid) {
-      this.userprofile.userinfo(this.profile, this.imagePost).subscribe(Res => {
-        this.userdatainfo(this.id);
+      this.userprofile.userinfo(this.modal, this.imagePost).subscribe(Res => {
+        console.log(this.modal, this.imagePost);
         swal({
           type: 'success',
-          title: 'Successfully Update',
+          title: 'Profile updated successfuly ',
           showConfirmButton: false,
           timer: 2500
         });
@@ -130,23 +136,24 @@ imageGet='https://storage.cramfrenzy.com/images/'
       error => {
         swal({
           type: 'error',
-          title: 'Oops! <br> Plz fill form',
+          title: 'Oops <br> Plz fill form',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
         })
       }
     }
-    else {
-      swal({
-        type: 'error',
-        title: 'Oops! <br> Plz Enter Valid Text',
-        showConfirmButton: false,
-        width: '512px',
-        timer: 2500
-      })
-      this.validateAllFormFields(this.user);
-    }
+    // else {
+    //   swal({
+    //     type: 'error',
+    //     title: 'Oops <br> Plz Enter Valid Text',
+    //     showConfirmButton: false,
+    //     width: '512px',
+    //     timer: 2500
+    //   })
+      // this.validateAllFormFields(this.user);
+    // }
+    this.onSubmit();
   }
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {

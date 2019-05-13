@@ -52,7 +52,7 @@
                         <!-- cart heart and offer now end -->
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
-                    <a class="btn-style text-transform-none" (click)="checknotes()" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                    <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                     <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
@@ -139,7 +139,7 @@
                         <!-- cart heart and offer now end -->
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
-                    <a class="btn-style text-transform-none" (click)="checknotes()" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                    <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                     <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
@@ -220,7 +220,7 @@
                         <!-- cart heart and offer now end -->
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
-                    <a class="btn-style text-transform-none" (click)="checknotes()" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                    <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                     <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
@@ -250,7 +250,7 @@
 <div class="container" *ngIf="recent">
     <h1 class="mainbanner bg-Bid-Notes">Recently Viewed Books </h1>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of recent; let i=index">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of recent?.books; let i=index">
             <div class="product-list__item">
                 <!-- Img start -->
                 <figure class="product-list__img">
@@ -301,7 +301,7 @@
                         <!-- cart heart and offer now end -->
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
-                    <a class="btn-style text-transform-none" (click)="checknotes()" *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                    <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                     <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">

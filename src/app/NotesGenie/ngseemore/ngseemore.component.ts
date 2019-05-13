@@ -14,7 +14,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
-import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { BidHistoryService } from "../../bid-history/bid-history.service";
 @Component({
   selector: 'app-ngseemore',
   templateUrl: './ngseemore.component.html',
@@ -36,45 +36,34 @@ export class NgseemoreComponent implements OnInit {
   cartitems;
   wishlist;
   private sub: Subscription;
-  constructor(private bidings: BidHistoryService , private headServ: headerservice,private Data: DataService,private mainpage: mainpageservice,private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private see: WishlistService, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global:GlobalService) {
-      this.global.currentMessage.subscribe(message => this.message = message);
-      this.route.params.subscribe(params => {
-      });
-      window.scroll(0,0);
+  constructor(private bidings: BidHistoryService, private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private see: WishlistService, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global: GlobalService) {
+    this.global.currentMessage.subscribe(message => this.message = message);
+    this.route.params.subscribe(params => {
+    });
+    window.scroll(0, 0);
 
-      this.sub = this.route.params.subscribe(params => {
-          this.name = +params['name'];
-          if (params['name'] == "Bid&BuyNotes") {
-              this.setPagenotes(1);
-          }
-          else if (params['name'] == "NotesTrendingNow") {
-              this.setTrending(1);
-          }
-          else if (params['name'] == "TopRatedNotes") {
-              this.setToprated(1);
-          }
-          else if (params['name'] == "RecentlyViewedNotes") {
-              this.recentnote();
-          }
+    this.sub = this.route.params.subscribe(params => {
+      this.name = +params['name'];
+      if (params['name'] == "Bid&BuyNotes") {
+        this.setPagenotes(1);
+      }
+      else if (params['name'] == "NotesTrendingNow") {
+        this.setTrending(1);
+      }
+      else if (params['name'] == "TopRatedNotes") {
+        this.setToprated(1);
+      }
+      else if (params['name'] == "RecentlyViewedNotes") {
+        this.recentnote();
+      }
 
-      });
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
   checkmainpage(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'], {queryParams: {notesid : id}});
-      // localStorage.setItem('notesid', id);
-      // localStorage.setItem('price' , price)
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertnotes();
-      this.router.navigate(['/login']);
-    }
-  }
-  checknotes() {
-    if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
+      this.router.navigate(['/payment'], { queryParams: { notesid: id } });
     }
     else if (this.check_login() == false) {
       this.sweetalertnotes();
@@ -113,7 +102,7 @@ export class NgseemoreComponent implements OnInit {
     let flashcard = "";
     let course = "";
 
-    this.seemore.addwishlist(book, course, flashcard, this.newid, ).subscribe(Res => {
+    this.seemore.addwishlist(book, course, flashcard, this.newid).subscribe(Res => {
       this.global = Res;
       swal({
         type: 'success',
@@ -196,17 +185,17 @@ export class NgseemoreComponent implements OnInit {
   }
   bidamount;
   biding() {
-    this.seemore.bidnotes( this.bidonnotes, this.model.bidamount)
+    this.seemore.bidnotes(this.bidonnotes, this.model.bidamount)
       .subscribe(Res => {
-          swal({
-            type: 'success',
-            title: 'Your bid is listed',
-            showConfirmButton: false,
-            timer: 2000
-          });
-        },
+        swal({
+          type: 'success',
+          title: 'Your bid is listed',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      },
         error => {
-          if(error.status == 403 && error.status == 500 )
+          if (error.status == 403 && error.status == 500)
             swal({
               type: 'error',
               title: 'Bid higher amount',
@@ -248,18 +237,18 @@ export class NgseemoreComponent implements OnInit {
         timer: 1500
       });
     });
-}
-delfromcart(event) {
-  this.global.delcart(event.cart).subscribe(data => {
-    swal({
-      type: 'success',
-      title: 'Successfully deleted',
-      showConfirmButton: false,
-      timer: 1500
+  }
+  delfromcart(event) {
+    this.global.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Successfully deleted',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
-  });
-}
-  addcart( notes, course, book, flashcard){
+  }
+  addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
         swal({
@@ -280,25 +269,27 @@ delfromcart(event) {
             showConfirmButton: false,
             timer: 2000
           })
-          else if ( error.status === 406)
+        else if (error.status === 406)
           swal({
             type: 'error',
             title: 'Item Already Purchased',
             showConfirmButton: false,
             timer: 2000
           })
-        });
+      });
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
-  else if (this.check_login() == false) {
-    this.sweetalertlogin();
-    this.router.navigate(['/login']);
-  }
-}
   notes;
   notebid;
   ////////////note biding history ///////////////
   getnotebidhistory(id) {
     this.bidings.notebidhistory(this.bidonnotes).subscribe(data => {
       this.notebid = data;
-      this.notes = data['Highest Bid'];})}
+      this.notes = data['Highest Bid'];
+    })
+  }
 }

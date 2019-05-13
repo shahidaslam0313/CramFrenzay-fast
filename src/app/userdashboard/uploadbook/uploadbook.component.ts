@@ -124,7 +124,7 @@ export class UploadbookComponent implements OnInit {
 uploadfile(){
     this.http.post( Config.uploadfile, this.input ,{ responseType: 'text' }).subscribe( data => {
       if( data === 'sorry '){
-        this.CourseFailure();
+        this.CourseFailurepdf();
       }
       else {
         // this.CourseSuccess();
@@ -173,7 +173,16 @@ uploadfile(){
   CourseFailure() {
     swal({
       type: 'error',
-      title: 'Oops! <br>Failed to add Book. Inccorrect Information!',
+      title: 'Upload Image',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 2500
+    })
+  }
+  CourseFailurepdf() {
+    swal({
+      type: 'error',
+      title: 'Upload Image',
       showConfirmButton: false,
       width: '512px',
       timer: 2500

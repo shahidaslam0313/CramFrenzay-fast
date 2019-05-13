@@ -62,6 +62,12 @@ export class PaymentComponent implements OnInit {
   card_type;
   coursepay;
   form = new FormGroup({
+    cardHolderName: new FormControl('',{
+
+    }),
+    cardnickname: new FormControl('',{
+
+    }),
     card_type: new FormControl('', [
       // Validators.minLength(15),
       // Validators.maxLength(16),
@@ -96,6 +102,21 @@ export class PaymentComponent implements OnInit {
       Validators.required,
       Validators.pattern('(0[1-9]|10|11|12)/[0-9]{2}$')
     ]),
+    zipcode: new FormControl('',{
+
+    }),
+    city: new FormControl('',{
+
+    }),
+    state: new FormControl('',{
+
+    }),
+    street : new FormControl('',{
+
+    }),
+    country: new FormControl('',{
+
+    }),
     check: new FormControl(),
   });
   public masks=function(rawValue) {
@@ -169,6 +190,7 @@ export class PaymentComponent implements OnInit {
     window.scroll(0,0);
     this.getCards();
     this.getcardid(this.id);
+    this.form.controls['check'].setValue(false);
     this.route.queryParams.subscribe(params => {
       this.itemid = params['notesid'];
       this.coursepay = params['courseid'];
@@ -184,10 +206,10 @@ export class PaymentComponent implements OnInit {
       if ( this.form.controls.ccv4.valid &&  this.form.controls.creditno4.valid &&
          this.form.controls.exp.valid) {
         this.date = this.form.value['exp'];
-        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'],  this.date.split('/').join(''), this.cardtype).subscribe(data => {
+        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'],this.form.value['cardHolderName'],  this.date.split('/').join(''),this.form.value['cardnickname'], this.cardtype).subscribe(data => {
           swal({
             type: 'success',
-            title: 'Payment Done!',
+            title: 'Payment Done',
             showConfirmButton: false,
             timer: 1500
           })
@@ -205,7 +227,7 @@ export class PaymentComponent implements OnInit {
       else {
         swal({
           type: 'error',
-          title: 'Please enter correct details!',
+          title: 'Please enter correct details',
           showConfirmButton: false,
           timer: 1500,
         })
@@ -215,10 +237,10 @@ export class PaymentComponent implements OnInit {
 
       if (this.form.controls.ccv.valid &&this.form.controls.creditno.valid && this.form.controls.exp.valid) {
         this.date = this.form.value['exp'];
-        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.date.split('/').join(''), this.cardtype).subscribe(data => {
+        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.form.value['cardHolderName'],this.date.split('/').join(''),this.form.value['cardnickname'], this.cardtype).subscribe(data => {
           swal({
             type: 'success',
-            title: 'Payment Done!',
+            title: 'Payment Done',
             showConfirmButton: false,
             timer: 1500
           })
@@ -236,7 +258,122 @@ export class PaymentComponent implements OnInit {
       else {
         swal({
           type: 'error',
-          title: 'Please enter correct details!',
+          title: 'Please enter correct details',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      }
+    }
+    this.add();
+  }
+ private add(){
+    if (this.cardtype == "American Express") {
+      if (this.form.controls.ccv4.valid && this.form.controls.creditno4.valid &&
+        this.form.controls.cardnickname.valid && this.form.controls.exp.valid &&
+        this.form.controls.cardHolderName.valid && this.form.controls.zipCode.valid &&
+        this.form.controls.street.valid && this.form.controls.city.valid &&
+        this.form.controls.state.valid && this.form.controls.country.valid) {
+        this.newService.addCard(this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'], this.form.value['exp'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipcode'],
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
+          swal({
+            type: 'success',
+            title: 'Payment method is listed',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.getCards();
+        },
+          error => {
+           if (error.status == 400) {
+              swal({
+                type: 'error',
+                title: 'Please enter correct details',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            else if (error.status == 500) {
+              swal(
+                'Sorry',
+                'Server is under maintenance',
+                'error',
+              )
+            }
+            else {
+              swal(
+                'Sorry',
+                'Some thing went worrng',
+                'error'
+              )
+            }
+          })
+      }
+      else {
+        swal({
+          type: 'error',
+          title: 'Please enter correct details',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      }
+    }
+    else {
+      if (this.form.controls.ccv.valid && this.form.controls.creditno.valid &&
+        this.form.controls.cardnickname.valid && this.form.controls.exp.valid) {
+        this.newService.addCard(this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.form.value['exp'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipcode'],
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
+          swal({
+            type: 'success',
+            title: 'Payment method is listed',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.getCards();
+        },
+          error => {
+            if (error.status == 302) {
+              swal(
+                'Sorry',
+                'Crad Number Already Exist',
+                'error'
+              )
+            }
+            else if (error.status == 404) {
+              swal({
+                type: 'error',
+                title: 'This card already exist',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            else if (error.status == 400) {
+              swal({
+                type: 'error',
+                title: 'Please enter correct details',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            else if (error.status == 500) {
+              swal(
+                'Sorry',
+                'Server is under maintenance',
+                'error'
+              )
+            }
+            else {
+              swal(
+                'Sorry',
+                'Some thing went worrng',
+                'error'
+              )
+            }
+          })
+      }
+      else {
+        swal({
+          type: 'error',
+          title: 'Please enter correct details',
           showConfirmButton: false,
           timer: 1500,
         })
@@ -289,7 +426,7 @@ export class PaymentComponent implements OnInit {
         if (error.status === 404) {
           swal({
             type: 'error',
-            title: 'Credit card not found!',
+            title: 'Credit card not found',
             showConfirmButton: false,
             timer: 1500
           })
@@ -297,7 +434,7 @@ export class PaymentComponent implements OnInit {
         else if (error.status === 500) {
           swal(
             'Sorry',
-            'Server is under maintenance!',
+            'Server is under maintenance',
             'error'
           )
         }

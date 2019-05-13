@@ -24,7 +24,7 @@ export class paymentservice {
     }
   }
 
-  payment(notes, course,  flashcard, book,   creditno, ccv, exp, card_type  ) {
+  payment(notes, course,  flashcard, book,   creditno, ccv, cardHolderName, exp,cardnickname, card_type  ) {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.token });
 
       headers.append('Content-Type', 'application/json', );
@@ -37,7 +37,9 @@ export class paymentservice {
         userid: this.current.user_id,
         creditno: creditno,
         ccv: ccv,
+        card_holder: cardHolderName,
         exp: exp,
+        nickname: cardnickname,
         card_type: card_type,
       }),
       { headers: headers }).map((response: Response) => response.json());
@@ -75,22 +77,22 @@ export class paymentservice {
       }),
       { headers: header }).map((response: Response) => response.json());
   }
-  addCard(cardno, ccv, expiryDate, cardnickname, card_type) {
-    const header = new Headers({ 'Authorization': 'JWT ' + this.token });
-    header.append('Content-Type', 'application/json');
-    return this.http.post(Config.api + 'purchase/addcard/' + this.current.user_id,
-      JSON.stringify({
+  // addCard(cardno, ccv, expiryDate, cardnickname, card_type) {
+  //   const header = new Headers({ 'Authorization': 'JWT ' + this.token });
+  //   header.append('Content-Type', 'application/json');
+  //   return this.http.post(Config.api + 'purchase/addcard/' + this.current.user_id,
+  //     JSON.stringify({
 
-        'cardNumber': cardno,
-        'ccv': ccv,
-        "expiryDate": expiryDate,
-        "user": this.current.user_id,
-        "nickname": cardnickname,
-        'card_type' : card_type
+  //       'cardNumber': cardno,
+  //       'ccv': ccv,
+  //       "expiryDate": expiryDate,
+  //       "user": this.current.user_id,
+  //       "nickname": cardnickname,
+  //       'card_type' : card_type
 
-      }),
-      { headers: header }).map((response: Response) => response.json());
-  }
+  //     }),
+  //     { headers: header }).map((response: Response) => response.json());
+  // }
   Eachnotes(Eid) {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
@@ -119,4 +121,27 @@ export class paymentservice {
         }),
         { headers: headers }).map((response: Response) => response.json());
     }
+    addCard(cardno, ccv, expiryDate,cardHolderName, cardnickname, card_type,zipcode, 
+      street, city, state,country, defaultCheck, ) {
+      let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
+      headers.append('Content-Type', 'application/json');
+      return this.http.post(Config.api + 'purchase/addcard/' + this.current.user_id,
+        JSON.stringify({
+          "cardNumber": cardno,
+          "ccv": ccv,
+          "expiryDate": expiryDate,
+          "user": this.current.user_id,
+          "card_holder": cardHolderName,
+          "nickname": cardnickname,
+          "default": defaultCheck,
+          "card_type": card_type,
+          "zip_code": zipcode,
+          "street_adrress": street,
+          "city": city,
+          "state": state,
+          "country": country,
+        }),
+        // { headers: header }).map((response: Response) => response.json());
+        { headers: headers }).map((response: Response) => response.json());
+      }
 }

@@ -233,7 +233,7 @@ console.log(this.model); });
   CourseFailure() {
     swal({
       type: 'error',
-      title: 'Oops! <br>Failed to add Flash card. Inccorrect Information!',
+      title: 'Upload Image',
       showConfirmButton: false,
       width: '512px',
       timer: 2500

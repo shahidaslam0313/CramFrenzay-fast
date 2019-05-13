@@ -66,23 +66,24 @@ export class BecomepartnerComponent implements OnInit {
     Validators.pattern(NAME_REGEX)
   ]);
 
-  onSubmit() {
+  onSubmit(f : NgForm) {
     this.newService.registration(this.model.name, this.model.Email, this.model.Company)
       .subscribe(Res => {
         swal({
           type: 'success',
-          title: 'Message send ',
+          title: 'Message send to Partner request has been posted successfully, you will be contacted shortly',
           showConfirmButton: false,
           timer: 4500
         });
       }, error => {
-        if (error.status == 404)
+        if (error.status == 400)
           swal({
             type: 'warning',
-            title: 'This item already purchase',
+            title: 'Fill all field',
             showConfirmButton: false,
             timer: 1500
           });
       });
+      f.resetForm();
   }
 }

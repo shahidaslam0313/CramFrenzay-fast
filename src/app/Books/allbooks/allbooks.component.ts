@@ -197,25 +197,8 @@ export class AllbooksComponent implements OnInit {
   id;
   books(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
+      this.router.navigate(['/payment'], {queryParams: {bookid : id}});
       localStorage.setItem('books', id);
-    }
-  }
-  checkbuy(notes, course, book, flashcard) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-        this.books(this.id)
-      },
-        error => {
-          if (error.status === 406)
-            swal({
-              type: 'error',
-              title: 'Book Already Purchased',
-              showConfirmButton: false,
-              timer: 4500
-            })
-        },
-      )
     }
     else if (this.check_login() == false) {
       this.sweetalertlogin();
@@ -243,6 +226,7 @@ export class AllbooksComponent implements OnInit {
   biding() {
     this.book.BidBooks().subscribe(data => {
       this.bidallbooks = data;
+
     })
   }
   BidBuybooks() {

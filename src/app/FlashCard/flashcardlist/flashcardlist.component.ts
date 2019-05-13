@@ -201,29 +201,10 @@ export class FlashcardlistComponent implements OnInit {
 
   id;
   flashcard(id) {
-
     if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
+      this.router.navigate(['/payment'], {queryParams: {cardsid : id}});
       localStorage.setItem('flashcard', id);
-    }
-  }
-  checkbuy(notes, course, book, flashcard) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-        this.flashcard(this.id)
-      },
-        error => {
-          if (error.status === 406)
-            swal({
-              type: 'error',
-              title: 'Flashcard Already Purchased',
-              showConfirmButton: false,
-              timer: 4500
-            })
-        },
-      )
-    }
-    else if (this.check_login() == false) {
+    } else if (this.check_login() == false) {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }

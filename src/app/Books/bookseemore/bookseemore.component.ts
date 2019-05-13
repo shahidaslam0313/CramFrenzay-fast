@@ -67,16 +67,6 @@ export class BookseemoreComponent implements OnInit {
 
 
   }
-
-  checknotes() {
-    if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertnotes();
-      this.router.navigate(['/login']);
-    }
-  }
   check_login() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('currentUser')) {
@@ -146,6 +136,16 @@ export class BookseemoreComponent implements OnInit {
       this.bidbookid = id;
       this.getbookbidhistory(this.bidbookid);
     } else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
+  }
+  books(id) {
+    if (this.check_login() == true) {
+      this.router.navigate(['/payment'], {queryParams: {bookid : id}});
+      localStorage.setItem('books', id);
+    }
+    else if (this.check_login() == false) {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
