@@ -161,31 +161,16 @@ export class NotesgenieComponent implements OnInit {
     });
   }
   checkmainpage(id) {
-    // alert(id)
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'], { queryParams: { notesid: id } });
-    }
-  }
-  checkbuy(notes, course, book, flashcard) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-        this.checkmainpage(this.id)
-      },
-        error => {
-          if (error.status === 406)
-            swal({
-              type: 'error',
-              title: 'Item Already Purchased',
-              showConfirmButton: false,
-              timer: 4500
-            })
-        },
-      )
+      this.router.navigate(['/payment'], {queryParams: {notesid : id}});
     }
     else if (this.check_login() == false) {
-      this.sweetalertlogin();
+      this.sweetalertnotes();
       this.router.navigate(['/login']);
     }
+  }
+  sweetalertnotes() {
+    throw new Error("Method not implemented.");
   }
   bidbuynotes() {
     this.newservice.Bidnote().subscribe(Res => {

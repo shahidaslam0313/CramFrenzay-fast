@@ -64,16 +64,15 @@ export class FcseemoreComponent implements OnInit {
     });
 
   }
-  checknotes() {
+  flashcard(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertnotes();
+      this.router.navigate(['/payment'], {queryParams: {cardsid : id}});
+      localStorage.setItem('flashcard', id);
+    } else if (this.check_login() == false) {
+      this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
   }
-
   check_login() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('currentUser')) {

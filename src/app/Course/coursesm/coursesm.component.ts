@@ -193,8 +193,11 @@ export class CoursesmComponent implements OnInit {
   }
   courses(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment']);
-      localStorage.setItem('course', id);
+      this.router.navigate(['/payment'], {queryParams: {courseid : id}});
+      // localStorage.setItem('course', id);
+    } else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
     }
   }
   openDialog3(chapter_id): void {

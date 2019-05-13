@@ -97,8 +97,10 @@
                                 <!-- ------Cart Heart and offer Now Button div End------- -->
                                 <!-- buy and bid now start -->
                                 <div class="product-list__item-info-1">
-                                    <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
-                                        *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                    <a class="btn-style text-transform-none" 
+                         *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)">
+                          Buy Now at {{data.price | currency:'USD'}}
+                        </a>
                                     <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                         (click)="booksid(data?.id)" data-dismiss="modal"
                                         *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
@@ -182,8 +184,8 @@
                                     <!-- ------Cart Heart and offer Now Button div End------- -->
                                     <!-- buy and bid now start -->
                                     <div class="product-list__item-info-1">
-                                        <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
-                                            *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                        <a class="btn-style text-transform-none"
+                                            *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                                         <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                             (click)="booksid(data?.id)" data-dismiss="modal"
                                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
@@ -268,8 +270,8 @@
                                     <!-- ------Cart Heart and offer Now Button div End------- -->
                                     <!-- buy and bid now start -->
                                     <div class="product-list__item-info-1">
-                                        <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
-                                            *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                        <a class="btn-style text-transform-none"
+                                            *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                                         <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                             (click)="booksid(data?.id)" data-dismiss="modal"
                                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
@@ -298,7 +300,7 @@
     <div class="row" *ngIf="check_login()">
         <div class="col-lg-12 slider-hight">
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-                <div ngxSlickItem class="slide item" *ngFor="let data of top; let i=index">
+                <div ngxSlickItem class="slide item" *ngFor="let data of top?.books; let i=index">
                     <div class="product-list__item">
                         <!-- Img start -->
                         <figure class="product-list__img">
@@ -354,8 +356,8 @@
                                     <!-- ------Cart Heart and offer Now Button div End------- -->
                                     <!-- buy and bid now start -->
                                     <div class="product-list__item-info-1">
-                                        <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,data?.id,nullvalue)"
-                                            *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                        <a class="btn-style text-transform-none"
+                                            *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                                         <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                             (click)="booksid(data?.id)" data-dismiss="modal"
                                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>

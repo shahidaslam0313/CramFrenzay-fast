@@ -11,14 +11,15 @@ import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import { noSpaceValidator } from '../../login/noSpaceValidator.component';
-
+// import { observable } from 'rxjs/internal-compatibility';
+import {Observable} from 'rxjs/Rx';
 @Component({
   selector: 'app-paymentmethods',
   templateUrl: './paymentmethods.component.html',
   styleUrls: ['./paymentmethods.component.scss']
 })
 export class PaymentmethodsComponent implements OnInit {
-
+city;state;country;
   cardnickname2;
   card_opeation = [
     { value: 'Visa', viewValue: 'Visa' },
@@ -244,6 +245,25 @@ export class PaymentmethodsComponent implements OnInit {
           })
         }
       })
+  }
+  zipcodeCheck(zipcode1) {
+    if (zipcode1.length > 4) {
+    this.serv.zipcode(zipcode1).subscribe(
+        res => {
+          this.form.controls['city'].setValue(res['city']);
+          this.form.controls['state'].setValue(res['state']);
+          this.form.controls['country'].setValue(res['country']);
+        },
+        error => {
+          swal({
+            type: 'error',
+            title: 'Invalid Zipcode!',
+            showConfirmButton: false,
+            timer: 2000,width: '512px',
+          })
+         
+        });
+    }
   }
   deleteSingleCard(id) {
     this.serv.deleteCard(id).subscribe(Data => {

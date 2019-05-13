@@ -101,7 +101,7 @@
                             <!-- ------Cart Heart and offer Now Button div End------- -->
                             <!-- buy and bid now -->
                             <div class="product-list__item-info-1">
-                                <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,nullvalue,nullvalue,data?.id)"
+                                <a class="btn-style text-transform-none" (click)="flashcard(data?.id)"
                                     *ngIf="data.sell_status==true && !data.Purchased"> Buy Now at {{data.price | currency:'USD'}}
                                 </a>
                                 <a class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
@@ -195,7 +195,7 @@
                                 <!-- buy and bid now  start-->
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased"
-                                (click)="checkbuy(nullvalue,nullvalue,nullvalue,data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                (click)="flashcard(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                             <a class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)=" getcardid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}
                             </a>
@@ -288,7 +288,7 @@
                                 <!-- buy and bid now  start-->
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased"
-                                (click)="checkbuy(nullvalue,nullvalue,nullvalue,data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                (click)="flashcard(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                             <a class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)=" getcardid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}
                             </a>
@@ -380,7 +380,7 @@
                                 <!-- buy and bid now  start-->
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased"
-                                (click)="checkbuy(nullvalue,nullvalue,nullvalue,data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
+                                (click)="flashcard(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
                             <a class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)=" getcardid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.data_price | currency:'USD'}}
                             </a>

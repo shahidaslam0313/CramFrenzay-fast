@@ -95,7 +95,7 @@
                         </div>
                         <!-- ------Cart Heart and Buy Now Button div end------- -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)"
+                            <a class="btn-style" (click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data?.price | currency:'USD'}}</a>
                             <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
@@ -181,7 +181,7 @@
                     <!-- Heart , Cart and Offer Now End -->
                      <!------Buy Now and Bid now start------>
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)"
+                            <a class="btn-style"(click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data?.price | currency:'USD'}}</a>
                             <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
@@ -267,7 +267,7 @@
                         <!-- Cart, Heart and offer now end -->
                         <!------Buy Now and Bid now start------>
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)"
+                            <a class="btn-style" (click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data.price | currency:'USD'}}</a>
                             <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
@@ -352,7 +352,7 @@
                          <!-- Heart cart and offer now end -->
                          <!-- bid now and buy now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style" (click)="checkbuy(data?.id,nullvalue,nullvalue,nullvalue)"
+                            <a class="btn-style" (click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data.price | currency:'USD'}}</a>
                             <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"

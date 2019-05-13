@@ -100,7 +100,7 @@
                         <!-- heart, cart and offer now end -->
                         <!-- bid now and buy now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"
+                            <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                                 *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
                             <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
@@ -189,7 +189,7 @@
                         <!-- heart, cart and offer now end -->
                         <!-- buy and bid now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"
+                            <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                                 *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
                             <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
@@ -278,7 +278,7 @@
                         <!-- heart, cart and offer now end -->
                         <!-- bid and buy now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"> Buy Now at{{data.price | currency:'USD'}}
+                            <a class="btn-style text-transform-none" (click)="courses(data?.id)"> Buy Now at{{data.price | currency:'USD'}}
                             </a>
                             <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
@@ -366,7 +366,7 @@
                     <!-- heart, cart and offer now end -->
                     <!-- buy an dbid now start -->
                         <div class="product-list__item-info-1">
-                            <a class="btn-style text-transform-none" (click)="checkbuy(nullvalue,data?.id,nullvalue,nullvalue)"> Buy Now at {{data.price | currency:'USD'}}
+                            <a class="btn-style text-transform-none" (click)="courses(data?.id)"> Buy Now at {{data.price | currency:'USD'}}
                             </a>
                             <a type="button" class="btn-style"  text-transform-nonedata-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
