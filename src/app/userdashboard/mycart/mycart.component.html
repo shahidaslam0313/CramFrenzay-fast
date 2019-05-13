@@ -32,8 +32,8 @@
                                 <div class="product-list__content">
                                     <a routerLink="/notes/{{data?.notes.id}}">
                                     <div class="product-list__category">{{data?.notes?.name}}<br></div>
-                                    <p class="product-list__price">price: ${{data?.notes?.price  | currency:'USD'}}</p>
-                                    <p class="product-list__price">Discount: ${{data?.notes?.price  | currency:'USD'}}</p>
+                                    <p class="product-list__price">Price {{data?.notes?.price  | currency:'USD'}}</p>
+                                    <p class="product-list__price">Discount: {{data?.notes?.price  | currency:'USD'}}</p>
                                     </a>
                                 </div>
                                 <!-- <h1 *ngIf="data?.notes ==null">No Notes in my cart yet</h1> -->
@@ -53,8 +53,12 @@
                                     
                                     </figure>
                                     <a class="product-list__category" routerLink="/eachcourse/{{data?.course.id}}">{{data?.course.name}}<br></a>
-                                    <a class="addtocart-new-price" routerLink="/eachcourse/{{data?.course.id}}">price: ${{data?.course.price  | currency:'USD'}}<br></a>
-                                    <a class="discount-p" routerLink="/eachcourse/{{data?.course.id}}">Discount: ${{data?.course.discount  | currency:'USD'}}<br></a>
+                                    <div class="price-discount">
+                                            <a  routerLink="/eachcourse/{{data?.course.id}}">Price {{data?.course.price  | currency:'USD'}}</a>
+
+                                            <a  routerLink="/eachcourse/{{data?.course.id}}">Discount: {{data?.course.discount  | currency:'USD'}}</a>
+                                    </div>
+                                   
                         </div>
                        
                     
@@ -72,7 +76,7 @@
                             </figure>
                             <div class="product-list__content">
                               <a routerLink="/fcdetail/{{data?.flashcard.id}}">  <div class="product-list__category"> {{data?.flashcard.name}}<br></div>
-                                <p class="product-list__price">Price:{{data?.flashcard.price | currency:'USD'}}</p>
+                                <p class="product-list__price">Price{{data?.flashcard.price | currency:'USD'}}</p>
                                 <p class="product-list__price">Discount:{{data?.flashcard.discount | currency:'USD'}}</p>
                                 </a>
                             </div>
@@ -96,7 +100,7 @@
                             </figure>
                             <div class="product-list__content"><a routerLink="/detail/{{item?.book.id}}">
                                 <div class="product-list__category">{{item?.book.name}}<br></div>
-                               <p class="product-list__price" >price: {{item?.book.price | currency:'USD'}}</p>
+                               <p class="product-list__price" >Price {{item?.book.price | currency:'USD'}}</p>
                                <p class="product-list__price">Discount:{{item?.book.discount | currency:'USD'}}</p>
                                </a>
                             </div>

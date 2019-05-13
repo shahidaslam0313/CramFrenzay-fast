@@ -1,0 +1,13 @@
+.product-list__content {
+    min-height: auto;
+}
+.price-discount{
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 10px;
+}
+.price-discount a{
+    color: #333;
+    font-size: 16px;
+}
