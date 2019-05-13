@@ -60,7 +60,6 @@ export class CourseSubcategoryComponent implements OnInit {
   courseSubcat(catId) {
     this.subcatservice.courseSubcat(this.catId).subscribe(data => {
       this.eachcourse = data.courses;
-      console.log('Course', data.courses)
     });
 
   }

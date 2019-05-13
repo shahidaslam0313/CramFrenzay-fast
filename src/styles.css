@@ -6424,7 +6424,9 @@ ngx-slick.slick-initialized {
 .partnership .mat-input-element {
     color: #fff !important;
 }
-
+.detail{
+    text-align: justify!important;
+}
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px

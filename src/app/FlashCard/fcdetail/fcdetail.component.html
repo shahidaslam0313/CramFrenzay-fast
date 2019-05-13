@@ -58,10 +58,10 @@
                     <h1 class="text-center text-center">Flash Card</h1>
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact" >
-                            <h1>{{flashcardDetail?.name}}</h1>
+                            <h1>{{flashcardDetail?.name | titlecase}}</h1>
+                            <h4>Author Name: {{flashcardDetail?.user_id | titlecase}}</h4>
                             <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
-                            <p>{{flashcardDetail?.detail | titlecase}}</p>
-                            <span>Author Name: {{flashcardDetail?.user_id | titlecase}}</span>
+                            
                         </div>
                     </div>
                 </div>

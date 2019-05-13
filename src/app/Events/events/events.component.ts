@@ -1,13 +1,9 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Config } from '../../Config';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SimpleGlobal } from 'ng2-simple-global';
-import { ResponseContentType } from '@angular/http/src/enums';
 import { isPlatformBrowser } from '@angular/common';
-import { Subscription } from 'rxjs/Subscription';
-
 import { DataService } from '../../data.service';
 import { EventsService } from './events.service';
 import { PagerService } from '../../paginator.service';

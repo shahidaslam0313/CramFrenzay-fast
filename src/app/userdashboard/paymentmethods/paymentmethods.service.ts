@@ -19,7 +19,6 @@ export class PaymentmethodsService {
     header.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'purchase/addcard/' + this.currentUser.user_id,
       JSON.stringify({
-
         "cardNumber": cardno,
         "ccv": ccv,
         "expiryDate": expiryDate,
@@ -33,12 +32,6 @@ export class PaymentmethodsService {
         "city": city,
         "state": state,
         "country": country,
-
-
-
-
-
-
       }),
       { headers: header }).map((response: Response) => response.json());
   }
@@ -55,13 +48,18 @@ export class PaymentmethodsService {
     return this.http.get(Config.api + 'purchase/editdeletecard/' + id, { headers: headers }).map((response: Response) => response.json());
   }
 
-  updateCard( nickname, status , id) {
+  updateCard( nickname, street_adrress, state, city, zip_code, country, status , id) {
     let header = new Headers({ 'Authorization': 'JWT ' + this.currentUser.token });
     header.append('Content-Type', 'application/json');
     return this.http.put(Config.api + 'purchase/editdeletecard/' + id,
       JSON.stringify({
 
         "nickname": nickname,
+        "street_adrress": street_adrress,
+        "state": state,
+        "city": city,
+        "zip_code": zip_code,
+        "country": country,
         "default": status,
         "id": id,
       }),

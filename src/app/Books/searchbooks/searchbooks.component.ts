@@ -11,7 +11,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PagerService } from '../../paginator.service';
 
 import swal from "sweetalert2";
-// declare var localStorage: any;
 @Component({
   selector: 'app-searchbooks',
   templateUrl: './searchbooks.component.html',

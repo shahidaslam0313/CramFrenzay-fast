@@ -43,7 +43,6 @@ export class CoursesmComponent implements OnInit {
     });
     this.sub = this.route.params.subscribe(params => {
       this.name = +params['name'];
-      // alert(this.Eid);
       if (params['name'] == "Bid&BuyCourses") {
         this.setPagecourse(1);
       }
@@ -128,7 +127,6 @@ export class CoursesmComponent implements OnInit {
 
     this.seemore.BidbuyCourse(page).subscribe(data => {
       this.bidbuycourse = data;
-      console.log(this.bidbuycourse)
       this.pager = this.pagerService.getPager(this.bidbuycourse['totalItems'], page, 10);
 
     });
@@ -167,8 +165,6 @@ export class CoursesmComponent implements OnInit {
   bidcourseid(id) {
     if (this.check_login() == true) {
       this.bidingcourse = id;
-      alert(this.bidingcourse);
-      console.log(this.bidingcourse);
     }
     else if (this.check_login() == false) {
       this.sweetalertlogin();

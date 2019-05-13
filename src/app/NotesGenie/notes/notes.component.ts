@@ -93,14 +93,9 @@ export class NotesComponent implements OnInit {
   }
   singlenotes() {
     this.each.Eachnotes(this.Eid).subscribe(data => {
-
       this.result = data;
-      console.log(data, 'Each Notes')
-
     });
   }
-
-
   checkcate() {
     if (this.check_login() == true) {
       this.router.navigate(['/payment']);
@@ -135,10 +130,7 @@ export class NotesComponent implements OnInit {
   }
 
   reviews(rate, comment, result, book, course, flashcard) {
-    // alert(this.id);
-    // this.id = result;
     if (this.check_login()) {
-      console.log(this.result.id);
       this.each.review(this.rate, this.model.comment, this.result.id, book, course, flashcard).subscribe(data => {
         swal({
           type: 'success',

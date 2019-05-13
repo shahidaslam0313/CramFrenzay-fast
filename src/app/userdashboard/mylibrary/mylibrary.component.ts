@@ -9,9 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import swal from 'sweetalert2';
-import { HttpHeaders } from '@angular/common/http';
 import { uploadnotesservice } from '../uploadnotes/uploadnotes.service';
-// import { AnyCnameRecord } from 'dns';
 
 declare const $: any;
 @Component({

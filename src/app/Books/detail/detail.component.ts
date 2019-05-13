@@ -155,12 +155,9 @@ public item;
 
     this.detail.getreview(this.bookID).subscribe(data =>{
       this.view = data;
-      console.log(this.bookID);
       this.pager = this.pagerService.getPager(this.view['totalItems'], page, 10);
 
     },error=>{
-     // alert(error.status)
-
         this.item = error.status;
 
     }

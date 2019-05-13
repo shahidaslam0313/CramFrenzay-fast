@@ -36,7 +36,6 @@ export class SubcategoryComponent implements OnInit {
     }
 this.c_name = localStorage.getItem('slidername');
 this.name = localStorage.getItem('nestedname');
-    console.log(this.c_name);
   }
 
   ngOnInit() {
@@ -75,21 +74,16 @@ this.name = localStorage.getItem('nestedname');
   bookcategory(catId) {
     this.newservice.bookSubcat(this.catId).subscribe(data => {
       this.eachbook = data.books;
-      // console.log(this.eachcards);
     });
 
   }
 
     sliderClick(name){
-
-        // alert(name);
         localStorage.setItem('nestedname' , name)
-// console.log(this.name);
     }
 
   sweetalertnotes() {
     swal({
-      // text:"Error",
       text: ' Please Login to access this functionality ',
       title: 'Authentications Required',
       type: 'error',

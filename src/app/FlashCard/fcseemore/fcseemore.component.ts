@@ -156,7 +156,6 @@ export class FcseemoreComponent implements OnInit {
 
     this.seemore.BidbuyFlashcard(page).subscribe(data => {
       this.bidbuyflashcard = data;
-      console.log(this.bidbuyflashcard)
       this.pager = this.pagerService.getPager(this.bidbuyflashcard['totalItems'], page, 10);
 
     });

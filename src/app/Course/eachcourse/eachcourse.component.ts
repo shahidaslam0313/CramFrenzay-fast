@@ -126,7 +126,6 @@ export class EachcourseComponent implements OnInit {
       this.time = data['Total Hours'];
       this.totalvideos = data.totalvideos;
       this.totalvid = data['Total Lectures'];
-      console.log(this.getchapter);
     });
   }
   SetVideoURL(video_url, SetVideoURL){
@@ -138,7 +137,6 @@ export class EachcourseComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
     });
-    // alert(video_url)
   }
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {
@@ -147,7 +145,6 @@ export class EachcourseComponent implements OnInit {
 
     this.eachcourse.getreview(this.courseId).subscribe(data =>{
       this.view = data;
-      console.log(this.courseId);
       this.pager = this.pagerService.getPager(this.view['totalItems'], page, 10);
 
     }

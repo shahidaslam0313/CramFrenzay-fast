@@ -2,8 +2,6 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { UpcomingeventsService } from './upcomingevents.service';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-// declare var localStorage: any;
 @Component({
   selector: 'app-upcomingevents',
   templateUrl: './upcomingevents.component.html',

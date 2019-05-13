@@ -21,7 +21,7 @@
                    
                         <div class="dash-divs"  *ngFor="let data of record; let i=index">
                               
-                                <!-- <h1>   <p *ngIf="data.notes == 'null'">No notes ietm in your cart yet </p></h1> -->
+                                  <p *ngIf="data.notes == 'null'">No notes in cart yet </p>
                             <div class="product-list__item" *ngIf="data?.notes !=null">
                 
                                 <figure class="product-list__img"> <a routerLink="/notes/{{data?.notes.id}}"> <img
