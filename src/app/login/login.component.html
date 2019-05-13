@@ -29,14 +29,16 @@
                             </mat-error>
                         </mat-error>
                     </mat-form-field>
-                    <div class="text-left float-left"> <a value="Delete" data-toggle="modal" data-target="#myModal3"
-                            class="form-1-forgot">Forgot
-                            Password?</a> </div>
-                    <app-recapcha></app-recapcha>
-                    <div class="float-l">
-                        <mat-slide-toggle class="float_left" (change)="doCheck($event)" [checked]="isChecked">Stay signed in
-                        </mat-slide-toggle>
+                    <div class="text-left float-left">
+                            <mat-slide-toggle class="float_left" (change)="doCheck($event)" [checked]="isChecked">Stay signed in
+                                </mat-slide-toggle>
+                                <br>
+                        <a value="Delete" data-toggle="modal" data-target="#myModal3"
+                            class="form-1-forgot">Forgot Password?</a>
+                           
                     </div>
+                    <app-recapcha></app-recapcha>
+                    
 
                     <button class="form-1-btn mt-3" (click)="Login()">Sign In</button>
                 </form>
