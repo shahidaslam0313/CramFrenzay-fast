@@ -3,25 +3,25 @@
         <div class="col-sm-3 updated-course-tab">
             <ul class="nav nav-tabs ">
                 <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i
-                            class="fa fa-edit"></i>Notes in my cart </a> </li>
+                            class="fa fa-edit"></i>Notes in My Cart </a> </li>
                 <li class="nav-item" > <a href="#courses" data-toggle="tab"
                         class="nav-link" title="Courses">
-                        <i class="fa fa-th-large"></i>Courses in my cart </a>
+                        <i class="fa fa-th-large"></i>Courses in My Cart </a>
                 </li>
                 <li class="nav-item" > <a href="#flashcards" data-toggle="tab"
-                        class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>Flash Cards in my cart  </a> </li>
+                        class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>Flash Cards in My Cart  </a> </li>
                 <li class="nav-item" > <a href="#book" data-toggle="tab"
-                        class="nav-link" title="Books"> <i class="fa fa-book"></i>Books in my cart </a> </li>
+                        class="nav-link" title="Books"> <i class="fa fa-book"></i>Books in My Cart </a> </li>
             </ul>
         </div>
         <div class="col-sm-9  ">
             <div class="tab-content">
                 <div class="tab-pane active" id="notes">
-                    <h3 class="mainbanner">Notes in my cart </h3>
-                   <h1 *ngIf="record?.notes == null">no cart in notes</h1>
+                    <h3 class="mainbanner">Notes in My Cart </h3>
+                   <!-- <h1 *ngIf="record?.notes == null">no cart in notes</h1> -->
                         <div class="dash-divs"  *ngFor="let data of record; let i=index">
                               
-                                  <p *ngIf="data.notes == 'null'">No notes in cart yet </p>
+                                  <!-- <p *ngIf="data?.notes == null">No notes in cart yet </p> -->
                             <div class="product-list__item" *ngIf="data?.notes !=null">
                 
                                 <figure class="product-list__img"> <a routerLink="/notes/{{data?.notes.id}}"> <img
@@ -32,7 +32,7 @@
                                 <div class="product-list__content">
                                     <a routerLink="/notes/{{data?.notes.id}}">
                                     <div class="product-list__category">{{data?.notes?.name}}<br></div>
-                                    <p class="product-list__price">Price {{data?.notes?.price  | currency:'USD'}}</p>
+                                    <p class="product-list__price">Price : {{data?.notes?.price  | currency:'USD'}}</p>
                                     <p class="product-list__price">Discount: {{data?.notes?.price  | currency:'USD'}}</p>
                                     </a>
                                 </div>
@@ -42,7 +42,7 @@
                    
                 </div>
                 <div class="tab-pane" id="courses">
-                    <h3 class="mainbanner">Courses in my cart </h3>
+                    <h3 class="mainbanner">Courses in My Cart </h3>
                     
                        
                         <div class="dash-divs" *ngFor="let data of record; let i = index">
@@ -54,7 +54,7 @@
                                     </figure>
                                     <a class="product-list__category" routerLink="/eachcourse/{{data?.course.id}}">{{data?.course.name}}<br></a>
                                     <div class="price-discount">
-                                            <a  routerLink="/eachcourse/{{data?.course.id}}">Price {{data?.course.price  | currency:'USD'}}</a>
+                                            <a  routerLink="/eachcourse/{{data?.course.id}}">Price : {{data?.course.price  | currency:'USD'}}</a>
 
                                             <a  routerLink="/eachcourse/{{data?.course.id}}">Discount: {{data?.course.discount  | currency:'USD'}}</a>
                                     </div>
@@ -67,7 +67,7 @@
 
             </div>
             <div class="tab-pane" id="flashcards">
-                    <h3 class="mainbanner">Flash Cards in my cart </h3>
+                    <h3 class="mainbanner">Flash Cards in My Cart </h3>
                 
                     <div class="dash-divs" *ngFor="let data of record; let i = index">
                         <div class="product-list__item" *ngIf="data?.flashcard !=null">
@@ -76,7 +76,7 @@
                             </figure>
                             <div class="product-list__content">
                               <a routerLink="/fcdetail/{{data?.flashcard.id}}">  <div class="product-list__category"> {{data?.flashcard.name}}<br></div>
-                                <p class="product-list__price">Price{{data?.flashcard.price | currency:'USD'}}</p>
+                                <p class="product-list__price">Price :{{data?.flashcard.price | currency:'USD'}}</p>
                                 <p class="product-list__price">Discount:{{data?.flashcard.discount | currency:'USD'}}</p>
                                 </a>
                             </div>
@@ -86,8 +86,8 @@
         
             </div>
             <div class="tab-pane" id="book">
-                    <h3 class="mainbanner">Books in my cart </h3>
-                
+                    <h3 class="mainbanner">Books in My Cart </h3>
+                <div *ngIf="record?.book ==null">no record in book</div>
                     <div class="dash-divs" *ngFor="let item of record; let i=index">
                         <div class="product-list__item" *ngIf="item.book !=null">
                             <figure class="product-list__img"> <a routerLink="/detail/{{item?.book.id}}"> <img
@@ -100,7 +100,7 @@
                             </figure>
                             <div class="product-list__content"><a routerLink="/detail/{{item?.book.id}}">
                                 <div class="product-list__category">{{item?.book.name}}<br></div>
-                               <p class="product-list__price" >Price {{item?.book.price | currency:'USD'}}</p>
+                               <p class="product-list__price" >Price : {{item?.book.price | currency:'USD'}}</p>
                                <p class="product-list__price">Discount:{{item?.book.discount | currency:'USD'}}</p>
                                </a>
                             </div>
