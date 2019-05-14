@@ -46,13 +46,13 @@ city;state;country;
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
-    ccv: new FormControl('', [
+    cvv: new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(4),
       Validators.required,
       Validators.pattern('^[0-9]*$')
     ]),
-    ccv4: new FormControl('', [
+    cvv4: new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(4),
       Validators.required,
@@ -109,7 +109,7 @@ city;state;country;
       Validators.required,
       Validators.pattern('^[0-9]*$')
     ]),
-    ccv2: new FormControl('', [
+    cvv2: new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(4),
       Validators.required,
@@ -132,7 +132,7 @@ city;state;country;
   currentProducts;
   cardtype;
   expirydate;
-  ccv4;
+  cvv4;
   public cardmask = [/[0-9]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private sub: Subscription;
   chek(val) {
@@ -156,8 +156,8 @@ city;state;country;
   constructor(private serv: PaymentmethodsService, private router: Router, private route: ActivatedRoute, private sg: SimpleGlobal, private data: DataService, private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     this.cardnumber = true;
     this.cardnumber4 = false;
-    this.ccv = true;
-    this.ccv4 = false;
+    this.cvv = true;
+    this.cvv4 = false;
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUse'));
       this.currentProducts = this.productsSource.asObservable();
@@ -175,7 +175,7 @@ city;state;country;
   cardnumber;
   cardnumber4;
   exp;
-  ccv;
+  cvv;
   type; cardnum; nickname;
   Eachcard (id){
     this.serv.singleCard(id).subscribe(data=> {
@@ -191,9 +191,9 @@ city;state;country;
       this.cardnumber = false;
       this.form.controls.cardnumber.reset();
       this.cardnumber4 = true;
-      this.ccv = false;
-      this.form.controls.ccv.reset();
-      this.ccv4 = true;
+      this.cvv = false;
+      this.form.controls.cvv.reset();
+      this.cvv4 = true;
     }
     else if (card_type == "Visa") {
       this.cardmask = [/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -201,27 +201,27 @@ city;state;country;
       this.cardnumber4 = false;
       this.form.controls.cardnumber4.reset();
       this.cardnumber = true;
-      this.ccv4 = false;
-      this.form.controls.ccv4.reset();
-      this.ccv = true;
+      this.cvv4 = false;
+      this.form.controls.cvv4.reset();
+      this.cvv = true;
     } else if (card_type == "Master") {
       this.cardmask = [/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.cardnumber4 = false;
       this.form.controls.cardnumber4.reset();
       this.cardnumber = true;
-      this.ccv4 = false;
-      this.form.controls.ccv4.reset();
-      this.ccv = true;
+      this.cvv4 = false;
+      this.form.controls.cvv4.reset();
+      this.cvv = true;
     } else {
       this.cardmask = [/[6]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.cardnumber4 = false;
       this.form.controls.cardnumber4.reset();
       this.cardnumber = true;
-      this.ccv4 = false;
-      this.form.controls.ccv4.reset();
-      this.ccv = true;
+      this.cvv4 = false;
+      this.form.controls.cvv4.reset();
+      this.cvv = true;
     }
   }
   model: any = {};
@@ -303,12 +303,12 @@ city;state;country;
   date;
   add(f: NgForm) {
     if (this.cardtype == "American Express") {
-      if (this.form.controls.ccv4.valid && this.form.controls.cardnumber4.valid &&
+      if (this.form.controls.cvv4.valid && this.form.controls.cardnumber4.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid &&
         this.form.controls.cardHolderName.valid && this.form.controls.zipCode.valid &&
         this.form.controls.street.valid && this.form.controls.city.valid &&
         this.form.controls.state.valid && this.form.controls.country.valid) {
-        this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['ccv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipCode'],
+        this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['cvv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
           swal({
             type: 'success',
@@ -368,9 +368,9 @@ city;state;country;
       }
     }
     else {
-      if (this.form.controls.ccv.valid && this.form.controls.cardnumber.valid &&
+      if (this.form.controls.cvv.valid && this.form.controls.cardnumber.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
-        this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['ccv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
+        this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['cvv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
           swal({
             type: 'success',
