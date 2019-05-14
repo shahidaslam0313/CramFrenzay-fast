@@ -1,0 +1,256 @@
+.profile-main {
+    padding: 0 0 20px;
+}
+.p-banner {
+    height: 300px;
+    background: no-repeat;
+    position: relative;
+    background-image: url(../../../assets/img/bg_header_02.jpg);
+}
+.p-banner .detail {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+}
+.p-banner .img-holder {
+    height: 120px;
+    width: 120px;
+    margin: 0 15px 0 20px;
+    border-radius: 100%;
+    border: 3px solid #f0f0f0;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+.profile-main .img-holder img {
+    width: 100%;
+    height: 100%;
+}
+.p-banner .text {
+    display: inline-block;
+    vertical-align: bottom;
+    width: calc(100% - 450px);
+    margin: 0 0 20px;
+}
+.profile-main .detail h1 {
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+}
+.p-banner .text small {
+    color: #fff;
+    font-style: italic;
+    color: #999;
+    font-size: 85%;
+}
+.profile-main .content {
+    padding: 20px;
+    background: #f7f7f7;
+}
+.margin-bottom-40 {
+    margin-bottom: 40px;
+}
+h2 {
+    font-size: 34px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+.list-social {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+}
+.list-social li {
+    margin: 0 0 8px;
+    display: block;
+    color: #555;
+    font-size: 15px;
+    line-height: 26px;
+    padding: 0;
+    font-weight: 600;
+}
+.list-social li a {
+    display: inline;
+    color: #222;
+    transition: all .3s ease-in-out;
+}
+.list-social li a i {
+    text-align: center;
+    border-radius: 100%;
+    line-height: 30px;
+    margin: 0 3px;
+    color: #c00;
+    font-size: 20px;
+    width: 30px;
+}
+.list-social li span {
+    width: calc(100% - 37px);
+}
+.skills_list {
+    padding: 0;
+    margin: 0;
+}
+.skills_list li {
+    display: block;
+    list-style: none;
+    position: relative;
+    margin-bottom: 17px;
+}
+.skill-title {
+    font-size: 16px;
+    line-height: 10px;
+    color: #52595e;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+.skills_list .progress {
+    margin-bottom: 15px;
+}
+.progress {
+    height: 3px;
+    background: #333;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 30px;
+    overflow: visible;
+}
+.progress .progress-bar {
+    position: relative;
+    -webkit-animation: 2s animate-positive;
+    animation: 2s animate-positive;
+}
+
+.custom-style-90 {
+    width: 90%;
+    background: #f80000;
+}
+.progress .progress-value {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    position: absolute;
+    top: -30px;
+    right: -25px;
+}
+.progress .progress-bar:after {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    background: #fff;
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    right: -1px;
+    z-index: 1;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+.custom-style-95 {
+    width: 95%;
+    background: #f80000;
+}
+.custom-style-85 {
+    width: 85%;
+    background: #f80000;
+}
+.custom-style-80 {
+    width: 80%;
+    background: #f80000;
+}
+.profile-main .service-block-u {
+    background: #e74c3c;
+    padding: 20px;
+    color: #fff;
+}
+.profile-main .service-block-v3 i {
+    color: #fff;
+    float: left;
+    font-size: 50px;
+    margin: 0 20px 20px 0;
+}
+.profile-main .service-block-v3 .service-heading {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: .8;
+    font-weight: 600;
+    display: block;
+    line-height: 1;
+}
+.profile-main .service-block-v3 .counter {
+    display: block;
+    line-height: 1;
+    font-size: 30px;
+    color: #fff;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+.profile-main .service-block-v3 .counter {
+    display: block;
+    line-height: 1;
+    font-size: 30px;
+    color: #fff;
+}
+.profile-main .service-block-v3 small {
+    color: #fff;
+}
+.profile-main .service-block-v3 .counter {
+    display: block;
+    line-height: 1;
+    font-size: 30px;
+    color: #fff;
+}
+.profile-main .service-block-v3 .heading-xs {
+    color: #fff;
+    font-weight: 500;
+}
+.profile-main .service-block-v3 .progress {
+    width: 100%;
+    background: #fff;
+    margin-bottom: 7px;
+    position: relative;
+}
+.width-67per {
+    width: 67%;
+}
+.service-in .counter{
+    width:100%;
+}
+.service-in-2 .counter,.service-in-2 small{
+    float: right;
+    text-align: right;
+}
+.list-social li.git:hover a {
+    color: #24292e;
+}
+.list-social li.git:hover a i {
+    background: #24292e;
+}
+
+.list-social li.website:hover a {
+    color: #bd2c00;
+}
+.list-social li.website:hover a i {
+    background: #bd2c00;
+}
+.list-social li.facebook:hover a {
+    color: #3B5998;
+}
+.list-social li.facebook:hover a i {
+    background: #3B5998;
+}
+.list-social li.linked-in:hover a {
+    color: #007bb5;
+}
+.list-social li.linked-in:hover a i {
+    background: #007bb5;
+}
+.list-social li.twitter:hover a {
+    color: #00B6F1;
+}
+.list-social li.twitter:hover a i {
+    background: #00B6F1;
+}
