@@ -77,22 +77,11 @@ export class paymentservice {
       }),
       { headers: header }).map((response: Response) => response.json());
   }
-  // addCard(cardno, ccv, expiryDate, cardnickname, card_type) {
-  //   const header = new Headers({ 'Authorization': 'JWT ' + this.token });
-  //   header.append('Content-Type', 'application/json');
-  //   return this.http.post(Config.api + 'purchase/addcard/' + this.current.user_id,
-  //     JSON.stringify({
-
-  //       'cardNumber': cardno,
-  //       'ccv': ccv,
-  //       "expiryDate": expiryDate,
-  //       "user": this.current.user_id,
-  //       "nickname": cardnickname,
-  //       'card_type' : card_type
-
-  //     }),
-  //     { headers: header }).map((response: Response) => response.json());
-  // }
+  zipcode(zipCode) {    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'purchase/get_zipcode_data/' + zipCode,
+      { headers: headers }).map((response: Response) => response.json());
+  }
   Eachnotes(Eid) {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + this.current.token});

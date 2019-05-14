@@ -37,7 +37,7 @@
                             <div class="card-expiration-date"> <label>Expiry Date</label>
                                 <div>{{form.controls.expirydate.value}}</div>
                             </div>
-                            <div class="ccv"> <label>CVV</label>
+                            <div class="ccv"> <label>CCV</label>
                                 <div>{{form.controls.ccv.value}}</div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="ccv">
-                            <mat-form-field> <input matInput type="text" maxlength="3" minlength="3" placeholder="CVV"
+                            <mat-form-field> <input matInput type="text" maxlength="3" minlength="3" placeholder="CCV"
                                     formControlName="ccv">
                                 <mat-error *ngIf="form.controls.ccv.touched && form.controls.ccv.invalid">
                                     <mat-error *ngIf="form.controls.ccv.errors.required"> CCV cannot be empty
@@ -167,17 +167,17 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="ccv4">
                             <mat-form-field> <input matInput type="text" maxlength="4" minlength="4"
-                                    placeholder="CVV" formControlName="ccv4">
+                                    placeholder="CCV" formControlName="ccv4">
                                 <mat-error *ngIf="form.controls.ccv4.touched && form.controls.ccv4.invalid">
-                                    <mat-error *ngIf="form.controls.ccv4.errors.required"> CVV cannot be empty
+                                    <mat-error *ngIf="form.controls.ccv4.errors.required"> CCV cannot be empty
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.ccv4.errors.minlength"> CVV must be
+                                    <mat-error *ngIf="form.controls.ccv4.errors.minlength"> CCV must be
                                         atleast{{form.controls.ccv4.errors.minlength.requiredLength}}digits long.
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.ccv4.errors.maxlength"> CVV must be at
+                                    <mat-error *ngIf="form.controls.ccv4.errors.maxlength"> CCV must be at
                                         atmost{{form.controls.ccv4.errors.maxlength.requiredLength}}digits long.
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.ccv4.hasError('pattern')"> CVV must be only in
+                                    <mat-error *ngIf="form.controls.ccv4.hasError('pattern')"> CCV must be only in
                                         digits.
                                     </mat-error>
                                 </mat-error>

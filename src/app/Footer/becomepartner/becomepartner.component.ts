@@ -47,7 +47,9 @@ export class BecomepartnerComponent implements OnInit {
 
   nameFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern(NAME_REGEX)
+    Validators.maxLength(64),
+    Validators.minLength(2),
+    Validators.pattern(NAME_REGEX),
   ]);
 
   EmailFormControl = new FormControl('', [
@@ -57,6 +59,8 @@ export class BecomepartnerComponent implements OnInit {
 
   CompanyFormControl = new FormControl('', [
     Validators.required,
+    Validators.maxLength(100),
+    Validators.minLength(3),
     Validators.pattern(NAME_REGEX)
   ]);
   // Validators.pattern('[a-zA-Z]+?')
