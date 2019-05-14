@@ -2391,7 +2391,7 @@ mat-form-field textarea {
 }
 
 .contact_us_form_1 {
-    border-right: 1px solid rgba(0, 0, 0, .42)
+    border-right: 1px solid #efefef;
 }
 
 .contact_us_form_2>mat-form-field {
@@ -2456,10 +2456,6 @@ mat-form-field textarea {
     text-transform: capitalize
 }
 
-.contact-us-ul {
-    padding: 20px
-}
-
 .contact-us-ul>h4 {
     margin: 35px 0 50px;
     color: #000;
@@ -2472,13 +2468,13 @@ mat-form-field textarea {
     line-height: 18px;
     color: grey;
     list-style: none;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-weight: 600
 }
 
 .contact-us-ul>li>a {
     text-decoration: none;
-    color: grey;
+    color: #333;
     font-weight: 600
 }
 
@@ -3665,6 +3661,7 @@ focus {
 .cutom-pd li a i {
     width: 20px;
     margin: 0 3px;
+    font-size: 14px !important;
 }
 
 .side-tabs {
