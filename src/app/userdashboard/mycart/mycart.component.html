@@ -18,14 +18,14 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="notes">
                     <h3 class="mainbanner">Notes in my cart </h3>
-                   
+                   <h1 *ngIf="record?.notes == null">no cart in notes</h1>
                         <div class="dash-divs"  *ngFor="let data of record; let i=index">
                               
                                   <p *ngIf="data.notes == 'null'">No notes in cart yet </p>
                             <div class="product-list__item" *ngIf="data?.notes !=null">
                 
                                 <figure class="product-list__img"> <a routerLink="/notes/{{data?.notes.id}}"> <img
-                                            src="{{Imageurl}}{{data?.notes.notes_thumbnail}}" data-filter="*" alt="Notes">
+                                            src="{{Imageurl}}{{data?.notes.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
                                     </a>
                           
                                 </figure>
