@@ -65,9 +65,9 @@
     z-index: 9;
     text-shadow: #000 3px 3px 4px;
     width: 84%;
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 30px;
-    font-weight: 600;
+    // font-family: 'Open Sans', sans-serif !important;
+    font-size: 26px;
+    font-weight: 500;
 }
 
 .main-nav-slider {
@@ -125,4 +125,7 @@
 
 .how-it-works-box>p {
     font-size: 18px
+}
+.product-list__category{
+    text-align: left;
 }

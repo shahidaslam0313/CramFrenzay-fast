@@ -438,19 +438,20 @@
 
                             </div>
                             <!-- ------Cart Heart and offer Now Button div End------- -->
-                        </div>
-                        <!-- ------Buy now Bid now------- -->
+                              <!-- ------Buy now Bid now------- -->
 
                         <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="books(data?.id)" *ngIf="data.sell_status==true && !data.Purchased">
-                                Buy Now at {{data.price | currency:'USD'}}</a> <a class="btn-style text-transform-none" data-toggle="modal"
-                                data-target="#bookbiding" (click)="booksid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased">
-                                Bid Now at {{data.bid_price | currency:'USD'}}</a>
-                            <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
-                                <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
-                                Book Already Bought</a>
+                            Buy Now at {{data.price | currency:'USD'}}</a> <a class="btn-style text-transform-none" data-toggle="modal"
+                            data-target="#bookbiding" (click)="booksid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased">
+                            Bid Now at {{data.bid_price | currency:'USD'}}</a>
+                        <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
+                            <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
+                            Book Already Bought</a>
 
+                    </div>
+                    <!-- ------Buy now Bid now------- -->
                         </div>
-                        <!-- ------Buy now Bid now------- -->
+                      
                     </div>
                 </div>
             </ngx-slick>

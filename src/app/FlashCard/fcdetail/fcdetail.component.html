@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <h1 class="component-title">{{name}}</h1>
+<div class="container-fluid padding-0">
+    <h1 class="mainbanner">{{name}}</h1>
     <ul class="nav nav-tabs nav-justified fcdetail">
         <li class="nav-item">
             <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="List of Terms">List of
@@ -17,7 +17,7 @@
     <div class="tab-content">
         <div id="listofterms" class="tab-pane active margin-bottom-200">
             <div class="container-fluid">
-                <h1 class="component-title">List of Terms</h1>
+                <h1 class="mainbanner">List of Terms</h1>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped css-serial">
                         <tr>
@@ -38,7 +38,7 @@
         </div>
         <div id="flipflashcards" class="tab-pane fade">
             <div class="container-fluid">
-                <h1 class="component-title">Flip Flash Cards</h1>
+                <h1 class="mainbanner">Flip Flash Cards</h1>
                 <div class="fc-slider padding-bottom-50 margin-bottom-40" >
                     <div class="item" *ngFor="let data of flashCardTermsDefinitionsData; let i=index" >
                         <ng-container>
@@ -55,7 +55,7 @@
         <div id="flashcarddetail" class="tab-pane fade" >
             <div class="each-upper-banner">
                 <div class="container">
-                    <h1 class="text-center text-center">Flash Card</h1>
+                   
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact" >
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>

@@ -1176,7 +1176,8 @@ blockquote .blockquote-author {
 }
 
 .product-list__content {
-    padding: 0 10px
+    padding: 0 10px;
+    min-height: 198px;
 }
 
 .product-list__content::after {
@@ -1882,31 +1883,29 @@ mat-form-field.mat-form-field {
     line-height: 26px;
     padding: 0;
     font-weight: 600;
-    text-align: justify;
 }
 
 .how-it-works,
 .how-it-works p {
-    color: #fff;
+    color: #333;
     font-size: 18px
 }
 
 .who-are-we {
-    background: url(assets/img/titlebackground.jpg) 50% no-repeat;
-    background-size: cover;
     padding: 50px;
-    color: #fff
+    color: #333;
+    background: #e8e8e8;
 }
 
 .who-are-we>p {
-    color: #fff;
+    color: #333;
     font-weight: 600
 }
 
 .how-it-works {
-    background: url(assets/img/titlebackground.jpg) center center no-repeat;
-    background-size: cover;
-    padding: 50px 0
+    padding: 50px;
+    color: #333;
+    background: #e8e8e8;
 }
 
 .how-it-works-box {
@@ -1940,7 +1939,8 @@ mat-form-field.mat-form-field {
 
 .how-it-works-box>h3 {
     min-height: 54px;
-    font-weight: 600
+    font-weight: 600;
+    font-size: 22px;
 }
 
 .how-it-works-box>p {
@@ -2573,8 +2573,8 @@ mat-form-field textarea {
 
 .scholarship-name {
     color: #333;
-    font-size: 30px;
-    padding: 0 10px
+    font-size: 20px;
+    padding: 0 10px;
 }
 
 .scholarship-name:hover {
@@ -2749,9 +2749,10 @@ mat-form-field textarea {
 }
 
 .upper-banner-contact p {
-    font-size: 22px;
+    font-size: 14px;
     margin: 0;
-    color: #fff
+    color: #fff;
+    text-align: left !important;
 }
 
 .upper-banner-contact span {
@@ -4170,11 +4171,11 @@ fieldset {
     font-size: 18px;
     border: none;
     outline: none;
-    background-color: red;
-    color: white;
+    background-color: #c00;
+    color: #fff;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 4px;
+    padding: 15px 10px;
+    border-radius: 50px;
 }
 
 #myBtn:hover {
@@ -6424,9 +6425,7 @@ ngx-slick.slick-initialized {
 .partnership .mat-input-element {
     color: #fff !important;
 }
-.detail{
-    text-align: justify!important;
-}
+
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px
