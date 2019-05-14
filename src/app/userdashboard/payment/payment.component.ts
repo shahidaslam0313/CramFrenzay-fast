@@ -17,7 +17,7 @@ import { PaymentmethodsService } from '../paymentmethods/paymentmethods.service'
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
+  styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
   model: any = {};

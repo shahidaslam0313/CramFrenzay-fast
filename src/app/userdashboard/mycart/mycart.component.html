@@ -91,7 +91,7 @@
                     <h3 class="mainbanner">Books in My Cart </h3>
                     <div class="dash-divs" *ngFor="let item of record; let i=index">
                             <!-- <div *ngIf="i ==null">no record</div> -->
-                            <h1 *ngIf="record?.book ==null">No books in my cart yet</h1>
+                            <h1 *ngIf="record?.book ==null">No Books in my Cart yet</h1>
                         <div class="product-list__item" *ngIf="item.book !=null">
                             <figure class="product-list__img"> <a routerLink="/detail/{{item?.book.id}}"> <img
                                         src="{{Imageurl}}{{item?.book.book_image}}"  onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="Book"> </a> <a
