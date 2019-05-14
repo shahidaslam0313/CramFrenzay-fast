@@ -216,6 +216,8 @@
                                     <mat-error *ngIf="form.controls.zipcode.hasError('pattern')"> Zip Code must be only
                                         in digits.
                                     </mat-error>
+                                    <mat-error *ngIf="form.controls.zipcode.errors.required"> Zip Code cannot be empty
+                                    </mat-error>
                                 </mat-form-field>
                                 <mat-form-field>
                                     <input matInput placeholder="Street" type="text" formControlName="street" #street />

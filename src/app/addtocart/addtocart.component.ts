@@ -4,7 +4,7 @@ import { AddtocartService } from './addtocart.service';
 import { Config } from '../Config';
 import {isPlatformBrowser} from '@angular/common';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators, NgForm} from '@angular/forms';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 
