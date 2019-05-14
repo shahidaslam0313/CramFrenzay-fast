@@ -130,7 +130,8 @@ label {
 
 .checkout {
   margin: 44px auto 0;
-  padding: 236px 0 0;
+  padding: 263px 0 0;
+
 }
 
 .credit-card-box {
@@ -565,4 +566,18 @@ input.switch-toggle-round+label:after {
   float: none;
   box-shadow: 1px 1px 8px 1px #ece9e9;
   width: 50%;
+}
+.addtocart-section .checkout-select-box{
+  width: 100%;
+
+}
+.product-list__content {
+  min-height: auto;
+}
+.addtocart-prices{
+  display: flex;
+  justify-content: space-between;
+}
+.bg-Bid-Courses {
+  text-align: center;
 }
