@@ -79,8 +79,7 @@ export class AddtocartService {
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
-  payment(notes, course,  flashcard, book,   creditno, ccv, exp, card_type  ) {
-    alert(creditno);
+  payment( notes, course,  flashcard, book,  cardHolderName,cardnickname,  creditno, ccv, exp, card_type  ) {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
 
       headers.append('Content-Type', 'application/json', );
@@ -91,6 +90,8 @@ export class AddtocartService {
         flashcard: flashcard,
         book: book,
         userid: this.current.user_id,
+        card_holder:cardHolderName,
+        nickname: cardnickname,
         creditno: creditno,
         ccv: ccv,
         exp: exp,
@@ -146,5 +147,32 @@ export class AddtocartService {
       }),
       {headers: headers}).map((response: Response) => response.json());
 
+  }
+  addCard(cardno, ccv, expiryDate,cardHolderName, cardnickname, card_type,zipcode, 
+    street, city, state,country, defaultCheck, ) {
+      const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+      headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/addcard/' + this.current.user_id,
+      JSON.stringify({
+        "cardNumber": cardno,
+        "ccv": ccv,
+        "expiryDate": expiryDate,
+        "user": this.current.user_id,
+        "card_holder": cardHolderName,
+        "nickname": cardnickname,
+        "default": defaultCheck,
+        "card_type": card_type,
+        "zip_code": zipcode,
+        "street_adrress": street,
+        "city": city,
+        "state": state,
+        "country": country,
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+    }
+    zipcode(zipCode) {    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'purchase/get_zipcode_data/' + zipCode,
+      { headers: headers }).map((response: Response) => response.json());
   }
 }

@@ -87,12 +87,13 @@
 
                                     <a class="btn-style" *ngIf="item?.status == true && item?.publish == false"
                                         (click)="publish(nullvalue,item?.id,nullvalue,nullvalue)">Publish</a>
-                                    <a>
+                                   
                                         <!-- <a class="btn-style" *ngIf="item?.publish == true">Already Published</a></a> -->
                                         <a class="already-bought float_right " *ngIf="item?.publish == true">
                                                 <i class="fa fa-check"></i> Already Published</a>
                                     <a class="product-list__price"
-                                        routerLink="/eachcourse/{{data?.id}}">{{data?.price | currency:'USD'}}</a><button
+                                        routerLink="/eachcourse/{{data?.id}}">{{data?.price | currency:'USD'}}</a>
+                                        <button
                                         class="btn-style width100 float_left display-block mt-2 mb-2"
                                         [routerLink]="['/coursevideo/']" [queryParams]="{id : data.id}"
                                         (click)="coursesupdate(data?.id)">Upload Video</button>

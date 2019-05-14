@@ -14,7 +14,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Component({
   selector: 'app-teachers',
   templateUrl: './teachers.component.html',
-  styleUrls: ['./teachers.component.scss']
+  styleUrls: ['./teachers.component.css']
 })
 export class TeachersComponent implements OnInit {
 

@@ -130,7 +130,6 @@ export class paymentservice {
           "state": state,
           "country": country,
         }),
-        // { headers: header }).map((response: Response) => response.json());
         { headers: headers }).map((response: Response) => response.json());
       }
 }
