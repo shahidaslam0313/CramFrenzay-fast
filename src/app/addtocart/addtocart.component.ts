@@ -48,10 +48,21 @@ export class AddtocartComponent implements OnInit {
   card_opeation = [
     { value: 'Visa', viewValue: 'Visa' },
     { value: 'Master', viewValue: 'Master' },
-    { value: 'Divcover', viewValue: 'Discover' },
+    { value: 'Discover', viewValue: 'Discover' },
     { value: 'American Express', viewValue: 'American Express' }
   ];
   form = new FormGroup({
+    cardHolderName: new FormControl('',[
+      Validators.minLength(3),
+      Validators.maxLength(25),
+      Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
+    cardnickname: new FormControl('',[
+      Validators.minLength(3),
+      Validators.maxLength(25),
+      Validators.required,
+    ]),
     card_type: new FormControl('', [
       // Validators.minLength(15),
       // Validators.maxLength(16),
@@ -83,20 +94,35 @@ export class AddtocartComponent implements OnInit {
       Validators.pattern('^[0-9]*$')
     ]),
     exp: new FormControl('', [
-      // Validators.required,
+      Validators.required,
       // Validators.pattern('(0[1-9]|10|11|12)/20[0-9]{2}$')
     ]),
-    // cardnickname: new FormControl('', [
-    //   Validators.minLength(3),
-    //   Validators.maxLength(50),
-    //   Validators.required,
-    //   noSpaceValidator.cannotContainSpace
-    // ]),
     // card_type: new FormControl('', [
     
     //   Validators.required,
     //   noSpaceValidator.cannotContainSpace
     // ]),
+    zipcode: new FormControl('',[
+      Validators.required,
+      Validators.pattern('^[0-9]*$')
+    ]),
+    city: new FormControl('',[
+      Validators.required,
+      Validators.maxLength(25),
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
+    state: new FormControl('',[
+      Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
+    street : new FormControl('',[
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
+    country: new FormControl('',[
+      Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
+    ]),
     check: new FormControl(),
   });
   public masks=function(rawValue) {
@@ -354,11 +380,12 @@ export class AddtocartComponent implements OnInit {
     // console.log(this.eachcardid);
   }
   check($event) { }
-  buywithcard() {
+  buywithcard( f: NgForm) {
     if (this.cardtype == "American Express") {
       if ( this.form.controls.ccv4.valid &&  this.form.controls.creditno4.valid &&
-         this.form.controls.exp.valid) {
-        this._serv.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno4'], this.form.value['ccv4'], this.form.value['exp'], this.cardtype).subscribe(data => {
+         this.form.controls.exp.valid && this.form.controls.cardHolderName.valid &&
+         this.form.controls.cardnickname.valid) {
+        this._serv.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,  this.form.value['cardHolderName'] , this.form.value['cardnickname'], this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'], this.form.value['exp'].split('/').join(''), this.cardtype).subscribe(data => {
           swal({
             type: 'success',
             title: 'Payment Done!',
@@ -387,8 +414,10 @@ export class AddtocartComponent implements OnInit {
     }
     else {
 
-      if (this.form.controls.ccv.valid &&this.form.controls.creditno.valid && this.form.controls.exp.valid) {
-        this._serv.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno'], this.form.value['ccv'], this.form.value['exp'], this.cardtype).subscribe(data => {
+      if (this.form.controls.ccv.valid &&this.form.controls.creditno.valid && 
+        this.form.controls.exp.valid && this.form.controls.cardHolderName.valid &&
+        this.form.controls.cardnickname.valid) {
+        this._serv.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay, this.form.value['cardHolderName'], this.form.value['cardnickname'] , this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.form.value['exp'].split('/').join(''), this.cardtype).subscribe(data => {
           swal({
             type: 'success',
             title: 'Payment Done!',
@@ -414,6 +443,50 @@ export class AddtocartComponent implements OnInit {
           timer: 1500,
         })
       }
+    }
+    this.add();
+    f.resetForm();
+  }
+  private add(){
+    if (this.cardtype == "American Express") {
+      if (this.form.controls.ccv4.valid && this.form.controls.creditno4.valid &&
+        this.form.controls.cardnickname.valid && this.form.controls.exp.valid &&
+        this.form.controls.cardHolderName.valid && this.form.controls.zipcode.valid &&
+        this.form.controls.street.valid && this.form.controls.city.valid &&
+        this.form.controls.state.valid && this.form.controls.country.valid) {
+        this._serv.addCard(this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'], this.form.value['exp'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipcode'],
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
+        })
+    }
+  }
+    else {
+      if (this.form.controls.ccv.valid && this.form.controls.creditno.valid &&
+        this.form.controls.cardnickname.valid && this.form.controls.exp.valid &&
+        this.form.controls.cardHolderName.valid && this.form.controls.zipcode.valid &&
+        this.form.controls.street.valid && this.form.controls.city.valid &&
+        this.form.controls.state.valid && this.form.controls.country.valid) {
+        this._serv.addCard(this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.form.value['exp'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipcode'],
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
+    })
+  }}
+  }
+  zipcodeCheck(zipcode1) {
+    if (zipcode1.length > 4) {
+    this._serv.zipcode(zipcode1).subscribe(
+        res => {
+          this.form.controls['city'].setValue(res['city']);
+          this.form.controls['state'].setValue(res['state']);
+          this.form.controls['country'].setValue(res['country']);
+        },
+        error => {
+          swal({
+            type: 'error',
+            title: 'Invalid Zipcode!',
+            showConfirmButton: false,
+            timer: 2000,width: '512px',
+          })
+         
+        });
     }
   }
   buy() {
