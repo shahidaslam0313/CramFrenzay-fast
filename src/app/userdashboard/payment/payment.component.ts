@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { DataService } from '../../data.service';
 import { HttpClient } from "@angular/common/http";
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -37,8 +37,8 @@ export class PaymentComponent implements OnInit {
   notepic;
   creditno;
   creditno4;
-  ccv4;
-  ccv;
+  cvv4;
+  cvv;
   cardtype;
   exp;
   res;
@@ -92,13 +92,13 @@ export class PaymentComponent implements OnInit {
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
-    ccv: new FormControl('', [
+    cvv: new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(4),
       Validators.required,
       Validators.pattern('^[0-9]*$')
     ]),
-    ccv4: new FormControl('', [
+    cvv4: new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(4),
       Validators.required,
@@ -110,7 +110,7 @@ export class PaymentComponent implements OnInit {
     ]),
     zipcode: new FormControl('',[
       Validators.required,
-      Validators.pattern('^[0-9]*$')
+      Validators.pattern('^[0-9]*$'),
     ]),
     city: new FormControl('',[
       Validators.required,
@@ -151,9 +151,9 @@ export class PaymentComponent implements OnInit {
       this.creditno = false;
       this.form.controls.creditno.reset();
       this.creditno4 = true;
-      this.ccv = false;
-      this.form.controls.ccv.reset();
-      this.ccv4 = true;
+      this.cvv = false;
+      this.form.controls.cvv.reset();
+      this.cvv4 = true;
     }
     else if (card_type == "Visa") {
       this.cardmask=[/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -161,35 +161,35 @@ export class PaymentComponent implements OnInit {
       this.creditno4 = false;
       this.form.controls.creditno4.reset();
       this.creditno = true;
-      this.ccv4 = false;
-      this.form.controls.ccv4.reset();
-      this.ccv = true;
+      this.cvv4 = false;
+      this.form.controls.cvv4.reset();
+      this.cvv = true;
     }else if (card_type == "Master") {
       this.cardmask=[/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.creditno4 = false;
       this.form.controls.creditno4.reset();
       this.creditno = true;
-      this.ccv4 = false;
-      this.form.controls.ccv4.reset();
-      this.ccv = true;
+      this.cvv4 = false;
+      this.form.controls.cvv4.reset();
+      this.cvv = true;
     } else{
       this.cardmask=[/[6]/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-',  /\d/, /\d/, /\d/, /\d/]
       this.cardtype = card_type;
       this.creditno4 = false;
       this.form.controls.creditno4.reset();
       this.creditno = true;
-      this.ccv4 = false;
-      this.form.controls.ccv4.reset();
-      this.ccv = true;
+      this.cvv4 = false;
+      this.form.controls.cvv4.reset();
+      this.cvv = true;
     }
   }
   constructor(private newService: paymentservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
       this.creditno = true;
       this.creditno4 = false;
-      this.ccv = true;
-      this.ccv4 = false;
+      this.cvv = true;
+      this.cvv4 = false;
       if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUse'));
       this.currentProducts = this.productsSource.asObservable();
@@ -213,12 +213,12 @@ export class PaymentComponent implements OnInit {
 
   nullvalue = null;
   check($event) { }
-  buywithcard() {
+  buywithcard(f:NgForm) {
     if (this.cardtype == "American Express") {
-      if ( this.form.controls.ccv4.valid &&  this.form.controls.creditno4.valid &&
+      if ( this.form.controls.cvv4.valid &&  this.form.controls.creditno4.valid &&
          this.form.controls.exp.valid) {
         this.date = this.form.value['exp'];
-        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'],this.form.value['cardHolderName'],  this.date.split('/').join(''),this.form.value['cardnickname'], this.cardtype).subscribe(data => {
+        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno4'].split('-').join(''), this.form.value['cvv4'],this.form.value['cardHolderName'],  this.date.split('/').join(''),this.form.value['cardnickname'], this.cardtype).subscribe(data => {
           swal({
             type: 'success',
             title: 'Payment Done',
@@ -247,9 +247,9 @@ export class PaymentComponent implements OnInit {
     }
     else {
 
-      if (this.form.controls.ccv.valid &&this.form.controls.creditno.valid && this.form.controls.exp.valid) {
+      if (this.form.controls.cvv.valid &&this.form.controls.creditno.valid && this.form.controls.exp.valid) {
         this.date = this.form.value['exp'];
-        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.form.value['cardHolderName'],this.date.split('/').join(''),this.form.value['cardnickname'], this.cardtype).subscribe(data => {
+        this.newService.payment(this.itemid, this.coursepay, this.cardspay, this.bookpay,    this.form.value['creditno'].split('-').join(''), this.form.value['cvv'], this.form.value['cardHolderName'],this.date.split('/').join(''),this.form.value['cardnickname'], this.cardtype).subscribe(data => {
           swal({
             type: 'success',
             title: 'Payment Done',
@@ -277,15 +277,16 @@ export class PaymentComponent implements OnInit {
       }
     }
     this.add();
+    f.resetForm();
   }
  private add(){
     if (this.cardtype == "American Express") {
-      if (this.form.controls.ccv4.valid && this.form.controls.creditno4.valid &&
+      if (this.form.controls.cvv4.valid && this.form.controls.creditno4.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.exp.valid &&
         this.form.controls.cardHolderName.valid && this.form.controls.zipcode.valid &&
         this.form.controls.street.valid && this.form.controls.city.valid &&
         this.form.controls.state.valid && this.form.controls.country.valid) {
-        this.newService.addCard(this.form.value['creditno4'].split('-').join(''), this.form.value['ccv4'], this.form.value['exp'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipcode'],
+        this.newService.addCard(this.form.value['creditno4'].split('-').join(''), this.form.value['cvv4'], this.form.value['exp'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipcode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
           swal({
             type: 'success',
@@ -330,12 +331,12 @@ export class PaymentComponent implements OnInit {
       }
     }
     else {
-      if (this.form.controls.ccv.valid && this.form.controls.creditno.valid &&
+      if (this.form.controls.cvv.valid && this.form.controls.creditno.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.exp.valid &&
         this.form.controls.cardHolderName.valid && this.form.controls.zipcode.valid &&
         this.form.controls.street.valid && this.form.controls.city.valid &&
         this.form.controls.state.valid && this.form.controls.country.valid) {
-        this.newService.addCard(this.form.value['creditno'].split('-').join(''), this.form.value['ccv'], this.form.value['exp'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipcode'],
+        this.newService.addCard(this.form.value['creditno'].split('-').join(''), this.form.value['cvv'], this.form.value['exp'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipcode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
           swal({
             type: 'success',
@@ -476,7 +477,7 @@ export class PaymentComponent implements OnInit {
   }
 
   CardNo;
-  CCV;
+  CVV;
   EXP;
   Status = false;
   defaultCheck;
