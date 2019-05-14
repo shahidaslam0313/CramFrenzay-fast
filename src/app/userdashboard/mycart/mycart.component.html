@@ -87,7 +87,10 @@
             </div>
             <div class="tab-pane" id="book">
                     <h3 class="mainbanner">Books in My Cart </h3>
-                <div *ngIf="record?.book ==null">no record in book</div>
+                
+                    <h2 *ngIf="record?.book ==null">
+                            There is no Book in your Cart
+                    </h2>
                     <div class="dash-divs" *ngFor="let item of record; let i=index">
                         <div class="product-list__item" *ngIf="item.book !=null">
                             <figure class="product-list__img"> <a routerLink="/detail/{{item?.book.id}}"> <img
