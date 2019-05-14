@@ -55,7 +55,7 @@ export class MainpageComponent implements OnInit {
   chapter_id;
   message: string;
   cartitem: any;
-  constructor( private bidings: BidHistoryService, private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
+  constructor( public bidings: BidHistoryService, private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
   }

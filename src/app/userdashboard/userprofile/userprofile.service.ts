@@ -24,23 +24,43 @@ export class UserprofileService {
         this.token = data;
       });
   }
-  userinfo(modal, image) {
+  userinfo(headLine , biography ,language,website ,Git,twitter,facebook ,linkedIn ,youtube, firstname,lastname) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(Config.api + 'user/userdetails/' ,
+      JSON.stringify({
+        
+        "headLine": headLine,
+        "biography": biography,
+        "language": language,
+        "website": website,
+        "Git": Git,
+        "twitter": twitter,
+        "facebook": facebook,
+        "linkedIn": linkedIn,
+        "youtube": youtube,
+        "firstname": firstname,
+        "lastname": lastname,
+      }), { headers: headers }).map((response: Response) => response.json());
+
+  }
+  userinfoimg(headLine , biography ,language,website ,Git,twitter,facebook ,linkedIn ,youtube, firstname,lastname, image) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
     return this.http.put(Config.api + 'user/userdetails/' ,
       JSON.stringify({
         "profilePhoto": image,
-        "headLine": modal.headLine,
-        "biography": modal.biography,
-        "language": modal.language,
-        "website": modal.website,
-        "Git": modal.Git,
-        "twitter": modal.twitter,
-        "facebook": modal.facebook,
-        "linkedIn": modal.linkedIn,
-        "youtube": modal.youtube,
-        "firstname": modal.firstname,
-        "lastname": modal.lastname,
+        "headLine": headLine,
+        "biography": biography,
+        "language": language,
+        "website": website,
+        "Git": Git,
+        "twitter": twitter,
+        "facebook": facebook,
+        "linkedIn": linkedIn,
+        "youtube": youtube,
+        "firstname": firstname,
+        "lastname": lastname,
       }), { headers: headers }).map((response: Response) => response.json());
 
   }

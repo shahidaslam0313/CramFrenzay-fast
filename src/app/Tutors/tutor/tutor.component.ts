@@ -40,6 +40,7 @@ export class TutorComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.Showtutor();
     this.setPage(1);
   }
