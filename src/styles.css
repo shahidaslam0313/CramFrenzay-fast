@@ -1177,7 +1177,6 @@ blockquote .blockquote-author {
 
 .product-list__content {
     padding: 0 10px;
-    min-height: 198px;
 }
 
 .product-list__content::after {
