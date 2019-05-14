@@ -109,7 +109,6 @@ export class FlashcardlistComponent implements OnInit {
   };
   inner;
   public name;
-  private productsSource;
   currentProducts;
   query;
   searchResult: any = [];
@@ -117,9 +116,7 @@ export class FlashcardlistComponent implements OnInit {
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
 
     this.bidflash();
-    this.trendingflash();
-    this.topratedflash();
-    this.recentflash();
+ 
     this.Slider();
   }
   openDialog3(chapter_id): void {
@@ -141,6 +138,9 @@ export class FlashcardlistComponent implements OnInit {
   }
   ngOnInit() {
     window.scroll(0,0)
+    this.trendingflash();
+    this.topratedflash();
+    this.recentflash();
   }
 
   Slider() {
