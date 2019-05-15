@@ -21,8 +21,8 @@ export class PurchaseService {
   }
 
   purchasercourses() {
-    let headers = new Headers();
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'purchase/purchaseditem/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'purchase/UserPurchasedData/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
   }
 }

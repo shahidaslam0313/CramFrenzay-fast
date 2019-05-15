@@ -21,28 +21,26 @@ export class PurchaseComponent implements OnInit {
   ngOnInit() {
     this.Showcourses();
   }
-  Courses = [];
-  Notes = [];
-  FlashCard = [];
-  Book = [];
-
+ 
+  bought;
   Showcourses() {
     this.purchase.purchasercourses().subscribe(Data => {
-
-      for (let val in Data) {
-        if (Data[val].course) {
-          this.Courses.push(Data[val]);
-        }
-        else if (Data[val].notes) {
-          this.Notes.push(Data[val]);
-        }
-        else if (Data[val].book) {
-          this.Book.push(Data[val]);
-        }
-        else if (Data[val].flashcard) {
-          this.FlashCard.push(Data[val]);
-        }
-      }
+this.bought = Data;
+console.log(this.bought);
+      // for (let val in Data) {
+      //   if (Data[val].course) {
+      //     this.Courses.push(Data[val]);
+      //   }
+      //   else if (Data[val].notes) {
+      //     this.Notes.push(Data[val]);
+      //   }
+      //   else if (Data[val].book) {
+      //     this.Book.push(Data[val]);
+      //   }
+      //   else if (Data[val].flashcard) {
+      //     this.FlashCard.push(Data[val]);
+      //   }
+      // }
     })
   }
 }

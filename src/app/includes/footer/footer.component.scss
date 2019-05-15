@@ -48,7 +48,9 @@
 .footer-widget ul li a:hover {
     color: #fff;
 }
-
+.footer-widget ul li a:hover i{
+    transform: rotate(360deg)
+}
 .footer-widget ul li a i {
     color: #ddd;
     margin-right: 5px

@@ -1,7 +1,10 @@
 .all-silder {
     position: relative
 }
-
+#mainpage-slider {
+    max-height: 612px;
+    background-color: rgba(0, 0, 0, .47843137254901963)
+}
 .download-here {
     position: absolute;
     right: 40px;

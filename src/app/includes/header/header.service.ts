@@ -7,7 +7,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class headerservice {
-  public username;
+   username;
   currentuser;
   current;
   currentUser;
