@@ -19,7 +19,7 @@ import { MycartComponent } from './userdashboard/mycart/mycart.component';
 export const appRoutes: Routes = [
   { path: '', component: MainpageComponent },
   { path : 'header' , component: HeaderComponent},
-    { path : 'footer' , component: FooterComponent},
+  { path : 'footer' , component: FooterComponent},
   {
     path: '', component: AdminLayoutComponent,
     children: [
