@@ -2,154 +2,184 @@
     <div class="row ">
         <div class="col-md-3 sidebar">
             <nav>
-                <form class="user-profile-form"> 
-                        <div class="profile-picture" *ngIf="profilePhoto" >
-                                <img src="{{profilePhoto}}">
-                            </div>
-                            <div class="profile-picture" *ngIf="!profilePhoto" >
-                                <img src="../assets/img/default-user-icon-profile.png">
-                            </div>
+                <form class="user-profile-form">
+                    <div class="profile-picture" *ngIf="profilePhoto">
+                        <img src="{{profilePhoto}}">
+                    </div>
+                    <div class="profile-picture" *ngIf="!profilePhoto">
+                        <img src="../assets/img/default-user-icon-profile.png">
+                    </div>
                     <h4 class="user-name text_cap">{{firstname}} {{lastname}}</h4>
-                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
-                    routerLinkActive="active1" data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i
+                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i
+                        class="fa fa-file-alt"></i>Add Notes</a> <a class="user-link" routerLink="/upload"
+                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-th-large"></i>Add
+                    Courses</a> <a class="user-link" routerLink="/uploadcard" routerLinkActive="active1"
+                    data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i
                         class="fa fa-book-open"></i>Add Flash Cards</a> <a class="user-link display-none"
                     routerLink="/uploadcarddetail" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
                         class="fa fa-book-open"></i>FlashCard Detail</a> <a class="user-link" routerLink="/uploadbook"
-                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book"></i>Add Books</a>
+                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book"></i>Add
+                    Books</a>
             </nav>
         </div>
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Note for Sale</h1>
             <ul class="nav nav-tabs nav-justified margin-top-10">
-                <li class="nav-item"> <a href="#user_signup" data-toggle="tab" class="nav-link nav-active active" title="Note">
+                <li class="nav-item"> <a href="#user_signup" data-toggle="tab" class="nav-link nav-active active"
+                        title="Note">
                         Note </a> </li>
-                <li class="nav-item"> <a href="#inst_signup" data-toggle="tab" class="nav-link nav-active" title="Note Details">
+                <li class="nav-item"> <a href="#inst_signup" data-toggle="tab" class="nav-link nav-active"
+                        title="Note Details">
                         Note Details </a> </li>
             </ul>
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
                     <form class="user-add-ingo-form" enctype="multipart/form-data">
-                        <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Title" id="name"
-                                [(ngModel)]="model.name" name="name" required>
+                        <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text"
+                                placeholder="Title" id="name" [(ngModel)]="model.name" name="name" required>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
                             </mat-error>
                             <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid Title
                             </mat-error>
                         </mat-form-field>
-                        <mat-form-field> <textarea matInput placeholder="Description" id="detail" [(ngModel)]="model.detail"
-                                name="detail"></textarea> 
+                        <mat-form-field> <textarea matInput placeholder="Description" id="detail"
+                                [(ngModel)]="model.detail" name="detail"></textarea>
                         </mat-form-field>
                         <mat-form-field id="categoties-font">
-                            <mat-select placeholder="Select Category" type="number"  id="notessubcategories"
+                            <mat-select placeholder="Select Category" type="number" id="notessubcategories"
                                 [(ngModel)]="model.notessubcategories" name="notessubcategories">
-                                <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
+                                <mat-option *ngFor="let data of c_name" [value]="data.id"
+                                    (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
                             </mat-select>
                         </mat-form-field>
 
-                      <mat-form-field id="font" *ngIf="result" >
-                        <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategory" name="subcategory" id="subcategory">
-                          <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <mat-form-field id="fonts" *ngIf="nestedresult" >
-                        <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory" name="nestedcategory" id="nestedcategory">
-                          <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                        <mat-form-field id="font" *ngIf="result">
+                            <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategory"
+                                name="subcategory" id="subcategory">
+                                <mat-option *ngFor="let data of result" [value]="data.id"
+                                    (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field id="fonts" *ngIf="nestedresult">
+                            <mat-select placeholder="Select Nested Sub-Category" type="number"
+                                [(ngModel)]="model.nestedcategory" name="nestedcategory" id="nestedcategory">
+                                <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                        <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
+                        <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer"
+                            name="accept_offer">Accept
                             Offers</mat-slide-toggle>
                         <div id="showdiv6" style="display: none;">
-                            <mat-form-field> <input matInput type="text" placeholder="Automatically accept offers of at least $" [(ngModel)]="model.min_amount"
-                                    name="min_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
-                            <mat-form-field> <input matInput type="text" placeholder="Automatically decline offers lower then $" [(ngModel)]="model.max_amount"
-                                    name="max_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field> <input matInput type="text"
+                                    placeholder="Automatically accept offers of at least $"
+                                    [(ngModel)]="model.min_amount" name="min_amount"> <span matPrefix>$&nbsp;</span>
+                            </mat-form-field>
+                            <mat-form-field> <input matInput type="text"
+                                    placeholder="Automatically decline offers lower then $"
+                                    [(ngModel)]="model.max_amount" name="max_amount"> <span matPrefix>$&nbsp;</span>
+                            </mat-form-field>
                         </div>
-                        <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true" [(ngModel)]="sell_status"
-                            name="sell_status">List for Sale</mat-slide-toggle>
+                        <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true"
+                            [(ngModel)]="sell_status" name="sell_status">List for Sale</mat-slide-toggle>
                         <div id="showdiv">
-                            <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Buy It Now Price"
-                                    id="price" [(ngModel)]="model.price" name="price"> <span
-                                    matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field class="margin-top-10"> <input matInput type="text"
+                                    placeholder="Buy It Now Price" id="price" [(ngModel)]="model.price" name="price">
+                                <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field class="material-select">
-                                <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
-                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
+                                <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days"
+                                    name="sell_days">
+                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">
+                                        {{range.viewValue}} Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
 
 
                         <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
-                                <span *ngIf="sell_status == true">Also List for Auction </span>
-                                <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
+                            <span *ngIf="sell_status == true">Also List for Auction </span>
+                            <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
-                            <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
-                                    name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price"
+                                    [(ngModel)]="model.initial_amount" name="initial_amount"> <span
+                                    matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
+                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">
+                                        {{range.viewValue}} Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction</mat-checkbox>
+                            <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved"
+                                name="isreserved">Reserve Auction</mat-checkbox>
                             <div id="showdiv3">
-                                <mat-form-field> <input matInput type="text" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
-                                        name="reservedprice"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+                                <mat-form-field> <input matInput type="text" placeholder="Reserve Price"
+                                        [(ngModel)]="model.reservedprice" name="reservedprice"> <span
+                                        matPrefix>$&nbsp;</span> </mat-form-field>
                             </div>
                             <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
                             <div id="showdiv4">
                                 <mat-form-field class="margin-top-10"> <input matInput [matDatepicker]="picker"
-                                        placeholder="Date & Time" [(ngModel)]="model.start_time" name="start_time"> <span
-                                        placeholder="MM/DD/YYYY HH:MM AM"></span>
+                                        placeholder="Date & Time" [(ngModel)]="model.start_time" name="start_time">
+                                    <span placeholder="MM/DD/YYYY HH:MM AM"></span>
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                     <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
-                      <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
-                        <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
-                      </div>
-                      <!--<img src="" #notes_thumbnail class="img-userprofile">-->
+                        <!-- <div class="img-userprofile s_uploaded_img" *ngIf="imagePreview">
+                        <img accept=".jpg, .jpeg, .png" src="{{imagePreview}}" alt="" allowmultiple="false"/>
+                      </div> -->
+                        <input class="btn-file margin-top-10" type="file" (change)="onChange($event)"
+                             accept="image/gif, image/jpeg, image/png" required>
 
-                      <span class="btn-file margin-top-10">Upload Note Image <input (change)="onChange($event)"
-                                type="file" #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
-                                 <span class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input (change)="onChange2($event)"
-                                #data type="file" accept="application/pdf" required> </span> <a class="user-add-ingo-form-btn margin-top-10"
-                            (click)="onSubmit()">Submit</a>
+                        <img *ngIf="imagePreview" src="{{imagePreview}}">
+                        <!-- <span class="btn-file margin-top-10">Upload Note Image
+                            <input (change)="onChange($event)" type="file" #notes_thumbnail
+                                accept="image/gif, image/jpeg, image/png" required>
+                        </span> -->
+                        <span class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
+                                (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
+                        </span> <a class="user-add-ingo-form-btn margin-top-10" (click)="onSubmit()">Submit</a>
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">
                     <form method="post" class="user-add-ingo-form" enctype="multipart/form-data">
                         <mat-form-field>
-                            <mat-select placeholder="Notes" type="number" (ngModelChange)="check($event)" id="notesTypes"
-                            name="note" [(ngModel)]="model.note">
-                            <mat-option *ngFor="let data of notesname" [value]="data.id">{{data.name}}</mat-option>
-                        </mat-select>
+                            <mat-select placeholder="Notes" type="number" (ngModelChange)="check($event)"
+                                id="notesTypes" name="note" [(ngModel)]="model.note">
+                                <mat-option *ngFor="let data of notesname" [value]="data.id">{{data.name}}</mat-option>
+                            </mat-select>
                         </mat-form-field>
                         <mat-form-field>
-                            <mat-select placeholder="Select Notes Type" type="text" #notes (change)="select(notes.value)"
-                                [(ngModel)]="model.notestype" name="notestype">
-                                <mat-option *ngFor="let notestype of notesType" [value]="notestype">{{notestype}}</mat-option>
+                            <mat-select placeholder="Select Notes Type" type="text" #notes
+                                (change)="select(notes.value)" [(ngModel)]="model.notestype" name="notestype">
+                                <mat-option *ngFor="let notestype of notesType" [value]="notestype">{{notestype}}
+                                </mat-option>
                             </mat-select>
                         </mat-form-field>
                         <!--<mat-form-field> <input matInput type="text" placeholder="Lecture Note" name="lectureNote" [(ngModel)]="model.lectureNote"> </mat-form-field>-->
                         <div *ngIf='(default=="Lecture Note")'>
-                            <mat-form-field> <label>Lecture #: </label> <input matInput type="text" placeholder="i.e 1-5"
-                                    name="lectureNumber" [(ngModel)]="model.lectureNumber"> </mat-form-field>
+                            <mat-form-field> <label>Lecture #: </label> <input matInput type="text"
+                                    placeholder="i.e 1-5" name="lectureNumber" [(ngModel)]="model.lectureNumber">
+                            </mat-form-field>
                         </div>
                         <div *ngIf='(default=="Exam Note")'>
                             <mat-form-field>
                                 <mat-select placeholder="Type" type="text" [(ngModel)]="model.examNote" name="examNote">
-                                    <mat-option *ngFor="let examNote of examkind" [value]="examNote">{{examNote}}</mat-option>
+                                    <mat-option *ngFor="let examNote of examkind" [value]="examNote">{{examNote}}
+                                    </mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
                         <!--<mat-form-field> <input matInput type="text" placeholder="Textbook Note" name="textBookNote" [(ngModel)]="model.textBookNote"> </mat-form-field> -->
                         <div *ngIf='(default=="Textbook Note")'>
                             <mat-form-field>
-                                <mat-select placeholder="Chapter" type="text" [(ngModel)]="model.chapter" name="chapter">
-                                    <mat-option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</mat-option>
+                                <mat-select placeholder="Chapter" type="text" [(ngModel)]="model.chapter"
+                                    name="chapter">
+                                    <mat-option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}
+                                    </mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

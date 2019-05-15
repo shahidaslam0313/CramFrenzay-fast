@@ -30,8 +30,8 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes, let i=index">
                             <div class="product-list__item">
-                                <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
-                                            src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes">
+                                <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> 
+                                    <img src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes">
                                     </a>
                                     <a class="product-list__edit-btn" data-toggle="modal"
                                         data-target="#edit-notes-modal" (click)="singlenotes(item?.id)"> <i

@@ -12,6 +12,8 @@ import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
+import { Ng2ImgMaxService } from 'ng2-img-max';
+import { DomSanitizer } from '@angular/platform-browser';
 // declare var localStorage: any;
 declare const $: any;
 @Component({
@@ -20,6 +22,8 @@ declare const $: any;
   styleUrls: ['./uploadbook.component.scss']
 })
 export class UploadbookComponent implements OnInit {
+  uploadedImage: File;
+  imagePreview: string | ArrayBuffer;
   events;
   model: any = {};
   bid_status: boolean = true;
@@ -81,7 +85,7 @@ export class UploadbookComponent implements OnInit {
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
   ]);
-  constructor(private newService: uploadbookservice, private router: Router, private route: ActivatedRoute,
+  constructor(private newService: uploadbookservice,private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -237,7 +241,10 @@ c_name;
       this.nestedresult = data;
     });
   }
+  // uploadedImage: Blob;
   onChange(event: EventTarget) {
+    // constructor() {}
+    // onImageChange(event) {
     this.input = new FormData();
 
     const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
@@ -255,8 +262,49 @@ c_name;
       this.ImgSrc = (e.target.result);
     };
     reader1.readAsDataURL(this.file);
+    // let image = target.files[0];
+    
+   
+    // this.ng2ImgMax.resizeImage(this.file, 50, 50).subscribe(
+    //   result => {
+    //     this.uploadedImage = new File([result], result.name);
+    //     this.getImagePreview(this.uploadedImage);
+    //   },
+    //   error => {
+    //     console.log('😢 Oh no!', error);
+    //   }
+    // );
+    // let image = target.files[0];
+    // this.ng2ImgMax.compressImage(image, 0.075).subscribe(
+    //   result => {
+    //     this.uploadedImage = new File([result], result.name);
+    //     this.getImagePreview(this.uploadedImage);
+    //   },
+    //   error => {
+    //     console.log('😢 Oh no!', error);
+    //   }
+    // );
+    this.ng2ImgMax.resizeImage(this.file, 4, 4).subscribe(
+      result => {
+        this.uploadedImage = result;
+        this.getImagePreview(this.uploadedImage);
+        console.log(result,'RESULT')
+      },
+      error => {
+        console.log('😢 Oh no!', error);
+      }
+    );
   }
   file;
+  getImagePreview(file: File) {
+    const reader: FileReader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+     
+      // const imagePreview: string | ArrayBuffer = reader.result;
+       this.imagePreview = reader.result;
+    };
+  }
   check_login() {
 
     if (isPlatformBrowser(this.platformId)) {
