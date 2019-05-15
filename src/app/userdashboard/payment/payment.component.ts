@@ -456,6 +456,7 @@ export class PaymentComponent implements OnInit {
   getCards() {
     this.newService.showCards().subscribe(Data => {
       this.res = Data;
+      console.log(this.res);
     },
       error => {
         if (error.status === 404) {

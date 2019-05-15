@@ -20,8 +20,8 @@ export class BiditemsService {
     this.current = JSON.parse(localStorage.getItem('currentUser'));
   }
 bidingitems(){
-    let headers = new Headers();
+    let headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
   headers.append('Content-Type', 'application/json');
-  return this.htpp.get(Config.api +'bid/userbidcourses/' + this.current.user_id , {headers : headers}).map((response:Response)=> response.json());
+  return this.htpp.get(Config.api +'bid/UserBidData/' + this.current.user_id , {headers : headers}).map((response:Response)=> response.json());
 }
 }

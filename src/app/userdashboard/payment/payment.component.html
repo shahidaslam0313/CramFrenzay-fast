@@ -2,9 +2,9 @@
     <div class="row checkout-select-box">
         <div class="width100">
             <div id="section-pricing" class="text-center">
-                <div class="pricing-tenure-switcher center" data-container="#pricing-switch"> <span class="pts-left"
-                        *ngIf="!isright" style="color: black">Saved Cards</span> <span class="pts-left"
-                        *ngIf="isright">Saved Cards</span>
+                <div class="pricing-tenure-switcher center" data-container="#pricing-switch">
+                     <span class="pts-left" *ngIf="!isright" style="color: black">Saved Cards</span> 
+                     <span class="pts-left" *ngIf="isright">Saved Cards</span>
                     <div class="pts-switcher">
                         <div class="switch"> <input [(ngModel)]="isright" id="switch-toggle-pricing-tenure"
                                 class="switch-toggle switch-toggle-round" type="checkbox"> <label
@@ -13,13 +13,14 @@
                         *ngIf="isright" style="color: black">Add New Card</span>
                 </div>
                 <div id="pricing-switch" class="">
-                    <div class="col-md-12" *ngIf="!isright">
+                    <div class="col-md-12" *ngIf="!isright ">
                         <div class="col-lg-12 Saved-card-sel-list">
                             <mat-form-field class="width50">
                                 <mat-select class="" placeholder="Select List">
                                     <mat-option *ngFor="let card of res" [value]="card.id" (click)="getcardid(card.id)">
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
+                                
                             </mat-form-field> <a class="user-add-ingo-form-btn margin-top-10" (click)="buy()">Place
                                 Order</a>
                         </div>

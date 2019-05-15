@@ -28,23 +28,25 @@ export class BiditemsComponent implements OnInit {
   Notes = [];
   FlashCard = [];
   Book = [];
-
+  biditems;
   bid() {
     this.biding.bidingitems().subscribe(Data => {
-      for (let val of Data) {
-        if (val.bid.course != null) {
-          this.Courses.push(val.bid.course);
-        }
-        else if (val.bid.notes != null) {
-          this.Notes.push(val.bid.notes);
-        }
-        else if (val.bid.book != null) {
-          this.Book.push(val.bid.book);
-        }
-        else if (val.bid.flashcard != null) {
-          this.FlashCard.push(val.bid.flashcard);
-        }
-      }
+      this.biditems = Data;
+      console.log(this.biditems);
+      // for (let val of Data) {
+      //   if (val.bid.course != null) {
+      //     this.Courses.push(val.bid.course);
+      //   }
+      //   else if (val.bid.notes != null) {
+      //     this.Notes.push(val.bid.notes);
+      //   }
+      //   else if (val.bid.book != null) {
+      //     this.Book.push(val.bid.book);
+      //   }
+      //   else if (val.bid.flashcard != null) {
+      //     this.FlashCard.push(val.bid.flashcard);
+      //   }
+      // }
     })
   }
 }
