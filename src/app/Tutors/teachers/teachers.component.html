@@ -4,10 +4,10 @@
         <div class="p-banner profile-banner">
             <div class="detail">
                 <div class="img-holder">
-                    <!----><img alt="User Profile Photo" src="https://storage.coursefrenzy.com/final/0.jpg"
+                    <img alt="User Profile Photo" src={{profileinfo?.profilePhoto}} onerror="this.src='../assets/img/default-user-icon-profile.png'"
                         class="ng-star-inserted"></div>
                 <div class="text">
-                    <h1 class="user-prof-name">User Name</h1><small>23 Students</small>
+                    <h1 class="user-prof-name">{{profileinfo?.firstname}} {{profileinfo?.lastname}}</h1><small>{{students}} Students</small>
                 </div>
             
             </div>
@@ -22,16 +22,16 @@
                             <h2>Social Contacts</h2>
                             <hr>
                             <ul class="list-social">
-                                <li class="website"><a href="http://www.brainplow.com"><i
-                                            class="fa fa-code"></i><span>http://www.brainplow.com</span></a></li>
+                                <li class="website"><a><i
+                                            class="fa fa-code"></i><span>{{profileinfo?.website}}</span></a></li>
                                 <li class="git"><a href="https://www.github.com"><i
-                                            class="fab fa-git"></i><span>https://www.github.com</span></a></li>
+                                            class="fab fa-git"></i><span>{{profileinfo?.Git}}</span></a></li>
                                 <li class="facebook"><a href="https://www.facebook.com"><i
-                                            class="fab fa-facebook"></i><span>https://www.facebook.com</span></a></li>
+                                            class="fab fa-facebook"></i><span>{{profileinfo?.facebook}}</span></a></li>
                                 <li class="linked-in"><a href="https://www.linkedin.com"><i
-                                            class="fab fa-linkedin"></i><span>https://www.linkedin.com</span></a></li>
+                                            class="fab fa-linkedin"></i><span>{{profileinfo?.linkedIn}}</span></a></li>
                                 <li class="twitter"><a href="https://www.twitter.com"><i
-                                            class="fab fa-twitter"></i><span>https://www.twitter.com</span></a></li>
+                                            class="fab fa-twitter"></i><span>{{profileinfo?.twitter}}</span></a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
@@ -78,12 +78,12 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="service-block-v3 service-block-u"><i aria-hidden="true"
-                                    class="fa fa-user"></i><span class="service-heading">Overall Visits</span><span
-                                    class="counter">52,147</span>
+                                    class="fa fa-user"></i><span class="service-heading">Total Courses</span><span
+                                    class="counter"> {{totalCourses}}</span>
                                 <div class="clearfix margin-bottom-10"></div>
                                 <div class="row margin-bottom-20">
-                                    <div class="col-xs-6 col-md-6 col-lg-6 service-in"><small>Last Week</small>
-                                        <h4 class="counter">1,385</h4>
+                                    <div class="col-xs-6 col-md-6 col-lg-6 service-in"><small>Graduation_year</small>
+                                        <h6 class="counter">{{result1?.graduation_year}}</h6>
                                     </div>
                                     <div class="col-xs-6 col-md-6 col-lg-6 service-in service-in-2 "><small>Last Month</small>
                                         <h4 class="counter">6,048</h4>
@@ -102,20 +102,11 @@
                         </div>
                         <div class="col-md-12">
                             <hr>
-                            <h2>Headline</h2><span>Angular 4 and Python Engineer</span>
+                            <h2>Headline</h2><span>{{profileinfo?.headLine}}</span>
                         </div>
                         <div class="col-md-12">
                             <hr>
-                            <h2>About</h2><span>Muhammad Ahmad is a passionate and creative Software Engineer with a
-                                strong focus on pragmatism and simplicity. He started programming at the age of
-                                seventeen on a C Language. Later he started learning C and C++ . In 2014 he shifted his
-                                focus to PHP, WordPress &amp; Web Development. But Latter On He Shifted his interest to
-                                C# Console Base &amp; Windows base Applications. Since then he has been involved in the
-                                ASP.NET MVC design and implementation of numerous software projects, including modern
-                                web applications, desktop applications and frameworks. Aside from his career as a
-                                software engineer, he truly enjoys sharing his knowledge with others. Ahmad has Bachelor
-                                of Computer Science in Software Engineering. Outside the software world, Ahmad is a
-                                Entrepreneur, a Motivation Speaker, a Badminton Player, a Tourist</span>
+                            <h2>About</h2>{{result1?.description}}<span></span>
                         </div>
                     </div>
                     <!---->
@@ -167,3 +158,125 @@
         </div>
     </div>
 </div> -->
+
+<div class="container-fluid padding-l-r-60">
+
+
+<div class="row">
+        <div class="col-lg-12">
+            <h2 class="mainbanner bg-Bid-Notes">More Courses by {{profileinfo?.firstname}} {{profileinfo?.lastname}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 slider-hight">
+            <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+                <div class="item" ngxSlickItem *ngFor="let data of courses; let i=index">
+                    <div class="product-list__item min-height-product-list">
+                        <!---------Image Start-------->
+                        <figure class="product-list__img">
+                            <a routerLink="/eachcourse/{{data.id}}">
+                                <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Courses">
+                            </a>
+                            <div class="wishlist-overlay" *ngIf="!data.wishlist==true">
+                                <a class="product-list__wishlist" title="Add to wishlist" (click)="addwishlist(nullvalue,data?.id,nullvalue,nullvalue)">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </div>
+                            <div class="wishlist-overlay" *ngIf="!data.wishlist==false">
+                                <a class="product-list__wishlist"> <span> <i class="fas fa-heart" style="color: #c00"
+                                            title="Click and remove from wishlist" (click)="delCourseFwishList(data)"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </figure>
+                        <!---------Image End-------->
+
+                        <!-- ------Course & Tutor name Start------- -->
+                        <div class="product-list__content">
+                            <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data?.name}}">{{data?.name}}</a>
+                            </div>
+                            <div class="product-list__title tutor-subject"> <span title="Authur Name:{{data?.author}}"
+                                    routerLink="/eachcourse/{{data.id}}">{{data?.author}}</span>
+                            </div>
+                            <!-- ------Course & Tutor name End------- -->
+
+                            <!-- ------Rating & price start------- -->
+                            <div class="rating_and_price">
+                                 <rating class="rating-star-icons float_left" ngModel="{{data.rating}}" [readonly]="true" >
+                                    titles="{{data.rating}}"></rating> 
+                                <a class="product-list__price" routerLink="/eachcourse/{{data.id}}">{{data.price |
+                                    currency:'USD'}}</a>
+                            </div>
+                            <!-- ------Rating & price End------- -->
+                            <!-- ------Cart Heart and Buy Now Button div start------- -->
+                            <div class="heart_cart_buy">
+                                <div class="heart_cart">
+                                    <!-- ---------------Heart start------------- -->
+                                    <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist" >
+                                        (click)="delCourseFwishList(data)">
+                                    </i>
+                                    <i class=" far fa-heart" (click)="addwishlist(nullvalue,data?.id,nullvalue,nullvalue)"
+                                        *ngIf="!data.wishlist==true">
+                                    </i> 
+                                    <!-- ---------------Heart End------------- -->
+                                    <!--------Cart Start------->
+                                    <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
+                                        (click)="delfromcart(data)">
+                                    </i>
+                                    <i class="wishlist material-icons" title="Add to Cart" *ngIf="!data.cart==true"
+                                        (click)="addcart(nullvalue,data.id,nullvalue,nullvalue)">add_shopping_cart</i>
+                                    <!-------Cart End------>
+                                </div>
+                                <!-- ------Cart Heart and Buy Now Button div end------- -->
+                                <div class="buy_btn"><a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased"
+                                        (click)="checkOffer2(nullvalue,data?.id,nullvalue,nullvalue)">Offer Now</a>
+                                </div>
+                            </div>
+                            <!-- ------Cart Heart and Buy Now Button div End------- -->
+
+                            <!------Buy Now and Bid now start------>
+                            <div class="product-list__item-info-1">
+                                <a class="btn-style text-transform-none" (click)="coursess(data?.id)" *ngIf="data.sell_status==true && !data.Purchased">
+                                    Buy Now at {{data.price | currency:'USD'}}</a>
+                                <a class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)"
+                                    *ngIf="data.bid_status==true &&!data.Purchased">Bid Now at {{data.bid_price |
+                                    currency:'USD'}}</a>
+                                <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
+                                    <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already
+                                    Bought</a>
+
+                            </div>
+                            <!-------Buy now and bid now end------->
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick>
+        </div>
+    </div>
+    </div>
+    <!----bid on course---->
+<div class="modal fade" id="notesbidnow" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="form-1-header">
+                        <h1>Bid on Course</h1>
+                    </div>
+                </div>
+                <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"
+                        class="view-bid"  data-dismiss="modal">view bid history </a>
+                    <form name="form" role="form" method="post" (ngSubmit)="bidc()"  class="user-add-ingo-form">
+                      <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"  data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
+                      <p>Highest bid amount:{{course?.bidamount}}</p>
+                      </a>
+                        <label>Bidding Price:</label>
+                        <mat-form-field>
+                            <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
+                                #bidamount="ngModel" name="bidamount">
+                        </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID NOW
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

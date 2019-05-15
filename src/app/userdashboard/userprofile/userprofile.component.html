@@ -4,10 +4,10 @@
             <nav>
                 <form class="user-profile-form">
                     <div class="profile-picture" *ngIf="profilePhoto">
-                        <img src="{{profilePhoto}}">
+                        <img src="{{profilePhoto}}" onerror="this.src='../assets/img/default-user-icon-profile.png'">
                     </div>
                     <div class="profile-picture" *ngIf="!profilePhoto">
-                        <img src="../assets/img/default-user-icon-profile.png">
+                        <img src="../assets/img/default-user-icon-profile.png" onerror="this.src='../assets/img/default-user-icon-profile.png'">
                     </div>
                     <h4 class="user-name text_cap">{{profile.firstname}} {{profile.lastname}}</h4>
                 </form>
@@ -25,7 +25,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" [ngClass]="displayFieldCss(user, 'firstname')">
                         <mat-form-field>
                             <input class="text_cap" matInput type="text" placeholder="First Name" id="firstname"
-                                formControlName="firstname" value="{{profile.firstname}}"
+                                formControlName="firstname" value="{{profile.firstname}}" 
                                 [(ngModel)]="profile.firstname" pattern="[a-zA-Z ]+" maxlength="35"
                                 (keydown.space)="$event.preventDefault()" required>
                             <mat-error *ngIf="user.controls.firstname.value==''">
@@ -126,8 +126,10 @@
                             <!-- <img src="../assets/img/default-user-icon-profile.png" *ngIf="!profilePhoto">  -->
                     </div>
                 </div>
-                <button type="submit" class="user-add-ingo-form-btn margin-top-10 width100"
-                    (click)="userdata()">save</button>
+                <button type="submit" *ngIf="!ImgSrc" class="user-add-ingo-form-btn margin-top-10 width100"
+                    (click)="userdata()" >save</button>
+                    <button type="submit"  class="user-add-ingo-form-btn margin-top-10 width100"
+                    (click)="onSubmit()" *ngIf="ImgSrc" >save</button>
             </form>
         </div>
     </div>

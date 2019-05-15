@@ -12,9 +12,14 @@ export class TeachersService {
   }
 
   ourteachers(teacherId) {
+ if (localStorage.getItem('currentUser')) {
     const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'tutor/tutorProfileData/' + teacherId + '', { headers: headers }).map((response: Response) => response.json());
   }
+  else {
+    return this.http.get(Config.api + 'tutor/tutorProfileData/' + teacherId + '', ).map((response: Response) => response.json());
 
+  }
+  }
 }

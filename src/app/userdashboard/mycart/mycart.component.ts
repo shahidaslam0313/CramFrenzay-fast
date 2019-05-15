@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { headerservice } from '../../includes/header/header.service';
 import { Config } from '../../Config';
+import { MycartService } from './mycart.service';
 
 @Component({
   selector: 'app-mycart',
@@ -14,9 +15,9 @@ export class MycartComponent implements OnInit {
   Courses;
   Notes;
   Book;
-  record;
+  record : any = {};
   public Imageurl = Config.Imageurlget;
-  constructor(public header: headerservice) { }
+  constructor(public header: MycartService) { }
 
   ngOnInit() {
     window.scroll(0,0);
@@ -26,7 +27,8 @@ export class MycartComponent implements OnInit {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
-      this.record = Data.Cart;
+      this.record = Data;
+      console.log(this.record);
     })
   }
 }

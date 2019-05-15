@@ -76,7 +76,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.user = this.fb.group({
-      'image': [''],
+      // 'image': [''],
       'firstname': [''],
       'lastname': [''],
       'headLine': [''],
@@ -99,7 +99,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   }
 imagePost;
 imageGet='https://storage.cramfrenzy.com/images/'
- private onSubmit() {
+  onSubmit() {
     this.http.post(
       Config.Imageurlupload,
       this.input, { responseType: 'text' }).subscribe(data => {
@@ -108,10 +108,31 @@ imageGet='https://storage.cramfrenzy.com/images/'
         }
         else {
           this.image = data;
-          this.imagePost=this.imageGet+data
+          this.imagePost=this.imageGet+data;
+          if (this.user.valid) {
+            this.userprofile.userinfoimg(this.user.value['headLine'],this.user.value['biography'],this.user.value['language'],this.user.value['website'],this.user.value['Git'],this.user.value['twitter'],this.user.value['facebook'],this.user.value['linkedIn'],this.user.value['youtube'],this.user.value['firstname'],this.user.value['lastname'], this.imagePost).subscribe(Res => {
+              console.log(this.modal, this.imagePost);
+              swal({
+                type: 'success',
+                title: 'Profile updated successfuly ',
+                showConfirmButton: false,
+                timer: 2500
+              });
+            });
+            error => {
+              swal({
+                type: 'error',
+                title: 'Oops <br> Plz fill form',
+                showConfirmButton: false,
+                width: '512px',
+                timer: 2500
+              })
+            }
+          }
         }
         
       });
+      // this.userdata();
   }
   CourseFailure() {
     swal({
@@ -122,38 +143,29 @@ imageGet='https://storage.cramfrenzy.com/images/'
       timer: 4500
     })
   }
-   userdata() {
-    if (this.user.valid) {
-      this.userprofile.userinfo(this.modal, this.imagePost).subscribe(Res => {
-        console.log(this.modal, this.imagePost);
-        swal({
-          type: 'success',
-          title: 'Profile updated successfuly ',
-          showConfirmButton: false,
-          timer: 2500
+  userdata() {
+    if (this.user.valid){
+      {
+        this.userprofile.userinfo(this.user.value['headLine'],this.user.value['biography'],this.user.value['language'],this.user.value['website'],this.user.value['Git'],this.user.value['twitter'],this.user.value['facebook'],this.user.value['linkedIn'],this.user.value['youtube'],this.user.value['firstname'],this.user.value['lastname']).subscribe(Res => {
+          console.log(this.modal, this.imagePost);
+          swal({
+            type: 'success',
+            title: 'Profile updated successfuly ',
+            showConfirmButton: false,
+            timer: 2500
+          });
         });
-      });
-      error => {
-        swal({
-          type: 'error',
-          title: 'Oops <br> Plz fill form',
-          showConfirmButton: false,
-          width: '512px',
-          timer: 2500
-        })
+        error => {
+          swal({
+            type: 'error',
+            title: 'Oops <br> Plz fill form',
+            showConfirmButton: false,
+            width: '512px',
+            timer: 2500
+          })
+        }
       }
     }
-    // else {
-    //   swal({
-    //     type: 'error',
-    //     title: 'Oops <br> Plz Enter Valid Text',
-    //     showConfirmButton: false,
-    //     width: '512px',
-    //     timer: 2500
-    //   })
-      // this.validateAllFormFields(this.user);
-    // }
-    this.onSubmit();
   }
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
