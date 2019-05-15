@@ -129,7 +129,7 @@ label {
 }
 
 .checkout {
-  margin: 44px auto 0;
+  margin: 0 auto ;
   padding: 263px 0 0;
 
 }
@@ -580,4 +580,25 @@ input.switch-toggle-round+label:after {
 }
 .bg-Bid-Courses {
   text-align: center;
+}
+
+.addtocart-heading p {
+  font-weight: 600;
+  margin: 0
+}
+
+.addtocart-heading span {
+  font-size: 22px;
+  color: #c00;
+}
+.mat-slide-toggle{
+  display: block;
+}
+
+.watchlist-comp {
+  margin-top: 20px;
+}
+
+.watchlist-items {
+  font-size: 20px;
 }

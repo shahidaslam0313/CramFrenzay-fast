@@ -1,28 +1,20 @@
 
-<!--&lt;!&ndash;<script>function move() { alert("yes"); var elem = document.getElementById("myBar"); var width = 1; var id = setInterval(frame, 1); function frame() { if (width >= 100) { clearInterval(id); } else { width++; elem.style.width = width + '%'; } } }</script>&ndash;&gt;-->
 <div class="card"> <button type="button" class="close" aria-label="Close"  tabindex="-1"> <span
   aria-hidden="true">&times;</span> </button>
   <div class="text-center form-1-header" data-background-color="rose">
     <h1> Accept Offer </h1>
   </div>
   <form >
-
-
-
-
-    
     <div class="card-content margin-top-10" >
       <mat-form-field class="example-full-width mat-size" style="width: 100%">
         <input type="text"  maxlength="4" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" name="offer_price">
-        <!--<mat-error *ngIf="bid_amount.hasError('pattern')"> Digits are allowed only </mat-error>-->
-        <!--<mat-error *ngIf="bid_amount.hasError('required')">Offer Amount is <strong>required</strong> </mat-error>-->
       </mat-form-field>
     </div>
     <div class="footer text-right col-sm-12">
       <button [mat-dialog-close]="true" class="user-add-ingo-form-btn width100 margin-top-10" type="submit" tabindex="2" (click)="postoffer()">
       Offer Now</button> </div>
     <div class="col-sm-12">
-      <p class="smalltext">By placing an Offer, you're committing to buy this item.</p>
+      <p class="smalltext">By Placing an Offer, You're committing to Buy this item.</p>
     </div>
   </form>
 </div>
