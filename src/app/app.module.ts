@@ -145,6 +145,7 @@ import {VideoShowDialogComponent} from "./userdashboard/coursevideo/video-show-d
 import {CoursevideoComponent} from "./userdashboard/coursevideo/coursevideo.component";
 import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
 import { MycartComponent } from './userdashboard/mycart/mycart.component';
+import { MycartService } from './userdashboard/mycart/mycart.service';
 
 // import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
@@ -259,6 +260,7 @@ export class MaterialModule { }
     DashboardService,
     AuthService,
     headerservice,
+    MycartService,
     FooterService,
     CoursevideoService,
     FooterService,
