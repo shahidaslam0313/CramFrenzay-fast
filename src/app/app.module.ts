@@ -4,13 +4,13 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { FormsModule, ReactiveFormsModule, NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RatingModule } from "ng2-rating";
+import { RatingModule } from 'ng2-rating';
 import { SlickModule } from 'ngx-slick';
 import { MatTableModule } from '@angular/material/table';
 import { GlobalService } from './global.service';
 import { SocialLoginModule, AuthService } from 'angular5-social-login';
 import { TextMaskModule } from 'angular2-text-mask';
-import { CountdownModule } from "ng2-countdown-timer";
+import { CountdownModule } from 'ng2-countdown-timer';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
@@ -46,17 +46,17 @@ import { SignupService } from './signup/signup.service';
 import { WishlistService } from './wishlist/wishlist.service';
 import { GeneralsearchService } from './generalsearch/generalsearch.service';
 import { BiditemsService } from './userdashboard/biditems/biditems.service';
-//MainPage Module
+//  MainPage Module
 import { mainpageservice } from './MainPage/mainpage/mainpage.service';
 import { SeemorempService } from './MainPage/seemoremp/seemoremp.service';
-//NotesGenie Module
+//  NotesGenie Module
 import { categorywisenotesservice } from './NotesGenie/category-wise-notes/category-wise-notes.service';
 import { NgseemoreService } from './NotesGenie/ngseemore/ngseemore.service';
 import { NotesService } from './NotesGenie/notes/notes.service';
 import { notescategoryservice } from './NotesGenie/notes-category/notes-category.service';
 import { NotessearchService } from './NotesGenie/notessearch/notessearch.service';
 import { notesgenieservice } from './NotesGenie/notesgenie/notesgenie.service';
-// Books Module
+//  Books Module
 import { booksservice } from './Books/books/books.service';
 import { detailservice } from './Books/detail/detail.service';
 import { BookcategoryService } from './Books/bookcategory/bookcategory.service';
@@ -64,27 +64,27 @@ import { TextbooksService } from './Books/textbooks/textbooks.service';
 import { AllbooksService } from './Books/allbooks/allbooks.service';
 import { SearchbooksService } from './Books/searchbooks/searchbooks.service';
 import { BookseemoreService } from './Books/bookseemore/bookseemore.service';
-// Event Module
+//  Event Module
 import { InstituteeventsService } from './Events/instituteevents/instituteevents.service';
 import { InstituteService } from './Events/institute/institute.service';
 import { EventsService } from './Events/events/events.service';
 import { UpcomingeventsService } from './Events/upcomingevents/upcomingevents.service';
-//Scholarships Module
+//  Scholarships Module
 import { SearchscholarshipService } from './Scholarships/searchscholarship/searchscholarship.service';
 import { ScholarshipService } from './Scholarships/scholarship/scholarship.service';
 import { ScholarshipdetailService } from './Scholarships/scholarshipdetail/scholarshipdetail.service';
 import { ScholarshiplistService } from './Scholarships/scholarshiplist/scholarshiplist.service';
 import { ScholarshiplistdetailService } from './Scholarships/scholarshiplistdetail/scholarshiplistdetail.service';
 import { UpcomingscholarshipService } from './Scholarships/upcomingscholarship/upcomingscholarship.service';
-//Courses Module
+//  Courses Module
 import { subcategoryservice } from './Course/subcategory/subcategory.service';
 import { CourseService } from './Course/course/course.service';
 import { EachcourseService } from './Course/eachcourse/eachcourse.service';
 import { CoursesearchService } from './Course/coursesearch/coursesearch.service';
-// import { CoursesmService } from './Course/coursesm/coursesm.service';
+//  import { CoursesmService } from './Course/coursesm/coursesm.service';
 import { categoriesservice } from './Course/categories/categories.service';
 import { NormalLayoutComponent } from './normal/normal-layout.component';
-//FlashCard Module
+//  FlashCard Module
 import { flashcardservice } from './FlashCard/flashcard/flashcard.service';
 import { FlashcardlistService } from './FlashCard/flashcardlist/flashcardlist.service';
 import { FlashsearchService } from './FlashCard/flashsearch/flashsearch.service';
@@ -92,17 +92,17 @@ import { FcseemoreService } from './FlashCard/fcseemore/fcseemore.service';
 import { fcdetailservice } from './FlashCard/fcdetail/fcdetail.service';
 import { MainpageComponent } from './MainPage/mainpage/mainpage.component';
 import { cardsubcategoryeservice } from './FlashCard/flashcard-subcategory/flashcard-subcategory.service'
-//Tutors Module
+//  Tutors Module
 import { TeachersService } from './Tutors/teachers/teachers.service';
 import { TutorregistrationService } from './Tutors/tutorregistration/tutorregistration.service';
 import { TutorinterviewService } from './Tutors/tutorinterview/tutorinterview.service';
 import { FindtutorService } from './Tutors/findtutor/findtutor.service';
 import { TutorsearchService } from './Tutors/tutorsearch/tutorsearch.service';
 import { tutorservice } from './Tutors/tutor/tutor.service';
-//Footer Module
+//  Footer Module
 import { contactusService } from './Footer/contactus/contactus.service';
 import { BecomepartnerService } from './Footer/becomepartner/becomepartner.service';
-//Userdahboard Module
+// Userdahboard Module
 import { PurchaseService } from './userdashboard/purchase/purchase.service';
 import { uploadservice } from './userdashboard/upload/upload.service';
 import { uploadnotesservice } from './userdashboard/uploadnotes/uploadnotes.service';
@@ -148,9 +148,9 @@ import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
 import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
 
-// import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
+//  import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
-// import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
+//  import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
 export function provideConfig() {
   const config = new AuthServiceConfig([
     {
@@ -280,7 +280,7 @@ export class MaterialModule { }
     uploadnotesservice,
     uploadbookservice,
     uploadcardservice,
-    // UserprofileService,
+    //  UserprofileService,
     ChangePasswordService,
     UserprofileService,
     paymentservice,
@@ -307,19 +307,19 @@ export class MaterialModule { }
     BookcategoryService,
     booksservice,
     detailservice,
-    //Event Module
+    // Event Module
     EventsService,
     InstituteeventsService,
     UpcomingeventsService,
     InstituteService,
-    //Scholarships Module
+    // Scholarships Module
     UpcomingscholarshipService,
     SearchscholarshipService,
     ScholarshipService,
     ScholarshipdetailService,
     ScholarshiplistService,
     ScholarshiplistdetailService,
-    //Courses Module
+    // Courses Module
     CourseService,
       CoursesmService,
     EachcourseService,
@@ -327,24 +327,24 @@ export class MaterialModule { }
     subcategoryservice,
     categoriesservice,
     categorywisecourseservice,
-    //FlashCards Module
+    // FlashCards Module
     flashcardservice,
     FlashcardlistService,
     FlashsearchService,
     cardsubcategoryeservice,
     fcdetailservice,
     FcseemoreService,
-    //Tutors Module
+    // Tutors Module
     TutorregistrationService,
     TutorinterviewService,
     tutorservice,
     FindtutorService,
     TutorsearchService,
     TeachersService,
-    //MainPage Module
+    // MainPage Module
     mainpageservice,
     SeemorempService,
-    //Footer Module
+    // Footer Module
     contactusService,
     BecomepartnerService,
       NestedcategorylistService
@@ -367,4 +367,4 @@ export class MaterialModule { }
 })
 
 export class AppModule { }
-// {"status":"OK","code":200,"data":{"status":"Successfully Downloaded"}}
+//  {"status":"OK","code":200,"data":{"status":"Successfully Downloaded"}}

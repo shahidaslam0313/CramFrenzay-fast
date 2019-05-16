@@ -3,10 +3,6 @@
         <div class="form-1 form-width">
             <div class="form-1-header">
                 <h1><i class="fas fa-user-alt"></i> Sign Up and Start Learning with a Roar</h1>
-                <!-- <ul class="form-1-sl">
-                    <li> <a > <img src="../../assets/img/icon-facebook.png"> </a> </li>
-                    <li> <a> <img src="../../assets/img/icon-Google.png"> </a> </li>
-                </ul> -->
             </div>
             <ul class="nav nav-tabs signup-tabs nav-justified padding-top-10">
                 <li class="nav-item">
@@ -91,7 +87,7 @@
                             <div class="agree-button-div ">
                                 <mat-checkbox  (change)="changeCheck($event)">I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
                                     Privacy Policy</a></mat-checkbox>
-                                    <button [disabled]="disabledAgreement" class="form-1-btn " (click)="onRegister()" >Sign Up</button>
+                                    <button [disabled]="disabledAgreement" class="btn-style " (click)="onRegister()" >Sign Up</button>
                                 <div class="have-account">Already have an account?
                                     <a routerLink="/login">Sign In</a>
                                 </div> 
@@ -187,7 +183,7 @@
                             <div class="agree-button-div ">
                                 <mat-checkbox  (change)="changeCheck($event)">I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
                                     Privacy Policy</a></mat-checkbox>
-                                <button [disabled]="disabledAgreement" class="form-1-btn " (click)="instituteRegister()">Sign Up</button>
+                                <button [disabled]="disabledAgreement" class="btn-style " (click)="instituteRegister()">Sign Up</button>
                                 <div class="have-account">Already have an account?
                                     <a routerLink="/login">Sign In</a>
                                 </div> 

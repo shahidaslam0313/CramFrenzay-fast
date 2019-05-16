@@ -4,7 +4,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/category-wise-notes/{{data.id}}" (click)="onsubmit(data?.c_name)" > <img src="https://storage.cramfrenzy.com/Categories%20Web%20Images/{{data.image}}"
-                            alt="Notes Category" class="categories-img"> </a> </figure>
+                            alt="Notes Category" class=""> </a> </figure>
                 <div class="product-list__content" style="border-radius: 0 0 10px 10px;">
                     <div class="product-list__category"> <a routerLink="/category-wise-notes/{{data.id}}" title="{{data.c_name}}">{{data.c_name}}</a>
                     </div>

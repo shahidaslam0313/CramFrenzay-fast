@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 updated-course-tab">
-            <ul class="nav nav-tabs ">
+        <div class="col-sm-3 ">
+            <ul class="nav nav-tabs side-tabs s_sidebar">
                 <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i
                             class="fa fa-edit"></i>Notes in My Cart </a> </li>
                 <li class="nav-item" > <a href="#courses" data-toggle="tab"
@@ -18,7 +18,7 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="notes">
                     <h3 class="mainbanner">Notes in My Cart </h3>
-                    <h4 *ngIf="record?.note == 0">No Notes in my cart yet</h4>
+                    <h4 class="text-center" *ngIf="record?.note == 0">No Notes in my Cart yet</h4>
                     <div class="dash-divs"  *ngFor="let data of record?.note; let i=index">
                               
                                   <!-- <p *ngIf="data?.notes == null">No notes in cart yet </p> -->
@@ -43,7 +43,7 @@
                 <div class="tab-pane" id="courses">
                     <h3 class="mainbanner">Courses in My Cart </h3>
                     
-                    <h4 *ngIf="record?.course == 0">No Courses in my cart yet</h4>
+                    <h4 class="text-center" *ngIf="record?.course == 0">No Courses in my Cart yet</h4>
 
                         <div class="dash-divs" *ngFor="let data of record?.course; let i = index">
                             <div class="product-list__item" >
@@ -60,15 +60,12 @@
                                     </div>
                                    
                         </div>
-                       
-                    
-                    <!-- <h1 *ngIf="data?.course ==null">No Course in my cart yet</h1> -->
-                </div>
+                        </div>
 
             </div>
             <div class="tab-pane" id="flashcards">
                     <h3 class="mainbanner">Flash Cards in My Cart </h3>
-                    <h4 *ngIf="record?.flashcard == 0">No Flash Cards in my cart yet</h4>
+                    <h4 class="text-center" *ngIf="record?.flashcard == 0">No Flash Cards in my Cart yet</h4>
 
                     <div class="dash-divs" *ngFor="let data of record?.flashcard; let i = index">
                             <div *ngIf="data ==0">no record</div>
@@ -84,12 +81,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <h1 *ngIf="data?.flashcard ==null">No Flash Card in my cart yet</h1> -->
-        
             </div>
             <div class="tab-pane" id="book">
                     <h3 class="mainbanner">Books in My Cart </h3>
-                    <h4 *ngIf="record?.book ==0">No Books in my Cart yet</h4>
+                    <h4 class="text-center" *ngIf="record?.book ==0">No Books in my Cart yet</h4>
 
                     <div class="dash-divs" *ngFor="let item of record?.book; let i=index">
                             <!-- <div *ngIf="i ==null">no record</div> -->
