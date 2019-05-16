@@ -24,9 +24,6 @@
       <div class="product-list__item" >
         <figure class="product-list__img">
           <a routerLink="/notes/{{item.id}}"> <img src="{{Imageurl}}{{item.notes_thumbnail}}"> </a>
-          <div class="wishlist-overlay">
-            <a class="product-list__wishlist" href="javascript:void(0)"> <i class="far fa-heart"></i> </a>
-          </div>
         </figure>
         <div class="product-list__content">
           <div class="product-list__category"> <a routerLink="/notes/{{item.id}}" title="{{item.name | titlecase}}">{{item.name | titlecase}}</a> </div>

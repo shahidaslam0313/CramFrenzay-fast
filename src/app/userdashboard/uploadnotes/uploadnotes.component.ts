@@ -25,7 +25,7 @@ declare const $: any;
   styleUrls: ['./uploadnotes.component.scss']
 })
 export class UploadnotesComponent implements OnInit {
-  uploadedImage: File;
+  uploadedImage;
   imagePreview: string | ArrayBuffer;
   model: any = {};
   input;
@@ -235,12 +235,12 @@ export class UploadnotesComponent implements OnInit {
   onChange(event) {
     this.input = new FormData();
 
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    this.input.append('fileToUpload', target.files[0]);
-    this.files = target.files;
-    this.file = this.files[0];
-    console.log(this.files);
+    // const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    // const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    // this.input.append('fileToUpload', event.target.files[0]);
+    // this.files = target.files;
+    // this.file = this.files[0];
+    // console.log(this.files);
 
     // const reader = new FileReader();
     // reader.onload = this._handleReaderLoaded.bind(this);
@@ -255,9 +255,15 @@ export class UploadnotesComponent implements OnInit {
   
     this.ng2ImgMax.resizeImage(image, 200, 150).subscribe(
       result => {
-        this.uploadedImage = result;
+        this.uploadedImage = result; 
         this.getImagePreview(this.uploadedImage);
         console.log(result,'RESULT')
+        const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+        const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+        this.input.append('fileToUpload', this.uploadedImage );
+        this.files = target.files;
+        this.file = this.files[0];
+        console.log(this.files);
       },
       error => {
         console.log('😢 Oh no!', error);
