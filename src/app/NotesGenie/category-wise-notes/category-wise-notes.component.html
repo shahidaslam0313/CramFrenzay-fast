@@ -5,8 +5,6 @@
             <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/nestedcateroy/{{data?.id}}" (click)="onsubmit(data?.sub_category_name)" > <img
                             src="{{Imageurl}}{{data?.icon}}" alt="Note"> </a>
-                    <div class="wishlist-overlay"> <a class="product-list__wishlist" href="javascript:void(0)"> <i
-                                class="far fa-heart"></i> </a> </div>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category"> <a 
@@ -26,11 +24,6 @@
                 <figure class="product-list__img">
                     <a routerLink="/notes/{{data?.id}}" (click)="sliderClick(data.name)">
                         <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes"> </a>
-                    <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" (click)="addwishlist(data.id)">
-                            <i class="far fa-heart"></i>
-                        </a>
-                    </div>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
