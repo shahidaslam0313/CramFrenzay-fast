@@ -12,7 +12,7 @@ export class Config {
 
   // public static api: string = 'http://192.168.30.8:8000/';
   // public static Imageurl: string = 'http://192.168.30.172:8000/media/';
-public static uploadfile = 'https://storage.cramfrenzy.com/upload.php';
+  public static uploadfile = 'https://storage.cramfrenzy.com/upload.php';
   public static Imageurleach = 'https://storage.cramfrenzy.com/images/';
   public static Imageurlget = 'https://storage.cramfrenzy.com/Thumbnail/';
   // public static Imageurlget = 'https://s3-us-west-1.amazonaws.com/cramfrenzy/Thumbnail/';
