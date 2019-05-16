@@ -9,7 +9,7 @@
         <div class="search-results">
             <ul class="list-normal">
                 <li *ngFor="let data of searchResult;">
-                    <a routerLink="/fcdetail/{{data.id}}" (click)="filter(query)">
+                    <a routerLink="/fcdetail/{{data?.id}}" (click)="filter(query)">
                         <i class="material-icons">arrow_forward</i>{{data.name}}</a>
                 </li>
             </ul>
@@ -44,23 +44,18 @@
                     <div class="product-list__item">
                         <!-- Image start -->
                         <figure class="product-list__img">
-                            <a routerLink="/fcdetail/{{data.id}}">
+                            <a routerLink="/fcdetail/{{data?.id}}">
                                 <img src="{{Imageurl}}{{data.flashcard_image}}" alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a>
-                            <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist"
-                                    (click)="addwishlist(data.id)">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
+                          
                         </figure>
                         <!-- Image end -->
                         <!-- card and author name start -->
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a routerLink="/fcdetail/{{data.id}}" title="{{data.name}}">{{data.name}}</a>
+                                <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
-                                <a title="User Name:{{data.user_id}}" routerLink="/fcdetail/{{data.id}}">{{data.user_id
+                                <a title="User Name:{{data.user_id}}" routerLink="/fcdetail/{{data?.id}}">{{data.user_id
                                     | titlecase}}</a>
                             </div>
                             <!-- card and author name end -->
@@ -68,7 +63,7 @@
                             <div class="rating_and_price">
                                 <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                                 <a class="product-list__price"
-                                    routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                    routerLink="/fcdetail/{{data?.id}}">{{data.price | currency:'USD'}}</a>
                             </div>
                             <!-- rating an dprice end -->
                             <!-- ------Cart Heart and Buy Now Button div start------- -->
@@ -137,31 +132,26 @@
                     <div class="product-list__item">
                         <!-- Img start -->
                         <figure class="product-list__img">
-                            <a routerLink="/fcdetail/{{data.id}}">
+                            <a routerLink="/fcdetail/{{data?.id}}">
                                 <img src="{{Imageurl}}{{data.flashcard_image}}" alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a>
-                            <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist"
-                                    (click)="addwishlist(data.id)">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
+                          
                         </figure>
                         <!-- Img end -->
                         <!-- card and author name start -->
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a routerLink="/fcdetail/{{data.id}}" title="{{data.name}}">{{data.name}}</a>
+                                <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
                                 <a title="User Name:{{data.user_id}}"
-                                    routerLink="/fcdetail/{{data.id}}">{{data.user_id}}</a>
+                                    routerLink="/fcdetail/{{data?.id}}">{{data.user_id}}</a>
                             </div>
                         <!-- card and author name end -->
                             <!-- rating and price start -->
                             <div class="rating_and_price">
                                     <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                                     <a class="product-list__price"
-                                        routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                        routerLink="/fcdetail/{{data?.id}}">{{data.price | currency:'USD'}}</a>
                                 </div>
                                 <!-- rating an dprice end -->
                                 <!-- ------Cart Heart and Buy Now Button div start------- -->
@@ -230,31 +220,26 @@
                     <div class="product-list__item">
                         <!-- Img start -->
                         <figure class="product-list__img">
-                            <a routerLink="/fcdetail/{{data.id}}">
+                            <a routerLink="/fcdetail/{{data?.id}}">
                                 <img src="{{Imageurl}}{{data.flashcard_image}}" alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a>
-                            <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist"
-                                    (click)="addwishlist(data.id)">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
+                           
                         </figure>
                         <!-- Img end -->
                         <!-- card and author name start -->
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a routerLink="/fcdetail/{{data.id}}" title="{{data.name}}">{{data.name}}</a>
+                                <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
                                 <a title="User Name:{{data.user_id}}"
-                                    routerLink="/fcdetail/{{data.id}}">{{data.user_id}}</a>
+                                    routerLink="/fcdetail/{{data?.id}}">{{data.user_id}}</a>
                             </div>
                         <!-- card and author name end -->
                               <!-- rating and price start -->
                               <div class="rating_and_price">
                                     <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                                     <a class="product-list__price"
-                                        routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                        routerLink="/fcdetail/{{data?.id}}">{{data.price | currency:'USD'}}</a>
                                 </div>
                                 <!-- rating an dprice end -->
                                 <!-- ------Cart Heart and Buy Now Button div start------- -->
@@ -322,31 +307,26 @@
                     <div class="product-list__item">
                         <!-- Img start -->
                         <figure class="product-list__img">
-                            <a routerLink="/fcdetail/{{data.id}}">
+                            <a routerLink="/fcdetail/{{data?.id}}">
                                 <img src="{{Imageurl}}{{data.flashcard_image}}" alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a>
-                            <div class="wishlist-overlay">
-                                <a class="product-list__wishlist" title="Add to wishlist"
-                                    (click)="addwishlist(data.id)">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
+                          
                         </figure>
                         <!-- Img end -->
                         <!-- card and author name start -->
                         <div class="product-list__content">
                             <div class="product-list__category">
-                                <a routerLink="/fcdetail/{{data.id}}" title="{{data.name}}">{{data.name}}</a>
+                                <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
                             </div>
                             <div class="product-list__title tutor-subject">
                                 <a title="User Name:{{data.user_id}}"
-                                    routerLink="/fcdetail/{{data.id}}">{{data.user_id}}</a>
+                                    routerLink="/fcdetail/{{data?.id}}">{{data.user_id}}</a>
                             </div>
                         <!-- card and author name end -->
                             <!-- rating and price start -->
                             <div class="rating_and_price">
                                     <rating ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating>
                                     <a class="product-list__price"
-                                        routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
+                                        routerLink="/fcdetail/{{data?.id}}">{{data.price | currency:'USD'}}</a>
                                 </div>
                                 <!-- rating an dprice end -->
                                 <!-- ------Cart Heart and Buy Now Button div start------- -->
