@@ -782,8 +782,7 @@ blockquote .blockquote-author {
     transition: all .5s ease 0s
 }
 
-.product-list__wishlist,
-.product-list__wishlist-1 {
+.product-list__wishlist {
     font-size: 35px;
     font-weight: 700;
     position: absolute;
