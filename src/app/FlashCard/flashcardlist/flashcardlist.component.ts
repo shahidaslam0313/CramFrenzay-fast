@@ -114,7 +114,7 @@ export class FlashcardlistComponent implements OnInit {
   searchResult: any = [];
   cartitems;
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
-    window.console.log("constructing Greeter.");
+   
 
     this.bidflash();
  

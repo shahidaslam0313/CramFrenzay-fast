@@ -6,11 +6,7 @@
                 <!-- Image start -->
                 <figure class="product-list__img">
                     <a routerLink="/notes/{{data.id}}"> <img src="{{Imageurl}}{{data.notes_thumbnail}}" alt=""> </a>
-                    <div class="wishlist-overlay" *ngIf="!data.wishlist==true">
-                        <a class="product-list__wishlist" title="Add to wishlist"
-                            (click)="addwishlist(nullvalue,nullvalue,nullvalue,data?.id)"> <i class="far fa-heart"></i>
-                        </a>
-                    </div>
+                    
                 </figure>
                 <!-- Image start -->
 
@@ -96,9 +92,7 @@
                 <figure class="product-list__img">
                     <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.course_thumbnail}}" alt="">
                     </a>
-                    <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" href="javascript:void(0)"> <i class="far fa-heart"></i> </a>
-                    </div>
+                  
                 </figure>
                 <!-- Image End -->
                 <!-- ------Course & Tutor name Start------- -->
@@ -174,9 +168,7 @@
                 <!-- Image Start -->
                 <figure class="product-list__img">
                     <a routerLink="/fcdetail/{{data.id}}"> <img src="{{Imageurl}}{{data.flashcard_image}}" alt=""> </a>
-                    <div class="wishlist-overlay">
-                        <a class="product-list__wishlist" href="javascript:void(0)"> <i class="far fa-heart"></i> </a>
-                    </div>
+                    
                 </figure>
                 <!-- Image End -->
                 <!-- ------Course & Tutor name start------- -->
@@ -258,10 +250,7 @@
                     <!-- Image Start -->
                     <figure class="product-list__img">
                         <a routerLink="/detail/{{data.id}}"> <img src="{{Imageurl}}{{data.book_image}}" alt=""> </a>
-                        <div class="wishlist-overlay">
-                            <a class="product-list__wishlist" href="javascript:void(0)"> <i class="far fa-heart"></i>
-                            </a>
-                        </div>
+                       
                     </figure>
                     <!-- Image Start -->
                     <!-- ------Course & Tutor name start------- -->
