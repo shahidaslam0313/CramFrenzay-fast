@@ -398,13 +398,6 @@ export class MainpageComponent implements OnInit {
     this.mainpage.showCartItem().subscribe(data =>{
     })
   }
-  // getcart(){
-  //   this.mainpage.showCartItem().subscribe(data=>{
-  //     this.cart=data
-
-  //   })
-  // }
-
   sweetalertsignin() {
     swal({
       text: "Please Login First",
@@ -417,7 +410,6 @@ export class MainpageComponent implements OnInit {
   bidcourse() {
     this.mainpage.BidCourseson().subscribe(data => {
       this.result4 = data;
-
       this.slideConfig = {
         'slidesToShow': 5, 'slidesToScroll': 5,
         autoplay: false,
@@ -460,7 +452,6 @@ export class MainpageComponent implements OnInit {
       };
     });
   }
-
   BidBuybooks() {
     this.mainpage.BidbuyBooksonnMainPage().subscribe(data => {
       this.bidbooks = data;
@@ -506,7 +497,6 @@ export class MainpageComponent implements OnInit {
       };
     });
   }
-
   BidBuynotes() {
     this.mainpage.BidbuyNotesonnMainPage().subscribe(data => {
       this.bidnotes = data;
