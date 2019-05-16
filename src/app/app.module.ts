@@ -60,7 +60,6 @@ import { notesgenieservice } from './NotesGenie/notesgenie/notesgenie.service';
 import { booksservice } from './Books/books/books.service';
 import { detailservice } from './Books/detail/detail.service';
 import { BookcategoryService } from './Books/bookcategory/bookcategory.service';
-import { TextbooksService } from './Books/textbooks/textbooks.service';
 import { AllbooksService } from './Books/allbooks/allbooks.service';
 import { SearchbooksService } from './Books/searchbooks/searchbooks.service';
 import { BookseemoreService } from './Books/bookseemore/bookseemore.service';
@@ -95,7 +94,6 @@ import { cardsubcategoryeservice } from './FlashCard/flashcard-subcategory/flash
 //  Tutors Module
 import { TeachersService } from './Tutors/teachers/teachers.service';
 import { TutorregistrationService } from './Tutors/tutorregistration/tutorregistration.service';
-import { TutorinterviewService } from './Tutors/tutorinterview/tutorinterview.service';
 import { FindtutorService } from './Tutors/findtutor/findtutor.service';
 import { TutorsearchService } from './Tutors/tutorsearch/tutorsearch.service';
 import { tutorservice } from './Tutors/tutor/tutor.service';
@@ -303,7 +301,6 @@ export class MaterialModule { }
     AllbooksService,
     SearchbooksService,
     BookseemoreService,
-    TextbooksService,
     BookcategoryService,
     booksservice,
     detailservice,
@@ -336,7 +333,6 @@ export class MaterialModule { }
     FcseemoreService,
     // Tutors Module
     TutorregistrationService,
-    TutorinterviewService,
     tutorservice,
     FindtutorService,
     TutorsearchService,
