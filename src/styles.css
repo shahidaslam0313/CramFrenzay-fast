@@ -997,7 +997,8 @@ blockquote .blockquote-author {
     border-radius: 10px;
     background-color: #fff;
     margin-bottom: 15px;
-    border: 1px solid #eee
+    border: 1px solid #eee;
+    max-width: 230px;
 }
 
 .product-list__item:hover {
@@ -1548,14 +1549,6 @@ blockquote .blockquote-author {
     box-shadow: 0 1px 11px #444;
     border: 1px solid #fff
 }
-
-.form-1-btn:hover,
-.modal-btn:hover {
-    background: #c00;
-    color: #fff !important;
-    border-color: #c00
-}
-
 .right-arrow-slider {
     background: #fff;
     color: #000;
@@ -1854,14 +1847,6 @@ mat-form-field.mat-form-field {
     cursor: pointer;
     border-radius: 30px
 }
-
-.modal-btn:hover {
-    color: #c00 !important;
-    border: 1px solid #c00;
-    background-color: transparent
-}
-
-
 .progress-title {
     font-size: 16px;
     font-weight: 700;
@@ -5000,8 +4985,9 @@ button:hover {
 }
 
 .already-bought img {
+    width: 25px;
     display: inline !important;
-    width: 25px
+   
 }
 
 .heart_cart i {
@@ -5915,60 +5901,20 @@ ngx-slick.slick-initialized {
 .pdf-btn {
     color: #fff !important
 }
-
-.updated-course-tab .nav-tabs {
-    border: none;
-
-    color: #ffffff !important
-}
-
 .Input-capitalize {
     text-transform: capitalize;
 }
-
-.updated-course-tab ul li a {
-    border: none !important;
-    color: #696767;
-    outline: 0;
-    transition: all .3s ease-in-out;
-    text-decoration: none;
-    padding: 10px;
-    line-height: normal;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.updated-course-tab ul li {
-    width: 100%;
-}
-
-.updated-course-tab {
-    left: 0;
-    box-shadow: 0 0 5px #ccc;
-    padding: 50px 5px;
-    z-index: 9;
-    max-width: 312px;
-    background: #fff;
-}
-
-.updated-course-tab ul li a i {
-    margin-right: 5px;
-}
-
-.updated-course-tab ul li:hover,
-.updated-course-tab .nav-tabs .nav-link.active {
-    font-weight: 600;
-    background: #efefef;
-    text-decoration: none;
-    color: #000;
-}
-
 /* .............Partnership........... */
 .partnership .mat-form-field-placeholder,
 .partnership .mat-input-element {
     color: #fff !important;
 }
-
+.side-tabs.s_sidebar{
+    margin-top: 90px
+}
+.side-tabs i{
+    width: 25px;
+}
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px
