@@ -8,12 +8,6 @@
             <a routerLink="/nestedcategorylist/{{data?.id}}" (click)="nestedcatname(data.name)">
             <!--<img src="{{Imageurl}}{{data?.icon_class}}" alt="Course">-->
             <img src="/assets/img/Logo-gray.jpg" > </a>
-
-          <div class="wishlist-overlay">
-            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
-              <i class="far fa-heart"></i>
-            </a>
-          </div>
         </figure>
         <div class="product-list__content">
           <div class="product-list__category">
@@ -35,11 +29,6 @@
         <figure class="product-list__img">
           <a routerLink="/notes/{{data?.id}}">
             <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes"> </a>
-          <div class="wishlist-overlay">
-            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
-              <i class="far fa-heart"></i>
-            </a>
-          </div>
         </figure>
         <div class="product-list__content">
           <div class="product-list__category">
@@ -62,11 +51,6 @@
         <figure class="product-list__img">
           <a routerLink="/eachcourse/{{data?.id}}" (click)="sliderClick(data.name)">
             <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course"> </a>
-          <div class="wishlist-overlay">
-            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
-              <i class="far fa-heart"></i>
-            </a>
-          </div>
         </figure>
         <div class="product-list__content">
           <div class="product-list__category">
@@ -90,11 +74,6 @@
         <figure class="product-list__img">
           <a routerLink="/fcdetail/{{data?.id}}" (click)="sliderClick(data.name)">
             <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards"> </a>
-          <div class="wishlist-overlay">
-            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
-              <i class="far fa-heart"></i>
-            </a>
-          </div>
         </figure>
         <div class="product-list__content">
           <div class="product-list__category">
@@ -116,11 +95,6 @@
         <figure class="product-list__img">
           <a routerLink="/detail/{{data?.id}}" (click)="sliderClick(data.name)">
             <img src="{{Imageurl}}{{data?.book_image}}" alt="book"> </a>
-          <div class="wishlist-overlay">
-            <a class="product-list__wishlist" (click)="addwishlist(data.id)">
-              <i class="far fa-heart"></i>
-            </a>
-          </div>
         </figure>
         <div class="product-list__content">
           <div class="product-list__category">

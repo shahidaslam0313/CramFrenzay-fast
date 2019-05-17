@@ -136,17 +136,6 @@
                             <a routerLink="/eachcourse/{{data.id}}">
                                 <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Courses">
                             </a>
-                            <div class="wishlist-overlay" *ngIf="!data.wishlist==true">
-                                <a class="product-list__wishlist" title="Add to wishlist" (click)="addwishlist(nullvalue,data?.id,nullvalue,nullvalue)">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                            <div class="wishlist-overlay" *ngIf="!data.wishlist==false">
-                                <a class="product-list__wishlist"> <span> <i class="fas fa-heart sh-red" style="color: #c00"
-                                            title="Click and remove from wishlist" (click)="delCourseFwishList(data)"></i>
-                                    </span>
-                                </a>
-                            </div>
                         </figure>
                         <!---------Image End-------->
 

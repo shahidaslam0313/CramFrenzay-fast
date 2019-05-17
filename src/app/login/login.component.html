@@ -59,17 +59,17 @@
                     <h1>Forgot Password</h1>
                 </div>
             </div>
-            <form [formGroup]="forgotpasswordForm">
+            <form [formGroup]="forgotpasswordForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="modal-body my-3">
                     <mat-form-field class="singup-feilds-padding width100"> <input class="signup-input-font" matInput
-                            type="text" id="email" formControlName="email" placeholder="Registered Email">
+                            type="text" id="email" formControlName="email" placeholder="Enter Email">
                         <mat-error *ngIf="email.touched && email.invalid">
                             <mat-error *ngIf="email.errors.required"> Email cannot be empty </mat-error>
                             <mat-error *ngIf="email.errors.pattern"> You can enter only email </mat-error>
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="modal-footer"> <button class="modal-btn" (click)="onSubmit()">Reset</button> <button
+                <div class="modal-footer"> <button class="modal-btn" (click)="onSubmit(f)"  data-dismiss="modal">Send</button> <button
                         class="modal-btn" data-dismiss="modal">Cancel</button> </div>
             </form>
         </div>

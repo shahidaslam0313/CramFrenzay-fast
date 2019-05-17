@@ -92,7 +92,6 @@ export const appRoutes: Routes = [
       { path: 'flashcardlist', loadChildren: './FlashCard/flashcardlist/flashcardlist.module#FlashcardlistModule' },
       // Books Module
       { path: 'allbooks', loadChildren: './Books/allbooks/allbooks.module#AllbooksModule' },
-      { path: 'textbooks', loadChildren: './Books/textbooks/textbooks.module#TextbooksModule' },
       { path: 'books', loadChildren: './Books/books/books.module#BooksModule' },
       { path: 'bookseemore/:name', loadChildren: './Books/bookseemore/bookseemore.module#BookseemoreModule' },
       { path: 'searchbooks/:name', loadChildren: './Books/searchbooks/searchbooks.module#SearchbooksModule' },
@@ -122,7 +121,6 @@ export const appRoutes: Routes = [
       // Tutors Module
       { path: 'tutor', loadChildren: './Tutors/tutor/tutor.module#TutorModule' },
       { path: 'tutorsearch/:name', loadChildren: './Tutors/tutorsearch/tutorsearch.module#TutorsearchModule' },
-      { path: 'tutorinterview', loadChildren: './Tutors/tutorinterview/tutorinterview.module#TutorinterviewModule' },
       { path: 'tutorregistration', loadChildren: './Tutors/tutorregistration/tutorregistration.module#TutorregistrationModule' },
       { path: 'findtutor', loadChildren: './Tutors/findtutor/findtutor.module#FindtutorModule' },
       { path: 'teachers/:id', loadChildren: './Tutors/teachers/teachers.module#TeachersModule' },
