@@ -446,6 +446,7 @@ this.filter(query);
   getid;
  getnotifid(id){
     this.getid = id;
+    this.putdelnotification(this.getid);
  }
   deleid;
 deletenotification(id){
@@ -462,7 +463,7 @@ deletenotification(id){
   }
   read;
   putdelnotification(id) {
-    this.header.putnotification(this.read ,this.getid).subscribe(data => {
+    this.header.putnotification(this.getid).subscribe(data => {
       this.router.navigate(['/mylibrary']);
       this.notification();
     });

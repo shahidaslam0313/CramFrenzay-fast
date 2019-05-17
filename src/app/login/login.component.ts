@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SimpleGlobal } from 'ng2-simple-global';
-import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup , NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
@@ -304,11 +304,11 @@ export class LoginComponent {
     }
   }
 
-  onSubmit() {
+  onSubmit(f: NgForm) {
     if (this.forgotpasswordForm.valid) {
       this.obj.forgotpaassword(this.email.value).subscribe(Res => {
         swal({
-          text: 'Please check your Email!',
+          text: 'Password reset link has been sent to your email',
           title: "CramFrenzy!",
           type: "success",
           showConfirmButton: false,
@@ -327,7 +327,7 @@ export class LoginComponent {
           }
           else if (error.status == 404) {
             swal({
-              text: 'Please regiseter first',
+              text: 'Please register first',
               title: "CramFrenzy!",
               type: "error",
               showConfirmButton: false,
@@ -353,6 +353,7 @@ export class LoginComponent {
         timer: 2000,
       });
     }
+    f.resetForm;
   }
 
   showSuccess() {

@@ -37,7 +37,7 @@ export class headerservice {
       return this.http.get(Config.api + 'bid/user_notifications/' + this.current.user_id, {headers: headers}).map((response: Response) => response.json());
     }
   }
-  putnotification(read , id) {
+  putnotification( id) {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
       headers.append('Content-Type', 'application/json');
       return this.http.put(Config.api + 'bid/read_delete/' + id + '/',
