@@ -71,7 +71,7 @@
                                 <div class="heart_cart">
                                     <!-- ---------------Cart start------------- -->
                                     <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                        (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                        (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                     </i>
 
                                     <i *ngIf="!data.wishlist==true"
@@ -159,7 +159,7 @@
                                     <div class="heart_cart">
                                         <!-- ---------------Cart start------------- -->
                                         <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                            (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                            (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                         </i>
     
                                         <i *ngIf="!data.wishlist==true"
@@ -247,7 +247,7 @@
                                     <div class="heart_cart">
                                         <!-- ---------------Cart start------------- -->
                                         <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                            (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                            (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                         </i>
     
                                         <i *ngIf="!data.wishlist==true"
@@ -334,7 +334,7 @@
                                     <div class="heart_cart">
                                         <!-- ---------------Cart start------------- -->
                                         <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                            (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                            (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                         </i>
     
                                         <i *ngIf="!data.wishlist==true"
@@ -401,7 +401,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID
+          </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">BID
           NOW </a>
         </form>
       </div>

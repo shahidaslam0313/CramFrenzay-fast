@@ -30,7 +30,7 @@
                     <div class="heart_cart_buy">
                         <div class="heart_cart">
                             <!-- ---------------Heart start------------- -->
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delNotesFtrendingNow(data)">
                             </i>
                             <i class=" far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data?.id)"
@@ -115,7 +115,7 @@
                         <div class="heart_cart">
                             <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true" 
                                 (click)="addwishlist(data.id,nullvalue,nullvalue,nullvalue)"> </i>
-                            <i title="Delete from wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                            <i title="Delete from wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                                 (click)="delBookFwishList(data)"></i>
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
                                 (click)="delfromcart(data)"></i>
@@ -194,7 +194,7 @@
                                 (click)="addwishlist(nullvalue,nullvalue,data.id,nullvalue)"> </i>
 
                             <i *ngIf="!data.wishlist==false" title="Add to wishlist" (click)="delFlaskFwishList(data)"
-                                class="fas fa-heart"></i>
+                                class="fas fa-heart sh-red"></i>
 
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
                                 (click)="delfromcart(data)"></i>
@@ -272,7 +272,7 @@
                         <div class="heart_cart_buy">
                             <div class="heart_cart">
 
-                                <i title="Add to wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                                <i title="Add to wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                                     (click)="delBookFwishList(data)"></i>
 
                                 <i *ngIf="!data.wishlist==true"
@@ -340,7 +340,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding()" data-dismiss="modal">Bid Now
+          </mat-form-field> <a class="btn-style" (click)="biding()" data-dismiss="modal">Bid Now
         </a>
 
         </form>
@@ -367,7 +367,7 @@
           <mat-form-field>
             <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">Bid Now
+          </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">Bid Now
         </a>
         </form>
       </div>
@@ -396,7 +396,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidingonbook()" data-dismiss="modal">BID
+          </mat-form-field> <a class="btn-style" (click)="bidingonbook()" data-dismiss="modal">BID
           NOW </a>
         </form>
       </div>
@@ -422,7 +422,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidcard()" data-dismiss="modal">Bid
+          </mat-form-field> <a class="btn-style" (click)="bidcard()" data-dismiss="modal">Bid
           Now </a>
         </form>
       </div>

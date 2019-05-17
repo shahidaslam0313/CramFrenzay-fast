@@ -261,14 +261,14 @@
 .main-nav__list>.main-nav__list-icons>li>.sub-menu>ul>li,
 .main-nav__list>li>.sub-menu>ul>li {
     list-style: none;
-    padding: 5px ;
+    padding: 2px 5px;
     font-weight: 700;
-    position: relative
+    position: relative;
 }
 
 .main-nav__list>li>.sub-menu>ul>li a>i,
 .main-nav__list>li>.sub-menu>ul>li a>span {
-    vertical-align: top;
+    vertical-align: middle;
     text-align: center;
 }
 
@@ -283,7 +283,6 @@
     text-decoration: none;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
@@ -563,4 +562,440 @@
 }
 .fa-apple{
     color: #A3AAAE;
+}
+.dropdown-heading {
+    font-size: 18px;
+    margin: 10px;
+    border-left: 5px solid #c00;
+    padding-left: 10px;
+    font-weight: 600;
+    color: #333
+}
+.float_logo,
+.logo {
+    float: left
+}
+.cutom-pd li a i {
+    width: 20px;
+    margin: 0 3px;
+    font-size: 14px !important;
+}
+
+.sub-menu ul li a img,
+.sub-sub-menu ul li a img {
+    width: 20px;
+    height: 100%;
+    margin-right: 5px
+}
+.cutsom-pd-bars i {
+    width: 20px;
+    margin-right: 5px
+}
+
+.add-book,
+.add-course,
+.add-flash-card,
+.add-notes,
+.become-a-tutor,
+.bid-rent-buy-book,
+.book,
+.book-categories,
+.course,
+.course-categories,
+.find-tutors,
+.flash-card,
+.flash-categories,
+.flash-categories-1,
+.institute-2,
+.notes,
+.notes-categories,
+.q-a-expert,
+.scholorship,
+.scholorships,
+.tutor,
+.upcoming-scolarship {
+    background-size: 100%;
+    max-width: 100%;
+    background-image: url(assets/img/add_notes/submenu.png)
+}
+.add-course {
+    background-position: 0 0
+}
+
+.add-flash-card {
+    background-position: 0 4.761905%
+}
+
+.add-notes {
+    background-position: 0 9.52381%
+}
+
+.add-book {
+    background-position: 0 14.285714%
+}
+
+.become-a-tutor {
+    background-position: 0 19.047619%
+}
+
+.bid-rent-buy-book {
+    background-position: 0 23.809524%
+}
+
+.book-categories {
+    background-position: 0 28.571429%
+}
+
+.book {
+    background-position: 0 33.333333%
+}
+
+.course {
+    background-position: 0 38.095238%
+}
+
+.find-tutors {
+    background-position: 0 42.857143%
+}
+
+.flash-categories-1 {
+    background-position: 0 47.619048%
+}
+
+.flash-categories {
+    background-position: 0 52.380952%
+}
+
+.flash-card {
+    background-position: 0 57.142857%
+}
+
+.institute-2 {
+    background-position: 0 61.904762%
+}
+
+.notes-categories {
+    background-position: 0 66.666667%
+}
+
+.notes {
+    background-position: 0 71.428571%
+}
+
+.q-a-expert {
+    background-position: 0 76.190476%
+}
+
+.scholorship {
+    background-position: 0 80.952381%
+}
+
+.scholorships {
+    background-position: 0 85.714286%
+}
+
+.tutor {
+    background-position: 0 90.47619%
+}
+
+.upcoming-scolarship {
+    background-position: 0 95.238095%
+}
+
+.course-categories {
+    background-position: 0 100%
+}
+.main-nav__list_books_1,
+.main-nav__list_events_1,
+.main-nav__list_flash_cards_1 {
+    display: none
+}
+.heart-li:hover .heart-sub-meun {
+    opacity: 1;
+    visibility: visible;
+    top: 65px
+}
+.addtocart-sub-meun,
+.heart-sub-meun {
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4), 0 6px 20px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4), 0 6px 20px 0 rgba(0, 0, 0, .2)
+}
+
+.main-nav__list_scholarship {
+    display: none !important
+}
+.list-normal {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+.list-normal li {
+    display: block;
+    margin: 0
+}
+
+.heart-main-div,
+.heart-time {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: left
+}
+
+.list-normal li a {
+    color: #000;
+    text-decoration: none;
+    padding: 4px 0;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 22px
+}
+.list-normal li a:hover {
+    color: #c00
+}
+
+.list-normal li a i {
+    color: #c00;
+    padding-right: 5px
+}
+
+.heart-li {
+    position: relative !important
+}
+
+.heart-li sup {
+    top: -15px;
+    left: -5px
+}
+
+.heart-sub-meun {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    color: #000;
+    width: 450px;
+    transition: .4s
+}
+
+.heart-full-div {
+    max-height: 350px;
+    overflow: auto
+}
+
+.heart-detail {
+    color: #767676;
+    font-size: 14px
+}
+
+.heart-detail,
+.heart-heading {
+    overflow: hidden;
+    font-weight: 600
+}
+
+.heart-time {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end
+}
+
+.heart-time i {
+    color: #c00
+}
+
+.heart-time i:hover {
+    color: #a00
+}
+.wishlist-btn {
+    text-transform: capitalize;
+    font-size: 20px;
+    text-align: center
+}
+
+.heart-card-btn {
+    font-size: 14px
+}
+.heart-card-btn:focus,
+.heart-card-btn:hover {
+    background: #c00;
+    color: #fff;
+    border-color: #c00
+}
+
+.wishlist-btn-div {
+    display: block;
+    background: #f2f3f5;
+    padding: 5px;
+    text-align: center
+}
+
+.wishlist-btn-div .btn {
+    width: 50%
+}
+
+.wishlist-btn {
+    color: #fff;
+    background: #000;
+    padding: 15px;
+    border-radius: 50px;
+    display: block
+}
+
+.wishlist-btn:focus {
+    color: #fff
+}
+
+.heart-img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover
+}
+.heart-contact {
+    margin-left: 10px;
+    width: 70%
+}
+.heart-heading {
+    color: #333;
+    font-size: 18px
+}
+.heart-new-price {
+    color: #c00;
+    font-size: 18px;
+    font-weight: 600
+}
+.addtocart-li {
+    position: relative !important
+}
+
+.addtocart-li sup {
+    top: -15px;
+    left: -5px
+}
+
+.addtocart-li:hover .addtocart-sub-meun {
+    opacity: 1;
+    visibility: visible;
+    top: 65px
+}
+
+
+.addtocart-sub-meun {
+    position: absolute;
+    top: 100%;
+    right: -10px;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    color: #000;
+    width: 450px;
+    transition: .4s
+}
+.addtocart:hover {
+    background: #f2f3f5
+}
+
+.addtocart-full-div {
+    max-height: 350px;
+    overflow: auto
+}
+
+.addtocart {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: right
+}
+
+.addtocart-time {
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end
+}
+
+.addtocart-time i {
+    color: #c00;
+    cursor: pointer
+}
+
+.addtocart-time i:hover {
+    color: #a00
+}
+
+.addtocart-main-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: left
+}
+
+.addtocart-img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover
+}
+
+.discount-p {
+    float: right;
+    color: #6d6c6c;
+    line-height: 34px
+}
+
+.discount-p i {
+    margin-left: 5px
+}
+
+.addtocart-contact {
+    margin-left: 10px;
+    width: 70%
+}
+
+.notification-box {
+    width: 100%;
+    margin: 0
+}
+
+.notification-box-heading {
+    padding: 5px 10px
+}
+
+.notification-heading {
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    font-weight: 600;
+    padding: 0 10px
+}
+.addtocart-new-price {
+    color: #c00;
+    font-size: 24px;
+    margin-right: 5px
+}
+
+.addtocart-main-total-title {
+    color: #000
+}
+
+.addtocart-main-total-price {
+    color: #c00
+}
+
+.addtocart-main-total {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 12px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #f2f3f5
 }

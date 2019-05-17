@@ -75,7 +75,7 @@
                                         <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -97,7 +97,7 @@
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                                 *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true " data-target="#notesbid">
@@ -159,7 +159,7 @@
                                         <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -181,7 +181,7 @@
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                                 *ngIf="data?.sell_status==true && !data.Purchased "> Buy Now at {{data.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
@@ -243,7 +243,7 @@
                                         <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -265,7 +265,7 @@
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" (click)="courses(data?.id)"> Buy Now at{{data.price | currency:'USD'}}
                             </a>
-                            <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}} </a>
                             <a class="already-bought" *ngIf="data.Purchased == true && !data.Purchased"
@@ -326,7 +326,7 @@
                                     <!-- ---------------Heart start------------- -->
                         <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                             *ngIf="!data.wishlist==true"></i>
-                        <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                        <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                             (click)="delCourseFwishList(data)">
                         </i>
                         <!-- ---------------Heart end------------- -->
@@ -348,7 +348,7 @@
                         <div class="product-list__item-info-1">
                             <a class="btn-style text-transform-none" (click)="courses(data?.id)"> Buy Now at {{data.price | currency:'USD'}}
                             </a>
-                            <a type="button" class="btn-style"  text-transform-nonedata-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style"  text-transform-nonedata-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidcourseid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
@@ -388,7 +388,7 @@
           <mat-form-field>
             <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID NOW
+          </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">BID NOW
         </a>
         </form>
       </div>

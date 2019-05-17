@@ -20,7 +20,7 @@
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">My Profile</h1>
 
-            <form class="user-add-ingo-form modal-form margin-top-50" enctype="multipart/form-data" [formGroup]="user">
+            <form class="user-add-ingo-form modal-form" enctype="multipart/form-data" [formGroup]="user">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" [ngClass]="displayFieldCss(user, 'firstname')">
                         <mat-form-field>
@@ -126,9 +126,9 @@
                             <!-- <img src="../assets/img/default-user-icon-profile.png" *ngIf="!profilePhoto">  -->
                     </div>
                 </div>
-                <button type="submit" *ngIf="!ImgSrc" class="user-add-ingo-form-btn margin-top-10 width100"
+                <button type="submit" *ngIf="!ImgSrc" class="btn-style margin-top-10 width100"
                     (click)="userdata()" >save</button>
-                    <button type="submit"  class="user-add-ingo-form-btn margin-top-10 width100"
+                    <button type="submit"  class="btn-style margin-top-10 width100"
                     (click)="onSubmit()" *ngIf="ImgSrc" >save</button>
             </form>
         </div>

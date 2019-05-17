@@ -87,7 +87,7 @@
                             <div class="agree-button-div ">
                                 <mat-checkbox  (change)="changeCheck($event)">I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
                                     Privacy Policy</a></mat-checkbox>
-                                    <button [disabled]="disabledAgreement" class="btn-style " (click)="onRegister()" >Sign Up</button>
+                                    <button [disabled]="disabledAgreement" class="btn-style width100" (click)="onRegister()" >Sign Up</button>
                                 <div class="have-account">Already have an account?
                                     <a routerLink="/login">Sign In</a>
                                 </div> 
@@ -183,14 +183,12 @@
                             <div class="agree-button-div ">
                                 <mat-checkbox  (change)="changeCheck($event)">I have read and agreed to <a href="/terms" target="blank">Terms of Use </a> and <a href="/privacy-policy" target="blank">
                                     Privacy Policy</a></mat-checkbox>
-                                <button [disabled]="disabledAgreement" class="btn-style " (click)="instituteRegister()">Sign Up</button>
+           <button [disabled]="disabledAgreement" class="btn-style width100" (click)="instituteRegister()">Sign Up</button>
                                 <div class="have-account">Already have an account?
                                     <a routerLink="/login">Sign In</a>
                                 </div> 
                             </div>
                         </div>
-                       
-                        <!-- <div id="instituteDetails"> </div> -->
                     </form>
                 </div>
             </div>

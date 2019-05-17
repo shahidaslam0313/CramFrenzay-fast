@@ -69,10 +69,6 @@
             <div class="container">
                 <div class="row my-5">
                     <div class="col-lg-8 col-md-8">
-                        <!-- <div class="details-section">
-                            <h1 class="mt-5">Details</h1>
-                            <p class="mb-5">{{data?.detail | titlecase}}</p>
-                        </div> -->
                         <div class="What-will-i-learn">
                             <div class="What-will-i-learn__content">
                                 <div class="What-will-i-learn__title"> What Will I Learn? </div>
@@ -139,15 +135,15 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <form name="form" role="form" method="post">
-                                        <h4>Review <sup>*</sup></h4> <textarea class="form-control"  placeholder="Leave a review" name="comment" [(ngModel)]="model.comment"
+                                        <h4>Review <sup>*</sup></h4> <textarea class="form-control"  placeholder="Leave a Review" name="comment" [(ngModel)]="model.comment"
                                              clear-field></textarea>
-                                        <div class="pull-right">
-                                            <button class="margin-top-10 btn-style" title="Submit Review" type="submit"
+                                        <div class="text-right review-button">
+                                            <a class="margin-top-10 Review btn-style" title="Submit " 
                                                 (click)="reviews(rate, comment,  nullvalue, nullvalue, flashcardDetail.id, nullvalue)">
                                                 <span>
                                                     <i class="far fa-thumbs-up"></i> Review
                                                 </span>
-                                            </button>
+                                            </a>
                                         </div>
                                     </form>
                                 </div>
@@ -320,10 +316,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-12">
-                                            <h3>Comment :{{reviews?.comment}}</h3>
-                                            <h3>Post date :{{reviews?.commentDate}}</h3>
-                                        </div> -->
                                     </div>
 
                                 </div>

@@ -1,4 +1,4 @@
-<div class="card"> <button type="button" class="close" aria-label="Close" (click)="onNoClick()" tabindex="-1"> <span
+<div class="card"> <button  class="close" aria-label="Close" (click)="onNoClick()" tabindex="-1"> <span
       aria-hidden="true">&times;</span> </button>
   <form (ngSubmit)="!video_title.hasError('required') && !video_title.hasError('pattern') && onSubmit(f)" #f="ngForm" enctype="multipart/form-data" id="videoform" name="videoform" method="post">
     <div class="card-header text-center" data-background-color="rose">

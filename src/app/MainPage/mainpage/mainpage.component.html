@@ -73,7 +73,7 @@
     <div class="main-nav-slider">
         <form class="search-bg">
             <input class="search-bg__text search-bg__text-placeholder" type="text" name="search-bg-name" placeholder="Search CramFrenzy">
-            <a class="search-bg__btn btn-search" type="button">Search</a>
+            <a class="search-bg__btn btn-search" >Search</a>
             <a class="search-bg__btn btn-icon-search"> <i class="fas fa-search"></i>
             </a>
         </form>
@@ -130,7 +130,7 @@
                             <div class="heart_cart_buy">
                                 <div class="heart_cart">
                                     <!-- ---------------Heart start------------- -->
-                                    <i *ngIf="!data.wishlist==false" class="sh-red fas fa-heart" title="Click and remove from wishlist"
+                                    <i *ngIf="!data.wishlist==false" class="sh-red fas fa-heart sh-red" title="Click and remove from wishlist"
                                         (click)="deleteFWL(data)">
                                     </i>
                                     <i class="far fa-heart" title="Click and Add to wishlist" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
@@ -209,7 +209,7 @@
                             <div class="heart_cart_buy">
                                 <div class="heart_cart">
                                     <!-- ---------------Heart start------------- -->
-                                    <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                                    <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                         (click)="delCourseFwishList(data)">
                                     </i>
                                     <i class=" far fa-heart" (click)="addwishlist(nullvalue,data?.id,nullvalue,nullvalue)"
@@ -293,7 +293,7 @@
                                 <div class="heart_cart">
                                     <!-- ---------------Cart start------------- -->
                                     <i *ngIf="!data.wishlist==false" title="Add to wishlist" (click)="delFlaskFwishList(data)"
-                                        class="fas fa-heart">
+                                        class="fas fa-heart sh-red">
                                     </i>
 
                                     <i *ngIf="!data.wishlist==true" (click)="addwishlist(nullvalue,nullvalue,data.id,nullvalue)"
@@ -380,7 +380,7 @@
                             <div class="heart_cart_buy">
                                 <div class="heart_cart">
 
-                                    <i title="Add to wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                                    <i title="Add to wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                                         (click)="delBookFwishList(data)"></i>
 
                                     <i *ngIf="!data.wishlist==true" (click)="addwishlist(data?.id, nullvalue, nullvalue,nullvalue)"
@@ -479,7 +479,7 @@
                     <mat-form-field>
                         <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                             #bidamount="ngModel" name="bidamount">
-                    </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc(f)" data-dismiss="modal">BID NOW
+                    </mat-form-field> <a class="btn-style" (click)="bidc(f)" data-dismiss="modal">BID NOW
                     </a>
                 </form>
             </div>
@@ -505,7 +505,7 @@
                     <mat-form-field>
                         <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                             #bidamount="ngModel" name="bidamount">
-                    </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding(f)" data-dismiss="modal">BID NOW
+                    </mat-form-field> <a class="btn-style" (click)="biding(f)" data-dismiss="modal">BID NOW
                     </a>
 
                 </form>
@@ -532,7 +532,7 @@
                     <mat-form-field>
                         <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                             #bidamount="ngModel" name="bidamount">
-                    </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidcard(f)" data-dismiss="modal">BID
+                    </mat-form-field> <a class="btn-style" (click)="bidcard(f)" data-dismiss="modal">BID
                         NOW </a>
                 </form>
             </div>
@@ -561,7 +561,7 @@
                     <mat-form-field>
                         <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                             #bidamount="ngModel" name="bidamount">
-                    </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidingonbook(f)" data-dismiss="modal">BID
+                    </mat-form-field> <a class="btn-style" (click)="bidingonbook(f)" data-dismiss="modal">BID
                         NOW </a>
                 </form>
             </div>
