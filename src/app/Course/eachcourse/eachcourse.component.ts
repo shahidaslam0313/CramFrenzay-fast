@@ -10,6 +10,7 @@ import {AddtocartComponent} from './../../addtocart/addtocart.component';
 import { PagerService } from '../../paginator.service';
 import {VideoShowDialogComponent} from "../../userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
 import {MatDialog} from "@angular/material";
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 @Component({
   selector: 'app-eachcourse',
   templateUrl: './eachcourse.component.html',
@@ -36,6 +37,11 @@ export class EachcourseComponent implements OnInit {
   all_video;
   totalvid;
   model: any = {};
+  reviewform = new FormGroup({
+    comment: new FormControl('', [
+      Validators.required
+      ])
+  })
   constructor(private pagerService: PagerService, private eachcourse: EachcourseService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object,  public dialog: MatDialog ,public addtocart: AddtocartComponent) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
@@ -177,9 +183,10 @@ export class EachcourseComponent implements OnInit {
 book = null;
   flashcard= null ;
   notes = null;
-  reviews(rate, comment,  result, book, flashcard, notes) {
+  reviews(rate, comment,  result, book, flashcard, notes,f: NgForm) {
     if (this.check_login()) {
       // this.id = result;
+      if (this.reviewform.controls.comment.valid) {
       this.eachcourse.review(this.rate, this.model.comment, this.result.id, book,  flashcard, notes).subscribe(data => {
         swal({
           type: 'success',
@@ -211,6 +218,15 @@ book = null;
     else {
       swal({
         type: 'error',
+        text: 'Leave a Review',
+        width: '512px',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }}
+    else {
+      swal({
+        type: 'error',
         title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
@@ -219,6 +235,7 @@ book = null;
       });
       this.router.navigate(['/login']);
     }
+    f.resetForm()
   }
   coursess(id) {
     if (this.check_login() == true) {

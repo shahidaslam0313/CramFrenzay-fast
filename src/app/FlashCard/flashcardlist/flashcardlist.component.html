@@ -71,7 +71,7 @@
                                 <div class="heart_cart">
                                     <!-- ---------------Cart start------------- -->
                                     <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                        (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                        (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                     </i>
 
                                     <i *ngIf="!data.wishlist==true"
@@ -88,7 +88,7 @@
                                 <!-- -------------------Cart End-------------------- -->
                                 <div class="buy_btn">
                                     <a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased"
-                                        (click)="openDialog4(data?.id)">Offer
+                                        (click)="openDialog3(data?.id)">Offer
                                         Now</a>
                                 </div>
 
@@ -158,7 +158,7 @@
                                     <div class="heart_cart">
                                         <!-- ---------------Cart start------------- -->
                                         <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                            (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                            (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                         </i>
     
                                         <i *ngIf="!data.wishlist==true"
@@ -175,7 +175,7 @@
                                     <!-- -------------------Cart End-------------------- -->
                                     <div class="buy_btn">
                                         <a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased"
-                                            (click)="openDialog4(data?.id)">Offer
+                                            (click)="openDialog3(data?.id)">Offer
                                             Now</a>
                                     </div>
     
@@ -245,7 +245,7 @@
                                     <div class="heart_cart">
                                         <!-- ---------------Cart start------------- -->
                                         <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                            (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                            (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                         </i>
     
                                         <i *ngIf="!data.wishlist==true"
@@ -262,7 +262,7 @@
                                     <!-- -------------------Cart End-------------------- -->
                                     <div class="buy_btn">
                                         <a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased"
-                                            (click)="openDialog4(data?.id)">Offer
+                                            (click)="openDialog3(data?.id)">Offer
                                             Now</a>
                                     </div>
     
@@ -331,7 +331,7 @@
                                     <div class="heart_cart">
                                         <!-- ---------------Cart start------------- -->
                                         <i *ngIf="!data.wishlist==false" title="Add to wishlist"
-                                            (click)="delFlaskFwishList(data)" class="fas fa-heart">
+                                            (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red">
                                         </i>
     
                                         <i *ngIf="!data.wishlist==true"
@@ -348,7 +348,7 @@
                                     <!-- -------------------Cart End-------------------- -->
                                     <div class="buy_btn">
                                         <a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased"
-                                            (click)="openDialog4(data?.id)">Offer
+                                            (click)="openDialog3(data?.id)">Offer
                                             Now</a>
                                     </div>
     
@@ -398,7 +398,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID
+          </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">BID
           NOW </a>
         </form>
       </div>

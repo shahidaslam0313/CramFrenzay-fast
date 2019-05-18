@@ -1,176 +1,176 @@
 <div class="each-upper-banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-8 upper-banner-contact">
-                <h1>{{result?.name | titlecase}}</h1>
-                <h4>Author Name: {{result?.author| titlecase}}</h4>
-                <p class="detail">{{result?.description}}</p>    
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-8 upper-banner-contact">
+        <h1>{{result?.name | titlecase}}</h1>
+        <h4>Author Name: {{result?.author| titlecase}}</h4>
+        <p class="detail">{{result?.description}}</p>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container padding-top-40">
-    <div class="row">
-        <div class="col-lg-8 col-md-8">
-            <!-- <div class="details-section">
-                <h1 class="mt-5">Details</h1>
-                <p class="mb-5">{{result?.detail | titlecase}}</p>
-            </div> -->
-            <div class="What-will-i-learn">
-                <div class="What-will-i-learn__content">
-                    <div class="What-will-i-learn__title"> What Will I Learn? </div>
-                    <ul class="What-will-i-learn__items">
-                        <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
-                            </span> <span class="What-will-i-learn__text">Create boilerplate starter projects with
-                                React, Redux, Express, and Mongo</span> </li>
-                        <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
-                            </span> <span class="What-will-i-learn__text">Understand common web technologies and
-                                design patterns to connect them together</span> </li>
-                        <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
-                            </span> <span class="What-will-i-learn__text">Master deployment techniques between the
-                                production and development environments</span> </li>
-                        <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
-                            </span> <span class="What-will-i-learn__text">Make an app with Google OAuth
-                                authentication</span> </li>
-                        <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
-                            </span> <span class="What-will-i-learn__text">Learn to effectively create and send
-                                emails from a backend server</span> </li>
-                        <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
-                            </span> <span class="What-will-i-learn__text">Accept and process credit card payments
-                                from users</span> </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="reviews-ans" *ngIf="result?.bidpaid == true || result?.paid == true">
-                <div class="row background-grey">
-                    <div class="col-lg-12">
-                        <h4>Rate this course </h4>
-                        <div class="rating-starts">
-                            <fieldset class="ratingq move-to-center"> <input type="radio" id="star5q" name="rating"
-                                    value="5" (click)="get(5)" /> <label class="full" for="star5q" title="Awesome - 5 stars"></label>
-                                <input type="radio" id="star4halfq" name="rating" value="4.5" (click)="get(4.5)" />
-                                <label class="half" for="star4halfq" title="Pretty good - 4.5 stars"></label> <input
-                                    type="radio" id="starq" name="rating" value="4" (click)="get(4)" /> <label class="full"
-                                    for="starq" title="Pretty good - 4 stars"></label> <input type="radio" id="star3halfq"
-                                    name="rating" value="3.5" (click)="get(3.5)" /> <label class="half" for="star3halfq"
-                                    title="Meh - 3.5 stars"></label> <input type="radio" id="star3q" name="rating"
-                                    value="3" (click)="get(3)" /> <label class="full" for="star3q" title="Meh - 3 stars"></label>
-                                <input type="radio" id="star2halfq" name="rating" value="2.5" (click)="get(2.5)" />
-                                <label class="half" for="star2halfq" title="Kinda bad - 2.5 stars"></label> <input type="radio"
-                                    id="star2q" name="rating" value="2" (click)="get(2)" /> <label class="full" for="star2q"
-                                    title="Kinda bad - 2 stars"></label> <input type="radio" id="star1halfq" name="rating"
-                                    value="1.5" (click)="get(1.5)" /> <label class="half" for="star1halfq" title="Meh - 1.5 stars"></label>
-                                <input type="radio" id="star1q" name="rating" value="1" (click)="get(1)" /> <label
-                                    class="full" for="star1q" title="Sucks big time - 1 star"></label> <input type="radio"
-                                    id="starhalfq" name="rating" value="0.5" (click)="get(0.5)" /> <label class="half"
-                                    for="starhalfq" title="Sucks big time - 0.5 stars"></label> </fieldset>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <form name="form" role="form" method="post">
-                            <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a review" name="comment"  [(ngModel)]="model.comment"
-                                clear-field></textarea>
-                            <div class="pull-right">
-                                <button class="margin-top-10 btn-style" title="Submit Review" type="submit" (click)="reviews(rate, comment, result.id, nullvalue, nullvalue, nullvalue)">
-                                    <span>
-                                        <i class="far fa-thumbs-up"></i> Review
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <div class="What-will-i-learn">
+        <div class="What-will-i-learn__content">
+          <div class="What-will-i-learn__title"> What Will I Learn? </div>
+          <ul class="What-will-i-learn__items">
+            <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
+              </span> <span class="What-will-i-learn__text">Create boilerplate starter projects with
+                React, Redux, Express, and Mongo</span> </li>
+            <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
+              </span> <span class="What-will-i-learn__text">Understand common web technologies and
+                design patterns to connect them together</span> </li>
+            <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
+              </span> <span class="What-will-i-learn__text">Master deployment techniques between the
+                production and development environments</span> </li>
+            <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
+              </span> <span class="What-will-i-learn__text">Make an app with Google OAuth
+                authentication</span> </li>
+            <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
+              </span> <span class="What-will-i-learn__text">Learn to effectively create and send
+                emails from a backend server</span> </li>
+            <li class="What-will-i-learn__item"> <span class="What-will-i-learn__icon"> <i class="fa fa-check"></i>
+              </span> <span class="What-will-i-learn__text">Accept and process credit card payments
+                from users</span> </li>
+          </ul>
         </div>
-        <div class="col-lg-4 col-md-4 card-1">
-            <div class="card each-card">
-                <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}" alt="Course Image">
-                <div class="card-body">
-                    <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5>
-
-                  <a class="card-btn" *ngIf="result?.bidpaid == true || result?.paid == true">Course Already Bought</a>
-                  <a class="card-btn" *ngIf="result?.paid == false && result?.bidpaid == false" (click)="courses(result?.id)">Buy Now</a>
-
-                  <a class="card-btn btn-add-cart" *ngIf="result?.paid == false && result?.bidpaid == false" (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add to Cart</a>
-
-
-                  <!--<a class="card-btn" (click)="courses(result?.id)">Buy Now</a>-->
-                    <!--<a class="card-btn btn-add-cart" (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add to-->
-                        <!--Cart</a>-->
-                    <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
-                </div>
-                <hr>
-                <div class="card-footer">
-                    <h1 class="text-center">Share This Course</h1>
-                    <ul class="card-footer-social-icon">
-                        <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
-                        <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
-                        <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
-                    </ul>
-                </div>
+      </div>
+      <div class="reviews-ans" *ngIf="result?.bidpaid == true || result?.paid == true">
+        <div class="row background-grey">
+          <div class="col-lg-12">
+            <h4>Rate this course </h4>
+            <div class="rating-starts">
+              <fieldset class="ratingq move-to-center"> <input type="radio" id="star5q" name="rating" value="5"
+                  (click)="get(5)" /> <label class="full" for="star5q" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4halfq" name="rating" value="4.5" (click)="get(4.5)" />
+                <label class="half" for="star4halfq" title="Pretty good - 4.5 stars"></label> <input type="radio"
+                  id="starq" name="rating" value="4" (click)="get(4)" /> <label class="full" for="starq"
+                  title="Pretty good - 4 stars"></label> <input type="radio" id="star3halfq" name="rating" value="3.5"
+                  (click)="get(3.5)" /> <label class="half" for="star3halfq" title="Meh - 3.5 stars"></label> <input
+                  type="radio" id="star3q" name="rating" value="3" (click)="get(3)" /> <label class="full" for="star3q"
+                  title="Meh - 3 stars"></label>
+                <input type="radio" id="star2halfq" name="rating" value="2.5" (click)="get(2.5)" />
+                <label class="half" for="star2halfq" title="Kinda bad - 2.5 stars"></label> <input type="radio"
+                  id="star2q" name="rating" value="2" (click)="get(2)" /> <label class="full" for="star2q"
+                  title="Kinda bad - 2 stars"></label> <input type="radio" id="star1halfq" name="rating" value="1.5"
+                  (click)="get(1.5)" /> <label class="half" for="star1halfq" title="Meh - 1.5 stars"></label>
+                <input type="radio" id="star1q" name="rating" value="1" (click)="get(1)" /> <label class="full"
+                  for="star1q" title="Sucks big time - 1 star"></label> <input type="radio" id="starhalfq" name="rating"
+                  value="0.5" (click)="get(0.5)" /> <label class="half" for="starhalfq"
+                  title="Sucks big time - 0.5 stars"></label> </fieldset>
             </div>
+          </div>
+          <div class="col-lg-12">
+            <form name="form" role="form" method="post"  [formGroup]="reviewform" #f="ngForm" >
+              <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a Review" name="comment"
+                [(ngModel)]="model.comment" clear-field formControlName="comment" required></textarea>
+              <mat-error *ngIf="reviewform.controls.comment.touched && reviewform.controls.comment.invalid">
+                <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review cannot be
+                  empty
+                </mat-error>
+              </mat-error>
+              <div class="text-right review-button">
+                <button class=" btn-style" title="Submit Review" type="submit"
+                  (click)="reviews(rate, comment, result.id, nullvalue, nullvalue, nullvalue,f)">
+                  <span>
+                    <i class="far fa-thumbs-up"></i> Review
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-
-        <div class="col-lg-8 col-sm-12">
-
-          <div class="background-grey review-section ">
-                        <h4>Reviews</h4>
-                      
-                            <div *ngFor="let reviews of view?.reviews">
-                                <div *ngIf="reviews !=null">
-                                 
-                                        <div class="review-container">
-                                                <div class="user-image">
-                                                    <span>AT</span>
-                                                </div>
-                                                <div >
-                                                    <div class="user-name">
-                                                        <span>Anas Tahir</span>
-                                                    </div>
-                                                    <div class="time-to-go">
-
-                                                      <div>
-                                                          <span>{{reviews?.commentDate  | date:'medium'}}</span>
-                                                      </div>
-                                                        
-                                                        <div class="review-box">
-                                                            <div class="rating float_left width100">
-                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                                        class="fa fa-star filled"></i>
-                                                                </div>
-                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                                        class="fa fa-star filled"></i>
-                                                                </div>
-                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                                        class="fa fa-star filled"></i>
-                                                                </div>
-                                                                <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                                        class="fa fa-star-half filled"></i>
-                                                                </div>
-                                                                <div class="float_left position-relative"> <i class="far fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                          
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-        
-                                           
-                                        </div>
-                                   
-                                        <div class="review-body">
-                                            <p>{{reviews?.comment}}</p>
-                                        </div>
-                                </div>
-        
-                            </div>
-                        
-                        
-                    </div>
-        </div>
+      </div>
     </div>
+    <div class="col-lg-4 col-md-4 card-1">
+      <div class="card each-card">
+        <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}"
+          alt="Course Image">
+        <div class="card-body">
+          <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
+          <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5>
+
+          <a class="card-btn" *ngIf="result?.bidpaid == true || result?.paid == true">Course Already Bought</a>
+          <a class="card-btn" *ngIf="result?.paid == false && result?.bidpaid == false"
+            (click)="courses(result?.id)">Buy Now</a>
+
+          <a class="card-btn btn-add-cart" *ngIf="result?.paid == false && result?.bidpaid == false"
+            (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add to Cart</a>
+          <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
+        </div>
+        <hr>
+        <div class="card-footer">
+          <h1 class="text-center">Share This Course</h1>
+          <ul class="card-footer-social-icon">
+            <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
+            <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
+            <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-sm-12">
+
+      <div class="background-grey review-section ">
+        <h4>Reviews</h4>
+
+        <div *ngFor="let reviews of view?.reviews">
+          <div *ngIf="reviews !=null">
+
+            <div class="review-container">
+              <div class="user-image">
+                <span>AT</span>
+              </div>
+              <div>
+                <div class="user-name">
+                  <span>Anas Tahir</span>
+                </div>
+                <div class="time-to-go">
+
+                  <div>
+                    <span>{{reviews?.commentDate  | date:'medium'}}</span>
+                  </div>
+
+                  <div class="review-box">
+                    <div class="rating float_left width100">
+                      <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                          class="fa fa-star filled"></i>
+                      </div>
+                      <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                          class="fa fa-star filled"></i>
+                      </div>
+                      <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                          class="fa fa-star filled"></i>
+                      </div>
+                      <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                          class="fa fa-star-half filled"></i>
+                      </div>
+                      <div class="float_left position-relative"> <i class="far fa-star"></i>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <div class="review-body">
+              <p>{{reviews?.comment}}</p>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
 </div>
 <div class="container">
   <div class="row">
@@ -182,9 +182,9 @@
       <span>Total Chapters:{{totalvid}} </span>
       <div class="col-md-3 float-left">
         <ul class="nav nav-tabs side-tabs">
-        
+
           <li class="width100"><a data-toggle="tab" href="#home1">Curriculum</a></li>
-         
+
         </ul>
       </div>
       <div class="col-md-9 float-right course-tab">
@@ -194,7 +194,7 @@
             <div class="lec-info float-right">
               <span *ngIf="!time">Total Time:00:00:00</span>
               <span>Total Time: {{time}}</span>
-            
+
               <span *ngIf="!totalvid">Total Chapters: 0</span>
               <span>Total Chapters:{{totalvid}} </span>
             </div>
@@ -206,7 +206,7 @@
                       <span>{{data?.chapters.chapter_name}}</span>
                       <div class="mr-5 float_right">
                         <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
-                       
+
                       </div>
                     </a>
                   </h4>
@@ -214,20 +214,21 @@
                 <div attr.id=a{{i}} class="panel-collapse collapse">
                   <div class="panel-body">
                     <div class="float_left">
+                    </div>
+                    <table class="table table-hover" *ngIf="videos">
+                      <tbody>
+                        <tr *ngFor="let video of videos; let j=index">
+                          <td *ngIf="data?.chapters.id===video.chapter_id"><i class="fa fa-play-circle"
+                              (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
+                          <td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_minutes}}</a></td>
+                          <td *ngIf="video.allow_to_view==true">
+                            Preview</td>
+                          <td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_size}}Min
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <table class="table table-hover" *ngIf="videos">
-                    <tbody>
-                    <tr *ngFor="let video of videos; let j=index">
-                      <td *ngIf="data?.chapters.id===video.chapter_id"><i class="fa fa-play-circle"
-                                                                          (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
-                      <td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_minutes}}</a></td>
-                      <td *ngIf="video.allow_to_view==true">
-                        Preview</td>
-                      <td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_size}}Min
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </div>
@@ -236,130 +237,6 @@
       </div>
     </div>
   </div>
-</div>
-<!--<div class="container">-->
-  <!--<div class="row">-->
-    <!--<div class="col-lg-12">-->
-      <!--<h1>Course Lessons</h1>-->
-      <!--<div class="col-md-3 float-left">-->
-
-        <!--<ul class="nav nav-tabs side-tabs">-->
-          <!--<li class="width100"><a data-toggle="tab" class="active" href="#home">Introduction</a></li>-->
-          <!--<li class="width100"><a data-toggle="tab" href="#home1">Curriculum</a></li>-->
-          <!--<li class="width100"><a data-toggle="tab" href="#home2">Course Overview</a></li>-->
-        <!--</ul>-->
-      <!--</div>-->
-      <!--<div class="col-md-9 float-right course-tab">-->
-        <!--<div class="tab-content">-->
-          <!--<div class="tab-pane active" id="home">-->
-            <!--&lt;!&ndash;<div class="float_right">&ndash;&gt;-->
-              <!--&lt;!&ndash;<button *ngIf="getcoursevid?.id===null" type="button" class="btn-style" data-toggle="modal"&ndash;&gt;-->
-                      <!--&lt;!&ndash;(click)="openDialog3(data?.course.id)">Add Video</button>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div *ngIf="getcoursevid?.id === null">-->
-              <!--<img src="../../../assets/img/No-video.gif">-->
-            <!--</div>-->
-            <!--<div *ngIf="getcoursevid?.id != null" class="card video-box">-->
-              <!--<vg-player>-->
-                <!--<vg-overlay-play></vg-overlay-play>-->
-                <!--<vg-buffering></vg-buffering>-->
-                <!--<vg-scrub-bar>-->
-                  <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
-                  <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
-                <!--</vg-scrub-bar>-->
-                <!--<vg-controls>-->
-                  <!--<vg-play-pause></vg-play-pause>-->
-                  <!--<vg-playback-button></vg-playback-button>-->
-                  <!--<vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
-                  <!--<vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
-                  <!--<vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>-->
-                  <!--<vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>-->
-                  <!--<vg-track-selector></vg-track-selector>-->
-                  <!--<vg-mute></vg-mute>-->
-                  <!--<vg-volume></vg-volume>-->
-                  <!--<vg-fullscreen></vg-fullscreen>-->
-                <!--</vg-controls> <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>-->
-                <!--<source src="{{VideoUrl}}{{getcoursevid?.video_url}}" type="video/mp4"> </video>-->
-              <!--</vg-player>-->
-            <!--</div>-->
-            <!--<div class="float_right">-->
-              <!--<a *ngIf="getcoursevid?.id != null" data-toggle="modal" value="Delete" href="#delintroVideo"-->
-                 <!--data-target="#delintroVideo" (click)="deleteVideo(id)" class="display-inline-block">-->
-                <!--<i class="fas fa-trash-alt"></i>-->
-              <!--</a>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="tab-pane" id="home1">-->
-            <!--<div class="text-right">-->
-              <!--<button type="button" class="btn-style margin-bottom-20" data-toggle="modal" data-target="#myModal">Create-->
-                <!--New Chapter</button>-->
-            <!--</div>-->
-            <!--<div class="lec-info float-right">-->
-              <!--<span *ngIf="!time">Total Time:00:00:00</span>-->
-              <!--<span>Total Time: {{time}}</span>-->
-              <!--&lt;!&ndash;<span *ngIf="!totalvideos">Total Video:00:00:00</span>&ndash;&gt;-->
-              <!--&lt;!&ndash;<span>Total Video: {{totalvideos}}</span>&ndash;&gt;-->
-              <!--<span *ngIf="!totalvid">Total Chapters: 0</span>-->
-              <!--<span>Total Chapters:{{totalvid}} </span>-->
-            <!--</div>-->
-            <!--<div class="panel-group float-left width100">-->
-              <!--<div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">-->
-                <!--<div class="panel-heading">-->
-                  <!--<h4 class="panel-title">-->
-                    <!--<a class="collapsed" data-toggle="collapse" href="#collapse1" attr.data-target="#{{i}}">-->
-                      <!--<span>{{data?.chapters.chapter_name}}</span>-->
-                      <!--<div class="mr-5 float_right">-->
-                        <!--<span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>-->
-                        <!--&lt;!&ndash;<span *ngIf="data.chapter_name"> Total Video {{vid.chaptervideos}} </span>&ndash;&gt;-->
-                      <!--</div>-->
-                    <!--</a>-->
-                  <!--</h4>-->
-                <!--</div>-->
-                <!--<div attr.id={{i}} class="panel-collapse collapse">-->
-                  <!--<div class="panel-body">-->
-                    <!--<div class="float_left">-->
-                      <!--<button type="button" class="btn-style" data-toggle="modal" data-target="#videoModal"-->
-                              <!--(click)="openDialog2(data?.chapters.id)">Add-->
-                        <!--Video</button>-->
-                    <!--</div>-->
-                  <!--</div>-->
-                  <!--<table class="table table-hover" *ngIf="videos">-->
-                    <!--<tbody>-->
-                    <!--<tr *ngFor="let video of videos; let j=index">-->
-                      <!--<td *ngIf="data?.chapters.id===video.chapter_id"><i class="fa fa-play-circle"-->
-                                                                          <!--(click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>-->
-                      <!--<td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_minutes}}</a></td>-->
-                      <!--<td *ngIf="video.allow_to_view==true">-->
-                        <!--Preview</td>-->
-                      <!--<td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_size}}Min-->
-                        <!--<a data-toggle="modal" value="Delete" href="#delVideo" data-target="#delVideo"-->
-                           <!--(click)="deleteVideo(video?.id)" class="display-inline-block">-->
-                          <!--<i class="fas fa-trash-alt"></i>-->
-                        <!--</a>-->
-                        <!--<a href="#" class="display-inline-block">-->
-                          <!--<i class="far fa-edit"></i>-->
-                        <!--</a>-->
-                      <!--</td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                  <!--</table>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-<div class="text-center pull-left" *ngIf="view==0">
-  <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
-  <!--<img  video.setWatermark('../../../assets/img/No-One-Reviewed-this-Course.gif')>-->
-  <!--"../../../assets/img/No-One-Reviewed-this-Course.gif">-->
-
-
-  <!--<video autoplay loop muted playsinline>-->
-  <!--<source src="../../../assets/img/No-One-Reviewed-this-Course.gif" type="video/webm">-->
-  <!--<source src="../../../assets/img/No-One-Reviewed-this-Course.gif" type="video/mp4">-->
-  <!--</video>-->
-</div>
+  <div class="text-center pull-left" *ngIf="view==0">
+    <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
+  </div>

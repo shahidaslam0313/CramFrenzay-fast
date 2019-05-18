@@ -128,20 +128,20 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <!-- <div class="img-userprofile s_uploaded_img" *ngIf="imagePreview">
+                        <div class="img-userprofile s_uploaded_img" *ngIf="imagePreview">
                         <img accept=".jpg, .jpeg, .png" src="{{imagePreview}}" alt="" allowmultiple="false"/>
-                      </div> -->
-                        <input class="btn-file margin-top-10" type="file" (change)="onChange($event)"
+                      </div>
+                        <!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)"
                              accept="image/gif, image/jpeg, image/png" required>
 
-                        <img *ngIf="imagePreview" src="{{imagePreview}}">
-                        <!-- <span class="btn-file margin-top-10">Upload Note Image
+                        <img *ngIf="imagePreview" src="{{imagePreview}}"> -->
+                        <span class="btn-file margin-top-10">Upload Note Image
                             <input (change)="onChange($event)" type="file" #notes_thumbnail
                                 accept="image/gif, image/jpeg, image/png" required>
-                        </span> -->
+                        </span>
                         <span class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> <a class="user-add-ingo-form-btn margin-top-10" (click)="onSubmit()">Submit</a>
+                        </span> <a class="btn-style margin-top-10" (click)="onSubmit()">Submit</a>
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">
@@ -186,7 +186,7 @@
                         <!--<mat-form-field> <input matInput type="text" placeholder="Title" formControlName="title" name="title" [(ngModel)]="model.title" name="title"/> </mat-form-field>-->
                         <!-- <mat-form-field> <textarea matInput type="text" placeholder="Definition" formControlName="definition" name="definition" [(ngModel)]="model.definition"></textarea> </mat-form-field>-->
                         <!--x<span class="btn-file">Upload Image <input (change)="onChange($event)" formControlName="image" name="image" #image type="file" accept="image/gif, image/jpeg, image/png" required> </span>-->
-                        <a class="user-add-ingo-form-btn margin-top-10" (click)="onSubmit()">Submit</a>
+                        <a class="btn-style margin-top-10" (click)="onSubmit()">Submit</a>
                     </form>
                 </div>
             </div>

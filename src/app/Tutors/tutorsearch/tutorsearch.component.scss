@@ -1,0 +1,46 @@
+
+.tutor-inner {
+    border: 1px solid #ececec;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 0 auto
+}
+
+.tutor-image a {
+    display: block
+}
+
+.tutor-img {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 150px;
+    display: block;
+    width: 150px;
+    margin: 0 auto
+}
+
+.tutor-star-date,
+.tutor-title {
+    margin: 10px 0 0;
+    overflow: hidden
+}
+
+.tutor-contact {
+    overflow: hidden
+}
+
+.tutor-title {
+    line-height: 29px;
+    font-size: 25px;
+    text-align: center;
+    display: block;
+    white-space: nowrap
+}
+
+.tutor-title a {
+    color: #000 !important
+}
+
+.tutor-title a:hover {
+    color: #c00 !important
+}

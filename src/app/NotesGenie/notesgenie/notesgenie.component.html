@@ -67,10 +67,10 @@
                         <!-- Heart Start -->
                             <i class="far fa-heart"
                                 (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                                *ngIf="!data.wishlist==true">
+                                *ngIf="!data.wishlist==true" title="Add to Watchlist">
                             </i>
-                            <i *ngIf="!data.wishlist==false" class="sh-red fas fa-heart"
-                                        title="Click and remove from wishlist" (click)="deleteFWL(data)">
+                            <i *ngIf="!data.wishlist==false" class="sh-red fas fa-heart sh-red"
+                                        title="Click and remove from Watchlist" (click)="deleteFWL(data)">
                                     </i>
                         <!-- Heart End -->
                         <!-- Cart start -->
@@ -92,7 +92,7 @@
                             <a class="btn-style" (click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data?.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidnotesid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data?.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
@@ -149,9 +149,9 @@
                         <!-- Heart Start -->
                             <i class="far fa-heart"
                                 (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                                *ngIf="!data.wishlist==true" title="Add to Watch-list"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red"
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i>
+                                *ngIf="!data.wishlist==true" title="Add to Watchlist"></i>
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red "
+                                title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
                             <!-- Heart End -->
                             <!-- Cart Start -->
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
@@ -173,7 +173,7 @@
                             <a class="btn-style"(click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data?.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidnotesid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data?.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
@@ -229,10 +229,10 @@
                         <div class="heart_cart_buy">
                                 <div class="heart_cart">
                         <!-- Heart Start -->
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red"
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i>
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red "
+                                title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
                             <i class="far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                                *ngIf="!data.wishlist==true"></i>
+                                *ngIf="!data.wishlist==true" title="Add to Watchlist"></i>
                         <!-- Heart End -->
                         <!-- Cart Start -->
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
@@ -254,7 +254,7 @@
                             <a class="btn-style" (click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidnotesid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true " data-target="#notesbid">
@@ -309,10 +309,10 @@
                        <div class="heart_cart_buy">
                             <div class="heart_cart">
                     <!-- Heart Start -->
-                        <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red"
-                            title="Delete From watch-list" (click)="deleteFWL(data)"></i>
+                        <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red "
+                            title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
                         <i class="far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                            *ngIf="!data.wishlist==true"></i>
+                            *ngIf="!data.wishlist==true" title="Add to Watchlist"></i>
                     <!-- Heart End -->
                     <!-- Cart Start -->
                         <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
@@ -334,7 +334,7 @@
                             <a class="btn-style" (click)="checkmainpage(data?.id)"
                                 *ngIf="data.sell_status==true && !data.Purchased">
                                 Buy Now at {{data.price | currency:'USD'}}</a>
-                            <a type="button" class="btn-style" data-toggle="modal" data-target="#notesbidnow"
+                            <a  class="btn-style" data-toggle="modal" data-target="#notesbidnow"
                                 (click)="bidnotesid(data?.id)" data-dismiss="modal"
                                 *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                             <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
@@ -376,7 +376,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="biding()" data-dismiss="modal">Bid Now
+          </mat-form-field> <a class="btn-style" (click)="biding()" data-dismiss="modal">Bid Now
         </a>
 
         </form>

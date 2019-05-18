@@ -32,6 +32,7 @@ export class BiditemsComponent implements OnInit {
   bid() {
     this.biding.bidingitems().subscribe(Data => {
       this.biditems = Data;
+      console.log(this.biditems)
     })
   }
 }

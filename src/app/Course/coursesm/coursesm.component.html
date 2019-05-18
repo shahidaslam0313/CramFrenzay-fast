@@ -33,7 +33,7 @@
                             <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -56,7 +56,7 @@
                         <a class="btn-style text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased"
                             (click)="courses(data?.id)"> Buy Now at
                             {{data.price | currency:'USD'}} </a>
-                        <a type="button" class="btn-style text-transform-none" data-toggle="modal"
+                        <a  class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
                             *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at
                             {{data.bid_price | currency:'USD'}}</a>
@@ -105,7 +105,7 @@
                             <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -127,7 +127,7 @@
                     <div class="product-list__item-info-1">
                         <a class="btn-style text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased"
                             (click)="courses(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                        <a type="button" class="btn-style text-transform-none" data-toggle="modal"
+                        <a  class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
                             *ngIf="data.bid_status==true"> Bid Now
                             at {{data.bid_price | currency:'USD'}}
@@ -213,7 +213,7 @@
                             <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -235,7 +235,7 @@
                     <div class="product-list__item-info-1">
                         <a class="btn-style text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased"
                             (click)="courses(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                        <a type="button" class="btn-style text-transform-none" data-toggle="modal"
+                        <a  class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
                             *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at
                             {{data.bid_price | currency:'USD'}}</a>
@@ -301,7 +301,7 @@
                             <!-- ---------------Heart start------------- -->
                             <i class="far fa-heart" (click)="addwishlist(data.id)" title="Add to wishlist"
                                 *ngIf="!data.wishlist==true"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red" title="Add to wishlist"
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red " title="Add to wishlist"
                                 (click)="delCourseFwishList(data)">
                             </i>
                             <!-- ---------------Heart end------------- -->
@@ -328,7 +328,7 @@
                     <div class="product-list__item-info-1">
                         <a class="btn-style text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased"
                             (click)="courses(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                        <a type="button" class="btn-style text-transform-none" data-toggle="modal"
+                        <a  class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
                             *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at
                             {{data.bid_price | currency:'USD'}}</a>
@@ -366,7 +366,7 @@
                         <mat-form-field>
                             <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount">
-                        </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">BID
+                        </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">BID
                             NOW
                         </a>
                     </form>

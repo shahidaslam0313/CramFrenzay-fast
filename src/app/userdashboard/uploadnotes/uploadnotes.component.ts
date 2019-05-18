@@ -233,40 +233,40 @@ export class UploadnotesComponent implements OnInit {
   onChange(event) {
     this.input = new FormData();
 
-    // const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    // const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    // this.input.append('fileToUpload', event.target.files[0]);
-    // this.files = target.files;
-    // this.file = this.files[0];
-    // console.log(this.files);
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    this.input.append('fileToUpload', event.target.files[0]);
+    this.files = target.files;
+    this.file = this.files[0];
+    console.log(this.files);
 
-    // const reader = new FileReader();
-    // reader.onload = this._handleReaderLoaded.bind(this);
+    const reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
 
-    // const reader1 = new FileReader();
-    // reader1.onload = (e: any) => {
-    //   this.ImgSrc = (e.target.result);
-    // };
-    // reader1.readAsDataURL(this.file);
+    const reader1 = new FileReader();
+    reader1.onload = (e: any) => {
+      this.ImgSrc = (e.target.result);
+    };
+    reader1.readAsDataURL(this.file);
 
-    let image = event.target.files[0];
+    // let image = event.target.files[0];
   
-    this.ng2ImgMax.resizeImage(image, 200, 150).subscribe(
-      result => {
-        this.uploadedImage = result; 
-        this.getImagePreview(this.uploadedImage);
-        console.log(result,'RESULT')
-        const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-        const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-        this.input.append('fileToUpload', this.uploadedImage );
-        this.files = target.files;
-        this.file = this.files[0];
-        console.log(this.files);
-      },
-      error => {
-        console.log('😢 Oh no!', error);
-      }
-    );
+    // this.ng2ImgMax.resizeImage(image, 200, 150).subscribe(
+    //   result => {
+    //     this.uploadedImage = result; 
+    //     this.getImagePreview(this.uploadedImage);
+    //     console.log(result,'RESULT')
+    //     const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    //     const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    //     this.input.append('fileToUpload', this.uploadedImage );
+    //     this.files = target.files;
+    //     this.file = this.files[0];
+    //     console.log(this.files);
+    //   },
+    //   error => {
+    //     console.log('😢 Oh no!', error);
+    //   }
+    // );
   // file;
   }
   // onImageChange(event) {
@@ -284,13 +284,13 @@ export class UploadnotesComponent implements OnInit {
   //   );
   //   }
 
-    getImagePreview(file: File) {
-      const reader: FileReader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-      };
-    }
+    // getImagePreview(file: File) {
+    //   const reader: FileReader = new FileReader();
+    //   reader.readAsDataURL(file);
+    //   reader.onload = () => {
+    //     this.imagePreview = reader.result;
+    //   };
+    // }
   onChange2(event: EventTarget) {
     this.input = new FormData();
     const eventObj: MSInputMethodContext = <MSInputMethodContext>event;

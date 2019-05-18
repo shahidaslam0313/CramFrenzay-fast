@@ -20,3 +20,18 @@
   text-transform: capitalize;
   font-size: 25px;
 }
+
+.upcoming-month-form {
+  width: 100%;
+}
+.upcoming-month-form mat-form-field {
+  width: 50%;
+  margin: 0 auto;
+  display: block
+}
+.margin-bottom-30 {
+  margin-bottom: 30px
+}
+.margin-bottom-300 {
+  margin-bottom: 300px !important
+}

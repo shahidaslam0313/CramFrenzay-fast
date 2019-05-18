@@ -1,0 +1,38 @@
+
+.tutor-reg-btn {
+    color: #fff;
+    background: #000;
+    border-radius: 25px;
+    border: 1px solid #000;
+    font-size: 22px;
+    font-weight: 600
+}
+
+.tutor-reg-btn:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    text-decoration: none
+}
+.partnership_btn,
+.tutor-reg-btn {
+    display: block;
+    padding: 10px;
+    width: 200px;
+    text-align: center
+}
+
+.tutor-reg {
+    background: url(assets/img/partnership.jpg) no-repeat;
+    background-size: cover
+}
+
+.tutor-reg h1 {
+    color: #fff;
+    font-size: 50px
+}
+
+.tutor-reg p {
+    color: #fff;
+    font-size: 20px
+}

@@ -22,8 +22,8 @@
                                             <mat-option *ngFor="let card of res" [value]="card.id"
                                                 (click)="getcardid(card.id)">{{card.nickname}}</mat-option>
                                         </mat-select>
-                                    </mat-form-field> <a class="user-add-ingo-form-btn margin-top-10"
-                                        (click)="buy()">Place Order</a>
+                                    </mat-form-field> <a class="btn-style width100 margin-top-10" (click)="buy()">Place
+                                        Order</a>
                                 </div>
                             </div>
                             <div class="col-md-12" *ngIf="isright">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <form class="user-add-ingo-form" [formGroup]="form" #f="ngForm">
-                                        <mat-form-field class="card-type">
+                                        <mat-form-field>
                                             <mat-select placeholder="Card Type" formControlName="card_type" #value
                                                 (change)="ShowButton(value.value)">
                                                 <mat-option *ngFor="let card_get_datat of card_opeation"
@@ -213,8 +213,8 @@
                                         </mat-form-field>
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle> <a
-                                            class="user-add-ingo-form-btn margin-top-10" (click)="buywithcard(f)">Buy
-                                            Now</a>
+                                            class="btn-style margin-top-10 width100" (click)="buywithcard(f)">Place
+                                            Order</a>
                                     </form>
                                 </div>
                             </div>
@@ -235,6 +235,9 @@
                     <div class="product-list__item">
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.course.course_thumbnail}}" alt="Course Image"> </a>
+                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div>
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="" title="{{cartitems.course.name}}"
@@ -269,6 +272,9 @@
                     <div class="product-list__item">
                         <figure class="product-list__img"> <a routerLink="/notes/{{cartitems.notes.id}}"> <img
                                     src="{{Imageurl}}{{cartitems.notes.notes_thumbnail}}" alt="Notes Image"> </a>
+                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div>
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="" title="{{cartitems.notes.name}}"
@@ -307,6 +313,9 @@
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.flashcard.flashcard_image}}" alt="FlashCard Image">
                             </a>
+                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div>
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="" title="{{cartitems.flashcard.name}}"
@@ -341,6 +350,9 @@
                     <div class="product-list__item">
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.book.book_image}}" alt="Books Image"> </a>
+                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div>
                         </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="" title="{{cartitems.book.name}}"

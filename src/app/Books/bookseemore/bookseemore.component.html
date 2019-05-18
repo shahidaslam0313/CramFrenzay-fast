@@ -30,7 +30,7 @@
                         <!-- Heart start -->
                         <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
                             (click)="addwishlist(data.id)"></i>
-                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                             (click)="delBookFwishList(data)"></i>
                         <!-- Heart end -->
                         <!-- Cart start -->
@@ -48,7 +48,7 @@
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
                     <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
+                    <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
                                 <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
@@ -112,7 +112,7 @@
                         <!-- Heart start -->
                         <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
                             (click)="addwishlist(data.id)"></i>
-                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                             (click)="delBookFwishList(data)"></i>
                         <!-- Heart end -->
                         <!-- Cart start -->
@@ -130,7 +130,7 @@
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
                     <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
+                    <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
                                 <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
@@ -188,7 +188,7 @@
                         <!-- Heart start -->
                         <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
                             (click)="addwishlist(data.id)"></i>
-                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                             (click)="delBookFwishList(data)"></i>
                         <!-- Heart end -->
                         <!-- Cart start -->
@@ -206,7 +206,7 @@
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
                     <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
+                    <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
                                 <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
@@ -264,7 +264,7 @@
                         <!-- Heart start -->
                         <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
                             (click)="addwishlist(data.id)"></i>
-                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart"
+                        <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                             (click)="delBookFwishList(data)"></i>
                         <!-- Heart end -->
                         <!-- Cart start -->
@@ -282,7 +282,7 @@
                         <!-- buy and bid now start -->
                     <div class="product-list__item-info-1">
                     <a class="btn-style text-transform-none" *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                    <a type="button" class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
+                    <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                         <a class="already-bought" *ngIf="data.Purchased == true">
                                 <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
@@ -314,7 +314,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="user-add-ingo-form-btn" (click)="bidc()" data-dismiss="modal">Bid
+          </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">Bid
           Now </a>
         </form>
       </div>

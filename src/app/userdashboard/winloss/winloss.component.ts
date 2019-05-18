@@ -39,6 +39,7 @@ export class WinlossComponent implements OnInit {
   getwin() {
     this.serv.getWins().subscribe(Res => {
       this.Wins = Res;
+      console.log(this.Wins)
       this.WinList = this.Wins['Win List'];
       this.winlost = this.Wins['Lose List'];
     },
