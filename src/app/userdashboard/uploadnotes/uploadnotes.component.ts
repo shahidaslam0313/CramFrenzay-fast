@@ -2,7 +2,6 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { uploadnotesservice } from "./uploadnotes.service";
 import { Router } from "@angular/router";
-
 import { Config } from "../../Config";
 import { ActivatedRoute } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -12,12 +11,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 import swal from "sweetalert2";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// declare var localStorage: any;
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
-
 import { Ng2ImgMaxService } from 'ng2-img-max';
-import { DomSanitizer } from '@angular/platform-browser';
+
 declare const $: any;
 @Component({
   selector: 'app-uploadnotes',
@@ -114,7 +111,7 @@ export class UploadnotesComponent implements OnInit {
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
   ]);
-  constructor(private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer,private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
+  constructor(private ng2ImgMax: Ng2ImgMaxService, private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -124,6 +121,7 @@ export class UploadnotesComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.firstname = localStorage.getItem('fname');
     this.lastname = localStorage.getItem('lname');
     this.profilePhoto = localStorage.getItem('pic');

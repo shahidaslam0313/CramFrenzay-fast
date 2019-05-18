@@ -55,6 +55,7 @@ export class MainpageComponent implements OnInit {
   chapter_id;
   message: string;
   cartitem: any;
+ 
   constructor( public bidings: BidHistoryService, private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
@@ -226,7 +227,7 @@ export class MainpageComponent implements OnInit {
   checkOffer3(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.openDialog2(book)
+       this.openDialog3(book)
         },
         error => {
           if ( error.status === 406)
