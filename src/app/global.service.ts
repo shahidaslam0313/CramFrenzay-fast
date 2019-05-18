@@ -181,7 +181,7 @@ export class GlobalService {
   }
   /////////////// Offer Now/////////////
 
-  acceptoffer(notes, course, book, flashcard, offer_price) {
+  acceptoffer(notes, course, book, flashcard, offer_price, end_time) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'purchase/sendingOfferonCourse/',
@@ -190,7 +190,8 @@ export class GlobalService {
         course: course,
         book: book,
         flashcard: flashcard,
-        offer_price: offer_price
+        offer_price: offer_price,
+        end_time : end_time
       }),
       { headers: headers }).map((response: Response) => response.json());
   }

@@ -75,6 +75,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.user = this.fb.group({
       // 'image': [''],
       'firstname': [''],
