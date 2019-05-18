@@ -11,6 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AddtocartComponent } from './../../addtocart/addtocart.component';
 import {PagerService} from '../../paginator.service';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 
 
 declare const $: any;
@@ -41,7 +42,11 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   id;
   rate;
   comment;
-
+  reviewform = new FormGroup({
+    comment: new FormControl('', [
+      Validators.required
+      ])
+  })
   constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private newService: fcdetailservice, private router: Router, private route: ActivatedRoute, private serv: flashcardservice,  private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -148,9 +153,10 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   get(rating) {
     this.rate = rating;
   }
-  reviews(rate, comment, book, course, data, notes) {
+  reviews(rate, comment, book, course, data, notes, f: NgForm) {
     if (this.check_login()) {
       // this.id = data;
+      if (this.reviewform.controls.comment.valid) {
       this.newService. review(this.rate , this.model.comment, book, course, this.flashcardDetail.id, notes).subscribe(data => {
 
         swal({
@@ -183,6 +189,16 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
     else {
       swal({
         type: 'error',
+        text: 'Leave a Review',
+        width: '512px',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }
+    else {
+      swal({
+        type: 'error',
         title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
@@ -191,6 +207,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
       });
       this.router.navigate(['/login']);
     }
+    f.resetForm()
   }
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {

@@ -9,6 +9,7 @@ import swal from "sweetalert2";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AddtocartComponent } from './../../addtocart/addtocart.component';
 import { PagerService } from '../../paginator.service';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -32,6 +33,11 @@ export class NotesComponent implements OnInit {
   id;
   view: any = [];
   comment;
+  reviewform = new FormGroup({
+    comment: new FormControl('', [
+      Validators.required
+      ])
+  })
   constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private each: NotesService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
@@ -129,8 +135,9 @@ export class NotesComponent implements OnInit {
     this.rate = rating;
   }
 
-  reviews(rate, comment, result, book, course, flashcard) {
+  reviews(rate, comment, result, book, course, flashcard,f: NgForm) {
     if (this.check_login()) {
+      if (this.reviewform.controls.comment.valid) {
       this.each.review(this.rate, this.model.comment, this.result.id, book, course, flashcard).subscribe(data => {
         swal({
           type: 'success',
@@ -162,6 +169,16 @@ export class NotesComponent implements OnInit {
     else {
       swal({
         type: 'error',
+        text: 'Leave a Review',
+        width: '512px',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }
+    else {
+      swal({
+        type: 'error',
         title: 'CramFrenzy',
         text: 'Please Login First',
         showConfirmButton: false,
@@ -170,5 +187,7 @@ export class NotesComponent implements OnInit {
       });
       this.router.navigate(['/login']);
     }
+    f.resetForm()
   }
+  
 }
