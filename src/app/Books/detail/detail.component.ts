@@ -1,14 +1,15 @@
-import {AddtocartComponent} from './../../addtocart/addtocart.component';
-import {Component, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
-import {detailservice} from './detail.service';
-import {Subscription} from 'rxjs/Subscription';
-import {Config} from '../../Config';
-import {ActivatedRoute, Router} from '@angular/router';
+import { AddtocartComponent } from './../../addtocart/addtocart.component';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { detailservice } from './detail.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Config } from '../../Config';
+import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert2';
-import {isPlatformBrowser} from '@angular/common';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {PagerService} from '../../paginator.service';
+import { isPlatformBrowser } from '@angular/common';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { PagerService } from '../../paginator.service';
 import { headerservice } from 'app/includes/header/header.service';
+import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 
 declare const $: any;
 
@@ -19,7 +20,7 @@ declare const $: any;
 })
 export class DetailComponent implements OnInit {
   @ViewChild(AddtocartComponent)
-public item;
+  public item;
   public Imageurl = Config.Imageurlget;
   result: any;
   public bookID: any;
@@ -31,7 +32,12 @@ public item;
   rate;
   view;
   pager;
-  constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private detail: detailservice, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object,private headServ: headerservice, ) {
+  reviewform = new FormGroup({
+    comment: new FormControl('', [
+      Validators.required
+      ])
+  })
+  constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private detail: detailservice, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private headServ: headerservice, ) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
@@ -49,7 +55,7 @@ public item;
   }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
     this.sub = this.route.params.subscribe(params => {
       this.bookID = +params['id'] || 0;
     });
@@ -75,7 +81,7 @@ public item;
 
   checkbook(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'], {queryParams: {bookid : id}});
+      this.router.navigate(['/payment'], { queryParams: { bookid: id } });
     }
     else if (this.check_login() == false) {
       this.sweetalertbooks();
@@ -104,36 +110,47 @@ public item;
   }
   comment;
   id;
-  reviews(rate, comment, result, course , flashcard, notes) {
+  reviews(rate, comment, result, course, flashcard, notes, f: NgForm) {
     if (this.check_login()) {
       this.id = result;
-      this.detail.review(this.rate, this.comment, this.id, course, flashcard, notes).subscribe(data => {
-        swal({
-          type: 'success',
-          title: 'Thanks for your Review.',
-          showConfirmButton: false,
-          width: '512px',
-          timer: 4500
+      if (this.reviewform.controls.comment.valid) {
+        this.detail.review(this.rate, this.comment, this.id, course, flashcard, notes).subscribe(data => {
+          swal({
+            type: 'success',
+            title: 'Thanks for your Review.',
+            showConfirmButton: false,
+            width: '512px',
+            timer: 1500
+          });
+        }, error => {
+          if (error.status == 404) {
+            swal({
+              type: 'error',
+              title: 'You already posted review for this book',
+              showConfirmButton: false,
+              width: '512px',
+              timer: 1500
+            });
+          } else if (error.status == 400) {
+            swal({
+              type: 'error',
+              title: 'You have to buy before posting a review',
+              showConfirmButton: false,
+              width: '512px',
+              timer: 1500
+            });
+          }
         });
-      }, error => {
-        if (error.status == 404) {
-          swal({
-            type: 'error',
-            title: 'You already posted review for this book',
-            showConfirmButton: false,
-            width: '512px',
-            timer: 4500
-          });
-        } else if (error.status == 400) {
-          swal({
-            type: 'error',
-            title: 'You have to buy before posting a review',
-            showConfirmButton: false,
-            width: '512px',
-            timer: 4500
-          });
-        }
-      });
+      }
+      else {
+        swal({
+          type: 'error',
+          text: 'Leave a Review',
+          width: '512px',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
     }
     else {
       swal({
@@ -142,10 +159,11 @@ public item;
         text: 'Please Login First',
         showConfirmButton: false,
         width: '512px',
-        timer: 4500
+        timer: 1500
       });
       this.router.navigate(['/login']);
     }
+    f.resetForm()
   }
 
   reviewsss(page: number) {
@@ -153,12 +171,12 @@ public item;
     //   return;
     // }
 
-    this.detail.getreview(this.bookID).subscribe(data =>{
+    this.detail.getreview(this.bookID).subscribe(data => {
       this.view = data;
       this.pager = this.pagerService.getPager(this.view['totalItems'], page, 10);
 
-    },error=>{
-        this.item = error.status;
+    }, error => {
+      this.item = error.status;
 
     }
     );

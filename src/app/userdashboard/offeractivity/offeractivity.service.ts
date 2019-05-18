@@ -11,10 +11,10 @@ export class OfferactivityService {
   constructor(private http: Http, @Inject(PLATFORM_ID) private platformId: Object, private _nav: Router) {
     this.current = JSON.parse(localStorage.getItem('currentUser'));
   }
-  acceptoffers(page) {
+  acceptoffers() {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'purchase/auctionList/?page=' + page + '',
+    return this.http.get(Config.api + '/purchase/UserAuctionData/' + this.current.user_id,
       { headers: headers }).map((response: Response) => response.json());
   }
   showCards() {

@@ -5,7 +5,7 @@ export class Config {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
-  public static api: string = 'https://apis.cramfrenzy.com/';
+  public static api: string = 'https://devapis.cramfrenzy.com/';
   public static Imageurl: string = 'https://apis.cramfrenzy.com/media/';
 
   // public static api: string = 'http://192.168.29.174:8000/';
