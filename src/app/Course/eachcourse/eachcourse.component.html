@@ -174,7 +174,10 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12" *ngIf="!getchapter">
+      <h1>No courses upload by {{result?.author| titlecase}}</h1>
+    </div>
+    <div class="col-lg-12" *ngIf="getchapter">
       <h1>Course content</h1>
       <span *ngIf="!time">Total Time:00:00:00</span>
       <span>Total Time: {{time}}</span>
