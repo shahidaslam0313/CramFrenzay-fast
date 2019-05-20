@@ -125,7 +125,7 @@ role;
     });
   }
 
-  onSubmit() {
+  onSubmit(f: NgForm) {
 
     this.http.post(
       Config.Imageurlupload,
@@ -140,6 +140,7 @@ role;
           this.ifImageUpload();
         }
       });
+      f.resetForm();
   }
   accept_offer: boolean = false;
   private ifImageUpload() {

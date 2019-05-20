@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Course for Sale</h1>
-            <form class="user-add-ingo-form" enctype="multipart/form-data">
+            <form class="user-add-ingo-form" enctype="multipart/form-data" #f="ngForm">
                 <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Name" id="name"
                         [(ngModel)]="model.name" name="name" required>
                     <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
@@ -103,7 +103,7 @@
               </div>
               <span class="btn-file margin-top-10">Upload Course Image <input (change)="onChange($event)" type="file" #image accept="image/gif, image/jpeg, image/png" required> </span> 
               <a class="btn-style margin-top-10 width100"
-                    (click)="onSubmit()">Submit</a>
+                    (click)="onSubmit(f)">Submit</a>
             </form>
         </div>
     </div>

@@ -297,7 +297,7 @@ export class AllbooksComponent implements OnInit {
   filter(query) {
     if (query != "") {
       this.book.searchbooks(query).subscribe(data => {
-        this.searchResult = data.books;
+        this.searchResult = data.Books;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }
