@@ -198,7 +198,7 @@ export class MaterialModule { }
     CommonModule,
     MaterialModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    
     MatInputModule,
     VgBufferingModule,
     VgCoreModule,

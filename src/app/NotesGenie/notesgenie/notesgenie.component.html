@@ -67,10 +67,10 @@
                         <!-- Heart Start -->
                             <i class="far fa-heart"
                                 (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                                *ngIf="!data.wishlist==true">
+                                *ngIf="!data.wishlist==true" title="Add to Watchlist">
                             </i>
                             <i *ngIf="!data.wishlist==false" class="sh-red fas fa-heart sh-red"
-                                        title="Click and remove from wishlist" (click)="deleteFWL(data)">
+                                        title="Click and remove from Watchlist" (click)="deleteFWL(data)">
                                     </i>
                         <!-- Heart End -->
                         <!-- Cart start -->
@@ -149,9 +149,9 @@
                         <!-- Heart Start -->
                             <i class="far fa-heart"
                                 (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                                *ngIf="!data.wishlist==true" title="Add to Watch-list"></i>
+                                *ngIf="!data.wishlist==true" title="Add to Watchlist"></i>
                             <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red "
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i>
+                                title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
                             <!-- Heart End -->
                             <!-- Cart Start -->
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
@@ -230,9 +230,9 @@
                                 <div class="heart_cart">
                         <!-- Heart Start -->
                             <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red "
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i>
+                                title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
                             <i class="far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                                *ngIf="!data.wishlist==true"></i>
+                                *ngIf="!data.wishlist==true" title="Add to Watchlist"></i>
                         <!-- Heart End -->
                         <!-- Cart Start -->
                             <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
@@ -310,9 +310,9 @@
                             <div class="heart_cart">
                     <!-- Heart Start -->
                         <i *ngIf="!data.wishlist==false" class=" fas fa-heart  sh-red "
-                            title="Delete From watch-list" (click)="deleteFWL(data)"></i>
+                            title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
                         <i class="far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
-                            *ngIf="!data.wishlist==true"></i>
+                            *ngIf="!data.wishlist==true" title="Add to Watchlist"></i>
                     <!-- Heart End -->
                     <!-- Cart Start -->
                         <i *ngIf="!data.cart==false" class="fa fa-cart-plus"

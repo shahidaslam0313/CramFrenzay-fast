@@ -16,6 +16,7 @@ import {PagerService} from '../../paginator.service';
 })
 export class OfferactivityComponent implements OnInit {
   getoffer: [];
+  notes:[];
   Imageurl = Config.Imageurlget;
   course:[];
     pager: any = {};
@@ -30,9 +31,11 @@ export class OfferactivityComponent implements OnInit {
       if (page < 1 || page > this.pager.totalPages) {
           return;
       }
-    this.offer.acceptoffers(page).subscribe(Data => {
-      this.getoffer = Data.Auction;
-        this.pager = this.pagerService.getPager(this.getoffer['totalItems'], page, 10);
+    this.offer.acceptoffers().subscribe(Data => {
+      this.getoffer = Data;
+      console.log(this.getoffer);
+     
+        // this.pager = this.pagerService.getPager(this.getoffer['totalItems'], page, 10);
 
     })
   }

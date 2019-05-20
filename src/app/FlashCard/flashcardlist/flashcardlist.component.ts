@@ -120,23 +120,7 @@ export class FlashcardlistComponent implements OnInit {
  
     this.Slider();
   }
-  openDialog3(chapter_id): void {
-    if (this.check_login() == true) {
-      const dialogRef = this.dialogRef.open(AcceptofferComponent, {
-        width: '500px',
-        data: {
-          flashcard: chapter_id,
-        }
-      });
-      dialogRef.afterClosed().subscribe(result => {
-
-      });
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertsignin();
-      this.router.navigate(['/login']);
-    }
-  }
+ 
   ngOnInit() {
     window.scroll(0,0)
     this.trendingflash();
@@ -160,6 +144,23 @@ export class FlashcardlistComponent implements OnInit {
     this.newService.Trendingflashcards().subscribe(Res => {
       this.trendingflashcards = Res;
     });
+  }
+  openDialog4(chapter_id): void {
+    if (this.check_login() == true) {
+      const dialogRef = this.dialogRef.open(AcceptofferComponent, {
+        width: '500px',
+        data: {
+          flashcard: chapter_id,
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+
+      });
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertsignin();
+      this.router.navigate(['/login']);
+    }
   }
   topratedflash() {
     this.newService.Topratedflashcards().subscribe(Res => {

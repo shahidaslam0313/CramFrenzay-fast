@@ -81,12 +81,19 @@ export class SignupComponent {
   firstnameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(this.firstname),
-    Validators.maxLength(50)
+    Validators.maxLength(60),
+    Validators.minLength(2)
   ]);
   lastnameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(this.lastname),
-    Validators.maxLength(50)
+    Validators.maxLength(60),
+    Validators.minLength(2)
+  ]);
+  usernameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(60),
+    Validators.minLength(3)
   ]);
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -134,9 +141,6 @@ export class SignupComponent {
   isFieldValid(form: FormGroup, field: string) {
     return !form.get(field).valid && form.get(field).touched;
   }
-
-
-
   displayFieldCss(form: FormGroup, field: string) {
     return {
       'has-error': this.isFieldValid(form, field),
@@ -149,8 +153,8 @@ export class SignupComponent {
       if (this.register.valid) {
         this._serv.signUp(this.register.value['firstname'] , this.register.value['lastname'], this.register.value['username'], this.register.value['email'], this.register.value['password']).subscribe(Res => {
           swal({
-            text: 'Please check your email!',
-            title: "CramFrenzy!",
+            text: 'Please check your email',
+            title: "CramFrenzy",
             type: "success",
             showConfirmButton: false,
             confirmButtonColor: "#DD6B55",
@@ -166,7 +170,7 @@ export class SignupComponent {
         error => {
           swal({
             type: 'error',
-            title: 'Oops! <br> Plz fill form',
+            title: 'Oops <br> Plz fill form',
             showConfirmButton: false,
             width: '512px',
             timer: 2500
@@ -176,7 +180,7 @@ export class SignupComponent {
         this.validateAllFormFields(this.register);
         swal({
           type: 'error',
-          title: 'Oops! <br> Plz fill form Correctly',
+          title: 'Oops <br> Please enter valid data',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
@@ -187,7 +191,7 @@ export class SignupComponent {
       this.recha.resetImg();
       swal({
         type: 'error',
-        title: 'Please Enter a valid text!',
+        title: 'Please confirm you are not a robot',
         showConfirmButton: false,
         width: '512px',
         timer: 2000
@@ -250,7 +254,7 @@ export class SignupComponent {
 
   sweetalertsignup() {
     swal({
-      text: 'Register Successflluy!',
+      text: 'Register Successflluy',
       title: "CramFrenzy",
       type: "success",
       showConfirmButton: false,
@@ -315,7 +319,7 @@ export class SignupComponent {
     if (this.institute.valid) {
       this._serv.instituteregister(this.institute.value['username'], this.institute.value['name'], this.institute.value['location'], this.institute.value['address'], this.institute.value['contact'], this.institute.value['email'], this.institute.value['password'], ).subscribe(Res => {
         swal({
-          text: 'Please check your email!',
+          text: 'Please check your email',
           title: "CramFrenzy",
           type: "success",
           showConfirmButton: false,
@@ -334,7 +338,7 @@ export class SignupComponent {
       error => {
         swal({
           type: 'error',
-          title: 'Oops! <br> Plz fill form',
+          title: 'Oops <br> Plz fill form',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
@@ -343,7 +347,7 @@ export class SignupComponent {
     } else {
       swal({
         type: 'error',
-        title: 'Oops! <br> Plz fill form Correctly',
+        title: 'Oops <br> Plz fill form Correctly',
         showConfirmButton: false,
         width: '512px',
         timer: 2500
@@ -354,7 +358,7 @@ export class SignupComponent {
     // else {
     //   swal.fire({
     //     type: 'error',
-    //     title: 'Please confirm you are not a robot!',
+    //     title: 'Please confirm you are not a robot',
     //     showConfirmButton: false,
     //     width: '512px',
     //     timer: 2000
@@ -381,7 +385,7 @@ export class SignupComponent {
   emailVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops! <br> Email alreday registered',
+      title: 'Oops <br> Email alreday registered',
       showConfirmButton: false,
       width: '512px',
       timer: 2500
@@ -391,7 +395,7 @@ export class SignupComponent {
   usernameVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops! <br> User name already exists!',
+      title: 'Oops <br> User name already exists',
       showConfirmButton: false,
       width: '512px',
       timer: 2500

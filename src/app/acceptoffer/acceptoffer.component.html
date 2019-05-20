@@ -7,8 +7,22 @@
   <form >
     <div class="card-content margin-top-10" >
       <mat-form-field class="example-full-width mat-size" style="width: 100%">
-        <input type="text"  maxlength="4" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" name="offer_price">
+        <input type="text"  maxlength="4" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" name="offer_price" required>
       </mat-form-field>
+    </div>
+  
+    <div class="card-content margin-top-10">
+ 
+      <div class="form-group">
+        <label for="sel1">Your offer expires in:</label>
+        <select class="form-control" id="sel1" [(ngModel)]="model.end_time" name="end_time" required>
+            <option>Select list:</option>
+          <option>12 h</option>
+          <option>1 Day</option>
+          <option>2 Days</option>
+          <option>3 Days</option>
+        </select>
+      </div>
     </div>
     <div class="footer text-right col-sm-12">
       <button [mat-dialog-close]="true" class="btn-style width100 margin-top-10" type="submit" tabindex="2" (click)="postoffer()">
