@@ -111,10 +111,9 @@
                                 <mat-error *ngIf="register.controls.password.value==''">
                                     <strong>Password cannot be empty</strong>
                                 </mat-error>
-                                <!-- <mat-error *ngIf="register.controls.password.errors?.minlength"> Password must be at least 8 characters long. </mat-error> -->
-                                <mat-error *ngIf="register.controls.password.hasError('pattern')">Password must be at
-                                    least 8 characters long, have at least one number, one special character,one lower
-                                    case character and one upper case character</mat-error>
+                                <mat-error *ngIf="register.controls.password.hasError('pattern')">Password must be 8
+                                    characters long and must include 1 upper case, 1 lower case, 1 number and 1 special
+                                    character</mat-error>
                             </mat-form-field>
                         </div>
                         <div [ngClass]="displayFieldCss(register, 'confirmPassword')">
@@ -155,11 +154,23 @@
                         <div [ngClass]="displayFieldCss(institute, 'username')">
                             <mat-form-field>
                                 <input matInput type="text" (focusout)="getusername(username1.value)" #username
-                                    formControlName="username" placeholder="Username" required>
+                                    formControlName="username" placeholder="Username" required minlength="3"
+                                    maxlength="64">
                                 <mat-error *ngIf="institute.controls.username.value==''">
                                     <strong>Username cannot be empty</strong>
                                 </mat-error>
                                 <mat-error *ngIf="institute.controls.username.hasError('pattern')"> Invalid Username
+                                </mat-error>
+                                <mat-error *ngIf="institute.controls.username.errors?.minlength"><strong>User Name
+                                        must be
+                                        at least {{institute.controls.username.errors.minlength.requiredLength}}
+                                        characters
+                                        long.</strong>
+                                </mat-error>
+                                <mat-error *ngIf="institute.controls.username.errors?.maxlength"> <strong> User Name
+                                        must be at
+                                        most{{institute.controls.username.errors.maxlength.requiredLength}}characters
+                                        long.</strong>
                                 </mat-error>
                             </mat-form-field>
                         </div>
@@ -215,8 +226,9 @@
                         <div [ngClass]="displayFieldCss(institute, 'password')">
                             <mat-form-field class="margin-top-10">
                                 <input matInput type="password" [type]="hide ? 'password' : 'text'" #password
-                                    formControlName="password" pattern="(?=.*[A-Z])(?=.*[a-z]).*$" name=password
-                                    placeholder="Password" required>
+                                    formControlName="password"
+                                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                                    name=password placeholder="Password" required>
                                 <mat-icon class="pointer" data-toggle="tooltip"
                                     title="{{hide? 'hide' : 'show'}}Password" matSuffix (click)="hide=!hide">
                                     {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -225,14 +237,16 @@
                                 </mat-error>
                                 <mat-error *ngIf="institute.controls.password.errors?.minlength"> Password must be at
                                     least 8 characters long. </mat-error>
-                                <mat-error *ngIf="institute.controls.password.hasError('pattern')">Password should
-                                    contains atleast one upper Case and One lower case letter</mat-error>
+                                <mat-error *ngIf="institute.controls.password.hasError('pattern')">Password must be 8
+                                    characters long and must include 1 upper case, 1 lower case, 1 number and 1 special
+                                    character</mat-error>
                             </mat-form-field>
                         </div>
                         <div [ngClass]="displayFieldCss(institute, 'confirmPassword')">
                             <mat-form-field class="margin-top-20">
                                 <input matInput [type]="hide2 ? 'password' : 'text'" #password type="password"
-                                    formControlName="confirmPassword" placeholder="Confirm Password" required>
+                                    formControlName="confirmPassword" placeholder="Confirm Password" required
+                                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$">
                                 <mat-icon class="pointer" data-toggle="tooltip"
                                     title="{{hide2? 'hide2' : 'show'}}Password" matSuffix (click)="hide2=!hide2">
                                     {{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
