@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators, NgModel } from '@angular/forms';
 import { uploadnotesservice } from "./uploadnotes.service";
 import { Router } from "@angular/router";
 import { Config } from "../../Config";
@@ -187,8 +187,7 @@ export class UploadnotesComponent implements OnInit {
           
         }
       });
-    // f.resetForm();
-  }
+     }
 
   sell_days;
   notessubcategories;
@@ -370,7 +369,7 @@ export class UploadnotesComponent implements OnInit {
       }
     }
   }
-  onsubmitt(){
+  onsubmitt(f: NgModel){
     // alert(this.model);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
