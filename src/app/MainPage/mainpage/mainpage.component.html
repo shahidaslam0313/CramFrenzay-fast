@@ -136,7 +136,7 @@
                                         *ngIf="!data.wishlist==true"></i>
                                     <!-- Heart End -->
                                     <!-- Cart Start -->
-                                    <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
+                                    <i *ngIf="!data.cart==false " class="fa fa-cart-plus" title="Click and remove from Cart"
                                         (click)="delfromcart(data)"></i>
                                     <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart"
                                         (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
@@ -144,20 +144,24 @@
                                     <!-- Cart End -->
 
                                 </div>
-                                <div class="buy_btn"> <a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased "
+                                <div class="buy_btn"> <a class="btn-style" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher == false"
                                         (click)="checkOffer(data?.id,nullvalue,nullvalue,nullvalue)">Offer Now</a>
                                 </div>
                             </div>
                             <!-- ------Cart Heart and Buy Now Button div end------- -->
                             <div class="product-list__item-info-1">
-                                <a class="btn-style text-transform-none" (click)="checkmainpage(data?.id)" *ngIf="data.sell_status==true && !data.Purchased">
+                                <a class="btn-style text-transform-none" (click)="checkmainpage(data?.id)" *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher == false">
                                     Buy Now at {{data.price | currency:'USD'}} </a>
-                                <a class="btn-style text-transform-none" data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased"
+                                <a class="btn-style text-transform-none" data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher == false"
                                     data-target="#notesbid"> Bid Now at {{data.bid_price | currency:'USD'}} </a>
-                                <a class="already-bought" *ngIf="data.Purchased == true" data-target="#notesbid">
+                                <a class="already-bought" *ngIf="data.Purchased == true && data.isTeacher == false" data-target="#notesbid">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Note Already Bought</a>
+                                    <a class="btn-style text-transform-none" *ngIf="data.isTeacher == true" data-target="#notesbid">
+                                            
+                                            Note add by me </a>
                             </div>
+                       
                         </div>
                     </div>
                 </div>
