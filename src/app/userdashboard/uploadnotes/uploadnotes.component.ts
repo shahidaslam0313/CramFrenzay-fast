@@ -172,7 +172,7 @@ export class UploadnotesComponent implements OnInit {
       }
     })
   }
-  onSubmit() {
+  onSubmit(f: NgForm) {
 
     this.http.post(
       Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
@@ -187,6 +187,7 @@ export class UploadnotesComponent implements OnInit {
           
         }
       });
+    f.resetForm()
      }
 
   sell_days;

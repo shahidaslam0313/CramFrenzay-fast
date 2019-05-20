@@ -34,7 +34,7 @@
             </ul>
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
-                    <form class="user-add-ingo-form" enctype="multipart/form-data" >
+                    <form class="user-add-ingo-form" enctype="multipart/form-data" #f="ngForm">
                         <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text"
                                 placeholder="Title" id="name" [(ngModel)]="model.name" name="name" required>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
@@ -144,7 +144,7 @@
                         </span>
                         <span class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> <a class="btn-style margin-top-10" (click)="onSubmit()">Submit</a>
+                        </span> <a class="btn-style margin-top-10" (click)="onSubmit(f)">Submit</a>
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">
