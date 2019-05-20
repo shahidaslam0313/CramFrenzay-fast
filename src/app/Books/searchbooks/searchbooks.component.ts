@@ -29,6 +29,7 @@ export class SearchbooksComponent implements OnInit {
   fullname;
   searchResult: any = [];
   query;
+  public searchResultStatus = true;
 
   currentuser;
   constructor(private router: Router, private pagerService: PagerService, private route: ActivatedRoute, private sg: SimpleGlobal, private newservice: booksservice, private service: SearchbooksService, @Inject(PLATFORM_ID) private platformId: Object) {
@@ -112,8 +113,11 @@ export class SearchbooksComponent implements OnInit {
   }
   filter(query) {
     if (query != "") {
-      this.service.searchbooks(query, 1).subscribe(data => {
-        this.searchResult = data.Books;
+      this.service.searchbooks(query,1).subscribe(data => {
+        this.searchResult = data.books;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }

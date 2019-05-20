@@ -34,7 +34,7 @@
             </ul>
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
-                    <form class="user-add-ingo-form" enctype="multipart/form-data">
+                    <form class="user-add-ingo-form" enctype="multipart/form-data"  [formGroup]="addnotes">
                         <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text"
                                 placeholder="Title" id="name" [(ngModel)]="model.name" name="name" required>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
@@ -84,9 +84,11 @@
                         <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true"
                             [(ngModel)]="sell_status" name="sell_status">List for Sale</mat-slide-toggle>
                         <div id="showdiv">
-                            <mat-form-field class="margin-top-10"> <input matInput type="text"
-                                    placeholder="Buy It Now Price" id="price" [(ngModel)]="model.price" name="price">
-                                <span matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field class="margin-top-10"> <input matInput type="text" maxlength="4" pattern="^[0-9]*$"
+                                    placeholder="Buy It Now Price" id="price" [(ngModel)]="model.price" name="price" formControlName="price">
+                                <span matPrefix>$&nbsp;</span>
+                                <mat-error *ngIf="addnotes.controls.price.hasError('pattern')">Numbers Only
+                                </mat-error> </mat-form-field>
                             <mat-form-field class="material-select">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days"
                                     name="sell_days">

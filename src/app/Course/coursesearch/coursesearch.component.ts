@@ -26,6 +26,7 @@ export class CoursesearchComponent implements OnInit {
   Eid;
   query;
   searchResult: any = [];
+  public searchResultStatus = true;
   constructor(private course: CourseService, private pagerService: PagerService, private router: Router, private route: ActivatedRoute, private search: CoursesearchService, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -107,8 +108,11 @@ export class CoursesearchComponent implements OnInit {
   }
   filter(query) {
     if (query != "") {
-      this.course.coursesearch(query).subscribe(data => {
-        this.searchResult = data.Course;
+      this.course.coursesearch(query).subscribe(Res => {
+        this.searchResult = Res.courses;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }

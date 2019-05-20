@@ -13,6 +13,9 @@
                 </li>
             </ul>
         </div>
+        <div class="row search-results" *ngIf="!searchResultStatus">            
+            <p class="results-found"> No results found. Please use keywords.</p>
+        </div>
     </div>
 </div>
 <div class="container">
