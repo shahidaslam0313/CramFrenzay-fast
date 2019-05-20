@@ -34,7 +34,7 @@
             </ul>
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
-                    <form class="user-add-ingo-form" enctype="multipart/form-data">
+                    <form class="user-add-ingo-form" enctype="multipart/form-data" >
                         <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text"
                                 placeholder="Title" id="name" [(ngModel)]="model.name" name="name" required>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
@@ -74,11 +74,11 @@
                         <div id="showdiv6" style="display: none;">
                             <mat-form-field> <input matInput type="number"
                                     placeholder="Automatically accept offers of at least $"
-                                    [(ngModel)]="model.min_amount" name="min_amount" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+                                    [(ngModel)]="model.min_amount" name="min_amount"  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                             </mat-form-field>
                             <mat-form-field> <input matInput type="number"
                                     placeholder="Automatically decline offers lower then $"
-                                    [(ngModel)]="model.max_amount" name="max_amount" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+                                    [(ngModel)]="model.max_amount" name="max_amount"  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                             </mat-form-field>
                         </div>
                         <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true"
@@ -86,7 +86,7 @@
                         <div id="showdiv">
                             <mat-form-field class="margin-top-10"> <input matInput type="number"
                                     placeholder="Buy It Now Price" id="price" [(ngModel)]="model.price" name="price"
-                                    pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+                                    onKeyPress="if(this.value.length==4) return false;">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field class="material-select">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days"
@@ -103,7 +103,7 @@
                             <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
                             <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
-                                    [(ngModel)]="model.initial_amount" name="initial_amount" pattern="/^-?\d+\.?\d*$/"
+                                    [(ngModel)]="model.initial_amount" name="initial_amount"
                                     onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                             </mat-form-field>
                             <mat-form-field>
@@ -116,7 +116,7 @@
                                 name="isreserved">Reserve Auction</mat-checkbox>
                             <div id="showdiv3">
                                 <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
-                                        [(ngModel)]="model.reservedprice" name="reservedprice" pattern="/^-?\d+\.?\d*$/"
+                                        [(ngModel)]="model.reservedprice" name="reservedprice"
                                         onKeyPress="if(this.value.length==4) return false;"> <span
                                         matPrefix>$&nbsp;</span> </mat-form-field>
                             </div>
@@ -131,8 +131,8 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div class="img-userprofile s_uploaded_img" *ngIf="imagePreview">
-                            <img accept=".jpg, .jpeg, .png" src="{{imagePreview}}" alt="" allowmultiple="false" />
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
+                            <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false" />
                         </div>
                         <!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)"
                              accept="image/gif, image/jpeg, image/png" required>

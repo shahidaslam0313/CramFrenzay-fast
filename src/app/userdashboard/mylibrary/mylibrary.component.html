@@ -207,19 +207,22 @@
                     <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="accept_offer" name="accept_offer">
                         Accept Offer</mat-slide-toggle>
                     <div *ngIf="accept_offer == true">
-                        <mat-form-field> <input matInput type="text" placeholder="Minimum Price"
-                                [(ngModel)]="editnotes.min_amount" name="min_amount" #min_amount="ngModel"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                                [(ngModel)]="editnotes.min_amount" name="min_amount" #min_amount="ngModel" 
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
-                        <mat-form-field> <input matInput type="text" placeholder="Maximum Price"
-                                [(ngModel)]="editnotes.max_amount" name="max_amount" #max_amount="ngModel"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                                [(ngModel)]="editnotes.max_amount" name="max_amount" #max_amount="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
                     </div>
                     <mat-slide-toggle class="margin-bottom-10 d-block" [checked]="true"
                         [(ngModel)]="editnotes.sell_status" #sell_status="ngModel" name="sell_status">List for
                         Sale</mat-slide-toggle>
                     <div *ngIf="editnotes.sell_status">
-                        <mat-form-field> <input matInput type="text" placeholder="Buy It Now Price"
-                                [(ngModel)]="editnotes.price" #actual_price="ngModel" name="price"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price"
+                                [(ngModel)]="editnotes.price" #actual_price="ngModel" name="price" 
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
                         <mat-form-field class="material-select">
                             <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="var_final_get_date"
@@ -233,8 +236,9 @@
                         name="bid_status" #bid_status="ngModel">List for
                         Auction</mat-slide-toggle>
                     <div *ngIf="editnotes.bid_status">
-                        <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price"
-                                [(ngModel)]="bidnote.initial_amount" name="initial_amount" #initial_amount="ngModel">
+                        <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
+                                [(ngModel)]="bidnote.initial_amount" name="initial_amount" #initial_amount="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
                             <span matPrefix>$&nbsp;</span> </mat-form-field>
                         <mat-form-field>
                             <mat-select placeholder="Listing Duration" [(ngModel)]="var_final_get_date"
@@ -246,8 +250,9 @@
                         <mat-checkbox class="d-block" [(ngModel)]="bidnote.isreserved" name="isreserved"
                             #isreserved="ngModel">Reserved!</mat-checkbox>
                         <div *ngIf="bidnote.isreserved">
-                            <mat-form-field> <input matInput type="text" placeholder="Reserve Price"
-                                    [(ngModel)]="bidnote.reservedprice" name="reservedprice" #reservedprice="ngModel">
+                            <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
+                                    [(ngModel)]="bidnote.reservedprice" name="reservedprice" #reservedprice="ngModel"
+                                    pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                         </div>
                         <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
@@ -317,19 +322,21 @@
                         name="accept_offer">
                         Accept Offer</mat-slide-toggle>
                     <div *ngIf="cardedit.accept_offer==true">
-                        <mat-form-field> <input matInput type="text" placeholder="Minimum Price"
-                                [(ngModel)]="cardedit.min_amount" name="min_amount" #min_amount="ngModel"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                                [(ngModel)]="cardedit.min_amount" name="min_amount" #min_amount="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
-                        <mat-form-field> <input matInput type="text" placeholder="Maximum Price"
-                                [(ngModel)]="cardedit.max_amount" name="max_amount" #max_amount="ngModel"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                                [(ngModel)]="cardedit.max_amount" name="max_amount" #max_amount="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
                     </div>
                     <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="cardedit.sell_status"
                         #sell_status="ngModel" name="sell_status">List for
                         Sale</mat-slide-toggle>
                     <div *ngIf="cardedit.sell_status==true">
-                        <mat-form-field> <input matInput type="text" placeholder="Buy It Now Price" name="price"
-                                [(ngModel)]="cardedit.price" #actual_price="ngModel"> <span matPrefix>$&nbsp;</span>
+                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" name="price"
+                                [(ngModel)]="cardedit.price" #actual_price="ngModel" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                         </mat-form-field>
 
                         <mat-form-field class="material-select">
@@ -344,9 +351,9 @@
                     <mat-slide-toggle [checked]="true" [(ngModel)]="cardedit.bid_status" name="bid_status"
                         #bid_status="ngModel">List for Auction</mat-slide-toggle>
                     <div *ngIf="cardedit.bid_status==true">
-                        <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price"
+                        <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
                                 [(ngModel)]="bidflashcard.initial_amount" #initial_amount="ngModel"
-                                name="initial_amount"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+                                name="initial_amount" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                         <mat-form-field>
                             <mat-select placeholder="Listing Duration" [(ngModel)]="varr_final_get_date"
                                 #end_time="ngModel" name="end_time">
@@ -358,9 +365,9 @@
                         <mat-checkbox class="d-block" [(ngModel)]="bidflashcard.isreserved" name="isreserved"
                             #isreserved="ngModel">Reserved!</mat-checkbox>
                         <div *ngIf="bidflashcard.isreserved">
-                            <mat-form-field> <input matInput type="text" placeholder="Reserve Price"
+                            <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                                     [(ngModel)]="bidflashcard.reservedprice" name="reservedprice"
-                                    #reservedprice="ngModel">
+                                    #reservedprice="ngModel" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                         </div>
                         <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
@@ -431,19 +438,22 @@
                         Accept
                         Offer</mat-slide-toggle>
                     <div *ngIf="editcourse.accept_offer == true">
-                        <mat-form-field> <input matInput type="text" placeholder="Minimum Price"
-                                [(ngModel)]="editcourse.min_amount" name="min_amount" #min_amount="ngModel"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                                [(ngModel)]="editcourse.min_amount" name="min_amount" #min_amount="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
-                        <mat-form-field> <input matInput type="text" placeholder="Maximum Price"
-                                [(ngModel)]="editcourse.max_amount" name="max_amount" #max_amount="ngModel"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                                [(ngModel)]="editcourse.max_amount" name="max_amount" #max_amount="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
                     </div>
                     <mat-slide-toggle class="margin-bottom-10 d-block" [checked]="true"
                         [(ngModel)]="editcourse.sell_status" #sell_status="ngModel" name="sell_status">List for Sale
                     </mat-slide-toggle>
                     <div *ngIf="editcourse.sell_status==true">
-                        <mat-form-field> <input matInput type="text" placeholder="Buy It Now Price" id="price"
-                                [(ngModel)]="editcourse.price" #actual_price="ngModel" name="price"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" id="price"
+                                [(ngModel)]="editcourse.price" #actual_price="ngModel" name="price"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
                         <mat-form-field class="material-select">
                             <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="editcourse.sell_days"
@@ -456,8 +466,9 @@
                     <mat-slide-toggle class="margin-bottom-10" [checked]="true" [(ngModel)]="editcourse.bid_status"
                         name="bid_status" #bid_status="ngModel">List for Auction</mat-slide-toggle>
                     <div *ngIf="editcourse.bid_status">
-                        <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price"
-                                [(ngModel)]="bidcourses.initial_amount" name="initial_amount"> <span
+                        <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
+                                [(ngModel)]="bidcourses.initial_amount" name="initial_amount"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                 matPrefix>$&nbsp;</span> </mat-form-field>
                         <mat-form-field>
                             <mat-select placeholder="Listing Duration" [(ngModel)]="bidcourses.end_time"
@@ -469,9 +480,9 @@
                         <mat-checkbox [(ngModel)]="bidcourses.isreserved" name="isreserved" #isreserved="ngModel">
                             Reserved!</mat-checkbox>
                         <div *ngIf="bidcourses.isreserved">
-                            <mat-form-field> <input matInput type="text" placeholder="Reserve Price"
+                            <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                                     [(ngModel)]="bidcourses.reservedprice" #reservedprice="ngModel"
-                                    name="reservedprice"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+                                    name="reservedprice" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
                         </div><br>
                         <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
                         <div>
@@ -556,11 +567,13 @@
                             name="accept_offer">
                             Accept Offer</mat-slide-toggle>
                         <div *ngIf="profile.accept_offer == true">
-                            <mat-form-field> <input matInput type="text" placeholder="Minimum Price"
-                                    [(ngModel)]="profile.min_amount" name="min_amount" #min_amount="ngModel"> <span
+                            <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                                    [(ngModel)]="profile.min_amount" name="min_amount" #min_amount="ngModel"
+                                    pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                     matPrefix>$&nbsp;</span> </mat-form-field>
-                            <mat-form-field> <input matInput type="text" placeholder="Maximum Price"
-                                    [(ngModel)]="profile.max_amount" name="max_amount" #max_amount="ngModel"> <span
+                            <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                                    [(ngModel)]="profile.max_amount" name="max_amount" #max_amount="ngModel"
+                                    pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span
                                     matPrefix>$&nbsp;</span> </mat-form-field>
                         </div>
                     </div>
@@ -568,8 +581,9 @@
                         [checked]="profile.sell_status==true" name="sell_status" #sell_status="ngModel">List for sale
                     </mat-slide-toggle>
                     <div *ngIf="profile.sell_status==true">
-                        <mat-form-field> <input matInput type="num" placeholder="Buy It Now Price"
-                                [(ngModel)]="profile.price" name="price" #price="ngModel" /> </mat-form-field>
+                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price"
+                                [(ngModel)]="profile.price" name="price" #price="ngModel"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" /> </mat-form-field>
 
                         <mat-form-field class="material-select">
                             <mat-select placeholder="Buy It Now Listing Duration" name="sell_days" #sell_days="ngModel"
@@ -585,7 +599,8 @@
                     </mat-slide-toggle>
                     <div *ngIf="profile.bid_status==true">
                         <mat-form-field> <input matInput type="number" placeholder="Bid Price"
-                                [(ngModel)]="bidbooks.initial_amount" #initial_amount="ngModel" name="initial_amount">
+                                [(ngModel)]="bidbooks.initial_amount" #initial_amount="ngModel" name="initial_amount"
+                                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
                         </mat-form-field>
                         <mat-form-field>
                             <mat-select placeholder="Listing Duration" [ngModel]="var_final_get_date" name="end_time"
@@ -599,8 +614,9 @@
                             Reserved!</mat-checkbox>
                         <div *ngIf="bidbooks.isreserved">
                             <mat-form-field>
-                                <input matInput type="num" placeholder="Reserved Price"
-                                    [(ngModel)]="bidbooks.reservedprice" name="reservedprice" #reservedprice="ngModel">
+                                <input matInput type="number" placeholder="Reserved Price"
+                                    [(ngModel)]="bidbooks.reservedprice" name="reservedprice" #reservedprice="ngModel"
+                                    pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
                             </mat-form-field>
                         </div>
                         <mat-slide-toggle class="margin-bottom-10 d-block" id="showhide4">Start Auction Later
