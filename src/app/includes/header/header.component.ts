@@ -125,6 +125,22 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
+    const mainSearch = $('.main-search');
+
+    $('.open-search').click(function () {
+      $(mainSearch).addClass('active');
+      $('body').addClass('noScroll');
+
+      setTimeout(function () {
+        $('#input-searchbar').focus();
+      }, 370);
+
+    });
+
+    $('#closeSearch').click(function () {
+      $(mainSearch).removeClass('active');
+      $('body').removeClass('noScroll');
+    });
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Data.getEmittedValue().subscribe(data => {
       this.showCartItems()
@@ -167,26 +183,8 @@ export class HeaderComponent implements OnInit {
     });
     this.notification();
     this.showCartItems();
-    this.showlist()
-    const mainSearch = $('.main-search');
-    const formSearch = $('.form-search');
-
-    $('#searchIcon').click(function () {
-      $(mainSearch).addClass('active');
-      $('body').addClass('noScroll');
-      $(formSearch).addClass('flipInX');
-
-      setTimeout(function () {
-        $('#input-searchbar').focus();
-      }, 370);
-
-    });
-
-    $('#closeSearch').click(function () {
-      $(mainSearch).removeClass('active');
-      $('body').removeClass('noScroll');
-      $(formSearch).removeClass('flipInX');
-    });
+    this.showlist();
+   
 
     if (isPlatformBrowser(this.platformId)) {
       this.currentUser = localStorage.getItem('currentUser')

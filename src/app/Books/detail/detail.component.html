@@ -248,16 +248,52 @@
         <div class="col-lg-8 col-sm-12">
             <div class="background-grey review-section margin-bottom-20 float_left">
                 <h4>Reviews</h4>
-                <div class="padding-10 float_left">
                     <div *ngFor="let reviews of view?.reviews">
-                        <div *ngIf="reviews !=null">
-                            <div class="pull-left">
+                        <div class="card" *ngIf="reviews !=null">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                                    <p class="text-secondary review-time text-center"><span>{{reviews?.commentDate}}</span></p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p>
+                                                        <a class="float-left" ><strong>User Name</strong></a>
+                                                   </p>
+                                                   <div class="clearfix"></div>
+                                                    <p>{{reviews?.comment}}</p>
+                                                </div>
+                                                <div class="col-md-2 padding-0">
+                                                        <div class="pull-right review-box">
+                                                                <div class="rating float_left width100">
+                                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                            class="fa fa-star filled"></i>
+                                                                    </div>
+                                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                            class="fa fa-star filled"></i>
+                                                                    </div>
+                                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                            class="fa fa-star filled"></i>
+                                                                    </div>
+                                                                    <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                                            class="fa fa-star-half filled"></i>
+                                                                    </div>
+                                                                    <div class="float_left position-relative"> <i class="far fa-star"></i>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                              
+                                        </div>
+                        </div>
+                            <!-- <div class="float-left">
                                 <div class="review-container">
-                                    <div class="pull-left">
+                                    <div class="float-left">
                                         <div class="user-image">
                                             <span>AT</span>
                                         </div>
-                                        <div class="pull-left">
+                                        <div class="float-left">
                                             <div class="time-to-go">
                                                 <span>{{reviews?.commentDate}}</span>
                                             </div>
@@ -287,15 +323,13 @@
                                         <p>{{reviews?.comment}}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- <div class="col-md-12">
                                 <h3>Comment: {{reviews?.comment}}</h3>
                                 <h3>Post date: {{reviews?.commentDate}}</h3>
                             </div> -->
-                        </div>
                     </div>
-                </div>
-                <div class="text-center pull-left" *ngIf="item==400">
+                <div class="text-center float-left" *ngIf="item==400">
                     <img src="../../../assets/img/No-One-Reviewed-this-Book.gif">
                 </div>
             </div>

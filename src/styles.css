@@ -160,7 +160,8 @@ mat-form-field.mat-form-field {
     justify-content: center;
     border: none;
     font-size: 20px;
-    -webkit-appearance: none !important
+    -webkit-appearance: none !important;
+    border-radius: 0 50px 50px 0!important;
 }
 
 .search-bg__btn:hover {
@@ -520,7 +521,7 @@ button:focus {
     outline: 0 !important
 }
 
-.btn-01:focus,
+.:focus,
 .product-list__item:focus,
 .slick-main .item:focus,
 .slick-main-btn-left:focus,
@@ -609,7 +610,7 @@ blockquote .blockquote-author {
     font-weight: 500
 }
 
-.btn-01,
+.,
 .product-list__item {
     vertical-align: top;
     -webkit-transition: .5s all;
@@ -651,7 +652,7 @@ blockquote .blockquote-author {
     color: #fff !important
 }
 
-.btn-01 {
+. {
     padding: 12px 28px !important
 }
 
@@ -910,8 +911,7 @@ blockquote .blockquote-author {
     cursor: pointer !important
 }
 
-.form-1-header,
-.btn-style {
+.form-1-header {
     width: 100%;
     background: #000
 }
@@ -1635,15 +1635,12 @@ fieldset {
 }
 
 .mainbanner {
-    font-weight: 700;
-    background-size: 100% 100% !important;
-    position: relative;
     z-index: 1;
     margin: 20px 0;
     font-size: 44px;
     color: #333;
     text-shadow: 0 2px 3px #ccc;
-    border-radius: 8px
+    width: 100%;
 }
 
 #closeSearch,
@@ -2943,7 +2940,17 @@ ngx-slick.slick-initialized {
 .side-tabs i {
     width: 25px
 }
-
+.font-24px{
+    font-size: 24px !important;
+}
+.row.search-results .results-found{
+    color: #FFF;
+    font-weight: 600;
+    font-size: 24px;
+}
+.padding-l-r-60 >div >a{
+margin: 0 auto;
+}
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
         width: 250px

@@ -1,6 +1,7 @@
-<div class="container" *ngIf="bidnotes?.notes">
-    <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Notes</h1>
-    <div class="row">
+<div class="container ">
+
+<div class="row" *ngIf="bidnotes?.notes">
+            <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Notes</h1>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 " *ngFor="let data of bidnotes?.notes; let i=index">
             <div class="product-list__item">
                 <!-- Image start -->
@@ -64,27 +65,23 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="col-lg-12">
-            <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
-                <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagenotes(1)"
-                        class="page-link">First</a> </li>
-                <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
-                        (click)="setPagenotes(pager.currentPage - 1)" class="page-link">Previous</a> </li>
-                <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}"> <a
-                        (click)="setPagenotes(page)" class="page-link">{{page}}</a> </li>
-                <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                        (click)="setPagenotes(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
-                <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                        (click)="setPagenotes(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
-            </ul>
-        </div>
-    </div>
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagenotes(1)"
+                            class="page-link">First</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
+                            (click)="setPagenotes(pager.currentPage - 1)" class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}"> <a
+                            (click)="setPagenotes(page)" class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                            (click)="setPagenotes(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                            (click)="setPagenotes(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
+                </ul>
+            </div>
 </div>
-<div class="container" *ngIf="bidcourse?.courses">
-    <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Courses</h1>
-    <div class="row">
+<div class="row" *ngIf="bidcourse?.courses">
+            <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Courses</h1>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of bidcourse?.courses; let i=index">
             <div class="product-list__item">
                 <!-- Image Start -->
@@ -140,9 +137,7 @@
                 <!-- Buy and Bid now -->
             </div>
         </div>
-    </div>
-    <div class="row">
-            <div class="col-lg-12">
+        <div class="col-lg-12">
                 <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
                     <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagecourse(1)"
                             class="page-link">First</a> </li>
@@ -156,11 +151,9 @@
                             (click)="setPagecourse(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
                 </ul>
             </div>
-        </div>
-</div>
-<div class="container" *ngIf="bidflash?.flashcards">
-    <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Flash Cards</h1>
-    <div class="row">
+</div>  
+<div class="row"  *ngIf="bidflash?.flashcards">
+        <h1 class="mainbanner bg-Bid-Notes" >Buy & Bid on Flash Cards</h1>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of bidflash?.flashcards; let i=index">
             <div class="product-list__item">
                 <!-- Image Start -->
@@ -220,29 +213,25 @@
                 </div>
             </div>
         </div>
-    </div>
-        <div class="row">
-                <div class="col-lg-12">
-                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
-                        <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagflash(1)"
-                                class="page-link">First</a> </li>
-                        <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
-                                (click)="setPagflash(pager.currentPage - 1)" class="page-link">Previous</a> </li>
-                        <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}"> <a
-                                (click)="setPagflash(page)" class="page-link">{{page}}</a> </li>
-                        <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                                (click)="setPagflash(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
-                        <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                                (click)="setPagflash(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
-                    </ul>
-                </div>
-            </div>
-   
+        <div class="col-lg-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagflash(1)"
+                            class="page-link">First</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
+                            (click)="setPagflash(pager.currentPage - 1)" class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}"> <a
+                            (click)="setPagflash(page)" class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                            (click)="setPagflash(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                            (click)="setPagflash(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
+                </ul>
+        </div>
 </div>
-    <div class="container" *ngIf="bidbooks?.books">
-        <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Books</h1>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of bidbooks?.books; let i=index">
+<div class="row" *ngIf="bidbooks?.books">
+    <h1 class="mainbanner bg-Bid-Notes">Buy & Bid on Books</h1>
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of bidbooks?.books; let i=index">
                 <div class="product-list__item">
                     <!-- Image Start -->
                     <figure class="product-list__img">
@@ -297,26 +286,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
-                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagebooks(1)"
-                            class="page-link">First</a> </li>
-                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
-                            (click)="setPagebooks(pager.currentPage - 1)" class="page-link">Previous</a> </li>
-                    <li class="page-item" *ngFor="let page of pager.pages"
-                        [ngClass]="{active:pager.currentPage===page}"> <a (click)="setPagebooks(page)"
-                            class="page-link">{{page}}</a> </li>
-                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                            (click)="setPagebooks(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
-                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
-                            (click)="setPagebooks(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
-                </ul>
-            </div>
-        </div>
     </div>
+            <div class="col-lg-12">
+                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                        <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="setPagebooks(1)"
+                                class="page-link">First</a> </li>
+                        <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a
+                                (click)="setPagebooks(pager.currentPage - 1)" class="page-link">Previous</a> </li>
+                        <li class="page-item" *ngFor="let page of pager.pages"
+                            [ngClass]="{active:pager.currentPage===page}"> <a (click)="setPagebooks(page)"
+                                class="page-link">{{page}}</a> </li>
+                        <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                (click)="setPagebooks(pager.currentPage + 1)" class="page-link" type="Next">Next</a> </li>
+                        <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a
+                                (click)="setPagebooks(pager.totalPages)" class="page-link" type="Last">Last</a> </li>
+                    </ul>
+                </div>
+</div>
+
 <!--- bid on notes-->
 <div class="modal fade" id="notesbid" role="dialog">
   <div class="modal-dialog">
@@ -327,7 +314,7 @@
         </div>
       </div>
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal"
-                                  class="view-bid">view bid history </a>
+                                  class="view-bid">View Bid History </a>
         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
           <p>Highest bid amount: {{notes?.bidamount}}</p>
         </a>
@@ -354,7 +341,7 @@
         </div>
       </div>
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal"
-                                  class="view-bid">view bid history </a>
+                                  class="view-bid">View Bid History </a>
         <form name="form" role="form" method="post" (ngSubmit)="bidc()"  class="user-add-ingo-form">
           <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
             <p>Highest bid amount: {{course?.bidamount}}</p>
@@ -380,7 +367,7 @@
         </div>
       </div>
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal"
-                                  class="view-bid">view bid history </a>
+                                  class="view-bid">View Bid History </a>
 
         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
           <p>Highest bid amount: {{getbooks?.bidamount}}</p>
@@ -409,7 +396,7 @@
         </div>
       </div>
       <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}" data-dismiss="modal"
-                                  class="view-bid">view bid history </a>
+                                  class="view-bid">View Bid History </a>
 
         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}" data-dismiss="modal"> <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{cardbid?.endtime}}"></countdown>
           <p>Highest bid amount: {{flashcardsbid?.bidamount}}</p>
@@ -424,4 +411,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

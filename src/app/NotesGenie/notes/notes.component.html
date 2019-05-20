@@ -221,13 +221,13 @@
         <div class="padding-10 float_left">
           <div *ngFor="let reviews of view?.reviews">
             <div *ngIf="reviews !=null">
-              <div class="pull-left">
+              <div class="float-left">
                 <div class="review-container">
-                  <div class="pull-left">
+                  <div class="float-left">
                     <div class="user-image">
                       <span>AT</span>
                     </div>
-                    <div class="pull-left">
+                    <div class="float-left">
                       <div class="time-to-go">
                         <span>{{reviews?.commentDate  | date:'medium' }}</span>
                       </div>
@@ -265,7 +265,7 @@
             </div>
           </div>
         </div>
-        <div class="text-center pull-left" *ngIf="view==0"> <img
+        <div class="text-center float-left" *ngIf="view==0"> <img
             src="../../../assets/img/No-One-Reviewed-this-Note.gif"> </div>
       </div>
     </div>
