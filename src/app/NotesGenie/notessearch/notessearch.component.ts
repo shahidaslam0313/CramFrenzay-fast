@@ -26,7 +26,7 @@ export class NotessearchComponent implements OnInit {
   Eid;
   query;
   searchResult: any = [];
-  searchResultStatus;
+ public searchResultStatus = true ;
 
 
   currentuser;
@@ -89,25 +89,26 @@ export class NotessearchComponent implements OnInit {
   mazeednotessearch(query) {
     this.full = query;
     this.search.notessearch(query, 1).subscribe(data => {
-      this.result = data.Notes;
+      this.result = data.notes;
   
       this.setPagenotes(1, data.totalItems)
       if (this.result.length <= 0) {
-        this.searchResultStatus = false;
+        this.searchResultStatus = null;
       }
     }
     );
   }
   filter(query) {
-    if (query != "") {
-      this.newservice.notessearch(query).subscribe(data => {
-        this.searchResult = data.Notes;
+    if (query !== "") {
+      this.newservice.notessearch(query).subscribe(Res => {
+        this.searchResult = Res.Notes;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }
       })
     }
   }
+
 
   onsubmit() {
     // this.router.navigate(['/notessearch/' + this.name]);

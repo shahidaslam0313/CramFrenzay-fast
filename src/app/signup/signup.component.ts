@@ -81,18 +81,18 @@ export class SignupComponent {
   firstnameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(this.firstname),
-    Validators.maxLength(60),
+    Validators.maxLength(64),
     Validators.minLength(2)
   ]);
   lastnameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(this.lastname),
-    Validators.maxLength(60),
+    Validators.maxLength(64),
     Validators.minLength(2)
   ]);
   usernameFormControl = new FormControl('', [
     Validators.required,
-    Validators.maxLength(60),
+    Validators.maxLength(64),
     Validators.minLength(3)
   ]);
   emailFormControl = new FormControl('', [

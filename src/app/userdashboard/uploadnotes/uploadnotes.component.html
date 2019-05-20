@@ -34,7 +34,7 @@
             </ul>
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
-                    <form class="user-add-ingo-form" enctype="multipart/form-data">
+                    <form class="user-add-ingo-form" enctype="multipart/form-data" #f="ngForm">
                         <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text"
                                 placeholder="Title" id="name" [(ngModel)]="model.name" name="name" required>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
@@ -72,20 +72,21 @@
                             name="accept_offer">Accept
                             Offers</mat-slide-toggle>
                         <div id="showdiv6" style="display: none;">
-                            <mat-form-field> <input matInput type="text"
+                            <mat-form-field> <input matInput type="number"
                                     placeholder="Automatically accept offers of at least $"
-                                    [(ngModel)]="model.min_amount" name="min_amount"> <span matPrefix>$&nbsp;</span>
+                                    [(ngModel)]="model.min_amount" name="min_amount"  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                             </mat-form-field>
-                            <mat-form-field> <input matInput type="text"
+                            <mat-form-field> <input matInput type="number"
                                     placeholder="Automatically decline offers lower then $"
-                                    [(ngModel)]="model.max_amount" name="max_amount"> <span matPrefix>$&nbsp;</span>
+                                    [(ngModel)]="model.max_amount" name="max_amount"  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                             </mat-form-field>
                         </div>
                         <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true"
                             [(ngModel)]="sell_status" name="sell_status">List for Sale</mat-slide-toggle>
                         <div id="showdiv">
-                            <mat-form-field class="margin-top-10"> <input matInput type="text"
-                                    placeholder="Buy It Now Price" id="price" [(ngModel)]="model.price" name="price">
+                            <mat-form-field class="margin-top-10"> <input matInput type="number"
+                                    placeholder="Buy It Now Price" id="price" [(ngModel)]="model.price" name="price"
+                                    onKeyPress="if(this.value.length==4) return false;">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field class="material-select">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days"
@@ -101,9 +102,10 @@
                             <span *ngIf="sell_status == true">Also List for Auction </span>
                             <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
-                            <mat-form-field> <input matInput type="text" placeholder="Starting Bid Price"
-                                    [(ngModel)]="model.initial_amount" name="initial_amount"> <span
-                                    matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
+                                    [(ngModel)]="model.initial_amount" name="initial_amount"
+                                    onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+                            </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
                                     <mat-option *ngFor="let range of range" [value]="range.viewValue">
@@ -113,8 +115,9 @@
                             <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved"
                                 name="isreserved">Reserve Auction</mat-checkbox>
                             <div id="showdiv3">
-                                <mat-form-field> <input matInput type="text" placeholder="Reserve Price"
-                                        [(ngModel)]="model.reservedprice" name="reservedprice"> <span
+                                <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
+                                        [(ngModel)]="model.reservedprice" name="reservedprice"
+                                        onKeyPress="if(this.value.length==4) return false;"> <span
                                         matPrefix>$&nbsp;</span> </mat-form-field>
                             </div>
                             <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
@@ -128,9 +131,9 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div class="img-userprofile s_uploaded_img" *ngIf="imagePreview">
-                        <img accept=".jpg, .jpeg, .png" src="{{imagePreview}}" alt="" allowmultiple="false"/>
-                      </div>
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
+                            <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false" />
+                        </div>
                         <!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)"
                              accept="image/gif, image/jpeg, image/png" required>
 
@@ -141,7 +144,7 @@
                         </span>
                         <span class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> <a class="btn-style margin-top-10" (click)="onSubmit()">Submit</a>
+                        </span> <a class="btn-style margin-top-10" (click)="onSubmit(f)">Submit</a>
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">

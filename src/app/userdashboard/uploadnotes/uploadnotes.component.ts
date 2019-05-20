@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators, NgModel } from '@angular/forms';
 import { uploadnotesservice } from "./uploadnotes.service";
 import { Router } from "@angular/router";
 import { Config } from "../../Config";
@@ -172,7 +172,7 @@ export class UploadnotesComponent implements OnInit {
       }
     })
   }
-  onSubmit() {
+  onSubmit(f: NgForm) {
 
     this.http.post(
       Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
@@ -187,8 +187,8 @@ export class UploadnotesComponent implements OnInit {
           
         }
       });
-    // f.resetForm();
-  }
+    f.resetForm()
+     }
 
   sell_days;
   notessubcategories;
@@ -370,7 +370,7 @@ export class UploadnotesComponent implements OnInit {
       }
     }
   }
-  onsubmitt(){
+  onsubmitt(f: NgModel){
     // alert(this.model);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');

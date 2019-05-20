@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef , MatFormFieldControl} from '@angular/material';
 import { GlobalService } from '../global.service';
 import swal from 'sweetalert2';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-acceptoffer',
   templateUrl: './acceptoffer.component.html',
@@ -16,6 +16,7 @@ export class AcceptofferComponent implements OnInit {
   status;
   value: string;
   viewValue: string;
+  end_time;
   range = [
     { value: '12', viewValue: '12' },
     { value: '1', viewValue: '1' },
@@ -27,7 +28,11 @@ export class AcceptofferComponent implements OnInit {
   ngOnInit() {
   }
   postoffer() {
-    return this.global.acceptoffer(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, this.model.end_time).subscribe(
+    var currentdate = moment(new Date,' YYYY-MM-DD ');
+    var new_date = moment(currentdate).add(this.end_time,'days');
+    console.log(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date);
+    return this.global.acceptoffer(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date).subscribe(
+ 
     data => {
     if(data.Message=="Your offer is already accepted "){
       swal({
