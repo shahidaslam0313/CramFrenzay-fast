@@ -27,6 +27,8 @@ export class FlashsearchComponent implements OnInit {
   query;
   pager: any = {};
   searchResult: any = [];
+  public searchResultStatus = true ;
+
 
   constructor(private router: Router, private pagerService: PagerService, private route: ActivatedRoute,  private newservice: FlashsearchService, private flash: FlashcardlistService, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -94,13 +96,31 @@ export class FlashsearchComponent implements OnInit {
     this.full = query;
     this.newservice.flashsearch(query, 1).subscribe(data => {
       this.result = data.Flashcard;
+      // this.setPagenotes(1, data.totalItems)
+      if (this.result.length <= 0) {
+        this.searchResultStatus = null;
+      }
     }
     );
   }
+  // filter(query) {
+  //   if (query != "") {
+  //     this.flash.flashsearch(query).subscribe(data => {
+  //       this.searchResult = data.Flashcard;
+  //       if (this.searchResult.length <= 0) {
+  //         this.searchResultStatus = false;
+  //       }
+  //     })
+  //   }
+  // }
   filter(query) {
     if (query != "") {
-      this.flash.flashsearch(query).subscribe(data => {
-        this.searchResult = data.Flashcard;
+
+      this.flash.flashsearch(query).subscribe(Res => {
+        this.searchResult = Res.flashcards;
+        if (this.searchResult.length <= 0) {
+          this.searchResultStatus = false;
+        }
       })
     }
   }
