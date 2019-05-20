@@ -899,7 +899,7 @@ blockquote .blockquote-author {
 .form-1-header h1,
 .form-1-sl,
 .how-it-works-box,
-.modal-btn,
+.btn-style,
 .parallax-content,
 .parallax-title,
 .who-are-we {
@@ -911,7 +911,7 @@ blockquote .blockquote-author {
 }
 
 .form-1-header,
-.modal-btn {
+.btn-style {
     width: 100%;
     background: #000
 }
