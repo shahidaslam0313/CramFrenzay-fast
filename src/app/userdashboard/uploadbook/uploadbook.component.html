@@ -76,19 +76,20 @@
                     name="accept_offer">Accept
                     Offers</mat-slide-toggle>
                 <div id="showdiv6" style="display: none;">
-                    <mat-form-field> <input matInput type="text" placeholder="Automatically accept offers of at least $"
-                            [(ngModel)]="model.min_amount" name="min_amount"> <span matPrefix>$&nbsp;</span>
+                    <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $"
+                            [(ngModel)]="model.min_amount" name="min_amount" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                     </mat-form-field>
-                    <mat-form-field> <input matInput type="text" placeholder="Automatically decline offers lower then $"
-                            [(ngModel)]="model.max_amount" name="max_amount"> <span matPrefix>$&nbsp;</span>
+                    <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
+                            [(ngModel)]="model.max_amount" name="max_amount" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                     </mat-form-field>
                 </div>
                 <mat-slide-toggle id="showhide" [checked]="true" [(ngModel)]="sell_status"
                     [ngModelOptions]="{standalone: true}">List
                     for Sale</mat-slide-toggle>
                 <div id="showdiv">
-                    <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Buy It Now Price"
-                            id="actual_price" [(ngModel)]="model.price" name="price"> <span matPrefix>$&nbsp;</span>
+                    <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Buy It Now Price"
+                            id="actual_price" [(ngModel)]="model.price" name="price"
+                            pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                     </mat-form-field>
                     <mat-form-field class="material-select margin-top-10">
                         <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
@@ -102,8 +103,9 @@
                     <span *ngIf="sell_status == true">Also List for Auction </span>
                     <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
                 <div id="showdiv2">
-                    <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Starting Bid Price"
-                            [(ngModel)]="model.initial_amount" name="initial_amount"> <span matPrefix>$&nbsp;</span>
+                    <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Starting Bid Price"
+                            [(ngModel)]="model.initial_amount" name="initial_amount"
+                            pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
@@ -115,8 +117,9 @@
                 <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction
                 </mat-checkbox>
                 <div id="showdiv3">
-                    <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Reserve Price"
-                            [(ngModel)]="model.reservedprice" name="reservedprice"> <span matPrefix>$&nbsp;</span>
+                    <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Reserve Price"
+                            [(ngModel)]="model.reservedprice" name="reservedprice"
+                            pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
                     </mat-form-field>
                 </div>
                 <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
