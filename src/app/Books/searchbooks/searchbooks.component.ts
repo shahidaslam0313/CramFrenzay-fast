@@ -114,7 +114,7 @@ export class SearchbooksComponent implements OnInit {
   filter(query) {
     if (query != "") {
       this.service.searchbooks(query,1).subscribe(data => {
-        this.searchResult = data.books;
+        this.searchResult = data.Books;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }

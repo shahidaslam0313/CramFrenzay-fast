@@ -416,10 +416,10 @@ export class HeaderComponent implements OnInit {
   filter(query) {
     if (query !== '') {
       this.header.search(this.query).subscribe(data => {
-        this.notes = data['Note'];
-        this.allcourse = data['Course'];
-        this.flashcard = data['Flashcard'];
-        this.book = data['Book'];
+        this.notes = data['notes'];
+        this.allcourse = data['courses'];
+        this.flashcard = data['flashcard'];
+        this.book = data['book'];
       });
     }
 

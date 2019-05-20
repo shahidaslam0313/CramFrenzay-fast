@@ -117,7 +117,7 @@ export class FlashsearchComponent implements OnInit {
     if (query != "") {
 
       this.flash.flashsearch(query).subscribe(Res => {
-        this.searchResult = Res.flashcards;
+        this.searchResult = Res.Flashcard;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }
