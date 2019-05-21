@@ -30,7 +30,7 @@ export class CoursesmService {
       }
   TrendingnowCourse(page) {
       if (localStorage.getItem('currentUser')) {
-    const headers = new Headers();
+    const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api+'/course/courselist/?page='+page+'', {headers:headers}).map((response: Response) => response.json());
       }
@@ -40,7 +40,7 @@ export class CoursesmService {
       }
   TopratedCourse(page) {
       if (localStorage.getItem('currentUser')) {
-    const headers = new Headers();
+    const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api+'course/TopRatedCoursesList/?page='+page+'', {headers:headers}).map((response: Response) => response.json());
       }
@@ -50,7 +50,7 @@ export class CoursesmService {
       }
   RecentlyCourses() {
       if (localStorage.getItem('currentUser')) {
-    const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+    const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'course/RecentlyViewedCourses', {headers: headers}).map((response: Response) => response.json());
       }
