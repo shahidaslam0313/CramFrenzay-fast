@@ -201,8 +201,8 @@
                             <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
                             <p>Highest bid amount:{{course?.bidamount}}</p>
                         </a> <label>Place Your own bid:</label>
-                        <mat-form-field> <input matInput type="number" min="0" onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)*"
-                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"> </mat-form-field>
+                        <mat-form-field> <input matInput type="number" min="0" oninput="validity.valid||(value='');" onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)*"
+                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
                         <a class="btn-style" (click)="bidc()" data-dismiss="modal">Bid Now </a>
                     </form>
                 </div>
