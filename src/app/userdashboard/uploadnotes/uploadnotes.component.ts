@@ -183,11 +183,10 @@ export class UploadnotesComponent implements OnInit {
           this.model.notes_thumbnail = data;
           console.log(this.model.notes_thumbnail);
           this.uploadfiles();
-          this.ifImageUpload(this.sell_days);
+          this.ifImageUpload(this.sell_days, f);
           
         }
       });
-    f.resetForm()
      }
 
   sell_days;
@@ -195,7 +194,7 @@ export class UploadnotesComponent implements OnInit {
 
     subcategory;
   nestedcategory;
-  private ifImageUpload(sell_days) {
+  private ifImageUpload(sell_days,f: NgForm) {
     console.log(this.sell_days);
     var date = moment(new Date, "YYYY-MM-DD");
     var new_date = moment(date).add(this.sell_days, 'days');
@@ -208,6 +207,7 @@ export class UploadnotesComponent implements OnInit {
         // console.log(this.date);
       });
       this.CourseSuccess();
+      f.resetForm()
   }
   CourseSuccess() {
     swal({

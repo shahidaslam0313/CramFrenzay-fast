@@ -180,7 +180,7 @@ export class FlashcardlistComponent implements OnInit {
     if (query != "") {
 
       this.newService.flashsearch(query).subscribe(Res => {
-        this.searchResult = Res.Flashcard;
+        this.searchResult = Res.flashcards;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }

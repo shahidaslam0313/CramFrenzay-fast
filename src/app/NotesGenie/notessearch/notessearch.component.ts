@@ -101,7 +101,7 @@ export class NotessearchComponent implements OnInit {
   filter(query) {
     if (query !== "") {
       this.newservice.notessearch(query).subscribe(Res => {
-        this.searchResult = Res.Notes;
+        this.searchResult = Res.notes;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }
