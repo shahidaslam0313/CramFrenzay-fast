@@ -133,6 +133,7 @@ city;state;country;
   cardtype;
   expirydate;
   cvv4;
+  Message;
   public cardmask = [/[0-9]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private sub: Subscription;
   chek(val) {
@@ -229,7 +230,7 @@ city;state;country;
     this.serv.updateCard(this.card.nickname, this.card.street_adrress, this.card.state, this.card.city, this.card.zip_code, this.card.country, this.card.default, id).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Credit card details are updated!',
+        title: 'Credit card details are updated',
         showConfirmButton: false,
         timer: 1500
       });
@@ -239,7 +240,7 @@ city;state;country;
         if (error.status == 400) {
           swal({
             type: 'error',
-            title: 'Credit card details are not correct!',
+            title: 'Credit card details are not correct',
             showConfirmButton: false,
             timer: 1500
           })
@@ -257,7 +258,7 @@ city;state;country;
         error => {
           swal({
             type: 'error',
-            title: 'Invalid Zipcode!',
+            title: 'Invalid Zipcode',
             showConfirmButton: false,
             timer: 2000,width: '512px',
           })
@@ -269,7 +270,7 @@ city;state;country;
     this.serv.deleteCard(id).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Credit card is deleted!',
+        title: 'Credit card is deleted',
         showConfirmButton: false,
         timer: 1500
       })
@@ -279,7 +280,7 @@ city;state;country;
         if (error.status == 204) {
           swal({
             type: 'error',
-            title: 'No credit card found!',
+            title: 'No credit card found',
             showConfirmButton: false,
             timer: 1500
           })
@@ -287,14 +288,14 @@ city;state;country;
         else if (error.status == 500) {
           swal(
             'Sorry',
-            'Server is under maintenance!',
+            'Server is under maintenance',
             'error'
           )
         }
         else {
           swal(
             'Sorry',
-            'Some thing went Wrong!',
+            'Some thing went Wrong',
             'error'
           )
         }
@@ -309,27 +310,30 @@ city;state;country;
         this.form.controls.street.valid && this.form.controls.city.valid &&
         this.form.controls.state.valid && this.form.controls.country.valid) {
         this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['cvv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipCode'],
-        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
+          data => {
+          // if(data.Message == "Card Number already exist"){
+          //   swal({
+          //     type: 'error',
+          //     title: 'Card Number already exist',
+          //     showConfirmButton: false,
+          //     timer: 1500
+          //   })
+          // }
           swal({
             type: 'success',
-            title: 'Payment method is listed!',
+            title: 'Payment method is listed',
             showConfirmButton: false,
             timer: 1500
           })
+         
           this.getCards();
         },
           error => {
-            if (error.status == 302) {
-              swal(
-                'Sorry',
-                'Crad Number Already Exist',
-                'error'
-              )
-            }
-            else if (error.status == 404) {
+             if (error.status == 404) {
               swal({
                 type: 'error',
-                title: 'This card already exist!',
+                title: 'Card Number already exist',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -337,7 +341,7 @@ city;state;country;
             else if (error.status == 400) {
               swal({
                 type: 'error',
-                title: 'Please enter correct details!',
+                title: 'Please enter correct details',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -345,14 +349,14 @@ city;state;country;
             else if (error.status == 500) {
               swal(
                 'Sorry',
-                'Server is under maintenance!',
+                'Server is under maintenance',
                 'error',
               )
             }
             else {
               swal(
                 'Sorry',
-                'Some thing went worrng!',
+                'Some thing went worrng',
                 'error'
               )
             }
@@ -361,7 +365,7 @@ city;state;country;
       else {
         swal({
           type: 'error',
-          title: 'Please enter correct details!',
+          title: 'Please enter correct details',
           showConfirmButton: false,
           timer: 1500,
         })
@@ -371,27 +375,30 @@ city;state;country;
       if (this.form.controls.cvv.valid && this.form.controls.cardnumber.valid &&
         this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
         this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['cvv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
-        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(Data => {
+        this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
+          data => {
+          // if(data.Message == "Card Number already exist"){
+          //   swal({
+          //     type: 'error',
+          //     title: 'Card Number already exist',
+          //     showConfirmButton: false,
+          //     timer: 1500
+          //   })
+          // }
+          
           swal({
             type: 'success',
-            title: 'Payment method is listed!',
+            title: 'Payment method is listed',
             showConfirmButton: false,
             timer: 1500
           })
           this.getCards();
         },
           error => {
-            if (error.status == 302) {
-              swal(
-                'Sorry',
-                'Crad Number Already Exist',
-                'error'
-              )
-            }
-            else if (error.status == 404) {
+            if (error.status == 404) {
               swal({
                 type: 'error',
-                title: 'This card already exist!',
+                title: 'Card Number already exist',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -399,7 +406,7 @@ city;state;country;
             else if (error.status == 400) {
               swal({
                 type: 'error',
-                title: 'Please enter correct details!',
+                title: 'Please enter correct details',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -407,14 +414,14 @@ city;state;country;
             else if (error.status == 500) {
               swal(
                 'Sorry',
-                'Server is under maintenance!',
+                'Server is under maintenance',
                 'error'
               )
             }
             else {
               swal(
                 'Sorry',
-                'Some thing went worrng!',
+                'Some thing went worrng',
                 'error'
               )
             }
@@ -423,7 +430,7 @@ city;state;country;
       else {
         swal({
           type: 'error',
-          title: 'Please enter correct details!',
+          title: 'Please enter correct details',
           showConfirmButton: false,
           timer: 1500,
         })
@@ -440,7 +447,7 @@ city;state;country;
         if (error.status == 404) {
           swal({
             type: 'error',
-            title: 'Credit card not found!',
+            title: 'Credit card not found',
             showConfirmButton: false,
             timer: 1500
           })
@@ -448,7 +455,7 @@ city;state;country;
         else if (error.status == 500) {
           swal(
             'Sorry',
-            'Server is under maintenance!',
+            'Server is under maintenance',
             'error'
           )
         }

@@ -9,7 +9,7 @@
       <mat-form-field class="example-full-width mat-size" style="width: 100%">
         <input type="number" min="0" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" 
         name="offer_price" required oninput="validity.valid||(value='');" onKeyPress="if(this.value.length==4) return false;">
-        <span matPrefix>$ </span>
+        <span matPrefix>$&nbsp;</span>
       </mat-form-field>
     </div>
   
