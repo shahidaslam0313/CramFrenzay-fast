@@ -248,7 +248,10 @@
                 <form name="form" role="form" method="post" (ngSubmit)="bidc()" #f="ngForm" class="user-add-ingo-form">
                     <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal">
                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
-                        <p>Highest bid amount:{{coursesitem?.bidamount}}</p>
+                       
+                        
+                        <p *ngIf="coursesitem?.bidamount">Highest bid amount:{{coursesitem?.bidamount}}</p>
+                        <p *ngIf="!coursesitem?.bidamount">No bid received yet</p>
                     </a> <label>Place Your own bid:</label>
                     <mat-form-field> <input matInput type="number" min="0" oninput="validity.valid||(value='');" onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)*"
                             [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field> <a
