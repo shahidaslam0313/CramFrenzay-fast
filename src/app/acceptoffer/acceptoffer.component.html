@@ -7,7 +7,7 @@
   <form >
     <div class="card-content margin-top-10" >
       <mat-form-field class="example-full-width mat-size" style="width: 100%">
-        <input type="num" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" 
+        <input type="number" min="0" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" 
         name="offer_price" required onKeyPress="if(this.value.length==4) return false;">
         <span matPrefix>$ </span>
       </mat-form-field>
