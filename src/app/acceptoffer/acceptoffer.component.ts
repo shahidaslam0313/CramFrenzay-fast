@@ -17,12 +17,7 @@ export class AcceptofferComponent implements OnInit {
   value: string;
   viewValue: string;
   end_time;
-  range = [
-    { value: '12', viewValue: '12' },
-    { value: '1', viewValue: '1' },
-    { value: '2', viewValue: '2' },
-    { value: '3', viewValue: '3' },
-  ];
+
   constructor(public dialogRef: MatDialogRef<AcceptofferComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private global: GlobalService) { }
 
   ngOnInit() {

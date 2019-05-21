@@ -165,6 +165,7 @@ export class FlashcardlistComponent implements OnInit {
   topratedflash() {
     this.newService.Topratedflashcards().subscribe(Res => {
       this.topratedflashcards = Res;
+     
     });
   }
   recentflash() {
