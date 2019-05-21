@@ -15,10 +15,10 @@ import {PagerService} from '../../paginator.service';
   styleUrls: ['./offeractivity.component.scss']
 })
 export class OfferactivityComponent implements OnInit {
-  getoffer: [];
-  notes:[];
+  getoffer;
+  notes;
   Imageurl = Config.Imageurlget;
-  course:[];
+  course;
     pager: any = {};
 
   constructor(private pagerService: PagerService, private http: Http , private route:ActivatedRoute, public router: Router, private sg: SimpleGlobal, private offer: OfferactivityService, @Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog) { }
