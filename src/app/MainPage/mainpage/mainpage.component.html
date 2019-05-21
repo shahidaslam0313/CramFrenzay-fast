@@ -132,7 +132,7 @@
                             <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="courses(data?.id)"
                                     *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at{{data.price |
                                     currency:'USD'}}</a> <a class="btn-style text-transform-none" data-toggle="modal"
-                                    data-target="#notesbidnow" (click)="bidcourseid(data?.id)" *ngIf="data.bid_status==true &&!data.Purchased && data.isTeacher==false">Bid
+                                    data-target="#notesbidnow" (click)="bidcourseid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">Bid
                                     Now at{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Course Already Bought</a>
