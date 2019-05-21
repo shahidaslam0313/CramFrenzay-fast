@@ -19,6 +19,7 @@ export class PurchaseComponent implements OnInit {
   constructor(private http2: Http, private route: ActivatedRoute, public router: Router, private sg: SimpleGlobal, private purchase: PurchaseService, private data: DataService, private http: Http, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.Showcourses();
   }
  

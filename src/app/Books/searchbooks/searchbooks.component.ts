@@ -106,7 +106,7 @@ export class SearchbooksComponent implements OnInit {
     this.full = query;
     this.router.navigate(['/searchbooks/' + query])
     this.service.searchbooks(query, 1).subscribe(data => {
-      this.result = data.Books;
+      this.result = data.books;
       this.setPagecourse(1, data.totalItems)
     }
     );
@@ -114,7 +114,7 @@ export class SearchbooksComponent implements OnInit {
   filter(query) {
     if (query != "") {
       this.service.searchbooks(query,1).subscribe(data => {
-        this.searchResult = data.Books;
+        this.searchResult = data.books;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }

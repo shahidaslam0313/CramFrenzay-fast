@@ -477,9 +477,6 @@ export class PaymentComponent implements OnInit {
       })
   }
 
-  CardNo;
-  CVV;
-  EXP;
   Status = false;
   defaultCheck;
   changeDefault(card,id,name) {

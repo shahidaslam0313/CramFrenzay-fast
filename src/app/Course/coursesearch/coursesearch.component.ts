@@ -101,7 +101,7 @@ export class CoursesearchComponent implements OnInit {
     this.full = query;
     this.router.navigate(['/coursesearch/' + query])
     this.search.coursesearch(query, 1).subscribe(data => {
-      this.result = data.Course;
+      this.result = data.courses;
       this.setPagecourse(1, data.totalItems)
     }
     );
@@ -109,7 +109,7 @@ export class CoursesearchComponent implements OnInit {
   filter(query) {
     if (query != "") {
       this.course.coursesearch(query).subscribe(Res => {
-        this.searchResult = Res.Course;
+        this.searchResult = Res.courses;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }
