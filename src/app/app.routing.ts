@@ -40,7 +40,7 @@ export const appRoutes: Routes = [
         { path : 'nestedcategorylist/:id' , component: NestedcategorylistComponent},
       { path : 'mycart' , component: MycartComponent},
 
-      { path: 'generalsearch/:name', loadChildren: './generalsearch/generalsearch.module#GeneralsearchModule' },
+      { path: 'generalsearch', loadChildren: './generalsearch/generalsearch.module#GeneralsearchModule' },
       { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
       { path: 'login', loadChildren: './login/login.module#LoginModule' },
       { path: 'activateaccount/:code', loadChildren: './activate-account/activate_account.module#ActivateAccountModule' },

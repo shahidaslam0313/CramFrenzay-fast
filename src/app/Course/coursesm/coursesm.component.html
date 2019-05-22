@@ -30,7 +30,7 @@
                             *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at{{data.bid_price |
                             currency:'USD'}}</a> <a class="already-bought" data-target="#notesbidnow" *ngIf="data.Purchased==true">
                             <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already Bought</a>
-                            <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Course add by me </a>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
     </div>
 </div>
 <div class="container" *ngIf="trendingcourse?.courses">
-    <h1 class="mainbanner bg-Bid-Notes">Courses Trending Now</h1>
+    <h1 class="mainbanner bg-Bid-Notes">Courses Trending Now Courses </h1>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of trendingcourse?.courses; let i=index">
             <div class="product-list__item">
@@ -70,7 +70,7 @@
                             *ngIf="data.bid_status==true "> Bid Now at{{data.bid_price | currency:'USD'}}</a> <a class="already-bought"
                             data-target="#notesbidnow" *ngIf="data.Purchased==true"> <img src="../../../assets/img/CramFrenzyFavicon.png"
                                 alt="img"> Course Already Purchased</a> 
-                                <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                     Course add by me </a></div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                             *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at{{data.bid_price |
                             currency:'USD'}}</a> <a class="already-bought" data-target="#notesbidnow" *ngIf="data.Purchased==true">
                             <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already Bought</a>
-                            <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Course add by me </a>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                             *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at{{data.bid_price |
                             currency:'USD'}}</a> <a class="already-bought" data-target="#notesbidnow" *ngIf="data.Purchased==true">
                             <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already Bought</a>
-                            <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Course add by me </a>
                     </div>
                 </div>

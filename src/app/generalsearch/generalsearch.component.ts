@@ -36,10 +36,10 @@ export class GeneralsearchComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.route.params.subscribe(params => {
-      this.name = +params['name'];
-      alert(this.name)
-      this.generalsearch(params['name']);
+     this.route.queryParams.subscribe(params => {
+      this.name = +params['query'];
+    
+      this.generalsearch(params['query']);
     })
 
   }

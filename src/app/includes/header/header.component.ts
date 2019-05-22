@@ -161,6 +161,7 @@ export class HeaderComponent implements OnInit {
       this.showlist()
       this.itemscount = data.counts;
       console.log(this.itemscount,'Shameem')
+      console.log(data,'ASDFGHJKL')
       
     })
     if (this.Logedin === '1') {
@@ -419,10 +420,19 @@ export class HeaderComponent implements OnInit {
         this.flashcard = data['flashcard'];
         this.book = data['book'];
       });
+
     }
 
   }
+onsubmits(query) {
+    // this.router.navigate(['/generalsearch/' + query]);
+    this.router.navigate(['/generalsearch/'], {queryParams: {query : query}});
 
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('name', query);
+      this.filter(query);
+    }
+  }
   onsubmit(query) {
 
     $('.main-search').removeClass('active');

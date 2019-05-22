@@ -24,5 +24,4 @@ export class GeneralsearchService {
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'user/search/' + name + '/', { headers: headers }).map((response: Response) => response.json());
   }
-
 }

@@ -92,7 +92,7 @@
                                     data-target="#notesbid"> Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought"
                                     *ngIf="data.Purchased==true && data.isTeacher==false" data-target="#notesbid"> <img
                                         src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Note Already Bought</a>
-                                <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                     Note add by me </a> </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                     Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Course Already Bought</a>
-                                    <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                    <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                         Course add by me </a>  </div>
                                    
                         </div>
@@ -178,7 +178,7 @@
                                     Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Flash Card Already Bought</a>
-                                    <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                    <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                         Flash Card add by me </a>  </div>
                         </div>
                     </div>
@@ -223,10 +223,10 @@
                                     Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Book Already Bought</a>
-                                <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid"> Book add by me </a>  </div>
+                                <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid"> Book add by me </a>  </div>
                         </div>
                     </div>
-                </div>  
+                </div>
         </ngx-slick>
         </div>
         <a routerLink="/seemoremp/Bid&BuyBooks" class=" btn-style btn ">See more</a>
