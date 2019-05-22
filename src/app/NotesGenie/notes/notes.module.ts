@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {LoaderModule} from '../../loader/loader.module';
-
+import {RatingModule} from 'ng2-rating';
 const notesRoutes: Routes = [
   { path: '', component: NotesComponent }
 ];
@@ -17,6 +17,7 @@ const notesRoutes: Routes = [
     MaterialModule,
     LoaderModule,
     FormsModule, ReactiveFormsModule,
+    RatingModule
 
   ],
   declarations: [
