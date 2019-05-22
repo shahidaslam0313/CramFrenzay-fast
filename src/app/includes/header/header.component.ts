@@ -428,6 +428,7 @@ onsubmits(query) {
 
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('name', query);
+      this.filter(query);
     }
   }
   onsubmit(query) {

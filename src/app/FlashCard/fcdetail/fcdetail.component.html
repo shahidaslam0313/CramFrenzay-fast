@@ -12,6 +12,7 @@
         <div id="listofterms" class="tab-pane active margin-bottom-200">
             <div class="container-fluid">
                 <h1 class="mainbanner">List of Terms</h1>
+                
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped css-serial">
                         <tr>
@@ -19,6 +20,7 @@
                             <th>Terms</th>
                             <th>Definition</th>
                         </tr>
+                        
                         <tr *ngFor="let data of flashCardTermsDefinitionsData; let i=index">
                             <td>
                                 <ol type="1"></ol>
@@ -26,8 +28,11 @@
                             <td>{{data.title | titlecase}}</td>
                             <td>{{data.definition | titlecase}}</td>
                         </tr>
+                        
                     </table>
+                   
                 </div>
+                
             </div>
         </div>
         <div id="flipflashcards" class="tab-pane fade">
@@ -42,8 +47,10 @@
                                 </div><img class="fc-img" src="https://storage.cramfrenzy.com/images/{{data?.image}}"
                                     alt="FlashCard Image">
                             </div>
+                            
                         </ng-container>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -127,7 +134,7 @@
                                             <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review
                                                 cannot be empty </mat-error>
                                         </mat-error>
-                                        <div class="text-right review-button"> <a class="margin-top-10 Review btn-style"
+                                        <div class="text-right review-button"> <a class="margin-top-10 Reviewbtn-style btn"
                                                 title="Submit " (click)="reviews(rate, comment, nullvalue, nullvalue, flashcardDetail.id, nullvalue, f)">
                                                 <span> <i class="far fa-thumbs-up"></i> Review </span> </a> </div>
                                     </form>
@@ -144,7 +151,7 @@
                                 <h5 class="text-center card-title old-card-price">{{flashcardDetail?.price |
                                     currency:'USD'}}</h5> <a class="card-btn" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">Flash
                                     Card Already Bought</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
-                                    (click)="checkfcdetail()">Buy Now</a> <a class="card-btn btn-add-cart" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
+                                    (click)="checkfcdetail()">Buy Now</a> <a class="card-btn-add-cart" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
                                     (click)="cart(nullvalue, nullvalue, flashId, nullvalue)">Add to Cart</a>
                                 <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
                             </div>

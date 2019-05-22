@@ -13,7 +13,7 @@
                     <div class="product-list__category">
                         <a routerLink="/nestedcateroy/{{data.id}}" title="{{data?.sub_category_name | titlecase}}">{{data?.sub_category_name | titlecase}}</a>
                     </div>
-                    <div class="product-list__item-info-1"> <a class=" btn btn-style " (click)="checkmainpage(data?.id, nullvalue , nullvalue, nullvalue)" *ngIf="data.sell_status==true"> Buy Now </a>  <a class=" btn btn-style " data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true" data-target="#notesbid"> Bid Now </a>
+                    <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="checkmainpage(data?.id, nullvalue , nullvalue, nullvalue)" *ngIf="data.sell_status==true"> Buy Now </a>  <a class="btn-style btn " data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true" data-target="#notesbid"> Bid Now </a>
 
                     </div>
 
