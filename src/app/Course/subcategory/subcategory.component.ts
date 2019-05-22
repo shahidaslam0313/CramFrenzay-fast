@@ -29,6 +29,7 @@ export class SubcategoryComponent implements OnInit {
     c_name;
     eachcards;
     eachbook;
+    CATid;
   constructor(private course: CourseService, private newservice: subcategoryservice, private router: Router, private route: ActivatedRoute, private http: Http,@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.username = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -41,6 +42,9 @@ this.name = localStorage.getItem('nestedname');
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.catId = +params['id'] || 0;
+    })
+    this.route.queryParams.subscribe(params => {
+      this.CATid = params['cat_id'];
     })
     this.subcategory(this.catId);
     this.courscategory(this.catId);

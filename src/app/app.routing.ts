@@ -104,6 +104,7 @@ export const appRoutes: Routes = [
       { path: 'institute', loadChildren: './Events/institute/institute.module#InstituteModule' },
       // Course Module
       { path: 'subcategory/:id', loadChildren: './Course/subcategory/subcategory.module#SubcategoryModule' },
+      { path: 'subcategory', loadChildren: './Course/subcategory/subcategory.module#SubcategoryModule' },
       { path: 'course-subactegory/:id', loadChildren: './Course/course-subcategory/course-subcategory.module#coursecategoryModule' },
       { path: 'coursesearch/:name', loadChildren: './Course/coursesearch/coursesearch.module#CoursesearchModule' },
       // { path: 'eachcourse/:id', loadChildren: './Course/eachcourse/eachcourse.module#EachcourseModule' },
