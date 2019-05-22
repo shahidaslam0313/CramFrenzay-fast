@@ -17,8 +17,8 @@
       <div class="form-group">
         <label for="sel1">Your offer expires in:</label>
         <select class="form-control" id="sel1" [(ngModel)]="model.end_time" name="end_time" required>
-            <option>Select list:</option>
-          <option>12 h</option>
+          <option>Select list:</option>
+          <option>12 H</option>
           <option>1 Day</option>
           <option>2 Days</option>
           <option>3 Days</option>
@@ -26,10 +26,38 @@
       </div>
     </div>
     <div class="footer text-right col-sm-12">
-      <button [mat-dialog-close]="true" class=" btn btn-style  width100 margin-top-10" type="submit" tabindex="2" (click)="postoffer()">
-      Offer Now</button> </div>
-    <div class="col-sm-12">
-      <p class="smalltext">By Placing an Offer, You're committing to Buy this item.</p>
+      <button [mat-dialog-close]="true" class="btn-style btn  width100 margin-top-10" type="submit" tabindex="2" (click)="postoffer()">
+      Offer Now</button> 
     </div>
+    <p class="smalltext">By Placing an Offer, You're committing to Buy this item.</p>
   </form>
+  <div class="offer-history chat">
+      <h3>Offer history</h3>
+      <div class="message me">
+          <img src="https://image.ibb.co/jw55Ex/def_face.jpg"/>
+          <div>
+            <table>
+              <tr>
+                <td class="submit-declined"> <strong>Declined</strong></td>
+                <td>$ 1.00</td>
+                <td><small>May 20, 2019</small></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+    <div class="message">
+      <img src="https://image.ibb.co/jw55Ex/def_face.jpg">
+      <div>
+        <table>
+          <tr>
+            <td class="submit-declined"><strong>Submitted</strong> </td>
+            <td>$ 1.00</td>
+            <td><small> May 20, 2019</small></td>
+          </tr>
+        </table>
+      </div>
+      </div>
+     
+  </div>
+
 </div>

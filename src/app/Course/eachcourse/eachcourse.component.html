@@ -71,7 +71,7 @@
                                 <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review cannot be empty
                                 </mat-error>
                             </mat-error>
-                            <div class="text-right review-button"> <button class=" btn-style" title="Submit Review"
+                            <div class="text-right review-button"> <button class="btn-style btn" title="Submit Review"
                                     type="submit" (click)="reviews(rate, comment, result.id, nullvalue, nullvalue, nullvalue,f)">
                                     <span> <i class="far fa-thumbs-up"></i> Review </span> </button> </div>
                         </form>
@@ -87,7 +87,7 @@
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Course Already Bought</a> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false" (click)="courses(result?.id)">Buy Now</a>
-                    <a class="card-btn btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false" (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
+                    <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false" (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
                         to Cart</a>
                     <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
                 </div>

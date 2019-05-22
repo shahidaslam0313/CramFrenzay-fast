@@ -127,7 +127,7 @@
                                             <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review
                                                 cannot be empty </mat-error>
                                         </mat-error>
-                                        <div class="text-right review-button"> <a class="margin-top-10 Review btn-style"
+                                        <div class="text-right review-button"> <a class="margin-top-10 Reviewbtn-style btn"
                                                 title="Submit " (click)="reviews(rate, comment, nullvalue, nullvalue, flashcardDetail.id, nullvalue, f)">
                                                 <span> <i class="far fa-thumbs-up"></i> Review </span> </a> </div>
                                     </form>
@@ -144,7 +144,7 @@
                                 <h5 class="text-center card-title old-card-price">{{flashcardDetail?.price |
                                     currency:'USD'}}</h5> <a class="card-btn" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">Flash
                                     Card Already Bought</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
-                                    (click)="checkfcdetail()">Buy Now</a> <a class="card-btn btn-add-cart" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
+                                    (click)="checkfcdetail()">Buy Now</a> <a class="card-btn-add-cart" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
                                     (click)="cart(nullvalue, nullvalue, flashId, nullvalue)">Add to Cart</a>
                                 <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
                             </div>

@@ -31,9 +31,9 @@
                         </ul>
                         <p class="product-list__price">{{data?.price | currency:'USD'}}</p></div>
                     </div>
-                    <div class="product-list__item-info-1"> <a  routerLink="/login" class=" btn btn-style "
+                    <div class="product-list__item-info-1"> <a  routerLink="/login" class="btn-style btn "
                             (click)="checkmainpage()"> Buy Now </a> <a  routerLink="/login"
-                            class=" btn btn-style " (click)="checkmainpage()"> Bid Now </a> </div>
+                            class="btn-style btn " (click)="checkmainpage()"> Bid Now </a> </div>
                 </div>
             </div>
         </div>
@@ -269,7 +269,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -288,7 +288,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -307,7 +307,7 @@
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
                                                 (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -327,7 +327,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a  routerLink="javascript:void(0)" class="heart-card-btn btn"
+                                            <a  routerLink="javascript:void(0)" class="heart-card-btn"
                                             (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
                                             Move to Cart </a>
                                         </div>
@@ -355,7 +355,7 @@
                                                             <span class="discount-p">${{cartitems.course.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.course.id,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -375,7 +375,7 @@
                                                             <span class="discount-p">${{cartitems.notes.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,null,cartitems.notes.id,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -393,7 +393,7 @@
                                                             <span class="discount-p">${{cartitems.flashcard.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,cartitems.flashcard.id,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
@@ -413,7 +413,7 @@
                                                             <span class="discount-p">${{cartitems.book.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn btn"
+                                                </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(cartitems.book.id,null,null,null,cartitems.id)">
                                                     Move to Watchlist </a>
                                             </div>
