@@ -35,7 +35,7 @@
                     alt=""> </div>
             <div class="carousel-item"> <label class="slider__title animated fadeInDown">Give Your Learning Wings!
                     CramFrenzy has a 360-Degree Spectrum of Educational Material for all kinds and categories. BUY,
-                    SELL, RENT & BID Now!</label> <img src="../../../assets/img/9.png" alt=""> </div>
+                    SELL, RENT & Bid Now!</label> <img src="../../../assets/img/9.png" alt=""> </div>
         </div><a class="carousel-control-prev" href="#mainpage-slider" data-slide="prev"> <span class="carousel-control-prev-icon"></span>
         </a> <a class="carousel-control-next" href="#mainpage-slider" data-slide="next"> <span class="carousel-control-next-icon"></span>
         </a>
@@ -226,9 +226,9 @@
                                 <a class="btn-style text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid"> Book add by me </a>  </div>
                         </div>
                     </div>
-                </div>
-            </ngx-slick>
-        </div><a routerLink="/seemoremp/Bid&BuyBooks" class=" btn-style">See more</a>
+                </ngx-slick>
+        </div>
+        <a routerLink="/seemoremp/Bid&BuyBooks" class="  btn btn-style ">See more</a>
     </div>
     <div class="text-center how-it-works-boxs">
         <div class="container">
@@ -280,8 +280,8 @@
                     <form name="form" role="form" method="post" (ngSubmit)="bidc(f)" #f="ngForm" class="user-add-ingo-form">
                         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal">
                             <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
-                            <p *ngIf="course?.bidamount">Highest bid amount:{{course?.bidamount}}</p>
-                            <p *ngIf="!course?.bidamount">No bid received yet</p>
+                            <p *ngIf="course?.bidamount">Highest Bid amount:{{course?.bidamount}}</p>
+                            <p *ngIf="!course?.bidamount">No Bid Received yet</p>
                         </a> <label>Bidding Price:</label>
                         <mat-form-field> <input matInput type="number" min="0" placeholder="Enter bid amount (US $)*" oninput="validity.valid||(value='');"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount" onKeyPress="if(this.value.length==4) return false;">
