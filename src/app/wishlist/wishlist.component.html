@@ -35,7 +35,7 @@
                     </ul>
                     <p class="product-list__price">{{data.notes.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a class="btn-style" (click)="addtocart(null,null,null,data.notes.id,data.id)">
+                <div class="product-list__item-info-1"> <a class=" btn btn-style " (click)="addtocart(null,null,null,data.notes.id,data.id)">
                         Add to Cart </a> </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     </ul>
                     <p class="product-list__price">{{data.course.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a class="btn-style" (click)="addtocart(null,data.course.id,null,null,data.id)">
+                <div class="product-list__item-info-1"> <a class=" btn btn-style " (click)="addtocart(null,data.course.id,null,null,data.id)">
                         Add to Cart </a> </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                     </ul>
                     <p class="product-list__price">{{data?.flashcard.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a class="btn-style" routerLink="javascript:void(0)"
+                <div class="product-list__item-info-1"> <a class=" btn btn-style " routerLink="javascript:void(0)"
                         (click)="addtocart(null,null,data.flashcard.id,null,data.id)"> Add to Cart </a> </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
                     </ul>
                     <p class="product-list__price">{{data?.book.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a routerLink="javascript:void(0)" class="btn-style"
+                <div class="product-list__item-info-1"> <a routerLink="javascript:void(0)" class=" btn btn-style "
                         (click)="addtocart(data.book.id,null,null,null,data.id)"> Add to Cart </a> </div>
             </div>
         </div>

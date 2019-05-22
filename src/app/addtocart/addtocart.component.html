@@ -22,7 +22,7 @@
                                             <mat-option *ngFor="let card of res" [value]="card.id"
                                                 (click)="getcardid(card.id)">{{card.nickname}}</mat-option>
                                         </mat-select>
-                                    </mat-form-field> <a class="btn-style width100 margin-top-10" (click)="buy()">Place
+                                    </mat-form-field> <a class=" btn btn-style  width100 margin-top-10" (click)="buy()">Place
                                         Order</a>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@
                                         </mat-form-field>
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle> <a
-                                            class="btn-style margin-top-10 width100" (click)="buywithcard(f)">Place
+                                            class=" btn btn-style  margin-top-10 width100" (click)="buywithcard(f)">Place
                                             Order</a>
                                     </form>
                                 </div>
@@ -260,7 +260,7 @@
                                     ${{cartitems.course.discount}}Discount </p>
                             </div>
                         </div>
-                        <div class="product-list__item-info-1"> <a class="btn-style"
+                        <div class="product-list__item-info-1"> <a class=" btn btn-style "
                                 (click)="wishList(null,cartitems.course.id,null,null,cartitems.id)"> Move to Wishlist
                             </a> </div>
                     </div>
@@ -296,7 +296,7 @@
                                     ${{cartitems.notes.discount}}Discount </p>
                             </div>
                         </div>
-                        <div class="product-list__item-info-1"> <a class="btn-style"
+                        <div class="product-list__item-info-1"> <a class=" btn btn-style "
                                 (click)="wishList(null,null,null,cartitems.notes.id,cartitems.id)"> Move to Wishlist
                             </a> </div>
                     </div>
@@ -338,7 +338,7 @@
                                     ${{cartitems.flashcard.discount}}Discount</p>
                             </div>
                         </div>
-                        <div class="product-list__item-info-1"> <a class="btn-style"
+                        <div class="product-list__item-info-1"> <a class=" btn btn-style "
                                 (click)="wishList(null,null,cartitems.flashcard.id,null,cartitems.id)"> Move to Wishlist
                             </a> </div>
                     </div>
@@ -374,7 +374,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="product-list__item-info-1"> <a class="btn-style"
+                        <div class="product-list__item-info-1"> <a class=" btn btn-style "
                                 (click)="wishList(cartitems.book.id,null,null,null,cartitems.id)"> Move to Wishlist </a>
                         </div>
                     </div>

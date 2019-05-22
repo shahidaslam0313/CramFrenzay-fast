@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Config } from "../../Config";
+import { Config } from '../../Config';
 import { Router } from '@angular/router';
 
 @Injectable()
