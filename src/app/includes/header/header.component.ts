@@ -420,7 +420,6 @@ export class HeaderComponent implements OnInit {
         this.flashcard = data['flashcard'];
         this.book = data['book'];
       });
-
     }
 
   }
