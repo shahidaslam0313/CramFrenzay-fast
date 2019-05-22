@@ -21,7 +21,7 @@
         <div class="tab-content">
           <div class="tab-pane active" id="home">
             <div class="float_right">
-              <button *ngIf="getcoursevid?.id===null"  class=" btn btn-style " data-toggle="modal"
+              <button *ngIf="getcoursevid?.id===null"  class="btn-style btn " data-toggle="modal"
                 (click)="openDialog3(data?.course.id)">Add Video</button>
             </div>
             <div *ngIf="getcoursevid?.id === null">
@@ -59,7 +59,7 @@
           </div>
           <div class="tab-pane" id="home1">
             <div class="text-right">
-              <button  class=" btn btn-style  margin-bottom-20" data-toggle="modal" data-target="#myModal">Add Chapter</button>
+              <button  class="btn-style btn  margin-bottom-20" data-toggle="modal" data-target="#myModal">Add Chapter</button>
             </div>
             <div class="lec-info float-right">
               <span *ngIf="!time">Total Time:00:00:00</span>
@@ -87,7 +87,7 @@
                 <div attr.id=b{{i}} class="panel-collapse collapse">
                   <div class="panel-body">
                     <div class="float_left">
-                      <button  class=" btn btn-style " data-toggle="modal" data-target="#videoModal"
+                      <button  class="btn-style btn " data-toggle="modal" data-target="#videoModal"
                         (click)="openDialog2(data?.chapters.id)"  data-dismiss="modal">Add
                         Video</button>
                     </div>
@@ -142,7 +142,7 @@
                   </mat-form-field>
                 </div>
                 <div class="col-lg-12 float_right">
-                  <button class=" btn btn-style " (click)="postrequirment(f)"> submit</button>
+                  <button class="btn-style btn " (click)="postrequirment(f)"> submit</button>
                 </div>
               </form>
             </div>
@@ -170,7 +170,7 @@
             <mat-error *ngIf="chaptername.hasError('required')"> Chapter name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-          <a class=" btn btn-style " type="submit" id="submit" (click)="onSubmit(f)" data-dismiss="modal">Add</a>
+          <a class="btn-style btn " type="submit" id="submit" (click)="onSubmit(f)" data-dismiss="modal">Add</a>
         </form>
       </div>
     </div>
@@ -191,9 +191,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button  class=" btn btn-style " (click)="deletecoureseVideo(video_id)" data-dismiss="modal">
+        <button  class="btn-style btn " (click)="deletecoureseVideo(video_id)" data-dismiss="modal">
           Delete </button>
-        <button  class=" btn btn-style " data-dismiss="modal"> Cancel </button>
+        <button  class="btn-style btn " data-dismiss="modal"> Cancel </button>
       </div>
     </div>
   </div>
@@ -213,9 +213,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button  class=" btn btn-style " (click)="deleteintrovideo(video_id)" data-dismiss="modal">
+        <button  class="btn-style btn " (click)="deleteintrovideo(video_id)" data-dismiss="modal">
           Delete </button>
-        <button  class=" btn btn-style " data-dismiss="modal"> Cancel </button>
+        <button  class="btn-style btn " data-dismiss="modal"> Cancel </button>
       </div>
     </div>
   </div>
