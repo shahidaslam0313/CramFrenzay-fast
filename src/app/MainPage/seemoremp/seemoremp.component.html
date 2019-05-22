@@ -26,13 +26,13 @@
                                 (click)="openDialog(data?.id)">Offer Now</a> </div>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="checkmainpage(data?.id, nullvalue , nullvalue, nullvalue)"
-                            *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at{{data.price |
+                            *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at {{data.price |
                             currency:'USD'}}</a> <a class="btn-style text-transform-none" data-target="#notesbid"
                             data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
-                            Bid Now at{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
+                            Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                             Note Already Bought</a>
-                            <a class="btn-style text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Note add by me </a>  
 </div>
                 </div>
@@ -81,12 +81,12 @@
                     </div>
                 </div>
                 <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="courses(data?.id)"
-                        *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at{{data.price | currency:'USD'}}</a>
+                        *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at {{data.price | currency:'USD'}}</a>
                     <a class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)"
-                        *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at{{data.bid_price | currency:'USD'}}</a>
+                        *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                     <a class="already-bought" data-target="#notesbid" *ngIf="data.Purchased==true"> <img src="../../../assets/img/CramFrenzyFavicon.png"
                             alt="img">Course Already Bought</a>
-                            <a class="btn-style text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Course add by me </a>  
 </div>
             </div>
@@ -133,13 +133,13 @@
                                 (click)="openDialog4(data?.id)">Offer Now</a> </div>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="flashcard(data.id)"
-                            *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at{{data.price |
+                            *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at {{data.price |
                             currency:'USD'}}</a> <a class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#cards" (click)="getcardid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
-                            Bid Now at{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
+                            Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">Flash
                             Card Already Bought</a>
-                            <a class="btn-style text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Flash Card add by me </a>  
 </div>
                 </div>
@@ -186,13 +186,13 @@
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style text-transform-none" (click)="Books(data?.id)"
-                            *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at{{data.price |
+                            *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at {{data.price |
                             currency:'USD'}}</a> <a class="btn-style text-transform-none" data-toggle="modal"
                             data-target="#bookbiding" (click)="booksid(data?.id)" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
-                            Bid Now at{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
+                            Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">Book
                             Already Bought</a>
-                            <a class="btn-style text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                            <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                 Book add by me </a>  
 </div>
                 </div>
