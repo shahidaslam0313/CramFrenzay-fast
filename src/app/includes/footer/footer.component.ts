@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import swal from "sweetalert2";
 import {  HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -19,7 +20,7 @@ export class FooterComponent implements OnInit {
   Email;
   model: any = {};
 
-  constructor(  private footer: FooterService,  @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(  private footer: FooterService,private router: Router,  @Inject(PLATFORM_ID) private platformId: Object) {
     this.courses();
   }
 
@@ -72,5 +73,8 @@ export class FooterComponent implements OnInit {
       ;
     f.resetForm();
   }
-
+  sliderClick(name){
+    // this.router.navigate(['/subcategory/'], {queryParams: {cat_id : id}})
+    localStorage.setItem('slidername' , name);
+    }
 }

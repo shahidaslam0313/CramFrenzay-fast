@@ -16,6 +16,7 @@
                                 title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a> </div>
                         <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data?.userid | titlecase}}">{{data?.userid
                                 | titlecase}}</span> </div>
+                                <div class="rating_and_price">
                         <ul class="product-list__star-list">
                             <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
@@ -28,7 +29,7 @@
                             <li> <a  href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
                             </li>
                         </ul>
-                        <p class="product-list__price">{{data?.price | currency:'USD'}}</p>
+                        <p class="product-list__price">{{data?.price | currency:'USD'}}</p></div>
                     </div>
                     <div class="product-list__item-info-1"> <a  routerLink="/login" class=" btn btn-style "
                             (click)="checkmainpage()"> Buy Now </a> <a  routerLink="/login"
