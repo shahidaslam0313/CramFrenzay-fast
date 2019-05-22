@@ -161,6 +161,7 @@ export class HeaderComponent implements OnInit {
       this.showlist()
       this.itemscount = data.counts;
       console.log(this.itemscount,'Shameem')
+      console.log(data,'ASDFGHJKL')
       
     })
     if (this.Logedin === '1') {
