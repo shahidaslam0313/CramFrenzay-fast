@@ -262,16 +262,16 @@ export class MainpageComponent implements OnInit {
           {
             breakpoint: 1254,
             settings: {
-              slidesToShow: 4,
-              slidesToScroll: 4,
+              slidesToShow: 5,
+              slidesToScroll: 5,
               infinite: true
             }
           },
           {
             breakpoint: 1117,
             settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
+              slidesToShow: 4,
+              slidesToScroll: 4,
               infinite: true
             }
           },
