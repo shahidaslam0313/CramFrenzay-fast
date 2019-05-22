@@ -30,12 +30,12 @@ export class AcceptofferComponent implements OnInit {
     return this.global.acceptoffer(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date).subscribe(
  
     data => {
-    if(data.Message=="Your Offer is Aready Accepted "){
+    if(data.Message=="Your offer is already accepted "){
       swal({
         type: 'warning',
         title: 'Your Offer is Already Accepted',
         showConfirmButton: false,
-        timer: 3000
+        timer: 2000
       })  
     }
      else if(data.Message=="Your Offer is Posted"){
@@ -44,7 +44,7 @@ export class AcceptofferComponent implements OnInit {
             title: 'Your offer is accepted\n' +
             '\n',
             showConfirmButton: false,
-            timer: 3000
+            timer: 2000
           })  
         }
      else if(data.Message=="You already posted for 5 times"){
@@ -53,7 +53,7 @@ export class AcceptofferComponent implements OnInit {
            title: 'You already posted for 5 times',
            showConfirmButton: true,
            width: '512px',
-         
+           timer: 2000
          });
         }
         else if(data.Message=="Your offer is accepted"){
@@ -62,7 +62,7 @@ export class AcceptofferComponent implements OnInit {
            title: 'Your offer is accepted',
            showConfirmButton: true,
            width: '512px',
-         
+           timer: 2000
          });
         }
         else if(data.Message=="Your offer is not accepted"){
@@ -71,7 +71,7 @@ export class AcceptofferComponent implements OnInit {
            title: 'Your offer is not accepted',
            showConfirmButton: true,
            width: '512px',
-         
+           timer: 2000
          });
         }
     },
@@ -81,7 +81,7 @@ export class AcceptofferComponent implements OnInit {
           type: 'error',
           title: 'Item Already Purchased',
           showConfirmButton: false,
-          timer: 2500
+          timer: 2000
         }) 
       }
       if(error.status===410){
@@ -89,7 +89,7 @@ export class AcceptofferComponent implements OnInit {
           type: 'success',
           title: 'Your offer is sent to Owner',
           showConfirmButton: false,
-          timer: 2500
+          timer: 2000
         }) 
       }
       if(error.status===400){
