@@ -5,7 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { MaterialModule } from '../../app.module';
 import { CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {RatingModule} from 'ng2-rating';
 const fcdetailRoutes: Routes = [
   { path: '', component: FcdetailComponent }
 ];
@@ -15,7 +15,8 @@ const fcdetailRoutes: Routes = [
     RouterModule.forChild(fcdetailRoutes),
     CommonModule,
     MaterialModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    RatingModule
   ],
   declarations: [
     FcdetailComponent,

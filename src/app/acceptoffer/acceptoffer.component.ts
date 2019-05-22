@@ -34,7 +34,7 @@ export class AcceptofferComponent implements OnInit {
         type: 'warning',
         title: 'Your offer is already accepted',
         showConfirmButton: false,
-        timer: 4500
+        timer: 3000
       })  
     }
      else if(data.Message=="Your offer is posted"){
@@ -43,7 +43,7 @@ export class AcceptofferComponent implements OnInit {
             title: 'Your offer is accepted\n' +
             '\n',
             showConfirmButton: false,
-            timer: 4500
+            timer: 3000
           })  
         }
      else if(data.Message=="You already posted for 5 times"){
@@ -66,7 +66,7 @@ export class AcceptofferComponent implements OnInit {
         }
         else if(data.Message=="Your offer is not accepted"){
           swal({
-           type: 'success',
+           type: 'error',
            title: 'Your offer is not accepted',
            showConfirmButton: true,
            width: '512px',
@@ -93,7 +93,7 @@ export class AcceptofferComponent implements OnInit {
       }
       if(error.status===400){
         swal({
-          type: 'success',
+          type: 'error',
           title: 'Your offer is not accepted',
           showConfirmButton: false,
           timer: 2500
