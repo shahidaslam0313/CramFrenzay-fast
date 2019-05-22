@@ -2,7 +2,7 @@
 
     <form
         (ngSubmit)="!ExpiryDateForm.hasError('required') && !ExpiryDateForm.hasError('pattern') && CardCodeForm.hasError('minlength')&& !CardCodeForm.hasError('maxlength')&& !CardNumberForm.hasError('required') && !CardNumberForm.hasError('pattern') && buy()"
-        #f="ngForm" id="videoform" class="form-horizontal row sh-signup-form-fix" name="videoform" method="post">
+        #f="ngForm" id="videoform" class="form-horizontal row " name="videoform" method="post">
         <div class="col-lg-12 center-div col-md-12">
             <div class="panel-info contact_form">
                 <div class="panel-heading"><h3>Secure
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="payment-methods">
-                        <ul class="list-inline text-left margin-li">
+                        <ul class="list-inline ">
                             <li><a><img src="../../assets/upload/payment_01.png" alt=""></a></li>
                             <li><a><img src="../../assets/upload/payment_02.png" alt=""></a></li>
                             <li><a><img src="../../assets/upload/payment_03.png" alt=""></a></li>
@@ -59,7 +59,7 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <div class="col-sm-12 text-center"> <button type="submit" class="btn btn-style"
+                    <div class="col-sm-12 text-center"> <button type="submit" class="width50  btn btn-style "
                             (click)="buy()">Place Order</button> </div>
                 </div>
                 <div class="table-responsive col-lg-12">

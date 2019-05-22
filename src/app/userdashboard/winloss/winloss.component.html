@@ -54,10 +54,10 @@
                                                                     ${{winitem?.bid.notes.price}}</p>
                                                             </div>
                                                             <div class="product-list__item-info-1" *ngIf="winitem?.isPaid==true">
-                                                                <p class="btn-style">Bid Payment Done: ${{winitem?.bidamount}}</p>
+                                                                <p class=" btn btn-style ">Bid Payment Done: ${{winitem?.bidamount}}</p>
                                                             </div>
                                                             <div class="product-list__item-info-1" *ngIf="winitem?.isPaid==null">
-                                                                <p class="btn-style btn-red"
+                                                                <p class=" btn btn-style  btn-red"
                                                                     (click)="openDialog3(winitem?.bid.notes.id)" *ngIf="winitem?.isPaid==false">Pay
                                                                     Now: ${{winitem?.bidamount}}</p>
                                                             </div>
@@ -90,10 +90,10 @@
                                                                     ${{winitem?.bid.course.price}}</p>
                                                             </div>
                                                             <div class="product-list__item-info-1" *ngIf="winitem?.isPaid==true">
-                                                                    <p class="btn-style">Bid Payment Done: ${{winitem?.bidamount}}</p>
+                                                                    <p class=" btn btn-style ">Bid Payment Done: ${{winitem?.bidamount}}</p>
                                                                 </div>
                                                             <div class="product-list__item-info-1">
-                                                                <p class="btn-style"*ngIf="winitem?.isPaid==false" (click)="openDialog3(winitem?.bid.course.id)">Pay
+                                                                <p class=" btn btn-style "*ngIf="winitem?.isPaid==false" (click)="openDialog3(winitem?.bid.course.id)">Pay
                                                                     Now: ${{winitem?.bidamount}}</p>
                                                             </div>
                                                         </div>
@@ -126,10 +126,10 @@
                                                                     ${{winitem?.bid.flashcard.price}}</p>
                                                             </div>
                                                             <div class="product-list__item-info-1" *ngIf="winitem?.isPaid==true">
-                                                                    <p class="btn-style">Bid Payment Done: ${{winitem?.bidamount}}</p>
+                                                                    <p class=" btn btn-style ">Bid Payment Done: ${{winitem?.bidamount}}</p>
                                                                 </div>
                                                             <div class="product-list__item-info-1">
-                                                                <p class="btn-style" *ngIf="winitem?.isPaid==false" (click)="openDialog3(winitem?.bid.flashcard.id)">
+                                                                <p class=" btn btn-style " *ngIf="winitem?.isPaid==false" (click)="openDialog3(winitem?.bid.flashcard.id)">
                                                                     Pay
                                                                     Now: ${{winitem?.bidamount}}</p>
                                                             </div>
@@ -162,10 +162,10 @@
                                                                     ${{winitem?.bid.book.price}}</p>
                                                             </div>
                                                             <div class="product-list__item-info-1" *ngIf="winitem?.isPaid==true">
-                                                                    <p class="btn-style">Bid Payment Done: ${{winitem?.bidamount}}</p>
+                                                                    <p class=" btn btn-style ">Bid Payment Done: ${{winitem?.bidamount}}</p>
                                                                 </div>
                                                             <div class="product-list__item-info-1">
-                                                                <p class="btn-style" *ngIf="winitem?.isPaid==false" (click)="openDialog3(winitem?.bid.book.id)">Pay
+                                                                <p class=" btn btn-style " *ngIf="winitem?.isPaid==false" (click)="openDialog3(winitem?.bid.book.id)">Pay
                                                                     Now: ${{winitem?.bidamount}}</p>
                                                             </div>
                                                         </div>

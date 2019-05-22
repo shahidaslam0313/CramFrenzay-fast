@@ -19,8 +19,8 @@
                     <!-- <p class="product-list__price">{{data?.price | currency:'USD'}}</p> -->
                 </div>
                 <!-- <div class="product-list__item-info-1">
-                    <a routerLink="/login" class="btn-style" (click)="books(data.id)"> Buy Now </a>
-                    <a  class="btn-style" data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
+                    <a routerLink="/login" class=" btn btn-style " (click)="books(data.id)"> Buy Now </a>
+                    <a  class=" btn btn-style " data-toggle="modal" data-target="#notesbidnow" (click)="booksid(data?.id)"
                         data-dismiss="modal" *ngIf="data.bid_status==true"> Bid Now </a>
                 </div> -->
             </div>
@@ -67,7 +67,7 @@
                     <mat-form-field>
                         <input matInput type="text" placeholder="reservedprice" [(ngModel)]="model.reservedprice" name="reservedprice"> </mat-form-field>
                     <mat-slide-toggle [(ngModel)]="model.isreserved" name="isreserved" required>Accpect Bid</mat-slide-toggle>
-                    <a class="btn-style" (click)="bidb()">Bid Now</a>
+                    <a class=" btn btn-style " (click)="bidb()">Bid Now</a>
                 </form>
             </div>
         </div>

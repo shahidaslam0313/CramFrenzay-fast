@@ -84,18 +84,18 @@
                                 </div>
                                 <!-- cart end -->
                                 <div class="buy_btn">
-                                    <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                    <a class=" btn btn-style " *ngIf="data?.accept_offer == true"
                                         (click)="openDialog3(data?.id)">Offer Now</a>
                                 </div>
                                 </div>
                                 <!-- ------Cart Heart and offer Now Button div End------- -->
                                 <!-- buy and bid now start -->
                                 <div class="product-list__item-info-1">
-                                    <a class="btn-style text-transform-none" 
+                                    <a class=" btn btn-style  text-transform-none" 
                          *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)">
                           Buy Now at {{data.price | currency:'USD'}}
                         </a>
-                                    <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                    <a  class=" btn btn-style  text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                         (click)="booksid(data?.id)" data-dismiss="modal"
                                         *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                                     <a class="already-bought" *ngIf="data.Purchased == true">
@@ -110,7 +110,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 text-center">
-            <a routerLink="/bookseemore/Bid&BuyBooks" class=" btn-style">See more</a>
+            <a routerLink="/bookseemore/Bid&BuyBooks" class="  btn btn-style ">See more</a>
         </div>
     </div>
     <div class="row" *ngIf="check_login() || !check_login()">
@@ -165,16 +165,16 @@
                                     </div>
                                     <!-- cart end -->
                                     <div class="buy_btn">
-                                        <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                        <a class=" btn btn-style " *ngIf="data?.accept_offer == true"
                                             (click)="openDialog3(data?.id)">Offer Now</a>
                                     </div>
                                     </div>
                                     <!-- ------Cart Heart and offer Now Button div End------- -->
                                     <!-- buy and bid now start -->
                                     <div class="product-list__item-info-1">
-                                        <a class="btn-style text-transform-none"
+                                        <a class=" btn btn-style  text-transform-none"
                                             *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                                        <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                        <a  class=" btn btn-style  text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                             (click)="booksid(data?.id)" data-dismiss="modal"
                                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                                         <a class="already-bought" *ngIf="data.Purchased == true">
@@ -189,7 +189,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 text-center">
-            <a routerLink="/bookseemore/BooksTrendingNow" class=" btn-style">See more</a>
+            <a routerLink="/bookseemore/BooksTrendingNow" class="  btn btn-style ">See more</a>
         </div>
     </div>
     <div class="row">
@@ -245,16 +245,16 @@
                                     </div>
                                     <!-- cart end -->
                                     <div class="buy_btn">
-                                        <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                        <a class=" btn btn-style " *ngIf="data?.accept_offer == true"
                                             (click)="openDialog3(data?.id)">Offer Now</a>
                                     </div>
                                     </div>
                                     <!-- ------Cart Heart and offer Now Button div End------- -->
                                     <!-- buy and bid now start -->
                                     <div class="product-list__item-info-1">
-                                        <a class="btn-style text-transform-none"
+                                        <a class=" btn btn-style  text-transform-none"
                                             *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                                        <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                        <a  class=" btn btn-style  text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                             (click)="booksid(data?.id)" data-dismiss="modal"
                                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                                         <a class="already-bought" *ngIf="data.Purchased == true">
@@ -269,7 +269,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 text-center">
-            <a class=" btn-style" routerLink="/bookseemore/TopRatedBooks">See more</a>
+            <a class="  btn btn-style " routerLink="/bookseemore/TopRatedBooks">See more</a>
         </div>
     </div>
     <div class="row" *ngIf="check_login()">
@@ -325,16 +325,16 @@
                                     </div>
                                     <!-- cart end -->
                                     <div class="buy_btn">
-                                        <a class="btn-style" *ngIf="data?.accept_offer == true"
+                                        <a class=" btn btn-style " *ngIf="data?.accept_offer == true"
                                             (click)="openDialog3(data?.id)">Offer Now</a>
                                     </div>
                                     </div>
                                     <!-- ------Cart Heart and offer Now Button div End------- -->
                                     <!-- buy and bid now start -->
                                     <div class="product-list__item-info-1">
-                                        <a class="btn-style text-transform-none"
+                                        <a class=" btn btn-style  text-transform-none"
                                             *ngIf="data.sell_status==true && !data.Purchased" (click)="books(data?.id)"> Buy Now at {{data.price | currency:'USD'}}</a>
-                                        <a  class="btn-style text-transform-none" data-toggle="modal" data-target="#notesbidnow"
+                                        <a  class=" btn btn-style  text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                                             (click)="booksid(data?.id)" data-dismiss="modal"
                                             *ngIf="data.bid_status==true && !data.Purchased"> Bid Now at {{data.bid_price | currency:'USD'}}</a>
                                         <a class="already-bought" *ngIf="data.Purchased == true">
@@ -349,7 +349,7 @@
     </div>
     <div class="row" *ngIf="check_login()">
         <div class="col-lg-12 text-center">
-            <a class=" btn-style" routerLink="/bookseemore/RecentlyViewedBooks">See more</a>
+            <a class="  btn btn-style " routerLink="/bookseemore/RecentlyViewedBooks">See more</a>
         </div>
     </div>
 </div>
@@ -375,7 +375,7 @@
           <mat-form-field>
             <input matInput type="text" maxlength="4" placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount"
                    #bidamount="ngModel" name="bidamount">
-          </mat-form-field> <a class="btn-style" (click)="bidc()" data-dismiss="modal">Bid
+          </mat-form-field> <a class=" btn btn-style " (click)="bidc()" data-dismiss="modal">Bid
           Now </a>
         </form>
       </div>

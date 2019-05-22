@@ -115,7 +115,7 @@
                       <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
                         <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
                       </div><span class="btn-file margin-top-10">Upload Flash card Image <input (change)="onChange($event)"
-                                #image type="file" accept="image/gif, image/jpeg, image/png" required> </span> <a class="btn-style margin-top-10"
+                                #image type="file" accept="image/gif, image/jpeg, image/png" required> </span> <a class=" btn btn-style  margin-top-10"
                             (click)="onSubmit(f)">Submit</a>
                     </form>
                 </div>
@@ -134,7 +134,7 @@
                       </div>
                       <span class="btn-file">
                       Upload Image <input (change)="onChange($event)" formControlName="image" name="image" #image type="file" accept="image/gif, image/jpeg, image/png" required>
-                        </span> <a class="btn-style margin-top-10" (click)="onSubmited(f)">Submit</a>
+                        </span> <a class=" btn btn-style  margin-top-10" (click)="onSubmited(f)">Submit</a>
                     </form>
                 </div>
             </div>

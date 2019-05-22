@@ -12,7 +12,7 @@
                     </div><span class="pts-right" *ngIf="!isright">Add New Card</span> <span class="pts-right"
                         *ngIf="isright" style="color: black">Add New Card</span>
                 </div>
-                <div id="pricing-switch" class="">
+                <div id="pricing-switch" >
                     <div class="col-md-12" *ngIf="!isright ">
                         <div class="col-lg-12 Saved-card-sel-list">
                             <mat-form-field class="width50">
@@ -21,9 +21,13 @@
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
                                 
-                            </mat-form-field> <a class="btn-style margin-top-10" (click)="buy()">Place
-                                Order</a>
+                            </mat-form-field> 
+                            <div>
+
+                            </div>
+                           
                         </div>
+                        <a class=" btn btn-style  width50 margin-top-10" (click)="buy()">Place Order</a>
                     </div>
                     <div class="col-md-12" *ngIf="isright">
                         <div class="checkout">
@@ -312,7 +316,7 @@
                                         </mat-slide-toggle>
                                     </div>
                                 </div>
-                                <a class="btn-style margin-top-10" (click)="buywithcard(f)">Buy</a>
+                                <a class=" btn btn-style  width50 margin-top-10" (click)="buywithcard(f)">Place Order</a>
                             </form>
                         </div>
                     </div>

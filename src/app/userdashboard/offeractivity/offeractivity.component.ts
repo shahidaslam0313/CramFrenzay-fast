@@ -92,7 +92,9 @@ export class OfferactivityComponent implements OnInit {
 }
 @Component({
   selector: 'app-offeractivity-payment--dialog',
-  templateUrl: 'offeractivity-payment-dialog.html'
+  templateUrl: 'offeractivity-payment-dialog.html',
+  styleUrls: ['./offeractivity.component.scss']
+
 })
 export class OfferactivityPaymentComponent {
   constructor(public dialogRef: MatDialogRef<OfferactivityPaymentComponent>, @Inject(MAT_DIALOG_DATA) public data: any,public offer:OfferactivityService){}
