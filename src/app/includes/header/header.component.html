@@ -1,7 +1,7 @@
 <div class="main-search search-outer "> <i class="fas fa-times" id="closeSearch"></i>
     <div class="container">
         <div class="search-holder">
-            <form (ngSubmit)="onsubmit(query)"> <input type="search" autofocus placeholder="Search CramFrenzy" id="input-searchbar" name="name" (keyup)="filter(query)"  [(ngModel)]="query"> </form>
+            <form (ngSubmit)="onsubmits(query)"> <input type="search" autofocus placeholder="Search CramFrenzy" id="input-searchbar" name="name" (keyup)="filter(query)"  [(ngModel)]="query"> </form>
         </div>
         <div class="row search-results" *ngIf="notes">
           <p *ngIf="notes.length==0" class="results-notfound"> No results found. Please use keywords.</p>

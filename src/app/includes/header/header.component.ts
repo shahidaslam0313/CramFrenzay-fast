@@ -419,10 +419,18 @@ export class HeaderComponent implements OnInit {
         this.flashcard = data['flashcard'];
         this.book = data['book'];
       });
+
     }
 
   }
+onsubmits(query) {
+    // this.router.navigate(['/generalsearch/' + query]);
+    this.router.navigate(['/generalsearch/'], {queryParams: {query : query}});
 
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('name', query);
+    }
+  }
   onsubmit(query) {
 
     $('.main-search').removeClass('active');
