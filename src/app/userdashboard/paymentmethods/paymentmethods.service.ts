@@ -33,7 +33,7 @@ export class PaymentmethodsService {
         "cardNumber": cardno,
         "ccv": ccv,
         "expiryDate": expiryDate,
-        "user": this.currentUser.user_id,
+        "user": this.current.user_id,
         "card_holder": cardHolderName,
         "nickname": cardnickname,
         "default": defaultCheck,
@@ -57,7 +57,7 @@ export class PaymentmethodsService {
       }).catch((error: any) => {
         // alert(error.status);
         if (error.status === 302) {
-          // if (error.status == 302) {
+          // if (error.stats == 302) {
           swal({
             type: 'error',
             title: 'This Card Already Exist!',

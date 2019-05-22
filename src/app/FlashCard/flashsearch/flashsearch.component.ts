@@ -95,7 +95,7 @@ export class FlashsearchComponent implements OnInit {
   againflashesearch(query) {
     this.full = query;
     this.newservice.flashsearch(query, 1).subscribe(data => {
-      this.result = data.Flashcard;
+      this.result = data.flashcards;
       // this.setPagenotes(1, data.totalItems)
       if (this.result.length <= 0) {
         this.searchResultStatus = null;
@@ -103,21 +103,11 @@ export class FlashsearchComponent implements OnInit {
     }
     );
   }
-  // filter(query) {
-  //   if (query != "") {
-  //     this.flash.flashsearch(query).subscribe(data => {
-  //       this.searchResult = data.Flashcard;
-  //       if (this.searchResult.length <= 0) {
-  //         this.searchResultStatus = false;
-  //       }
-  //     })
-  //   }
-  // }
   filter(query) {
     if (query != "") {
 
       this.flash.flashsearch(query).subscribe(Res => {
-        this.searchResult = Res.Flashcard;
+        this.searchResult = Res.flashcards;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }

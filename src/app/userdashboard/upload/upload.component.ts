@@ -137,13 +137,13 @@ role;
 
           // this.CourseSuccess();
           this.model.course_thumbnail = data;
-          this.ifImageUpload();
+          this.ifImageUpload(f);
         }
       });
       f.resetForm();
   }
   accept_offer: boolean = false;
-  private ifImageUpload() {
+  private ifImageUpload(f: NgForm) {
     var currentdate = moment(new Date,' YYYY-MM-DD ');
     var new_date = moment(currentdate).add(this.sell_days,'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
@@ -157,6 +157,7 @@ role;
       }
 
       );
+      f.resetForm()
   }
   reserved() {
     if (this.hide) {

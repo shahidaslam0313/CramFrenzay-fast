@@ -36,6 +36,7 @@ export class CategoryWiseNotesComponent implements OnInit {
     this.name = localStorage.getItem('nestedname');
   }
   ngOnInit() {
+    window.scroll(0,0);
     this.route.params.subscribe(params => {
       this.subcategory(params['id'])
     });

@@ -2,21 +2,20 @@
     <div class="row my-3">
         <div class="col-md-3 sidebar">
             <nav>
-                <form class="user-profile-form">  
-                        <div class="profile-picture" *ngIf="profilePhoto" >
-                                <img src="{{profilePhoto}}">
-                            </div>
-                            <div class="profile-picture" *ngIf="!profilePhoto" >
-                                <img src="../assets/img/default-user-icon-profile.png">
-                            </div>
-                    <h4 class="user-name text_cap">{{firstname}} {{lastname}}</h4>
-                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
+                <form class="user-profile-form">
+                        <div class="profile-picture" *ngIf="profilePhoto"> <img src="{{profilePhoto}}" onerror="this.src='../assets/img/default-user-icon-profile.png'">
+                        </div>
+                        <div class="profile-picture" *ngIf="!profilePhoto"> <img src="../assets/img/default-user-icon-profile.png"
+                                onerror="this.src='../assets/img/default-user-icon-profile.png'"> </div>
+                    <h4 class="user-name text_cap">{{firstname}}{{lastname}}</h4>
+                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add
+                    Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
                         class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
                     routerLinkActive="active1" data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-book-open"></i>Add Flash Cards</a> <a class="user-link display-none"
-                    routerLink="/uploadcarddetail" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-book-open"></i>FlashCard Detail</a> <a class="user-link" routerLink="/uploadbook"
-                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book"></i>Add Books</a>
+                        class="fa fa-book-open"></i>Add Flash Cards</a> <a class="user-link display-none" routerLink="/uploadcarddetail"
+                    routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book-open"></i>FlashCard
+                    Detail</a> <a class="user-link" routerLink="/uploadbook" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
+                        class="fa fa-book"></i>Add Books</a>
             </nav>
         </div>
         <div class="col-md-8 user-profile">
@@ -28,95 +27,87 @@
                         Flash Card Details </a> </li>
             </ul>
             <div class="tab-content padding-top-10">
-                <div id="user_signup" class="form-1-body padding-top-10 tab-pane  active">
+                <div id="user_signup" class="form-1-body padding-top-10 tab-pane active">
                     <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm" class="user-add-ingo-form" enctype="multipart/form-data">
-                        <mat-form-field> <input matInput type="text" class="Input-capitalize" placeholder="Title" [(ngModel)]="model.name" name="name"
-                                #name="ngModel" required autofocus />
+                        <mat-form-field> <input matInput type="text" class="Input-capitalize" placeholder="Title"
+                                [(ngModel)]="model.name" name="name" #name="ngModel" required autofocus />
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
                             </mat-error>
                             <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid Title
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field>
-                          <mat-select placeholder="Select Category" type="number"  id="category"
-                                      [(ngModel)]="model.category" name="category">
-                            <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
-                          </mat-select>
+                            <mat-select placeholder="Select Category" type="number" id="category" [(ngModel)]="model.category"
+                                name="category">
+                                <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
+                            </mat-select>
                         </mat-form-field>
-
-
-                      <mat-form-field id="font" *ngIf="result" >
-                        <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategory" name="subcategory" id="subcategory">
-                          <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <mat-form-field id="fonts" *ngIf="nestedresult" >
-                        <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory" name="nestedcategory" id="nestedcategory">
-                          <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-
+                        <mat-form-field id="font" *ngIf="result">
+                            <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategory"
+                                name="subcategory" id="subcategory">
+                                <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field id="fonts" *ngIf="nestedresult">
+                            <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
+                                name="nestedcategory" id="nestedcategory">
+                                <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                         <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                             Offers</mat-slide-toggle>
                         <div id="showdiv6" style="display: none;">
-                            <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $" [(ngModel)]="model.min_amount"
-                                    name="min_amount"  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
-                            <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $" [(ngModel)]="model.max_amount"
-                                    name="max_amount"  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $"
+                                    [(ngModel)]="model.min_amount" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
+                                <span matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
+                                    [(ngModel)]="model.max_amount" name="max_amount" onKeyPress="if(this.value.length==4) return false;">
+                                <span matPrefix>$&nbsp;</span> </mat-form-field>
                         </div>
                         <mat-slide-toggle id="showhide" [checked]="true" [(ngModel)]="sell_status" name="sell_status">List
                             for Sale</mat-slide-toggle>
                         <div id="showdiv" class="text-left">
                             <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Buy It Now Price"
-                                    [(ngModel)]="model.price" name="price" onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                            </mat-form-field>
+                                    [(ngModel)]="model.price" name="price" onKeyPress="if(this.value.length==4) return false;">
+                                <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field class="material-select margin-top-10">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
-                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
+                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        
                         <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
-                            <span *ngIf="sell_status == true">Also List for Auction </span>
-                            <span *ngIf="sell_status == false"> List for Auction </span></mat-slide-toggle>
-                    
+                            <span *ngIf="sell_status==true">Also List for Auction </span> <span *ngIf="sell_status==false">
+                                List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
                             <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Starting Bid Price"
-                                    [(ngModel)]="model.initial_amount" name="initial_amount" 
-                                    onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                            </mat-form-field>
+                                    [(ngModel)]="model.initial_amount" name="initial_amount" onKeyPress="if(this.value.length==4) return false;">
+                                <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}} Days</mat-option>
+                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                            <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve
-                                Auction</mat-checkbox>
-                            <div id="showdiv3">
-                                <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Reserve Price"
-                                        [(ngModel)]="model.reservedprice" name="reservedprice"
-                                       onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                                </mat-form-field>
-                            </div>
-                            <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
-                            <div id="showdiv4">
-                                <mat-form-field class="margin-top-10"> <input matInput [matDatepicker]="picker"
-                                        placeholder="Date&Time" [(ngModel)]="model.start_time" name="start_time"> <span
-                                        placeholder="MM/DD/YYYY HH:MM AM"></span>
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                    <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
-                                </mat-form-field>
-                            </div>
-                        
-                      <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
-                        <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
-                      </div><span class="btn-file margin-top-10">Upload Flash card Image <input (change)="onChange($event)"
-                                #image type="file" accept="image/gif, image/jpeg, image/png" required> </span> <a class=" btn btn-style  margin-top-10"
-                            (click)="onSubmit(f)">Submit</a>
+                        <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction</mat-checkbox>
+                        <div id="showdiv3">
+                            <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Reserve Price"
+                                    [(ngModel)]="model.reservedprice" name="reservedprice" onKeyPress="if(this.value.length==4) return false;">
+                                <span matPrefix>$&nbsp;</span> </mat-form-field>
+                        </div>
+                        <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
+                        <div id="showdiv4">
+                            <mat-form-field class="margin-top-10"> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
+                                    [(ngModel)]="model.start_time" name="start_time"> <span placeholder="MM/DD/YYYY HH:MM AM"></span>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+                                alt="" allowmultiple="false" /> </div><span class="btn-file margin-top-10">Upload Flash
+                            card Image <input (change)="onChange($event)" #image type="file" accept="image/gif, image/jpeg, image/png"
+                                required> </span> <a class="btn-style margin-top-10" (click)="onSubmit(f)">Submit</a>
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">
@@ -127,14 +118,15 @@
                                 <mat-option *ngFor="let item of names" [value]="item.id">{{item.name}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <mat-form-field> <input matInput type="text" placeholder="Title" formControlName="title" name="title" [(ngModel)]="model.title" name="title" /> </mat-form-field>
-                        <mat-form-field> <textarea matInput type="text" placeholder="Definition" formControlName="definition" name="definition" [(ngModel)]="model.definition"></textarea> </mat-form-field>
-                      <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
-                        <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
-                      </div>
-                      <span class="btn-file">
-                      Upload Image <input (change)="onChange($event)" formControlName="image" name="image" #image type="file" accept="image/gif, image/jpeg, image/png" required>
-                        </span> <a class=" btn btn-style  margin-top-10" (click)="onSubmited(f)">Submit</a>
+                        <mat-form-field> <input matInput type="text" placeholder="Title" formControlName="title" name="title"
+                                [(ngModel)]="model.title" name="title" /> </mat-form-field>
+                        <mat-form-field> <textarea matInput type="text" placeholder="Definition" formControlName="definition"
+                                name="definition" [(ngModel)]="model.definition"></textarea> </mat-form-field>
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+                                alt="" allowmultiple="false" /> </div><span class="btn-file"> Upload Image <input
+                                (change)="onChange($event)" formControlName="image" name="image" #image type="file"
+                                accept="image/gif, image/jpeg, image/png" required> </span> <a class="btn-style margin-top-10"
+                            (click)="onSubmited(f)">Submit</a>
                     </form>
                 </div>
             </div>

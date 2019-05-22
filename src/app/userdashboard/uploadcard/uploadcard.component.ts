@@ -172,7 +172,7 @@ this.getindcardname();
         }
       });
   }
-  private ifImageUpload2(f) {
+  private ifImageUpload2(f: NgForm) {
     console.log(this.sell_days);
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');

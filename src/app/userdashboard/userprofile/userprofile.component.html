@@ -3,133 +3,96 @@
         <div class="col-md-3 sidebar">
             <nav>
                 <form class="user-profile-form">
-                    <div class="profile-picture" *ngIf="profilePhoto">
-                        <img src="{{profilePhoto}}" onerror="this.src='../assets/img/default-user-icon-profile.png'">
+                    <div class="profile-picture" *ngIf="profilePhoto"> <img src="{{profilePhoto}}" onerror="this.src='../assets/img/default-user-icon-profile.png'">
                     </div>
-                    <div class="profile-picture" *ngIf="!profilePhoto">
-                        <img src="../assets/img/default-user-icon-profile.png" onerror="this.src='../assets/img/default-user-icon-profile.png'">
-                    </div>
+                    <div class="profile-picture" *ngIf="!profilePhoto"> <img src="../assets/img/default-user-icon-profile.png"
+                            onerror="this.src='../assets/img/default-user-icon-profile.png'"> </div>
                     <h4 class="user-name text_cap">{{profile.firstname}} {{profile.lastname}}</h4>
-                </form>
-                <a class="user-link" routerLink="/userprofile" routerLinkActive="active1"><i class="fas fa-user"></i>
-                    Profile</a>
-                <a class="user-link" routerLink="/change-password" routerLinkActive="active1"><i class="fas fa-key"></i>
+                </form> <a class="user-link" routerLink="/userprofile" routerLinkActive="active1"><i class="fas fa-user"></i>
+                    Profile</a> <a class="user-link" routerLink="/change-password" routerLinkActive="active1"><i class="fas fa-key"></i>
                     Change Password</a>
             </nav>
         </div>
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">My Profile</h1>
-
             <form class="user-add-ingo-form modal-form" enctype="multipart/form-data" [formGroup]="user">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" [ngClass]="displayFieldCss(user, 'firstname')">
-                        <mat-form-field>
-                            <input class="text_cap" matInput type="text" placeholder="First Name" id="firstname"
-                                formControlName="firstname" value="{{profile.firstname}}" 
-                                [(ngModel)]="profile.firstname" pattern="[a-zA-Z ]+" maxlength="35"
-                                (keydown.space)="$event.preventDefault()" required>
-                            <mat-error *ngIf="user.controls.firstname.value==''">
-                                <strong>First Name cannot be empty</strong>
+                        <mat-form-field> <input class="text_cap" matInput type="text" placeholder="First Name" id="firstname"
+                                formControlName="firstname" value="{{profile.firstname}}" [(ngModel)]="profile.firstname"
+                                pattern="[a-zA-Z]+" maxlength="35" (keydown.space)="$event.preventDefault()" required>
+                            <mat-error *ngIf="user.controls.firstname.value==''"> <strong>First Name cannot be empty</strong>
                             </mat-error>
                             <mat-error *ngIf="user.controls.firstname.hasError('pattern')">Alphabets Only</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" [ngClass]="displayFieldCss(user, 'lastname')">
-                        <mat-form-field>
-                            <input class="text_cap" matInput type="text" placeholder="Last Name" id="lastname" formControlName="lastname"
-                                value="{{profile.lastname}}" [(ngModel)]="profile.lastname" pattern="[a-zA-Z ]+"
-                                maxlength="35" (keydown.space)="$event.preventDefault()" required>
-                            <mat-error *ngIf="user.controls.lastname.value==''">
-                                <strong>First Name cannot be empty</strong>
+                        <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Last Name" id="lastname"
+                                formControlName="lastname" value="{{profile.lastname}}" [(ngModel)]="profile.lastname"
+                                pattern="[a-zA-Z]+" maxlength="35" (keydown.space)="$event.preventDefault()" required>
+                            <mat-error *ngIf="user.controls.lastname.value==''"> <strong>First Name cannot be empty</strong>
                             </mat-error>
                             <mat-error *ngIf="user.controls.lastname.hasError('pattern')">Alphabets Only</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" [ngClass]="displayFieldCss(user, 'lastname')">
-                        <mat-form-field>
-                            <input class="text_cap" matInput type="text" placeholder="Language" id="language" formControlName="language"
-                                name="language" value="{{profile.language}}" [(ngModel)]="profile.language"
-                                pattern="[a-zA-Z ]+">
+                        <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Language" id="language"
+                                formControlName="language" name="language" value="{{profile.language}}" [(ngModel)]="profile.language"
+                                pattern="[a-zA-Z]+">
                             <mat-error *ngIf="user.controls.language.hasError('pattern')">Alphabets Only</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
-                        <mat-form-field>
-                            <input class="text_cap" matInput type="text" placeholder="Add a Professional Headline" id="headLine" formControlName="headLine"
-                                name="headLine" value="{{profile.headLine}}" [(ngModel)]="profile.headLine">
+                        <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Add a Professional Headline"
+                                id="headLine" formControlName="headLine" name="headLine" value="{{profile.headLine}}"
+                                [(ngModel)]="profile.headLine"> </mat-form-field>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                        <mat-form-field> <textarea matInput placeholder="Biography" id="biography" formControlName="biography"
+                                name="biography" value="{{profile.biography}}" [(ngModel)]="profile.biography"></textarea>
                         </mat-form-field>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                        <mat-form-field>
-                            <textarea matInput placeholder="Biography" id="biography" formControlName="biography"
-                                name="biography" value="{{profile.biography}}"
-                                [(ngModel)]="profile.biography"></textarea>
-                        </mat-form-field>
-
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                            <h2 class="font-weight-bold">Links</h2>
+                        <h2 class="font-weight-bold">Links</h2>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="Website Link" id="website"
-                                formControlName="website" name="website" value="{{profile.website}}"
-                                [(ngModel)]="profile.website">
+                        <mat-form-field> <input matInput type="text" placeholder="Website Link" id="website"
+                                formControlName="website" name="website" value="{{profile.website}}" [(ngModel)]="profile.website">
                         </mat-form-field>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="GIT Profile " id="Git" formControlName="Git"
-                                name="Git" value="{{profile.Git}}" [(ngModel)]="profile.Git">
-
-
+                        <mat-form-field> <input matInput type="text" placeholder="GIT Profile " id="Git"
+                                formControlName="Git" name="Git" value="{{profile.Git}}" [(ngModel)]="profile.Git">
                         </mat-form-field>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="YouTube Channel" id="youtube"
-                                formControlName="youtube" name="youtube" value="{{profile.youtube}}"
-                                [(ngModel)]="profile.youtube">
+                        <mat-form-field> <input matInput type="text" placeholder="YouTube Channel" id="youtube"
+                                formControlName="youtube" name="youtube" value="{{profile.youtube}}" [(ngModel)]="profile.youtube">
                         </mat-form-field>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="Twitter Handle" id="twitter"
-                                formControlName="twitter" name="twitter" value="{{profile.twitter}}"
-                                [(ngModel)]="profile.twitter">
+                        <mat-form-field> <input matInput type="text" placeholder="Twitter Handle" id="twitter"
+                                formControlName="twitter" name="twitter" value="{{profile.twitter}}" [(ngModel)]="profile.twitter">
                         </mat-form-field>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="Facebook Profile" id="facebook"
-                                formControlName="facebook" name="facebook" value="{{profile.facebook}}"
-                                [(ngModel)]="profile.facebook">
+                        <mat-form-field> <input matInput type="text" placeholder="Facebook Profile" id="facebook"
+                                formControlName="facebook" name="facebook" value="{{profile.facebook}}" [(ngModel)]="profile.facebook">
                         </mat-form-field>
                     </div>
                     <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="LinkedIn Profile" id="linkedIn"
-                                formControlName="linkedIn" name="linkedIn" value="{{profile.linkedIn}}"
-                                [(ngModel)]="profile.linkedIn">
+                        <mat-form-field> <input matInput type="text" placeholder="LinkedIn Profile" id="linkedIn"
+                                formControlName="linkedIn" name="linkedIn" value="{{profile.linkedIn}}" [(ngModel)]="profile.linkedIn">
                         </mat-form-field>
                     </div>
                     <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
-                            <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
-                                    <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false"/>
-                                  </div>
-                            <span class="btn-file btn">Upload Profile Image
-                                    <input type="file" (change)="onChange($event)" formControlName="image" #image
-                                        accept="image/gif, image/jpeg, image/png" required>
-                            </span>
-                            
-                            <!-- <img src="{{profile.profilePhoto}}" class="img-userprofile" *ngIf="profilePhoto"> -->
-                            <!-- <img src="../assets/img/default-user-icon-profile.png" *ngIf="!profilePhoto">  -->
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+                                alt="" allowmultiple="false" /> </div><span class="btn-file btn">Upload Profile Image
+                            <input type="file" (change)="onChange($event)" formControlName="image" #image accept="image/gif, image/jpeg, image/png"
+                                required> </span>
                     </div>
-                </div>
-                <button type="submit" *ngIf="!ImgSrc" class=" btn btn-style  margin-top-10 width100"
-                    (click)="userdata()" >save</button>
-                    <button type="submit"  class=" btn btn-style  margin-top-10 width100"
-                    (click)="onSubmit()" *ngIf="ImgSrc" >save</button>
+                </div><button type="submit" *ngIf="!ImgSrc" class="btn-style margin-top-10 width100" (click)="userdata()">Save</button>
+                <button type="submit" class="btn-style margin-top-10 width100" (click)="onSubmit()" *ngIf="ImgSrc">Save</button>
             </form>
         </div>
     </div>

@@ -219,7 +219,7 @@ courses(id) {
   filter(query) {
     if (query != "") {
       this.course.coursesearch(query).subscribe(Res => {
-        this.searchResult = Res.Course;
+        this.searchResult = Res.courses;
         if (this.searchResult.length <= 0) {
           this.searchResultStatus = false;
         }
