@@ -812,11 +812,12 @@ blockquote .blockquote-author {
 
 .product-list__category,
 .product-list__title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     width: 100%;
     text-transform: capitalize;
-    white-space: nowrap
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .product-list__category {
@@ -1541,7 +1542,7 @@ focus {
     font-size: 10px
 }
 .star-icon{
-    color: #ffc500;
+    color: #ffc500 !important;
     text-shadow: 0 1px 0px #000;
 }
 .rating-stars .fa,
@@ -2218,7 +2219,9 @@ mat-error>strong {
 .width50{
     width: 50%;
 }
-
+.already-bought{
+    display:inline-flex;
+}
 
 
 
@@ -2291,10 +2294,6 @@ mat-error>strong {
 }
 
 @media only screen and (max-width:1024px) {
-    .logo {
-        width: 180px;
-        margin: 10px 0
-    }
 
     .slick-main-btn-left {
         left: -35px
@@ -2326,6 +2325,12 @@ mat-error>strong {
         width: 95% !important;
         left: 0 !important;
         line-height: 30px !important
+    }
+    #mainpage-slider{
+        height: 390px !important;
+    }
+    #mainpage-slider .carousel-item{
+        height: 390px !important;
     }
 }
 
@@ -2548,7 +2553,7 @@ mat-error>strong {
     }
 
     .main-nav-slider {
-        top: 179px
+        bottom: 20px;
     }
 
     .search-bg {
@@ -2886,7 +2891,7 @@ countdown .countdown {
 .mat-form-field-empty.mat-form-field-label {
     display: block;
     font-size: 16px;
-    color: #616161 !important
+    color: rgba(0, 0, 0, 0.5411764705882353) !important;
 }
 
 .signup-login-fonts .mat-form-field-label {
@@ -3026,8 +3031,12 @@ margin: 0 auto;
 }
 
 @media only screen and (max-width:1024px) {
+    .sellnowbtn {
+        font-size: 13px !important;
+        margin: 20px 5px !important;
+    }
     .logo {
-        width: 140px;
+        width: 140px !important;
         margin: 7px 0
     }
 
@@ -3059,6 +3068,9 @@ margin: 0 auto;
 
     .tutor-img {
         height: 183px
+    }
+    .main-nav-slider {
+        bottom: 20px !important;
     }
 }
 
@@ -3113,8 +3125,7 @@ margin: 0 auto;
     }
 
     .main-nav-slider {
-        top: auto !important;
-        bottom: 0 !important
+        bottom: 20px !important
     }
 
     #mainpage-slider .carousel-item {
@@ -3283,7 +3294,7 @@ margin: 0 auto;
     }
 
     .main-nav-slider {
-        top: 22%
+       bottom: 20px
     }
 
     .carousel-indicators {

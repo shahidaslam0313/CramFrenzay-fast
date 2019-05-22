@@ -28,4 +28,7 @@ export class RecapchaComponent implements OnInit {
     this.recapchaService.changeData(this.capchaText)
 
   }
+  onKeydown(event) {
+    console.log(event);
+  }
 }
