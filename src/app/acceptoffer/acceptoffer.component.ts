@@ -17,10 +17,11 @@ export class AcceptofferComponent implements OnInit {
   value: string;
   viewValue: string;
   end_time;
-
+  history;
   constructor(public dialogRef: MatDialogRef<AcceptofferComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private global: GlobalService) { }
 
   ngOnInit() {
+    this.showhistory();
   }
   postoffer() {
     var currentdate = moment(new Date,' YYYY-MM-DD ');
@@ -99,7 +100,13 @@ export class AcceptofferComponent implements OnInit {
           timer: 2500
         }) 
       }
-    }
-    )
+    })
+    this.showhistory();
+  }
+  showhistory() {
+    this.global.offerhistory().subscribe(Res => {
+      this.history = Res;
+      console.log(this.history);
+    });
   }
 }

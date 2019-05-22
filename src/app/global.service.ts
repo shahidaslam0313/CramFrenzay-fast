@@ -215,4 +215,12 @@ export class GlobalService {
     headers.append('Content-Type', 'application/json');
     return this.http.delete(Config.api + 'purchase/deletecheckoutlist/' + id, { headers: headers }).map((response: Response) => response.json());
   }
+  ////////////////get offer history///////////
+  offerhistory() {
+    if (localStorage.getItem('currentUser')) {
+    const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/accept_offer_history/' , { headers: headers }).map((response: Response) => response.json());
+  }
+}
 }
