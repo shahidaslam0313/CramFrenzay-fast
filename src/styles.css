@@ -2246,8 +2246,12 @@ mat-error>strong {
     -webkit-appearance: none!important;
     border-radius: 0 50px 50px 0!important;
 }
-
-
+.modal .form-1-header {
+    margin-top: -40px;
+}
+.modal .countdown{
+    margin: 0;
+}
 
 
 
@@ -2838,11 +2842,7 @@ mat-error>strong {
 }
 
 .view-bid {
-    display: inline-block;
-    font-weight: 600;
-    font-size: 20px;
     text-transform: capitalize;
-    color: red
 }
 
 countdown .countdown {
@@ -2858,28 +2858,25 @@ countdown .countdown {
 }
 
 .countdown .measurements {
-    border-radius: 3px;
     display: inline-block;
     padding: 10px;
-    background: #000;
-    margin: 0 5px
+    background-image: linear-gradient(to right top, #000000, #380e18, #6a071f, #9d001b, #cc0000);
 }
 
 .countdown .measurements p:first-child {
     color: #000 !important;
-    padding: 12px 20px;
+    padding: 5px;
     background: #fff;
     border-radius: 3px;
-    display: inline-block;
-    font-size: 35px;
+    font-size: 24px;
     margin: 0;
-    font-weight: 600
+    min-width: 50px;
+    font-weight: 600;
 }
-
 .countdown .measurements p {
     color: #fff;
     padding-top: 5px;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 600;
     margin: 0
 }

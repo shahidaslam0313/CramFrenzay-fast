@@ -1,1 +1,96 @@
-<div class="container-fluid"> <div class="row"> <div class="col-sm-3 "> <ul class="nav nav-tabs side-tabs s_sidebar"> <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i class="fa fa-edit"></i>Notes in My Cart </a> </li><li class="nav-item" > <a href="#courses" data-toggle="tab" class="nav-link" title="Courses"> <i class="fa fa-th-large"></i>Courses in My Cart </a> </li><li class="nav-item" > <a href="#flashcards" data-toggle="tab" class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>Flash Cards in My Cart </a> </li><li class="nav-item" > <a href="#book" data-toggle="tab" class="nav-link" title="Books"> <i class="fa fa-book"></i>Books in My Cart </a> </li></ul> </div><div class="col-sm-9 "> <div class="tab-content"> <div class="tab-pane active" id="notes"> <h3 class="mainbanner">Notes in My Cart </h3> <h4 class="text-center" *ngIf="record?.note==0">No Notes in my Cart yet</h4> <div class="dash-divs" *ngFor="let data of record?.note; let i=index"> <div class="product-list__item" > <figure class="product-list__img"> <a routerLink=""> <img src="{{Imageurl}}{{data?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a> </figure> <div class="product-list__content"> <a routerLink="/notes/{{data?.id}}"> <div class="product-list__category">{{data?.name}}<br></div><p class="product-list__price">Price :{{data?.price | currency:'USD'}}</p><p class="product-list__price">Discount:{{data?.price | currency:'USD'}}</p></a> </div></div></div></div><div class="tab-pane" id="courses"> <h3 class="mainbanner">Courses in My Cart </h3> <h4 class="text-center" *ngIf="record?.course==0">No Courses in my Cart yet</h4> <div class="dash-divs" *ngFor="let data of record?.course; let i=index"> <div class="product-list__item" > <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img src="{{Imageurl}}{{data?.course_thumbnail}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" data-filter="*" alt="Course"> </a> </figure> <a class="product-list__category" routerLink="/eachcourse/{{data?.id}}">{{data?.name}}<br></a> <div class="price-discount"> <a routerLink="/eachcourse/{{data?.id}}">Price :{{data?.price | currency:'USD'}}</a> <a routerLink="/eachcourse/{{data?.id}}">Discount:{{data?.discount | currency:'USD'}}</a> </div></div></div></div><div class="tab-pane" id="flashcards"> <h3 class="mainbanner">Flash Cards in My Cart </h3> <h4 class="text-center" *ngIf="record?.flashcard==0">No Flash Cards in my Cart yet</h4> <div class="dash-divs" *ngFor="let data of record?.flashcard; let i=index"> <div *ngIf="data==0">no record</div><div class="product-list__item" *ngIf="data !=null"> <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="FlashCard"> </a> </figure> <div class="product-list__content"> <a routerLink="/fcdetail/{{data?.id}}"> <div class="product-list__category">{{data?.name}}<br></div><p class="product-list__price">Price :{{data?.price | currency:'USD'}}</p><p class="product-list__price">Discount:{{data?.discount | currency:'USD'}}</p></a> </div></div></div></div><div class="tab-pane" id="book"> <h3 class="mainbanner">Books in My Cart </h3> <h4 class="text-center" *ngIf="record?.book==0">No Books in my Cart yet</h4> <div class="dash-divs" *ngFor="let item of record?.book; let i=index"> <div class="product-list__item" > <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img src="{{Imageurl}}{{item?.book_image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="Book"> </a> </figure> <div class="product-list__content"><a routerLink="/detail/{{item?.id}}"> <div class="product-list__category">{{item?.name}}<br></div><p class="product-list__price" >Price :{{item?.price | currency:'USD'}}</p><p class="product-list__price">Discount:{{item?.discount | currency:'USD'}}</p></a> </div></div></div><h1></h1> </div></div></div></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 ">
+            <ul class="nav nav-tabs side-tabs s_sidebar">
+                <li class="nav-item">
+                    <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i class="fa fa-edit"></i>Notes in My Cart </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#courses" data-toggle="tab" class="nav-link" title="Courses"> <i class="fa fa-th-large"></i>Courses in My Cart </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#flashcards" data-toggle="tab" class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>Flash Cards in My Cart </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#book" data-toggle="tab" class="nav-link" title="Books"> <i class="fa fa-book"></i>Books in My Cart </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9 ">
+            <div class="tab-content">
+                <div class="tab-pane active" id="notes">
+                    <h3 class="mainbanner">Notes in My Cart </h3>
+                    <h4 class="text-center" *ngIf="record?.notes==0">No Notes in my Cart yet</h4>
+                    <div class="dash-divs" *ngFor="let data of record?.notes; let i=index">
+                        <div class="product-list__item">
+                            <figure class="product-list__img">
+                                <a routerLink=""> <img src="{{Imageurl}}{{data?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a>
+                            </figure>
+                            <div class="product-list__content">
+                                <a routerLink="/notes/{{data?.id}}">
+                                    <div class="product-list__category">{{data?.name}}
+                                        <br>
+                                    </div>
+                                    <p class="product-list__price">Price :{{data?.price | currency:'USD'}}</p>
+                                    <p class="product-list__price">Discount:{{data?.price | currency:'USD'}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="courses">
+                    <h3 class="mainbanner">Courses in My Cart </h3>
+                    <h4 class="text-center" *ngIf="record?.courses==0">No Courses in my Cart yet</h4>
+                    <div class="dash-divs" *ngFor="let data of record?.courses; let i=index">
+                        <div class="product-list__item">
+                            <figure class="product-list__img">
+                                <a routerLink="/eachcourse/{{data?.id}}"> <img src="{{Imageurl}}{{data?.course_thumbnail}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" data-filter="*" alt="Course"> </a>
+                            </figure> <a class="product-list__category" routerLink="/eachcourse/{{data?.id}}">{{data?.name}}<br></a>
+                            <div class="price-discount"> <a routerLink="/eachcourse/{{data?.id}}">Price :{{data?.price | currency:'USD'}}</a> <a routerLink="/eachcourse/{{data?.id}}">Discount:{{data?.discount | currency:'USD'}}</a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="flashcards">
+                    <h3 class="mainbanner">Flash Cards in My Cart </h3>
+                    <h4 class="text-center" *ngIf="record?.flashcards==0">No Flash Cards in my Cart yet</h4>
+                    <div class="dash-divs" *ngFor="let data of record?.flashcards; let i=index">
+                        <div *ngIf="data==0">no record</div>
+                        <div class="product-list__item" *ngIf="data !=null">
+                            <figure class="product-list__img">
+                                <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="FlashCard"> </a>
+                            </figure>
+                            <div class="product-list__content">
+                                <a routerLink="/fcdetail/{{data?.id}}">
+                                    <div class="product-list__category">{{data?.name}}
+                                        <br>
+                                    </div>
+                                    <p class="product-list__price">Price :{{data?.price | currency:'USD'}}</p>
+                                    <p class="product-list__price">Discount:{{data?.discount | currency:'USD'}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="book">
+                    <h3 class="mainbanner">Books in My Cart </h3>
+                    <h4 class="text-center" *ngIf="record?.books==0">No Books in my Cart yet</h4>
+                    <div class="dash-divs" *ngFor="let item of record?.books; let i=index">
+                        <div class="product-list__item">
+                            <figure class="product-list__img">
+                                <a routerLink="/detail/{{item?.id}}"> <img src="{{Imageurl}}{{item?.book_image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="Book"> </a>
+                            </figure>
+                            <div class="product-list__content">
+                                <a routerLink="/detail/{{item?.id}}">
+                                    <div class="product-list__category">{{item?.name}}
+                                        <br>
+                                    </div>
+                                    <p class="product-list__price">Price :{{item?.price | currency:'USD'}}</p>
+                                    <p class="product-list__price">Discount:{{item?.discount | currency:'USD'}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h1></h1> </div>
+            </div>
+        </div>
+    </div>

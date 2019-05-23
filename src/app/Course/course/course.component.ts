@@ -13,6 +13,7 @@ import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { NgForm } from '@angular/forms';
 
 declare const $: any;
 
@@ -283,7 +284,7 @@ courses(id) {
     }
 
   }
-  bidc() {
+  bidc(f: NgForm) {
     this.global.bidoncourses( this.bidingcourse, this.model.bidamount, )
       .subscribe(Res => {
         swal({
@@ -294,14 +295,17 @@ courses(id) {
         });
       },
         error => {
+          if(error.status==403){
           swal({
             type: 'error',
             title: 'Bid higher amount',
             showConfirmButton: false,
             timer: 5500
           });
+          }
         }
       );
+      f.resetForm()
   }
   null;
   addcart( notes, course, book, flashcard){

@@ -1,8 +1,7 @@
 <div class="container-fluid">
-    <h3 class="mainbanner">Accepted Offers</h3>
     <div class="row">
         <div class="col-sm-3 ">
-            <ul class="nav nav-tabs side-tabs ">
+            <ul class="nav nav-tabs side-tabs s_sidebar">
                 <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Accepted Notes">
                         <i class="fa fa-edit"></i> Notes </a> </li>
                 <li class="nav-item"> <a href="#courses" data-toggle="tab" class="nav-link" title="Accepted Courses">
@@ -17,6 +16,8 @@
         <div class="col-sm-9">
             <div class="tab-content">
                 <div class="tab-pane  active mt-3" id="notes">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
                                 <div class="product-list__item">
@@ -68,6 +69,8 @@
                 </div>
 
                 <div class="tab-pane mt-3" id="courses">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.courses==0">No Course Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
                         
@@ -123,6 +126,8 @@
                 </div>
 
                 <div class="tab-pane mt-3" id="flashcards">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.flashcards==0">No Flash Card Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
                                 <div class="product-list__item">
@@ -176,6 +181,8 @@
                 </div>
 
                 <div class="tab-pane mt-3" id="book">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.books==0">No Book Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
                                 <div class="product-list__item">
@@ -229,4 +236,108 @@
             </div>
         </div>
     </div>
+</div> -->
+<!-- ................................................. -->
+<div class="container offer-activity">
+<ul class="nav nav-tabs nav-justified fcdetail">
+    <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active"
+            title="List of Terms">Accepted Offers</a> </li>
+    <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active"
+            title="Flip Flash Cards">Rejected Offers</a> </li>
+    <li class="nav-item"> <a data-toggle="tab" href="#flashcarddetail" id="flashdetail" class="nav-link nav-active"
+            title="Flash Card Details">Pending Offers</a> </li>
+</ul>
+<div class="tab-content">
+    <div id="listofterms" class="tab-pane active margin-bottom-200">
+        <div class="container-fluid">
+            <h1 class="mainbanner">Accepted Offers</h1>
+            <!-- ........... -->
+            <ul class="nav nav-tabs nav-justified fcdetail">
+                <li class="nav-item"> <a data-toggle="tab" href="#notes" class="nav-link nav-active active"
+                        title="List of Terms">Notes</a> </li>
+                <li class="nav-item"> <a data-toggle="tab" href="#courses" id="flipFlash" class="nav-link nav-active"
+                        title="Flip Flash Cards">Courses</a> </li>
+                <li class="nav-item"> <a data-toggle="tab" href="#flashcards" id="flashdetail"
+                        class="nav-link nav-active" title="Flash Card Details">Flash Cards</a> </li>
+                <li class="nav-item"> <a data-toggle="tab" href="#books" id="flashdetail" class="nav-link nav-active"
+                        title="Flash Card Details">Books</a> </li>
+            </ul>
+            <!-- ....... -->
+            <div class="tab-content">
+                <div id="notes" class="tab-pane active margin-bottom-200">
+                    Notes
+                </div>
+                <div id="courses" class="tab-pane  margin-bottom-200">
+                    Courses
+                </div>
+                <div id="flashcards" class="tab-pane  margin-bottom-200">
+                    Flash Cards
+                </div>
+                <div id="books" class="tab-pane  margin-bottom-200">
+                    Books
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="flipflashcards" class="tab-pane fade">
+        <div class="container-fluid">
+            <h1 class="mainbanner">Rejected Offers</h1>
+            <ul class="nav nav-tabs nav-justified fcdetail">
+                    <li class="nav-item"> <a data-toggle="tab" href="#R-notes" class="nav-link nav-active active"
+                            title="List of Terms">Notes</a> </li>
+                    <li class="nav-item"> <a data-toggle="tab" href="#R-courses" id="flipFlash" class="nav-link nav-active"
+                            title="Flip Flash Cards">Courses</a> </li>
+                    <li class="nav-item"> <a data-toggle="tab" href="#R-flashcards" id="flashdetail"
+                            class="nav-link nav-active" title="Flash Card Details">Flash Cards</a> </li>
+                    <li class="nav-item"> <a data-toggle="tab" href="#R-books" id="R-flashdetail" class="nav-link nav-active"
+                            title="Flash Card Details">Books</a> </li>
+                </ul>
+                <!-- ....... -->
+                <div class="tab-content">
+                    <div id="R-notes" class="tab-pane active margin-bottom-200">
+                        Notes
+                    </div>
+                    <div id="R-courses" class="tab-pane  margin-bottom-200">
+                        Courses
+                    </div>
+                    <div id="R-flashcards" class="tab-pane  margin-bottom-200">
+                        Flash Cards
+                    </div>
+                    <div id="R-books" class="tab-pane  margin-bottom-200">
+                        Books
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div id="flashcarddetail" class="tab-pane fade">
+        <div class="container-fluid">
+            <h1 class="mainbanner">Pending Offers</h1>
+            <ul class="nav nav-tabs nav-justified fcdetail">
+                    <li class="nav-item"> <a data-toggle="tab" href="#P-notes" class="nav-link nav-active active"
+                            title="List of Terms">Notes</a> </li>
+                    <li class="nav-item"> <a data-toggle="tab" href="#P-courses" id="flipFlash" class="nav-link nav-active"
+                            title="Flip Flash Cards">Courses</a> </li>
+                    <li class="nav-item"> <a data-toggle="tab" href="#P-flashcards" id="flashdetail"
+                            class="nav-link nav-active" title="Flash Card Details">Flash Cards</a> </li>
+                    <li class="nav-item"> <a data-toggle="tab" href="#P-books" id="R-flashdetail" class="nav-link nav-active"
+                            title="Flash Card Details">Books</a> </li>
+                </ul>
+                <!-- ....... -->
+                <div class="tab-content">
+                    <div id="P-notes" class="tab-pane active margin-bottom-200">
+                        Notes
+                    </div>
+                    <div id="P-courses" class="tab-pane  margin-bottom-200">
+                        Courses
+                    </div>
+                    <div id="P-flashcards" class="tab-pane  margin-bottom-200">
+                        Flash Cards
+                    </div>
+                    <div id="P-books" class="tab-pane  margin-bottom-200">
+                        Books
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
 </div>

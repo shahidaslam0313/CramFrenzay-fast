@@ -25,13 +25,13 @@
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased && data.isTeacher==false"
-                            (click)="courses(data?.id)"> Buy Now at{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
+                            (click)="courses(data?.id)"> Buy Now at&nbsp;{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
                             data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
-                            *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at{{data.bid_price |
+                            *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at&nbsp;{{data.bid_price |
                             currency:'USD'}}</a> <a class="already-bought" data-target="#notesbidnow" *ngIf="data.Purchased==true">
                             <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already Bought</a>
                             <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                Course add by me </a>
+                                Course Added by Me </a>
                     </div>
                 </div>
             </div>
@@ -65,13 +65,13 @@
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased && data.isTeacher==false"
-                            (click)="courses(data?.id)"> Buy Now at{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
+                            (click)="courses(data?.id)"> Buy Now at&nbsp;{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
                             data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
-                            *ngIf="data.bid_status==true "> Bid Now at{{data.bid_price | currency:'USD'}}</a> <a class="already-bought"
+                            *ngIf="data.bid_status==true "> Bid Now at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought"
                             data-target="#notesbidnow" *ngIf="data.Purchased==true"> <img src="../../../assets/img/CramFrenzyFavicon.png"
                                 alt="img"> Course Already Purchased</a> 
                                 <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                    Course add by me </a></div>
+                                    Course Added by Me </a></div>
                 </div>
             </div>
         </div>
@@ -120,13 +120,13 @@
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased && data.isTeacher==false"
-                            (click)="courses(data?.id)"> Buy Now at{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
+                            (click)="courses(data?.id)"> Buy Now at&nbsp;{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
                             data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
-                            *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at{{data.bid_price |
+                            *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now at&nbsp;{{data.bid_price |
                             currency:'USD'}}</a> <a class="already-bought" data-target="#notesbidnow" *ngIf="data.Purchased==true">
                             <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already Bought</a>
                             <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                Course add by me </a>
+                                Course Added by Me </a>
                     </div>
                 </div>
             </div>
@@ -174,13 +174,13 @@
                     <div class="text-center margin-top-10"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
                             (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" *ngIf="data?.sell_status==true && !data.Purchased && data.isTeacher==false"
-                            (click)="courses(data?.id)"> Buy Now at{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
+                            (click)="courses(data?.id)"> Buy Now at&nbsp;{{data.price | currency:'USD'}}</a> <a class="btn-style btn text-transform-none"
                             data-toggle="modal" data-target="#notesbidnow" (click)="bidcourseid(data?.id)" data-dismiss="modal"
-                            *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at{{data.bid_price |
+                            *ngIf="data.bid_status==true && !data.Purchased "> Bid Now at&nbsp;{{data.bid_price |
                             currency:'USD'}}</a> <a class="already-bought" data-target="#notesbidnow" *ngIf="data.Purchased==true">
                             <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Course Already Bought</a>
                             <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                Course add by me </a>
+                                Course Added by Me </a>
                     </div>
                 </div>
             </div>
@@ -206,7 +206,7 @@
                         </a> <label>Place Your own bid:</label>
                         <mat-form-field> <input matInput type="number" min="0" oninput="validity.valid||(value='');" onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)*"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
-                        <a class="btn-style btn" (click)="bidc()" data-dismiss="modal">Bid Now </a>
+                        <a class="btn-style btn" (click)="bidc(f)" data-dismiss="modal">Bid Now </a>
                     </form>
                 </div>
             </div>

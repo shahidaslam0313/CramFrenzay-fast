@@ -35,7 +35,7 @@
                     alt=""> </div>
             <div class="carousel-item"> <label class="slider__title animated fadeInDown">Give Your Learning Wings!
                     CramFrenzy has a 360-Degree Spectrum of Educational Material for all kinds and categories. BUY,
-                    SELL, RENT & Bid Now!</label> <img src="../../../assets/img/9.png" alt=""> </div>
+                    SELL, RENT & Bid Now!</label> <img src="../../../assets/img/9.jpg" alt=""> </div>
         </div><a class="carousel-control-prev" href="#mainpage-slider" data-slide="prev"> <span class="carousel-control-prev-icon"></span>
         </a> <a class="carousel-control-next" href="#mainpage-slider" data-slide="next"> <span class="carousel-control-next-icon"></span>
         </a>
@@ -93,7 +93,7 @@
                                     *ngIf="data.Purchased==true && data.isTeacher==false" data-target="#notesbid"> <img
                                         src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Note Already Bought</a>
                                 <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                    Note add by me </a> </div>
+                                    Note Added by Me </a> </div>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Course Already Bought</a>
                                     <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                        Course add by me </a>  </div>
+                                        Course Added by Me </a>  </div>
                                    
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Flash Card Already Bought</a>
                                     <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
-                                        Flash Card add by me </a>  </div>
+                                        Flash Card Added by Me </a>  </div>
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@
                                     Bid Now at {{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                                     data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
                                     Book Already Bought</a>
-                                <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid"> Book add by me </a>  </div>
+                                <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid"> Book Added by Me </a>  </div>
                         </div>
                     </div>
                 </div>
@@ -301,19 +301,25 @@
                         <h1>Bid on Note</h1>
                     </div>
                 </div>
-                <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
-                        class="view-bid" data-dismiss="modal">view bid history </a> <a [routerLink]="['/bid-history']"
+                <div class="modal-body">
+                    <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}" class="view-bid"
+                        data-dismiss="modal">View Bid history</a> 
+                        <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
-                        <p *ngIf="notes?.bidamount">Highest bid amount:{{notes?.bidamount}}</p>
-                        <p *ngIf="!notes?.bidamount">No bid received yet</p>
+                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}">
+                        </countdown>
+                        <p *ngIf="notes?.bidamount">Highest Bid amount:{{notes?.bidamount}}</p>
+                        <p *ngIf="!notes?.bidamount">No Bid Received yet</p>
                     </a>
                     <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
                         <mat-form-field> <input matInput type="number" min="0" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
-                             placeholder="Enter bid amount (US $)*" [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span>
-                             </mat-form-field>
-                        <a class="btn-style btn" (click)="biding(f)" data-dismiss="modal">Bid Now </a>
+                             placeholder="Enter Bid amount (US $)*" [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span>
+                        </mat-form-field>
+                        <div class="text-center">
+                                <a class="btn-style btn " (click)="biding(f)" data-dismiss="modal">Bid Now </a>
+                        </div>
+                        
                     </form>
                 </div>
             </div>

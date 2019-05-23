@@ -17,8 +17,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
   styleUrls: ['./findtutor.component.scss']
 })
 export class FindtutorComponent implements OnInit {
-
-  public Imageurl = Config.Imageurlget;
+  public Imageurl = Config.Imageurleach;
+  // public Imageurl = Config.Imageurlget;
   public result3: any;
   public loaded: boolean = false;
   public tutorId: any;
@@ -38,6 +38,7 @@ export class FindtutorComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.Showtutor();
   }
 
