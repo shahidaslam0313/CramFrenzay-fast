@@ -15,6 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-coursesm',
@@ -171,7 +172,7 @@ export class CoursesmComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  bidc() {
+  bidc(f: NgForm) {
     this.seemore.bidoncourses(this.bidingcourse, this.model.bidamount)
       .subscribe(Res => {
         swal({
@@ -182,14 +183,17 @@ export class CoursesmComponent implements OnInit {
         });
       },
         error => {
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
+          if(error.status==403){
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 5500
+            });
+          }
         }
       );
+      f.resetForm()
   }
   courses(id) {
     if (this.check_login() == true) {

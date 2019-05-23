@@ -16,6 +16,7 @@ import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import { AllbooksService } from '../allbooks/allbooks.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -211,7 +212,7 @@ export class BookseemoreComponent implements OnInit {
         
     });
   }
-  bidc() {
+  bidc(f: NgForm) {
     this.seemore.bidoncourses( this.bidbookid, this.model.bidamount, )
       .subscribe(Res => {
           swal({
@@ -222,12 +223,14 @@ export class BookseemoreComponent implements OnInit {
           });
         },
         error => {
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
+          if(error.status==403){
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 5500
+            });
+          }
         }
       );
   }

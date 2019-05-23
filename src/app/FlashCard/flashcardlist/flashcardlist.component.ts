@@ -14,6 +14,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-flashcardlist',
@@ -246,25 +247,28 @@ export class FlashcardlistComponent implements OnInit {
       confirmButtonText: "OK",
     });
   }
-  bidc() {
+  bidc(f:NgForm) {
     this.global.bidoncards(this.cardid, this.model.bidamount)
       .subscribe(Res => {
         swal({
           type: 'success',
           title: 'Your bid is listed',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
       },
         error => {
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
+          if(error.status==403){
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }
         }
       );
+      f.resetForm()
   }
   addwishlist(flashcard) {
     let course = null;

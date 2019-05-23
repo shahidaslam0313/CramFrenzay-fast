@@ -86,9 +86,11 @@
                 <div class="card-body">
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
-                        *ngIf="result?.bidpaid==true || result?.paid==true">Note Already Bought</a> <a class="card-btn"
-                        *ngIf="result?.paid==false && result?.bidpaid==false" (click)="checkmainpage(result?.id)">Buy
-                        Now</a> <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false"
+                        *ngIf="result?.bidpaid==true || result?.paid==true">Note Already Bought</a>
+                        <p class="already-bought" *ngIf="result?.isTeacher==true">
+                                Note add by me </p> <a class="card-btn"
+                        *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
+                        Now</a> <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
                     <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
@@ -199,48 +201,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-lg-8 col-sm-12">
-            <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
-                <div class="padding-10 float_left">
-                    <div *ngFor="let reviews of view?.reviews">
-                        <div *ngIf="reviews !=null">
-                            <div class="float-left">
-                                <div class="review-container">
-                                    <div class="float-left">
-                                        <div class="user-image"> <span>AT</span> </div>
-                                        <div class="float-left">
-                                            <div class="time-to-go"> <span>{{reviews?.commentDate | date:'medium'}}</span>
-                                            </div>
-                                            <div class="user-name"> <span>Anas Tahir</span> </div>
-                                        </div>
-                                    </div>
-                                    <div class="pull-right review-box">
-                                        <div class="rating float_left width100">
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star-half filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p>{{reviews?.comment}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Note.gif">
-                </div>
-            </div>
-        </div> -->
-
-
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
                 <h4>Reviews</h4>

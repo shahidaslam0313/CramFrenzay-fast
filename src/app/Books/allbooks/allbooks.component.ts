@@ -15,6 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { WishlistService } from 'app/wishlist/wishlist.service';
+import { NgForm } from '@angular/forms';
 
 declare const $: any;
 @Component({
@@ -322,7 +323,7 @@ export class AllbooksComponent implements OnInit {
   }
 
 
-  bidc() {
+  bidc(f: NgForm) {
     this.global.bidonbook(this.bidbookid, this.model.bidamount)
       .subscribe(Res => {
         swal({
@@ -333,14 +334,17 @@ export class AllbooksComponent implements OnInit {
         });
       },
         error => {
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
+          if(error.status==403){
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 5500
+            });
+          }
         }
       );
+      f.resetForm()
   }
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {

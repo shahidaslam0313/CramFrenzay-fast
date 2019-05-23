@@ -15,6 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { NgForm } from '@angular/forms';
 
 declare const $: any;
 @Component({
@@ -298,27 +299,28 @@ export class NotesgenieComponent implements OnInit {
     }
   }
   bidamount;
-  biding() {
+  biding(f: NgForm) {
     this.global.bidnotes(this.bidonnotes, this.model.bidamount)
       .subscribe(Res => {
         swal({
           type: 'success',
           title: 'Your bid is listed',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
       },
         error => {
-          if (error.status == 403 && error.status == 500)
+          if (error.status == 403 )
             swal({
               type: 'error',
               title: 'Bid higher amount',
               showConfirmButton: false,
-              timer: 5500
+              timer: 2000
             });
         },
 
       );
+      f.resetForm()
   }
   deleteFWL(event) {
     this.see.delwishlist(event.wishlist).subscribe(data => {

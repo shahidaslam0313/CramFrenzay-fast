@@ -1,8 +1,7 @@
 <div class="container-fluid">
-    <h3 class="mainbanner">Accepted Offers</h3>
     <div class="row">
         <div class="col-sm-3 ">
-            <ul class="nav nav-tabs side-tabs ">
+            <ul class="nav nav-tabs side-tabs s_sidebar">
                 <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Accepted Notes">
                         <i class="fa fa-edit"></i> Notes </a> </li>
                 <li class="nav-item"> <a href="#courses" data-toggle="tab" class="nav-link" title="Accepted Courses">
@@ -17,6 +16,8 @@
         <div class="col-sm-9">
             <div class="tab-content">
                 <div class="tab-pane  active mt-3" id="notes">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
                                 <div class="product-list__item">
@@ -68,6 +69,8 @@
                 </div>
 
                 <div class="tab-pane mt-3" id="courses">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.courses==0">No Course Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
                         
@@ -123,6 +126,8 @@
                 </div>
 
                 <div class="tab-pane mt-3" id="flashcards">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.flashcards==0">No Flash Card Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
                                 <div class="product-list__item">
@@ -176,6 +181,8 @@
                 </div>
 
                 <div class="tab-pane mt-3" id="book">
+                        <h3 class="mainbanner">Accepted Offers</h3>
+                        <h4 class="text-center" *ngIf="getoffer?.books==0">No Book Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
                                 <div class="product-list__item">

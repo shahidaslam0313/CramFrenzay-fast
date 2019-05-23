@@ -34,7 +34,7 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    window.scroll(0,0)
     $('.slick-books').slick({
       slidesToShow: 3
     });

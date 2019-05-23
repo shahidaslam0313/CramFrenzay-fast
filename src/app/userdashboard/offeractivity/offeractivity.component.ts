@@ -24,6 +24,7 @@ export class OfferactivityComponent implements OnInit {
   constructor(private pagerService: PagerService, private http: Http , private route:ActivatedRoute, public router: Router, private sg: SimpleGlobal, private offer: OfferactivityService, @Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog) { }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.ShowAcceptOffers(1);
   }
 

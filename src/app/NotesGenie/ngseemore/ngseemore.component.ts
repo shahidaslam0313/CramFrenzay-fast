@@ -15,6 +15,7 @@ import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import { BidHistoryService } from "../../bid-history/bid-history.service";
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-ngseemore',
   templateUrl: './ngseemore.component.html',
@@ -184,7 +185,7 @@ export class NgseemoreComponent implements OnInit {
     }
   }
   bidamount;
-  biding() {
+  biding(f:NgForm) {
     this.seemore.bidnotes(this.bidonnotes, this.model.bidamount)
       .subscribe(Res => {
         swal({
@@ -195,7 +196,7 @@ export class NgseemoreComponent implements OnInit {
         });
       },
         error => {
-          if (error.status == 403 && error.status == 500)
+          if (error.status == 403)
             swal({
               type: 'error',
               title: 'Bid higher amount',
@@ -205,6 +206,7 @@ export class NgseemoreComponent implements OnInit {
         },
 
       );
+      f.resetForm()
   }
   notesss(id) {
     this.seemore.getnotesid(id).subscribe(notes => {
