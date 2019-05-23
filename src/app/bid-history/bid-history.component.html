@@ -1,12 +1,11 @@
 <app-loader></app-loader>
-<!-- <app-header></app-header> -->
-<!--<section class="section bgw" >-->
+
   <div class="container" *ngIf="notebid">
     <div class="row" >
       <div id="post-content" class="col-md-8 col-sm-12 bid-history">
         <div class="course-table clearfix">
           <div class="big-title">
-            <h2 class="related-title"> <span>Bid History</span> </h2>
+            <h2 class="mainbanner">Bid History </h2>
           </div>
           <div class="row text-center">
             <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-12 font-size-22">Bidders:{{notebid?.bidders}}</div>
@@ -38,7 +37,6 @@
       </div>
       <div class="col-md-4 col-sm-12" id="sidebar">
         <div class="post-media clearfix">
-          <!--<img src="{{notes.bid.notes.notes_thumbnail}}">-->
           <div class="post-media clearfix"> <video class="videoplayer" controls="" preload="none">
             <source src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.mp4" type="video/mp4">
             <source src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.webm" type="video/webm">
@@ -81,15 +79,12 @@
       </div>
     </div>
   </div>
-
-<!--</section>-->
-<!--<section class="section bgw" *ngIf="course">-->
   <div class="container" *ngIf="coursebid">
     <div class="row" >
       <div id="post-content" class="col-md-8 col-sm-12 bid-history">
         <div class="course-table clearfix">
           <div class="big-title">
-            <h2 class="related-title"> <span>Bid History</span> </h2>
+              <h2 class="mainbanner">Bid History </h2>
           </div>
           <div class="row text-center">
             <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-12 font-size-22">Bidders:{{coursebid?.bidders}}</div>
@@ -161,14 +156,12 @@
       </div>
     </div>
   </div>
-<!--</section>-->
-<!--<section class="section bgw" *ngIf="flashcard">-->
   <div class="container" *ngIf="cardbid">
     <div class="row" >
       <div id="post-content" class="col-md-8 col-sm-12 bid-history">
         <div class="course-table clearfix">
           <div class="big-title">
-            <h2 class="related-title"> <span>Bid History</span> </h2>
+              <h2 class="mainbanner">Bid History </h2>
           </div>
           <div class="row text-center">
             <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-12 font-size-22">Bidders:{{cardbid?.bidders}}</div>
@@ -240,14 +233,12 @@
       </div>
     </div>
   </div>
-<!--</section>-->
-<!--<section class="section bgw" *ngIf="book">-->
   <div class="container" *ngIf="book">
     <div class="row" >
       <div id="post-content" class="col-md-8 col-sm-12 bid-history">
         <div class="course-table clearfix">
           <div class="big-title">
-            <h2 class="related-title"> <span>Bid History</span> </h2>
+              <h2 class="mainbanner">Bid History </h2>
           </div>
           <div class="row text-center">
             <div class="col-md-offset-1 col-md-3 col-sm-4 col-xs-12 font-size-22">Bidders:{{book?.bidders}}</div>
@@ -320,5 +311,4 @@
     </div>
   <!--</div>-->
   </div>
-<!--</section>-->
-<!-- <app-footer></app-footer> -->
+
