@@ -30,7 +30,7 @@ export class NestedcategorylistComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    window.scroll(0,0)
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'] || 0;
     });
@@ -43,25 +43,25 @@ export class NestedcategorylistComponent implements OnInit {
   courses(id) {
     this.list.coursenestedlist(this.id).subscribe(data => {
       this.course = data.courses;
-      console.log(this.course);
+      console.log(this.course,'COURSE');
     })
   }
   notes(id) {
     this.list.notesenestedlist(this.id).subscribe(data => {
       this.note = data.notes;
-      console.log(this.note);
+      console.log(this.note,'NOTE');
     })
   }
   cards(id) {
     this.list.cardsnestedlist(this.id).subscribe(data => {
-      this.card = data.Flashcard;
-      console.log(this.card);
+      this.card = data.flashcards;
+      console.log(this.card,'CARD');
     })
   }
   book(id) {
     this.list.booknestedlist(this.id).subscribe(data => {
       this.books = data.books;
-      // console.log(this.books);
+      console.log(this.books,'BOOK');
     })
   }
 }

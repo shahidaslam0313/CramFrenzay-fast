@@ -100,7 +100,6 @@ export class NotesComponent implements OnInit {
   singlenotes() {
     this.each.Eachnotes(this.Eid).subscribe(data => {
       this.result = data;
-      console.log(data,'RESULT OF EACH NOTE')
     });
   }
   checkcate() {
