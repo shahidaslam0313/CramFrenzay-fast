@@ -216,11 +216,18 @@ export class GlobalService {
     return this.http.delete(Config.api + 'purchase/deletecheckoutlist/' + id, { headers: headers }).map((response: Response) => response.json());
   }
   ////////////////get offer history///////////
-  offerhistory() {
+  offerhistory(notes, course, book, flashcard) {
     if (localStorage.getItem('currentUser')) {
     const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json');
-    return this.http.post(Config.api + 'purchase/accept_offer_history/' , { headers: headers }).map((response: Response) => response.json());
+    return this.http.post(Config.api + 'purchase/accept_offer_history/' ,
+    JSON.stringify({
+      notes: notes,
+      course: course,
+      book: book,
+      flashcard: flashcard,
+    
+    }), { headers: headers }).map((response: Response) => response.json());
   }
 }
 }
