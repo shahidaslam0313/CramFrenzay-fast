@@ -18,12 +18,23 @@ export class AcceptofferComponent implements OnInit {
   viewValue: string;
   end_time;
   history;
+  getnotes;
+ public teachers: any = [];
+ public allrecord;
+ getoffer;
   constructor(public dialogRef: MatDialogRef<AcceptofferComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private global: GlobalService) { }
 
   ngOnInit() {
-    this.showhistory();
+   
+  this.teachers =localStorage.getItem('obj');
+  // alert(this.teachers);
+  this.getoffer =this.teachers.accept_data;
+  console.log(this.teachers);
+  this.allrecord =localStorage.getItem('accept-offer');
+  // alert(this.allrecord);
   }
   postoffer() {
+    alert(this.data.notes);
     var currentdate = moment(new Date,' YYYY-MM-DD ');
     var new_date = moment(currentdate).add(this.end_time,'days');
     console.log(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date);
@@ -101,12 +112,6 @@ export class AcceptofferComponent implements OnInit {
         }) 
       }
     })
-    this.showhistory();
   }
-  showhistory() {
-    this.global.offerhistory().subscribe(Res => {
-      this.history = Res;
-      console.log(this.history);
-    });
   }
-}
+

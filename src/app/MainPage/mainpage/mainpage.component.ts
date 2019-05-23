@@ -12,6 +12,7 @@ import {WishlistService} from '../../wishlist/wishlist.service';
 import {AcceptofferComponent} from '../../acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { idText } from 'typescript';
 
 declare const $: any;
 
@@ -181,6 +182,7 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(notes, this.course)
   }
   checkOffer(notes, course, book, flashcard) {
     if (this.check_login() == true) {
@@ -202,7 +204,17 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(notes, course);
   }
+  obj;
+  showhistory(notes,course ) {
+    return this.global.offerhistory(notes, course, this.book, this.flashcard).subscribe(Res => {
+      this.obj=Res;
+      localStorage.setItem('obj' ,JSON.stringify(this.obj));
+      // console.log(this.obj);
+      
+     });
+ }
   checkOffer2(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
@@ -223,6 +235,7 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(notes ,course);
   }
   checkOffer3(notes, course, book, flashcard) {
     if (this.check_login() == true) {
