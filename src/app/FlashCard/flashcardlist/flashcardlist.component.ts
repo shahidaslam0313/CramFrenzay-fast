@@ -146,7 +146,7 @@ export class FlashcardlistComponent implements OnInit {
       this.trendingflashcards = Res;
     });
   }
-  openDialog4(chapter_id): void {
+  openDialog3(chapter_id): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',

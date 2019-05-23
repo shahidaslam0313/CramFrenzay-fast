@@ -33,30 +33,38 @@
   </form>
   <div class="offer-history chat">
       <h3>Offer history  </h3>
-      <div class="message me"  >
+  
+      <div class="message me message"  >
           <img src="https://image.ibb.co/jw55Ex/def_face.jpg"/>
+          {{teachers.teacher}}
           <div >
             <table >
-              <tr>
+              <tr *ngFor="let data of teachers?.accept_data;">
+                  count: {{data.count}}
                 <td class="submit-declined" > <strong>Declined</strong></td>
-                <td>{{teachers?.accept_data?.amount}} {{i}}</td>
-                <td><small>May 20, 2019</small></td>
+                <td>$ {{data.amount|json}} </td>
+                <td><small>{{data.approval_time | date : 'medium'}}</small></td>
+                <img src="https://image.ibb.co/jw55Ex/def_face.jpg">
+                {{firstname}} {{lastname}}
+                <td class="submit-declined "> <strong>Submitted</strong> </td>
+                <td>$ {{data.amount|json}}</td>
+                <td><small> {{data.created_time | date : 'medium'}}</small></td>
               </tr>
             </table>
           </div>
         </div>
-    <div class="message">
-      <img src="https://image.ibb.co/jw55Ex/def_face.jpg">
-      <div>
-        <table>
-          <tr>
+    <!-- <div class="message"> -->
+      <!-- <img src="https://image.ibb.co/jw55Ex/def_face.jpg"> -->
+      <!-- <div> -->
+        <!-- <table>
+          <tr *ngFor="let data of teachers?.accept_data;">
             <td class="submit-declined"><strong>Submitted</strong> </td>
-            <td>$ 1.00</td>
-            <td><small> May 20, 2019</small></td>
+            <td>$ {{data.amount|json}}</td>
+            <td><small> {{data.created_time | date : 'medium'}}</small></td>
           </tr>
-        </table>
-      </div>
-      </div>
+        </table> -->
+      <!-- </div> -->
+      <!-- </div> -->
      
   </div>
 

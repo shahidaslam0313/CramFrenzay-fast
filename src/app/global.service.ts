@@ -83,14 +83,14 @@ export class GlobalService {
     // console.log(data);
     this.fire.emit(data);
   }
-  public emittData(data){
+  public emittData(data) {
     this.fire.emit(data);
   }
 
   getEmittedValue() {
     return this.fire;
   }
-  getEmittValue(){
+  getEmittValue() {
     return this.fire;
   }
   ////////// get cart items//////
@@ -191,7 +191,7 @@ export class GlobalService {
         book: book,
         flashcard: flashcard,
         offer_price: offer_price,
-        end_time : end_time
+        end_time: end_time
       }),
       { headers: headers }).map((response: Response) => response.json());
   }
@@ -216,18 +216,23 @@ export class GlobalService {
     return this.http.delete(Config.api + 'purchase/deletecheckoutlist/' + id, { headers: headers }).map((response: Response) => response.json());
   }
   ////////////////get offer history///////////
+
+  offerHistroyResp = new Subject<any>();
   offerhistory(notes, course, book, flashcard) {
     if (localStorage.getItem('currentUser')) {
-    const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(Config.api + 'purchase/accept_offer_history/' ,
-    JSON.stringify({
-      notes: notes,
-      course: course,
-      book: book,
-      flashcard: flashcard,
-    
-    }), { headers: headers }).map((response: Response) => response.json());
+      const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+      headers.append('Content-Type', 'application/json');
+      return this.http.post(Config.api + 'purchase/accept_offer_history/',
+        JSON.stringify({
+          notes: notes,
+          course: course,
+          flashcard: flashcard,
+          book: book,
+          
+        }), { headers: headers })
+        .subscribe((response: Response) => {
+          this.offerHistroyResp.next(response.json())
+        });
+    }
   }
-}
 }

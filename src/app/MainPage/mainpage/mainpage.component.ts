@@ -148,6 +148,7 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, this.chapter_id , book)
   }
   openDialog4(chapter_id): void {
     if (this.check_login() == true) {
@@ -165,6 +166,7 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, chapter_id , this.book)
   }
   openDialog5(notes): void {
     if (this.check_login() == true) {
@@ -182,7 +184,7 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
-    this.showhistory(notes, this.course)
+    this.showhistory(notes, this.course, this.flashcard , this.book)
   }
   checkOffer(notes, course, book, flashcard) {
     if (this.check_login() == true) {
@@ -204,16 +206,11 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
-    this.showhistory(notes, course);
+    this.showhistory(notes, course, flashcard, book);
   }
   obj;
-  showhistory(notes,course ) {
-    return this.global.offerhistory(notes, course, this.book, this.flashcard).subscribe(Res => {
-      this.obj=Res;
-      localStorage.setItem('obj' ,JSON.stringify(this.obj));
-      // console.log(this.obj);
-      
-     });
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
  }
   checkOffer2(notes, course, book, flashcard) {
     if (this.check_login() == true) {
@@ -235,11 +232,11 @@ export class MainpageComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
-    this.showhistory(notes ,course);
+    this.showhistory(notes ,course , flashcard, book);
   }
-  checkOffer3(notes, course, book, flashcard) {
+  checkOffer3(notes, course,  flashcard ,book) {
     if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
+      this.mainpage.bid(notes, course,  flashcard , book).subscribe(data => {
        this.openDialog3(book)
         },
         error => {
