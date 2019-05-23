@@ -125,6 +125,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
+    this.showlist()
     const mainSearch = $('.main-search');
 
     $('.open-search').click(function () {
@@ -160,9 +161,6 @@ export class HeaderComponent implements OnInit {
     this.Data.getEmittValue().subscribe(data =>{
       this.showlist()
       this.itemscount = data.counts;
-      console.log(this.itemscount,'Shameem')
-      console.log(data,'ASDFGHJKL')
-      
     })
     if (this.Logedin === '1') {
       this.header.showwishlist().subscribe(response => {
@@ -420,7 +418,6 @@ export class HeaderComponent implements OnInit {
         this.flashcard = data['flashcard'];
         this.book = data['book'];
       });
-
     }
 
   }
