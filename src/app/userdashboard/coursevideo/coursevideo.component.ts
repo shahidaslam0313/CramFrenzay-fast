@@ -39,6 +39,7 @@ public sub : Subscription;
   getcoursevid;
   data;
   ngOnInit() {
+    window.scroll(0,0)
     this.sub = this.route.queryParams.subscribe(params => {
       this.id = +params['id'];
     });
