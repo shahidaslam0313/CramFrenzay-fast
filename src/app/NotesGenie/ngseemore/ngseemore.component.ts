@@ -36,6 +36,9 @@ export class NgseemoreComponent implements OnInit {
   message;
   cartitems;
   wishlist;
+  course;
+  flashcard;
+  book
   private sub: Subscription;
   constructor(private bidings: BidHistoryService, private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private see: WishlistService, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global: GlobalService) {
     this.global.currentMessage.subscribe(message => this.message = message);
@@ -229,7 +232,11 @@ export class NgseemoreComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(notes, this.course, this.flashcard, this.book);
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   deleteFWL(event) {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({

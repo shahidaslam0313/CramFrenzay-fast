@@ -40,6 +40,9 @@ export class BookseemoreComponent implements OnInit {
   model: any={};
   cartitems;
   wishlist;
+  notes;
+  course;
+  flashcard
   private sub: Subscription;
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, public book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
@@ -160,12 +163,12 @@ export class BookseemoreComponent implements OnInit {
       timer: 2000,
     });
   }
-  openDialog3(chapter_id): void {
+  openDialog3(book): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          books: chapter_id,
+          book: book,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -176,7 +179,11 @@ export class BookseemoreComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, this.flashcard, book);
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   addwishlist(book) {
     let course = null;
     let flashcard = null;
