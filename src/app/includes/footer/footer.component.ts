@@ -4,8 +4,12 @@ import { FooterService } from './footer.service';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import swal from "sweetalert2";
-import {  HttpHeaders } from '@angular/common/http';
+import {  HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FacebookLoginProvider, GoogleLoginProvider, AuthService } from 'angular5-social-login';
+import { JwtHelper } from 'angular2-jwt';
+import { Config } from '../../Config';
+
 
 @Component({
   selector: 'app-footer',
@@ -19,8 +23,12 @@ export class FooterComponent implements OnInit {
   result;
   Email;
   model: any = {};
+  user: any = {};
+  pic;
+  username
+  jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(  private footer: FooterService,private router: Router,  @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(  private footer: FooterService,private router: Router,private authService: AuthService,private http: HttpClient,  @Inject(PLATFORM_ID) private platformId: Object) {
     this.courses();
   }
 
@@ -76,5 +84,45 @@ export class FooterComponent implements OnInit {
   sliderClick(name){
     // this.router.navigate(['/subcategory/'], {queryParams: {cat_id : id}})
     localStorage.setItem('slidername' , name);
+    }
+    facebooklogin(): void {
+      this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(this.socialCallBack).catch(user => console.log(user));
+  
+    }
+    socialCallBack = (user) => {
+      this.user = user;
+      console.log(this.user);
+      const headers = { 'Content-Type': 'application/json' };
+      if (user) {
+        const createUser = this.http.post(Config.api + 'user/social_login_web/', JSON.stringify(
+          {
+            user
+          }), { headers: headers });
+  
+        createUser.subscribe(data => {
+            let user = { 
+             user_id: this.jwtHelper.decodeToken(data['token']).user_id,
+             username: this.jwtHelper.decodeToken(data['token']).username, 
+             token: data['token'] };
+            if (user && user.token) {
+              localStorage.setItem('loged_in', '1');
+              localStorage.setItem('currentUser', JSON.stringify(user));
+              localStorage.setItem('profilePhoto' , this.pic);
+              this.router.navigate(['/userprofile/' + this.username]);
+              // this.showSuccess();
+            }
+          }
+        );
+      }
+    }
+    showSuccess() {
+      swal({
+        type: 'success',
+        title: 'You have successfully logged in to CramFrenzy.\n' +
+        '\n',
+        showConfirmButton: false,
+        width: '512px',
+        timer: 4000
+      });
     }
 }
