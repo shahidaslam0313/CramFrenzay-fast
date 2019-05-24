@@ -31,20 +31,59 @@
     </div>
     <p class="smalltext">By Placing an Offer, You're committing to Buy this item.</p>
   </form>
-  <div class="offer-history chat">
-      <h3>Offer history  </h3>
-  
-      <div class="message me message"  >
-          <img src="https://image.ibb.co/jw55Ex/def_face.jpg"/>
-          {{teachers.teacher}}
+
+     
+    <div class="offer-history">
+        <h3>Offer history  </h3>
+      <ul>
+        <li *ngFor="let data of teachers?.accept_data;"> 
+         <div class="declined">
+          <table>
+            <tr>
+              <td class="text-right width-144"><strong>Declined</strong></td>
+              <td>$ {{data.amount|json}} </td>
+              <td class="width-122"><small>{{data.approval_time | date : 'short'}}</small></td>
+            </tr>
+          </table>
+          <div class="instructor"><span> AQ</span></div>
+<!-- 
+
+          <div><strong>Declined</strong> </div>
+          <div>$ {{data.amount|json}} </div>
+          <div><small>{{data.approval_time | date : 'medium'}}</small></div>
+          <div> AQ</div> -->
+         </div>
+          <div class="submitted">
+              <div class="student"> <span> ME</span></div>
+              <table>
+                  <tr>
+                    <td><strong>Submitted</strong></td>
+                    <td>$ {{data.amount|json}} </td>
+                    <td><small>{{data.created_time | date : 'short'}}</small></td>
+                  </tr>
+                </table>
+
+
+              <!-- <div> You</div>
+              <div><strong>Submitted</strong> </div>
+              <div>$ {{data.amount|json}} </div>
+              <div><small> {{data.created_time | date : 'medium'}}</small></div> -->
+          </div>
+         
+        </li>
+      </ul>
+    </div>
+      <!-- <div class="message me message"  >
           <div >
             <table >
               <tr *ngFor="let data of teachers?.accept_data;">
-                  count: {{data.count}}
                 <td class="submit-declined" > <strong>Declined</strong></td>
                 <td>$ {{data.amount|json}} </td>
                 <td><small>{{data.approval_time | date : 'medium'}}</small></td>
-                <img src="https://image.ibb.co/jw55Ex/def_face.jpg">
+                <br>
+                <div>
+                    {{teachers.teacher}}
+                </div>
                 {{firstname}} {{lastname}}
                 <td class="submit-declined "> <strong>Submitted</strong> </td>
                 <td>$ {{data.amount|json}}</td>
@@ -52,7 +91,7 @@
               </tr>
             </table>
           </div>
-        </div>
+        </div> -->
     <!-- <div class="message"> -->
       <!-- <img src="https://image.ibb.co/jw55Ex/def_face.jpg"> -->
       <!-- <div> -->
@@ -66,6 +105,6 @@
       <!-- </div> -->
       <!-- </div> -->
      
-  </div>
+
 
 </div>

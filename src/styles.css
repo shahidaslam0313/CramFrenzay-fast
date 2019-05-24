@@ -2,7 +2,8 @@
 #main {
     display: block !important;
     padding: 70px 0 0;
-    min-height: 400px
+    min-height: 400px;
+    overflow: hidden;
 }
 body {
     display: block !important;
@@ -619,8 +620,6 @@ blockquote .blockquote-author {
     color: #303638;
     font-weight: 500
 }
-
-.,
 .product-list__item {
     vertical-align: top;
     -webkit-transition: .5s all;
