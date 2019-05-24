@@ -186,81 +186,13 @@ export class MainpageComponent implements OnInit {
     }
     this.showhistory(notes, this.course, this.flashcard , this.book)
   }
-  checkOffer(notes, course, book, flashcard) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.openDialog5(notes)
-        },
-        error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Item Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertsignin();
-      this.router.navigate(['/login']);
-    }
-    this.showhistory(notes, course, flashcard, book);
-  }
   obj;
   showhistory(notes,course, flashcard, book ) {
     return this.global.offerhistory(notes, course, flashcard ,book )
  }
-  checkOffer2(notes, course, book, flashcard) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course, book, flashcard).subscribe(data => {
-       this.openDialog2(course)
-        },
-        error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Item Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertsignin();
-      this.router.navigate(['/login']);
-    }
-    this.showhistory(notes ,course , flashcard, book);
-  }
-  checkOffer3(notes, course,  flashcard ,book) {
-    if (this.check_login() == true) {
-      this.mainpage.bid(notes, course,  flashcard , book).subscribe(data => {
-       this.openDialog3(book)
-        },
-        error => {
-          if ( error.status === 406)
-              swal({
-                type: 'error',
-                title: 'Item Already Purchased',
-                showConfirmButton: false,
-                timer: 4500
-              })  
-          },
-          ) 
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertsignin();
-      this.router.navigate(['/login']);
-    }
-  }
-
-
   Innerslider() {
     this.global.InnerslideronMainPage().subscribe(data => {
       this.inner = data;
-      // console.log(this.inner);
       this.slideConfig2 = {
         infinite: true,
         slidesToShow: 5,

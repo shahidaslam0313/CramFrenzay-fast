@@ -42,6 +42,9 @@ export class FcseemoreComponent implements OnInit {
   current;
   cartitems;
   wishlist;
+  notes;
+  course;
+  book
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private see: WishlistService, private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
           this.Eid = +params['id'];
@@ -86,12 +89,12 @@ export class FcseemoreComponent implements OnInit {
     }
 
   }
-  openDialog3(chapter_id): void {
+  openDialog3(flashcard): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          flashcard: chapter_id,
+          flashcard: flashcard,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -102,7 +105,11 @@ export class FcseemoreComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, flashcard , this.book)
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   sweetalertsignin() {
     throw new Error("Method not implemented.");
   }

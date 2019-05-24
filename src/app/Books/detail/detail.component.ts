@@ -76,6 +76,7 @@ export class DetailComponent implements OnInit {
   newbooks() {
     this.detail.booksdetail(this.bookID).subscribe(data => {
       this.result = data;
+      console.log(data,'Book Detail')
     });
   }
 

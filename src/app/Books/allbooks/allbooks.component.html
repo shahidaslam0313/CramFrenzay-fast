@@ -20,7 +20,7 @@
     <ngx-slick class="carousel homeSlider innerpages" #slickModal="slick-modal" [config]="slideConfig2">
         <div ngxSlickItem class="slide item" *ngFor="let data of inner; let i=index">
             <div class="item-inner"> <a class="cat-img" routerLink="/bookcategory/{{data.id}}" (click)="submit(data?.c_name)">
-                    <img src="https://storage.cramfrenzy.com/3d_category/{{data.c_name}}.png" alt="Books Category">
+                    <img src="https://storage.cramfrenzy.com/3d_category/{{data.image}}" alt="Books Category">
                     <h4 class="homesilder-title">{{data.c_name | titlecase}}</h4>
                 </a> </div>
         </div>
@@ -64,7 +64,7 @@
                                     data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now
                                     at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
-                                    <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                    <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                         Book Added by me </a>  
 
                             </div>
@@ -118,7 +118,7 @@
                                     data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now
                                     at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
-                                    <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                    <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                         Book Added by me </a>  
 
                             </div>
@@ -172,7 +172,7 @@
                                     data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now
                                     at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
-                                    <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                    <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                         Book Added by me </a>  
 
                             </div>
@@ -226,7 +226,7 @@
                                     data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false"> Bid Now
                                     at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true">
                                     <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img"> Book Already Bought</a>
-                                    <a class="btn-style btn text-transform-none" *ngIf="data.isTeacher==true" data-target="#notesbid">
+                                    <a class="already-bought" *ngIf="data.isTeacher==true" data-target="#notesbid">
                                         Book Added by me </a>  
 
                             </div>

@@ -34,6 +34,9 @@ export class FlashcardlistComponent implements OnInit {
   watchflashcards;
   cardid;
   wishlist;
+  notes;
+  course;
+  book
   public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
@@ -146,12 +149,12 @@ export class FlashcardlistComponent implements OnInit {
       this.trendingflashcards = Res;
     });
   }
-  openDialog3(chapter_id): void {
+  openDialog3(flashcard): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          flashcard: chapter_id,
+          flashcard: flashcard,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -162,7 +165,11 @@ export class FlashcardlistComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, flashcard , this.book)
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   topratedflash() {
     this.newService.Topratedflashcards().subscribe(Res => {
       this.topratedflashcards = Res;

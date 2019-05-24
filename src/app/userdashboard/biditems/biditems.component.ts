@@ -21,7 +21,7 @@ export class BiditemsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+window.scroll(0,0);
   }
 
   Courses = [];

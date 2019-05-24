@@ -36,6 +36,9 @@ export class CoursesmComponent implements OnInit {
   model: any = {};
   cartitems;
   wishlist;
+  notes;
+  flashcard;
+  book
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private global: GlobalService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: CoursesmService,private see: WishlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) { }
 
   ngOnInit() {
@@ -204,12 +207,12 @@ export class CoursesmComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  openDialog3(chapter_id): void {
+  openDialog3(course): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          course: chapter_id,
+          course: course,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -220,7 +223,11 @@ export class CoursesmComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, course, this.flashcard, this.book);
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   addwishlist(course) {
     let book = "";
     let flashcard = "";

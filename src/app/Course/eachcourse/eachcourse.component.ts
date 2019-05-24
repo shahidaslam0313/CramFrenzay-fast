@@ -75,6 +75,7 @@ export class EachcourseComponent implements OnInit {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
       this.result = data.Course;
+      console.log(data,'EACH COURSE')
     });
   }
 

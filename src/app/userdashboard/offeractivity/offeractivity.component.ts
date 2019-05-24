@@ -102,7 +102,7 @@ export class OfferactivityPaymentComponent {
   card_option = [
     { value: 'Visa', viewValue: 'Visa' },
     { value: 'Master', viewValue: 'Master' },
-    { value: 'Divcover', viewValue: 'Divcover' },
+    { value: 'Discover', viewValue: 'Discover' },
     { value: 'American Express', viewValue: 'American Express' }
   ]; 
   CCV: FormGroup;

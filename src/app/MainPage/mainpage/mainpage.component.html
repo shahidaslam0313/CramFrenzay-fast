@@ -46,7 +46,7 @@
         <ngx-slick class="homeSlider carousel margin-top-20" #slickModal="slick-modal" [config]="slideConfig2" style="display:none;">
             <div class="item slide" ngxSlickItem *ngFor="let data of inner; let i=index">
                 <div class="item-inner"> <a class="cat-img" routerLink="/subcategory/{{data.id}}" (click)="sliderClick(data.c_name)">
-                        <img src="https://storage.cramfrenzy.com/3d_category/{{data.c_name}}.png" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                        <img src="https://storage.cramfrenzy.com/3d_category/{{data.image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
                     </a>
                     <h4 class="homesilder-title">{{data.c_name}}</h4>
                 </div>
@@ -82,7 +82,7 @@
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                         add_shopping_cart</i> </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
-                                        (click)="checkOffer(data?.id,nullvalue,nullvalue,nullvalue)">Offer Now</a>
+                                        (click)="openDialog5(data?.id)">Offer Now</a>
                                 </div>
                             </div>
                             <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="checkmainpage(data?.id)"
@@ -125,7 +125,7 @@
                                         *ngIf="!data.cart==true" (click)="addcart(nullvalue,data.id,nullvalue,nullvalue)">add_shopping_cart</i>
                                 </div>
                                 <div class="buy_btn"><a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
-                                        (click)="checkOffer2(nullvalue,data?.id,nullvalue,nullvalue)">Offer Now</a>
+                                        (click)="openDialog2(data?.id)">Offer Now</a>
                                 </div>
                             </div>
                             <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="courses(data?.id)"
@@ -211,7 +211,7 @@
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                                 </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false" 
-                                    (click)="checkOffer3(nullvalue,nullvalue,data?.id,nullvalue)">Offer
+                                    (click)="openDialog3(data?.id)">Offer
                                         Now</a> </div>
                             </div>
                             <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="books(data?.id)"

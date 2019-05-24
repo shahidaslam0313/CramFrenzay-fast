@@ -38,6 +38,9 @@ export class CourseComponent implements OnInit {
   courseid;
   query;
   wishlist;
+  notes;
+  flashcard;
+  book;
   searchResult: any = [];
   slideConfig2 = {
     infinite: true,
@@ -127,12 +130,12 @@ export class CourseComponent implements OnInit {
     this.Innerslider();
     this.bidcours();
   }
-  openDialog3(chapter_id): void {
+  openDialog3(course): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          course: chapter_id,
+          course: course,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -143,7 +146,11 @@ export class CourseComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, course, this.flashcard, this.book);
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   ngOnInit() {
     window.scroll(0,0)
   }
