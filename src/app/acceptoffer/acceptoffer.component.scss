@@ -1,4 +1,5 @@
-.card{max-height:500px;overflow: scroll; position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem}.form-1-header{margin-top:0}.smalltext{font-size:13px;margin:20px 0 0;text-align:left}
+.card{max-height:500px;overflow: scroll; position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem}.form-1-header{margin-top:0}
+// ............Offer History............
 .width-122{
     width: 122px;
 }
@@ -13,7 +14,12 @@
 .offer-history ul li{
     list-style: none;
 }
-
+.offer-history h3{
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
 .instructor,.student{
     width: 30px;
     height: 30px;
@@ -47,3 +53,6 @@ table{
 .submitted table{  
   border-radius: 50px 0px;
 }
+.smalltext{font-size:13px;margin:20px 0 0;text-align:left}
+
+// ................Offer History  End..............
