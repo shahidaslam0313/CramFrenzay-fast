@@ -111,7 +111,6 @@ export class SeemorempComponent implements OnInit {
     });
   }
   openDialog(notes): void {
-    // alert(this.chapter_id)
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
@@ -128,7 +127,11 @@ export class SeemorempComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(notes, this.course, this.flashcard , this.book)
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   openDialog2(course): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
@@ -145,13 +148,14 @@ export class SeemorempComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, course, this.flashcard , this.book)
   }
-  openDialog3(books): void {
+  openDialog3(book): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          books: books,
+          book: book,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -162,13 +166,14 @@ export class SeemorempComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, this.flashcard , book)
   }
-  openDialog4(chapter_id): void {
+  openDialog4(flashcard): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          flashcard: chapter_id,
+          flashcard: flashcard,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -179,6 +184,7 @@ export class SeemorempComponent implements OnInit {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course,flashcard , this.book)
   }
   checkmainpage(id) {
     if (this.check_login() == true) {

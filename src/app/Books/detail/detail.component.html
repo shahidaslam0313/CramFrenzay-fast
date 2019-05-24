@@ -85,9 +85,10 @@
                 <div class="card-body">
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
-                        *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a> <a class="card-btn"
-                        *ngIf="result?.paid==false && result?.bidpaid==false" (click)="checkbook(result?.id)">Buy Now</a>
-                    <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
+                        *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a> 
+                        <a class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </a> <a class="card-btn"
+                        *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkbook(result?.id)">Buy Now</a>
+                    <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
                         to Cart</a> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
                         data="https://storage.cramfrenzy.com/uploads/C_+Q+and+Answer.pdf" type="application/pdf"> <a
                             href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>

@@ -82,7 +82,7 @@
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                         add_shopping_cart</i> </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
-                                        (click)="checkOffer(data?.id,nullvalue,nullvalue,nullvalue)">Offer Now</a>
+                                        (click)="openDialog5(data?.id)">Offer Now</a>
                                 </div>
                             </div>
                             <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="checkmainpage(data?.id)"
@@ -125,7 +125,7 @@
                                         *ngIf="!data.cart==true" (click)="addcart(nullvalue,data.id,nullvalue,nullvalue)">add_shopping_cart</i>
                                 </div>
                                 <div class="buy_btn"><a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
-                                        (click)="checkOffer2(nullvalue,data?.id,nullvalue,nullvalue)">Offer Now</a>
+                                        (click)="openDialog2(data?.id)">Offer Now</a>
                                 </div>
                             </div>
                             <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="courses(data?.id)"
@@ -211,7 +211,7 @@
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                                 </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false" 
-                                    (click)="checkOffer3(nullvalue,nullvalue,data?.id,nullvalue)">Offer
+                                    (click)="openDialog3(data?.id)">Offer
                                         Now</a> </div>
                             </div>
                             <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="books(data?.id)"

@@ -218,7 +218,7 @@ export class GlobalService {
   ////////////////get offer history///////////
 
   offerHistroyResp = new Subject<any>();
-  offerhistory(notes, course, book, flashcard) {
+  offerhistory(notes, course, flashcard,book) {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json');

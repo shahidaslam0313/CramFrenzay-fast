@@ -123,6 +123,9 @@ export class AllbooksComponent implements OnInit {
   current;
   currentUser;
   cartitems;
+  notes;
+  course;
+  flashcard
 
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService, private see: WishlistService, private mainpage: mainpageservice, private pagerservice: PagerService, public book: AllbooksService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
     this.BidBuybooks();
@@ -132,12 +135,12 @@ export class AllbooksComponent implements OnInit {
     this.biding();
     this.topratedbooks();
   }
-  openDialog3(chapter_id): void {
+  openDialog3(book): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          book: chapter_id,
+          book: book,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -148,7 +151,11 @@ export class AllbooksComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(this.notes, this.course, this.flashcard, book);
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   ngOnInit() {
     window.scroll(0, 0)
     $('.slick-testimonial').slick({

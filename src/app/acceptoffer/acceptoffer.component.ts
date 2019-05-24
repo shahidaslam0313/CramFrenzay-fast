@@ -38,10 +38,8 @@ export class AcceptofferComponent implements OnInit {
     this.profilePhoto = localStorage.getItem('pic');
   }
   postoffer() {
-    alert(this.data.notes);
     var currentdate = moment(new Date, ' YYYY-MM-DD ');
     var new_date = moment(currentdate).add(this.end_time, 'days');
-    console.log(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date);
     return this.global.acceptoffer(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date).subscribe(
 
       data => {

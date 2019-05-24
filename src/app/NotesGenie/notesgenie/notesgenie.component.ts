@@ -134,12 +134,12 @@ export class NotesgenieComponent implements OnInit {
     this.recentnote();
     this.bidbuynotes();
   }
-  openDialog3(chapter_id): void {
+  openDialog3(notes): void {
     if (this.check_login() == true) {
       const dialogRef = this.dialogRef.open(AcceptofferComponent, {
         width: '500px',
         data: {
-          notes: chapter_id,
+          notes: notes,
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -150,8 +150,11 @@ export class NotesgenieComponent implements OnInit {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
     }
+    this.showhistory(notes, this.course, this.flashcard, this.book);
   }
-
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   ngOnInit() {
     window.scroll(0,0);
     this.global.currentMessage.subscribe(message => this.message = message);
