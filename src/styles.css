@@ -761,6 +761,9 @@ blockquote .blockquote-author {
 .sh-red {
     color: #c00
 }
+.about{
+    text-align: justify
+}
 
 .product-list__item .fa-cart-plus {
     color: #c00

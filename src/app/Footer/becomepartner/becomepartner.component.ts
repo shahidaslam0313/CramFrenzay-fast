@@ -77,7 +77,7 @@ export class BecomepartnerComponent implements OnInit {
           type: 'success',
           title: 'Message send to Partner request has been posted successfully, you will be contacted shortly',
           showConfirmButton: false,
-          timer: 4500
+          timer: 3500
         });
       }, error => {
         if (error.status == 400)
