@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 ">
             <ul class="nav nav-tabs side-tabs s_sidebar">
@@ -20,7 +20,7 @@
                         <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
-                                <div class="product-list__item">
+                                <div class="product-list__item" >
                                     <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
                                                 src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
                                     <div class="product-list__content">
@@ -236,7 +236,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>  -->
 <!-- ................................................. -->
 <div class="container offer-activity">
 <ul class="nav nav-tabs nav-justified fcdetail">
@@ -265,16 +265,136 @@
             <!-- ....... -->
             <div class="tab-content">
                 <div id="notes" class="tab-pane active margin-bottom-200">
-                    Notes
+                    <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
+                                <div class="product-list__item" >
+                                    <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
+                                                src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
+                                    <div class="product-list__content">
+                                        <div class="product-list__category"> <a routerLink="/notes/{{item?.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a>
+                                        </div>
+                                        <div class="product-list__title tutor-subject"> <span
+                                                title="Authur Name:{{item?.userid}}"
+                                                routerLink="/notes/{{item?.id}}">{{item?.userid}}</span>
+                                        </div>
+                                        <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                            titles="{{item?.rating}}"></rating>
+                                        <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                        <p class="btn-style btn ">Payment Done: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1"
+                                        *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
+                                        <p class="btn-style btn " (click)="openDialog3(item?.id)">Pay
+                                            Now: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                  
                 </div>
                 <div id="courses" class="tab-pane  margin-bottom-200">
-                    Courses
+                    
+                    <h4 class="text-center" *ngIf="getoffer?.courses==0">No Course Offer Accepted Yet</h4>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
+                        
+                                <div class="product-list__item">
+                                    <figure class="product-list__img"> <a routerLink="/eachcourse/{{item.id}}">
+                                            <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*"
+                                                alt="Course"> </a> </figure>
+                                    <div class="product-list__content">
+                                        <div class="product-list__category"> <a
+                                                routerLink="/eachcourse/{{item?.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a>
+                                        </div>
+                                        <div class="product-list__title tutor-subject"> <span
+                                                title="Authur Name:{{item?.author}}"
+                                                routerLink="/eachcourse/{{item?.id}}">{{item?.author}}</span>
+                                        </div>
+                                        <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                            titles="{{item?.rating}}"></rating>
+                                        <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                        <p class="btn-style btn ">Payment Done: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1"
+                                        *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
+                                        <p class="btn-style btn " (click)="openDialog4(item?.id)">Pay
+                                            Now: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                            
+                            </div>
+                        </div>
+                        </div>
                 </div>
                 <div id="flashcards" class="tab-pane  margin-bottom-200">
-                    Flash Cards
+                    <h4 class="text-center" *ngIf="getoffer?.flashcards==0">No Flash Card Offer Accepted Yet</h4>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                <div class="product-list__item">
+                                    <figure class="product-list__img"> <a routerLink="/fcdetail/{{item.id}}">
+                                            <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*"
+                                                alt=""> </a> </figure>
+                                    <div class="product-list__content">
+                                        <div class="product-list__category"> <a
+                                                routerLink="/fcdetail/{{item?.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a>
+                                        </div>
+                                        <div class="product-list__title tutor-subject"> <span
+                                                title="Authur Name:{{item?.userid}}"
+                                                routerLink="/fcdetail/{{item?.id}}">{{item?.userid}}</span>
+                                        </div>
+                                        <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                            titles="{{item?.rating}}"></rating>
+                                        <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                        <p class="btn-style btn ">Payment Done: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1"
+                                        *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
+                                        <p class="btn-style btn " (click)="openDialog5(item?.id)">Pay
+                                            Now: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                            </div>
+                        </div>
+</div>
                 </div>
                 <div id="books" class="tab-pane  margin-bottom-200">
-                    Books
+                    <h4 class="text-center" *ngIf="getoffer?.books==0">No Book Offer Accepted Yet</h4>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
+                                <div class="product-list__item">
+                                    <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
+                                                src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a> </figure>
+                                    <div class="product-list__content">
+                                        <div class="product-list__category"> <a routerLink="/detail/{{item?.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a>
+                                        </div>
+                                        <div class="product-list__title tutor-subject"> <span
+                                                title="Authur Name:{{item?.author_name}}"
+                                                routerLink="/detail/{{item?.id}}">{{item?.author_name}}</span>
+                                        </div>
+                                        <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                            titles="{{item?.rating}}"></rating>
+                                        <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                        <p class="btn-style btn ">Payment Done: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                                    <div class="product-list__item-info-1"
+                                        *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
+                                        <p class="btn-style btn " (click)="openDialog6(item?.id)">Pay
+                                            Now: {{item?.your_offer | currency:'USD'}}</p>
+                                    </div>
+                            </div>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -295,16 +415,117 @@
                 <!-- ....... -->
                 <div class="tab-content">
                     <div id="R-notes" class="tab-pane active margin-bottom-200">
-                        Notes
+                    
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
+                                    <div class="product-list__item"  *ngIf="item.offer_status == false">
+                                        <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
+                                                    src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a routerLink="/notes/{{item?.id}}"
+                                                    title="{{item?.name}}">{{item?.name}}</a>
+                                            </div>
+                                            <div class="product-list__title tutor-subject"> <span
+                                                    title="Authur Name:{{item?.userid}}"
+                                                    routerLink="/notes/{{item?.id}}">{{item?.userid}}</span>
+                                            </div>
+                                            <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                titles="{{item?.rating}}"></rating>
+                                            <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                        </div>
+                                        <div class="product-list__item-info-1">
+                                                <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected</p>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                      
                     </div>
                     <div id="R-courses" class="tab-pane  margin-bottom-200">
-                        Courses
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
+                            
+                                    <div class="product-list__item" *ngIf="item.offer_status == false">
+                                        <figure class="product-list__img"> <a routerLink="/eachcourse/{{item.id}}">
+                                                <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*"
+                                                    alt="Course"> </a> </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a
+                                                    routerLink="/eachcourse/{{item?.id}}"
+                                                    title="{{item?.name}}">{{item?.name}}</a>
+                                            </div>
+                                            <div class="product-list__title tutor-subject"> <span
+                                                    title="Authur Name:{{item?.author}}"
+                                                    routerLink="/eachcourse/{{item?.id}}">{{item?.author}}</span>
+                                            </div>
+                                            <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                titles="{{item?.rating}}"></rating>
+                                            <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                        </div>
+                                     
+                                        <div class="product-list__item-info-1">
+                                            <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected</p>
+                                        </div>
+                                
+                                </div>
+                            </div>
+                            </div>
                     </div>
                     <div id="R-flashcards" class="tab-pane  margin-bottom-200">
-                        Flash Cards
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                    <div class="product-list__item"  *ngIf="item.offer_status == false">
+                                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{item.id}}">
+                                                <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*"
+                                                    alt=""> </a> </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a
+                                                    routerLink="/fcdetail/{{item?.id}}"
+                                                    title="{{item?.name}}">{{item?.name}}</a>
+                                            </div>
+                                            <div class="product-list__title tutor-subject"> <span
+                                                    title="Authur Name:{{item?.userid}}"
+                                                    routerLink="/fcdetail/{{item?.id}}">{{item?.userid}}</span>
+                                            </div>
+                                            <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                titles="{{item?.rating}}"></rating>
+                                            <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                        </div>
+                                       
+                                        <div class="product-list__item-info-1">
+                                                <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected</p>
+                                            </div>
+                                </div>
+                            </div>
+    </div>
                     </div>
                     <div id="R-books" class="tab-pane  margin-bottom-200">
-                        Books
+                        <div class="row">
+                            
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
+                                    <div class="product-list__item" *ngIf="offer_status == false">
+                                        <p *ngIf="offer_status == false">No book offer rejected yet</p>
+                                        <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
+                                                    src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a> </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a routerLink="/detail/{{item?.id}}"
+                                                    title="{{item?.name}}">{{item?.name}}</a>
+                                            </div>
+                                            <div class="product-list__title tutor-subject"> <span
+                                                    title="Authur Name:{{item?.author_name}}"
+                                                    routerLink="/detail/{{item?.id}}">{{item?.author_name}}</span>
+                                            </div>
+                                            <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                titles="{{item?.rating}}"></rating>
+                                            <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                        </div>
+                                        <div class="product-list__item-info-1">
+                                                <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected</p>
+                                            </div>
+                                        
+                                </div>
+                            </div>
+                            </div>
                     </div>
                 </div>
         </div>
@@ -325,16 +546,115 @@
                 <!-- ....... -->
                 <div class="tab-content">
                     <div id="P-notes" class="tab-pane active margin-bottom-200">
-                        Notes
+                            <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
+                                            <div class="product-list__item"  *ngIf="item.offer_status == null">
+                                                <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
+                                                            src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a> </figure>
+                                                <div class="product-list__content">
+                                                    <div class="product-list__category"> <a routerLink="/notes/{{item?.id}}"
+                                                            title="{{item?.name}}">{{item?.name}}</a>
+                                                    </div>
+                                                    <div class="product-list__title tutor-subject"> <span
+                                                            title="Authur Name:{{item?.userid}}"
+                                                            routerLink="/notes/{{item?.id}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                        titles="{{item?.rating}}"></rating>
+                                                    <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                                </div>
+                                                <div class="product-list__item-info-1">
+                                                        <p class="btn-style btn " *ngIf="item.offer_status == null">pending Aproval</p>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
                     </div>
                     <div id="P-courses" class="tab-pane  margin-bottom-200">
-                        Courses
+                            <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
+                                    
+                                            <div class="product-list__item" *ngIf="item.offer_status == null">
+                                                <figure class="product-list__img"> <a routerLink="/eachcourse/{{item.id}}">
+                                                        <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*"
+                                                            alt="Course"> </a> </figure>
+                                                <div class="product-list__content">
+                                                    <div class="product-list__category"> <a
+                                                            routerLink="/eachcourse/{{item?.id}}"
+                                                            title="{{item?.name}}">{{item?.name}}</a>
+                                                    </div>
+                                                    <div class="product-list__title tutor-subject"> <span
+                                                            title="Authur Name:{{item?.author}}"
+                                                            routerLink="/eachcourse/{{item?.id}}">{{item?.author}}</span>
+                                                    </div>
+                                                    <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                        titles="{{item?.rating}}"></rating>
+                                                    <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                                </div>
+                                             
+                                                <div class="product-list__item-info-1">
+                                                    <p class="btn-style btn " *ngIf="item.offer_status == null">Pending Aproval</p>
+                                                </div>
+                                        
+                                        </div>
+                                    </div>
+                                    </div>
                     </div>
                     <div id="P-flashcards" class="tab-pane  margin-bottom-200">
-                        Flash Cards
+                            <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                            <div class="product-list__item"  *ngIf="item.offer_status == null">
+                                                <figure class="product-list__img"> <a routerLink="/fcdetail/{{item.id}}">
+                                                        <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*"
+                                                            alt=""> </a> </figure>
+                                                <div class="product-list__content">
+                                                    <div class="product-list__category"> <a
+                                                            routerLink="/fcdetail/{{item?.id}}"
+                                                            title="{{item?.name}}">{{item?.name}}</a>
+                                                    </div>
+                                                    <div class="product-list__title tutor-subject"> <span
+                                                            title="Authur Name:{{item?.userid}}"
+                                                            routerLink="/fcdetail/{{item?.id}}">{{item?.userid}}</span>
+                                                    </div>
+                                                    <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                        titles="{{item?.rating}}"></rating>
+                                                    <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                                </div>
+                                               
+                                                <div class="product-list__item-info-1">
+                                                        <p class="btn-style btn " *ngIf="item.offer_status == null">Pending Aproval</p>
+                                                    </div>
+                                        </div>
+                                    </div>
+            </div>
                     </div>
                     <div id="P-books" class="tab-pane  margin-bottom-200">
-                        Books
+                            <div class="row">
+                            
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
+                                            <div class="product-list__item" *ngIf="offer_status == null">
+                                               
+                                                <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
+                                                            src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a> </figure>
+                                                <div class="product-list__content">
+                                                    <div class="product-list__category"> <a routerLink="/detail/{{item?.id}}"
+                                                            title="{{item?.name}}">{{item?.name}}</a>
+                                                    </div>
+                                                    <div class="product-list__title tutor-subject"> <span
+                                                            title="Authur Name:{{item?.author_name}}"
+                                                            routerLink="/detail/{{item?.id}}">{{item?.author_name}}</span>
+                                                    </div>
+                                                    <rating ngModel="{{item?.rating}}" [readonly]="true"
+                                                        titles="{{item?.rating}}"></rating>
+                                                    <p class="product-list__price float-right mt-2">${{item?.price}}</p>
+                                                </div>
+                                                <div class="product-list__item-info-1">
+                                                        <p class="btn-style btn " *ngIf="item.offer_status == null">Pending Aproval</p>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    </div>
                     </div>
                 </div>
         </div>

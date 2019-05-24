@@ -40,10 +40,10 @@
           <div >
             <table >
               <tr *ngFor="let data of teachers?.accept_data;">
-                  count: {{data.count}}
+                  counter: {{count}}
                 <td class="submit-declined" > <strong>Declined</strong></td>
                 <td>$ {{data.amount|json}} </td>
-                <td><small>{{data.approval_time | date : 'medium'}}</small></td>
+                <td><small>May 20, 2019</small></td>
                 <img src="https://image.ibb.co/jw55Ex/def_face.jpg">
                 {{firstname}} {{lastname}}
                 <td class="submit-declined "> <strong>Submitted</strong> </td>
@@ -53,9 +53,9 @@
             </table>
           </div>
         </div>
-    <!-- <div class="message"> -->
-      <!-- <img src="https://image.ibb.co/jw55Ex/def_face.jpg"> -->
-      <!-- <div> -->
+    <div class="message">
+      <img src="https://image.ibb.co/jw55Ex/def_face.jpg">
+      <div>
         <!-- <table>
           <tr *ngFor="let data of teachers?.accept_data;">
             <td class="submit-declined"><strong>Submitted</strong> </td>
@@ -63,8 +63,8 @@
             <td><small> {{data.created_time | date : 'medium'}}</small></td>
           </tr>
         </table> -->
-      <!-- </div> -->
-      <!-- </div> -->
+      </div>
+      </div>
      
   </div>
 
