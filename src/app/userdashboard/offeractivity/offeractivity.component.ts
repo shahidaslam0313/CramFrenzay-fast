@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {FormGroup, FormBuilder, Validators, NgForm, FormControl} from '@angular/forms';
 import swal from 'sweetalert2';
 import {PagerService} from '../../paginator.service';
+import { GlobalService } from '../../global.service';
 @Component({
   selector: 'app-offeractivity',
   templateUrl: './offeractivity.component.html',
@@ -20,12 +21,17 @@ export class OfferactivityComponent implements OnInit {
   Imageurl = Config.Imageurlget;
   course;
     pager: any = {};
-
-  constructor(private pagerService: PagerService, private http: Http , private route:ActivatedRoute, public router: Router, private sg: SimpleGlobal, private offer: OfferactivityService, @Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog) { }
+    teachers;
+  constructor(public global: GlobalService , private pagerService: PagerService, private http: Http , private route:ActivatedRoute, public router: Router, private sg: SimpleGlobal, private offer: OfferactivityService, @Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog) { }
 
   ngOnInit() {
     window.scroll(0,0);
+    this.global.offerHistroyResp.subscribe(resp => {
+      this.teachers = resp;
+      console.log(this.teachers);
+    })
     this.ShowAcceptOffers(1);
+
   }
 
   ShowAcceptOffers(page :number){
@@ -40,6 +46,9 @@ export class OfferactivityComponent implements OnInit {
 
     })
   }
+  showhistory(notes,course, flashcard, book ) {
+    return this.global.offerhistory(notes, course, flashcard ,book )
+ }
   openDialog3(id): void {
 
 

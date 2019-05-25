@@ -51,7 +51,11 @@
                                         *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
                                         <p class="btn-style btn " (click)="openDialog3(item?.id)">Pay
                                             Now: {{item?.your_offer | currency:'USD'}}</p>
+                                            <br>
+                                            <p class="btn-style btn " data-toggle="modal"
+                                            data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(item?.id)">Accepted View offer history</p>
                                     </div>
+                                   
                             </div>
                         </div>
                     </div>
@@ -87,6 +91,9 @@
                                         *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
                                         <p class="btn-style btn " (click)="openDialog4(item?.id)">Pay
                                             Now: {{item?.your_offer | currency:'USD'}}</p>
+                                            <br>
+                                            <p class="btn-style btn " data-toggle="modal"
+                                            data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(nullvalue,item?.id)">Accepted View offer history</p>
                                     </div>
                             
                             </div>
@@ -121,6 +128,9 @@
                                         *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
                                         <p class="btn-style btn " (click)="openDialog5(item?.id)">Pay
                                             Now: {{item?.your_offer | currency:'USD'}}</p>
+                                        
+                                            <p class="btn-style btn " data-toggle="modal"
+                                            data-target="#bookbiding" *ngIf="item.offer_status == true" (click)="showhistory(nullvalue, nullvalue,item?.id)">Accepted View offer history</p>
                                     </div>
                             </div>
                         </div>
@@ -152,6 +162,9 @@
                                         *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
                                         <p class="btn-style btn " (click)="openDialog6(item?.id)">Pay
                                             Now: {{item?.your_offer | currency:'USD'}}</p>
+                                            <br>
+                                            <p class="btn-style btn " data-toggle="modal"
+                                            data-target="#bookbiding" *ngIf="item.offer_status == true" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">Accepted View offer history</p>
                                     </div>
                             </div>
                         </div>
@@ -196,7 +209,7 @@
                                         </div>
                                         <div class="product-list__item-info-1">
                                                 <p class="btn-style btn " data-toggle="modal"
-                                                data-target="#bookbiding" *ngIf="item.offer_status == false">Rejected View offer history</p>
+                                                data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(item?.id)">Rejected View offer history</p>
                                             </div>
                                 </div>
                             </div>
@@ -226,7 +239,8 @@
                                         </div>
                                      
                                         <div class="product-list__item-info-1">
-                                            <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected</p>
+                                                <p class="btn-style btn " data-toggle="modal"
+                                                data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(nullvalue,item?.id)">Rejected View offer history</p>
                                         </div>
                                 
                                 </div>
@@ -255,7 +269,8 @@
                                         </div>
                                        
                                         <div class="product-list__item-info-1">
-                                                <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected View offer history</p>
+                                                <p class="btn-style btn " data-toggle="modal"
+                                                data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(nullvalue,nullvalue ,item?.id)">Rejected View offer history</p>
                                              
                                            </div>
 
@@ -285,7 +300,8 @@
                                            
                                         </div>
                                         <div class="product-list__item-info-1">
-                                                <p class="btn-style btn " *ngIf="item.offer_status == false">Rejected</p>
+                                                <p class="btn-style btn " data-toggle="modal"
+                                                data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(nullvalue,nullvalue,nullvalue,item?.id)">Rejected View offer history</p>
                                             </div>
                                         
                                 </div>
@@ -329,7 +345,9 @@
                                                    
                                                 </div>
                                                 <div class="product-list__item-info-1">
-                                                        <p class="btn-style btn " *ngIf="item.offer_status == null">pending Aproval</p>
+                                                        <p class="btn-style btn " data-toggle="modal"  data-target="#bookbiding" *ngIf="item.offer_status == null" (click)="showhistory(item?.id)">pending Approval View offer history</p>
+                                                        
+                                                      
                                                     </div>
                                         </div>
                                     </div>
@@ -359,7 +377,9 @@
                                                 </div>
                                              
                                                 <div class="product-list__item-info-1">
-                                                    <p class="btn-style btn " *ngIf="item.offer_status == null">Pending Aproval</p>
+                                                    <p class="btn-style btn " data-toggle="modal"  data-target="#bookbiding" *ngIf="item.offer_status == null" (click)="showhistory(nullvalue,item?.id)">Pending Approval view offer history</p>
+                
+                                                    
                                                 </div>
                                         
                                         </div>
@@ -388,7 +408,7 @@
                                                 </div>
                                                
                                                 <div class="product-list__item-info-1">
-                                                        <p class="btn-style btn " *ngIf="item.offer_status == null">Pending Aproval</p>
+                                                        <p class="btn-style btn "  data-toggle="modal"  data-target="#bookbiding" *ngIf="item.offer_status == null" (click)="showhistory(nullvalue, nullvalue,item?.id)">Pending Approval view offer history</p>
                                                     </div>
                                         </div>
                                     </div>
@@ -415,7 +435,7 @@
                                                     
                                                 </div>
                                                 <div class="product-list__item-info-1">
-                                                        <p class="btn-style btn " *ngIf="item.offer_status == null">Pending Aproval</p>
+                                                        <p class="btn-style btn "  data-toggle="modal"  data-target="#bookbiding" *ngIf="item.offer_status == null" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">Pending Approval view offer history</p>
                                                     </div>
                                         </div>
                                     </div>
@@ -431,9 +451,33 @@
         <div class="modal-dialog">
             <div class="modal-content margin-top-175">
                 <div class="modal-header">
-                    <div class="form-1-header">
-                        <h1>Offer History</h1>
-                    </div>
+                        <div class="offer-history">
+                                <h3>Offer history  </h3>
+                              <ul>
+                                <li *ngFor="let data of teachers?.accept_data;"> 
+                                 <div class="declined">
+                                  <table>
+                                    <tr>
+                                      <td class="text-right width-144"><strong>Declined</strong></td>
+                                      <td> $ {{data.amount|json}} </td>
+                                      <td class="width-122"><small>{{data.approval_time | date : 'short'}}</small></td>
+                                    </tr>
+                                  </table>
+                                  <div class="instructor"><span> T</span></div>
+                                 </div>
+                                  <div class="submitted">
+                                      <div class="student text_cap"> <span>ME</span></div>
+                                      <table>
+                                          <tr>
+                                            <td><strong>Submitted</strong></td>
+                                            <td>$ {{data.amount|json}} </td>
+                                            <td><small>{{data.created_time | date : 'short'}}</small></td>
+                                          </tr>
+                                        </table>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
                 </div>
                 
             </div>
