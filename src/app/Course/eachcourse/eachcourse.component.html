@@ -87,7 +87,7 @@
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Course Already Bought</a> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="courses(result?.id)">Buy Now</a>
-                    <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"  (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
+                    <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"  (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
                         to Cart</a>
                     <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
                 </div>
