@@ -90,7 +90,7 @@
                         <p class="already-bought" *ngIf="result?.isTeacher==true">
                                 Note add by me </p> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
-                        Now</a> <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
+                        Now</a> <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
                     <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
@@ -102,10 +102,11 @@
                     <div class="card-footer">
                         <h1 class="text-center">Share This Note</h1>
                         <ul class="card-footer-social-icon">
-                            <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
+                            <li> <a class="facebook" > <i class="fab fa-facebook-f"></i> </a> </li>
                             <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
                             <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
                         </ul>
+                        <div><a class="fb-like" [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></a></div>
                     </div>
                 </div>
             </div>
@@ -226,7 +227,7 @@
                 </div>
                 
             </div>
-            <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Note.gif">
+            <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
             </div>
         </div>
     </div>

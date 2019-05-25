@@ -14,6 +14,7 @@ import { CountdownModule } from 'ng2-countdown-timer';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 import {
   MatCardModule,
@@ -181,8 +182,7 @@ export function provideConfig() {
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  declarations: [
-],
+  declarations: [],
 })
 
 export class MaterialModule { }
@@ -216,8 +216,7 @@ export class MaterialModule { }
     MatSlideToggleModule,
     MatNativeDateModule,
     TextMaskModule,
-
-
+    JwSocialButtonsModule,
 
   ],
   declarations: [

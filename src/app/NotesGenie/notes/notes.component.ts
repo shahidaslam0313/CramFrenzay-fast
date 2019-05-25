@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild,Input } from '@angular/core';
 import { NotesService } from "./notes.service";
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from "@angular/router";
@@ -13,7 +13,7 @@ import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.scss']
+  styleUrls: ['./notes.component.scss'],
 })
 export class NotesComponent implements OnInit {
   @ViewChild(AddtocartComponent)
@@ -38,12 +38,31 @@ export class NotesComponent implements OnInit {
       Validators.required
       ])
   })
+  @Input() url = 'https://www.cramfrenzy.com/';
   constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private each: NotesService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
       this.currentProducts = this.productsSource.asObservable();
     }
     window.scroll(0, 0);
+    if (!window['fbAsyncInit']) {
+      window['fbAsyncInit'] = function () {
+          window['FB'].init({
+              appId: '2243800905848514',
+              autoLogAppEvents: true,
+              xfbml: true,
+              version: 'v3.0'
+          });
+      };
+  }
+
+  // load facebook sdk if required
+  const url = 'https://connect.facebook.net/en_US/sdk.js';
+  if (!document.querySelector(`script[src='${url}']`)) {
+      let script = document.createElement('script');
+      script.src = url;
+      document.body.appendChild(script);
+  }
   }
 
   nullvalue = null;
@@ -61,6 +80,7 @@ export class NotesComponent implements OnInit {
     });
     this.singlenotes();
     this.reviewsss(this.pager);
+    window['FB'] && window['FB'].XFBML.parse();
   }
   checkmainpage(id) {
     if (this.check_login() == true) {

@@ -88,7 +88,7 @@
                         *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a> 
                         <a class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </a> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkbook(result?.id)">Buy Now</a>
-                    <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
+                    <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
                         to Cart</a> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
                         data="https://storage.cramfrenzy.com/uploads/C_+Q+and+Answer.pdf" type="application/pdf"> <a
                             href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>
@@ -104,6 +104,7 @@
                         <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
                         <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
                     </ul>
+                    <div><a class="fb-like" [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></a></div>
                 </div>
             </div>
         </div>
@@ -236,7 +237,7 @@
                     </div><!-- <div class="float-left"> <div class="review-container"> <div class="float-left"> <div class="user-image"> <span>AT</span> </div><div class="float-left"> <div class="time-to-go"> <span>{{reviews?.commentDate}}</span> </div><div class="user-name"> <span>Anas Tahir</span> </div></div></div><div class="pull-right review-box"> <div class="rating float_left width100"> <div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star-half filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> </div></div><p>{{reviews?.comment}}</p></div></div></div>-->
                     <!-- <div class="col-md-12"> <h3>Comment:{{reviews?.comment}}</h3> <h3>Post date:{{reviews?.commentDate}}</h3> </div>-->
                 </div>
-                <div class="text-center float-left" *ngIf="item==400"> <img src="../../../assets/img/No-One-Reviewed-this-Book.gif">
+                <div class="text-center float-left" *ngIf="item==400"> <img src="../../../assets/img/-Book.gif">
                 </div>
             </div>
         </div>
