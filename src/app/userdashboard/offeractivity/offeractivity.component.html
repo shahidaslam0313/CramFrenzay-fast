@@ -130,7 +130,7 @@
                                             Now: {{item?.your_offer | currency:'USD'}}</p>
                                         
                                             <p class="btn-style btn " data-toggle="modal"
-                                            data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(nullvalue, nullvalue,item?.id)">Accepted View offer history</p>
+                                            data-target="#bookbiding" *ngIf="item.offer_status == true" (click)="showhistory(nullvalue, nullvalue,item?.id)">Accepted View offer history</p>
                                     </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                                             Now: {{item?.your_offer | currency:'USD'}}</p>
                                             <br>
                                             <p class="btn-style btn " data-toggle="modal"
-                                            data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">Accepted View offer history</p>
+                                            data-target="#bookbiding" *ngIf="item.offer_status == true" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">Accepted View offer history</p>
                                     </div>
                             </div>
                         </div>
