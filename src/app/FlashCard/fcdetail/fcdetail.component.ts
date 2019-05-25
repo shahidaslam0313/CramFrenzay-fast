@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterContentInit, Inject, PLATFORM_ID, ViewChild, Input } from '@angular/core';
 import { fcdetailservice } from "./fcdetail.service";
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from "@angular/router";
@@ -47,11 +47,30 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
       Validators.required
       ])
   })
+  @Input() url = 'https://www.cramfrenzy.com/';
   constructor(private pagerService: PagerService, public addtocart: AddtocartComponent, private newService: fcdetailservice, private router: Router, private route: ActivatedRoute, private serv: flashcardservice,  private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
     }
+    if (!window['fbAsyncInit']) {
+      window['fbAsyncInit'] = function () {
+          window['FB'].init({
+              appId: '2243800905848514',
+              autoLogAppEvents: true,
+              xfbml: true,
+              version: 'v3.0'
+          });
+      };
+  }
+
+  // load facebook sdk if required
+  const url = 'https://connect.facebook.net/en_US/sdk.js';
+  if (!document.querySelector(`script[src='${url}']`)) {
+      let script = document.createElement('script');
+      script.src = url;
+      document.body.appendChild(script);
+  }
   }
 
   nullvalue = null;
@@ -77,6 +96,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
     if (isPlatformBrowser(this.platformId)) {
       this.name = localStorage.getItem('name');
     }
+    window['FB'] && window['FB'].XFBML.parse();
   }
 
   checkfcdetail(id) {
