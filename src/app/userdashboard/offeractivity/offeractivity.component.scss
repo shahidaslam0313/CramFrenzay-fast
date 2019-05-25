@@ -1,1 +1,58 @@
 .nav-link{padding:0 5px}.margin-left-10{margin-left:10px}.margin-right-10{margin-right:10px}.list-inline >li{float: left;padding: 2px;}.panel-heading{text-align: center;margin: 10px 0 20px;}.offer-activity{margin-top:20px;}
+// ............Offer History............
+.width-122{
+    width: 122px;
+}
+.width-144{
+    width: 144px;
+}
+.submitted,.declined{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+.offer-history ul li{
+    list-style: none;
+}
+.offer-history h3{
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
+.instructor,.student{
+    width: 30px;
+    height: 30px;
+    background: #ccc;
+    font-size: 12px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    display: table;
+}
+.instructor span,.student span{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.student{
+    margin-right: 10px;
+}
+.instructor{
+    margin-left: 10px;
+}
+.offer-history ul{
+    padding: 0;
+}
+table{  
+    width: 90%;
+    background: #f1f1f1;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 0px 50px;
+}
+.submitted table{  
+  border-radius: 50px 0px;
+}
+.smalltext{font-size:13px;margin:20px 0 0;text-align:left}
+
+// ................Offer History  End..............
