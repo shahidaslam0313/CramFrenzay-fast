@@ -33,6 +33,7 @@
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "jquery": "^3.4.1",
+    "jw-angular-social-buttons": "^1.0.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.2",
     "ng2-countdown-timer": "^1.2.2",
