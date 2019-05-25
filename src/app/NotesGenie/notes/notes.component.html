@@ -90,7 +90,7 @@
                         <p class="already-bought" *ngIf="result?.isTeacher==true">
                                 Note add by me </p> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
-                        Now</a> <a class="card-btn-add-cart" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
+                        Now</a> <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
                     <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
