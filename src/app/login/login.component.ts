@@ -169,7 +169,7 @@ export class LoginComponent {
             localStorage.setItem('loged_in', '1');
             localStorage.setItem('currentUser', JSON.stringify(user));
             localStorage.setItem('profilePhoto' , this.pic);
-            this.router.navigate(['/userprofile/' + this.username]);
+            this.router.navigate(['/userprofile/'+ this.username]);
             this.showSuccess();
           }
         }
