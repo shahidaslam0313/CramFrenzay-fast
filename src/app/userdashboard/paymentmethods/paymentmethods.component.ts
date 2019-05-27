@@ -262,7 +262,6 @@ city;state;country;
             showConfirmButton: false,
             timer: 2000,width: '512px',
           })
-         
         });
     }
   }
