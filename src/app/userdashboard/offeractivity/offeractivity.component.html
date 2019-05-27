@@ -215,6 +215,7 @@
                                                                                     <p class="btn-style btn " data-toggle="modal"
                                                                                     data-target="#bookbiding" *ngIf="item.offer_status == false" (click)="showhistory(item?.id)">Rejected View offer history</p>
                                                                                 </div>
+                                                                             
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -459,6 +460,7 @@
                                         <h3>Offer history  </h3>
                                       <ul>
                                         <li *ngFor="let data of teachers?.accept_data;"> 
+                                                       
                                          <div class="declined">
                                           <table>
                                             <tr>
@@ -480,6 +482,7 @@
                                                 </table>
                                           </div>
                                         </li>
+                                        <li> <p *ngIf="count !=5">your offer is remaning</p></li>
                                       </ul>
                                     </div>
                         </div>
