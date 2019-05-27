@@ -7,7 +7,7 @@
                         </div>
                         <div class="profile-picture" *ngIf="!profilePhoto"> <img src="../assets/img/default-user-icon-profile.png"
                                 onerror="this.src='../assets/img/default-user-icon-profile.png'"> </div>
-                    <h4 class="user-name text_cap">{{firstname}}{{lastname}}</h4>
+                    <h4 class="user-name text_cap">{{firstname}}&nbsp;{{lastname}}</h4>
                 </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add
                     Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
                         class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
@@ -36,24 +36,33 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-select placeholder="Select Category" type="number" id="categories" [(ngModel)]="model.categories"
-                        name="categories">
+                        name="categories" required>
                         <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="categoriesFormControl.hasError('required')"> Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field id="font" *ngIf="result">
                     <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategories" name="subcategories"
-                        id="subcategories">
+                        id="subcategories" required>
                         <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="subcategoriesFormControl.hasError('required')"> Sub-Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field id="fonts" *ngIf="nestedresult">
                     <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
-                        name="nestedcategory" id="nestedcategory">
+                        name="nestedcategory" id="nestedcategory" required>
                         <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Sub-Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field> <textarea matInput type="text" placeholder="Description" [(ngModel)]="model.book_detail"
-                        name="book_detail" #book_detail="ngModel"></textarea> </mat-form-field>
+                        name="book_detail" #book_detail="ngModel" id="detail" required>
+                        </textarea>
+                        <mat-error *ngIf="detailFormControl.hasError('required')"> Description is <strong>Required</strong>
+                        </mat-error> </mat-form-field>
                 <mat-form-field> <input matInput type="text" placeholder="Edition" [(ngModel)]="model.book_edition"
                         name="book_edition" #book_edition="ngModel" /> </mat-form-field>
                 <mat-form-field> <input matInput type="text" placeholder="ISBN" [(ngModel)]="model.ISBN" name="ISBN"
@@ -119,7 +128,8 @@
                     </mat-form-field>
                 </div>
                 <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
-                        alt="" allowmultiple="false" /> <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
+                        alt="" allowmultiple="false" /> 
+                        <!-- <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"> -->
                 </div><span class="btn-file margin-top-10">Upload Book Image <input (change)="onChange($event)" #image
                         type="file" accept="image/gif, image/jpeg, image/png" required> </span> <span class="btn-file margin-top-10"
                     style="margin-left: 3px">Upload File <input (change)="onChange2($event)" #book_file type="file">

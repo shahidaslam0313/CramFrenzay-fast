@@ -169,7 +169,7 @@ export class LoginComponent {
             localStorage.setItem('loged_in', '1');
             localStorage.setItem('currentUser', JSON.stringify(user));
             localStorage.setItem('profilePhoto' , this.pic);
-            this.router.navigate(['/userprofile/' + this.username]);
+            this.router.navigate(['/userprofile/'+ this.username]);
             this.showSuccess();
           }
         }
@@ -252,7 +252,7 @@ export class LoginComponent {
               swal({
                 type: 'error',
                 title: 'Accout Activation',
-                text: 'Please activate your account first!',
+                text: 'Please activate your account first',
                 showConfirmButton: false,
                 width: '512px',
                 timer: 2000
@@ -262,7 +262,7 @@ export class LoginComponent {
               swal({
                 type: 'error',
                 title: 'Wrong Credantials',
-                text: 'Please check your username or password!',
+                text: 'Please check your username or password',
                 showConfirmButton: false,
                 width: '512px',
                 timer: 2000
@@ -272,7 +272,7 @@ export class LoginComponent {
               swal({
                 type: 'error',
                 title: 'Wrong Username',
-                text: 'Please check your username or password!',
+                text: 'Please check your username or password',
                 showConfirmButton: false,
                 width: '512px',
                 timer: 2000
@@ -296,7 +296,7 @@ export class LoginComponent {
       swal({
         type: 'error',
         title: 'Wrong Credantials',
-        text: 'Please check your username or password!',
+        text: 'Please check your username or password',
         showConfirmButton: false,
         width: '512px',
         timer: 2000
@@ -309,7 +309,7 @@ export class LoginComponent {
       this.obj.forgotpaassword(this.email.value).subscribe(Res => {
         swal({
           text: 'Password reset link has been sent to your email',
-          title: "CramFrenzy!",
+          title: "CramFrenzy",
           type: "success",
           showConfirmButton: false,
           timer: 2000,
@@ -319,7 +319,7 @@ export class LoginComponent {
           if (error.status == 500) {
             swal({
               text: 'Server is under maintenance',
-              title: "Sorry!",
+              title: "Sorry",
               type: "error",
               showConfirmButton: false,
               timer: 2000,
@@ -328,7 +328,7 @@ export class LoginComponent {
           else if (error.status == 404) {
             swal({
               text: 'Please register first',
-              title: "CramFrenzy!",
+              title: "CramFrenzy",
               type: "error",
               showConfirmButton: false,
               timer: 2000,
@@ -337,7 +337,7 @@ export class LoginComponent {
           else {
             swal({
               text: 'Some thing went wrong',
-              title: "Sorry!",
+              title: "Sorry",
               type: "error",
               showConfirmButton: false,
               timer: 2000,

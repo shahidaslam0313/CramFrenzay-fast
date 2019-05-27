@@ -60,7 +60,7 @@ export class PaymentmethodsService {
           // if (error.stats == 302) {
           swal({
             type: 'error',
-            title: 'This Card Already Exist!',
+            title: 'This Card Already Exist',
             showConfirmButton: false,
             timer: 1500, width: '512px',
           })
@@ -70,7 +70,7 @@ export class PaymentmethodsService {
 
           swal({
             type: 'error',
-            title: 'Invalid Card! Please Enter Correct Details!',
+            title: 'Invalid Card! Please Enter Correct Details',
             showConfirmButton: false,
             timer: 1500, width: '512px',
           })
@@ -79,7 +79,7 @@ export class PaymentmethodsService {
         } else {
           swal(
             'Sorry',
-            'You cannot enter card more than 8 cards!',
+            'You cannot enter card more than 8 cards',
             'error'
           )
 
