@@ -14,6 +14,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
 import { Ng2ImgMaxService } from 'ng2-img-max';
+import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 
 declare const $: any;
 @Component({
@@ -106,6 +107,20 @@ export class UploadnotesComponent implements OnInit {
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
   ]);
+  detailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern('[a-zA-Z0-9_.-]+?'),
+    Validators.maxLength(500)
+  ]);
+  notessubcategoriesFormControl= new FormControl('',[
+    Validators.required
+  ])
+  subcategoryFormControl= new FormControl('',[
+    Validators.required
+  ])
+  nestedcategoryFormControl= new FormControl('',[
+    Validators.required
+  ])
   authornameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
@@ -190,7 +205,6 @@ export class UploadnotesComponent implements OnInit {
      }
 
   sell_days;
-  notessubcategories;
 
     subcategory;
   nestedcategory;
@@ -201,13 +215,23 @@ export class UploadnotesComponent implements OnInit {
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
     console.log(new_date);
-    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory , this.model.nestedcategory , this.sell_status, this.accept_offer,  new_date,  bid_date , this.bid_status )
+    if(this.model.valid){
+      this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory , this.model.nestedcategory , this.sell_status, this.accept_offer,  new_date,  bid_date , this.bid_status )
       .subscribe(Res => {
         // this.date = Res
         // console.log(this.date);
       });
       this.CourseSuccess();
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Please enter correct details',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 4500
+    })
   }
   CourseSuccess() {
     swal({

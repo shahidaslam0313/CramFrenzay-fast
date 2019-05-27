@@ -80,6 +80,11 @@ export class UploadbookComponent implements OnInit {
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
   ]);
+  book_detailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern('[a-zA-Z0-9_.-]+?'),
+    Validators.maxLength(50)
+  ]);
   subcatFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
@@ -159,13 +164,22 @@ uploadfile(){
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
-
-    this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.min_amount, this.model.max_amount, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date)
-      .subscribe(Res => {
-        this.uploadfile();
-      });
-      f.resetForm();
-  }
+if(this.model.name.valid && this.model.author_name.valid && this.model.price.valid && this.model.ISBN.valid && this.model.book_detail.valid){
+  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.min_amount, this.model.max_amount, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date)
+  .subscribe(Res => {
+    this.uploadfile();
+  });
+  f.resetForm();
+}
+else 
+swal({
+  type: 'error',
+  title: 'Please enter correct details',
+  showConfirmButton: false,
+  width: '512px',
+  timer: 2500
+})
+}
   CourseSuccess() {
     swal({
       type: 'success',
