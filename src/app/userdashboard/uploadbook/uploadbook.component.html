@@ -36,28 +36,33 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-select placeholder="Select Category" type="number" id="categories" [(ngModel)]="model.categories"
-                        name="categories">
+                        name="categories" required>
                         <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="categoriesFormControl.hasError('required')"> Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field id="font" *ngIf="result">
                     <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategories" name="subcategories"
-                        id="subcategories">
+                        id="subcategories" required>
                         <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="subcategoriesFormControl.hasError('required')"> Sub-Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field id="fonts" *ngIf="nestedresult">
                     <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
-                        name="nestedcategory" id="nestedcategory">
+                        name="nestedcategory" id="nestedcategory" required>
                         <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Sub-Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field> <textarea matInput type="text" placeholder="Description" [(ngModel)]="model.book_detail"
-                        name="book_detail" #book_detail="ngModel" required>
-                        <mat-error *ngIf="book_detailFormControl.hasError('required')"> Description <strong>Required</strong>
-                        </mat-error>
-                        <mat-error *ngIf="book_detailFormControl.hasError('pattern')"> Please enter a valid description
-                        </mat-error></textarea> </mat-form-field>
+                        name="book_detail" #book_detail="ngModel" id="detail" required>
+                        </textarea>
+                        <mat-error *ngIf="detailFormControl.hasError('required')"> Description is <strong>Required</strong>
+                        </mat-error> </mat-form-field>
                 <mat-form-field> <input matInput type="text" placeholder="Edition" [(ngModel)]="model.book_edition"
                         name="book_edition" #book_edition="ngModel" /> </mat-form-field>
                 <mat-form-field> <input matInput type="text" placeholder="ISBN" [(ngModel)]="model.ISBN" name="ISBN"

@@ -31,21 +31,27 @@
                         name="description"></textarea> </mat-form-field>
                 <mat-form-field id="categoties-font">
                     <mat-select placeholder="Select Category" type="number" id="categories" [(ngModel)]="model.categories"
-                        name="categories">
+                        name="categories" required>
                         <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys(data?.id)">{{data.c_name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="categoriesFormControl.hasError('required')"> Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field id="font" *ngIf="result">
                     <mat-select placeholder="Select Sub-Category" type="number" [(ngModel)]="model.subcategories" name="subcategory"
-                        id="subcategory">
+                        id="subcategory" required>
                         <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys(data?.id)">{{data.sub_category_name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="subcategoryFormControl.hasError('required')"> Sub-Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field id="fonts" *ngIf="nestedresult">
                     <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
-                        name="nestedcategory" id="nestedcategory">
+                        name="nestedcategory" id="nestedcategory" required>
                         <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Sub-Category is <strong>Required</strong>
+                    </mat-error>
                 </mat-form-field>
                 <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                     Offers</mat-slide-toggle>

@@ -83,6 +83,15 @@ role;
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
   ]);
+  categoriesFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+  subcategoryFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+  nestedcategoryFormControl = new FormControl('', [
+    Validators.required,
+  ]);
 
   constructor(private newService: uploadservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
@@ -149,7 +158,8 @@ role;
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(currentdate).add(this.end_time,'days');
     console.log(new_date, this.sell_status , this.model,  this.bid_status , bid_date);
-    this.newService.uploading(new_date, this.sell_status , this.model, this.accept_offer,  this.bid_status , bid_date, currentdate)
+    if(this.model.valid){
+      this.newService.uploading(new_date, this.sell_status , this.model, this.accept_offer,  this.bid_status , bid_date, currentdate)
       .subscribe(Res => {
 
         console.log(this.response);
@@ -158,6 +168,15 @@ role;
 
       );
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Please enter correct details',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 2000
+    });
   }
   reserved() {
     if (this.hide) {

@@ -80,15 +80,24 @@ export class UploadbookComponent implements OnInit {
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
   ]);
-  book_detailFormControl = new FormControl('', [
+  detailFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
+    Validators.maxLength(500)
   ]);
   subcatFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
+  ]);
+  categoriesFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+  subcategoriesFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+  nestedcategoryFormControl = new FormControl('', [
+    Validators.required,
   ]);
   constructor(private newService: uploadbookservice,private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
