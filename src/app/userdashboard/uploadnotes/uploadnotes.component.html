@@ -70,7 +70,8 @@
                             name="sell_status">List for Sale</mat-slide-toggle>
                         <div id="showdiv">
                             <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Buy It Now Price"
-                                    id="price" [(ngModel)]="model.price" name="price" onKeyPress="if(this.value.length==4) return false;">
+                                    id="price" [(ngModel)]="model.price" name="price" onKeyPress="if(this.value.length==4) return false;"
+                                    oninput="validity.valid||(value='');" min="1">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field class="material-select">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
@@ -83,7 +84,7 @@
                                 List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
                             <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
-                                    name="initial_amount" onKeyPress="if(this.value.length==4) return false;"> <span
+                                    name="initial_amount" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
                                     matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
@@ -94,7 +95,7 @@
                                 Auction</mat-checkbox>
                             <div id="showdiv3">
                                 <mat-form-field> <input matInput type="number" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
-                                        name="reservedprice" onKeyPress="if(this.value.length==4) return false;"> <span
+                                        name="reservedprice" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
                                         matPrefix>$&nbsp;</span> </mat-form-field>
                             </div>
                             <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
