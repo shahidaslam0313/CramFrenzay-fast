@@ -10,6 +10,7 @@ import {FormGroup, FormBuilder, Validators, NgForm, FormControl} from '@angular/
 import swal from 'sweetalert2';
 import {PagerService} from '../../paginator.service';
 import { GlobalService } from '../../global.service';
+import * as moment from 'moment';
 @Component({
   selector: 'app-offeractivity',
   templateUrl: './offeractivity.component.html',
@@ -22,6 +23,10 @@ export class OfferactivityComponent implements OnInit {
   course;
     pager: any = {};
     teachers;
+    end_time;
+    flashcard;
+    model : any = {};
+    book;
   constructor(public global: GlobalService , private pagerService: PagerService, private http: Http , private route:ActivatedRoute, public router: Router, private sg: SimpleGlobal, private offer: OfferactivityService, @Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -33,7 +38,30 @@ export class OfferactivityComponent implements OnInit {
     this.ShowAcceptOffers(1);
 
   }
-
+  notesitem;
+  courseitem;
+  carditem;
+  bookitem;
+gettingitemid(id){
+  // alert(id);
+  this.notesitem = id;
+  this. postoffer(this.notesitem , this.course, this.flashcard, this.book );
+}
+gettingcourse(id){
+  // alert(id);
+  this.courseitem = id;
+  this. postoffer(this.notesitem , this.courseitem, this.flashcard, this.book );
+}
+gettingcards(id){
+  // alert(id);
+  this.carditem = id;
+  this. postoffer(this.notesitem , this.courseitem, this.carditem, this.book );
+}
+gettingbook(id){
+  // alert(id);
+  this.bookitem = id;
+  this. postoffer(this.notesitem , this.courseitem, this.carditem, this.bookitem );
+}
   ShowAcceptOffers(page :number){
       if (page < 1 || page > this.pager.totalPages) {
           return;
@@ -45,6 +73,85 @@ export class OfferactivityComponent implements OnInit {
         // this.pager = this.pagerService.getPager(this.getoffer['totalItems'], page, 10);
 
     })
+  }
+  postoffer(notes, course, flashcard, book) {
+  // alert(this.notesitem);
+    var currentdate = moment(new Date, ' YYYY-MM-DD ');
+    var new_date = moment(currentdate).add(this.end_time, 'days');
+    return this.global.acceptoffer(this.notesitem, this.courseitem, this.carditem, this.bookitem, this.model.offer_price, new_date).subscribe(
+
+      data => {
+        if (data.Message == "Your offer is already accepted ") {
+          swal({
+            type: 'warning',
+            title: 'Your Offer is Already Accepted',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+        else if (data.Message == "Your Offer is Posted") {
+          swal({
+            type: 'success',
+            title: 'Your offer is accepted\n' +
+              '\n',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+        else if (data.Message == "You already posted for 5 times") {
+          swal({
+            type: 'warning',
+            title: 'You already posted for 5 times',
+            showConfirmButton: true,
+            width: '512px',
+            timer: 2000
+          });
+        }
+        else if (data.Message == "Your offer is accepted") {
+          swal({
+            type: 'success',
+            title: 'Your offer is accepted',
+            showConfirmButton: true,
+            width: '512px',
+            timer: 2000
+          });
+        }
+        else if (data.Message == "Your offer is not accepted") {
+          swal({
+            type: 'error',
+            title: 'Your offer is not accepted',
+            showConfirmButton: true,
+            width: '512px',
+            timer: 2000
+          });
+        }
+      },
+      error => {
+        if (error.status === 406) {
+          swal({
+            type: 'error',
+            title: 'Item Already Purchased',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+        if (error.status === 410) {
+          swal({
+            type: 'success',
+            title: 'Your offer is sent to Owner',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+        if (error.status === 400) {
+          swal({
+            type: 'error',
+            title: 'Your offer is not accepted',
+            showConfirmButton: false,
+            timer: 2500
+          })
+        }
+      })
   }
   showhistory(notes,course, flashcard, book ) {
     return this.global.offerhistory(notes, course, flashcard ,book )
