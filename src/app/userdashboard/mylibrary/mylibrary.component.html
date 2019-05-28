@@ -19,7 +19,7 @@
                 <div class="tab-pane active" id="notes">
                     <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes, let i=index">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes.slice().reverse(), let i=index">
                             <div class="product-list__item">
                                 <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
                                             src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes">
@@ -30,7 +30,7 @@
                                         (click)="btndelnotes(item?.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
                                 <div class="product-list__content"> <a class="product-list__category"
                                         routerLink="/notes/{{item?.id}}">{{item?.name}}</a>
-                                    <div class="product-list__title tutor-subject "> <a routerLink="/notes/{{item?.id}}"
+                                    <div class="product-list__title tutor-subject "> <a (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)"
                                             title="{{item?.name}}" *ngIf="item?.status==true">Approved by Admin</a><a
                                             routerLink="/notes/{{item?.id}}"
                                             *ngIf="item?.status !=true || item?.status==null">Pending Approval </a>
@@ -48,7 +48,7 @@
                 <div class="tab-pane" id="courses">
                     <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result.slice().reverse(); let i=index">
                             <div class="product-list__item">
                                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
                                             src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course">
@@ -60,7 +60,7 @@
                                 <div class="product-list__content"> <a class="product-list__category"
                                         routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a>
                                     <div class="product-list__title tutor-subject "> <a
-                                            routerLink="/eachcourse/{{data?.id}}" title="{{data?.name}}"
+                                        (click)="publish(nullvalue,item?.id,nullvalue,nullvalue)" title="{{data?.name}}"
                                             *ngIf="item?.status==true">Approved by Admin</a><a
                                             routerLink="/eachcourse/{{data?.id}}"
                                             *ngIf="item?.status !=true || item?.status==null">Pending Approval</a>
@@ -81,7 +81,7 @@
                 <div class="tab-pane" id="flashcards">
                     <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card, let i=index">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card.slice().reverse(), let i=index">
                             <div class="product-list__item">
                                 <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
                                             src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard"> </a> <a
@@ -93,8 +93,8 @@
                                 <div class="product-list__content"> <a class="product-list__category"
                                         routerLink="/fcdetail/{{item?.id}}">{{item?.name}}</a>
                                     <div class="product-list__title tutor-subject mt-3 "> <a
-                                            routerLink="/flashcarddetail" title="{{item?.name}}"
-                                            *ngIf="item?.status==true">Approved by Admin</a><a
+                                             title="{{item?.name}}"
+                                            *ngIf="item?.status==true"  (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Approved by Admin</a><a
                                             routerLink="/flashcarddetail"
                                             *ngIf="item?.status !=true || item?.status==null">Pending Approval </a>
                                     </div><a class="product-list__price"
@@ -111,7 +111,7 @@
                 <div class="tab-pane" id="book">
                     <h3 class="mainbanner">Books Listed for Sale by Me </h3>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books; let i=index">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books.slice().reverse(); let i=index">
                             <div class="product-list__item">
                                 <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
                                             src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a> <a
@@ -123,7 +123,7 @@
                                 <div class="product-list__content"> <a class="product-list__category"
                                         routerLink="/detail/{{item?.id}}">{{item?.name}}</a>
                                     <div class="product-list__title tutor-subject "> <a
-                                            routerLink="/detail/{{item?.id}}" title="{{item?.name}}"
+                                        (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)" title="Published Flash Card"
                                             *ngIf="item?.status==true">Approved by Admin</a><a
                                             routerLink="/detail/{{item?.id}}"
                                             *ngIf="item?.status !=true || item?.status==null">Pending Approval</a>
@@ -604,7 +604,7 @@
             <div class="modal-body">
                 <div>
                     <h4 class="modal-title-cust"> Confirmation Alert </h4>
-                    <p class="modal-para-cust"> Do you want to Delete this Notes? </p>
+                    <p class="modal-para-cust"> Do you want to Delete this Note? </p>
                 </div>
             </div>
             <div class="modal-footer"> <button class="btn-style btn" (click)="deletenotes(notesid)"
