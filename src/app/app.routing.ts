@@ -24,6 +24,7 @@ export const appRoutes: Routes = [
     path: '', component: AdminLayoutComponent,
     children: [
       { path: 'dashboard/:name', loadChildren: './admin/dashboard/dashboard.module#DashboardModule' },
+      { path: 'dashboard', loadChildren: './admin/dashboard/dashboard.module#DashboardModule' },
       { path: 'partners', loadChildren: './admin/partners/partners.module#PartnersModule' },
     ],
 

@@ -79,7 +79,7 @@
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field class="material-select margin-top-10">
                                 <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
-                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
+                                    <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -93,7 +93,7 @@
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days</mat-option>
+                                    <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

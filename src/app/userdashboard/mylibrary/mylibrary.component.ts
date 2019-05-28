@@ -294,6 +294,8 @@ export class MylibraryComponent implements OnInit {
         timer: 1500
       })
     })
+    this.Showcards();
+    this.Showbooks();
   }
   check($event) { }
 
@@ -310,14 +312,6 @@ export class MylibraryComponent implements OnInit {
     this.newcoures.mycardsedit(id).subscribe(card => {
       this.cardedit = card;
       this.bidflashcard = card.bidflashcard;
-      // alert(this.cardedit.accept_offer)
-      //   var var_get_start_date:any=this.bidflashcard.created_time;
-      //   alert(var_get_start_date);
-      //   var var_get_end_date=this.cardedit.sell_days;
-      //   alert(var_get_end_date);
-      //   console.log(var_get_end_date)
-      //  this.varr_final_get_date=var_get_end_date - var_get_start_date;
-      //  alert(this.varr_final_get_date)
       this.subcategorys();
       this.nestedcategorys();
 

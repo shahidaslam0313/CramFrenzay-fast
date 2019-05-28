@@ -90,7 +90,7 @@
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
                     <mat-form-field class="material-select margin-top-10">
                         <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="sell_days" name="sell_days">
-                            <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}Days
+                            <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -105,7 +105,7 @@
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
                     <mat-form-field>
                         <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
-                            <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}Days
+                            <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -132,7 +132,7 @@
                         <!-- <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"> -->
                 </div><span class="btn-file margin-top-10">Upload Book Image <input (change)="onChange($event)" #image
                         type="file" accept="image/gif, image/jpeg, image/png" required> </span> <span class="btn-file margin-top-10"
-                    style="margin-left: 3px">Upload File <input (change)="onChange2($event)" #book_file type="file">
+                    style="margin-left: 3px">Upload Book File (PDF) <input (change)="onChange2($event)" #book_file type="file">
                 </span> <a class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)">Submit</a>
             </form>
         </div>
