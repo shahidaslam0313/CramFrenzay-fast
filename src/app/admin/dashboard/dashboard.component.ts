@@ -30,7 +30,7 @@ acptcourses;
   rbook;
   rejectcards;
   status : boolean = true;
-  public Imageurl = Config.Imageurlget;
+  public Imageurl = Config.Imageurleach;
   constructor( @Inject(PLATFORM_ID) private platformId: Object, private newService: DashboardService, private PagerService: PagerService) { }
 
   ngOnInit() {
@@ -86,6 +86,7 @@ acptcourses;
     this.newService.getnotes(page).subscribe(response => {
       this.getingnotes = response.json();
       this.getingnotes = this.getingnotes.notes;
+      console.log(this.getingnotes);
       this.pager = this.PagerService.getPager(response.json()['totalItem'], page);
     });
   }
