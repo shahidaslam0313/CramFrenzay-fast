@@ -153,7 +153,6 @@ postrequirment(f: NgForm){
     // console.log(this.video_id);
   }
   deletecoureseVideo(video_id) {
-    alert(video_id)
     this.video.delete_Video(video_id).subscribe(data => {
       swal({
         type: 'success',
@@ -167,7 +166,6 @@ postrequirment(f: NgForm){
     });
   }
   deleteintrovideo(video_id) {
-    alert(video_id)
     this.video.delete_intro_Video(video_id).subscribe(data => {
       swal({
         type: 'success',
@@ -175,7 +173,7 @@ postrequirment(f: NgForm){
         showConfirmButton: false,
         timer: 2500
       });
-     
+      this.getcousredeta();
     }, error => {
 
     });
@@ -308,8 +306,6 @@ export class AddVideoComponent {
     });
   }
   onSubmit(f: NgForm) {
-
-    alert(this.input);
     // console.log('form Submit call');
     this.http.post(
       'https://storage.cramfrenzy.com/final_upload.php',
@@ -447,6 +443,7 @@ getcousredeta(){
       // alert(data);
       // console.log(data);
       this.ifImageUpload(data);
+      this.getcousredeta()
     });
   }
   private ifImageUpload(data) {

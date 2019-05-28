@@ -1,5 +1,5 @@
 <div class="container-fluid padding-0">
-    <h1 class="mainbanner">{{name}}</h1>
+    <!-- <h1 class="mainbanner">{{name}}</h1> -->
     <ul class="nav nav-tabs nav-justified fcdetail">
         <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="List of Terms">List
                 of Terms</a> </li>
@@ -148,9 +148,11 @@
                                     currency:'USD'}}</h3>
                                 <h5 class="text-center card-title old-card-price">{{flashcardDetail?.price |
                                     currency:'USD'}}</h5> <a class="card-btn" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">Flash
-                                    Card Already Bought</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
-                                    (click)="checkfcdetail()">Buy Now</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false"
+                                    Card Already Bought</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false && flashcardDetail?.isTeacher==false"
+                                    (click)="checkfcdetail()">Buy Now</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false&& flashcardDetail?.isTeacher==false"
                                     (click)="cart(nullvalue, nullvalue, flashId, nullvalue)">Add to Cart</a>
+                                    <p class="already-bought" *ngIf="flashcardDetail?.isTeacher==true">
+                                        Flash Card Added by Me </p>
                                 <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
                             </div>
                             <hr>
