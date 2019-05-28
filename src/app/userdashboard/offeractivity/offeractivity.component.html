@@ -222,13 +222,13 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
                                                                         <p class="btn-style btn ">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
-                                                                        <p class="btn-style btn " (click)="openDialog3(item?.id)">
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="btn-style btn "  *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog3(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(item?.id)">
@@ -259,13 +259,13 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
                                                                         <p class="btn-style btn ">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
-                                                                        <p class="btn-style btn " (click)="openDialog4(item?.id)">
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog4(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue,item?.id)">
@@ -296,13 +296,13 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
                                                                         <p class="btn-style btn ">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
-                                                                        <p class="btn-style btn " (click)="openDialog5(item?.id)">
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog5(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,item?.id)">
@@ -333,13 +333,13 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==true">
+                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
                                                                         <p class="btn-style btn ">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.isPaid==null || item?.isPaid==false && item?.offer_accepted==true">
-                                                                        <p class="btn-style btn " (click)="openDialog6(item?.id)">
+                                                                    <div class="product-list__item-info-1" >
+                                                                        <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog6(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">

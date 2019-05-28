@@ -372,7 +372,10 @@ city;state;country;
     }
     else {
       if (this.form.controls.cvv.valid && this.form.controls.cardnumber.valid &&
-        this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
+        this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid &&
+        this.form.controls.cardHolderName.valid && this.form.controls.zipCode.valid &&
+        this.form.controls.street.valid && this.form.controls.city.valid &&
+        this.form.controls.state.valid && this.form.controls.country.valid) {
         this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['cvv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
           data => {
