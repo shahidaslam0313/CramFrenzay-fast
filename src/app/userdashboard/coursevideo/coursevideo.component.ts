@@ -125,13 +125,11 @@ postrequirment(f: NgForm){
       this.time = data['Total Hours'];
       this.totalvideos = data.totalvideos;
       this.totalvid = data['Total Lectures'];
-      console.log(this.getchapter);
     });
   }
   getchaptedeta(){
     this.video.getchaptervideo(this.id).subscribe(data => {
       this.getchaptervid = data;
-      // console.log(this.getchaptervid);
     });
   }
   getcousredeta(){
@@ -242,7 +240,7 @@ export class AddVideoComponent {
   clicked = false;
   public Videos;
   loaded = false;
-  id;
+  id;sub;
   isActive = false;
   // input: any = {};
   // video_url : any = {};
@@ -267,14 +265,20 @@ export class AddVideoComponent {
 
   constructor(private obj: CoursevideoService,
               public dialogRef: MatDialogRef<AddVideoComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
+              @Inject(MAT_DIALOG_DATA) public data: any, public video: CoursevideoService,private route: ActivatedRoute,
               private http: HttpClient , public https: Http) {
   }
 
   onNoClick(): void {
     this.dialogRef.close(1);
   }
-
+  ngOnInit() {
+    window.scroll(0,0)
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.id = +params['id'];
+    });
+    this.getchaptername();
+  }
   isClick() {
     if (this.clicked === true) {
       return this.clicked = false;
@@ -290,8 +294,19 @@ export class AddVideoComponent {
     this.input.append('fileToUpload', target.files[0]);
     // this.input = target.files[0].name.toString();
   }
-
-
+  getchapter;
+  videos;
+  chpt;time;totalvideos;totalvid
+  getchaptername(){
+    this.video.getchaptername(this.id).subscribe(data => {
+      this.getchapter = data.data;
+      this.videos = data.vedios;
+      this.chpt = data['Total Chapter'];
+      this.time = data['Total Hours'];
+      this.totalvideos = data.totalvideos;
+      this.totalvid = data['Total Lectures'];
+    });
+  }
   onSubmit(f: NgForm) {
 
     alert(this.input);
@@ -305,17 +320,18 @@ export class AddVideoComponent {
       else {
         // this.model.video_url = data;
         this.ifImageUpload(data);
-
+        this.getchaptername();
       }
-
+      
           });
   }
-  public ifImageUpload(data) {
+  private ifImageUpload(data) {
     this.obj.upload_video(data.video_title, data.video_url, data.video_minutes, data.video_size,  this.data.course).subscribe(
       res => {
         this.dialogRef.close(res);
         // this.dialogRef.close(data[0]['json'].json());
         this.videoSuccess();
+        // this.getchaptername();
       },
       error => {
         AddVideoComponent.videoError();

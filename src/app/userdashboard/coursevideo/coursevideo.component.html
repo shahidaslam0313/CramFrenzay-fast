@@ -62,13 +62,13 @@
               <button  class="btn-style btn  margin-bottom-20" data-toggle="modal" data-target="#myModal">Add Chapter</button>
             </div>
             <div class="lec-info float-right">
-              <span *ngIf="!time">Total Time:00:00:00</span>
-              <span>Total Time: {{time}}</span>
+              <span *ngIf="!time">No video added yet</span>
+              <span *ngIf="time && totalvid">Total Time: {{time}}</span>
               <!--<span *ngIf="!totalvideos">Total Video:00:00:00</span>-->
               <!--<span>Total Video: {{totalvideos}}</span>-->
-              <span *ngIf="!totalvid">Total Videos: 0</span>
+              <!-- <span *ngIf="!totalvid">Total Videos: 0</span> -->
               <span *ngIf="totalvid">Total Videos:{{totalvid}} </span>
-              <span *ngIf="!chpt">Total Chapters: 0</span>
+              <!-- <span *ngIf="!chpt">Total Chapters: 0</span> -->
               <span *ngIf="chpt">Total Chapters:{{chpt}} </span>
             </div>
             <div class="panel-group float-left width100">
@@ -105,9 +105,9 @@
                             (click)="deleteVideo(video?.id)" class="display-inline-block">
                             <i class="fas fa-trash-alt"></i>
                           </a>
-                          <a href="#" class="display-inline-block">
+                          <!-- <a href="#" class="display-inline-block">
                             <i class="far fa-edit"></i>
-                          </a>
+                          </a> -->
                         </td>
                       </tr>
                     </tbody>
@@ -170,7 +170,7 @@
             <mat-error *ngIf="chaptername.hasError('required')"> Chapter name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-          <a class="btn-style btn " type="submit" id="submit" (click)="onSubmit(f)" data-dismiss="modal">Add</a>
+          <button class="btn-style btn " type="submit" id="submit" (click)="onSubmit(f)" data-dismiss="modal">Add Chapter</button>
         </form>
       </div>
     </div>

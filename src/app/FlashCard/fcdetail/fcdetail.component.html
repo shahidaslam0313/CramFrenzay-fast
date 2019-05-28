@@ -27,12 +27,11 @@
                             </td>
                             <td>{{data.title | titlecase}}</td>
                             <td>{{data.definition | titlecase}}</td>
+                            
                         </tr>
-                        
-                    </table>
-                   
+                    </table><br>
+                    <h2 class="text-center" *ngIf="flashCardTermsDefinitionsData?.length=='0'">No List Of Terms In {{flashcardDetail?.name | titlecase}}</h2>
                 </div>
-                
             </div>
         </div>
         <div id="flipflashcards" class="tab-pane fade">
@@ -47,10 +46,9 @@
                                 </div><img class="fc-img" src="https://storage.cramfrenzy.com/images/{{flashcardDetail?.flashcard_image}}"
                                     alt="FlashCard Image">
                             </div>
-                            
                         </ng-container>
                     </div>
-                    
+                    <h2 class="text-center" *ngIf="flashCardTermsDefinitionsData?.length=='0'">No Flip Flash Cards In {{flashcardDetail?.name | titlecase}}</h2>
                 </div>
             </div>
         </div>

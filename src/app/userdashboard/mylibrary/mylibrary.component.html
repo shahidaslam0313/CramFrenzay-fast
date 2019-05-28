@@ -200,7 +200,7 @@
                             <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="var_final_get_date"
                                 #sell_days="ngModel" name="sell_days">
                                 <mat-option *ngFor="let range of ranges" [value]="var_final_get_date">
-                                    {{range.viewValue}}Days</mat-option>
+                                    {{range.viewValue}}&nbsp;Days</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -214,7 +214,7 @@
                         <mat-form-field>
                             <mat-select placeholder="Listing Duration" [(ngModel)]="var_final_get_date"
                                 #end_time="ngModel" name="end_time">
-                                <mat-option *ngFor="let range of range" [value]="var_final_get_date">{{range.viewValue}}
+                                <mat-option *ngFor="let range of range" [value]="var_final_get_date">{{range.viewValue}}&nbsp;Days
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -247,7 +247,7 @@
                             accept="image/gif, image/jpeg, image/png" required> </span> <span
                         class="btn-file margin-top-20 margin-left-10">Update Note File (PDF) <input
                             (change)="onChange2($event)" #updata type="file" accept="application/pdf" required> </span>
-                    <a class="btn-style btn margin-top-10" (click)="updatenotes(bidnote.id)">Update Notes</a>
+                    <a class="btn-style btn margin-top-10" (click)="updatenotes(bidnote.id)">Update Note</a>
                 </form>
             </div>
         </div>
@@ -418,7 +418,7 @@
                         <mat-form-field class="material-select">
                             <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="editcourse.sell_days"
                                 #sell_days="ngModel" name="sell_days">
-                                <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}}
+                                <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} &nbsp; Days
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -433,7 +433,7 @@
                         <mat-form-field>
                             <mat-select placeholder="Listing Duration" [(ngModel)]="bidcourses.end_time"
                                 #end_time="ngModel" name="end_time">
-                                <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}
+                                <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

@@ -162,14 +162,12 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   flipdetail() {
     this.newService.flipdetail(this.flashId).subscribe(data => {
       this.flipresult = data;
-      console.log(data,'FLIP RESULT')
     });
   }
 
   flashCardTermsDefinitions() {
     this.newService.flashCardTermsDefinitions(this.flashId).subscribe(data => {
       this.flashCardTermsDefinitionsData = data;
-      console.log(data,'FLASHCARD TERMS')
     });
   }
 
