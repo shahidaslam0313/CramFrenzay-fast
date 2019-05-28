@@ -89,6 +89,8 @@
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="courses(result?.id)">Buy Now</a>
                     <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"  (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
                         to Cart</a>
+                        <a class="text-center already-bought" *ngIf="result?.isTeacher==true">
+                            Course Added by Me </a>  
                     <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
                 </div>
                 <hr>
