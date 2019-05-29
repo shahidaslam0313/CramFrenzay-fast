@@ -254,6 +254,46 @@
                                     title="Watchlist"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
                                 <div class="heart-sub-meun">
                                     <div class="heart-full-div" >
+                                            <h1 class="dropdown-heading">Notes</h1>
+                                            <div class="heart" *ngFor="let data of wishnotesId; let i=index">
+                                                <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                                                    (click)="del(data.id)"> <i class="fas fa-times"></i> 
+                                                </div>
+                                                <div class="heart-main-div"> <img src="{{Imageurl}}{{data.notes.notes_thumbnail}}"
+                                                        class="heart-img" alt="notes">
+                                                    <div class="heart-contact">
+                                                        <div class="heart-heading">{{data.notes.name}}</div>
+                                                        <div class="heart-detail" *ngIf="data.notes.author!=''">
+                                                            Author:{{data.notes.author}}</div>
+                                                        <div class="heart-price"> <span class="heart-new-price">{{data.notes.price
+                                                                | currency:'USD'}}</span> <span class="discount-p">{{data?.notes.discount
+                                                                | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
+                                                        </div>
+                                                    </div>
+                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                    (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
+                                                    to Cart </a>
+                                            </div>
+                                            <h1 class="dropdown-heading">Flash Cards</h1>
+                                            <div class="heart" *ngFor="let data of cardwish; let i=index">
+                                                <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                                                    (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
+                                                <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.flashcard.flashcard_image}}"
+                                                        class="heart-img" alt="flashcard_image">
+                                                    <div class="heart-contact">
+                                                        <div class="heart-heading">{{data.flashcard.name}}</div>
+                                                        <div class="heart-detail"> </div>
+                                                        <div class="heart-price"> <span class="heart-new-price">{{data?.flashcard.price
+                                                                | currency:'USD'}}</span> <span class="discount-p">{{data?.flashcard.discount
+                                                                | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
+                                                               
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
+                                                Move to Cart </a>
+                                            </div>
                                         <h1 class="dropdown-heading">Courses</h1>
                                         <div class="heart" *ngFor="let data of wishId; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
@@ -273,25 +313,7 @@
                                                 (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
-                                        <h1 class="dropdown-heading">Notes</h1>
-                                        <div class="heart" *ngFor="let data of wishnotesId; let i=index">
-                                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
-                                                (click)="del(data.id)"> <i class="fas fa-times"></i> </div>
-                                            <div class="heart-main-div"> <img src="{{Imageurl}}{{data.notes.notes_thumbnail}}"
-                                                    class="heart-img" alt="notes">
-                                                <div class="heart-contact">
-                                                    <div class="heart-heading">{{data.notes.name}}</div>
-                                                    <div class="heart-detail" *ngIf="data.notes.author!=''">
-                                                        Author:{{data.notes.author}}</div>
-                                                    <div class="heart-price"> <span class="heart-new-price">{{data.notes.price
-                                                            | currency:'USD'}}</span> <span class="discount-p">{{data?.notes.discount
-                                                            | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                    </div>
-                                                </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
-                                                (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
-                                                to Cart </a>
-                                        </div>
+                                        
                                         <h1 class="dropdown-heading">Books</h1>
                                         <div class="heart" *ngFor="let data of wishbook; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
@@ -311,26 +333,7 @@
                                                 (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
-                                        <h1 class="dropdown-heading">Flash Cards</h1>
-                                        <div class="heart" *ngFor="let data of cardwish; let i=index">
-                                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
-                                                (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
-                                            <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.flashcard.flashcard_image}}"
-                                                    class="heart-img" alt="flashcard_image">
-                                                <div class="heart-contact">
-                                                    <div class="heart-heading">{{data.flashcard.name}}</div>
-                                                    <div class="heart-detail"> </div>
-                                                    <div class="heart-price"> <span class="heart-new-price">{{data?.flashcard.price
-                                                            | currency:'USD'}}</span> <span class="discount-p">{{data?.flashcard.discount
-                                                            | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                           
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a  routerLink="javascript:void(0)" class="heart-card-btn"
-                                            (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
-                                            Move to Cart </a>
-                                        </div>
+                                       
                                     </div>
                                     <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
                                             routerLink="/watchlist" class="btn">Go to Watchlist</a> </div>

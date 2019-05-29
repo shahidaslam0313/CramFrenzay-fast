@@ -26,7 +26,7 @@ export class headerservice {
       headers.append('Content-Type', 'application/json');
       return this.http.get(Config.api + 'bid/showwishlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, {headers: headers}).map((response: Response) => response.json()).catch(this.handleError);
     } else {
-      return this.http.get(Config.api + 'bid/showwishlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, ).map((response: Response) => response.json()).catch(this.handleError);
+      return this.http.get(Config.api + 'bid/showwishlist/'  ).map((response: Response) => response.json()).catch(this.handleError);
 
     }
   }
