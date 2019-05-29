@@ -11,18 +11,30 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <mat-form-field class="example-full-width mat-size"> <input matInput
+                                    placeholder="Card Holder Name"
+                                    [formControl]="CardHolderNameForm" [(ngModel)]="model.CardHolderName" required>
+                            </mat-form-field>
+                        </div>
+                            <div class="col-sm-6">
+                            <mat-form-field class="example-full-width mat-size"> <input matInput
+                                placeholder="Card Nick Name"
+                                [formControl]="CardNickNameForm" [(ngModel)]="model.CardNickName" required>
+                        </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field class="example-full-width mat-size"> <input matInput
                                     placeholder="Credit Card Number" minlength="14" maxlength="16"
                                     [formControl]="CardNumberForm" [(ngModel)]="model.cardNumber" required>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6">
                             <mat-form-field class="example-full-width mat-size"> <input matInput
-                                    placeholder="Expiry Date" [formControl]="ExpiryDateForm"
+                                    placeholder="Expiry Date" [formControl]="ExpiryDateForm" [textMask]="{mask: masks}"
                                     [(ngModel)]="model.expirationdate" required> </mat-form-field>
                         </div>
                         <div class="col-sm-6">
                             <mat-form-field class="example-full-width mat-size"> <input matInput placeholder="CardCode"
-                                    [formControl]="CardCodeForm" [(ngModel)]="model.cardcod" required>
+                                    [formControl]="CardCodeForm" [(ngModel)]="model.cardcod" required minlength="3" maxlength="4">
                                 <mat-error *ngIf="CardCodeForm.hasError('minlength')"> Maximum Length of
                                     <strong>CardCode can be 3 characters</strong> </mat-error>
                                 <mat-error *ngIf="CardCodeForm.hasError('maxlength')"> Maximum Length of
@@ -78,12 +90,12 @@
                                 <td>
                                     <div *ngIf="card.default==true">
                                         <mat-slide-toggle [checked]="true" name="atm_details"
-                                            (click)="setcard(card.nickname,card.default,card.id)" class="py-toggle">
+                                            (click)="setcard(card.nickname,card.default,card.id,card.street_adrress, card.zip_code, card.city, card.state, card.country)" class="py-toggle">
                                         </mat-slide-toggle>
                                     </div>
                                     <div *ngIf="card.default !=true">
                                         <mat-slide-toggle [checked]="false" name="atm_details"
-                                            (click)="setcard(card.nickname,card.default,card.id)" class="py-toggle">
+                                            (click)="setcard(card.nickname,card.default,card.id,card.street_adrress, card.zip_code, card.city, card.state, card.country)" class="py-toggle">
                                         </mat-slide-toggle>
                                     </div>
                                 </td>

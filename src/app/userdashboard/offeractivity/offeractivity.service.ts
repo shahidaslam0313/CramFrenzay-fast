@@ -22,7 +22,7 @@ export class OfferactivityService {
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'purchase/getcards/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
   }
-  updateCard(id, defaultCheck, name) {
+  updateCard(id, defaultCheck, name, street_adrress, zipcode, city, state, country) {
     const header = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     header.append('Content-Type', 'application/json');
     return this.http.put(Config.api + 'purchase/editdeletecard/' + id,
@@ -31,11 +31,16 @@ export class OfferactivityService {
 
         "id": id,
         "default": defaultCheck,
-        "nickname": name
+        "nickname": name,
+        "street_adrress": street_adrress,
+        "zip_code": zipcode,
+        "city": city,
+        "state": state,
+        "country": country,
       }),
       { headers: header }).map((response: Response) => response.json());
   }
-  offerpayment(course, book, flashcard, notes, creditno, ccv, exp, card_type, id) {
+  offerpayment(course, book, flashcard, notes, cardholder, cardnickname, creditno, ccv, exp, card_type, id) {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
 
     if (creditno.slice(0, 1) === '*') {
@@ -57,6 +62,8 @@ export class OfferactivityService {
           book: book,
           flashcard: flashcard,
           notes: notes,
+          card_holder: cardholder,
+          nickname: cardnickname,
           creditno: creditno,
           ccv: ccv,
           exp: exp,
