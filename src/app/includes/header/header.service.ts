@@ -25,16 +25,13 @@ export class headerservice {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
       headers.append('Content-Type', 'application/json');
       return this.http.get(Config.api + 'bid/showwishlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, {headers: headers}).map((response: Response) => response.json()).catch(this.handleError);
-    } else {
-      return this.http.get(Config.api + 'bid/showwishlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, ).map((response: Response) => response.json()).catch(this.handleError);
-
-    }
+    } 
   }
   getnotification() {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
       headers.append('Content-Type', 'application/json');
-      return this.http.get(Config.api + 'bid/user_notifications/' + this.current.user_id, {headers: headers}).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'bid/user_notifications/' + JSON.parse(localStorage.getItem('currentUser')).user_id, {headers: headers}).map((response: Response) => response.json());
     }
   }
   putnotification( id) {
