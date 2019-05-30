@@ -222,12 +222,10 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
-                                                                        <p class="btn-style btn ">
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="already-bought"  *ngIf="item?.Purchased==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                    </div>
-                                                                    <div class="product-list__item-info-1">
                                                                         <p class="btn-style btn "  *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog3(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
@@ -259,12 +257,10 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
-                                                                        <p class="btn-style btn ">
+                                                                    <div class="product-list__item-info-1" >
+                                                                        <p class="already-bought" *ngIf="item?.Purchased==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                    </div>
-                                                                    <div class="product-list__item-info-1">
                                                                         <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog4(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
@@ -296,12 +292,10 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
-                                                                        <p class="btn-style btn ">
+                                                                    <div class="product-list__item-info-1" >
+                                                                        <p class="already-bought" *ngIf="item?.Purchased==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                    </div>
-                                                                    <div class="product-list__item-info-1">
                                                                         <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog5(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
@@ -333,12 +327,10 @@
                                                                         <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                                         </rating>
                                                                     </div>
-                                                                    <div class="product-list__item-info-1" *ngIf="item?.Purchased==true">
-                                                                        <p class="btn-style btn ">
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="already-bought"  *ngIf="item?.Purchased==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                    </div>
-                                                                    <div class="product-list__item-info-1" >
                                                                         <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog6(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
