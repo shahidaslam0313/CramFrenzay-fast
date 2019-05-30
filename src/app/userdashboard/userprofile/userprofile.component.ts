@@ -48,7 +48,6 @@ export class UserprofileComponent implements OnInit, OnDestroy {
     Validators.pattern('[a-zA-Z ]+'),
     Validators.maxLength(35)
   ]);
-
   constructor(private fb: FormBuilder, public router: Router, @Inject(PLATFORM_ID) private platformId: Object, public userprofile: UserprofileService, private http: HttpClient, public global: GlobalService) {
     if (isPlatformBrowser(this.platformId)) {
       this.Logedin = localStorage.getItem('loged_in');

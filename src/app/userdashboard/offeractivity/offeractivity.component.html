@@ -223,10 +223,10 @@
                                                                         </rating>
                                                                     </div>
                                                                     <div class="product-list__item-info-1">
-                                                                        <p class="already-bought"  *ngIf="item?.Purchased==true">
+                                                                        <p class="already-bought"  *ngIf="item?.isPaid==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                        <p class="btn-style btn "  *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog3(item?.id)">
+                                                                        <p class="btn-style btn "  *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog3(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(item?.id)">
@@ -258,10 +258,10 @@
                                                                         </rating>
                                                                     </div>
                                                                     <div class="product-list__item-info-1" >
-                                                                        <p class="already-bought" *ngIf="item?.Purchased==true">
+                                                                        <p class="already-bought" *ngIf="item?.isPaid==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                        <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog4(item?.id)">
+                                                                        <p class="btn-style btn " *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog4(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue,item?.id)">
@@ -293,10 +293,10 @@
                                                                         </rating>
                                                                     </div>
                                                                     <div class="product-list__item-info-1" >
-                                                                        <p class="already-bought" *ngIf="item?.Purchased==true">
+                                                                        <p class="already-bought" *ngIf="item?.isPaid==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                        <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog5(item?.id)">
+                                                                        <p class="btn-style btn " *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog5(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,item?.id)">
@@ -328,10 +328,10 @@
                                                                         </rating>
                                                                     </div>
                                                                     <div class="product-list__item-info-1">
-                                                                        <p class="already-bought"  *ngIf="item?.Purchased==true">
+                                                                        <p class="already-bought"  *ngIf="item?.isPaid==true">
                                                                             Payment Done:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
-                                                                        <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog6(item?.id)">
+                                                                        <p class="btn-style btn " *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog6(item?.id)">
                                                                             Pay Now:{{item?.your_offer | currency:'USD'}}
                                                                         </p>
                                                                         <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">
