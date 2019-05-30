@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Book for Sale</h1>
-            <form method="post" (ngSubmit)="onSubmit(f)" #f="ngForm" class="user-add-ingo-form" enctype="multipart/form-data">
+            <form #f="ngForm" class="user-add-ingo-form" enctype="multipart/form-data">
                 <mat-form-field class="margin-top-20"> <input matInput type="text" class="Input-capitalize" placeholder="Title"
                         [(ngModel)]="model.name" name="name" #name="ngModel" required autofocus />
                     <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
@@ -133,7 +133,8 @@
                 </div><span class="btn-file margin-top-10">Upload Book Image <input (change)="onChange($event)" #image
                         type="file" accept="image/gif, image/jpeg, image/png" required> </span> <span class="btn-file margin-top-10"
                     style="margin-left: 3px">Upload Book File (PDF) <input (change)="onChange2($event)" #book_file type="file">
-                </span> <a class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)">Submit</a>
+                </span> 
+                <input type="submit" class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)" [disabled]="!f.form.valid">
             </form>
         </div>
     </div>
