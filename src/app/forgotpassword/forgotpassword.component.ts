@@ -63,7 +63,7 @@ export class ForgotpasswordComponent implements OnInit {
       this.serv.forgot(this.code, this.form.value['password']).subscribe(data => {
         swal({
           type: 'success',
-          title: 'Your password is changed!',
+          title: 'Your password is changed',
           showConfirmButton: false,
           timer: 1500
         })
@@ -73,7 +73,7 @@ export class ForgotpasswordComponent implements OnInit {
           if (error.status == 400) {
             swal({
               type: 'error',
-              title: 'Something went wrong!',
+              title: 'Something went wrong',
               showConfirmButton: false,
               timer: 1500
             })

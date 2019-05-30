@@ -90,8 +90,8 @@
                         </div>
                         <div [ngClass]="displayFieldCss(register, 'email')">
                             <mat-form-field class="singup-feilds-padding margin-top-10">
-                                <input matInput type="text" id="email" (focusout)="getemail(email1.value)"
-                                    formControlName="email" #email1 placeholder="Email" required>
+                                <input matInput type="text" id="email" (focusout)="getemail(email?.value)"
+                                    formControlName="email" #email placeholder="Email" required>
                                 <mat-error *ngIf="register.controls.email.value==''">
                                     <strong>Email cannot be empty</strong>
                                 </mat-error>
