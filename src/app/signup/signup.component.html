@@ -104,7 +104,7 @@
                                 <input matInput type="password" id="password" [type]="hide ? 'password' : 'text'"
                                     #password formControlName="password"
                                     pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
-                                    name=password placeholder="Password" required>
+                                    name=password placeholder="Password" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
                                 <mat-icon class="pointer" data-toggle="tooltip"
                                     title="{{hide? 'hide' : 'show'}}Password" matSuffix (click)="hide=!hide">
                                     {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -121,7 +121,7 @@
                                 <input matInput [type]="hide2 ? 'password' : 'text'" #password type="password"
                                     id="confirmPassword"
                                     pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
-                                    formControlName="confirmPassword" placeholder="Confirm Password" required>
+                                    formControlName="confirmPassword" placeholder="Confirm Password" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
                                 <mat-icon class="pointer" data-toggle="tooltip"
                                     title="{{hide2? 'hide2' : 'show'}}Password" matSuffix (click)="hide2=!hide2">
                                     {{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>

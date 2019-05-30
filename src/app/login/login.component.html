@@ -22,7 +22,8 @@
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="singup-feilds-padding margin-top-10">
-                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" type="password" formControlName="password">
+                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" type="password" formControlName="password"
+                        onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off >
                         <mat-icon class="pointer" data-toggle="tooltip" title="{{hide? 'Show' : 'Hide'}}Password" matSuffix (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         <mat-error *ngIf="password.touched && password.invalid">
                             <mat-error *ngIf="password.errors.required"> Password cannot be empty </mat-error>
