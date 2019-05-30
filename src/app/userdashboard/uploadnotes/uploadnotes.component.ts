@@ -214,24 +214,11 @@ export class UploadnotesComponent implements OnInit {
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    console.log(new_date);
-    if(this.model.valid){
       this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory , this.model.nestedcategory , this.sell_status, this.accept_offer,  new_date,  bid_date , this.bid_status )
       .subscribe(Res => {
-        // this.date = Res
-        // console.log(this.date);
       });
       this.CourseSuccess();
       f.resetForm()
-    }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 4500
-    })
   }
   CourseSuccess() {
     swal({

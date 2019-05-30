@@ -186,20 +186,10 @@ this.getindcardname();
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
-    if(this.model.valid){
       this.newcard.uploadcard(this.model , this.accept_offer , new_date,  bid_date, date )
       .subscribe(Res => { });
     f.resetForm();
     }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 2000
-    });
-  }
   onSubmited(f: NgForm) {
     this.http.post(
       Config.Imageurlupload,
@@ -213,6 +203,7 @@ this.getindcardname();
         this.CourseSuccess();
       }
     });
+    f.resetForm();
   }
   detailpost(f){
     this.newcard.carddetail(this.model).subscribe(Res => {
@@ -221,8 +212,7 @@ this.getindcardname();
         title: 'Flash Card Detail Added !.',
         width: '512px'
       });
-console.log(this.model); });
-    f.resetForm();
+});
   }
 
   sweetalertupload() {

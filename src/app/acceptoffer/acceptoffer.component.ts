@@ -39,7 +39,7 @@ export class AcceptofferComponent implements OnInit {
   }
   postoffer() {
     var currentdate = moment(new Date, ' YYYY-MM-DD ');
-    var new_date = moment(currentdate).add(this.end_time, 'days');
+    var new_date = currentdate.add(this.end_time, 'days');
     return this.global.acceptoffer(this.data.notes, this.data.course, this.data.book, this.data.flashcard, this.model.offer_price, new_date).subscribe(
 
       data => {
