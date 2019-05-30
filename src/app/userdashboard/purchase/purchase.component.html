@@ -20,7 +20,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active mt-3" id="notes">
                             <h3 class="mainbanner">My Bought Items</h3>
-                            <h4 class="text-center" *ngIf="bought?.notes==0">No note bought yet</h4>
+                            <h4 class="text-center" *ngIf="bought?.notes==0">No notes bought yet</h4>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of bought?.notes, let i=index">
                                 <div *ngIf="item !=null ">
