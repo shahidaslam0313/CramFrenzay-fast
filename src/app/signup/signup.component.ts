@@ -326,7 +326,7 @@ export class SignupComponent {
           confirmButtonColor: "#DD6B55",
           confirmButtonText: "OK",
           width: '512px',
-          timer: 4500
+          timer: 2500
 
         });
         if (Res.status == true) {
@@ -376,7 +376,7 @@ export class SignupComponent {
         }
       },
         error => {
-          this.emailstatus = false;
+          this.emailstatus = true;
         }
       );
     }

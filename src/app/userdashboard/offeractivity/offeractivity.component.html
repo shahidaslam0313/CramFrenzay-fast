@@ -240,52 +240,161 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="R-flashcards" class="tab-pane margin-bottom-200">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
-                                            <div class="product-list__item" *ngIf="item.offer_status==false">
-                                                <figure class="product-list__img">
-                                                    <a routerLink="/fcdetail/{{item.id}}">
-                                                        <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*" alt="">
-                                                    </a>
-                                                </figure>
-                                                <div class="product-list__content">
-                                                    <div class="product-list__category">
-                                                        <a routerLink="/fcdetail/{{item?.id}}" title="{{item?.name}}">{{item?.name}}</a>
+                                <div class="col-sm-9 ">
+                                    <div class="tab-content">
+                                        <div id="listofterms" class="tab-pane active margin-bottom-200">
+                                            <div class="container-fluid">
+                                                <h1 class="mainbanner">Accepted Offers</h1>
+                                                <ul class="nav nav-tabs nav-justified fcdetail">
+                                                    <li class="nav-item"> <a data-toggle="tab" href="#notes" class="nav-link nav-active active" title="Accepted Notes">Notes</a>
+                                                    </li>
+                                                    <li class="nav-item"> <a data-toggle="tab" href="#courses" id="flipFlash" class="nav-link nav-active" title="Accepted Course">Courses</a>
+                                                    </li>
+                                                    <li class="nav-item"> <a data-toggle="tab" href="#flashcards" id="flashdetail" class="nav-link nav-active" title="Accepted Flash Cards">Flash Cards</a> 
+                                                    </li>
+                                                    <li class="nav-item"> <a data-toggle="tab" href="#books" id="flashdetail" class="nav-link nav-active" title="Accepted Books">Books</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div id="notes" class="tab-pane active margin-bottom-200">
+                                                        <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
+                                                                <div class="product-list__item">
+                                                                    <figure class="product-list__img">
+                                                                        <a routerLink="/notes/{{item?.id}}">
+                                                                            <img src="{{Imageurl}}{{item?.notes_thumbnail}}">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div class="product-list__content">
+                                                                        <div class="product-list__category">
+                                                                            <a routerLink="/notes/{{item?.id}}" title="{{item?.name}}">{{item?.name}}</a>
+                                                                        </div>
+                                                                        <div class="product-list__title tutor-subject">
+                                                                            <span title="Authur Name:{{item?.userid}}" routerLink="/notes/{{item?.id}}">{{item?.userid}}</span>
+                                                                        </div>
+                                                                        <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                        </rating>
+                                                                    </div>
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="already-bought"  *ngIf="item?.isPaid==true">
+                                                                            Payment Done:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn "  *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog3(item?.id)">
+                                                                            Pay Now:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(item?.id)">
+                                                                            Accepted offer View history
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="product-list__title tutor-subject">
-                                                        <span title="Authur Name:{{item?.userid}}" routerLink="/fcdetail/{{item?.id}}">{{item?.userid}}</span>
+                                                    <div id="courses" class="tab-pane margin-bottom-200">
+                                                        <h4 class="text-center" *ngIf="getoffer?.courses==0"> No Course Offer Accepted  Yet</h4>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
+                                                                <div class="product-list__item">
+                                                                    <figure class="product-list__img">
+                                                                        <a routerLink="/eachcourse/{{item.id}}">
+                                                                            <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*" alt="Course">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div class="product-list__content">
+                                                                        <div class="product-list__category">
+                                                                            <a routerLink="/eachcourse/{{item?.id}}" title="{{item?.name}}">{{item?.name}}</a>
+                                                                        </div>
+                                                                        <div class="product-list__title tutor-subject">
+                                                                            <span title="Authur Name:{{item?.author}}" routerLink="/eachcourse/{{item?.id}}">{{item?.author}}</span>
+                                                                        </div>
+                                                                        <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                        </rating>
+                                                                    </div>
+                                                                    <div class="product-list__item-info-1" >
+                                                                        <p class="already-bought" *ngIf="item?.isPaid==true">
+                                                                            Payment Done:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog4(item?.id)">
+                                                                            Pay Now:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue,item?.id)">
+                                                                            Accepted offer View history
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
-                                                    </rating>
-                                                </div>
-                                                <div class="product-list__item-info-1">
-                                                    <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==false" (click)="showhistory(nullvalue,nullvalue ,item?.id); gettingcards(item?.id)">
-                                                        Rejected View offer history
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="R-books" class="tab-pane margin-bottom-200">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
-                                            <div class="product-list__item" *ngIf="offer_status==false">
-                                                <p *ngIf="offer_status==false">
-                                                    No book offer rejected yet
-                                                </p>
-                                                <figure class="product-list__img">
-                                                    <a routerLink="/detail/{{item?.id}}">
-                                                        <img src="{{Imageurl}}{{item?.book_image}}" alt="Book">
-                                                    </a>
-                                                </figure>
-                                                <div class="product-list__content">
-                                                    <div class="product-list__category">
-                                                        <a routerLink="/detail/{{item?.id}}" title="{{item?.name}}">{{item?.name}}</a>
+                                                    <div id="flashcards" class="tab-pane margin-bottom-200">
+                                                        <h4 class="text-center" *ngIf="getoffer?.flashcards==0"> No Flash Card Offer Accepted Yet</h4>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                                                <div class="product-list__item">
+                                                                    <figure class="product-list__img">
+                                                                        <a routerLink="/fcdetail/{{item.id}}">
+                                                                            <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*" alt="">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div class="product-list__content">
+                                                                        <div class="product-list__category">
+                                                                            <a routerLink="/fcdetail/{{item?.id}}" title="{{item?.name}}">{{item?.name}}</a>
+                                                                        </div>
+                                                                        <div class="product-list__title tutor-subject">
+                                                                            <span title="Authur Name:{{item?.userid}}" routerLink="/fcdetail/{{item?.id}}">{{item?.userid}}</span>
+                                                                        </div>
+                                                                        <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                        </rating>
+                                                                    </div>
+                                                                    <div class="product-list__item-info-1" >
+                                                                        <p class="already-bought" *ngIf="item?.isPaid==true">
+                                                                            Payment Done:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog5(item?.id)">
+                                                                            Pay Now:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,item?.id)">
+                                                                            Accepted offer View history
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="product-list__title tutor-subject">
-                                                        <span title="Authur Name:{{item?.author_name}}" routerLink="/detail/{{item?.id}}">{{item?.author_name}}</span>
+                                                    <div id="books" class="tab-pane margin-bottom-200">
+                                                        <h4 class="text-center" *ngIf="getoffer?.books==0"> No Book Offer Accepted Yet</h4>
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
+                                                                <div class="product-list__item">
+                                                                    <figure class="product-list__img">
+                                                                        <a routerLink="/detail/{{item?.id}}">
+                                                                            <img src="{{Imageurl}}{{item?.book_image}}" alt="Book">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div class="product-list__content">
+                                                                        <div class="product-list__category">
+                                                                            <a routerLink="/detail/{{item?.id}}" title="{{item?.name}}">{{item?.name}}</a>
+                                                                        </div>
+                                                                        <div class="product-list__title tutor-subject">
+                                                                            <span title="Authur Name:{{item?.author_name}}" routerLink="/detail/{{item?.id}}">{{item?.author_name}}</span>
+                                                                        </div>
+                                                                        <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                        </rating>
+                                                                    </div>
+                                                                    <div class="product-list__item-info-1">
+                                                                        <p class="already-bought"  *ngIf="item?.isPaid==true">
+                                                                            Payment Done:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " *ngIf="item?.isPaid==null || item?.isPaid==false && item?.accept_offer==true" (click)="openDialog6(item?.id)">
+                                                                            Pay Now:{{item?.your_offer | currency:'USD'}}
+                                                                        </p>
+                                                                        <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">
+                                                                            Accepted offer View history
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
                                                     </rating>
