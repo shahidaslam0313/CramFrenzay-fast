@@ -15,6 +15,7 @@ import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategory
 import {CoursevideoComponent} from './userdashboard/coursevideo/coursevideo.component';
 import {EachcourseComponent} from './Course/eachcourse/eachcourse.component';
 import { MycartComponent } from './userdashboard/mycart/mycart.component';
+import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 
 export const appRoutes: Routes = [
   { path: '', component: MainpageComponent },
@@ -60,7 +61,7 @@ export const appRoutes: Routes = [
 
       { path : 'coursevideo' , component: CoursevideoComponent},
       { path: 'eachcourse/:id', component: EachcourseComponent },
-
+      { path: 'pendingoffers', component: PendingoffersComponent },
       { path: 'experience', loadChildren: './userdashboard/experience/experience.module#ExperienceModule' },
       { path: 'paymentmethods', loadChildren: './userdashboard/paymentmethods/paymentmethods.module#PaymentmethodsModule' },
       { path: 'biddingactivity', loadChildren: './userdashboard/biditems/biditems.module#BiditemsModule', canActivate: [Auth2Service] },
