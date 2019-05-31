@@ -87,8 +87,9 @@
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Note Already Bought</a>
-                        <p class="already-bought" *ngIf="result?.isTeacher==true">
-                                Note add by me </p> <a class="card-btn"
+                         <div class="text-center"><p class="already-bought" *ngIf="result?.isTeacher==true">
+                                        Note Added by me </p>
+                                    </div>   <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
                         Now</a> <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
@@ -106,7 +107,7 @@
                             <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
                             <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
                         </ul>
-                        <div><a class="fb-like" [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></a></div>
+                        <div><a class="fb-like"  [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></a></div>
                     </div>
                 </div>
             </div>

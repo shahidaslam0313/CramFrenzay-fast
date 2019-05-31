@@ -322,17 +322,17 @@ export class MylibraryComponent implements OnInit {
 
     this.http.post(
       Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-        // if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-        //   // this.sweetalertupload();
-        // }
-        // else {
+        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+          // this.sweetalertupload();
+        }
+        else {
         this.cardedit.flashcard_image = data;
-        // this.ifCardImageUpload();
-        // }
+        this.ifCardImageUpload();
+        }
       });
-    // }
+    }
     // let headers = new HttpHeaders();
-    // ifCardImageUpload(){
+    ifCardImageUpload(){
     this.newcoures.uploadcard(this.cardedit.id, this.bidflashcard.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.cardedit.flashcard_image,
       this.bidbooks.initial_amount, this.bidbooks.end_time, this.bidflashcard.isreserved, this.bidflashcard.reservedprice, this.bidflashcard.start_time).subscribe(Res => {
         swal({

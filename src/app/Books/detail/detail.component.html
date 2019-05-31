@@ -86,7 +86,7 @@
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a> 
-                        <a class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </a> <a class="card-btn"
+                      <div class="text-center"> <p class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </p></div> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkbook(result?.id)">Buy Now</a>
                     <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
                         to Cart</a> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
