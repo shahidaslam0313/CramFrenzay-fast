@@ -2719,16 +2719,21 @@ countdown .countdown {
   font-weight: 100;
   text-align: center;
   font-size: 35px;
-  margin: 15px 0;
+  /* margin: 15px 0; */
   display: block!important;
   background: 0 0;
   height: auto
 }
-
+.user-profile .mat-slide-toggle-content {
+  font-weight: 600;
+  font-size: 14px!important;
+}
 .countdown .measurements {
   display: inline-block;
   padding: 10px;
-  background-image: linear-gradient(to right top, #000, #380e18, #6a071f, #9d001b, #c00)
+  background-image: linear-gradient(to right top, #000, #380e18, #6a071f, #9d001b, #c00);
+  width: 40%;
+  margin: 0 5px 10px;
 }
 
 .countdown .measurements p:first-child {
