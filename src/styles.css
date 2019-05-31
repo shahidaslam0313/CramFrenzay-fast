@@ -2983,7 +2983,7 @@ countdown .countdown {
   .main-nav__list > .main-nav__list-icons > li > a, .main-nav__list > li > a {
     padding: 25px 3px;
 }
-
+}
 @media only screen and (max-width:1024px) {
   .sellnowbtn {
       font-size: 13px!important;
