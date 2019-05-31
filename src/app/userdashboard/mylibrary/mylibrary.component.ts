@@ -337,11 +337,12 @@ export class MylibraryComponent implements OnInit {
       this.bidbooks.initial_amount, this.bidbooks.end_time, this.bidflashcard.isreserved, this.bidflashcard.reservedprice, this.bidflashcard.start_time).subscribe(Res => {
         swal({
           type: 'success',
-          title: 'Successfully update',
+          title: 'Flash Card updated Successfully',
           showConfirmButton: false,
           timer: 2500
         });
       });
+      this.Showcards();
   }
   bidnote: any = {};
   var_final_get_date;
@@ -527,10 +528,11 @@ export class MylibraryComponent implements OnInit {
       .subscribe(Res => {
         swal({
           type: 'success',
-          title: 'Update Book',
+          title: 'Book Updated Successfully ',
           showConfirmButton: false,
           timer: 2500
         });
+        this.Showbooks()
       },
         // error => {
         //   swal({
@@ -559,10 +561,11 @@ export class MylibraryComponent implements OnInit {
       this.bidcourses.initial_amount, this.bidcourses.end_time, this.bidcourses.isreserved, this.bidcourses.reservedprice, this.bidcourses.start_time, this.bidcourses.bid_status).subscribe(Res => {
         swal({
           type: 'success',
-          title: 'Update course',
+          title: 'course Updated Successfully ',
           showConfirmButton: false,
           timer: 2500
         });
+        this.Showcourses()
       },
         error => {
           swal({
@@ -593,10 +596,11 @@ export class MylibraryComponent implements OnInit {
       this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.editnotes.notes_thumbnail, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
         swal({
           type: 'success',
-          title: 'Update Note',
+          title: 'Note Updated Successfully ',
           showConfirmButton: false,
           timer: 2500
         });
+        this.Shownotes()
       },
         error => {
           swal({

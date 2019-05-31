@@ -48,7 +48,7 @@
                         <div class="col-sm-12 col-md-12 col-xs-12 ">
                             <mat-form-field class="card-type">
                                 <mat-select placeholder="Card Type" [formControl]="card_type"
-                                    (change)="ShowButton(card_type.value)">
+                                    (change)="ShowButton(card_type.value)" required>
                                     <mat-option *ngFor="let card_get_datat of card_opeation"
                                         [value]="card_get_datat.value">
                                         {{card_get_datat.viewValue}}</mat-option>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Card Holder Name"
-                                    formControlName="cardHolderName">
+                                    formControlName="cardHolderName" maxlength="64" required>
                                 <mat-error
                                     *ngIf="form.controls.cardHolderName.touched && form.controls.cardHolderName.invalid">
                                     <mat-error *ngIf="form.controls.cardHolderName.errors.required"> Card Holder Name
@@ -73,43 +73,30 @@
                                     </mat-error>
                                     <mat-error *ngIf="form.controls.cardHolderName.errors.minlength"> Card Holder Name
                                         must be
-                                        atleast{{form.controls.cardHolderName.errors.minlength.requiredLength}}characters
+                                        at least&nbsp;{{form.controls.cardHolderName.errors.minlength.requiredLength}}&nbsp;characters
                                         long.
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.cardHolderName.errors.maxlength"> Card Holder Name
-                                        must be at
-                                        atmost{{form.controls.cardHolderName.errors.maxlength.requiredLength}}characters
-                                        long.
-                                    </mat-error>
-                                    <!-- <mat-error *ngIf="form.controls.cardHolderName.errors.cannotContainSpace"> Card Holder Name
-                                    cannot contain spaces </mat-error> -->
                                 </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Nick Name"
-                                    formControlName="cardnickname">
+                            <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Nickname"
+                                    formControlName="cardnickname" maxlength="64" required>
                                 <mat-error
                                     *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
                                     <mat-error *ngIf="form.controls.cardnickname.errors.required"> Nick Name cannot be
                                         empty </mat-error>
                                     <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Nick Name must be
-                                        atleast{{form.controls.cardnickname.errors.minlength.requiredLength}}characters
+                                        at least&nbsp;{{form.controls.cardnickname.errors.minlength.requiredLength}}&nbsp;characters
                                         long.
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.cardnickname.errors.maxlength"> Nick Name must be at
-                                        atmost{{form.controls.cardnickname.errors.maxlength.requiredLength}}characters
-                                        long.
-                                    </mat-error>
-                                    <!-- <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace"> Nick Name
-                                    cannot contain spaces </mat-error> -->
                                 </mat-error>
                             </mat-form-field>
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber">
                             <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number"
-                                    formControlName="cardnumber" [textMask]="{mask: cardmask}">
+                                    formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
                                 <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be
                                         empty
@@ -128,7 +115,7 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber4">
                             <mat-form-field> <input matInput type="text" placeholder="15 Digit Card Number"
-                                    formControlName="cardnumber4" [textMask]="{mask: cardmask}">
+                                    formControlName="cardnumber4" [textMask]="{mask: cardmask}" required>
                                 <mat-error
                                     *ngIf="form.controls.cardnumber4.touched && form.controls.cardnumber4.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber4.errors.required"> Card number cannot be
@@ -149,7 +136,7 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cvv">
                             <mat-form-field> <input matInput type="text" maxlength="3" minlength="3" placeholder="CVV"
-                                    formControlName="cvv">
+                                    formControlName="cvv" required>
                                 <mat-error *ngIf="form.controls.cvv.touched && form.controls.cvv.invalid">
                                     <mat-error *ngIf="form.controls.cvv.errors.required"> CVV cannot be empty
                                     </mat-error>
@@ -167,7 +154,7 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cvv4">
                             <mat-form-field> <input matInput type="text" maxlength="4" minlength="4"
-                                    placeholder="CVV" formControlName="cvv4">
+                                    placeholder="CVV" formControlName="cvv4" required>
                                 <mat-error *ngIf="form.controls.cvv4.touched && form.controls.cvv4.invalid">
                                     <mat-error *ngIf="form.controls.cvv4.errors.required"> CVV cannot be empty
                                     </mat-error>
@@ -186,7 +173,7 @@
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field> <input matInput placeholder="Expiry Date (MM/YY)"
                                     [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
-                                    (change)="chek(exp.value)">
+                                    (change)="chek(exp.value)" required>
                                 <mat-error *ngIf="form.controls.expirydate.touched && form.controls.expirydate.invalid">
                                     <mat-error *ngIf="form.controls.expirydate.errors.required"> Expiry date cannot be
                                         empty
@@ -196,14 +183,14 @@
                                         MM/YY format. </mat-error>
                                 </mat-error>
                                 <span class="card-error" *ngIf="expirydate <= '19'">
-                                    Invalid Expiry Date
-                                </span>
-                            </mat-form-field>
+                                        Invalid Expiry Date
+                                    </span>
+                            </mat-form-field>                          
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field>
                                 <input matInput placeholder="Zip Code" formControlName="zipCode" type="text" maxlength="5"
-                                 (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1 />
+                                 (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1 required />
                                 <mat-error *ngIf="form.controls.zipCode.hasError('pattern')"> Zip Code must be only in
                                     digits.
                                 </mat-error>
@@ -213,31 +200,24 @@
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field>
-                                <input class="text_cap" matInput placeholder="Street Address" formControlName="street" type="text" />
+                                <input class="text_cap" matInput placeholder="Street Address" formControlName="street" type="text" required/>
+                                <mat-error *ngIf="form.controls.street.hasError('required')" > Street Address is Required
+                                    </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field>
-                                <input class="text_cap" matInput placeholder="City" formControlName="city" type="text" />
-                                <mat-error *ngIf="form.controls.city.hasError('pattern')"> City Name must be in
-                                    Alphabets only
-                                </mat-error>
+                                <input class="text_cap" matInput placeholder="City" formControlName="city" type="text"readonly />
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field>
-                                <input class="text_cap" matInput placeholder="State" formControlName="state" type="text" />
-                                <mat-error *ngIf="form.controls.state.hasError('pattern')"> State Name must be in
-                                    Alphabets only
-                                </mat-error>
+                                <input class="text_cap" matInput placeholder="State" formControlName="state" type="text" readonly/>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field>
-                                <input class="text_cap" matInput placeholder="Country" formControlName="country" type="text" />
-                                <mat-error *ngIf="form.controls.country.hasError('pattern')"> Country Name must be in
-                                    Alphabets only
-                                </mat-error>
+                                <input class="text_cap" matInput placeholder="Country" formControlName="country" type="text" readonly />
                             </mat-form-field>
                         </div>
                     </div>
@@ -311,24 +291,24 @@
                 </div>
             </div>
             <div class="modal-body">
-                <form class="user-add-ingo-form" *ngIf="card">
+                <form class="user-add-ingo-form" *ngIf="card"  [formGroup]="editform" >
                     <mat-form-field> <input matInput type="text" placeholder="Card Nick Name"
-                            [(ngModel)]="card.nickname" name="nickname" #nickname="ngModel"> </mat-form-field>
+                            [(ngModel)]="card.nickname" name="nickname" formControlName="nickname"> </mat-form-field>
                     <mat-form-field> <input matInput type="text" placeholder="Street Address"
-                            [(ngModel)]="card.street_adrress" name="street_address" #street_adrress="ngModel">
+                            [(ngModel)]="card.street_adrress" name="street_address"
+                            formControlName="street">
                     </mat-form-field>
+                    <mat-form-field> <input matInput type="text" placeholder="Zip Code" [(ngModel)]="card.zip_code" maxlength="5"
+                        name="zip_code" formControlName="zipCode" (ngModelChange)="zipcodeCheckedit(zipcode1.value)" #zipcode1 > </mat-form-field>
                     <mat-form-field> <input matInput type="text" placeholder="State" [(ngModel)]="card.state"
-                            name="state" #state="ngModel"> </mat-form-field>
+                            name="state" formControlName="state" readonly> </mat-form-field>
                     <mat-form-field> <input matInput type="text" placeholder="City" [(ngModel)]="card.city" name="city"
-                            #city="ngModel">
+                            formControlName="city" readonly>
                     </mat-form-field>
-                    <mat-form-field> <input matInput type="text" placeholder="Zip Code" [(ngModel)]="card.zip_code"
-                            name="zip_code" #zip_code="ngModel"> </mat-form-field>
                     <mat-form-field> <input matInput type="text" placeholder="Country" [(ngModel)]="card.country"
-                            name="country" #country="ngModel"> </mat-form-field>
+                            name="country" formControlName="country" readonly> </mat-form-field>
                     <mat-slide-toggle  [(ngModel)]="card.default" name="default"
-                        #default="ngModel">Set as default
-                        payment method</mat-slide-toggle>
+                        formControlName="defaultcheck">Set as Default Payment Method</mat-slide-toggle>
                          <a class="btn-style btn  width100 margin-top-10"
                         (click)="updateSingleCard(card.id)" data-dismiss="modal">Update</a>
                 </form>

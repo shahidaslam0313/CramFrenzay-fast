@@ -246,7 +246,7 @@
             <span class="btn-file ">Update Note File (PDF) <input (change)="onChange2($event)" #updata type="file"
                 accept="application/pdf" required>
             </span>
-            <a class="btn-style btn " (click)="updatenotes(bidnote.id)">Update Note</a>
+            <a class="btn-style btn " (click)="updatenotes(bidnote.id)" data-dismiss="modal">Update Note</a>
           </div>
 
         </form>
@@ -356,7 +356,7 @@
             <span class="btn-file ">Update FlashCard Image <input (change)="onChange($event)" type="file"
                 name="flashcard_image" #flashcard_image [(ngModel)]="cardedit.flashcard_image"
                 accept="image/gif, image/jpeg, image/png" required>
-            </span> <a class="btn-style btn" (click)="updatecard(bidflashcard.id)">Update FlashCard</a>
+            </span> <a class="btn-style btn" (click)="updatecard(bidflashcard.id)" data-dismiss="modal">Update Flash Card</a>
           </div>
 
         </form>
@@ -467,7 +467,7 @@
             <span class="btn-file ">Update Course Image <input (change)="onChange($event)" type="file"
                 [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" #course_thumbnail
                 accept="image/gif, image/jpeg, image/png" required> </span>
-            <a class="btn-style btn " (click)="update(editcourse.id)">Update Course</a>
+            <a class="btn-style btn " (click)="update(editcourse.id)" data-dismiss="modal">Update Course</a>
           </div>
         </form>
       </div>
@@ -594,7 +594,7 @@
             <span class="btn-file ">Update Book Image <input (change)="onChange($event)" type="file" name="book_image"
                 #book_image accept="image/gif, image/jpeg, image/png" required>
             </span>
-            <a class="btn-style btn" (click)="onSubmit(profile.id)">Update Book</a>
+            <a class="btn-style btn" (click)="onSubmit(profile.id)" data-dismiss="modal">Update Book</a>
           </div>
         </form>
       </div>
@@ -606,7 +606,7 @@
     <div class="modal-content ">
       <div class="modal-header">
         <div class="form-1-header">
-          <h1>Detele Notes</h1>
+          <h1>Detele Note</h1>
         </div>
       </div>
       <div class="modal-body">
@@ -615,9 +615,9 @@
           <p class="modal-para-cust"> Do you want to Delete this Note? </p>
         </div>
       </div>
-      <div class="modal-footer"> <button class="btn-style btn" (click)="deletenotes(notesid)" data-dismiss="modal">
-          Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel
-        </button> </div>
+      <div class="modal-footer"> <button class="btn-style btn" data-dismiss="modal"> Cancel
+        </button> <button class="btn-style btn" (click)="deletenotes(notesid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
   </div>
 </div>
@@ -635,9 +635,9 @@
           <p class="modal-para-cust"> Do you want to Delete this Course? </p>
         </div>
       </div>
-      <div class="modal-footer"> <button class="btn-style btn" (click)="deletecourese(courseid)" data-dismiss="modal">
-          Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel
-        </button> </div>
+      <div class="modal-footer"><button class="btn-style btn" data-dismiss="modal"> Cancel
+        </button>  <button class="btn-style btn" (click)="deletecourese(courseid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
   </div>
 </div>
@@ -655,8 +655,8 @@
           <p class="modal-para-cust"> Do you want to Delete this Book? </p>
         </div>
       </div>
-      <div class="modal-footer"> <button class="btn-style btn" (click)="bookdelete(bookid)" data-dismiss="modal">
-          Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel </button> </div>
+      <div class="modal-footer"><button class="btn-style btn" data-dismiss="modal"> Cancel </button>  <button class="btn-style btn" (click)="bookdelete(bookid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
   </div>
 </div>
@@ -665,7 +665,7 @@
     <div class="modal-content ">
       <div class="modal-header">
         <div class="form-1-header">
-          <h1>Detele FlashCard</h1>
+          <h1>Detele Flash Card</h1>
         </div>
       </div>
       <div class="modal-body">
@@ -674,9 +674,9 @@
           <p class="modal-para-cust"> Do you want to Delete this Flashcard? </p>
         </div>
       </div>
-      <div class="modal-footer"> <button class="btn-style btn" (click)="flashcardsdelete(cardsid)" data-dismiss="modal">
-          Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel
-        </button> </div>
+      <div class="modal-footer"><button class="btn-style btn" data-dismiss="modal"> Cancel
+        </button>  <button class="btn-style btn" (click)="flashcardsdelete(cardsid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
   </div>
 </div>

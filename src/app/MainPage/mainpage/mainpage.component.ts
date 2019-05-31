@@ -63,6 +63,7 @@ export class MainpageComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.global.currentMessage.subscribe(message => this.message = message);
     this.bidcourse();
     this.BidBuyflashcards();

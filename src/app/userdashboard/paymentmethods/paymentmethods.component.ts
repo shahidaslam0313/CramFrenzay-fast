@@ -63,13 +63,13 @@ city;state;country;
       Validators.pattern('(0[1-9]|10|11|12)/[0-9]{2}$')
     ]),
     cardnickname: new FormControl('', [
-      Validators.minLength(3),
-      Validators.maxLength(25),
+      Validators.minLength(2),
+      Validators.maxLength(64),
       Validators.required,
     ]),
     cardHolderName: new FormControl('', [
-      Validators.minLength(3),
-      Validators.maxLength(25),
+      Validators.minLength(2),
+      Validators.maxLength(64),
       Validators.required,
       Validators.pattern("[a-zA-Z ]+")
     ]),
@@ -128,6 +128,15 @@ city;state;country;
     check2: new FormControl(),
   });
   card_type = new FormControl();
+  editform= new FormGroup({
+    street : new FormControl('',[]),
+    city : new FormControl('',[]),
+    country : new FormControl('',[]),
+    zipCode : new FormControl('',[]),
+    nickname : new FormControl('',[]),
+    state : new FormControl('',[]),
+    defaultcheck : new FormControl('',[])
+  })
   private productsSource;
   currentProducts;
   cardtype;
@@ -181,6 +190,7 @@ city;state;country;
   Eachcard (id){
     this.serv.singleCard(id).subscribe(data=> {
       this.card = data
+      console.log(data,'save card')
     })
   }
   ShowButton(card_type) {
@@ -254,6 +264,24 @@ city;state;country;
           this.form.controls['city'].setValue(res['city']);
           this.form.controls['state'].setValue(res['state']);
           this.form.controls['country'].setValue(res['country']);
+        },
+        error => {
+          swal({
+            type: 'error',
+            title: 'Invalid Zipcode',
+            showConfirmButton: false,
+            timer: 2000,width: '512px',
+          })
+        });
+    }
+  }
+  zipcodeCheckedit(zipcode1) {
+    if (zipcode1.length > 4) {
+    this.serv.zipcode(zipcode1).subscribe(
+        res => {
+          this.editform.controls['city'].setValue(res['city']);
+          this.editform.controls['state'].setValue(res['state']);
+          this.editform.controls['country'].setValue(res['country']);
         },
         error => {
           swal({
@@ -444,6 +472,7 @@ city;state;country;
   getCards() {
     this.serv.showCards().subscribe(Data => {
       this.res = Data;
+      console.log(this.res,'GEtCARD')
     },
       error => {
         if (error.status == 404) {
