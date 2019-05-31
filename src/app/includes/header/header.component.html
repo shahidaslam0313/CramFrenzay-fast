@@ -162,7 +162,7 @@
                             </div>
                             
                         </li> -->
-                        <li class="main-nav__list-bars"> <a  href="javascript:void(0)"> <i class="fas fa-bars"></i>
+                        <li class="main-nav__list-bars"> <a  href=""> <i class="fas fa-bars"></i>
                             </a>
                             <div class="sub-menu">
                                 <ul class="cutsom-pd-bars">
@@ -251,7 +251,7 @@
                             <li class="info-box-02__box-02"> <a  href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene"
                                     class="search-block" target="_blank"> <i class="fab fa-android"></i> </a> </li>
                             <li class="heart-li" *ngIf="check_login()"> <a  routerLink="/watchlist"
-                                    title="Watchlist"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
+                                    title="Watch List"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
                                 <div class="heart-sub-meun">
                                     <div class="heart-full-div" >
                                             <h1 class="dropdown-heading">Notes</h1>
@@ -259,18 +259,20 @@
                                                 <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                     (click)="del(data.id)"> <i class="fas fa-times"></i> 
                                                 </div>
-                                                <div class="heart-main-div"> <img src="{{Imageurl}}{{data.notes.notes_thumbnail}}"
-                                                        class="heart-img" alt="notes">
+                                                <div class="heart-main-div"> <a routerLink="/notes/{{data?.notes.id}}"><img src="{{Imageurl}}{{data.notes.notes_thumbnail}}"
+                                                        class="heart-img" alt="notes" ></a>
                                                     <div class="heart-contact">
-                                                        <div class="heart-heading">{{data.notes.name}}</div>
+                                                        <div class="heart-heading"><a routerLink="/notes/{{data?.notes.id}}">{{data.notes.name}}</a></div>
                                                         <div class="heart-detail" *ngIf="data.notes.author!=''">
-                                                            Author:{{data.notes.author}}</div>
-                                                        <div class="heart-price"> <span class="heart-new-price">{{data.notes.price
-                                                                | currency:'USD'}}</span> <span class="discount-p">{{data?.notes.discount
+                                                                <a routerLink="{{data?.notes.id}}">
+                                                            Author:{{data.notes.author}}</a></div>
+                                                        <div class="heart-price"> <span class="heart-new-price">
+                                                                <a routerLink="/notes/{{data?.notes.id}}">{{data.notes.price
+                                                                | currency:'USD'}}</a></span> <span class="discount-p">{{data?.notes.discount
                                                                 | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                         </div>
                                                     </div>
-                                                </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
                                                     to Cart </a>
                                             </div>
@@ -278,10 +280,10 @@
                                             <div class="heart" *ngFor="let data of cardwish; let i=index">
                                                 <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                     (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
-                                                <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.flashcard.flashcard_image}}"
-                                                        class="heart-img" alt="flashcard_image">
+                                                <div class="heart-main-div"><a routerLink="/fcdetail/{{data?.flashcard.id}}"> <img src="{{Imageurl}}{{data?.flashcard.flashcard_image}}"
+                                                        class="heart-img" alt="flashcard_image"></a>
                                                     <div class="heart-contact">
-                                                        <div class="heart-heading">{{data.flashcard.name}}</div>
+                                                        <div class="heart-heading" ><a routerLink="/fcdetail/{{data?.flashcard.id}}">{{data?.flashcard.name}}</a></div>
                                                         <div class="heart-detail"> </div>
                                                         <div class="heart-price"> <span class="heart-new-price">{{data?.flashcard.price
                                                                 | currency:'USD'}}</span> <span class="discount-p">{{data?.flashcard.discount
@@ -290,7 +292,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                                <a  routerLink="" class="heart-card-btn"
                                                 (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
                                                 Move to Cart </a>
                                             </div>
@@ -298,18 +300,19 @@
                                         <div class="heart" *ngFor="let data of wishId; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                 (click)="del(data.id)"> <i class="fas fa-times"></i> </div>
-                                            <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.course.course_thumbnail}}"
-                                                    class="heart-img" alt="Course">
+                                            <div class="heart-main-div">  <a routerLink="/eachcourse/{{data?.course.id}}"><img src="{{Imageurl}}{{data?.course.course_thumbnail}}"
+                                                    class="heart-img" alt="Course"></a>
                                                 <div class="heart-contact">
-                                                    <div class="heart-heading">{{data?.course.name}}</div>
+                                                    <div class="heart-heading"><a routerLink="/eachcourse/{{data?.course.id}}">{{data?.course.name}}</a></div>
                                                     <div class="heart-detail" *ngIf="data?.course.author!=''">
-                                                        Author:{{data?.course.author}}</div>
-                                                    <div class="heart-price"> <span class="heart-new-price">{{data.course.price
-                                                            | currency:'USD'}}</span> <span class="discount-p">{{data?.course.discount
+                                                            <a routerLink="/eachcourse/{{data?.course.id}}">
+                                                        Author:{{data?.course.author}}</a></div>
+                                                    <div class="heart-price"> <span class="heart-new-price">  <a routerLink="/eachcourse/{{data?.course.id}}">{{data.course.price
+                                                            | currency:'USD'}}</a></span> <span class="discount-p">{{data?.course.discount
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="" class="heart-card-btn"
                                                 (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
@@ -318,25 +321,25 @@
                                         <div class="heart" *ngFor="let data of wishbook; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                 (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
-                                            <div class="heart-main-div"> <img src="{{Imageurl}}{{data?.book.book_image}}"
-                                                    class="heart-img" alt="Course">
+                                            <div class="heart-main-div"><a routerLink="/detail/{{data?.book.id}}"> <img src="{{Imageurl}}{{data?.book.book_image}}"
+                                                    class="heart-img" alt="Course"></a>
                                                 <div class="heart-contact">
-                                                    <div class="heart-heading">{{data.book.name}}</div>
+                                                    <div class="heart-heading"><a routerLink="/detail/{{data?.book.id}}">{{data.book.name}}</a></div>
                                                     <div class="heart-detail" *ngIf="data.book.author_name!=''">
-                                                        Author:{{data.book.author_name}}</div>
-                                                    <div class="heart-price"> <span class="heart-new-price">{{data?.book.price
-                                                            | currency:'USD'}}</span> <span class="discount-p">{{data?.book.discount
+                                                            <a routerLink="/detail/{{data?.book.id}}"> Author:{{data.book.author_name}}</a></div>
+                                                    <div class="heart-price"> <span class="heart-new-price"><a routerLink="/detail/{{data?.book.id}}">{{data?.book.price
+                                                            | currency:'USD'}}</a></span> <span class="discount-p">{{data?.book.discount
                                                             | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
                                                 </div>
-                                            </div><a  routerLink="javascript:void(0)" class="heart-card-btn"
+                                            </div><a  routerLink="" class="heart-card-btn"
                                                 (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
                                        
                                     </div>
                                     <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
-                                            routerLink="/watchlist" class="btn">Go to Watchlist</a> </div>
+                                            routerLink="/watchlist" class="btn">Go to Watch List</a> </div>
                                 </div>
                             </li>
                             <li class="addtocart-li" *ngIf="check_login()"> <a  routerLink="/addtocart"
@@ -348,19 +351,19 @@
                                             <div class="addtocart" *ngIf="cartitems.course !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
-                                                <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.course.course_thumbnail}}"
-                                                        class="addtocart-img" alt="Course">
+                                                <div class="addtocart-main-div"><a routerLink="/eachcourse/{{cartitems.course.id}}"> <img src="{{Imageurl}}{{cartitems.course.course_thumbnail}}"
+                                                        class="addtocart-img" alt="Course"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading">{{cartitems.course.name}}</div>
+                                                        <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.name}}</a></div>
                                                         <div class="heart-detail" *ngIf="cartitems.course.author!=''">
-                                                            Author:{{cartitems.course.author}}</div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price">${{cartitems.course.price}}</span>
+                                                                <a routerLink="/eachcourse/{{cartitems.course.id}}">Author:{{cartitems.course.author}}</a></div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.course.id}}">${{cartitems.course.price}}</a></span>
                                                             <span class="discount-p">${{cartitems.course.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.course.id,null,null,cartitems.id)">
-                                                    Move to Watchlist </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading" >Notes</h1>
@@ -368,19 +371,19 @@
                                             <div class="addtocart" *ngIf="cartitems.notes !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
-                                                <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.notes.notes_thumbnail}}"
-                                                        class="addtocart-img" alt="Course">
+                                                <div class="addtocart-main-div"> <a routerLink="/notes/{{cartitems.notes.id}}"><img src="{{Imageurl}}{{cartitems.notes.notes_thumbnail}}"
+                                                        class="addtocart-img" alt="Course"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading">{{cartitems.notes.name}}</div>
+                                                        <div class="heart-heading"><a routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.name}}</a></div>
                                                         <div class="heart-detail" *ngIf="cartitems.notes.author!=''">
-                                                            Author:{{cartitems.notes.author}}</div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price">${{cartitems.notes.price}}</span>
+                                                                <a routerLink="/notes/{{cartitems.notes.id}}">  Author:{{cartitems.notes.author}}</a></div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.notes.id}}">${{cartitems.notes.price}}</a></span>
                                                             <span class="discount-p">${{cartitems.notes.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
+                                                </div><a  routerLink="" class=""
                                                     (click)="moveToWishlist(null,null,null,cartitems.notes.id,cartitems.id)">
-                                                    Move to Watchlist </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading">Flash Cards</h1>
@@ -388,17 +391,17 @@
                                             <div class="addtocart" *ngIf="cartitems.flashcard !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
-                                                <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.flashcard.flashcard_image}}"
-                                                        class="addtocart-img" alt="Course">
+                                                <div class="addtocart-main-div"><a routerLink="/fcdetail/{{cartitems.flashcard.id}}"> <img src="{{Imageurl}}{{cartitems.flashcard.flashcard_image}}"
+                                                        class="addtocart-img" alt="Course"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading">{{cartitems.flashcard.name}}</div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price">${{cartitems.flashcard.price}}</span>
+                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems.flashcard.id}}"> {{cartitems.flashcard.name}}</a></div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.flashcard.id}}"> ${{cartitems.flashcard.price}}</a></span>
                                                             <span class="discount-p">${{cartitems.flashcard.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,cartitems.flashcard.id,null,cartitems.id)">
-                                                    Move to Watchlist </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading">Books</h1>
@@ -406,19 +409,19 @@
                                             <div class="addtocart" *ngIf="cartitems.book !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
-                                                <div class="addtocart-main-div"> <img src="{{Imageurl}}{{cartitems.book.book_image}}"
-                                                        class="addtocart-img" alt="Course">
+                                                <div class="addtocart-main-div"><a routerLink="/detail/{{cartitems.book.id}}"> <img src="{{Imageurl}}{{cartitems.book.book_image}}"
+                                                        class="addtocart-img" alt="Course"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading">{{cartitems.book.name}}</div>
+                                                        <div class="heart-heading"><a routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.name}}</a></div>
                                                         <div class="heart-detail" *ngIf="cartitems.book.author_name!=''">
-                                                            Author:{{cartitems.book.author_name}}</div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price">${{cartitems.book.price}}</span>
+                                                                <a routerLink="/detail/{{cartitems.book.id}}">  Author:{{cartitems.book.author_name}}</a></div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.book.id}}">${{cartitems.book.price}}</a></span>
                                                             <span class="discount-p">${{cartitems.book.discount}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(cartitems.book.id,null,null,null,cartitems.id)">
-                                                    Move to Watchlist </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>                                     
                                     </div>
@@ -445,7 +448,7 @@
                                                         <a class="display-block" (click)="putdelnotification(cartitems?.id)">
                                                             <div class="notification-heading">{{cartitems?.nf_type}}</div>
                                                           <!--<p type="hidden">{{cartitems?.verb}}</p>-->
-                                                            <div class="heart-heading">{{cartitems?.description}}</div>
+                                                            <div class="heart-heading" title="{{cartitems?.description}}">{{cartitems?.description}}</div>
                                                         </a> </div>
                                                 </div>
                                             </div>
