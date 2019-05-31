@@ -185,9 +185,11 @@
                                                               <div class="product-list__title tutor-subject">
                                                                   <span title="Authur Name:" routerLink="/notes/{{data?.id}}">{{data?.name}}</span>
                                                               </div>
-                                                              <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
-                                                              </rating>
-                                                              <p class="product-price">user_offer: ${{data?.user_offer}}</p>
+                                                              <div>
+                                                                <rating class="rating-float" ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
+                                                                </rating>
+                                                                <p class="product-price">Price: ${{data?.user_offer}}</p>
+                                                            </div>
                                                           </div>
                                                     
                                                       </div>
@@ -213,10 +215,12 @@
                                                                 <div class="product-list__title tutor-subject">
                                                                     <span title="Authur Name:" routerLink="/eachcourse/{{item?.id}}">{{item?.name}}</span>
                                                                 </div>
-                                                                <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
-                                                                </rating>
+                                                                <div>
+                                                                    <rating class="rating-float" ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                    </rating>
+                                                                    <p class="product-price">Price: ${{item?.user_offer}}</p>
+                                                                </div>
                                                             </div>
-                                                          <p>user_offer: ${{item?.user_offer}}</p>
                                                           </div>
                                                       </div>
                                                   </div>
@@ -238,10 +242,12 @@
                                                                 <div class="product-list__title tutor-subject">
                                                                     <span title="Authur Name:" routerLink="/eachcourse/{{item?.id}}">{{item?.name}}</span>
                                                                 </div>
-                                                                <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
-                                                                </rating>
+                                                                <div>
+                                                                    <rating class="rating-float" ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                    </rating>
+                                                                    <p class="product-price">Price: ${{item?.user_offer}}</p>
+                                                                </div>
                                                             </div>
-                                                          <p>user_offer: ${{item?.user_offer}}</p>
                                                           </div>
                                                       </div>
                                                   </div>
@@ -263,10 +269,13 @@
                                                                 <div class="product-list__title tutor-subject">
                                                                     <span title="Authur Name:" routerLink="/detail/{{item?.id}}">{{item?.name}}</span>
                                                                 </div>
-                                                                <rating ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
-                                                                </rating>
+                                                                <div>
+                                                                    <rating class="rating-float" ngModel="{{item?.rating}}" [readonly]="true" titles="{{item?.rating}}">
+                                                                    </rating>
+                                                                    <p class="product-price">Price: ${{item?.user_offer}}</p>
+                                                                </div>
                                                             </div>
-                                                          <p>user_offer: ${{item?.user_offer}}</p>
+                                                          
                                                           </div>
                                                       </div>
                                                   </div>
@@ -303,10 +312,13 @@
                                                             <div class="product-list__title tutor-subject">
                                                                 <span title="Authur Name:" routerLink="/notes/{{data?.id}}">{{data?.name}}</span>
                                                             </div>
-                                                            <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
-                                                            </rating>
+                                                            <div>
+                                                                <rating class="rating-float" ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
+                                                                </rating>
+                                                                <p class="product-price">Price: ${{data?.user_offer}}</p>
+                                                            </div>
                                                         </div>
-                                                      <p>user_offer: ${{data?.user_offer}}</p>
+                                                      
                                                       <!-- <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
                                                       <button *ngIf="data.status == true">Offer accepted</button>
                                                       <button *ngIf="data.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
@@ -424,10 +436,13 @@
                                                             <div class="product-list__title tutor-subject">
                                                                 <span title="Authur Name:" routerLink="/notes/{{data?.id}}">{{data?.name}}</span>
                                                             </div>
-                                                            <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
-                                                            </rating>
+                                                            <div>
+                                                                <rating class="rating-float" ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
+                                                                </rating>
+                                                                <p class="product-price">Price: ${{data?.user_offer}}</p>
+                                                            </div>
                                                         </div>
-                                                      <p>user_offer: ${{data?.user_offer}}</p>
+                                                      
                                                       <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
                                                       <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
                                                       <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
@@ -453,10 +468,13 @@
                                                               <div class="product-list__title tutor-subject">
                                                                   <span title="Authur Name:" routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</span>
                                                               </div>
-                                                              <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
-                                                              </rating>
+                                                              <div>
+                                                                <rating class="rating-float" ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
+                                                                </rating>
+                                                                <p class="product-price">Price: ${{data?.user_offer}}</p>
+                                                            </div>
                                                           </div>
-                                                        <p>user_offer: ${{data?.user_offer}}</p>
+                                                        
                                                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
                                                         <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
                                                         <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
@@ -483,15 +501,18 @@
                                                                   <div class="product-list__title tutor-subject">
                                                                       <span title="Authur Name:" routerLink="/fcdetail/{{data?.id}}">{{data?.name}}</span>
                                                                   </div>
-                                                                  <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
-                                                                  </rating>
+                                                                  <div>
+                                                                    <rating class="rating-float" ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
+                                                                    </rating>
+                                                                    <p class="product-price">Price: ${{data?.user_offer}}</p>
+                                                                </div>
                                                               </div>
-                                                            <p>user_offer: ${{data?.user_offer}}</p>
+                                                            
                                                             <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                           
+                                                           <div class="div-button">
                                                             <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
                                                             <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
-                                                            
+                                                        </div>
                                                           </div>
                                                       
                                                       
@@ -516,14 +537,17 @@
                                                               <div class="product-list__title tutor-subject">
                                                                   <span title="Authur Name:" routerLink="/fcdetail/{{data?.id}}">{{data?.name}}</span>
                                                               </div>
-                                                              <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
-                                                              </rating>
+                                                              <div>
+                                                                <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
+                                                                </rating>
+                                                                <p class="product-price">Price: ${{data?.user_offer}}</p>
+                                                            </div>
                                                           </div>
-                                                        <p>user_offer: ${{data?.user_offer}}</p>
                                                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                       
+                                                       <div class="button">
                                                         <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
                                                         <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                    </div>
                                                       </div>
                                                   
                                                   
