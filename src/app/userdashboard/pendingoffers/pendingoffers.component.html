@@ -429,16 +429,14 @@
                                                         </div>
                                                       <p>user_offer: ${{data?.user_offer}}</p>
                                                       <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                      <button *ngIf="data.status == true">Offer accepted</button>
-                                                      <button *ngIf="data.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                      <button *ngIf="data.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                      <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                      <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                     </div>
-                                                
-                                                
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div id="t-p-courses" class="tab-pane margin-bottom-200">
+                                          
+                                              <div id="P-courses" class="tab-pane margin-bottom-200">
                                                 <h4 *ngIf="offercount?.courses == ''">No any one offer yet on your course</h4>
                                                   <div class="row">
                                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.courses; let i=index">
@@ -460,16 +458,15 @@
                                                           </div>
                                                         <p>user_offer: ${{data?.user_offer}}</p>
                                                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                        <button *ngIf="data?.status == true">Offer accepted</button>
-                                                        <button *ngIf="data?.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                        <button *ngIf="data?.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                        <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                        <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                       </div>
                                                   
                                                   
                                                     </div>
                                                   </div>
                                               </div>
-                                              <div id="t-p-flashcards" class="tab-pane margin-bottom-200">
+                                              <div id="P-flashcards" class="tab-pane margin-bottom-200">
                                                 <h4 *ngIf="offercount?.flashcards == ''">No any one offer yet on your flash cards</h4>
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.flashcards; let i=index">
@@ -491,9 +488,9 @@
                                                               </div>
                                                             <p>user_offer: ${{data?.user_offer}}</p>
                                                             <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                            <button *ngIf="data?.status == true">Offer accepted</button>
-                                                            <button *ngIf="data?.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                            <button *ngIf="data?.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                           
+                                                            <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                            <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                             
                                                           </div>
                                                       
@@ -502,7 +499,7 @@
                       
                                                   </div>
                                               </div>
-                                              <div id="t-p-books" class="tab-pane margin-bottom-200">
+                                              <div id="P-books" class="tab-pane margin-bottom-200">
                                                 <h4 *ngIf="offercount?.books == ''">No any one offer yet on your book</h4>
                                                   <div class="row">
                                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.books; let i=index">
@@ -524,9 +521,9 @@
                                                           </div>
                                                         <p>user_offer: ${{data?.user_offer}}</p>
                                                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                        <button *ngIf="data?.status == true">Offer accepted</button>
-                                                        <button *ngIf="data?.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                        <button *ngIf="data?.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                       
+                                                        <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                        <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                       </div>
                                                   
                                                   
@@ -540,6 +537,7 @@
                           </div>
                       </div>
                   </div>
+        
                   
 
 
