@@ -64,26 +64,10 @@ export class UploadbookComponent implements OnInit {
     {value: '60', viewValue: '60'}
   ];
   check($event){}
-
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   isbnFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
-  ]);
-  authernameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
-  detailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(500)
   ]);
   subcatFormControl = new FormControl('', [
     Validators.required,

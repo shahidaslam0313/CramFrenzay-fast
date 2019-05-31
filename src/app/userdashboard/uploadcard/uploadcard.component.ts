@@ -65,11 +65,6 @@ export class UploadcardComponent implements OnInit {
     {value: '60', viewValue: '60'}
   ];
   LoginForm: FormGroup;
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   categoryFormControl = new FormControl('', [
     Validators.required,
   ]);
@@ -79,6 +74,9 @@ export class UploadcardComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
+  flashcard= new FormControl('',[
+    Validators.required
+  ])
   constructor(private newcard: uploadcardservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -190,7 +188,7 @@ this.getindcardname();
       .subscribe(Res => { });
     f.resetForm();
     }
-  onSubmited(f: NgForm) {
+  onSubmited(form: NgForm) {
     this.http.post(
       Config.Imageurlupload,
       this.input, { responseType: 'text' }).subscribe(data => {
@@ -199,13 +197,13 @@ this.getindcardname();
       }
       else {
            this.model.image = data;
-        this.detailpost(f);
+        this.detailpost(form);
         this.CourseSuccess();
       }
     });
-    f.resetForm();
+    
   }
-  detailpost(f){
+  detailpost(form: NgForm){
     this.newcard.carddetail(this.model).subscribe(Res => {
       swal({
         type: 'success',
@@ -213,6 +211,7 @@ this.getindcardname();
         width: '512px'
       });
 });
+form.resetForm()
   }
 
   sweetalertupload() {

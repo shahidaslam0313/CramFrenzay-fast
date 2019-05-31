@@ -68,11 +68,6 @@ role;
     {value: '7', viewValue: '7'},
     {value: '15', viewValue: '15'},
   ];
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   priceFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),

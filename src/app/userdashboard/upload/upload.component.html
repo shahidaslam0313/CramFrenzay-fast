@@ -21,11 +21,13 @@
         <div class="col-md-8 user-profile">
             <h1 class="user-heading">List Course for Sale</h1>
             <form class="user-add-ingo-form" enctype="multipart/form-data" #f="ngForm">
-                <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Name"
-                        id="name" [(ngModel)]="model.name" name="name" required>
-                    <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
+                <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Title"
+                        id="name" [(ngModel)]="model.name" name="name" #name="ngModel" minlength="2" maxlength="64" required>
+                    <mat-error *ngIf="name.hasError('required')"> Title is <strong>Required</strong>
                     </mat-error>
-                    <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid Title </mat-error>
+                    <mat-error *ngIf="name.hasError('minlength')"> Title should be at least 2 character long
+                    </mat-error>
+                    <mat-error *ngIf="name.hasError('pattern')"> Please enter a valid Title </mat-error>
                 </mat-form-field>
                 <mat-form-field> <textarea matInput placeholder="HeadLine" id="description" [(ngModel)]="model.description"
                         name="description"></textarea> </mat-form-field>
