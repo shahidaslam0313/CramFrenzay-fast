@@ -63,11 +63,11 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field id="fonts" *ngIf="nestedresult">
-                            <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
+                            <mat-select placeholder="Select Nested Category" type="number" [(ngModel)]="model.nestedcategory"
                                 name="nestedcategory" id="nestedcategory" required>
                                 <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                             </mat-select>
-                            <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Sub-Category is <strong>Required</strong>
+                            <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Category is <strong>Required</strong>
                             </mat-error>
                         </mat-form-field>
                         <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
@@ -94,7 +94,7 @@
                             </mat-form-field>
                         </div>
                         <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
-                            <span *ngIf="sell_status==true">Also List for Auction </span> <span *ngIf="sell_status==false">
+                            <span *ngIf="sell_status==true">Also List for Auction (You can list for Sale and Auction them off at the same time)</span> <span *ngIf="sell_status==false">
                                 List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
                             <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
@@ -105,8 +105,8 @@
                                     <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve
-                                Auction</mat-checkbox>
+                            <mat-slide-toggle id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve
+                                Auction</mat-slide-toggle>
                             <div id="showdiv3">
                                 <mat-form-field> <input matInput type="number" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
                                         name="reservedprice" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
