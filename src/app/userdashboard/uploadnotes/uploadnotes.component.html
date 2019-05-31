@@ -93,7 +93,7 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
+                        <mat-slide-toggle class="btn-auction" id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
                             <span *ngIf="sell_status==true">Also List for Auction (You can list for Sale and Auction them off at the same time)</span> <span *ngIf="sell_status==false">
                                 List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
