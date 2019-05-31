@@ -401,7 +401,7 @@ export class HeaderComponent implements OnInit {
     this.header.delwishlist(id).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item deleted from watchlist',
+        title: 'Item successfully deleted from watch List',
         showConfirmButton: false,
         timer: 1500
       });
@@ -512,7 +512,7 @@ deletenotification(id){
       this.header.addwishlist(Book, Course, FlashCard, Notes).subscribe(Data => {
         swal({
           type: 'success',
-          title: 'Item added in watchlist',
+          title: 'Item added in watch List',
           showConfirmButton: false,
           timer: 1500
         })
@@ -520,7 +520,7 @@ deletenotification(id){
         error => {
           swal(
             'CramFrenzy',
-            'Item is already in your watchlist',
+            'Item is already in your watch List',
             'error'
           )
         });
@@ -606,7 +606,7 @@ deletenotification(id){
     this.header.removeFromCart(cartID).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Item deleted from cart',
+        title: 'Item  successfully deleted from cart',
         showConfirmButton: false,
         timer: 1500
       })

@@ -145,16 +145,16 @@
                       <div class="row">
                           <div class="col-md-3 col-sm-3">
                               <ul class="nav nav-tabs side-tabs ">
-                                  <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="Accepted Offers">Accepted Offers</a>
+                                  <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="Accepted Offers"><i class="fas fa-check"></i>Accepted Offers</a>
                                   </li>
-                                  <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active" title="Rejected Offers">Rejected Offers</a>
+                                  <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active" title="Rejected Offers"><i class="fas fa-times"></i>Rejected Offers</a>
                                   </li>
-                                  <li class="nav-item"> <a data-toggle="tab" href="#flashcarddetail" id="flashdetail" class="nav-link nav-active" title="Pending Offers">Pending Offers</a> </li>
+                                  <li class="nav-item"> <a data-toggle="tab" href="#flashcarddetail" id="flashdetail" class="nav-link nav-active" title="Pending Offers"><i class="far fa-hourglass"></i>Pending Offers</a> </li>
                               </ul>
                           </div>
                           <div class="col-sm-9 ">
                               <div class="tab-content">
-                                  <div id="listofterms" class="tab-pane active margin-bottom-200">
+                                  <div id="listofterms" class="tab-pane active">
                                       <div class="container-fluid">
                                           <h1 class="mainbanner">Accepted Offers</h1>
                                           <ul class="nav nav-tabs nav-justified fcdetail">
@@ -168,7 +168,7 @@
                                               </li>
                                           </ul>
                                           <div class="tab-content">
-                                              <div id="notes" class="tab-pane active margin-bottom-200">
+                                              <div id="notes" class="tab-pane active margin-top-20">
                                                   <h4 class="text-center" *ngIf="offercount?.notes==0">No Notes Offer Accepted Yet</h4>
                                                   <div class="row">
                                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.notes; let i=index">
@@ -187,8 +187,8 @@
                                                               </div>
                                                               <rating ngModel="{{data?.rating}}" [readonly]="true" titles="{{data?.rating}}">
                                                               </rating>
+                                                              <p class="product-price">user_offer: ${{data?.user_offer}}</p>
                                                           </div>
-                                                        <p>user_offer: ${{data?.user_offer}}</p>
                                                     
                                                       </div>
                                                   
@@ -196,7 +196,7 @@
                                                     </div>
                                                   </div>
                                               </div>
-                                              <div id="courses" class="tab-pane margin-bottom-200">
+                                              <div id="courses" class="tab-pane margin-top-20">
                                                   <h4 class="text-center" *ngIf="getoffer?.courses==0"> No Course Offer Accepted  Yet</h4>
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of offercount?.courses; let i=index">
@@ -221,7 +221,7 @@
                                                       </div>
                                                   </div>
                                               </div>
-                                              <div id="flashcards" class="tab-pane margin-bottom-200">
+                                              <div id="flashcards" class="tab-pane margin-top-20">
                                                   <h4 class="text-center" *ngIf="getoffer?.flashcards==0"> No Flash Card Offer Accepted Yet</h4>
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of offercount?.flashcards, let i=index">
@@ -246,7 +246,7 @@
                                                       </div>
                                                   </div>
                                               </div>
-                                              <div id="books" class="tab-pane margin-bottom-200">
+                                              <div id="books" class="tab-pane margin-top-20">
                                                   <h4 class="text-center" *ngIf="getoffer?.books==0"> No Book Offer Accepted Yet</h4>
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of offercount?.books; let i=index">
@@ -287,7 +287,7 @@
                                               </li>
                                           </ul>
                                           <div class="tab-content">
-                                              <div id="R-notes" class="tab-pane active margin-bottom-200">
+                                              <div id="R-notes" class="tab-pane active margin-top-20">
                                                 <div class="row">
                                                   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.notes; let i=index">
                                                     <div class="product-list__item" *ngIf="data?.offer_status == false">
@@ -317,7 +317,7 @@
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div id="R-courses" class="tab-pane margin-bottom-200">
+                                              <div id="R-courses" class="tab-pane margin-top-20">
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of offercount?.courses; let i=index">
                                                           <div class="product-list__item" *ngIf="item?.offer_status==false">
@@ -341,7 +341,7 @@
                                                       </div>
                                                   </div>
                                               </div>
-                                              <div id="R-flashcards" class="tab-pane margin-bottom-200">
+                                              <div id="R-flashcards" class="tab-pane margin-top-20">
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of offercount?.flashcards, let i=index">
                                                           <div class="product-list__item" *ngIf="item?.offer_status==false">
@@ -365,7 +365,7 @@
                                                       </div>
                                                   </div>
                                               </div>
-                                              <div id="R-books" class="tab-pane margin-bottom-200">
+                                              <div id="R-books" class="tab-pane margin-top-20">
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of offercount?.books; let i=index">
                                                           <div class="product-list__item" *ngIf="item?.offer_status==false">
@@ -408,7 +408,7 @@
                                               </li>
                                           </ul>
                                           <div class="tab-content">
-                                              <div id="P-notes" class="tab-pane active margin-bottom-200">
+                                              <div id="P-notes" class="tab-pane active margin-top-20">
                                                 <div class="row">
                                                   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.notes; let i=index">
                                                     <div class="product-list__item" *ngIf="data?.offer_status == null">
@@ -429,16 +429,14 @@
                                                         </div>
                                                       <p>user_offer: ${{data?.user_offer}}</p>
                                                       <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                      <button *ngIf="data.status == true">Offer accepted</button>
-                                                      <button *ngIf="data.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                      <button *ngIf="data.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                      <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                      <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                     </div>
-                                                
-                                                
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div id="t-p-courses" class="tab-pane margin-bottom-200">
+                                          
+                                              <div id="P-courses" class="tab-pane margin-top-20">
                                                 <h4 *ngIf="offercount?.courses == ''">No any one offer yet on your course</h4>
                                                   <div class="row">
                                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.courses; let i=index">
@@ -460,16 +458,15 @@
                                                           </div>
                                                         <p>user_offer: ${{data?.user_offer}}</p>
                                                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                        <button *ngIf="data?.status == true">Offer accepted</button>
-                                                        <button *ngIf="data?.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                        <button *ngIf="data?.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                        <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                        <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                       </div>
                                                   
                                                   
                                                     </div>
                                                   </div>
                                               </div>
-                                              <div id="t-p-flashcards" class="tab-pane margin-bottom-200">
+                                              <div id="P-flashcards" class="tab-pane margin-top-20">
                                                 <h4 *ngIf="offercount?.flashcards == ''">No any one offer yet on your flash cards</h4>
                                                   <div class="row">
                                                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.flashcards; let i=index">
@@ -491,9 +488,9 @@
                                                               </div>
                                                             <p>user_offer: ${{data?.user_offer}}</p>
                                                             <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                            <button *ngIf="data?.status == true">Offer accepted</button>
-                                                            <button *ngIf="data?.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                            <button *ngIf="data?.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                           
+                                                            <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                            <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                             
                                                           </div>
                                                       
@@ -502,7 +499,7 @@
                       
                                                   </div>
                                               </div>
-                                              <div id="t-p-books" class="tab-pane margin-bottom-200">
+                                              <div id="P-books" class="tab-pane margin-top-20">
                                                 <h4 *ngIf="offercount?.books == ''">No any one offer yet on your book</h4>
                                                   <div class="row">
                                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of offercount?.books; let i=index">
@@ -524,9 +521,9 @@
                                                           </div>
                                                         <p>user_offer: ${{data?.user_offer}}</p>
                                                         <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{data?.end_time}}"></countdown>
-                                                        <button *ngIf="data?.status == true">Offer accepted</button>
-                                                        <button *ngIf="data?.status != true" (click)=approcourse(data?.accept_id)>Accept</button>
-                                                        <button *ngIf="data?.status != true" (click)="rejectedcourse(data?.accept_id)">Reject</button>
+                                                       
+                                                        <button *ngIf="data?.status == null" (click)=approcourse(data?.accept_id)>Accept</button>
+                                                        <button *ngIf="data?.status == null" (click)="rejectedcourse(data?.accept_id)">Reject</button>
                                                       </div>
                                                   
                                                   
@@ -540,6 +537,7 @@
                           </div>
                       </div>
                   </div>
+        
                   
 
 

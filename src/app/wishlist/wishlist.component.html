@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="addtocart-heading">
-                <h2 class="mainbanner">Watchlist
-                    <p class="watchlist-items"><span>{{count}}</span> Items in Watchlist </p>
+                <h2 class="mainbanner">Watch List
+                    <p class="watchlist-items">Total items in Watch List: <span>{{count}}</span>  </p>
                 </h2>
                 
             </div>
@@ -36,7 +36,7 @@
                     <p class="product-list__price">{{data.notes.price | currency:'USD'}}</p>
                 </div>
                 <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="addtocart(null,null,null,data.notes.id,data.id)">
-                        Add to Cart </a> </div>
+                        Move to Cart </a> </div>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                     <p class="product-list__price">{{data.course.price | currency:'USD'}}</p>
                 </div>
                 <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="addtocart(null,data.course.id,null,null,data.id)">
-                        Add to Cart </a> </div>
+                        Move to Cart </a> </div>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
                     <p class="product-list__price">{{data?.flashcard.price | currency:'USD'}}</p>
                 </div>
                 <div class="product-list__item-info-1"> <a class="btn-style btn " routerLink="javascript:void(0)"
-                        (click)="addtocart(null,null,data.flashcard.id,null,data.id)"> Add to Cart </a> </div>
+                        (click)="addtocart(null,null,data.flashcard.id,null,data.id)"> Move to Cart </a> </div>
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@
                     <p class="product-list__price">{{data?.book.price | currency:'USD'}}</p>
                 </div>
                 <div class="product-list__item-info-1"> <a routerLink="javascript:void(0)" class="btn-style btn "
-                        (click)="addtocart(data.book.id,null,null,null,data.id)"> Add to Cart </a> </div>
+                        (click)="addtocart(data.book.id,null,null,null,data.id)"> Move to Cart </a> </div>
             </div>
         </div>
     </div>

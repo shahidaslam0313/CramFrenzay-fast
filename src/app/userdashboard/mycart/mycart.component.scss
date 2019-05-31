@@ -1,1 +1,19 @@
-.product-list__content{min-height:auto}.price-discount{display:flex;justify-content:space-between;padding:0 10px}.price-discount a{color:#333;font-size:14px;font-weight:600}
+.product-list__content {
+    min-height: auto
+}
+
+.price-discount {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px
+}
+
+.price-discount a {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600
+}
+
+.product-list__category:hover{
+    color: #c00;
+}
