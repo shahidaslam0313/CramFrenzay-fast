@@ -14,13 +14,13 @@ export class PendingoffersService {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
       headers.append('Content-Type', 'application/json');
-      return this.http.get('https://devapis.cramfrenzy.com/purchase/owner_history/' , {headers: headers}).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'purchase/owner_history/' , {headers: headers}).map((response: Response) => response.json());
     }
   }
   approvecourse(id){
     let headers = new Headers( {'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
     headers.append('Content-Type', 'application/json');
-    return this.http.put( 'https://devapis.cramfrenzy.com/purchase/offer_accept_owner/' ,
+    return this.http.put( Config.api +'purchase/offer_accept_owner/' ,
       JSON.stringify({
         offer_accepted : true,
         id : id,
@@ -30,7 +30,7 @@ export class PendingoffersService {
   rejectcourse(id){
     let headers = new Headers( {'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
     headers.append('Content-Type', 'application/json');
-    return this.http.put( 'https://devapis.cramfrenzy.com/purchase/offer_accept_owner/' ,
+    return this.http.put(Config.api + 'purchase/offer_accept_owner/' ,
       JSON.stringify({
         offer_accepted : false,
         id : id,
