@@ -22,16 +22,20 @@
             <h1 class="user-heading">List Book for Sale</h1>
             <form #f="ngForm" class="user-add-ingo-form" enctype="multipart/form-data">
                 <mat-form-field class="margin-top-20"> <input matInput type="text" class="Input-capitalize" placeholder="Title"
-                        [(ngModel)]="model.name" name="name" #name="ngModel" required autofocus />
-                    <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
+                        [(ngModel)]="model.name" name="name" #name="ngModel" minlength="2" maxlength="64" required autofocus />
+                    <mat-error *ngIf="name.hasError('required')"> Title is <strong>Required</strong>
                     </mat-error>
-                    <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid Title </mat-error>
+                    <mat-error *ngIf="name.hasError('minlength')"> Title should be at least 2 character long
+                        </mat-error>
+                    <mat-error *ngIf="name.hasError('pattern')"> Please enter a valid Title </mat-error>
                 </mat-form-field>
                 <mat-form-field> <input matInput type="text" class="Input-capitalize" placeholder="Author" [(ngModel)]="model.author_name"
-                        name="author_name" #author_name="ngModel" required />
-                    <mat-error *ngIf="authernameFormControl.hasError('required')"> Author is <strong>Required</strong>
+                        name="author_name" #author_name="ngModel" minlength="2" maxlength="64" required />
+                    <mat-error *ngIf="author_name.hasError('required')"> Author is <strong>Required</strong>
                     </mat-error>
-                    <mat-error *ngIf="authernameFormControl.hasError('pattern')"> Please enter a valid Author
+                    <mat-error *ngIf="author_name.hasError('minlength')"> Author name should be at least 2 character long
+                        </mat-error>
+                    <mat-error *ngIf="author_name.hasError('pattern')"> Please enter a valid Author
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field>
@@ -51,18 +55,20 @@
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field id="fonts" *ngIf="nestedresult">
-                    <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
+                    <mat-select placeholder="Select Nested Category" type="number" [(ngModel)]="model.nestedcategory"
                         name="nestedcategory" id="nestedcategory" required>
                         <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                     </mat-select>
-                    <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Sub-Category is <strong>Required</strong>
+                    <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Category is <strong>Required</strong>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field> <textarea matInput type="text" placeholder="Description" [(ngModel)]="model.book_detail"
-                        name="book_detail" #book_detail="ngModel" id="detail" required>
+                        name="book_detail" #book_detail="ngModel" id="detail" minlength="50" maxlength="300" required>
                         </textarea>
-                        <mat-error *ngIf="detailFormControl.hasError('required')"> Description is <strong>Required</strong>
-                        </mat-error> </mat-form-field>
+                        <mat-error *ngIf="book_detail.hasError('required')"> Description is <strong>Required</strong>
+                        </mat-error> 
+                        <mat-error *ngIf="book_detail.hasError('minlength')"> Description should be at least 50 character long
+                            </mat-error></mat-form-field>
                 <mat-form-field> <input matInput type="text" placeholder="Edition" [(ngModel)]="model.book_edition"
                         name="book_edition" #book_edition="ngModel" /> </mat-form-field>
                 <mat-form-field> <input matInput type="text" placeholder="ISBN" [(ngModel)]="model.ISBN" name="ISBN"
@@ -96,7 +102,7 @@
                     </mat-form-field>
                 </div>
                 <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status"> <span
-                        *ngIf="sell_status==true">Also List for Auction </span> <span *ngIf="sell_status==false"> List
+                        *ngIf="sell_status==true">Also List for Auction (You can list for Sale and Auction them off at the same time)</span> <span *ngIf="sell_status==false"> List
                         for Auction </span></mat-slide-toggle>
                 <div id="showdiv2">
                     <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Starting Bid Price"
@@ -110,8 +116,8 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <mat-checkbox id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction
-                </mat-checkbox>
+                <mat-slide-toggle id="showhide3" [(ngModel)]="model.isreserved" name="isreserved">Reserve Auction
+                </mat-slide-toggle>
                 <div id="showdiv3">
                     <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Reserve Price"
                             [(ngModel)]="model.reservedprice" name="reservedprice" onKeyPress="if(this.value.length==4) return false;"
