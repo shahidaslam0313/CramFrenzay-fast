@@ -68,11 +68,6 @@ role;
     {value: '7', viewValue: '7'},
     {value: '15', viewValue: '15'},
   ];
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   priceFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
@@ -149,7 +144,6 @@ role;
           this.ifImageUpload(f);
         }
       });
-      f.resetForm();
   }
   accept_offer: boolean = false;
   private ifImageUpload(f: NgForm) {
@@ -158,25 +152,13 @@ role;
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(currentdate).add(this.end_time,'days');
     console.log(new_date, this.sell_status , this.model,  this.bid_status , bid_date);
-    if(this.model.valid){
       this.newService.uploading(new_date, this.sell_status , this.model, this.accept_offer,  this.bid_status , bid_date, currentdate)
       .subscribe(Res => {
-
-        console.log(this.response);
         this.CourseSuccess();
       }
 
       );
       f.resetForm()
-    }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 2000
-    });
   }
   reserved() {
     if (this.hide) {

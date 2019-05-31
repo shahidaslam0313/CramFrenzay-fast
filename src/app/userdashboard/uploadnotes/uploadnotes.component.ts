@@ -102,15 +102,17 @@ export class UploadnotesComponent implements OnInit {
   notesname;
   bid_status: boolean = true;
   // notes_thumbnail;
-  nameFormControl = new FormControl('', [
+  name = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
+    Validators.maxLength(60),
+    Validators.minLength(2)
   ]);
-  detailFormControl = new FormControl('', [
+  detail = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(500)
+    Validators.maxLength(300),
+    Validators.minLength(50)
   ]);
   notessubcategoriesFormControl= new FormControl('',[
     Validators.required
@@ -124,7 +126,8 @@ export class UploadnotesComponent implements OnInit {
   authornameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
+    Validators.maxLength(64),
+    Validators.minLength(2)
   ]);
   constructor(private ng2ImgMax: Ng2ImgMaxService, private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
@@ -214,24 +217,11 @@ export class UploadnotesComponent implements OnInit {
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    console.log(new_date);
-    if(this.model.valid){
       this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory , this.model.nestedcategory , this.sell_status, this.accept_offer,  new_date,  bid_date , this.bid_status )
       .subscribe(Res => {
-        // this.date = Res
-        // console.log(this.date);
       });
       this.CourseSuccess();
       f.resetForm()
-    }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 4500
-    })
   }
   CourseSuccess() {
     swal({

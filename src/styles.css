@@ -1750,9 +1750,9 @@ fieldset {
   background: #f2f2f2!important
 }
 
-.product-list__item:hover .product-list__category {
+/* .product-list__item:hover .product-list__category {
   color: #c00
-}
+} */
 
 .user-profile-form {
   padding: 10px 0 0;

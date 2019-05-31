@@ -65,11 +65,6 @@ export class UploadcardComponent implements OnInit {
     {value: '60', viewValue: '60'}
   ];
   LoginForm: FormGroup;
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   categoryFormControl = new FormControl('', [
     Validators.required,
   ]);
@@ -79,6 +74,9 @@ export class UploadcardComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
+  flashcard= new FormControl('',[
+    Validators.required
+  ])
   constructor(private newcard: uploadcardservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -186,21 +184,11 @@ this.getindcardname();
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
-    if(this.model.valid){
       this.newcard.uploadcard(this.model , this.accept_offer , new_date,  bid_date, date )
       .subscribe(Res => { });
     f.resetForm();
     }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 2000
-    });
-  }
-  onSubmited(f: NgForm) {
+  onSubmited(form: NgForm) {
     this.http.post(
       Config.Imageurlupload,
       this.input, { responseType: 'text' }).subscribe(data => {
@@ -209,20 +197,21 @@ this.getindcardname();
       }
       else {
            this.model.image = data;
-        this.detailpost(f);
+        this.detailpost(form);
         this.CourseSuccess();
       }
     });
+    
   }
-  detailpost(f){
+  detailpost(form: NgForm){
     this.newcard.carddetail(this.model).subscribe(Res => {
       swal({
         type: 'success',
         title: 'Flash Card Detail Added !.',
         width: '512px'
       });
-console.log(this.model); });
-    f.resetForm();
+});
+form.resetForm()
   }
 
   sweetalertupload() {
