@@ -44,48 +44,48 @@ export class PaymentmethodsService {
         "state": state,
         "country": country,
       }),
-      // { headers: header }).map((response: Response) => response.json());
-      { headers: header }).map((res: Response) => {
-        if (res) {
+      { headers: header }).map((response: Response) => response.json());
+  //     { headers: header }).map((res: Response) => {
+  //       if (res) {
 
-          if (res.status === 201 || res.status === 200) {
-            const responce_data = res.json();
+  //         if (res.status === 201 || res.status === 200) {
+  //           const responce_data = res.json();
 
-            return responce_data;
-          }
-        }
-      }).catch((error: any) => {
-        // alert(error.status);
-        if (error.status === 302) {
-          // if (error.stats == 302) {
-          swal({
-            type: 'error',
-            title: 'This Card Already Exist',
-            showConfirmButton: false,
-            timer: 1500, width: '512px',
-          })
-          // }
-          return Observable.throw(new Error(error.status));
-        } else if (error.status === 405) {
+  //           return responce_data;
+  //         }
+  //       }
+  //     }).catch((error: any) => {
+  //       // alert(error.status);
+  //       if (error.status === 302) {
+  //         // if (error.stats == 302) {
+  //         swal({
+  //           type: 'error',
+  //           title: 'This Card Already Exist',
+  //           showConfirmButton: false,
+  //           timer: 1500, width: '512px',
+  //         })
+  //         // }
+  //         return Observable.throw(new Error(error.status));
+  //       } else if (error.status === 405) {
 
-          swal({
-            type: 'error',
-            title: 'Invalid Card! Please Enter Correct Details',
-            showConfirmButton: false,
-            timer: 1500, width: '512px',
-          })
+  //         swal({
+  //           type: 'error',
+  //           title: 'Invalid Card! Please Enter Correct Details',
+  //           showConfirmButton: false,
+  //           timer: 1500, width: '512px',
+  //         })
 
-          return Observable.throw(new Error(error.status));
-        } else {
-          swal(
-            'Sorry',
-            'You cannot enter card more than 8 cards',
-            'error'
-          )
+  //         return Observable.throw(new Error(error.status));
+  //       } else {
+  //         swal(
+  //           'Sorry',
+  //           'You cannot enter card more than 8 cards',
+  //           'error'
+  //         )
 
-          return Observable.throw(new Error(error.status));
-        }
-      });
+  //         return Observable.throw(new Error(error.status));
+  //       }
+  //     });
   }
 
   showCards() {
