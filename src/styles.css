@@ -2774,6 +2774,7 @@ countdown .countdown {
 }
 .search-fixed .search-results ul.list-normal{
   background: rgba(0, 0, 0, .72);
+    list-style: none;
 }
 .search-fixed .list-normal li a {
   color: #fff;
@@ -2855,7 +2856,9 @@ countdown .countdown {
 .row.search-results .results-found {
   color: #fff;
   font-weight: 600;
-  font-size: 24px
+  font-size: 16px;
+  padding: 5px 50px;
+  background: rgba(0, 0, 0, .72);
 }
 
 .padding-l-r-60>div>a {
