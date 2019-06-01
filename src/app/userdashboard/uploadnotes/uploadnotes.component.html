@@ -105,7 +105,8 @@
                                     <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <mat-slide-toggle id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve
+                        </div>
+                        <mat-slide-toggle id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve
                                 Auction</mat-slide-toggle>
                             <div id="showdiv3">
                                 <mat-form-field> <input matInput type="number" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
@@ -122,7 +123,6 @@
                                     <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
                                 </mat-form-field>
                             </div>
-                        </div>
                         <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
                                 alt="" allowmultiple="false" /> </div><!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)" accept="image/gif, image/jpeg, image/png" required> <img *ngIf="imagePreview" src="{{imagePreview}}"> -->
                         <span class="btn-file margin-top-10">Upload Note Image <input (change)="onChange($event)" type="file"
