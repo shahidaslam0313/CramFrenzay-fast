@@ -135,7 +135,9 @@ city;state;country;
     zipCode : new FormControl('',[]),
     nickname : new FormControl('',[]),
     state : new FormControl('',[]),
-    defaultcheck : new FormControl('',[])
+    defaultcheck : new FormControl('',[]),
+    expirydate:  new FormControl('',[]),
+    ccv: new FormControl('',[])
   })
   private productsSource;
   currentProducts;
@@ -339,14 +341,6 @@ city;state;country;
         this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['cvv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
           data => {
-          // if(data.Message == "Card Number already exist"){
-          //   swal({
-          //     type: 'error',
-          //     title: 'Card Number already exist',
-          //     showConfirmButton: false,
-          //     timer: 1500
-          //   })
-          // }
           swal({
             type: 'success',
             title: 'Payment method is listed',
@@ -406,16 +400,7 @@ city;state;country;
         this.form.controls.state.valid && this.form.controls.country.valid) {
         this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['cvv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
-          data => {
-          // if(data.Message == "Card Number already exist"){
-          //   swal({
-          //     type: 'error',
-          //     title: 'Card Number already exist',
-          //     showConfirmButton: false,
-          //     timer: 1500
-          //   })
-          // }
-          
+          data => {         
           swal({
             type: 'success',
             title: 'Payment method is listed',
@@ -428,7 +413,7 @@ city;state;country;
             if (error.status == 404) {
               swal({
                 type: 'error',
-                title: 'Card Number already exist',
+                title: 'Card number already exist',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -437,6 +422,14 @@ city;state;country;
               swal({
                 type: 'error',
                 title: 'Please enter correct details',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            else if (error.status == 406) {
+              swal({
+                type: 'error',
+                title: 'Card holder name already exist with same card type',
                 showConfirmButton: false,
                 timer: 1500
               })

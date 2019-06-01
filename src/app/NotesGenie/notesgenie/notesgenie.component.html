@@ -50,9 +50,9 @@
                             <div class="heart_cart_buy">
                                 <div class="heart_cart"> <i class="far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
                                         *ngIf="!data.wishlist==true" title="Add to Watchlist"> </i> <i *ngIf="!data.wishlist==false"
-                                        class="sh-red fas fa-heart sh-red" title="Click and remove from Watchlist"
+                                        class="sh-red fas fa-heart sh-red" title="Remove from Watchlist"
                                         (click)="deleteFWL(data)"> </i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
-                                        title="Click and remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
+                                        title="Remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                         add_shopping_cart</i> </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
@@ -103,8 +103,8 @@
                             <div class="heart_cart_buy">
                                 <div class="heart_cart"> <i class="far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)"
                                         *ngIf="!data.wishlist==true" title="Add to Watchlist"></i> <i *ngIf="!data.wishlist==false"
-                                        class=" fas fa-heart sh-red " title="Delete From Watchlist" (click)="deleteFWL(data)"></i>
-                                    <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
+                                        class=" fas fa-heart sh-red " title="Remove from Watchlist" (click)="deleteFWL(data)"></i>
+                                    <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Remove from Cart"
                                         (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true" class="wishlist material-icons"
                                         title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                         add_shopping_cart</i> </div>
@@ -155,10 +155,10 @@
                             </div>
                             <div class="heart_cart_buy">
                                 <div class="heart_cart"> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red "
-                                        title="Delete From Watchlist" (click)="deleteFWL(data)"></i> <i class="far fa-heart"
+                                        title="Remove from Watchlist" (click)="deleteFWL(data)"></i> <i class="far fa-heart"
                                         (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)" *ngIf="!data.wishlist==true"
                                         title="Add to Watchlist"></i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
-                                        title="Click and remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
+                                        title="Remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                         add_shopping_cart</i> </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
@@ -208,10 +208,10 @@
                             </div>
                             <div class="heart_cart_buy">
                                 <div class="heart_cart"> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red "
-                                        title="Delete From Watchlist" (click)="deleteFWL(data)"></i> <i class="far fa-heart"
+                                        title="Remove from Watchlist" (click)="deleteFWL(data)"></i> <i class="far fa-heart"
                                         (click)="addwishlist(nullvalue,nullvalue,nullvalue,data.id)" *ngIf="!data.wishlist==true"
                                         title="Add to Watchlist"></i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
-                                        title="Click and remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
+                                        title="Remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
                                         class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                         add_shopping_cart</i> </div>
                                 <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
