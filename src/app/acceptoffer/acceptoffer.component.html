@@ -3,12 +3,14 @@
   <div class="text-center form-1-header" data-background-color="rose">
     <h1> Offer Now </h1>
   </div>
-  <form >
+  <form #offerForm="ngForm">
     <div class="card-content margin-top-10" >
       <mat-form-field class="example-full-width mat-size" style="width: 100%">
         <input type="number" min="1" matInput placeholder="Enter Your Amount (US $) For Offer" [(ngModel)]="model.offer_price" 
-        name="offer_price" required oninput="validity.valid||(value='');" onKeyPress="if(this.value.length==4) return false;">
+        name="offer_price" #offer_price="ngModel" required oninput="validity.valid||(value='');" onKeyPress="if(this.value.length==4) return false;">
         <span matPrefix>$&nbsp;</span>
+        <mat-error *ngIf="offer_price.hasError('required')"> Amount is <strong>Required</strong>
+        </mat-error>
       </mat-form-field>
     </div>
   
@@ -16,17 +18,20 @@
  
       <div class="form-group">
         <label for="sel1">Your offer expires in:</label>
-        <select class="form-control" id="sel1" [(ngModel)]="model.end_time" name="end_time" required>
+        <select class="form-control" id="sel1" [(ngModel)]="model.end_time" #end_time="ngModel" name="end_time" required>
           <option>Select list:</option>
           <option>12&nbsp;h</option>
           <option>1&nbsp;Day</option>
           <option>2&nbsp;Days</option>
           <option>3&nbsp;Days</option>
+          
         </select>
+        <mat-error *ngIf="end_time.hasError('required')"> time is <strong>Required</strong>
+        </mat-error>
       </div>
     </div>
     <div class="footer text-right col-sm-12">
-      <button [mat-dialog-close]="true" class="btn-style btn  width100 margin-top-10" type="submit" tabindex="2" (click)="postoffer()">
+      <button [mat-dialog-close]="true" class="btn-style btn  width100 margin-top-10" type="submit" tabindex="2" (click)="postoffer()" [disabled]="!offerForm.form.valid">
       Offer Now</button> 
     </div>
     <p class="smalltext">By Placing an Offer, You're committing to Buy this item.</p>

@@ -625,7 +625,7 @@ export class MainpageComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  bidc(f: NgForm) {
+  bidc(bidform: NgForm) {
     this.global.bidoncourses(this.bidingcourse, this.model.bidamount, )
       .subscribe(Res => {
         swal({
@@ -644,7 +644,7 @@ export class MainpageComponent implements OnInit {
         });
       }
       );
-f.reset();
+      bidform.resetForm();
   }
   biding(f: NgForm) {
     this.global.bidnotes(this.bidonnotes, this.model.bidamount)

@@ -254,7 +254,7 @@ export class FlashcardlistComponent implements OnInit {
       confirmButtonText: "OK",
     });
   }
-  bidc(f:NgForm) {
+  bidc(fo:NgForm) {
     this.global.bidoncards(this.cardid, this.model.bidamount)
       .subscribe(Res => {
         swal({
@@ -275,7 +275,7 @@ export class FlashcardlistComponent implements OnInit {
           }
         }
       );
-      f.resetForm()
+      fo.resetForm()
   }
   addwishlist(flashcard) {
     let course = null;
