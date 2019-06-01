@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-3 col-sm-3">
             <ul class="nav nav-tabs side-tabs ">
-                <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="Accepted Offers">Accepted Offers</a>
+                <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="Accepted Offers"><i class="fas fa-check"></i>Accepted Offers</a>
                 </li>
-                <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active" title="Rejected Offers">Rejected Offers</a>
+                <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active" title="Rejected Offers"><i class="fas fa-times"></i>Rejected Offers</a>
                 </li>
-                <li class="nav-item"> <a data-toggle="tab" href="#flashcarddetail" id="flashdetail" class="nav-link nav-active" title="Pending Offers">Pending Offers</a> </li>
+                <li class="nav-item"> <a data-toggle="tab" href="#flashcarddetail" id="flashdetail" class="nav-link nav-active" title="Pending Offers"><i class="far fa-hourglass"></i>Pending Offers</a> </li>
             </ul>
         </div>
         <div class="col-sm-9 ">
             <div class="tab-content">
-                <div id="listofterms" class="tab-pane active margin-bottom-200">
+                <div id="listofterms" class="tab-pane active">
                     <div class="container-fluid">
                         <h1 class="mainbanner">Accepted Offers</h1>
                         <ul class="nav nav-tabs nav-justified fcdetail">
@@ -25,7 +25,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div id="notes" class="tab-pane active margin-bottom-200">
+                            <div id="notes" class="tab-pane active">
                                 <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.notes, let i=index">
@@ -60,7 +60,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="courses" class="tab-pane margin-bottom-200">
+                            <div id="courses" class="tab-pane">
                                 <h4 class="text-center" *ngIf="getoffer?.courses==0"> No Course Offer Accepted  Yet</h4>
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.courses; let i=index">
@@ -95,7 +95,7 @@
                                     <!-- </div> -->
                                 </div>
                             </div>
-                            <div id="flashcards" class="tab-pane margin-bottom-200">
+                            <div id="flashcards" class="tab-pane">
                                 <h4 class="text-center" *ngIf="getoffer?.flashcards==0"> No Flash Card Offer Accepted Yet</h4>
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.flashcards, let i=index">
@@ -130,7 +130,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="books" class="tab-pane margin-bottom-200">
+                            <div id="books" class="tab-pane">
                                 <h4 class="text-center" *ngIf="getoffer?.books==0"> No Book Offer Accepted Yet</h4>
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.books; let i=index">
@@ -181,7 +181,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div id="R-notes" class="tab-pane active margin-bottom-200">
+                            <div id="R-notes" class="tab-pane active">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.notes, let i=index">
                                         <h4 class="text-center" *ngIf="getoffer?.notes==0">
@@ -211,7 +211,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="R-courses" class="tab-pane margin-bottom-200">
+                            <div id="R-courses" class="tab-pane">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.courses; let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==false">
@@ -239,7 +239,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="R-flashcards" class="tab-pane margin-bottom-200">
+                            <div id="R-flashcards" class="tab-pane">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.flashcards, let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==false">
@@ -267,7 +267,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="R-books" class="tab-pane margin-bottom-200">
+                            <div id="R-books" class="tab-pane">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.books; let i=index">
                                         <div class="product-list__item" *ngIf="offer_status==false">
@@ -314,7 +314,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div id="P-notes" class="tab-pane active margin-bottom-200">
+                            <div id="P-notes" class="tab-pane active">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.notes, let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==null">
@@ -342,7 +342,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="P-courses" class="tab-pane margin-bottom-200">
+                            <div id="P-courses" class="tab-pane">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.courses; let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==null">
@@ -370,7 +370,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="P-flashcards" class="tab-pane margin-bottom-200">
+                            <div id="P-flashcards" class="tab-pane">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.flashcards, let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==null">
@@ -398,7 +398,7 @@
                                     </div>
                                 <!-- </div> -->
                             </div>
-                            <div id="P-books" class="tab-pane margin-bottom-200">
+                            <div id="P-books" class="tab-pane">
                                 <!-- <div class="row"> -->
                                     <div class="dash-divs" *ngFor="let item of getoffer?.books; let i=index">
                                         <div class="product-list__item" *ngIf="offer_status==null">
