@@ -20,7 +20,7 @@
                                     <mat-option *ngFor="let card of res" [value]="card.id" (click)="getcardid(card.id)">
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
-                            </mat-form-field> <a class="btn-style width50 btn margin-top-10" (click)="buy()">Place Order</a>
+                            </mat-form-field> <a class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now</a>
                         </div>
                     </div>
                     <div class="col-md-12" *ngIf="isright">
@@ -248,7 +248,7 @@
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle>
                                     </div>
-                                </div><a class="btn-style btn width50 margin-top-10" (click)="buywithcard(f)">Place Order</a>
+                                </div><a class="btn-style btn width50 margin-top-10" (click)="buywithcard(f)">Buy Now</a>
                             </form>
                         </div>
                     </div>
