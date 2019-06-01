@@ -2770,12 +2770,15 @@ countdown .countdown {
   z-index: 9;
   left: 19%;
   padding: 0;
-  background: rgba(0, 0, 0, .72)
+  /* background: rgba(0, 0, 0, .72) */
 }
-
+.search-fixed .search-results ul.list-normal{
+  background: rgba(0, 0, 0, .72);
+}
 .search-fixed .list-normal li a {
   color: #fff;
-  font-weight: 600
+    font-weight: 600;
+    display: flex;
 }
 
 .signup-login-fonts .mat-input-element {

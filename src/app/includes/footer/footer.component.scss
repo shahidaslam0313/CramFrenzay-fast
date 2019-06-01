@@ -192,10 +192,10 @@
 
 .adroid-badge,
 .ios-badge {
-    width: 123px;
-    height: 37px;
+    width: 153px;
+    height: 46px;
+    margin-left: 55px;
     display: inline-block;
-    margin: 5px 5px 0 0
 }
 
 .footer-bottom {
@@ -282,15 +282,8 @@
     line-height: 22px
 }
 
-.footer-stores-img img {
-    width: 110%;
-    margin: 0;
-    height: 100%
-}
-
 .footer-stores-img a {
     text-align: center;
-    margin-left: 25px
 }
 
 .color_white {
@@ -300,20 +293,17 @@
 .padding-bottom-15 {
     padding-bottom: 15px
 }
-.image-width{
-    width: 88%;
-    float: right;
-}
 @media only screen and (max-width:1199px) {
-    .image-width{
-        width: 100%;
+    .adroid-badge,
+    .ios-badge {
+        width: 145px;
+        height: 40px;
+        margin-left: 20px;
     }
 }
 @media only screen and (max-width:991px) {
-    .footer-stores-img img {
-        width: 100%;
-    }
-    .image-width {
-        width: 95%;
+    .adroid-badge,
+    .ios-badge {
+        width: 140px;
     }
 }
