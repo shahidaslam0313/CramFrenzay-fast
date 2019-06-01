@@ -19,6 +19,7 @@ import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoff
 
 export const appRoutes: Routes = [
   { path: '', component: MainpageComponent },
+  // { path: 'mainpage/:name', component: MainpageComponent },
   { path : 'header' , component: HeaderComponent},
   { path : 'footer' , component: FooterComponent},
   {

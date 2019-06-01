@@ -215,7 +215,7 @@ export class LoginComponent {
             this.global.setGlobalToken(true);
 
             if (this.role === "T") {
-              this.router.navigate(['/userprofile/' + this.username.value]);
+              this.router.navigate(['']);
 
               this.getwishlist.showwishlist().subscribe(response => {
                 if (response.hasOwnProperty("status")) {
@@ -234,7 +234,7 @@ export class LoginComponent {
               this.showSuccess();
             }
             else if (this.role === "U") {
-              this.router.navigate(['/userprofile/' + this.username.value]);
+              this.router.navigate(['' ]);
               this.showSuccess();
             }
             // if (this.role == "A" || this.role == "U" || this.role == "T") {

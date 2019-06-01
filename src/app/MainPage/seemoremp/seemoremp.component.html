@@ -16,10 +16,10 @@
                             routerLink="/notes/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Add to wishlist"
+                        <div class="heart_cart"> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Add to Watch List"
                                 (click)="delNotesFtrendingNow(data)"> </i> <i class=" far fa-heart" (click)="addwishlist(nullvalue,nullvalue,nullvalue,data?.id)"
                                 *ngIf="!data.wishlist==true"> </i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
-                                title="Click and remove from Cart" (click)="delfromcart(data)"> </i> <i class="wishlist material-icons"
+                                title="Remove from Cart" (click)="delfromcart(data)"> </i> <i class="wishlist material-icons"
                                 title="Add to Cart" *ngIf="!data.cart==true" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">add_shopping_cart</i>
                         </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
@@ -69,10 +69,10 @@
                             routerLink="/eachcourse/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
-                                (click)="addwishlist(data.id,nullvalue,nullvalue,nullvalue)"> </i> <i title="Delete from wishlist"
+                        <div class="heart_cart"> <i class="far fa-heart" title="Add to Watch List" *ngIf="!data.wishlist==true"
+                                (click)="addwishlist(data.id,nullvalue,nullvalue,nullvalue)"> </i> <i title="Remove from Watch List"
                                 *ngIf="!data.wishlist==false" class="fas fa-heart sh-red" (click)="delBookFwishList(data)"></i>
-                            <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
+                            <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Remove from Cart"
                                 (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true" class="wishlist material-icons"
                                 title="Add to Cart" (click)="addcart(nullvalue,data.id,nullvalue,nullvalue)">
                                 add_shopping_cart</i> </div>
@@ -122,10 +122,10 @@
                             routerLink="/fcdetail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to wishlist"
+                        <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to Watch List"
                                 (click)="addwishlist(nullvalue,nullvalue,data.id,nullvalue)"> </i> <i *ngIf="!data.wishlist==false"
-                                title="Add to wishlist" (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red"></i>
-                            <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
+                                title="Add to Watch List" (click)="delFlaskFwishList(data)" class="fas fa-heart sh-red"></i>
+                            <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Remove from Cart"
                                 (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true" class="wishlist material-icons"
                                 title="Add to Cart" (click)="addcart(nullvalue,nullvalue,nullvalue,data.id)">
                                 add_shopping_cart</i> </div>
@@ -176,9 +176,9 @@
                             routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i title="Add to wishlist" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
+                        <div class="heart_cart"> <i title="Add to Watch List" *ngIf="!data.wishlist==false" class="fas fa-heart sh-red"
                                 (click)="delBookFwishList(data)"></i> <i *ngIf="!data.wishlist==true" (click)="addwishlist(nullvalue,data?.id, nullvalue, nullvalue)"
-                                class="far fa-heart"></i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Click and remove from Cart"
+                                class="far fa-heart"></i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Remove from Cart"
                                 (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true" class="wishlist material-icons"
                                 title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                         </div>
