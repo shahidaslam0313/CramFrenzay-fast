@@ -27,9 +27,9 @@
                         <div class="tab-content">
                             <div id="notes" class="tab-pane active margin-bottom-200">
                                 <h4 class="text-center" *ngIf="getoffer?.notes==0">No Notes Offer Accepted Yet</h4>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
-                                        <div class="product-list__item">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.notes, let i=index">
+                                        <div class="product-list__item" *ngIf="item?.offer_status == true">
                                             <figure class="product-list__img">
                                                 <a routerLink="/notes/{{item?.id}}">
                                                     <img src="{{Imageurl}}{{item?.notes_thumbnail}}">
@@ -49,7 +49,7 @@
                                                 <p class="already-bought"  *ngIf="item?.Purchased==true">
                                                     Payment Done:{{item?.your_offer | currency:'USD'}}
                                                 </p>
-                                                <p class="btn-style btn "  *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog3(item?.id)">
+                                                <p class="btn-style btn "  *ngIf="item?.Purchased==null || item?.Purchased==false" (click)="openDialog3(item?.id)">
                                                     Pay Now:{{item?.your_offer | currency:'USD'}}
                                                 </p>
                                                 <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(item?.id)">
@@ -58,13 +58,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="courses" class="tab-pane margin-bottom-200">
                                 <h4 class="text-center" *ngIf="getoffer?.courses==0"> No Course Offer Accepted  Yet</h4>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
-                                        <div class="product-list__item">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.courses; let i=index">
+                                        <div class="product-list__item" *ngIf="item?.offer_status == true">
                                             <figure class="product-list__img">
                                                 <a routerLink="/eachcourse/{{item.id}}">
                                                     <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*" alt="Course">
@@ -84,7 +84,7 @@
                                                 <p class="already-bought" *ngIf="item?.Purchased==true">
                                                     Payment Done:{{item?.your_offer | currency:'USD'}}
                                                 </p>
-                                                <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog4(item?.id)">
+                                                <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false" (click)="openDialog4(item?.id)">
                                                     Pay Now:{{item?.your_offer | currency:'USD'}}
                                                 </p>
                                                 <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue,item?.id)">
@@ -92,14 +92,14 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                             <div id="flashcards" class="tab-pane margin-bottom-200">
                                 <h4 class="text-center" *ngIf="getoffer?.flashcards==0"> No Flash Card Offer Accepted Yet</h4>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
-                                        <div class="product-list__item">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                        <div class="product-list__item" *ngIf="item?.offer_status == true">
                                             <figure class="product-list__img">
                                                 <a routerLink="/fcdetail/{{item.id}}">
                                                     <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*" alt="">
@@ -119,7 +119,7 @@
                                                 <p class="already-bought" *ngIf="item?.Purchased==true">
                                                     Payment Done:{{item?.your_offer | currency:'USD'}}
                                                 </p>
-                                                <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog5(item?.id)">
+                                                <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false" (click)="openDialog5(item?.id)">
                                                     Pay Now:{{item?.your_offer | currency:'USD'}}
                                                 </p>
                                                 <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,item?.id)">
@@ -128,13 +128,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="books" class="tab-pane margin-bottom-200">
                                 <h4 class="text-center" *ngIf="getoffer?.books==0"> No Book Offer Accepted Yet</h4>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
-                                        <div class="product-list__item">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.books; let i=index">
+                                        <div class="product-list__item" *ngIf="item?.offer_status == true">
                                             <figure class="product-list__img">
                                                 <a routerLink="/detail/{{item?.id}}">
                                                     <img src="{{Imageurl}}{{item?.book_image}}" alt="Book">
@@ -154,7 +154,7 @@
                                                 <p class="already-bought"  *ngIf="item?.Purchased==true">
                                                     Payment Done:{{item?.your_offer | currency:'USD'}}
                                                 </p>
-                                                <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false && item?.accept_offer==true" (click)="openDialog6(item?.id)">
+                                                <p class="btn-style btn " *ngIf="item?.Purchased==null || item?.Purchased==false" (click)="openDialog6(item?.id)">
                                                     Pay Now:{{item?.your_offer | currency:'USD'}}
                                                 </p>
                                                 <p class="btn-style btn " data-toggle="modal" data-target="#bookbiding" *ngIf="item.offer_status==true" (click)="showhistory(nullvalue, nullvalue,nullvalue,item?.id)">
@@ -163,7 +163,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -182,8 +182,8 @@
                         </ul>
                         <div class="tab-content">
                             <div id="R-notes" class="tab-pane active margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.notes, let i=index">
                                         <h4 class="text-center" *ngIf="getoffer?.notes==0">
                                         No Notes Offer Accepted Yet</h4>
                                         <div class="product-list__item" *ngIf="item.offer_status==false">
@@ -209,11 +209,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="R-courses" class="tab-pane margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.courses; let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==false">
                                             <figure class="product-list__img">
                                                 <a routerLink="/eachcourse/{{item.id}}">
@@ -237,11 +237,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="R-flashcards" class="tab-pane margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.flashcards, let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==false">
                                             <figure class="product-list__img">
                                                 <a routerLink="/fcdetail/{{item.id}}">
@@ -265,11 +265,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="R-books" class="tab-pane margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.books; let i=index">
                                         <div class="product-list__item" *ngIf="offer_status==false">
                                             <p *ngIf="offer_status==false">
                                                 No book offer rejected yet
@@ -296,7 +296,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -315,8 +315,8 @@
                         </ul>
                         <div class="tab-content">
                             <div id="P-notes" class="tab-pane active margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.notes, let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.notes, let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==null">
                                             <figure class="product-list__img">
                                                 <a routerLink="/notes/{{item?.id}}">
@@ -340,11 +340,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="P-courses" class="tab-pane margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.courses; let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.courses; let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==null">
                                             <figure class="product-list__img">
                                                 <a routerLink="/eachcourse/{{item.id}}">
@@ -368,11 +368,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="P-flashcards" class="tab-pane margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.flashcards, let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.flashcards, let i=index">
                                         <div class="product-list__item" *ngIf="item.offer_status==null">
                                             <figure class="product-list__img">
                                                 <a routerLink="/fcdetail/{{item.id}}">
@@ -396,11 +396,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div id="P-books" class="tab-pane margin-bottom-200">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of getoffer?.books; let i=index">
+                                <!-- <div class="row"> -->
+                                    <div class="dash-divs" *ngFor="let item of getoffer?.books; let i=index">
                                         <div class="product-list__item" *ngIf="offer_status==null">
                                             <figure class="product-list__img">
                                                 <a routerLink="/detail/{{item?.id}}">
@@ -424,7 +424,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
