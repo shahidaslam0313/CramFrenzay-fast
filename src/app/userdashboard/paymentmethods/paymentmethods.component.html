@@ -135,17 +135,17 @@
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cvv">
-                            <mat-form-field> <input matInput type="text" maxlength="3" minlength="3" placeholder="CVV"
+                            <mat-form-field> <input matInput type="password" maxlength="3" minlength="3" placeholder="CVV"
                                     formControlName="cvv" required>
                                 <mat-error *ngIf="form.controls.cvv.touched && form.controls.cvv.invalid">
                                     <mat-error *ngIf="form.controls.cvv.errors.required"> CVV cannot be empty
                                     </mat-error>
                                     <mat-error *ngIf="form.controls.cvv.errors.minlength"> CVV must be
-                                        atleast{{form.controls.cvv.errors.minlength.requiredLength}}digits long.
+                                        atleast&nbsp;{{form.controls.cvv.errors.minlength.requiredLength}}&nbsp;digits long.
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.cvv.errors.maxlength"> CVV must be at
+                                    <!-- <mat-error *ngIf="form.controls.cvv.errors.maxlength"> CVV must be at
                                         atmost{{form.controls.cvv.errors.maxlength.requiredLength}}digits long.
-                                    </mat-error>
+                                    </mat-error> -->
                                     <mat-error *ngIf="form.controls.cvv.hasError('pattern')"> CVV must be only in
                                         digits.
                                     </mat-error>
@@ -153,17 +153,17 @@
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cvv4">
-                            <mat-form-field> <input matInput type="text" maxlength="4" minlength="4"
-                                    placeholder="CVV" formControlName="cvv4" required>
+                            <mat-form-field> <input matInput type="password" maxlength="4" minlength="4"
+                                    placeholder="CVV" formControlName="cvv4"  required>
                                 <mat-error *ngIf="form.controls.cvv4.touched && form.controls.cvv4.invalid">
                                     <mat-error *ngIf="form.controls.cvv4.errors.required"> CVV cannot be empty
                                     </mat-error>
                                     <mat-error *ngIf="form.controls.cvv4.errors.minlength"> CVV must be
-                                        atleast{{form.controls.cvv4.errors.minlength.requiredLength}}digits long.
+                                        atleast&nbsp;{{form.controls.cvv4.errors.minlength.requiredLength}}&nbsp;digits long.
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.cvv4.errors.maxlength"> CVV must be at
+                                    <!-- <mat-error *ngIf="form.controls.cvv4.errors.maxlength"> CVV must be at
                                         atmost{{form.controls.cvv4.errors.maxlength.requiredLength}}digits long.
-                                    </mat-error>
+                                    </mat-error> -->
                                     <mat-error *ngIf="form.controls.cvv4.hasError('pattern')"> CVV must be only in
                                         digits.
                                     </mat-error>
