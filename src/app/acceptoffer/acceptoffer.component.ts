@@ -31,7 +31,6 @@ export class AcceptofferComponent implements OnInit {
   ngOnInit() {
     this.global.offerHistroyResp.subscribe(resp => {
       this.teachers = resp;
-      console.log(this.teachers);
     })
     this.firstname = localStorage.getItem('fname');
     this.lastname = localStorage.getItem('lname');

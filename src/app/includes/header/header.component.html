@@ -85,7 +85,7 @@
                                         Flash Card Categories</a> </li>
                                 <li> <a  (click)="checkflashcard()"> <img class="add-flash-card"
                                             alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                        Sell Flash Card</a> </li>
+                                        Sell Flash Cards</a> </li>
                             </ul>
                         </div>
                     </li>
@@ -100,7 +100,7 @@
                                             Course Categories </a> </li>
                                     <li (click)="checkcourse()"> <a > <img class="add-course"
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">
-                                            Sell Course</a> </li>
+                                            Sell Courses</a> </li>
                                 </ul>
                             </div>
                         </li>
@@ -130,7 +130,7 @@
                                                 alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Book
                                             Categories</a> </li>
                                     <li> <a  (click)="checkbooks()"> <img class="add-book" alt=""
-                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Book</a> </li>
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Books</a> </li>
                                 </ul>
                             </div>
                         </li>
@@ -272,8 +272,8 @@
                                                         </div>
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
-                                                    (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> move
-                                                    to cart </a>
+                                                    (click)="moveToCart(null, null, null, data?.notes.id, data?.id)"> Move
+                                                    to Cart </a>
                                             </div>
                                             <h1 class="dropdown-heading">Flash Cards</h1>
                                             <div class="heart" *ngFor="let data of cardwish; let i=index">
@@ -293,7 +293,7 @@
                                                 </div>
                                                 <a  routerLink="" class="heart-card-btn"
                                                 (click)="moveToCart(null, null, data?.flashcard.id, null, data?.id)">
-                                                move to cart </a>
+                                                Move to Cart </a>
                                             </div>
                                         <h1 class="dropdown-heading">Courses</h1>
                                         <div class="heart" *ngFor="let data of wishId; let i=index">
@@ -312,8 +312,8 @@
                                                     </div>
                                                 </div>
                                             </div><a  routerLink="" class="heart-card-btn"
-                                                (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> move
-                                                to cart </a>
+                                                (click)="moveToCart(null, data?.course.id, null, null, data?.id)"> Move
+                                                to Cart </a>
                                         </div>
                                         
                                         <h1 class="dropdown-heading">Books</h1>
@@ -332,8 +332,8 @@
                                                     </div>
                                                 </div>
                                             </div><a  routerLink="" class="heart-card-btn"
-                                                (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> move
-                                                to cart </a>
+                                                (click)="moveToCart(data?.book.id, null, null, null, data?.id)"> Move
+                                                to Cart </a>
                                         </div>
                                        
                                     </div>
@@ -362,7 +362,7 @@
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.course.id,null,null,cartitems.id)">
-                                                    move to watch list </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading" >Notes</h1>
@@ -382,7 +382,7 @@
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,null,cartitems.notes.id,cartitems.id)">
-                                                    move to watch list </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading">Flash Cards</h1>
@@ -400,7 +400,7 @@
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,null,cartitems.flashcard.id,null,cartitems.id)">
-                                                    move to watch list </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading">Books</h1>
@@ -420,7 +420,7 @@
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(cartitems.book.id,null,null,null,cartitems.id)">
-                                                    move to watch list </a>
+                                                    Move to Watch List </a>
                                             </div>
                                         </div>                                     
                                     </div>

@@ -359,6 +359,14 @@ city;state;country;
                 timer: 1500
               })
             }
+            if (error.status == 403) {
+              swal({
+                type: 'error',
+                title: 'You cannot enter more than 8 cards',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
             else if (error.status == 400) {
               swal({
                 type: 'error',
@@ -414,6 +422,14 @@ city;state;country;
               swal({
                 type: 'error',
                 title: 'Card number already exist',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            if (error.status == 403) {
+              swal({
+                type: 'error',
+                title: 'You cannot enter more than 8 cards',
                 showConfirmButton: false,
                 timer: 1500
               })

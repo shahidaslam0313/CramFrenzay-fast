@@ -19,7 +19,7 @@
     <ngx-slick class="carousel homeSlider innerpages" #slickModal="slick-modal" [config]="slideConfig2">
         <div ngxSlickItem class="slide item" *ngFor="let data of inner; let i=index">
             <div class="item-inner"> <a class="cat-img" routerLink="/category-wise-notes/{{data.id}}" (click)="submit(data?.c_name)">
-                    <img src="https://storage.cramfrenzy.com/3d_category/{{data.image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                    <img src="../../assets/img/3d_category/{{data.image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
                     <h4 class="homesilder-title">{{data.c_name}}</h4>
                 </a> </div>
         </div>
@@ -255,12 +255,17 @@
                     <p *ngIf="notes?.bidamount">Highest bid amount:{{notes?.bidamount}}</p>
                         <p *ngIf="!notes?.bidamount">No bid received yet</p>
                 </a>
-                <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place Your
+                <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form"> <label>Place Your
                         own bid:</label>
                     <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;"
                         oninput="validity.valid||(value='');" placeholder="Enter bid amount (US $)*"
-                            [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field> <a
-                        class="btn-style btn" (click)="biding(f)" data-dismiss="modal">Bid Now </a>
+                           formControlName="bidamount" name="bidamount"><span matPrefix>$&nbsp;</span>
+                           <mat-error
+                            *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                            <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                </mat-error>
+                            </mat-error> </mat-form-field> 
+                            <a class="btn-style btn" (click)="biding(f)" data-dismiss="modal">Bid Now </a>
                 </form>
             </div>
         </div>
