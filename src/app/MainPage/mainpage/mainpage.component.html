@@ -320,10 +320,7 @@
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter Bid amount (US $)" [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span>
                         </mat-form-field>
-                        <div class="text-center">
                                 <input type="submit" class="btn-style btn " (click)="biding(f)" data-dismiss="modal"  [disabled]="!f.form.valid">
-                        </div>
-                        
                     </form>
                 </div>
             </div>

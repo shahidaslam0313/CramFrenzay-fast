@@ -299,8 +299,8 @@
                                 formControlName="street" readonly>
                         </mat-form-field>
                         <mat-form-field> <input matInput type="text" placeholder="Expiry date"
-                            [(ngModel)]="card.expiryDate" name="expirydate"
-                            formControlName="expirydate" readonly>
+                             name="expirydate"
+                            formControlName="expirydate" readonly>{{card.expiryDate | slice:0:2}}/20{{card.expiryDate | slice:2:4}}
                     </mat-form-field>
                             <mat-form-field> <input matInput type="text" placeholder="CVV"
                             [(ngModel)]="card.ccv" name="ccv"
