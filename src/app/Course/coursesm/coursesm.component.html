@@ -185,6 +185,7 @@
             </div>
         </div>
     </div>
+</div>
     <div class="modal fade" id="notesbidnow" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content ">
@@ -197,7 +198,7 @@
                         data-dismiss="modal" class="view-bid">view bid history </a>
                     <form name="form" role="form" method="post" [formGroup]="bidform" #f="ngForm" class="user-add-ingo-form">
                         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" data-dismiss="modal">
-                            <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
+                            <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
                             
                             
                             <p *ngIf="course?.bidamount">Highest bid amount:{{course?.bidamount}}</p>
@@ -210,7 +211,9 @@
                             <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
                                 </mat-error>
                             </mat-error></mat-form-field>
+                    <div class="text-center">
                         <a class="btn-style btn" (click)="bidc(f)" data-dismiss="modal">Bid Now </a>
+                    </div>
                     </form>
                 </div>
             </div>

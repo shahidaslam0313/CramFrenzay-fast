@@ -201,7 +201,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="notesbidnow" role="dialog">
+</div>
+<div class="modal fade" id="notesbidnow" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content ">
                 <div class="modal-header">
@@ -212,7 +213,7 @@
                 <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
                         data-dismiss="modal" class="view-bid">view bid history </a> <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
+                        <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
                      
                         <p *ngIf="notes?.bidamount">Highest bid amount:{{notes?.bidamount}}</p>
                         <p *ngIf="!notes?.bidamount">No bid received yet</p>
@@ -228,4 +229,3 @@
             </div>
         </div>
     </div>
-</div>
