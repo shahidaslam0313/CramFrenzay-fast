@@ -15,7 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 declare const $: any;
 @Component({
@@ -51,6 +51,11 @@ export class NotesgenieComponent implements OnInit {
   message: string;
   allbidid;
   wishlist;
+  bidform = new FormGroup({
+    bidamount: new FormControl('', [
+      Validators.required
+    ])
+  })
   slideConfig2 = {
     infinite: true,
     slidesToShow: 5,
@@ -303,7 +308,8 @@ export class NotesgenieComponent implements OnInit {
   }
   bidamount;
   biding(f: NgForm) {
-    this.global.bidnotes(this.bidonnotes, this.model.bidamount)
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidnotes(this.bidonnotes, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -313,7 +319,7 @@ export class NotesgenieComponent implements OnInit {
         });
       },
         error => {
-          if (error.status == 403 )
+          if (error.status == 404 || error.status == 403)
             swal({
               type: 'error',
               title: 'Bid higher amount',
@@ -324,6 +330,14 @@ export class NotesgenieComponent implements OnInit {
 
       );
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Bid amount is required',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   deleteFWL(event) {
     this.see.delwishlist(event.wishlist).subscribe(data => {

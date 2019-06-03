@@ -14,7 +14,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-flashcardlist',
@@ -36,7 +36,12 @@ export class FlashcardlistComponent implements OnInit {
   wishlist;
   notes;
   course;
-  book
+  book;
+  bidform = new FormGroup({
+    bidamount: new FormControl('', [
+      Validators.required
+    ])
+  })
   public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
@@ -254,8 +259,9 @@ export class FlashcardlistComponent implements OnInit {
       confirmButtonText: "OK",
     });
   }
-  bidc(fo:NgForm) {
-    this.global.bidoncards(this.cardid, this.model.bidamount)
+  bidc(f:NgForm) {
+    if(this.bidform.controls.bidamount.valid){
+      this.global.bidoncards(this.cardid, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -275,7 +281,15 @@ export class FlashcardlistComponent implements OnInit {
           }
         }
       );
-      fo.resetForm()
+      f.resetForm()
+    }
+  else 
+  swal({
+    type: 'error',
+    title: 'Bid amount is required',
+    showConfirmButton: false,
+    timer: 1500
+  });
   }
   addwishlist(flashcard) {
     let course = null;

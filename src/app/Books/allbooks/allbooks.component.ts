@@ -15,7 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { WishlistService } from 'app/wishlist/wishlist.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 declare const $: any;
 @Component({
@@ -34,6 +34,11 @@ export class AllbooksComponent implements OnInit {
   booktrend;
   token;
   trends;
+  bidform = new FormGroup({
+    bidamount: new FormControl('',[
+      Validators.required
+    ])
+  })
   public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
@@ -331,7 +336,8 @@ export class AllbooksComponent implements OnInit {
 
 
   bidc(f: NgForm) {
-    this.global.bidonbook(this.bidbookid, this.model.bidamount)
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidonbook(this.bidbookid, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -352,6 +358,14 @@ export class AllbooksComponent implements OnInit {
         }
       );
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Bid amount is required',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {

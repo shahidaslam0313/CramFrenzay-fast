@@ -15,7 +15,7 @@ import { DataService } from 'app/data.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import { BidHistoryService } from "../../bid-history/bid-history.service";
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-ngseemore',
   templateUrl: './ngseemore.component.html',
@@ -38,7 +38,12 @@ export class NgseemoreComponent implements OnInit {
   wishlist;
   course;
   flashcard;
-  book
+  book;
+  bidform= new FormGroup({
+    bidamount: new FormControl('',[
+      Validators.required
+    ])
+  })
   private sub: Subscription;
   constructor(private bidings: BidHistoryService, private headServ: headerservice, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private seemore: NgseemoreService, private router: Router, private see: WishlistService, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog, private global: GlobalService) {
     this.global.currentMessage.subscribe(message => this.message = message);
@@ -189,7 +194,8 @@ export class NgseemoreComponent implements OnInit {
   }
   bidamount;
   biding(f:NgForm) {
-    this.seemore.bidnotes(this.bidonnotes, this.model.bidamount)
+    if(this.bidform.controls.bidamount.valid){
+    this.seemore.bidnotes(this.bidonnotes, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -210,6 +216,14 @@ export class NgseemoreComponent implements OnInit {
 
       );
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Bid amount is required',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   notesss(id) {
     this.seemore.getnotesid(id).subscribe(notes => {
