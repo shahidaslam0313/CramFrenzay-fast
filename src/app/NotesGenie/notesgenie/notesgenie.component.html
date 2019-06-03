@@ -250,7 +250,7 @@
             </div>
             <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
                     class="view-bid">view bid history </a> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}">
-                    <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
+                    <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
                    
                     <p *ngIf="notes?.bidamount">Highest bid amount:{{notes?.bidamount}}</p>
                         <p *ngIf="!notes?.bidamount">No bid received yet</p>
@@ -265,7 +265,9 @@
                             <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
                                 </mat-error>
                             </mat-error> </mat-form-field> 
+                        <div class="text-center">
                             <a class="btn-style btn" (click)="biding(f)" data-dismiss="modal">Bid Now </a>
+                        </div>
                 </form>
             </div>
         </div>

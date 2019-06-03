@@ -291,7 +291,9 @@
                         <mat-form-field> <input matInput type="number" min="1" placeholder="Enter bid amount (US $)" oninput="validity.valid||(value='');"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount" onKeyPress="if(this.value.length==4) return false;" required>
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
+                    <div class="text-center">
                         <input type="submit"  [disabled]="!bidform.form.valid" class="btn-style btn" (click)="bidc(bidform)" data-dismiss="modal">
+                    </div>
                     </form>
                 </div>
             </div>
@@ -320,8 +322,10 @@
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter Bid amount (US $)" [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span>
                         </mat-form-field>
+                        <div class="text-center">
                                 <input type="submit" class="btn-style btn " (click)="biding(f)" data-dismiss="modal"  [disabled]="!f.form.valid">
-                    </form>
+                        </div>
+                            </form>
                 </div>
             </div>
         </div>
@@ -343,10 +347,13 @@
                     </a>
                     <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
-                        <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
+                        <mat-form-field>
+                             <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter bid amount (US $)*"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
-                        <a class="btn-style btn" (click)="bidcard(f)" data-dismiss="modal">Bid Now </a>
+                                <div class="text-center">
+                                    <a class="btn-style btn" (click)="bidcard(f)" data-dismiss="modal">Bid Now </a>
+                                </div>
                     </form>
                 </div>
             </div>
@@ -372,8 +379,10 @@
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter bid amount (US $)*"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
-                        <a class="btn-style btn" (click)="bidingonbook(f)" data-dismiss="modal">Bid Now </a>
-                    </form>
+                                <div class="text-center">
+                                <a class="btn-style btn" (click)="bidingonbook(f)" data-dismiss="modal">Bid Now </a>
+                                </div>
+                            </form>
                 </div>
             </div>
         </div>

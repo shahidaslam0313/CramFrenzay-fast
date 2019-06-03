@@ -837,9 +837,7 @@
 
 .heart-card-btn:focus,
 .heart-card-btn:hover {
-    background: #c00;
-    color: #fff;
-    border-color: #c00
+    color: #007bff;
 }
 
 .wishlist-btn-div {
@@ -1029,4 +1027,7 @@
 a.heart-card-btn,
 .addtocart-new-price a{
     color: #000;
+}
+.text-trans{
+    text-transform: none;
 }
