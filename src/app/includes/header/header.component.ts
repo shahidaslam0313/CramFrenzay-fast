@@ -387,6 +387,7 @@ export class HeaderComponent implements OnInit {
           this.wishId.push(this.Data[val])
         } else if (this.Data[val].notes) {
           this.wishnotesId.push(this.Data[val])
+          console.log(this.wishnotesId)
         } else if (this.Data[val].book) {
           this.wishbook.push(this.Data[val])
         } else if (this.Data[val].flashcard) {
