@@ -10,7 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 import {GlobalService} from '../../global.service';
 import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, NgForm } from '@angular/forms';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { mainpageservice } from '../mainpage/mainpage.service';
@@ -38,6 +38,11 @@ export class SeemorempComponent implements OnInit {
   id;
   cartitem;
   wishlist;
+  bidform = new FormGroup({
+    bidamount: new FormControl('', [
+      Validators.required
+    ])
+  })
   private sub: Subscription;
   constructor( private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService,private mainpage: mainpageservice, private pagerService: PagerService, private seemore: SeemorempService, private router: Router, private route: ActivatedRoute,  @Inject(PLATFORM_ID) private platformId: Object , private global: GlobalService, public dialogRef: MatDialog) {
     this.route.params.subscribe(params => { });
@@ -291,41 +296,9 @@ export class SeemorempComponent implements OnInit {
     });
   }
 
-  bidingonbook() {
-    this.global.bidonbook( this.bidbookid, this.model.bidamount, )
-      .subscribe(Res => {
-          swal({
-            type: 'success',
-            title: 'Your bid is listed',
-            showConfirmButton: false,
-            timer: 5500
-          });
-        },
-        error => {
-          if(error.status===403){
-            swal({
-              type: 'error',
-              title: 'Bid higher amount',
-              showConfirmButton: false,
-              timer: 5500
-            });
-          }
-        }
-      );
-  }
-  bidonnotes;
-  bidnotesid(id) {
-    if (this.check_login() == true) {
-      this.bidonnotes = id;
-      this.getnotebidhistory(this.bidonnotes);
-    }
-    else if (this.check_login() == false) {
-      this.sweetalertsignin();
-      this.router.navigate(['/login']);
-    }
-  }
-  biding() {
-    this.global.bidnotes( this.bidonnotes, this.model.bidamount)
+  bidingonbook(f:NgForm) {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidonbook( this.bidbookid, this.bidform.value['bidamount'])
       .subscribe(Res => {
           swal({
             type: 'success',
@@ -342,10 +315,60 @@ export class SeemorempComponent implements OnInit {
               showConfirmButton: false,
               timer: 5500
             });
-        },
-
-      );
+        },);
+        
+      }
+      else 
+      swal({
+        type: 'error',
+        title: 'Bid amount is required',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      f.resetForm()
+    }
+  bidonnotes;
+  bidnotesid(id) {
+    if (this.check_login() == true) {
+      this.bidonnotes = id;
+      this.getnotebidhistory(this.bidonnotes);
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertsignin();
+      this.router.navigate(['/login']);
+    }
   }
+  biding(f: NgForm) {
+  if(this.bidform.controls.bidamount.valid){
+    this.global.bidnotes( this.bidonnotes, this.bidform.value['bidamount'])
+      .subscribe(Res => {
+          swal({
+            type: 'success',
+            title: 'Your bid is listed',
+            showConfirmButton: false,
+            timer: 5500
+          });
+          f.resetForm()
+        },
+        error => {
+          if(error.status === 403)
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 5500
+            });
+        },);
+        
+      }
+      else 
+      swal({
+        type: 'error',
+        title: 'Bid amount is required',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   bidingcourse;
   ////////////////biding on courses///////////
   bidcourseid(id) {
@@ -359,8 +382,9 @@ export class SeemorempComponent implements OnInit {
     }
 
   }
-  bidc() {
-    this.global.bidoncourses( this.bidingcourse, this.model.bidamount, )
+  bidc(f: NgForm) {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidoncourses( this.bidingcourse, this.bidform.value['bidamount'])
       .subscribe(Res => {
           swal({
             type: 'success',
@@ -370,19 +394,25 @@ export class SeemorempComponent implements OnInit {
           });
         },
         error => {
-          if(error.status===403){
+          if(error.status === 403)
             swal({
               type: 'error',
               title: 'Bid higher amount',
               showConfirmButton: false,
               timer: 5500
             });
-          }
-        }
-      );
-
-  }
-
+        },);
+        
+      }
+      else 
+      swal({
+        type: 'error',
+        title: 'Bid amount is required',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      f.resetForm()
+    }
   cardid;
   getcardid(id){
 
@@ -395,8 +425,9 @@ export class SeemorempComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  bidcard() {
-    this.global.bidoncards( this.cardid, this.model.bidamount, )
+  bidcard(f:NgForm) {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidoncards( this.cardid, this.bidform.value['bidamount'])
       .subscribe(Res => {
           swal({
             type: 'success',
@@ -406,26 +437,25 @@ export class SeemorempComponent implements OnInit {
           });
         },
         error => {
-          if(error.status===403){
+          if(error.status === 403)
             swal({
               type: 'error',
               title: 'Bid higher amount',
               showConfirmButton: false,
               timer: 5500
             });
-          }
-           else if(error.status===404){
-              swal({
-                type: 'error',
-                title: 'Place higher bid',
-                showConfirmButton: false,
-                timer: 5500
-              });
-            }
-
-        }
-      );
-  }
+        },);
+        
+      }
+      else 
+      swal({
+        type: 'error',
+        title: 'Bid amount is required',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      f.resetForm()
+    }
   addcart( notes, course, book, flashcard){
     if (this.check_login() == true) {
       this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
@@ -527,7 +557,6 @@ delNotesFtrendingNow(event){
       this.notes = data['Highest Bid'];})}
   ////////////course  biding history////////
   getcoursebidhistory(id) {
-    alert(this.bidingcourse);
     this.bidings.coursebidhistory(this.bidingcourse).subscribe(data => {
       this.coursebid = data;
       this.course = data['Highest Bid'];
