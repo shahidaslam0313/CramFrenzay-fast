@@ -13,7 +13,7 @@
                 </ul>
             </div>
             <div class="form-1-body text-center">
-                <form [formGroup]="loginForm" class="sh-signup-form-fix login-form">
+                <form [formGroup]="loginForm" class="sh-signup-form-fix login-form" >
                     <mat-form-field class="singup-feilds-padding">
                         <input class="signup-input-font" matInput placeholder="Username" type="text" formControlName="username">
                         <mat-error *ngIf="username.touched && username.invalid">

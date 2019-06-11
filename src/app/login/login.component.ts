@@ -183,6 +183,7 @@ export class LoginComponent {
   googlelogin() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(this.socialCallBack).catch(message => console.log(message));
   }
+
   id;
   Login() {
     if (isPlatformBrowser(this.platformId)) {
