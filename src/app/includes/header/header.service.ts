@@ -24,7 +24,7 @@ export class headerservice {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
       headers.append('Content-Type', 'application/json');
-      return this.http.get(Config.api + 'bid/showwishlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, {headers: headers}).map((response: Response) => response.json()).catch(this.handleError);
+      return this.http.get(Config.api + 'bid/getwishlist_web/' , {headers: headers}).map((response: Response) => response.json()).catch(this.handleError);
     } 
   }
   getnotification() {

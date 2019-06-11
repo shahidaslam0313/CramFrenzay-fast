@@ -381,19 +381,20 @@ export class HeaderComponent implements OnInit {
   showlist() {
     this.header.showwishlist().subscribe(data => {
       this.count = data.count;
-      this.Data = data.Wishlist;
-      for (let val in this.Data) {
-        if (this.Data[val].course) {
-          this.wishId.push(this.Data[val])
-        } else if (this.Data[val].notes) {
-          this.wishnotesId.push(this.Data[val])
-          console.log(this.wishnotesId)
-        } else if (this.Data[val].book) {
-          this.wishbook.push(this.Data[val])
-        } else if (this.Data[val].flashcard) {
-          this.cardwish.push(this.Data[val])
-        }
-      }
+      this.Data = data;
+      console.log(this.Data);
+      // for (let val in this.Data) {
+      //   if (this.Data[val].course) {
+      //     this.wishId.push(this.Data[val])
+      //   } else if (this.Data[val].notes) {
+      //     this.wishnotesId.push(this.Data[val])
+      //     console.log(this.wishnotesId)
+      //   } else if (this.Data[val].book) {
+      //     this.wishbook.push(this.Data[val])
+      //   } else if (this.Data[val].flashcard) {
+      //     this.cardwish.push(this.Data[val])
+      //   }
+      // }
     });
   }
 
