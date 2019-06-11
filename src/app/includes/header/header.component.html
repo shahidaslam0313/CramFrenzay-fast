@@ -439,9 +439,9 @@
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
                                         <div class="addtocart" *ngFor="let cartitems of notifications">
-                                            <div class="addtocart-time"> <a (click)="deletenotification(cartitems?.id)"><i
-                                                        class="fas fa-times"></i></a> </div>
                                             <div class="addtocart notification-box-heading">
+                                                    <div class="addtocart-time addtocart-cross"> <a (click)="deletenotification(cartitems?.id)"><i
+                                                        class="fas fa-times"></i></a> </div>
                                                 <div class="addtocart-main-div">
                                                     <div class="addtocart-contact notification-box" (click)="getnotifid(cartitems?.id)">
                                                         <a class="display-block" (click)="putdelnotification(cartitems?.id)">

@@ -876,7 +876,10 @@
 
 .heart-heading {
     color: #333;
-    font-size: 18px
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 0 5px;
+    white-space: unset;
 }
 
 .heart-new-price {
@@ -933,7 +936,11 @@
     -ms-flex-pack: end;
     justify-content: flex-end
 }
-
+.addtocart-cross{
+    position: absolute;
+    right: 10px;
+    top: 1px;
+}
 .addtocart-time i {
     color: #c00;
     cursor: pointer
@@ -977,7 +984,9 @@
 }
 
 .notification-box-heading {
-    padding: 5px 10px
+    padding: 0;
+    border: none;
+    position: relative;
 }
 
 .notification-heading {
@@ -985,9 +994,13 @@
     color: #fff;
     border-radius: 5px;
     font-size: 16px;
-    display: inline-block;
+    display: block;
     font-weight: 600;
     padding: 0 10px
+}
+
+.notification-heading:hover {
+    color: #c00;
 }
 
 .addtocart-new-price {
