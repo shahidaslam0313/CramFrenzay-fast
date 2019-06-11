@@ -415,7 +415,19 @@ export class UploadnotesComponent implements OnInit {
     )
     ;
 }
-
+// checkamount(min_amount,max_amount){
+// if(min_amount == max_amount){
+//   swal({
+//     text: 'Min amount',
+//     title: "CramFrenzy",
+//     type: "error",
+//     showConfirmButton: false,
+//     confirmButtonColor: "#DD6B55",
+//     timer: 4500,
+//     confirmButtonText: "OK",
+//   });
+// }
+// }
 
   }
 
