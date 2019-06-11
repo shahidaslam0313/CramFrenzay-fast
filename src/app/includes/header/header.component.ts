@@ -383,18 +383,7 @@ export class HeaderComponent implements OnInit {
       this.count = data.count;
       this.Data = data;
       console.log(this.Data);
-      // for (let val in this.Data) {
-      //   if (this.Data[val].course) {
-      //     this.wishId.push(this.Data[val])
-      //   } else if (this.Data[val].notes) {
-      //     this.wishnotesId.push(this.Data[val])
-      //     console.log(this.wishnotesId)
-      //   } else if (this.Data[val].book) {
-      //     this.wishbook.push(this.Data[val])
-      //   } else if (this.Data[val].flashcard) {
-      //     this.cardwish.push(this.Data[val])
-      //   }
-      // }
+  
     });
   }
 
@@ -616,26 +605,26 @@ deletenotification(id){
     });
 
   }
-
+  gettingcartsitem;
   showCartItems() {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
-
-      for (let vall in Data.Cart) {
-        if (Data.Cart[vall].course) {
-          this.Courses.push(Data.Cart[vall]);
-        }
-        else if (Data.Cart[vall].notes) {
-          this.Notes.push(Data.Cart[vall]);
-        }
-        else if (Data.Cart[vall].book) {
-          this.Book.push(Data.Cart[vall]);
-        }
-        else if (Data.Cart[vall].flashcard) {
-          this.FlashCard.push(Data.Cart[vall]);
-        }
-      }
+this.gettingcartsitem = Data;
+      // for (let vall in Data.Cart) {
+      //   if (Data.Cart[vall].course) {
+      //     this.Courses.push(Data.Cart[vall]);
+      //   }
+      //   else if (Data.Cart[vall].notes) {
+      //     this.Notes.push(Data.Cart[vall]);
+      //   }
+      //   else if (Data.Cart[vall].book) {
+      //     this.Book.push(Data.Cart[vall]);
+      //   }
+      //   else if (Data.Cart[vall].flashcard) {
+      //     this.FlashCard.push(Data.Cart[vall]);
+      //   }
+      // }
     })
   }
 }
