@@ -284,14 +284,16 @@
                         class="view-bid" data-dismiss="modal">view bid history </a>
                     <form name="form" role="form" method="post" #bidform="ngForm" class="user-add-ingo-form">
                         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" >
-                            <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
+                            <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
                             <p *ngIf="course?.bidamount">Highest Bid amount:{{course?.bidamount}}</p>
                             <p *ngIf="!course?.bidamount">No Bid Received yet</p>
                         </a> <label>Bidding Price:</label>
                         <mat-form-field> <input matInput type="number" min="1" placeholder="Enter bid amount (US $)" oninput="validity.valid||(value='');"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount" onKeyPress="if(this.value.length==4) return false;" required>
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
+                    <div class="text-center">
                         <input type="submit"  [disabled]="!bidform.form.valid" class="btn-style btn" (click)="bidc(bidform)" data-dismiss="modal">
+                    </div>
                     </form>
                 </div>
             </div>
@@ -310,7 +312,7 @@
                         data-dismiss="modal">View Bid history</a> 
                         <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}">
+                        <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}">
                         </countdown>
                         <p *ngIf="notes?.bidamount">Highest Bid amount:{{notes?.bidamount}}</p>
                         <p *ngIf="!notes?.bidamount">No Bid Received yet</p>
@@ -320,8 +322,10 @@
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter Bid amount (US $)" [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span>
                         </mat-form-field>
+                        <div class="text-center">
                                 <input type="submit" class="btn-style btn " (click)="biding(f)" data-dismiss="modal"  [disabled]="!f.form.valid">
-                    </form>
+                        </div>
+                            </form>
                 </div>
             </div>
         </div>
@@ -337,16 +341,19 @@
                 <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'flashcard', id:cardid}"
                         data-dismiss="modal" class="view-bid">view bid history </a> <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'flashcard', id:cardid}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{cardbid?.endtime}}"></countdown>
+                        <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{cardbid?.endtime}}"></countdown>
                         <p *ngIf="flashcardsbid?.bidamount">Highest bid amount:{{flashcardsbid?.bidamount}}</p>
                         <p *ngIf="!flashcardsbid?.bidamount">No bid received yet</p>
                     </a>
                     <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
-                        <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
+                        <mat-form-field>
+                             <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter bid amount (US $)*"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
-                        <a class="btn-style btn" (click)="bidcard(f)" data-dismiss="modal">Bid Now </a>
+                                <div class="text-center">
+                                    <a class="btn-style btn" (click)="bidcard(f)" data-dismiss="modal">Bid Now </a>
+                                </div>
                     </form>
                 </div>
             </div>
@@ -363,7 +370,7 @@
                 <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"
                         data-dismiss="modal" class="view-bid">view bid history </a> <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
+                        <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
                         <p *ngIf="book?.bidamount">Highest bid amount:{{getbooks?.bidamount}}</p>
                         <p *ngIf="!book?.bidamount">No bid received yet</p>
                     </a>
@@ -372,8 +379,10 @@
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
                              placeholder="Enter bid amount (US $)*"
                                 [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
-                        <a class="btn-style btn" (click)="bidingonbook(f)" data-dismiss="modal">Bid Now </a>
-                    </form>
+                                <div class="text-center">
+                                <a class="btn-style btn" (click)="bidingonbook(f)" data-dismiss="modal">Bid Now </a>
+                                </div>
+                            </form>
                 </div>
             </div>
         </div>

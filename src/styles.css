@@ -1797,9 +1797,9 @@ fieldset {
   height: 100%
 }
 
-.user-add-ingo-form {
+/* .user-add-ingo-form {
   margin-top: 20px
-}
+} */
 
 .user-add-ingo-form mat-form-field {
   color: #000
@@ -2735,7 +2735,16 @@ countdown .countdown {
   width: 40%;
   margin: 0 5px 10px;
 }
-
+.mainpagee{
+  display: block;
+}
+.mainpagee .countdown{
+  padding: 10px 0;
+}
+.mainpagee .countdown .measurements {
+  width: 20%;
+  margin: 0 5px;
+}
 .countdown .measurements p:first-child {
   color: #000!important;
   padding: 5px;
