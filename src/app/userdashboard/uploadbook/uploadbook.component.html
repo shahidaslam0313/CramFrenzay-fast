@@ -80,10 +80,10 @@
                 <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                     Offers</mat-slide-toggle>
                 <div id="showdiv6" style="display: none;">
-                    <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $"
+                    <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
                             [(ngModel)]="model.min_amount" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
-                    <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
+                    <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $"
                             [(ngModel)]="model.max_amount" name="max_amount" onKeyPress="if(this.value.length==4) return false;">
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
                 </div>

@@ -78,7 +78,7 @@
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
                                     [(ngModel)]="model.max_amount" name="max_amount" onKeyPress="if(this.value.length==4) return false;">
-                                <span matPrefix>$&nbsp;</span> </mat-form-field>
+                                <span matPrefix>$&nbsp;</span></mat-form-field>
                         </div>
                         <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true" [(ngModel)]="sell_status"
                             name="sell_status">List for Sale</mat-slide-toggle>
