@@ -377,11 +377,13 @@ export class HeaderComponent implements OnInit {
       })
 
   }
-
+  getwtachid
   showlist() {
     this.header.showwishlist().subscribe(data => {
       this.count = data.count;
       this.Data = data;
+      this.getwtachid = data.notes;
+      console.log(this.getwtachid)
   
     });
   }
