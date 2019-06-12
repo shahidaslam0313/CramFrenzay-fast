@@ -383,11 +383,11 @@ export class HeaderComponent implements OnInit {
       this.count = data.count;
       this.Data = data;
       this.getwtachid = data.notes;
-      console.log(this.getwtachid)
+      // console.log(this.getwtachid.wish_id)
   
     });
   }
-
+  Course;
   del(id) {
     this.wishlistdelete = id;
     this.header.delwishlist(id).subscribe(data => {
@@ -399,7 +399,8 @@ export class HeaderComponent implements OnInit {
       });
       this.clearWishList();
       this.showlist();
-    });
+    });this.AddToCart(this.Book, this.Course, this.FlashCard, this.Notes)
+
   }
 
   filter(query) {
@@ -555,6 +556,7 @@ deletenotification(id){
             'error'
           )
         });
+       
       this.clearWishList();
       this.showlist();
       this.showCartItems();
