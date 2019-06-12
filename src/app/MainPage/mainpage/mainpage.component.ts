@@ -109,6 +109,9 @@ export class MainpageComponent implements OnInit {
           this.BidBuynotes();
         });
   }
+  trackByFn(i, data) {    
+   return data.id; // unique id corresponding to the item
+}
   delTrendingCFwishList(event) {
         this.see.delwishlist(event.wishlist).subscribe(data => {
           swal({

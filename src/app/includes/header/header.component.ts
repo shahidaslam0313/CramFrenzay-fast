@@ -382,7 +382,6 @@ export class HeaderComponent implements OnInit {
     this.header.showwishlist().subscribe(data => {
       this.count = data.count;
       this.Data = data;
-      console.log(this.Data);
   
     });
   }

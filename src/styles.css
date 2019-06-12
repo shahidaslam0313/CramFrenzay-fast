@@ -806,7 +806,7 @@ blockquote .blockquote-author {
   display: block;
   height: 170px;
   -o-object-fit: cover;
-  object-fit: cover
+  object-fit: fill
 }
 
 .product-list__content {

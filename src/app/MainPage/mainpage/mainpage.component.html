@@ -44,7 +44,7 @@
         <form class="search-bg"> <input class="search-bg__text search-bg__text-placeholder" type="text" name="search-bg-name"
                 placeholder="Search CramFrenzy"> <a class="search-bg__btn-search">Search</a></form>
         <ngx-slick class="homeSlider carousel margin-top-20" #slickModal="slick-modal" [config]="slideConfig2" style="display:none;">
-            <div class="item slide" ngxSlickItem *ngFor="let data of inner; let i=index">
+            <div class="item slide" ngxSlickItem *ngFor="let data of inner; let i=index; trackBy: trackByFn">
                 <div class="item-inner"> <a class="cat-img" routerLink="/subcategory/{{data.id}}" (click)="sliderClick(data.c_name)">
                         <img src="../../assets/img/3d_category/{{data.image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
                     </a>
@@ -59,7 +59,7 @@
         <h2 class="mainbanner bg-Bid-Notes">Buy & Bid on Notes</h2>
         <div class="col-lg-12 slider-hight">
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-                <div class="item slide" ngxSlickItem *ngFor="let data of bidnotes?.notes; let i=index">
+                <div class="item slide" ngxSlickItem *ngFor="let data of bidnotes?.notes; let i=index; trackBy: trackByFn">
                     <div class="product-list__item min-height-product-list">
                         <figure class="product-list__img"> <a routerLink="/notes/{{data?.id}}"> <img src="{{Imageurl}}{{data.notes_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'"
                                     alt="Notes"> </a> </figure>
@@ -102,7 +102,7 @@
         <h2 class="mainbanner bg-Bid-Notes">Buy & Bid on Courses</h2>
         <div class="col-lg-12 slider-hight">
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-                <div class="item" ngxSlickItem *ngFor="let data of result4?.courses; let i=index">
+                <div class="item" ngxSlickItem *ngFor="let data of result4?.courses; let i=index;  trackBy: trackByFn">
                     <div class="product-list__item min-height-product-list">
                         <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.course_thumbnail}}"
                                     alt="Courses" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> </figure>
@@ -146,7 +146,7 @@
         <h2 class="mainbanner bg-Bid-Notes"> Buy & Bid on Flash Cards</h2>
         <div class="col-lg-12 slider-hight">
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-                <div class="item" ngxSlickItem *ngFor="let data of bidflashcards?.flashcards; let i=index">
+                <div class="item" ngxSlickItem *ngFor="let data of bidflashcards?.flashcards; let i=index;  trackBy: trackByFn">
                     <div class="product-list__item min-height-product-list">
                         <figure class="product-list__img"> <a routerLink="/fcdetail/{{data.id}}"> <img src="{{Imageurl}}{{data.flashcard_image}}" onerror="this.src='/assets/img/Logo-gray.jpg'"
                                     alt="Flashcards"> </a> </figure>
@@ -189,7 +189,7 @@
         <h2 class="mainbanner bg-Bid-Notes">Buy & Bid on Books</h2>
         <div class="col-lg-12 slider-hight">
         <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-        <div class="item" ngxSlickItem *ngFor="let data of bidbooks?.books; let i=index">
+        <div class="item" ngxSlickItem *ngFor="let data of bidbooks?.books; let i=index; trackBy: trackByFn">
                     <div class="product-list__item min-height-product-list">
                         <figure class="product-list__img"> <a routerLink="/detail/{{data.id}}"> <img src="{{Imageurl}}{{data.book_image}}" onerror="this.src='/assets/img/Logo-gray.jpg'"
                                     alt="Books"> </a> </figure>
