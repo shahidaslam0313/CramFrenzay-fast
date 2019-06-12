@@ -6,7 +6,7 @@ import { DataService } from '../../data.service';
 import swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { GlobalService } from '../../global.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { headerservice } from '../../includes/header/header.service';
 import {WishlistService} from '../../wishlist/wishlist.service';
 import {AcceptofferComponent} from '../../acceptoffer/acceptoffer.component';
@@ -56,7 +56,11 @@ export class MainpageComponent implements OnInit {
   chapter_id;
   message: string;
   cartitem: any;
- 
+ bidform = new FormGroup({
+   bidamount: new FormControl('',[
+     Validators.required
+   ])
+ })
   constructor( public bidings: BidHistoryService, private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
@@ -625,50 +629,68 @@ export class MainpageComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  bidc(bidform: NgForm) {
-    this.global.bidoncourses(this.bidingcourse, this.model.bidamount, )
-      .subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Your bid is listed',
-          showConfirmButton: false,
-          timer: 5500
-        });
-      },
-      error => {
+  bidc(f: NgForm) {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidoncourses(this.bidingcourse, this.bidform.value['bidamount'] )
+    .subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Your bid is listed',
+        showConfirmButton: false,
+        timer: 5500
+      });
+    },
+    error => {
+      if (error.status == 403)
         swal({
           type: 'error',
           title: 'Bid higher amount',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
-      }
-      );
-      bidform.resetForm();
-  }
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   biding(f: NgForm) {
-    this.global.bidnotes(this.bidonnotes, this.model.bidamount)
-      .subscribe(Res => {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidnotes(this.bidonnotes, this.bidform.value['bidamount'])
+    .subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Your bid is listed',
+        showConfirmButton: false,
+        timer: 5500
+      });
+    },
+    error => {
+      if (error.status == 403)
         swal({
-          type: 'success',
-          title: 'Your bid is listed',
+          type: 'error',
+          title: 'Bid higher amount',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
-      },
-      error => {
-        if (error.status === 403 || error.status === 500)
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
-      },
-
-    );
-    f.resetForm();
-  }
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   getcardid(id) {
 
     if (this.check_login() == true) {
@@ -681,26 +703,36 @@ export class MainpageComponent implements OnInit {
     }
   }
   bidcard(f: NgForm) {
-    this.global.bidoncards(this.cardid, this.model.bidamount, )
-      .subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Your bid is listed',
-          showConfirmButton: false,
-          timer: 5500
-        });
-      },
-      error => {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidoncards(this.cardid, this.bidform.value['bidamount'] )
+    .subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Your bid is listed',
+        showConfirmButton: false,
+        timer: 5500
+      });
+    },
+    error => {
+      if (error.status == 403)
         swal({
           type: 'error',
           title: 'Bid higher amount',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
-      }
-      );
-    f.resetForm();
-  }
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   bidbookid;
   /////////////biding in books/////////
   booksid(id) {
@@ -715,7 +747,8 @@ export class MainpageComponent implements OnInit {
 
 
   bidingonbook(f: NgForm) {
-    this.global.bidonbook(this.bidbookid, this.model.bidamount, )
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidonbook(this.bidbookid, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -725,16 +758,25 @@ export class MainpageComponent implements OnInit {
         });
       },
       error => {
-        swal({
-          type: 'error',
-          title: 'Bid higher amount',
-          showConfirmButton: false,
-          timer: 5500
-        });
-      }
-      );
-    f.resetForm();
+        if (error.status == 403)
+          swal({
+            type: 'error',
+            title: 'Bid higher amount',
+            showConfirmButton: false,
+            timer: 2000
+          });
+      },
+    );
+    f.resetForm()
   }
+  else 
+  swal({
+    type: 'error',
+    title: 'Bid amount is required',
+    showConfirmButton: false,
+    timer: 1500
+  });
+}
   addcart( notes, course, book, flashcard){
     if (this.check_login() == true) {
       this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {

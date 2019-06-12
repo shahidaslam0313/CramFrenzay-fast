@@ -253,7 +253,7 @@
                                     title="Watch List"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
                                 <div class="heart-sub-meun">
                                     <div class="heart-full-div" >
-                                            <h1 class="dropdown-heading" *ngIf="Data?.notes.lenght != '0'">Notes</h1>
+                                            <h1 class="dropdown-heading" *ngIf="Data?.notes?.length != '0'">Notes</h1>
                                             <div class="heart" *ngFor="let data of Data?.notes; let i=index">
                                                 <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                     (click)="del(data.id)"> <i class="fas fa-times"></i> 
@@ -275,7 +275,7 @@
                                                     (click)="moveToCart(null, null, null, data?.id, data?.id)"> Move
                                                     to Cart </a>
                                             </div>
-                                            <h1 class="dropdown-heading" *ngIf="Data?.flashcards.length != '0'">Flash Cards</h1>
+                                            <h1 class="dropdown-heading" *ngIf="Data?.flashcards?.length != '0'">Flash Cards</h1>
                                             <div class="heart" *ngFor="let data of Data?.flashcards; let i=index">
                                                 <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                     (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
@@ -295,7 +295,7 @@
                                                 (click)="moveToCart(null, null, data?.id, null, data?.id)">
                                                 Move to Cart </a>
                                             </div>
-                                        <h1 class="dropdown-heading" *ngIf="Data?.courses.lenght != '0'">Courses</h1>
+                                        <h1 class="dropdown-heading" *ngIf="Data?.courses?.length != '0'">Courses</h1>
                                         <div class="heart" *ngFor="let data of Data?.courses; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                 (click)="del(data.id)"> <i class="fas fa-times"></i> </div>
@@ -316,7 +316,7 @@
                                                 to Cart </a>
                                         </div>
                                         
-                                        <h1 class="dropdown-heading" *ngIf="Data?.books.lenght != '0'">Books</h1>
+                                        <h1 class="dropdown-heading" *ngIf="Data?.books?.length != '0'">Books</h1>
                                         <div class="heart" *ngFor="let data of Data?.books; let i=index">
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                 (click)=" del(data.id)"> <i class="fas fa-times"></i> </div>
