@@ -12,7 +12,7 @@ import {WishlistService} from '../../wishlist/wishlist.service';
 import {AcceptofferComponent} from '../../acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { idText } from 'typescript';
+
 
 declare const $: any;
 
@@ -109,6 +109,9 @@ export class MainpageComponent implements OnInit {
           this.BidBuynotes();
         });
   }
+  trackByFn(i, data) {    
+   return data.id; // unique id corresponding to the item
+}
   delTrendingCFwishList(event) {
         this.see.delwishlist(event.wishlist).subscribe(data => {
           swal({

@@ -377,16 +377,17 @@ export class HeaderComponent implements OnInit {
       })
 
   }
-
+  getwtachid
   showlist() {
     this.header.showwishlist().subscribe(data => {
       this.count = data.count;
       this.Data = data;
-      console.log(this.Data);
+      this.getwtachid = data.notes;
+      // console.log(this.getwtachid.wish_id)
   
     });
   }
-
+  Course;
   del(id) {
     this.wishlistdelete = id;
     this.header.delwishlist(id).subscribe(data => {
@@ -398,7 +399,8 @@ export class HeaderComponent implements OnInit {
       });
       this.clearWishList();
       this.showlist();
-    });
+    });this.AddToCart(this.Book, this.Course, this.FlashCard, this.Notes)
+
   }
 
   filter(query) {
@@ -554,6 +556,7 @@ deletenotification(id){
             'error'
           )
         });
+       
       this.clearWishList();
       this.showlist();
       this.showCartItems();
