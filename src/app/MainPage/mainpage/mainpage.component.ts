@@ -12,7 +12,7 @@ import {WishlistService} from '../../wishlist/wishlist.service';
 import {AcceptofferComponent} from '../../acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { idText } from 'typescript';
+
 
 declare const $: any;
 
