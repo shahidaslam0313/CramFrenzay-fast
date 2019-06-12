@@ -272,7 +272,7 @@
                                                         </div>
                                                     </div>
                                                 </div><a  routerLink="" class="heart-card-btn"
-                                                    (click)="moveToCart(null, null, null, data?.wish_id, data?.id)"> Move
+                                                    (click)="AddToCart(null, null, null, data?.wish_id, data?.id)"> Move
                                                     to Cart </a>
                                             </div>
                                             <h1 class="dropdown-heading" *ngIf="Data?.flashcards?.length != '0'">Flash Cards</h1>
@@ -292,7 +292,7 @@
                                                     </div>
                                                 </div>
                                                 <a  routerLink="" class="heart-card-btn"
-                                                (click)="moveToCart(null, null, data?.wish_id, null, data?.id)">
+                                                (click)="AddToCart(null, null, data?.wish_id, null, data?.id)">
                                                 Move to Cart </a>
                                             </div>
                                         <h1 class="dropdown-heading" *ngIf="Data?.courses?.length != '0'">Courses</h1>
@@ -312,7 +312,7 @@
                                                     </div>
                                                 </div>
                                             </div><a  routerLink="" class="heart-card-btn"
-                                                (click)="moveToCart(null, data?.wish_id, null, null, data?.id)"> Move
+                                                (click)="AddToCart(null, data?.wish_id, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
                                         
@@ -332,7 +332,7 @@
                                                     </div>
                                                 </div>
                                             </div><a  routerLink="" class="heart-card-btn"
-                                                (click)="moveToCart(data?.wish_id, null, null, null, data?.id)"> Move
+                                                (click)="AddToCart(data?.wish_id, null, null, null, data?.id)"> Move
                                                 to Cart </a>
                                         </div>
                                        

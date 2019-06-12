@@ -33,7 +33,19 @@ export class LoginService {
   resolved(captchaResponse: string) {
 
   }
-
+  addtocart(notes, course, book, flashcard) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(Config.api + 'purchase/postcheckout/' + JSON.parse(localStorage.getItem('currentUser')).user_id,
+      JSON.stringify({
+        notes: notes,
+        course: course,
+        book: book,
+        flashcard: flashcard,
+        userid: JSON.parse(localStorage.getItem('currentUser')).user_id
+      }),
+      { headers: headers }).map((response: Response) => response.json());
+  }
   login_authentication(username, password): Observable<any> {
     const headers = new Headers({
       'Accept': 'application/json',
