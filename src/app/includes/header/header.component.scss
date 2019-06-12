@@ -878,13 +878,12 @@
     color: #333;
     font-size: 14px;
     font-weight: 500;
-    margin: 10px 0 5px;
     white-space: unset;
 }
 
 .heart-new-price {
     color: #c00;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600
 }
 
@@ -915,31 +914,31 @@
     transition: .4s
 }
 
-.addtocart:hover {
-    background: #f2f3f5
-}
-
 .addtocart-full-div {
     max-height: 350px;
     overflow: auto
 }
 
 .addtocart {
-    padding: 10px;
     border-bottom: 1px solid #ccc;
-    text-align: right
+    text-align: right;
+    position: relative;
 }
-
+.cart-padding{
+    padding: 0 10px;
+}
 .addtocart-time {
     display: flex;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
-    justify-content: flex-end
+    justify-content: flex-end;
+    position: absolute;
+    right: 20px;
 }
 .addtocart-cross{
     position: absolute;
-    right: 10px;
-    top: 1px;
+    right: 20px;
+    top: 10px;
 }
 .addtocart-time i {
     color: #c00;
@@ -949,14 +948,22 @@
 .addtocart-time i:hover {
     color: #a00
 }
-
+.notification-box-heading.false-notification{
+    background: #f2f3f5;
+}
 .addtocart-main-div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     text-align: left
 }
-
+.heart {
+    position: relative;
+    padding: 0 10px;
+}
+.heart:hover {
+    background: none;
+}
 .addtocart-img {
     height: 50px;
     width: 50px;
@@ -966,7 +973,6 @@
 .discount-p {
     float: right;
     color: #6d6c6c;
-    line-height: 34px
 }
 
 .discount-p i {
@@ -984,7 +990,7 @@
 }
 
 .notification-box-heading {
-    padding: 0;
+    padding: 10px;
     border: none;
     position: relative;
 }
@@ -1005,8 +1011,8 @@
 
 .addtocart-new-price {
     color: #c00;
-    font-size: 24px;
-    margin-right: 5px
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .addtocart-main-total-title {
