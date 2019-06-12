@@ -385,7 +385,7 @@
                                                     Move to Watch List </a>
                                             </div>
                                         </div>
-                                        <h1 class="dropdown-heading">Flash Cards</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards.lenght != '0'">Flash Cards</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.flashcards">
                                             <div class="addtocart" >
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
@@ -403,7 +403,7 @@
                                                     Move to Watch List </a>
                                             </div>
                                         </div>
-                                        <h1 class="dropdown-heading">Books</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books != '0'">Books</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.books">
                                             <div class="addtocart" >
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
