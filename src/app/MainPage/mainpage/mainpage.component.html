@@ -282,17 +282,22 @@
                 </div>
                 <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}"
                         class="view-bid" data-dismiss="modal">view bid history </a>
-                    <form name="form" role="form" method="post" #bidform="ngForm" class="user-add-ingo-form">
+                    <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form">
                         <a [routerLink]="['/bid-history']" [queryParams]="{cat:'course', id:bidingcourse}" >
                             <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{coursebid?.endtime}}"></countdown>
                             <p *ngIf="course?.bidamount">Highest Bid amount:{{course?.bidamount}}</p>
                             <p *ngIf="!course?.bidamount">No Bid Received yet</p>
                         </a> <label>Bidding Price:</label>
                         <mat-form-field> <input matInput type="number" min="1" placeholder="Enter bid amount (US $)" oninput="validity.valid||(value='');"
-                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount" onKeyPress="if(this.value.length==4) return false;" required>
-                                <span matPrefix>$&nbsp;</span> </mat-form-field>
+                                formControlName="bidamount" name="bidamount" onKeyPress="if(this.value.length==4) return false;" required>
+                                <span matPrefix>$&nbsp;</span> 
+                                <mat-error
+                                *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                                <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                    </mat-error>
+                                </mat-error> </mat-form-field>
                     <div class="text-center">
-                        <input type="submit"  [disabled]="!bidform.form.valid" class="btn-style btn" (click)="bidc(bidform)" data-dismiss="modal">
+                        <input type="submit" class="btn-style btn" (click)="bidc(f)" data-dismiss="modal">
                     </div>
                     </form>
                 </div>
@@ -317,13 +322,17 @@
                         <p *ngIf="notes?.bidamount">Highest Bid amount:{{notes?.bidamount}}</p>
                         <p *ngIf="!notes?.bidamount">No Bid Received yet</p>
                     </a>
-                    <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
+                    <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
-                             placeholder="Enter Bid amount (US $)" [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
+                             placeholder="Enter Bid amount (US $)" formControlName="bidamount" name="bidamount" required><span matPrefix>$&nbsp;</span>
+                             <mat-error
+                             *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                             <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                 </mat-error>
+                             </mat-error></mat-form-field>
                         <div class="text-center">
-                                <input type="submit" class="btn-style btn " (click)="biding(f)" data-dismiss="modal"  [disabled]="!f.form.valid">
+                                <input type="submit" class="btn-style btn " (click)="biding(f)" data-dismiss="modal">
                         </div>
                             </form>
                 </div>
@@ -345,12 +354,17 @@
                         <p *ngIf="flashcardsbid?.bidamount">Highest bid amount:{{flashcardsbid?.bidamount}}</p>
                         <p *ngIf="!flashcardsbid?.bidamount">No bid received yet</p>
                     </a>
-                    <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
+                    <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
                         <mat-form-field>
                              <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
-                             placeholder="Enter bid amount (US $)*"
-                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
+                             placeholder="Enter bid amount (US $)" required
+                                formControlName="bidamount" name="bidamount"><span matPrefix>$&nbsp;</span> 
+                                <mat-error
+                             *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                             <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                 </mat-error>
+                             </mat-error></mat-form-field>
                                 <div class="text-center">
                                     <a class="btn-style btn" (click)="bidcard(f)" data-dismiss="modal">Bid Now </a>
                                 </div>
@@ -374,11 +388,16 @@
                         <p *ngIf="book?.bidamount">Highest bid amount:{{getbooks?.bidamount}}</p>
                         <p *ngIf="!book?.bidamount">No bid received yet</p>
                     </a>
-                    <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
+                    <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
                         <mat-form-field> <input matInput type="number" min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"
-                             placeholder="Enter bid amount (US $)*"
-                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
+                             placeholder="Enter bid amount (US $)" required
+                                formControlName="bidamount" name="bidamount"><span matPrefix>$&nbsp;</span> 
+                                <mat-error
+                                *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                                <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                    </mat-error>
+                                </mat-error></mat-form-field>
                                 <div class="text-center">
                                 <a class="btn-style btn" (click)="bidingonbook(f)" data-dismiss="modal">Bid Now </a>
                                 </div>

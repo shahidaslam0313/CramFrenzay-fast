@@ -341,34 +341,34 @@ export class SeemorempComponent implements OnInit {
   biding(f: NgForm) {
   if(this.bidform.controls.bidamount.valid){
     this.global.bidnotes( this.bidonnotes, this.bidform.value['bidamount'])
-      .subscribe(Res => {
-          swal({
-            type: 'success',
-            title: 'Your bid is listed',
-            showConfirmButton: false,
-            timer: 5500
-          });
-          f.resetForm()
-        },
-        error => {
-          if(error.status === 403)
-            swal({
-              type: 'error',
-              title: 'Bid higher amount',
-              showConfirmButton: false,
-              timer: 5500
-            });
-        },);
-        
-      }
-      else 
+    .subscribe(Res => {
       swal({
-        type: 'error',
-        title: 'Bid amount is required',
+        type: 'success',
+        title: 'Your bid is listed',
         showConfirmButton: false,
-        timer: 1500
+        timer: 5500
       });
-    }
+    },
+    error => {
+      if (error.status == 403)
+        swal({
+          type: 'error',
+          title: 'Bid higher amount',
+          showConfirmButton: false,
+          timer: 2000
+        });
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   bidingcourse;
   ////////////////biding on courses///////////
   bidcourseid(id) {

@@ -265,7 +265,7 @@
                             <p *ngIf="course?.bidamount">Highest bid amount:{{course?.bidamount}}</p>
                             <p *ngIf="!course?.bidamount">No bid received yet</p>
                         </a> <label>Place Your own bid:</label>
-                        <mat-form-field> <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)*"
+                        <mat-form-field> <input matInput type="number" maxlength="4" placeholder="Enter bid amount (US $)"
                                 formControlName="bidamount" name="bidamount" required
                                 min="1" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');"> 
                                 <mat-error
