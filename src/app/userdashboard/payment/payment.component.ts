@@ -427,6 +427,18 @@ export class PaymentComponent implements OnInit {
         showConfirmButton: false,
         timer: 4500
       })
+      if(this.cardspay){
+        this.router.navigate(['/fcdetail/'+ this.cardspay]);
+      }  
+      else if(this.itemid){
+        this.router.navigate(['/notes/'+ this.itemid]);
+      }
+      else if(this.coursepay){
+        this.router.navigate(['/eachcourse/'+ this.coursepay]);
+      }
+      else if(this.bookpay){
+        this.router.navigate(['/detail/'+ this.bookpay]);
+      }
     }, error => {
       if (error.status == 404){
         swal({
