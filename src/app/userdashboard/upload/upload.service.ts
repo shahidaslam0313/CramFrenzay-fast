@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Config } from "../../Config";
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class uploadservice {
@@ -33,13 +34,13 @@ export class uploadservice {
     return this.http2.get(Config.api + 'course/categorylist/', { headers: headers }).map((response: Response) => response.json());
   }
 
-  uploading(sell_days, sell_status, model, accept_offer, bid_status, end_time, start, min_amount, max_amount) {
+  uploading(name,sell_days, sell_status, model,course_thumbnail, accept_offer, bid_status, end_time, start, min_amount, max_amount) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'course/postcourse',
       JSON.stringify({
         userid: this.current.user_id,
-        name: model.name,
+        name: name,
         description: model.description,
         bidprice: model.bidprice,
         price: model.price,
@@ -48,7 +49,7 @@ export class uploadservice {
         categories: model.categories,
         subcategories: model.subcategories,
         nestedcategory: model.nestedcategory,
-        course_thumbnail: model.course_thumbnail,
+        course_thumbnail: course_thumbnail,
         accept_offer: accept_offer,
         bidcourse: {
           initial_amount: model.initial_amount,
@@ -62,5 +63,28 @@ export class uploadservice {
         max_amount: max_amount
       }),
       { headers: headers }).map((response: Response) => response.json());
+  }
+
+  PostImage(fileToUpload: FileList,Course_name): Observable<boolean> {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+    headers.append('Content-Type', 'application/json');
+    console.log('I am in 1 Service');
+    const formData: FormData = new FormData();
+    console.log('File to upload in service is:', fileToUpload);
+    // for(let i=0; i<fileToUpload.length;i++) {
+      formData.append('image' , fileToUpload[0]);
+    // }
+    formData.append('name', Course_name);
+    // formData.append('image', Course_image);
+
+console.log('formData is:', formData);
+console.log( formData.append('name', Course_name))
+// console.log(formData.append('image', Course_image))
+
+return this.http.post('https://apis.cramfrenzy.com/user/image_upload_web/', formData)
+  .map((d) => { return true; })
+  .catch((e) => {
+    return Observable.throw(e.statusText);
+  });
   }
 }
