@@ -57,7 +57,7 @@
                 </mat-form-field>
                 <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                     Offers</mat-slide-toggle>
-                <div id="showdiv6" style="display: none;">
+                <div id="showdiv6" class="showid-6">
                     <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
                             [(ngModel)]="min_amount" (ngModelChange)="onChange2($event)" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
@@ -65,7 +65,7 @@
                             [(ngModel)]="max_amount" name="max_amount" (ngModelChange)="onChange2($event)" onKeyPress="if(this.value.length==4) return false;">
                         <span matPrefix>$&nbsp;</span>    
                     </mat-form-field>
-                    <div style="color: red" *ngIf="isInvalid">Maximum amount should greater than Minimum amount</div>     
+                    <div class="max-amount-alert" *ngIf="isInvalid">Maximum amount should greater than Minimum amount</div>     
                 </div>
                 <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true" [(ngModel)]="sell_status" name="sell_status">List
                     for Sale</mat-slide-toggle>
