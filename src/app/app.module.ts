@@ -11,7 +11,8 @@ import { GlobalService } from './global.service';
 import { SocialLoginModule, AuthService } from 'angular5-social-login';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CountdownModule } from 'ng2-countdown-timer';
-import { Ng2ImgMaxModule } from 'ng2-img-max';
+import {NgxImageCompressService} from 'ngx-image-compress';
+
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
@@ -210,7 +211,7 @@ export class MaterialModule { }
     MatButtonModule,
     HttpModule,
     Routing,
-    Ng2ImgMaxModule,
+
     HttpClientModule,
     RatingModule,
     SocialLoginModule,
@@ -256,6 +257,7 @@ export class MaterialModule { }
     PagerService,
     PagerService,
     GlobalService,
+    NgxImageCompressService,
     BidHistoryService,
     MycourceService,
     DashboardService,
