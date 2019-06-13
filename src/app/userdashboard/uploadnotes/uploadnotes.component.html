@@ -125,11 +125,18 @@
                             </div>
                         <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
                                 alt="" allowmultiple="false" /> </div><!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)" accept="image/gif, image/jpeg, image/png" required> <img *ngIf="imagePreview" src="{{imagePreview}}"> -->
-                        <span class="btn-file margin-top-10">Upload Note Image <input (change)="onChange($event)" type="file"
+                        <span class="btn-file margin-top-10">Upload Note Image <input (change)="onChange($event)"  type="file"
                                 #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span> <span
                             class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> <input type="submit" class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)" [disabled]="!f.form.valid">
+                        </span> 
+                        <!-- <div>
+                            <button (click)="compressFile()">Upload and compress Image</button>
+                            <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
+                            <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
+                          </div> -->
+                          <input type="submit" class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)" [disabled]="!f.form.valid">
+                      
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">

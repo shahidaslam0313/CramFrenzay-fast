@@ -13,7 +13,7 @@ import swal from "sweetalert2";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
-import { Ng2ImgMaxService } from 'ng2-img-max';
+// import { Ng2ImgMaxService } from 'ng2-img-max';
 import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 
 declare const $: any;
@@ -129,7 +129,7 @@ export class UploadnotesComponent implements OnInit {
     Validators.maxLength(64),
     Validators.minLength(2)
   ]);
-  constructor(private ng2ImgMax: Ng2ImgMaxService, private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
+  constructor( private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));

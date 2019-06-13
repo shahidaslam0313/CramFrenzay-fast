@@ -12,7 +12,6 @@ import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
-import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
 // declare var localStorage: any;
 declare const $: any;
@@ -83,7 +82,7 @@ export class UploadbookComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-  constructor(private newService: uploadbookservice,private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute,
+  constructor(private newService: uploadbookservice, public sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -281,16 +280,7 @@ c_name;
     //     console.log('😢 Oh no!', error);
     //   }
     // );
-    this.ng2ImgMax.resizeImage(this.file, 4, 4).subscribe(
-      result => {
-        this.uploadedImage = result;
-        this.getImagePreview(this.uploadedImage);
-        console.log(result,'RESULT')
-      },
-      error => {
-        console.log('😢 Oh no!', error);
-      }
-    );
+ 
   }
   file;
   getImagePreview(file: File) {

@@ -10,7 +10,7 @@ export class Config {
 
   // public static api: string = 'http://192.168.29.174:8000/';
 
-  // public static api: string = 'http://192.168.30.8:8000/';
+  // public static api: string = 'http://192.168.18.43:8000/';
   // public static Imageurl: string = 'http://192.168.30.172:8000/media/';
   public static uploadfile = 'https://storage.cramfrenzy.com/upload.php';
   public static Imageurleach = 'https://storage.cramfrenzy.com/images/';
