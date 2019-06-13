@@ -20,7 +20,7 @@ model;
   }
 
 
-  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer, sell_days,  end_time , bid_status) {
+  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer, sell_days,  end_time , bid_status, min_amount, max_amount) {
 
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
@@ -37,8 +37,6 @@ model;
         sell_days: sell_days,
         notes_thumbnail: model.notes_thumbnail,
         accept_offer : accept_offer,
-        min_amount: model.min_amount,
-        max_amount : model.max_amount,
         data : model.datafile,
         bidnotes: {
           initial_amount: model.initial_amount,
@@ -47,8 +45,9 @@ model;
           reservedprice : model.reservedprice,
           start_time : model.start_time,
           bid_status : bid_status
-        }
-
+        },
+        min_amount: min_amount,
+        max_amount: max_amount
       }),
       { headers: headers }).map((response: Response) => response.json());
   }

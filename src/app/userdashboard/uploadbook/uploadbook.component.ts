@@ -35,8 +35,6 @@ export class UploadbookComponent implements OnInit {
   book_file : any;
   role;
   accept_offer:boolean = false;
-  min_amount;
-  max_amount;
   signupForm: FormGroup;
   sell_status: boolean = true;
   date = new Date().toString();
@@ -45,6 +43,12 @@ export class UploadbookComponent implements OnInit {
   public firstname;
   public lastname;
   profilePhoto;
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange3(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
   isreserved: boolean = false;
   range = [
     {value: '3', viewValue: '3'},
@@ -156,7 +160,7 @@ uploadfile(){
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
-  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.min_amount, this.model.max_amount, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date)
+  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date,this.min_amount, this.max_amount)
   .subscribe(Res => {
     this.uploadfile();
   });

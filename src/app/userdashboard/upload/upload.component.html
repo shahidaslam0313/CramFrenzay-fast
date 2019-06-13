@@ -22,7 +22,7 @@
             <h1 class="user-heading">List Course for Sale</h1>
             <form class="user-add-ingo-form" enctype="multipart/form-data" #f="ngForm">
                 <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" placeholder="Title"
-                        id="name" [(ngModel)]="model.name" name="name" #name="ngModel" minlength="2" maxlength="64" required>
+                        id="name" [(ngModel)]="model.name" name="name" #name="ngModel"  minlength="2" maxlength="64" required >
                     <mat-error *ngIf="name.hasError('required')"> Title is <strong>Required</strong>
                     </mat-error>
                     <mat-error *ngIf="name.hasError('minlength')"> Title should be at least 2 character long
@@ -58,12 +58,14 @@
                 <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                     Offers</mat-slide-toggle>
                 <div id="showdiv6" style="display: none;">
-                    <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
-                            [(ngModel)]="model.min_amount" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
+                    <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then"
+                            [(ngModel)]="min_amount" (ngModelChange)="onChange2($event)" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
-                    <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $"
-                            [(ngModel)]="model.max_amount" name="max_amount" onKeyPress="if(this.value.length==4) return false;">
-                        <span matPrefix>$&nbsp;</span> </mat-form-field>
+                    <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least"
+                            [(ngModel)]="max_amount" name="max_amount" (ngModelChange)="onChange2($event)" onKeyPress="if(this.value.length==4) return false;">
+                        <span matPrefix>$&nbsp;</span>    
+                    </mat-form-field>
+                    <div style="color: red" *ngIf="isInvalid">Accept Price should not be less or equal to Decline Price</div>     
                 </div>
                 <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true" [(ngModel)]="sell_status" name="sell_status">List
                     for Sale</mat-slide-toggle>
@@ -82,7 +84,7 @@
                         *ngIf="sell_status==true">Also List for Auction (You can list for Sale and Auction them off at the same time)</span> <span *ngIf="sell_status==false"> List
                         for Auction </span></mat-slide-toggle>
                 <div id="showdiv2">
-                    <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
+                    <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount" 
                             name="initial_amount" onKeyPress="if(this.value.length==4) return false;"
                             oninput="validity.valid||(value='');" min="1"> <span matPrefix>$&nbsp;</span>
                     </mat-form-field>
