@@ -81,13 +81,13 @@
         </div>
         <div class="col-lg-4 col-md-4 card-1">
             <div class="card each-card">
-                    <i class="fa fa-play-circle" *ngIf="introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)">
-                <div>
-    <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}"
-                    alt="Course Image">
+                
+                <div class="relative-pos" *ngIf="introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)">
+                        <i class="fas fa-play"></i>
+                        <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}" alt="Course Image">
                     
-                    </div>
-                </i>
+                </div>
+                
                     <!-- <i class="fa fa-play-circle" *ngIf="introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)"></i>{{introvideo?.video_title}} -->
                 <div class="card-body">
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
@@ -151,6 +151,7 @@
                         </div><!-- <div class="col-md-9 float-right course-tab"> <div class="tab-content"> <div class="tab-pane" id="home1"> <div class="lec-info float-right"> <span *ngIf="!time">Total Time:00:00:00</span> <span>Total Time:{{time}}</span> <span *ngIf="!totalvid">Total Chapters: 0</span> <span>Total Chapters:{{totalvid}}</span> </div></div></div></div>-->
                     </div>
                 </div>
+                <div class="row">
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
                 <h4>Reviews</h4>
@@ -159,16 +160,16 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                    <p class="text-secondary review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
-                                    <p> </p>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
                                     <div class="clearfix"></div>
                                     <p>{{reviews?.comment }}</p>
                                 </div>
-                                <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                             
+                                <div class="col-md-3 review-3">
+                                    <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
+                                    <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -179,6 +180,7 @@
             <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Course.gif">
             </div>
         </div>
+    </div>
     </div>
 </div>
 
