@@ -54,7 +54,7 @@
                                         {{card_get_datat.viewValue}}</mat-option>
                                 </mat-select>
                                 <mat-error
-                                    *ngIf="form.controls.cardnickname.touched && form.controls.card_type.invalid">
+                                    *ngIf="form.controls.card_type.touched && form.controls.card_type.invalid">
                                     <mat-error *ngIf="form.controls.card_type.errors.required"> Card Type cannot be
                                         empty
                                     </mat-error>
