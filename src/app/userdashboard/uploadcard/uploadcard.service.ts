@@ -19,7 +19,7 @@ export class uploadcardservice {
     }
   }
 
-  uploadcard(model, accept_offer, sell_days,  end_time, start_time ) {
+  uploadcard(model, accept_offer, sell_days,  end_time, start_time, min_amount, max_amount ) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'flash/createflashcard',
@@ -36,8 +36,6 @@ export class uploadcardservice {
         nestedcategory : model.nestedcategory,
         sell_status : model.sell_status,
         accept_offer : accept_offer,
-        min_amount: model.min_amount,
-        max_amount : model.max_amount,
         sell_days: sell_days,
         bidflashcard: {
           initial_amount: model.initial_amount,
@@ -46,8 +44,9 @@ export class uploadcardservice {
           reservedprice : model.reservedprice,
           start_time : start_time,
           bid_status : model.bid_status
-        }
-
+        },
+        min_amount: min_amount,
+        max_amount: max_amount
       }),
       { headers: headers }).map((response: Response) => response.json());
   }

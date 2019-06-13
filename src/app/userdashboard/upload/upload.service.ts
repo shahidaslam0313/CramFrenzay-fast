@@ -33,33 +33,33 @@ export class uploadservice {
     return this.http2.get(Config.api + 'course/categorylist/', { headers: headers }).map((response: Response) => response.json());
   }
 
-  uploading(sell_days,sell_status , model, accept_offer , bid_status,  end_time, start) {
+  uploading(sell_days, sell_status, model, accept_offer, bid_status, end_time, start, min_amount, max_amount) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'course/postcourse',
       JSON.stringify({
         userid: this.current.user_id,
         name: model.name,
-          description: model.description,
+        description: model.description,
         bidprice: model.bidprice,
         price: model.price,
         sell_days: sell_days,
-        sell_status : sell_status,
+        sell_status: sell_status,
         categories: model.categories,
-        subcategories : model.subcategories ,
-        nestedcategory : model.nestedcategory ,
+        subcategories: model.subcategories,
+        nestedcategory: model.nestedcategory,
         course_thumbnail: model.course_thumbnail,
-        accept_offer : accept_offer,
-        min_amount: model.min_amount,
-        max_amount : model.max_amount,
+        accept_offer: accept_offer,
         bidcourse: {
           initial_amount: model.initial_amount,
-          end_time : end_time,
-          isreserved : model.isreserved,
-          reservedprice : model.reservedprice,
-          start_time : start,
-          bid_status : bid_status
-        }
+          end_time: end_time,
+          isreserved: model.isreserved,
+          reservedprice: model.reservedprice,
+          start_time: start,
+          bid_status: bid_status
+        },
+        min_amount: min_amount,
+        max_amount: max_amount
       }),
       { headers: headers }).map((response: Response) => response.json());
   }

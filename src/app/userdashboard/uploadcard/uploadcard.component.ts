@@ -47,6 +47,12 @@ export class UploadcardComponent implements OnInit {
   accept_offer: boolean = false;
   sell_days;
   end_time;
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange2(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
   check2($event) {
 
   }
@@ -184,7 +190,7 @@ this.getindcardname();
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
-      this.newcard.uploadcard(this.model , this.accept_offer , new_date,  bid_date, date )
+      this.newcard.uploadcard(this.model , this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount)
       .subscribe(Res => { });
     f.resetForm();
     }

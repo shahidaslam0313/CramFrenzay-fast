@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
 import { uploadservice } from './upload.service';
 import { Router } from '@angular/router';
 import { Config } from '../../Config';
@@ -7,7 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SimpleGlobal } from 'ng2-simple-global';
 import { DataService } from '../../data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidatorFn, FormControl, NgForm, Validators } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -35,7 +34,7 @@ export class UploadComponent implements OnInit {
   public firstname;
   public lastname;
   profilePhoto;
-date = new Date().toString();
+  date = new Date().toString();
 
   Auction = true;
   file: any;
@@ -48,25 +47,31 @@ date = new Date().toString();
   disabled = false;
   sell_status: boolean = true;
   c_name;
-  hide= true;
-  isActive= true;
+  hide = true;
+  isActive = true;
   end_time;
   sell_days;
   response;
-role;
-  check($event) {}
+  role;
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange2(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
+  check($event) { }
   ranges = [
-    {value: '10', viewValue: '10'},
-    {value: '15', viewValue: '15'},
-    {value: '21', viewValue: '21'},
-    {value: '30', viewValue: '30'},
-    {value: '60', viewValue: '60'}
+    { value: '10', viewValue: '10' },
+    { value: '15', viewValue: '15' },
+    { value: '21', viewValue: '21' },
+    { value: '30', viewValue: '30' },
+    { value: '60', viewValue: '60' }
   ];
   range = [
-    {value: '3', viewValue: '3'},
-    {value: '5', viewValue: '5'},
-    {value: '7', viewValue: '7'},
-    {value: '15', viewValue: '15'},
+    { value: '3', viewValue: '3' },
+    { value: '5', viewValue: '5' },
+    { value: '7', viewValue: '7' },
+    { value: '15', viewValue: '15' },
   ];
   priceFormControl = new FormControl('', [
     Validators.required,
@@ -87,7 +92,6 @@ role;
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-
   constructor(private newService: uploadservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -106,25 +110,25 @@ role;
       this.courses();
     }
 
-    $('#showhide').click(function() {
+    $('#showhide').click(function () {
       $('#showdiv').toggle();
     });
-    $('#showhide2').click(function() {
+    $('#showhide2').click(function () {
       $('#showdiv2').toggle();
     });
 
-    $('#showhide3').click(function() {
+    $('#showhide3').click(function () {
       $('#showdiv3').toggle();
     });
 
-    $('#showhide4').click(function() {
+    $('#showhide4').click(function () {
       $('#showdiv4').toggle();
     });
 
-    $('#showhide5').click(function() {
+    $('#showhide5').click(function () {
       $('#showdiv5').toggle();
     });
-    $('#showhide6').click(function() {
+    $('#showhide6').click(function () {
       $('#showdiv6').toggle();
     });
   }
@@ -147,18 +151,18 @@ role;
   }
   accept_offer: boolean = false;
   private ifImageUpload(f: NgForm) {
-    var currentdate = moment(new Date,' YYYY-MM-DD ');
-    var new_date = moment(currentdate).add(this.sell_days,'days');
+    var currentdate = moment(new Date, ' YYYY-MM-DD ');
+    var new_date = moment(currentdate).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
-    var bid_date = moment(currentdate).add(this.end_time,'days');
-    console.log(new_date, this.sell_status , this.model,  this.bid_status , bid_date);
-      this.newService.uploading(new_date, this.sell_status , this.model, this.accept_offer,  this.bid_status , bid_date, currentdate)
+    var bid_date = moment(currentdate).add(this.end_time, 'days');
+    console.log(new_date, this.sell_status, this.model, this.bid_status, bid_date);
+    this.newService.uploading(new_date, this.sell_status, this.model, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount)
       .subscribe(Res => {
         this.CourseSuccess();
       }
 
       );
-      f.resetForm()
+    f.resetForm()
   }
   reserved() {
     if (this.hide) {
@@ -196,8 +200,8 @@ role;
   onChange(event: EventTarget) {
     this.input = new FormData();
 
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
+    const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
     this.input.append('fileToUpload', target.files[0]);
     this.files = target.files;
     this.file = this.files[0];
@@ -221,7 +225,7 @@ role;
       timer: 2500
     });
   }
- files;
+  files;
   ImgSrc;
   base64textString;
   _handleReaderLoaded(readerEvt) {
@@ -241,11 +245,11 @@ role;
       }
     }
   }
-  checkrole(){
-    if(isPlatformBrowser(this.platformId)){
-      if(localStorage.getItem('role') == "T" || localStorage.getItem('role') == "A" ){
+  checkrole() {
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('role') == "T" || localStorage.getItem('role') == "A") {
         return true;
-      } else if( this.role == "U" || this.role == "I") {
+      } else if (this.role == "U" || this.role == "I") {
         return false;
       }
     }
