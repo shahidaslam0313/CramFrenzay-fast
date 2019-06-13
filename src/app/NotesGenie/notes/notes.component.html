@@ -93,7 +93,7 @@
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
                         Now</a> <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
-                    <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
+                    <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true && result?.isTeacher==true"
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
                             <a class="fa fa-file-pdf" href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">
                                 &nbsp;View pdf</a> </button>
