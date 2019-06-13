@@ -13,8 +13,7 @@ import swal from "sweetalert2";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
-// import { Ng2ImgMaxService } from 'ng2-img-max';
-import { formControlBinding } from '@angular/forms/src/directives/ng_model';
+import { GlobalService } from '../../global.service';
 
 declare const $: any;
 @Component({
@@ -51,6 +50,8 @@ export class UploadnotesComponent implements OnInit {
   startprice;
   default;
   notes: FormGroup;
+  filetoup: FileList;
+  fileName = '';
   notesTypes: FormGroup;
   uploadnotesservice: any;
   accept_offer: boolean = false;
@@ -135,7 +136,7 @@ export class UploadnotesComponent implements OnInit {
     Validators.maxLength(64),
     Validators.minLength(2)
   ]);
-  constructor( private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
+  constructor( private globalimage : GlobalService, private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -196,36 +197,59 @@ export class UploadnotesComponent implements OnInit {
       }
     })
   }
-  onSubmit(f: NgForm) {
-
-    this.http.post(
-      Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-          this.sweetalertupload();
-        }
-        else {
-          this.model.notes_thumbnail = data;
-          console.log(this.model.notes_thumbnail);
-          this.uploadfiles();
-          this.ifImageUpload(this.sell_days, f);
-
-        }
-      });
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+  
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  this.uploadItemsToActivity();
   }
+  
+  uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+      data => {
+        alert(data)
+        // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
+        // console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
+  
+  }
+  // onSubmit(f: NgForm) {
+
+  //   this.http.post(
+  //     Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+  //         this.sweetalertupload();
+  //       }
+  //       else {
+  //         this.model.notes_thumbnail = data;
+  //         console.log(this.model.notes_thumbnail);
+         
+  //         this.ifImageUpload(this.sell_days, f);
+
+  //       }
+  //     });
+  // }
 
   sell_days;
 
   subcategory;
   nestedcategory;
-  private ifImageUpload(sell_days, f: NgForm) {
+   ifImageUpload( f: NgForm) {
     console.log(this.sell_days);
     var date = moment(new Date, "YYYY-MM-DD");
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, new_date, bid_date, this.bid_status, this.min_amount, this.max_amount)
+    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, new_date, this.fileName, bid_date, this.bid_status, this.min_amount, this.max_amount)
       .subscribe(Res => {
       });
+      this.uploadfiles();
     this.CourseSuccess();
     f.resetForm()
   }

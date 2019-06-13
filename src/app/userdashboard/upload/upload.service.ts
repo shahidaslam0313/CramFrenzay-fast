@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import { Config } from "../../Config";
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs';
+
 
 @Injectable()
 export class uploadservice {
@@ -63,28 +63,5 @@ export class uploadservice {
         max_amount: max_amount
       }),
       { headers: headers }).map((response: Response) => response.json());
-  }
-
-  PostImage(fileToUpload: FileList,Course_name): Observable<boolean> {
-    let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
-    headers.append('Content-Type', 'application/json');
-    console.log('I am in 1 Service');
-    const formData: FormData = new FormData();
-    console.log('File to upload in service is:', fileToUpload);
-    // for(let i=0; i<fileToUpload.length;i++) {
-      formData.append('image' , fileToUpload[0]);
-    // }
-    formData.append('name', Course_name);
-    // formData.append('image', Course_image);
-
-console.log('formData is:', formData);
-console.log( formData.append('name', Course_name))
-// console.log(formData.append('image', Course_image))
-
-return this.http.post('https://apis.cramfrenzy.com/user/image_upload_web/', formData)
-  .map((d) => { return true; })
-  .catch((e) => {
-    return Observable.throw(e.statusText);
-  });
   }
 }

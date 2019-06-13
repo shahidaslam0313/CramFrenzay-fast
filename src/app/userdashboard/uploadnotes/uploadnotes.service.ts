@@ -2,9 +2,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from '../../Config';
-import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Router } from '@angular/router';
 @Injectable()
 
 export class uploadnotesservice {
@@ -20,7 +18,7 @@ model;
   }
 
 
-  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer, sell_days,  end_time , bid_status, min_amount, max_amount) {
+  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer, sell_days, notes_thumbnail,  end_time , bid_status, min_amount, max_amount) {
 
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
@@ -35,7 +33,7 @@ model;
         sell_status : sell_status,
         price: model.price,
         sell_days: sell_days,
-        notes_thumbnail: model.notes_thumbnail,
+        notes_thumbnail: notes_thumbnail,
         accept_offer : accept_offer,
         data : model.datafile,
         bidnotes: {

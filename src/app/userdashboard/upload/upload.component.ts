@@ -11,6 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
+import { GlobalService } from '../../global.service';
 declare const $: any;
 @Component({
   selector: 'app-upload',
@@ -94,7 +95,7 @@ export class UploadComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-  constructor(private newService: uploadservice, private router: Router, private route: ActivatedRoute,
+  constructor(private newService: uploadservice, private globalimage : GlobalService, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -142,14 +143,14 @@ handleFileInput(files: FileList) {
   this. filetoup = files;
   console.log('uploaded filetoup  ', this.filetoup);
 
-this.fileName= 'https://storage.cramfrenzy.com/'+ this.filetoup[0].name;
+this.fileName=  this.filetoup[0].name;
 console.log('File Name is:' ,this.fileName);
 this.uploadItemsToActivity();
 }
 
 uploadItemsToActivity() {
   console.log('I am in 1 Component');
-  this.newService.PostImage(this.filetoup,this.model.name  ).subscribe(
+  this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
     data => {
       alert(data)
       // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
@@ -161,22 +162,22 @@ uploadItemsToActivity() {
 
 }
 
-  onSubmit(f: NgForm) {
+  // onSubmit(f: NgForm) {
 
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
-          this.CourseFailure();
-        }
-        else {
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
+  //         this.CourseFailure();
+  //       }
+  //       else {
 
-          // this.CourseSuccess();
-          this.model.course_thumbnail = data;
-          this.ifImageUpload(f);
-        }
-      });
-  }
+  //         // this.CourseSuccess();
+  //         this.model.course_thumbnail = data;
+  //         this.ifImageUpload(f);
+  //       }
+  //     });
+  // }
   accept_offer: boolean = false;
    ifImageUpload(f: NgForm) {
     var currentdate = moment(new Date, ' YYYY-MM-DD ');
