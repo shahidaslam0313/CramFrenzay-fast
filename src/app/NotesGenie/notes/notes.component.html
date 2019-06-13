@@ -93,7 +93,7 @@
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
                         Now</a> <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
-                    <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
+                    <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true && result?.isTeacher==true"
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
                             <a class="fa fa-file-pdf" href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">
                                 &nbsp;View pdf</a> </button>
@@ -211,17 +211,19 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                    <p class="text-secondary review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
-                                    <p> </p>
+                                    
+                                   
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
                                     <div class="clearfix"></div>
                                     <p>{{reviews?.comment }}</p>
                                 </div>
+                            <div class="col-md-3 review-3">
                                 <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                             
+                                <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
                             </div>
+                        </div>
                         </div>
                     </div>
   
