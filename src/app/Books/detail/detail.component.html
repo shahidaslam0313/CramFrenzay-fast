@@ -81,7 +81,7 @@
         </div>
         <div class="col-lg-4 col-md-4 card-1">
             <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.book_image}}"
-                    data-filter="*" alt="Book Image">
+                    data-filter="*" alt="Book Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
                 <div class="card-body">
                     <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
                     <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
