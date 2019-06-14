@@ -168,32 +168,33 @@ uploadItemsToActivity() {
     });
 
 }
-  onSubmit(f: NgForm) {
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
-          // EditCourseDialogComponent.ImageUploadFailer();
-          this.CourseFailure();
-        } else {
+  // onSubmit(f: NgForm) {
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
+  //         // EditCourseDialogComponent.ImageUploadFailer();
+  //         this.CourseFailure();
+  //       } else {
 
-          this.CourseSuccess();
-          this.model.book_image = data;
+  //         this.CourseSuccess();
+  //         this.model.book_image = data;
 
-          this.ifImageUpload(f);
-          this.uploadfile();
-        }
-      });
-  }
+  //         this.ifImageUpload(f);
+  //         this.uploadfile();
+  //       }
+  //     });
+  // }
   sell_days;
-  public ifImageUpload(f: NgForm) {
+   ifImageUpload(f: NgForm) {
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
   this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.fileName, this.model.book_edition, this.book_file,  this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
   .subscribe(Res => {
-    this.uploadfile();
+  
   });
+  this.uploadfile();
   f.resetForm();
 }
   CourseSuccess() {
