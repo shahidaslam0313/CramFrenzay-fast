@@ -65,7 +65,7 @@
                             [(ngModel)]="max_amount" name="max_amount" (ngModelChange)="onChange2($event)" onKeyPress="if(this.value.length==4) return false;">
                         <span matPrefix>$&nbsp;</span>    
                     </mat-form-field>
-                    <div class="max-amount-alert" *ngIf="isInvalid">Maximum amount should greater than Minimum amount</div>     
+                    <div class="max-amount-alert" *ngIf="isInvalid">Accept Price should not be less or equal to Decline Price </div>     
                 </div>
                 <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true" [(ngModel)]="sell_status" name="sell_status">List
                     for Sale</mat-slide-toggle>
