@@ -71,7 +71,7 @@
                     for Sale</mat-slide-toggle>
                 <div id="showdiv">
                     <mat-form-field class="margin-top-10"> <input matInput type="number" placeholder="Buy It Now Price"
-                            id="actual_price" [(ngModel)]="model.actual_price" name="actual_price" onKeyPress="if(this.value.length==4) return false;"
+                            id="price" [(ngModel)]="model.price" name="price" onKeyPress="if(this.value.length==4) return false;"
                              oninput="validity.valid||(value='');" min="1">
                         <span matPrefix>$&nbsp;</span> </mat-form-field>
                     <mat-form-field class="material-select">
