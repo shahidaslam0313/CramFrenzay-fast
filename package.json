@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path     ",
+    "build": "ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -29,7 +29,6 @@
     "angular2-simple-countdown": "0.0.6",
     "angular2-text-mask": "^9.0.0",
     "angular5-social-login": "^1.0.9",
-    "blueimp-canvas-to-blob": "^3.14.0",
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "jquery": "^3.4.1",
@@ -41,7 +40,6 @@
     "ng2-simple-global": "^1.2.5",
     "ngx-bootstrap": "^2.0.2",
     "ngx-datetime-picker": "^2.0.0",
-    "ngx-image-compress": "^7.2.4",
     "ngx-slick": "^0.2.1",
     "node-modules": "^1.0.1",
     "rxjs": "^6.4.0",

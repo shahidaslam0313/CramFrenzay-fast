@@ -219,22 +219,22 @@ export class UploadnotesComponent implements OnInit {
       });
   
   }
-  // onSubmit(f: NgForm) {
+  onSubmit(f: NgForm) {
 
-  //   this.http.post(
-  //     Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-  //         this.sweetalertupload();
-  //       }
-  //       else {
-  //         this.model.notes_thumbnail = data;
-  //         console.log(this.model.notes_thumbnail);
+    this.http.post(
+      Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
+        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+          this.sweetalertupload();
+        }
+        else {
+          this.model.notes_thumbnail = data;
+          console.log(this.model.notes_thumbnail);
          
-  //         this.ifImageUpload(this.sell_days, f);
+          this.ifImageUpload(this.sell_days);
 
-  //       }
-  //     });
-  // }
+        }
+      });
+  }
 
   sell_days;
 

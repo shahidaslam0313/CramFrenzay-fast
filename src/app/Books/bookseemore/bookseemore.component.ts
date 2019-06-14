@@ -298,11 +298,11 @@ export class BookseemoreComponent implements OnInit {
   }
 
   getbooks;
-
+  booksendtime;
   getbookbidhistory(id)
     {
       this.bidings.bookbidhistory(this.bidbookid).subscribe(data => {
-        this.book = data;
+        this.booksendtime = data;
         this.getbooks = data['Highest Bid'];
 
       })

@@ -19,7 +19,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 export class EachcourseComponent implements OnInit {
   @ViewChild(AddtocartComponent)
 
-  public Imageurl = Config.Imageurleach;
+  public Imageurl = Config.Imageurlget;
   result;
   pager;
   public courseId: any;
