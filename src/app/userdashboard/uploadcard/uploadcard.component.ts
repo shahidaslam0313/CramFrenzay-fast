@@ -11,6 +11,7 @@ import swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
+import { GlobalService } from '../../global.service';
 
 declare const $: any;
 
@@ -89,7 +90,7 @@ export class UploadcardComponent implements OnInit {
   flashcard= new FormControl('',[
     Validators.required
   ])
-  constructor(private newcard: uploadcardservice, private router: Router, private route: ActivatedRoute,
+  constructor(private globalimage : GlobalService, private newcard: uploadcardservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -175,28 +176,28 @@ this.getindcardname();
   }
   ImgSrc;
   base64textString;
-  onSubmit(f: NgForm) {
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
-          this.CourseFailure();
-        }
-        else {
+  // onSubmit(f: NgForm) {
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
+  //         this.CourseFailure();
+  //       }
+  //       else {
 
 
-          this.model.flashcard_image = data;
-          this.ifImageUpload2(f);
-          this.CourseSuccess();
-        }
-      });
-  }
-  private ifImageUpload2(f: NgForm) {
+  //         this.model.flashcard_image = data;
+  //         this.ifImageUpload2(f);
+  //         this.CourseSuccess();
+  //       }
+  //     });
+  // }
+   ifImageUpload2(f: NgForm) {
     console.log(this.sell_days);
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
-      this.newcard.uploadcard(this.model , this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount, this.initial_amount,this.reservedprice)
+      this.newcard.uploadcard(this.model.name,this.fileName,this.model ,this.sell_status, this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount, this.initial_amount,this.reservedprice, this.bid_status)
       .subscribe(Res => { });
     f.resetForm();
     }
@@ -238,7 +239,30 @@ form.resetForm()
 
     })
   }
+  filetoup: FileList;
+  fileName;
 
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+  
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  this.uploadItemsToActivity();
+  }
+  
+  uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+      data => {
+        alert(data)
+    
+      },
+      error => {
+        console.log(error);
+      });
+  
+  }
   CourseSuccess() {
     swal({
       type: 'success',

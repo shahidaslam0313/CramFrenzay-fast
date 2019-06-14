@@ -40,7 +40,6 @@ export class UploadComponent implements OnInit {
   Auction = true;
   file: any;
   file1: any;
-  // files: File;
   input;
   clicked = false;
   color = 'accent';

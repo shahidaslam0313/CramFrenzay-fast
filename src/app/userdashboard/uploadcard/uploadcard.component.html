@@ -146,12 +146,13 @@
                                 <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
                             </mat-form-field>
                         </div>
-                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png"
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> 
+                            <img accept=".jpg, .jpeg, .png"
                                 src="{{ImgSrc}}" alt="" allowmultiple="false" /> </div><span
                             class="btn-file margin-top-10">Upload Flash
-                            card Image <input (change)="onChange($event)" #image type="file"
+                            card Image <input (change)="handleFileInput($event.target.files); onChange($event)" #image type="file"
                                 accept="image/gif, image/jpeg, image/png" required> </span>
-                        <input type="submit" class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)"
+                        <input type="submit" class="btn-style btn margin-top-10 width100" (click)="ifImageUpload2(f)"
                             [disabled]="!f.form.valid">
                     </form>
                 </div>

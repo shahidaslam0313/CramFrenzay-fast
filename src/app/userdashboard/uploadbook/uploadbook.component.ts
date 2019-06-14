@@ -12,8 +12,9 @@ import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
-import { DomSanitizer } from '@angular/platform-browser';
-// declare var localStorage: any;
+
+import { GlobalService } from '../../global.service';
+
 declare const $: any;
 @Component({
   selector: 'app-uploadbook',
@@ -92,7 +93,7 @@ export class UploadbookComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-  constructor(private newService: uploadbookservice, public sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute,
+  constructor(private globalimage : GlobalService, private newService: uploadbookservice,  private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -144,6 +145,29 @@ uploadfile(){
       }
     })
 }
+
+handleFileInput(files: FileList) {
+  this.filetoup = files;
+  console.log('uploaded filetoup  ', this.filetoup);
+
+this.fileName=  this.filetoup[0].name;
+console.log('File Name is:' ,this.fileName);
+this.uploadItemsToActivity();
+}
+filetoup: FileList;
+  fileName;
+uploadItemsToActivity() {
+  console.log('I am in 1 Component');
+  this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+    data => {
+      alert(data)
+  
+    },
+    error => {
+      console.log(error);
+    });
+
+}
   onSubmit(f: NgForm) {
     this.http.post(
       Config.Imageurlupload,
@@ -166,7 +190,7 @@ uploadfile(){
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
-  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
+  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.fileName, this.model.book_edition, this.book_file,  this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
   .subscribe(Res => {
     this.uploadfile();
   });
