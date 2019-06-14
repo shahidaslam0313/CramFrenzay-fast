@@ -589,6 +589,12 @@ input.switch-toggle-round+label:after {
     box-shadow: 1px 1px 8px 1px #ece9e9;
     width: 75%;
 }
+.product-list__category a {
+    color: #000!important;
+}
+.product-list__item {
+    padding: 5px;
+}
 @media only screen and (max-width:1300px){
     .width-80 {
         width: 90%;

@@ -264,16 +264,19 @@
                                                         <div class="heart-heading"><a routerLink="/notes/{{data?.id}}">{{data.name}}</a></div>
                                                         <div class="heart-detail" >
                                                                 <a routerLink="{{data?.id}}">
-                                                            Author:{{data.author}}</a></div>
+                                                            Author:{{data.author}}</a>
+                                                            <span class="discount-p">{{data?.discount
+                                                                    | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
+                                                        </div>
                                                         <div class="heart-price"> <span class="heart-new-price">
                                                                 <a routerLink="/notes/{{data?.id}}">{{data.price
-                                                                | currency:'USD'}}</a></span> <span class="discount-p">{{data?.discount
-                                                                | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                        </div>
-                                                    </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
+                                                                | currency:'USD'}}</a></span> 
+                                                                <a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToCart(null, null, null, data?.id, data?.wish_id)"> Move
                                                     to Cart </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <h1 class="dropdown-heading" *ngIf="Data?.flashcards?.length != '0'">Flash Cards</h1>
                                             <div class="heart" *ngFor="let data of Data?.flashcards; let i=index">
@@ -283,17 +286,19 @@
                                                         class="heart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="heart-contact">
                                                         <div class="heart-heading" ><a routerLink="/fcdetail/{{data?.id}}">{{data?.name}}</a></div>
-                                                        <div class="heart-detail"> </div>
+                                                        <div class="heart-detail">
+                                                                <span class="discount-p">{{data?.discount
+                                                                        | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
+                                                        </div>
                                                         <div class="heart-price"> <span class="heart-new-price">{{data?.price
-                                                                | currency:'USD'}}</span> <span class="discount-p">{{data?.discount
-                                                                | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                               
+                                                                | currency:'USD'}}</span>
+                                                                <a  routerLink="" class="heart-card-btn"
+                                                                (click)="moveToCart(null, null, data?.id, null, data?.wish_id)">
+                                                                Move to Cart </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a  routerLink="" class="heart-card-btn"
-                                                (click)="moveToCart(null, null, data?.id, null, data?.wish_id)">
-                                                Move to Cart </a>
+                                                
                                             </div>
                                         <h1 class="dropdown-heading" *ngIf="Data?.courses?.length != '0'">Courses</h1>
                                         <div class="heart" *ngFor="let data of Data?.courses; let i=index">
@@ -305,15 +310,18 @@
                                                     <div class="heart-heading"><a routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a></div>
                                                     <div class="heart-detail" >
                                                             <a routerLink="/eachcourse/{{data?.id}}">
-                                                        Author:{{data?.author}}</a></div>
-                                                    <div class="heart-price"> <span class="heart-new-price">  <a routerLink="/eachcourse/{{data?.id}}">{{data.price
-                                                            | currency:'USD'}}</a></span> <span class="discount-p">{{data?.discount
-                                                            | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
+                                                        Author:{{data?.author}}</a>
+                                                        <span class="discount-p">{{data?.discount
+                                                                | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
                                                     </div>
-                                                </div>
-                                            </div><a  routerLink="" class="heart-card-btn"
+                                                    <div class="heart-price"> <span class="heart-new-price">  <a routerLink="/eachcourse/{{data?.id}}">{{data.price
+                                                            | currency:'USD'}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
                                                 (click)="moveToCart(null, data?.id, null, null, data?.wish_id)"> Move
                                                 to Cart </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <h1 class="dropdown-heading" *ngIf="Data?.books?.length != '0'">Books</h1>
@@ -325,15 +333,18 @@
                                                 <div class="heart-contact">
                                                     <div class="heart-heading"><a routerLink="/detail/{{data?.id}}">{{data.name}}</a></div>
                                                     <div class="heart-detail" *ngIf="data.author_name!=''">
-                                                            <a routerLink="/detail/{{data?.id}}"> Author:{{data.author_name}}</a></div>
+                                                            <a routerLink="/detail/{{data?.id}}"> Author:{{data.author_name}}</a>
+                                                            <span class="discount-p">{{data?.discount
+                                                                    | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
+                                                        </div>
                                                     <div class="heart-price"> <span class="heart-new-price"><a routerLink="/detail/{{data?.id}}">{{data?.price
-                                                            | currency:'USD'}}</a></span> <span class="discount-p">{{data?.discount
-                                                            | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span>
-                                                    </div>
-                                                </div>
-                                            </div><a  routerLink="" class="heart-card-btn"
+                                                            | currency:'USD'}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
                                                 (click)="moveToCart(data?.id, null, null, null, data?.wish_id)"> Move
                                                 to Cart </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                        
                                     </div>

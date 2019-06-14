@@ -9,9 +9,10 @@
                 </div>
             </div>
             <div class="rating_and_price">
+                    <a class="product-list__price" routerLink="/notes/{{note?.id}}">{{note?.price
+                        | currency:'USD'}}</a>
                 <rating class="rating-star-icons float_left" ngModel="{{note?.rating}}" [readonly]="true"
-                    titles="{{note?.rating}}"></rating> <a class="product-list__price" routerLink="/notes/{{note?.id}}">{{note?.price
-                                                | currency:'USD'}}</a>
+                    titles="{{note?.rating}}"></rating>
             </div>
         </div>
     </div>
@@ -25,9 +26,10 @@
                     </div>
                 </div>
                 <div class="rating_and_price">
+                        <a class="product-list__price" routerLink="/eachcourse/{{course?.id}}">{{course?.price
+                            | currency:'USD'}}</a>
                     <rating class="rating-star-icons float_left" ngModel="{{course?.rating}}" [readonly]="true"
-                        titles="{{course?.rating}}"></rating> <a class="product-list__price" routerLink="/eachcourse/{{course?.id}}">{{course?.price
-                                                    | currency:'USD'}}</a>
+                        titles="{{course?.rating}}"></rating>
                 </div>
             </div>
         </div>
@@ -41,9 +43,10 @@
                         </div>
                     </div>
                     <div class="rating_and_price">
+                            <a class="product-list__price" routerLink="/fcdetail/{{card?.id}}">{{card?.price
+                                | currency:'USD'}}</a>
                         <rating class="rating-star-icons float_left" ngModel="{{card?.rating}}" [readonly]="true"
-                            titles="{{card?.rating}}"></rating> <a class="product-list__price" routerLink="/fcdetail/{{card?.id}}">{{card?.price
-                                                        | currency:'USD'}}</a>
+                            titles="{{card?.rating}}"></rating>
                     </div>
                 </div>
             </div>
@@ -57,9 +60,10 @@
                             </div>
                         </div>
                         <div class="rating_and_price">
+                                <a class="product-list__price" routerLink="/detail/{{book?.id}}">{{book?.price
+                                    | currency:'USD'}}</a>
                             <rating class="rating-star-icons float_left" ngModel="{{book?.rating}}" [readonly]="true"
-                                titles="{{book?.rating}}"></rating> <a class="product-list__price" routerLink="/detail/{{book?.id}}">{{book?.price
-                                                            | currency:'USD'}}</a>
+                                titles="{{book?.rating}}"></rating>
                         </div>
                     </div>
                 </div>
