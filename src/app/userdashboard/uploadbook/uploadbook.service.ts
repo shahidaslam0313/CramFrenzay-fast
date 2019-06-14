@@ -25,7 +25,7 @@ export class uploadbookservice {
   uploading(name, author_name, price, ISBN, book_rent, book_detail, categories, bid_status, subcategories, nestedcategory,  sell_status, sell_days,  book_image, book_edition, book_file, accept_offer, initial_amount, end_time , isreserved, reservedprice, start_time, min_amount, max_amount) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json', );
-    return this.http.post('http://192.168.29.9:8000/book/postbook/',
+    return this.http.post(Config.api +'book/postbook/',
       JSON.stringify({
         userid: this.current.user_id,
         name: name,
