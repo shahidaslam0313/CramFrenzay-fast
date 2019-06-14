@@ -160,11 +160,11 @@ uploadItemsToActivity() {
   console.log('I am in 1 Component');
   this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
     data => {
-      alert(data)
+     
   
     },
     error => {
-      console.log(error);
+      // console.log(error);
     });
 
 }
