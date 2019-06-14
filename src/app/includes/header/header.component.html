@@ -9,7 +9,7 @@
           <div class="col-lg-3" *ngFor="let data of notes; let i=index">
                 <div class="product-list__item">
                     <figure class="product-list__img"> <a  routerLink="/detail/{{data?.id}}">
-                            <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes Image"> </a>
+                            <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                     </figure>
                     <div class="product-list__content">
                         <div class="product-list__category"> <a  routerLink="/detail/{{data.id}}"
@@ -259,7 +259,7 @@
                                                     (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> 
                                                 </div>
                                                 <div class="heart-main-div"> <a routerLink="/notes/{{data?.id}}"><img src="{{Imageurl}}{{data.notes_thumbnail}}"
-                                                        class="heart-img" alt="notes" ></a>
+                                                        class="heart-img" alt="notes" onerror="this.src='/assets/img/Logo-gray.jpg'" ></a>
                                                     <div class="heart-contact">
                                                         <div class="heart-heading"><a routerLink="/notes/{{data?.id}}">{{data.name}}</a></div>
                                                         <div class="heart-detail" >
@@ -280,7 +280,7 @@
                                                 <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                     (click)=" del(data?.wish_id)"> <i class="fas fa-times"></i> </div>
                                                 <div class="heart-main-div"><a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}"
-                                                        class="heart-img" alt="flashcard_image"></a>
+                                                        class="heart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="heart-contact">
                                                         <div class="heart-heading" ><a routerLink="/fcdetail/{{data?.id}}">{{data?.name}}</a></div>
                                                         <div class="heart-detail"> </div>
@@ -300,7 +300,7 @@
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                 (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </div>
                                             <div class="heart-main-div">  <a routerLink="/eachcourse/{{data?.id}}"><img src="{{Imageurl}}{{data?.course_thumbnail}}"
-                                                    class="heart-img" alt="Course"></a>
+                                                    class="heart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                 <div class="heart-contact">
                                                     <div class="heart-heading"><a routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a></div>
                                                     <div class="heart-detail" >
@@ -321,7 +321,7 @@
                                             <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
                                                 (click)=" del(data?.wish_id)"> <i class="fas fa-times"></i> </div>
                                             <div class="heart-main-div"><a routerLink="/detail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.book_image}}"
-                                                    class="heart-img" alt="Course"></a>
+                                                    class="heart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                 <div class="heart-contact">
                                                     <div class="heart-heading"><a routerLink="/detail/{{data?.id}}">{{data.name}}</a></div>
                                                     <div class="heart-detail" *ngIf="data.author_name!=''">
@@ -351,7 +351,7 @@
                                                 <div class="addtocart-time" (click)="removeitems(cartitems?.cart_id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"><a routerLink="/eachcourse/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.course_thumbnail}}"
-                                                        class="addtocart-img" alt="Course"></a>
+                                                        class="addtocart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a></div>
                                                         <div class="heart-detail" >
@@ -371,7 +371,7 @@
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"> <a routerLink="/notes/{{cartitems.id}}"><img src="{{Imageurl}}{{cartitems.notes_thumbnail}}"
-                                                        class="addtocart-img" alt="Course"></a>
+                                                        class="addtocart-img" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/notes/{{cartitems.id}}">{{cartitems.name}}</a></div>
                                                         <div class="heart-detail" >
@@ -391,7 +391,7 @@
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"><a routerLink="/fcdetail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.flashcard_image}}"
-                                                        class="addtocart-img" alt="Course"></a>
+                                                        class="addtocart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}"> {{cartitems?.name}}</a></div>
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> ${{cartitems?.price}}</a></span>
@@ -409,7 +409,7 @@
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"><a routerLink="/detail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.book_image}}"
-                                                        class="addtocart-img" alt="Course"></a>
+                                                        class="addtocart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/detail/{{cartitems.id}}">{{cartitems.name}}</a></div>
                                                         <div class="heart-detail" *ngIf="cartitems.author_name!=''">
