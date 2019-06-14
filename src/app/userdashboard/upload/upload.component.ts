@@ -62,6 +62,12 @@ export class UploadComponent implements OnInit {
   public onChange2(event: any): void {
     this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
   }
+  public initial_amount;
+  public reservedprice;
+  public Invalid: boolean = false;
+  public onChange3(event: any): void {
+    this.Invalid = this.initial_amount == this.reservedprice || this.initial_amount > this.reservedprice;
+  }
   check($event) { }
   ranges = [
     { value: '10', viewValue: '10' },
@@ -185,7 +191,7 @@ uploadItemsToActivity() {
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(currentdate).add(this.end_time, 'days');
     console.log(new_date, this.sell_status, this.model, this.bid_status, bid_date);
-    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount)
+    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
       .subscribe(Res => {
         this.CourseSuccess();
       }

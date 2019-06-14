@@ -19,7 +19,7 @@ export class uploadcardservice {
     }
   }
 
-  uploadcard(model, accept_offer, sell_days,  end_time, start_time, min_amount, max_amount ) {
+  uploadcard(model, accept_offer, sell_days,  end_time, start_time, min_amount, max_amount, initial_amount, reservedprice ) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'flash/createflashcard',
@@ -38,10 +38,10 @@ export class uploadcardservice {
         accept_offer : accept_offer,
         sell_days: sell_days,
         bidflashcard: {
-          initial_amount: model.initial_amount,
+          initial_amount: initial_amount,
           end_time : end_time,
           isreserved : model.isreserved,
-          reservedprice : model.reservedprice,
+          reservedprice : reservedprice,
           start_time : start_time,
           bid_status : model.bid_status
         },

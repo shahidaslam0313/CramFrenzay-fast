@@ -90,7 +90,7 @@
                                     [(ngModel)]="max_amount" (ngModelChange)="onChange2($event)" name="max_amount"
                                     onKeyPress="if(this.value.length==4) return false;">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
-                                <div class="max-amount-alert" *ngIf="isInvalid">Maximum amount should greater than Minimum amount</div>     
+                                <div class="max-amount-alert" *ngIf="isInvalid">Accept Price should not be less or equal to Decline Price </div>     
                         </div>
                         <mat-slide-toggle id="showhide" [checked]="true" [(ngModel)]="sell_status" name="sell_status">
                             List
@@ -115,7 +115,7 @@
                                 List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
                             <mat-form-field class="margin-top-10"> <input matInput type="number"
-                                    placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
+                                (ngModelChange)="onChange3($event)" placeholder="Starting Bid Price" [(ngModel)]="initial_amount"
                                     name="initial_amount" onKeyPress="if(this.value.length==4) return false;"
                                     oninput="validity.valid||(value='');" min="1">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
@@ -130,10 +130,11 @@
                         </mat-slide-toggle>
                         <div id="showdiv3">
                             <mat-form-field class="margin-top-10"> <input matInput type="number"
-                                    placeholder="Reserve Price" [(ngModel)]="model.reservedprice" name="reservedprice"
-                                    onKeyPress="if(this.value.length==4) return false;"
+                                    placeholder="Reserve Price" [(ngModel)]="reservedprice" name="reservedprice"
+                                    (ngModelChange)="onChange3($event)" onKeyPress="if(this.value.length==4) return false;"
                                     oninput="validity.valid||(value='');" min="1">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
+                                <div class="max-amount-alert" *ngIf="Invalid">Reserve bid amount must be higher than the starting bid</div>     
                         </div>
                         <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
                         <div id="showdiv4">
