@@ -13,6 +13,7 @@
                         | currency:'USD'}}</a>
                 <rating class="rating-star-icons float_left" ngModel="{{note?.rating}}" [readonly]="true"
                     titles="{{note?.rating}}"></rating>
+                    titles="{{note?.rating}}"></rating> <a class="product-list__price" routerLink="/notes/{{note?.id}}">{{note?.price | currency:'USD'}}</a>
             </div>
         </div>
     </div>
@@ -88,7 +89,11 @@
                                     <mat-option *ngFor="let card of res" [value]="card.id" (click)="getcardid(card.id)">
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
-                            </mat-form-field> <a class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now</a>
+                            </mat-form-field> 
+                            <a *ngIf="note && !course && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now at {{note?.price | currency:'USD'}}</a>
+                            <a *ngIf="course && !note && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now at {{course?.price | currency:'USD'}}</a>
+                            <a *ngIf="card && !note && !course && !book" class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now at {{card?.price | currency:'USD'}}</a>
+                            <a *ngIf="book && !course && !note && !card" class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now at {{book?.price | currency:'USD'}}</a>
                         </div>
                     </div>
                     <div class="col-md-12" *ngIf="isright">
@@ -316,8 +321,11 @@
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle>
                                     </div>
-                                </div><a class="btn-style btn width50 margin-top-10" (click)="buywithcard(f)">Buy
-                                    Now</a>
+                                </div>
+                                    <a *ngIf="note && !course && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{note?.price | currency:'USD'}}</a>
+                                    <a *ngIf="course && !note && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{course?.price | currency:'USD'}}</a>
+                                    <a *ngIf="card && !note && !course && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{card?.price | currency:'USD'}}</a>
+                                    <a *ngIf="book && !course && !note && !card" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{book?.price | currency:'USD'}}</a>
                             </form>
                         </div>
                     </div>
