@@ -364,16 +364,19 @@
                                                 <div class="addtocart-main-div"><a routerLink="/eachcourse/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.course_thumbnail}}"
                                                         class="addtocart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a></div>
+                                                        <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a>
+                                                            <span class="discount-p">${{cartitems.discount}}<i
+                                                                class="fas fa-arrow-down"></i> </span>
+                                                        </div>
                                                         <div class="heart-detail" >
                                                                 <a routerLink="/eachcourse/{{cartitems.id}}">Author:{{cartitems.author}}</a></div>
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.id}}">${{cartitems?.price}}</a></span>
-                                                            <span class="discount-p">${{cartitems.discount}}<i
-                                                                    class="fas fa-arrow-down"></i> </span> </div>
-                                                    </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
+                                                            <a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.id,null,null,cartitems.cart_id)">
                                                     Move to Watch List </a>
+                                                             </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.lenght != '0'">Notes</h1>
@@ -386,14 +389,17 @@
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/notes/{{cartitems.id}}">{{cartitems.name}}</a></div>
                                                         <div class="heart-detail" >
-                                                                <a routerLink="/notes/{{cartitems.id}}">  Author:{{cartitems.author}}</a></div>
+                                                                <a routerLink="/notes/{{cartitems.id}}">  Author:{{cartitems.author}}</a>
+                                                                <span class="discount-p">${{cartitems.discount}}<i
+                                                                    class="fas fa-arrow-down"></i> </span>
+                                                            </div>
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">${{cartitems?.price}}</a></span>
-                                                            <span class="discount-p">${{cartitems.discount}}<i
-                                                                    class="fas fa-arrow-down"></i> </span> </div>
+                                                            <a  routerLink="" class="heart-card-btn"
+                                                            (click)="moveToWishlist(null,null,null,cartitems.id,cartitems.cart_id)">
+                                                            Move to Watch List </a>     
+                                                        </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
-                                                    (click)="moveToWishlist(null,null,null,cartitems.id,cartitems.cart_id)">
-                                                    Move to Watch List </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.lenght != '0'">Flash Cards</h1>
@@ -404,14 +410,17 @@
                                                 <div class="addtocart-main-div"><a routerLink="/fcdetail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.flashcard_image}}"
                                                         class="addtocart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}"> {{cartitems?.name}}</a></div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> ${{cartitems?.price}}</a></span>
+                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}"> {{cartitems?.name}}</a>
                                                             <span class="discount-p">${{cartitems.discount}}<i
-                                                                    class="fas fa-arrow-down"></i> </span> </div>
+                                                                class="fas fa-arrow-down"></i> </span>
+                                                        </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> ${{cartitems?.price}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
+                                                            (click)="moveToWishlist(null,null,cartitems.id,null,cartitems.cart_id)">
+                                                            Move to Watch List </a>     
+                                                        </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
-                                                    (click)="moveToWishlist(null,null,cartitems.id,null,cartitems.cart_id)">
-                                                    Move to Watch List </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books != '0'">Books</h1>
@@ -422,16 +431,19 @@
                                                 <div class="addtocart-main-div"><a routerLink="/detail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.book_image}}"
                                                         class="addtocart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading"><a routerLink="/detail/{{cartitems.id}}">{{cartitems.name}}</a></div>
+                                                        <div class="heart-heading"><a routerLink="/detail/{{cartitems.id}}">{{cartitems.name}}</a>
+                                                            <span class="discount-p">${{cartitems.discount}}<i
+                                                                class="fas fa-arrow-down"></i> </span>
+                                                        </div>
                                                         <div class="heart-detail" *ngIf="cartitems.author_name!=''">
                                                                 <a routerLink="/detail/{{cartitems.id}}">  Author:{{cartitems.author_name}}</a></div>
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">${{cartitems?.price}}</a></span>
-                                                            <span class="discount-p">${{cartitems.discount}}<i
-                                                                    class="fas fa-arrow-down"></i> </span> </div>
+                                                            <a  routerLink="" class="heart-card-btn"
+                                                            (click)="moveToWishlist(cartitems.id,null,null,null,cartitems.cart_id)">
+                                                            Move to Watch List </a>     
+                                                        </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
-                                                    (click)="moveToWishlist(cartitems.id,null,null,null,cartitems.cart_id)">
-                                                    Move to Watch List </a>
+                                                </div>
                                             </div>
                                         </div>                                     
                                     </div>
