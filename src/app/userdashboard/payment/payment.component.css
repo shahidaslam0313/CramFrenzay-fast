@@ -570,12 +570,15 @@ input.switch-toggle-round+label:after {
     transition: margin .4s
 }
 .check-img-payment{
-    width: 25%;
+    width: 30%;
     float: left;
 }
-.width-80{
-    width: 80%;
+.width-70{
+    width: 70%;
     display: flex;
+}
+.width65 {
+    width: 65%;
 }
 .product-list__price{
     color: #000;
@@ -587,7 +590,7 @@ input.switch-toggle-round+label:after {
     padding: 0 0 10px;
     float: left;
     box-shadow: 1px 1px 8px 1px #ece9e9;
-    width: 75%;
+    width: 70%;
 }
 .product-list__category a {
     color: #000!important;
@@ -595,24 +598,22 @@ input.switch-toggle-round+label:after {
 .product-list__item {
     padding: 5px;
 }
+.btn-style{
+    text-transform: unset;
+}
 @media only screen and (max-width:1300px){
-    .width-80 {
-        width: 90%;
+    .width-70 {
+        width: 75%;
     }
 }
 @media only screen and (max-width:1199px){
-    .width-80 {
-        width: 100%;
-    }
-    .check-img-payment {
-        width: 28%;
-    }
-    .checkout-select-box {
-        width: 72%;
+    .width-70 {
+        width: 90%;
     }
 }
 @media only screen and (max-width:991px){
-    .width-80 {
+    .width-70 {
+        width: 100%;
         padding: 5px 10px!important;
     }
     .check-img-payment {
