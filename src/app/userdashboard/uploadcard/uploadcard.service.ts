@@ -37,13 +37,13 @@ export class uploadcardservice {
         sell_status : model.sell_status,
         accept_offer : accept_offer,
         sell_days: sell_days,
+        bid_status : model.bid_status,
         bidflashcard: {
           initial_amount: initial_amount,
           end_time : end_time,
           isreserved : model.isreserved,
           reservedprice : reservedprice,
           start_time : start_time,
-          bid_status : model.bid_status
         },
         min_amount: min_amount,
         max_amount: max_amount

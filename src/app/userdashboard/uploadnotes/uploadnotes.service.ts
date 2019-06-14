@@ -36,13 +36,13 @@ model;
         notes_thumbnail: notes_thumbnail,
         accept_offer : accept_offer,
         data : model.datafile,
+        bid_status : bid_status,
         bidnotes: {
           initial_amount: initial_amount,
           end_time : end_time,
           isreserved : model.isreserved,
           reservedprice : reservedprice,
           start_time : model.start_time,
-          bid_status : bid_status
         },
         min_amount: min_amount,
         max_amount: max_amount
