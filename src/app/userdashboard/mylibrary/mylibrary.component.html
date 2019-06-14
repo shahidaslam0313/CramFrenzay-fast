@@ -556,7 +556,7 @@
           <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.bid_status"
             [checked]="profile.bid_status==true" name="bid_status" #bid_status="ngModel">List for Auction
           </mat-slide-toggle>
-          <div *ngIf="profile.bid_status==true">
+          <div *ngIf="profile.bid_status">
             <mat-form-field> <input matInput type="number" placeholder="Bid Price" [(ngModel)]="bidbooks.initial_amount"
                 #initial_amount="ngModel" name="initial_amount" onKeyPress="if(this.value.length==4) return false;">
             </mat-form-field>
