@@ -1,5 +1,5 @@
-<div class="container-fluid width-90 margin-bottom-20 pt-5">
-    <div *ngIf="note">
+<div class="container-fluid width-80 margin-bottom-20 pt-5">
+    <div *ngIf="note" class="check-img-payment">
         <div class="product-list__item">
             <figure class="product-list__img"> <a routerLink="/notes/{{note?.id}}"><img src="{{Imageurl}}{{note?.notes_thumbnail}}"
                     onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> </a></figure>
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="course">
+    <div *ngIf="course" class="check-img-payment">
             <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{course?.id}}"><img src="{{Imageurl}}{{course?.course_thumbnail}}"
                         onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course"> </a></figure>
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="card">
+        <div *ngIf="card" class="check-img-payment">
                 <div class="product-list__item">
                     <figure class="product-list__img"> <a routerLink="/fcdetail/{{card?.id}}"><img src="{{Imageurl}}{{card?.flashcard_image}}"
                             onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Flash Card"> </a></figure>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="book">
+            <div *ngIf="book" class="check-img-payment">
                     <div class="product-list__item">
                         <figure class="product-list__img"> <a routerLink="/detail/{{book?.id}}"><img src="{{Imageurl}}{{book?.book_image}}"
                                 onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Book"> </a></figure>

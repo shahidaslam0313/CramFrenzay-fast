@@ -569,14 +569,50 @@ input.switch-toggle-round+label:after {
     -o-transition: margin .4s;
     transition: margin .4s
 }
-
+.check-img-payment{
+    width: 25%;
+    float: left;
+}
+.width-80{
+    width: 80%;
+    display: flex;
+}
+.product-list__price{
+    color: #000;
+    font-size: 16px;
+}
 .checkout-select-box {
     border: 1px solid #eee;
     border-radius: 5px;
-    margin: 0 auto 10px;
     padding: 0 0 10px;
-    float: none;
+    float: left;
     box-shadow: 1px 1px 8px 1px #ece9e9;
-    width: 100%;
-    max-width: 700px
+    width: 75%;
+}
+@media only screen and (max-width:1300px){
+    .width-80 {
+        width: 90%;
+    }
+}
+@media only screen and (max-width:1199px){
+    .width-80 {
+        width: 100%;
+    }
+    .check-img-payment {
+        width: 28%;
+    }
+    .checkout-select-box {
+        width: 72%;
+    }
+}
+@media only screen and (max-width:991px){
+    .width-80 {
+        padding: 5px 10px!important;
+    }
+    .check-img-payment {
+        width: 35%;
+    }
+    .checkout-select-box {
+        width: 65%;
+    }
 }
