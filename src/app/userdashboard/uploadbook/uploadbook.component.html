@@ -138,11 +138,11 @@
                 <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
                         alt="" allowmultiple="false" /> 
                         <!-- <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"> -->
-                </div><span class="btn-file margin-top-10">Upload Book Image <input (change)="onChange($event)" #image
+                </div><span class="btn-file margin-top-10">Upload Book Image <input (change)="handleFileInput($event.target.files);onChange($event)" #image
                         type="file" accept="image/gif, image/jpeg, image/png" required> </span> <span class="btn-file margin-top-10"
                     style="margin-left: 3px">Upload Book File (PDF) <input (change)="onChange2($event)" #book_file type="file">
                 </span> 
-                <input type="submit" class="btn-style btn margin-top-10 width100" (click)="onSubmit(f)" [disabled]="!f.form.valid">
+                <input type="submit" class="btn-style btn margin-top-10 width100" (click)="ifImageUpload(f)" [disabled]="!f.form.valid">
             </form>
         </div>
     </div>

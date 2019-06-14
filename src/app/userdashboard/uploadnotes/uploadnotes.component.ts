@@ -217,8 +217,7 @@ export class UploadnotesComponent implements OnInit {
     this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
       data => {
         alert(data)
-        // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
-        // console.log('Successs')
+    
       },
       error => {
         console.log(error);
