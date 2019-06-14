@@ -9,10 +9,9 @@
                 </div>
             </div>
             <div class="rating_and_price">
-                    <a class="product-list__price" routerLink="/notes/{{note?.id}}">{{note?.price
-                        | currency:'USD'}}</a>
+                 
                 <rating class="rating-star-icons float_left" ngModel="{{note?.rating}}" [readonly]="true"
-                    titles="{{note?.rating}}"></rating>
+                  
                     titles="{{note?.rating}}"></rating> <a class="product-list__price" routerLink="/notes/{{note?.id}}">{{note?.price | currency:'USD'}}</a>
             </div>
         </div>
