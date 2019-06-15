@@ -375,7 +375,10 @@
                                                             <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
-                                                </div><a  routerLink="" class="heart-card-btn"
+                                                </div>
+                                                <!-- <a  routerLink="" class="heart-card-btn"> -->
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.id}}">${{cartitems?.price}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.id,null,null,cartitems.cart_id)">
                                                     Move to Watch List </a>
                                                              </div>
@@ -397,6 +400,15 @@
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span>
                                                             <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
+                                                                <a routerLink="/notes/{{cartitems.id}}">  Author:{{cartitems.author}}</a>
+                                                                <span class="discount-p">${{cartitems.discount}}<i
+                                                                    class="fas fa-arrow-down"></i> </span>
+                                                            </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">${{cartitems?.price}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
+                                                            (click)="moveToWishlist(null,null,null,cartitems.id,cartitems.cart_id)">
+                                                            Move to Watch List </a>     
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -413,6 +425,15 @@
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> {{cartitems?.price | currency:'USD'}}</a></span>
                                                             <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
+                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}"> {{cartitems?.name}}</a>
+                                                            <span class="discount-p">${{cartitems.discount}}<i
+                                                                class="fas fa-arrow-down"></i> </span>
+                                                        </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> ${{cartitems?.price}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
+                                                            (click)="moveToWishlist(null,null,cartitems.id,null,cartitems.cart_id)">
+                                                            Move to Watch List </a>     
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -434,6 +455,11 @@
                                                         <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span>
                                                             <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
                                                                     class="fas fa-arrow-down"></i> </span> </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">${{cartitems?.price}}</a></span>
+                                                            <a  routerLink="" class="heart-card-btn"
+                                                            (click)="moveToWishlist(cartitems.id,null,null,null,cartitems.cart_id)">
+                                                            Move to Watch List </a>     
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
