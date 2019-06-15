@@ -22,7 +22,7 @@
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes.slice().reverse(), let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
-                      src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes">
+                      src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'">
                   </a> <a class="product-list__edit-btn" data-toggle="modal" data-target="#edit-notes-modal"
                     (click)="singlenotes(item?.id)"> <i class="fas fa-edit"></i> </a> <a
                     class="product-list__delete-btn" value="Delete" data-toggle="modal"
@@ -52,7 +52,7 @@
               *ngFor="let data of result.slice().reverse(); let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
-                      src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course">
+                      src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">
                   </a> <a class="product-list__edit-btn" value="Delete" data-toggle="modal"
                     data-target="#edit-course-modal" (click)="coursesupdate(data?.id)"> <i class="fas fa-edit"></i> </a>
                   <a class="product-list__delete-btn" value="Delete" data-toggle="modal"
@@ -83,7 +83,7 @@
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card.slice().reverse(), let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
-                      src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard"> </a> <a
+                      src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a
                     class="product-list__edit-btn" value="Delete" data-toggle="modal" data-target="#edit-card-modal"
                     (click)="clickcardsedit(item.id)"> <i class="fas fa-edit"></i> </a> <a
                     class="product-list__delete-btn" value="Delete" data-toggle="modal" data-target="#delete-card-modal"
@@ -111,7 +111,7 @@
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books.slice().reverse(); let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
-                      src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a> <a class="product-list__edit-btn"
+                      src="{{Imageurl}}{{item?.book_image}}" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a class="product-list__edit-btn"
                     value="Delete" data-toggle="modal" data-target="#edit-book-modal" (click)="editbooks(item?.id)"> <i
                       class="fas fa-edit"></i> </a> <a class="product-list__delete-btn" value="Delete"
                     data-toggle="modal" data-target="#delete-book-modal" (click)="btndelbook(item?.id)"> <i
