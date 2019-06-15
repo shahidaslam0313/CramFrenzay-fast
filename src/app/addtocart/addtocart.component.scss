@@ -235,6 +235,21 @@ label {
 .btn-style{
     text-transform: unset;
 }
+.product-list__price{
+    display: inline-block;
+    color: #000;
+    font-size: 16px;
+}
+.price-row{
+    position: relative;
+}
+.product-list__star-list{
+    position: absolute;
+    margin: 0;
+    top: 3px;
+    right: 0;
+}
+
 .select select {
     appearance: none;
     position: absolute;
