@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.notes; let i=index">
             <div class="product-list__item">
-                    <a class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                     (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.notes_thumbnail}}"
                             alt="Notes Image"> </a>
@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.courses; let i=index">
             <div class="product-list__item">
-                    <a class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                     (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.course_thumbnail}}"
                             alt="Course Image"> </a>
@@ -81,7 +81,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.flashcards; let i=index">
             <div class="product-list__item">
-                    <a class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                     (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}"
                             alt="Notes Image"> </a>
@@ -114,7 +114,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.books; let i=index">
             <div class="product-list__item">
-                    <a class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                     (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.book_image}}"
                             alt="Notes Image"> </a>

@@ -937,6 +937,10 @@
     position: absolute;
     right: 20px;
 }
+#input-searchbar::-webkit-input-placeholder{
+    font-size: 30px!important;
+    font-weight: 600!important;
+  }
 .addtocart-cross{
     position: absolute;
     right: 20px;

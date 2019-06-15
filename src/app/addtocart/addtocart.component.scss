@@ -14,12 +14,12 @@
     font-weight: bolder;
     font-size: 22px
 }
-.addtocart-time{
-    background-color: black;
-    color: white;
-    padding-right: 6px; 
-    text-align: right;
-  }
+// .addtocart-time{
+//     background-color: black;
+//     color: white;
+//     padding-right: 6px; 
+//     text-align: right;
+//   }
 .cart-body h6 {
     font-size: 17px;
     font-weight: 700;
@@ -226,7 +226,15 @@ label {
     right: 10px;
     pointer-events: none
 }
-
+.addtocart-time.cross-icon{
+    background: #000;
+}
+.addtocart-time.cross-icon .fa-times{
+    cursor: pointer;
+}
+.btn-style{
+    text-transform: unset;
+}
 .select select {
     appearance: none;
     position: absolute;

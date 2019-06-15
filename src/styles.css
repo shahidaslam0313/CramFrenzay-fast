@@ -123,7 +123,7 @@ mat-form-field.mat-form-field {
 .search-bg__text:ebkit-input-placeholder {
   font-size: 20px!important;
   color: #616161!important;
-  font-weight: 900;
+  font-weight: 600;
   opacity: 1
 }
 
@@ -348,8 +348,8 @@ mat-form-field.mat-form-field {
   position: relative;
   border-radius: 10px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, .4);
-  background-color: rgba(0, 0, 0, .4)
+  /* border: 1px solid rgba(0, 0, 0, .4); */
+  background-color: rgba(0, 0, 0, 0.31)
 }
 
 .homeSlider .item .item-inner:hover {
@@ -809,7 +809,7 @@ blockquote .blockquote-author {
   object-fit: fill
 }
 .addtocart-time{
-  background-color: black;
+  /* background-color: black; */
   color: white;
   padding-right: 6px; 
   text-align: right;
@@ -2234,7 +2234,6 @@ mat-error>strong {
 .modal .countdown {
   margin: 0
 }
-
 @media only screen and (min-width:1600px) {
   .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
       width: 85%;

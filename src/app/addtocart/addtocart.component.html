@@ -235,7 +235,7 @@
                             <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
                                 data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
                                     class="fas fa-trash-alt"></i> </a> </div> -->
-                                    <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                                    <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                                     (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.course_thumbnail}}" alt="Course Image"> </a>
@@ -271,7 +271,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.notes">
                     <div class="product-list__item">
-                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                            <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                             (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink="/notes/{{cartitems.id}}"> <img
                                     src="{{Imageurl}}{{cartitems.notes_thumbnail}}" alt="Notes Image"> </a>
@@ -313,7 +313,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.flashcards">
                     <div class="product-list__item">
-                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                            <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                             (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.flashcard_image}}" alt="FlashCard Image">
@@ -353,7 +353,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.books">
                     <div class="product-list__item">
-                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal"
+                            <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
                             (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.book_image}}" alt="Books Image"> </a>
