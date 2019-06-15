@@ -357,7 +357,7 @@
                                     title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.courses?.lenght != '0'">Courses</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.courses?.length != '0'">Courses</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.courses">
                                             <div class="addtocart cart-padding" *ngIf="cartitems !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems?.cart_id)"> <i
@@ -371,8 +371,11 @@
                                                         </div>
                                                         <div class="heart-detail" >
                                                                 <a routerLink="/eachcourse/{{cartitems.id}}">Author:{{cartitems.author}}</a></div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.id}}">${{cartitems?.price}}</a></span>
-                                                            <a  routerLink="" class="heart-card-btn"
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span>
+                                                            <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
+                                                                    class="fas fa-arrow-down"></i> </span> </div>
+                                                    </div>
+                                                </div><a  routerLink="" class="heart-card-btn"
                                                     (click)="moveToWishlist(null,cartitems.id,null,null,cartitems.cart_id)">
                                                     Move to Watch List </a>
                                                              </div>
@@ -380,7 +383,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.lenght != '0'">Notes</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.length != '0'">Notes</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.notes">
                                             <div class="addtocart cart-padding" >
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i
@@ -390,20 +393,15 @@
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/notes/{{cartitems.id}}">{{cartitems.name}}</a></div>
                                                         <div class="heart-detail" >
-                                                                <a routerLink="/notes/{{cartitems.id}}">  Author:{{cartitems.author}}</a>
-                                                                <span class="discount-p">${{cartitems.discount}}<i
-                                                                    class="fas fa-arrow-down"></i> </span>
-                                                            </div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">${{cartitems?.price}}</a></span>
-                                                            <a  routerLink="" class="heart-card-btn"
-                                                            (click)="moveToWishlist(null,null,null,cartitems.id,cartitems.cart_id)">
-                                                            Move to Watch List </a>     
-                                                        </div>
+                                                                <a routerLink="/notes/{{cartitems.id}}">  Author:{{cartitems.author}}</a></div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span>
+                                                            <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
+                                                                    class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.lenght != '0'">Flash Cards</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.length != '0'">Flash Cards</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.flashcards">
                                             <div class="addtocart cart-padding" >
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i
@@ -411,23 +409,18 @@
                                                 <div class="addtocart-main-div"><a routerLink="/fcdetail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.flashcard_image}}"
                                                         class="addtocart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
-                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}"> {{cartitems?.name}}</a>
-                                                            <span class="discount-p">${{cartitems.discount}}<i
-                                                                class="fas fa-arrow-down"></i> </span>
-                                                        </div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> ${{cartitems?.price}}</a></span>
-                                                            <a  routerLink="" class="heart-card-btn"
-                                                            (click)="moveToWishlist(null,null,cartitems.id,null,cartitems.cart_id)">
-                                                            Move to Watch List </a>     
-                                                        </div>
+                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}"> {{cartitems?.name}}</a></div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> {{cartitems?.price | currency:'USD'}}</a></span>
+                                                            <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
+                                                                    class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books != '0'">Books</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books?.length != '0'">Books</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.books">
                                             <div class="addtocart cart-padding" >
-                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i
                                                         class="fas fa-times"></i> </div>
                                                 <div class="addtocart-main-div"><a routerLink="/detail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.book_image}}"
                                                         class="addtocart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
@@ -438,11 +431,9 @@
                                                         </div>
                                                         <div class="heart-detail" *ngIf="cartitems.author_name!=''">
                                                                 <a routerLink="/detail/{{cartitems.id}}">  Author:{{cartitems.author_name}}</a></div>
-                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">${{cartitems?.price}}</a></span>
-                                                            <a  routerLink="" class="heart-card-btn"
-                                                            (click)="moveToWishlist(cartitems.id,null,null,null,cartitems.cart_id)">
-                                                            Move to Watch List </a>     
-                                                        </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span>
+                                                            <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i
+                                                                    class="fas fa-arrow-down"></i> </span> </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -451,7 +442,7 @@
                                     <div class="btn-div">
                                         <div class="addtocart-main-total">
                                             <div class="addtocart-main-total-title"> Total: </div>
-                                            <div class="addtocart-main-total-price"> ${{totalprice}}</div>
+                                            <div class="addtocart-main-total-price"> {{totalprice | currency:'USD'}}</div>
                                         </div>
                                         <div class="wishlist-btn-div" *ngIf="check_login()"> <a 
                                             routerLink="/addtocart" class="btn text-trans">Go to Cart</a> </div>

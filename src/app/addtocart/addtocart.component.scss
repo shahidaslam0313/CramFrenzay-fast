@@ -14,7 +14,12 @@
     font-weight: bolder;
     font-size: 22px
 }
-
+.addtocart-time{
+    background-color: black;
+    color: white;
+    padding-right: 6px; 
+    text-align: right;
+  }
 .cart-body h6 {
     font-size: 17px;
     font-weight: 700;
@@ -23,6 +28,9 @@
     text-transform: capitalize
 }
 
+// .cross{
+//     font-size: 25px !important;
+// }
 .linethrough {
     text-decoration: line-through;
     font-weight: 500;
