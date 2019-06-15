@@ -7,7 +7,7 @@
             <div class="product-list__item">
                  <figure class="product-list__img">
                     <a routerLink="/nestedcateroy/{{data?.id}}" (click)="sliderClick(data.sub_category_name)">
-                        <img src="{{Imageurl}}{{data?.icon}}" alt="Course"> </a>
+                        <img src="{{Imageurl}}{{data?.icon}}" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -32,7 +32,7 @@
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/notes/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes"> </a>
+                        <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -54,7 +54,7 @@
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/eachcourse/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course"> </a>
+                        <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -76,7 +76,7 @@
             <div class="product-list__item" >
                 <figure class="product-list__img">
                     <a routerLink="/fcdetail/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards"> </a>
+                        <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -98,7 +98,7 @@
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/detail/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.book_image}}" alt="book"> </a>
+                        <img src="{{Imageurl}}{{data?.book_image}}" alt="book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
