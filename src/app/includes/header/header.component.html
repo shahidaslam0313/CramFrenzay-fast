@@ -276,7 +276,7 @@
                                 <a routerLink="/addtocart" title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
                                 <div class="addtocart-sub-meun">
                                     <div class="addtocart-full-div">
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.courses?.lenght != '0'">Courses</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.courses?.length != '0'">Courses</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.courses">
                                             <div class="addtocart cart-padding" *ngIf="cartitems !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems?.cart_id)"> <i class="fas fa-times"></i></div>
@@ -293,7 +293,7 @@
                                                     </div>
                                                 </div></div>
                                         </div>
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.lenght != '0'">Notes</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.length != '0'">Notes</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.notes">
                                             <div class="addtocart cart-padding">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i class="fas fa-times"></i></div>
@@ -310,7 +310,7 @@
                                                     </div>
                                                 </div></div>
                                         </div>
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.lenght != '0'">Flash Cards</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.length != '0'">Flash Cards</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.flashcards">
                                             <div class="addtocart cart-padding">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i class="fas fa-times"></i></div>
@@ -326,7 +326,7 @@
                                                     </div>
                                                 </div></div>
                                         </div>
-                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books != '0'">Books</h1>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books?.length != '0'">Books</h1>
                                         <div *ngFor="let cartitems of gettingcartsitem?.books">
                                             <div class="addtocart cart-padding">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i class="fas fa-times"></i></div>
