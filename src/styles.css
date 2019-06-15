@@ -802,13 +802,18 @@ blockquote .blockquote-author {
 
 .product-list__img img {
   width: 100%;
-  border-radius: 10px 10px 0 0;
+  /* border-radius: 10px 10px 0 0; */
   display: block;
   height: 170px;
   -o-object-fit: cover;
   object-fit: fill
 }
-
+.addtocart-time{
+  background-color: black;
+  color: white;
+  padding-right: 6px; 
+  text-align: right;
+}
 .product-list__content {
   padding: 0 10px
 }

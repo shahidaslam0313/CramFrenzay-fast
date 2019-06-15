@@ -207,7 +207,6 @@ export class AddtocartComponent implements OnInit {
       })
       this.headServ.showCartItem().subscribe(cartitems => {
         this.cartitems = cartitems;
-        // console.log(this.cartitems,'CartItems')
         this.Data.emittData(this.cartitems);
       })
     }, error => {
@@ -289,17 +288,15 @@ export class AddtocartComponent implements OnInit {
       this.Book.pop();
     }
   }
-
+  cartdata
   showCartItems() {
     this._serv.showCartItems().subscribe(Data => {
       this.itemscount = Data.counts;
       this.SUM = Data.sum;
-      // console.log(Data, 'Cart')
-
+      this.cartdata=Data
       for (let val in Data.Cart) {
         if (Data.Cart[val].course) {
           this.Courses.push(Data.Cart[val]);
-          // console.log(this.Courses);
         }
         else if (Data.Cart[val].notes) {
           this.Notes.push(Data.Cart[val]);
@@ -377,7 +374,6 @@ export class AddtocartComponent implements OnInit {
   }
   getcardid(id) {
     this.eachcardid = id;
-    // console.log(this.eachcardid);
   }
   check($event) { }
   buywithcard( f: NgForm) {

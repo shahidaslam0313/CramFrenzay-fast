@@ -46,7 +46,7 @@ export class AddtocartService {
   showCartItems() {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'purchase/purchase/getcheckoutlist/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'purchase/getcheckoutlist_web/' ,{ headers: headers }).map((response: Response) => response.json());
   }
   showCards() {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });

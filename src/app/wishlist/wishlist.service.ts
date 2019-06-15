@@ -22,7 +22,7 @@ export class WishlistService {
   showwishlist() {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'bid/showwishlist/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'bid/getwishlist_web/', { headers: headers }).map((response: Response) => response.json());
   }
   delwishlist(id) {
     const headers = new Headers({ 'Authorization': 'JWT ' + this.token });
