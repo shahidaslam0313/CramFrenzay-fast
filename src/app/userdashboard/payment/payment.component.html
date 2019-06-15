@@ -1,4 +1,4 @@
-<div class="container-fluid width-80 margin-bottom-20 pt-5">
+<div class="container-fluid width-70 margin-bottom-20 pt-5">
     <div *ngIf="note" class="check-img-payment">
         <div class="product-list__item">
             <figure class="product-list__img"> <a routerLink="/notes/{{note?.id}}"><img src="{{Imageurl}}{{note?.notes_thumbnail}}"
@@ -9,9 +9,9 @@
                 </div>
             </div>
             <div class="rating_and_price">
+                 
                 <rating class="rating-star-icons float_left" ngModel="{{note?.rating}}" [readonly]="true"
-                    titles="{{note?.rating}}"></rating> <a class="product-list__price" routerLink="/notes/{{note?.id}}">{{note?.price
-                                                | currency:'USD'}}</a>
+                    titles="{{note?.rating}}"></rating>
             </div>
         </div>
     </div>
@@ -25,9 +25,10 @@
                     </div>
                 </div>
                 <div class="rating_and_price">
+                        <a class="product-list__price" routerLink="/eachcourse/{{course?.id}}">{{course?.price
+                            | currency:'USD'}}</a>
                     <rating class="rating-star-icons float_left" ngModel="{{course?.rating}}" [readonly]="true"
-                        titles="{{course?.rating}}"></rating> <a class="product-list__price" routerLink="/eachcourse/{{course?.id}}">{{course?.price
-                                                    | currency:'USD'}}</a>
+                        titles="{{course?.rating}}"></rating>
                 </div>
             </div>
         </div>
@@ -41,9 +42,10 @@
                         </div>
                     </div>
                     <div class="rating_and_price">
+                            <a class="product-list__price" routerLink="/fcdetail/{{card?.id}}">{{card?.price
+                                | currency:'USD'}}</a>
                         <rating class="rating-star-icons float_left" ngModel="{{card?.rating}}" [readonly]="true"
-                            titles="{{card?.rating}}"></rating> <a class="product-list__price" routerLink="/fcdetail/{{card?.id}}">{{card?.price
-                                                        | currency:'USD'}}</a>
+                            titles="{{card?.rating}}"></rating>
                     </div>
                 </div>
             </div>
@@ -57,9 +59,10 @@
                             </div>
                         </div>
                         <div class="rating_and_price">
+                                <a class="product-list__price" routerLink="/detail/{{book?.id}}">{{book?.price
+                                    | currency:'USD'}}</a>
                             <rating class="rating-star-icons float_left" ngModel="{{book?.rating}}" [readonly]="true"
-                                titles="{{book?.rating}}"></rating> <a class="product-list__price" routerLink="/detail/{{book?.id}}">{{book?.price
-                                                            | currency:'USD'}}</a>
+                                titles="{{book?.rating}}"></rating>
                         </div>
                     </div>
                 </div>
@@ -79,12 +82,16 @@
                 <div id="pricing-switch" class="">
                     <div class="col-md-12" *ngIf="!isright ">
                         <div class="col-lg-12 Saved-card-sel-list">
-                            <mat-form-field class="width50">
+                            <mat-form-field class="width65">
                                 <mat-select class="" placeholder="Select Card">
                                     <mat-option *ngFor="let card of res" [value]="card.id" (click)="getcardid(card.id)">
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
-                            </mat-form-field> <a class="btn-style width50 btn margin-top-10" (click)="buy()">Buy Now</a>
+                            </mat-form-field> 
+                            <a *ngIf="note && !course && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{note?.price | currency:'USD'}}</a>
+                            <a *ngIf="course && !note && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{course?.price | currency:'USD'}}</a>
+                            <a *ngIf="card && !note && !course && !book" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{card?.price | currency:'USD'}}</a>
+                            <a *ngIf="book && !course && !note && !card" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{book?.price | currency:'USD'}}</a>
                         </div>
                     </div>
                     <div class="col-md-12" *ngIf="isright">
@@ -312,8 +319,11 @@
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle>
                                     </div>
-                                </div><a class="btn-style btn width50 margin-top-10" (click)="buywithcard(f)">Buy
-                                    Now</a>
+                                </div>
+                                    <a *ngIf="note && !course && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{note?.price | currency:'USD'}}</a>
+                                    <a *ngIf="course && !note && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{course?.price | currency:'USD'}}</a>
+                                    <a *ngIf="card && !note && !course && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{card?.price | currency:'USD'}}</a>
+                                    <a *ngIf="book && !course && !note && !card" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{book?.price | currency:'USD'}}</a>
                             </form>
                         </div>
                     </div>

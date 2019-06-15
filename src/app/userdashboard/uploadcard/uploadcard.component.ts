@@ -255,7 +255,7 @@ form.resetForm()
     console.log('I am in 1 Component');
     this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
       data => {
-        alert(data)
+        // alert(data)
     
       },
       error => {

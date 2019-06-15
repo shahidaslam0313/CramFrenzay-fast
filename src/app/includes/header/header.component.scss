@@ -866,9 +866,11 @@
 .heart-img {
     height: 70px;
     width: 70px;
-    margin-left: 8px;
+    margin-left: 15px;
 }
-
+.heart-card-btn{
+    float: right;
+}
 .heart-contact {
     margin-left: 10px;
     width: 70%
@@ -925,7 +927,7 @@
     position: relative;
 }
 .cart-padding{
-    padding: 0 10px;
+    padding: 5px 10px;
 }
 .addtocart-time {
     display: flex;
@@ -959,7 +961,7 @@
 }
 .heart {
     position: relative;
-    padding: 0 10px;
+    padding: 5px 10px;
 }
 .heart:hover {
     background: none;
@@ -967,7 +969,7 @@
 .addtocart-img {
     height: 70px;
     width: 70px;
-    margin-left: 8px;
+    margin-left: 15px;
 }
 
 .discount-p {
