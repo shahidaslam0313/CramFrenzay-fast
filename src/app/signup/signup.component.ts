@@ -385,7 +385,7 @@ export class SignupComponent {
   emailVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops <br> Email alreday registered',
+      title: 'Oops <br> Email already registered',
       showConfirmButton: false,
       width: '512px',
       timer: 2500
