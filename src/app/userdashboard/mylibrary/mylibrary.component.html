@@ -221,7 +221,7 @@
                   onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
               </mat-form-field>
             </div>
-            <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
+            <mat-slide-toggle class="toggle-margin">Start Auction Later</mat-slide-toggle>
             <div>
               <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
                   [(ngModel)]="bidnote.start_time" name="start_time" #start_time="ngModel"> <span
@@ -315,7 +315,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <mat-slide-toggle [checked]="true" [(ngModel)]="cardedit.bid_status" name="bid_status" #bid_status="ngModel">
+          <mat-slide-toggle class="toggle-margin" [checked]="true" [(ngModel)]="cardedit.bid_status" name="bid_status" #bid_status="ngModel">
             List for Auction</mat-slide-toggle>
           <div *ngIf="cardedit.bid_status==true">
             <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
@@ -335,7 +335,7 @@
                   [(ngModel)]="bidflashcard.reservedprice" name="reservedprice" #reservedprice="ngModel"
                   onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
             </div>
-            <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
+            <mat-slide-toggle class="toggle-margin">Start Auction Later</mat-slide-toggle>
             <div>
               <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
                   [(ngModel)]="bidflashcard.start_time" name="start_time" #start_time="ngModel"> <span
@@ -447,8 +447,8 @@
                   [(ngModel)]="bidcourses.reservedprice" #reservedprice="ngModel" name="reservedprice"
                   onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
               </mat-form-field>
-            </div><br>
-            <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
+            </div>
+            <mat-slide-toggle class="toggle-margin">Start Auction Later</mat-slide-toggle>
             <div>
               <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
                   [(ngModel)]="bidcourses.start_time" name="start_time"> <span placeholder="MM/DD/YYYY HH:MM AM"></span>
@@ -574,7 +574,7 @@
                   [(ngModel)]="bidbooks.reservedprice" name="reservedprice" #reservedprice="ngModel"
                   onKeyPress="if(this.value.length==4) return false;"> </mat-form-field>
             </div>
-            <mat-slide-toggle class="margin-bottom-10 d-block" id="showhide4">Start Auction Later
+            <mat-slide-toggle class="margin-bottom-10 d-block toggle-margin" id="showhide4">Start Auction Later
             </mat-slide-toggle>
             <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
                 [ngModel]="bidbooks.start_time" name="start_time" #start_time="ngModel"> <span
@@ -583,7 +583,7 @@
               <mat-datepicker #picker></mat-datepicker>
               <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
             </mat-form-field>
-          </div><br>
+          </div>
           <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{profile.book_image}}" name="book_image"
               ngDefaultControl class="img-userprofile">
           </div>
