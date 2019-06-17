@@ -39,6 +39,7 @@ export class UpcomingeventsComponent implements OnInit {
   check(event) {
     this.serv.Eventsbymonth(event.value).subscribe(data => {
       this.result = data;
+      console.log(this.result,'event')
     });
   }
 }

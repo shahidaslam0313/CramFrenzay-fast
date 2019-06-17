@@ -28,6 +28,7 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.setPage(1);
 
   }
