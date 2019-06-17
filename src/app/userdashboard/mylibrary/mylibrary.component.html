@@ -213,8 +213,8 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-checkbox class="d-block" [(ngModel)]="bidnote.isreserved" name="isreserved" #isreserved="ngModel">
-              Reserved!</mat-checkbox>
+            <mat-slide-toggle class="d-block" [(ngModel)]="bidnote.isreserved" name="isreserved" #isreserved="ngModel">
+              Reserved!</mat-slide-toggle>
             <div *ngIf="bidnote.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                   [(ngModel)]="bidnote.reservedprice" name="reservedprice" #reservedprice="ngModel"
@@ -328,8 +328,8 @@
                   {{range.viewValue}}&nbsp;Days </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-checkbox class="d-block" [(ngModel)]="bidflashcard.isreserved" name="isreserved" #isreserved="ngModel">
-              Reserved!</mat-checkbox>
+            <mat-slide-toggle class="d-block" [(ngModel)]="bidflashcard.isreserved" name="isreserved" #isreserved="ngModel">
+              Reserved!</mat-slide-toggle>
             <div *ngIf="bidflashcard.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                   [(ngModel)]="bidflashcard.reservedprice" name="reservedprice" #reservedprice="ngModel"
@@ -440,8 +440,8 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-checkbox [(ngModel)]="bidcourses.isreserved" name="isreserved" #isreserved="ngModel">
-              Reserved!</mat-checkbox>
+            <mat-slide-toggle [(ngModel)]="bidcourses.isreserved" name="isreserved" #isreserved="ngModel">
+              Reserved!</mat-slide-toggle>
             <div *ngIf="bidcourses.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                   [(ngModel)]="bidcourses.reservedprice" #reservedprice="ngModel" name="reservedprice"
@@ -567,8 +567,8 @@
                   {{range.viewValue}}&nbsp;Days </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-checkbox [(ngModel)]="bidbooks.isreserved" #isreserved="ngModel" name="isreserved">
-              Reserved!</mat-checkbox>
+            <mat-slide-toggle [(ngModel)]="bidbooks.isreserved" #isreserved="ngModel" name="isreserved">
+              Reserved!</mat-slide-toggle>
             <div *ngIf="bidbooks.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserved Price"
                   [(ngModel)]="bidbooks.reservedprice" name="reservedprice" #reservedprice="ngModel"
