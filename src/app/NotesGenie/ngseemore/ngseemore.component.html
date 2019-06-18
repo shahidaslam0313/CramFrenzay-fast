@@ -15,8 +15,8 @@
                             routerLink="/notes/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" (click)="bididget(data?.id)"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Remove from Watchlist"
+                        <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to Watch List" (click)="bididget(data?.id)"></i>
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Remove from Watch List"
                                 (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
                                 title="Remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
                                 class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">

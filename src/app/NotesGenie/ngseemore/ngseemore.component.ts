@@ -118,7 +118,19 @@ export class NgseemoreComponent implements OnInit {
         title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      if('Bid&BuyNotes'){
+        this.setPagenotes(1);
+      }
+      else if('NotesTrendingNow'){
+        this.setTrending(1);
+      }
+      else if('TopRatedNotes'){
+        this.setToprated(1);
+      }
+      else if('RecentlyViewedNotes'){
+        this.recentnote();
+      }
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -259,6 +271,18 @@ export class NgseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      if('Bid&BuyNotes'){
+        this.setPagenotes(1);
+      }
+      else if('NotesTrendingNow'){
+        this.setTrending(1);
+      }
+      else if('TopRatedNotes'){
+        this.setToprated(1);
+      }
+      else if('RecentlyViewedNotes'){
+        this.recentnote();
+      }
     });
   }
   delfromcart(event) {
@@ -269,6 +293,18 @@ export class NgseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      if('Bid&BuyNotes'){
+        this.setPagenotes(1);
+      }
+      else if('NotesTrendingNow'){
+        this.setTrending(1);
+      }
+      else if('TopRatedNotes'){
+        this.setToprated(1);
+      }
+      else if('RecentlyViewedNotes'){
+        this.recentnote();
+      }
     });
   }
   addcart(notes, course, book, flashcard) {
@@ -276,10 +312,22 @@ export class NgseemoreComponent implements OnInit {
       this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
         swal({
           type: 'success',
-          title: 'Item successfully deleted from cart',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 2000
         });
+        if('Bid&BuyNotes'){
+          this.setPagenotes(1);
+        }
+        else if('NotesTrendingNow'){
+          this.setTrending(1);
+        }
+        else if('TopRatedNotes'){
+          this.setToprated(1);
+        }
+        else if('RecentlyViewedNotes'){
+          this.recentnote();
+        }
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
