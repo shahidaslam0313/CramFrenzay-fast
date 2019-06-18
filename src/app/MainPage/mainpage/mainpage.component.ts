@@ -102,7 +102,7 @@ export class MainpageComponent implements OnInit {
           this.getwishlis();
           swal({
             type: 'success',
-            title: 'Successfully deleted',
+            title: 'Item successfully deleted from watch list',
             showConfirmButton: false,
             timer: 1500
           });
@@ -114,7 +114,7 @@ export class MainpageComponent implements OnInit {
         this.see.delwishlist(event.wishlist).subscribe(data => {
           swal({
             type: 'success',
-            title: 'Successfully deleted',
+            title: 'Item successfully deleted from watch list',
             showConfirmButton: false,
             timer: 1500
           });
@@ -275,7 +275,7 @@ export class MainpageComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -286,7 +286,7 @@ export class MainpageComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -297,7 +297,7 @@ export class MainpageComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -308,7 +308,7 @@ export class MainpageComponent implements OnInit {
     this.mainpage.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item deleted from watchlist',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       })
@@ -550,7 +550,7 @@ export class MainpageComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Add to Watch List',
+          title: 'Item successfully added to watch list',
           showConfirmButton: false,
           timer: 2000
         });
@@ -784,7 +784,7 @@ swal({
         this.global = data;
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to Cart',
           showConfirmButton: false,
           timer: 2000
         });
@@ -818,7 +818,7 @@ delfromcart(event) {
   this.global.delcart(event.cart).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from Cart',
       showConfirmButton: false,
       timer: 1500
     });

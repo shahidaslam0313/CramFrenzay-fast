@@ -201,7 +201,7 @@ export class AddtocartComponent implements OnInit {
     this._serv.addToCart(Book, Course, FlashCard, Notes).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item added in cart',
+        title: 'Item successfully added to Cart',
         showConfirmButton: false,
         timer: 1500
       })
@@ -224,7 +224,7 @@ export class AddtocartComponent implements OnInit {
     this._serv.removeFromCart(cartID).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Item deleted from cart',
+        title: 'Item successfully deleted from Cart',
         showConfirmButton: false,
         timer: 1500
       })
@@ -316,7 +316,7 @@ export class AddtocartComponent implements OnInit {
       this._serv.addwishlist(Book, Course, FlashCard, Notes).subscribe(Data => {
         swal({
           type: 'success',
-          title: 'Item added in watchlist',
+          title: 'Item successfully added to watch list',
           showConfirmButton: false,
           timer: 1500
         })

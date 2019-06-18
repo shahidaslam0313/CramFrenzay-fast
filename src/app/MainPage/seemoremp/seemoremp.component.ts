@@ -246,7 +246,7 @@ export class SeemorempComponent implements OnInit {
     this.global.addwishlist(book, course, flashcard, notes).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Added to Watch List',
+        title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 2000
       })
@@ -461,7 +461,7 @@ swal({
       this.global.addtocart(notes, course, book, flashcard).subscribe(data => {
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 4500
         });
@@ -495,7 +495,7 @@ delfromcart(event) {
   this.global.delcart(event.cart).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from cart',
       showConfirmButton: false,
       timer: 1500
     });
@@ -509,7 +509,7 @@ delCourseFwishList(event) {
   this.see.delwishlist(event.wishlist).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from watch list',
       showConfirmButton: false,
       timer: 1500
     });
@@ -519,7 +519,7 @@ delFlaskFwishList(event) {
   this.see.delwishlist(event.wishlist).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from watch list',
       showConfirmButton: false,
       timer: 1500
     });
@@ -529,7 +529,7 @@ delBookFwishList(event) {
   this.see.delwishlist(event.wishlist).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from watch list',
       showConfirmButton: false,
       timer: 1500
     });
@@ -539,7 +539,7 @@ delNotesFtrendingNow(event){
   this.mainpage.delwishlist(event.wishlist).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Item deleted from watchlist',
+      title: 'Item successfully deleted from watch list',
       showConfirmButton: false,
       timer: 1500
     })
