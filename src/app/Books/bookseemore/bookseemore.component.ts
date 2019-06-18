@@ -51,7 +51,7 @@ export class BookseemoreComponent implements OnInit {
   private sub: Subscription;
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, public book: AllbooksService, private mainpage: mainpageservice,private pagerService: PagerService, private seemore: BookseemoreService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, private global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
-          this.name = +params['name'];
+          this.name =  params['name'];
           if (params['name'] == "Bid&BuyBooks") {
               this.setPagenotes(1);
           }
@@ -199,7 +199,19 @@ export class BookseemoreComponent implements OnInit {
         title: 'Item successfully added to watchlist',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      if(this.name=='Bid&BuyBooks'){
+        this.setPagenotes(1);
+      }
+      else if(this.name=='BooksTrendingNow'){
+        this.setTrending(1);
+      }
+      else if(this.name=='TopRatedBooks'){
+        this.setToprated(1);
+      }
+      else if(this.name=='RecentlyViewedBooks'){
+        this.recentnote();
+      }
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -269,6 +281,18 @@ export class BookseemoreComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
+        if(this.name=='Bid&BuyBooks'){
+          this.setPagenotes(1);
+        }
+        else if(this.name=='BooksTrendingNow'){
+          this.setTrending(1);
+        }
+        else if(this.name=='TopRatedBooks'){
+          this.setToprated(1);
+        }
+        else if(this.name=='RecentlyViewedBooks'){
+          this.recentnote();
+        }
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems= cartitems;
           this.Data.emittData(this.cartitems);
@@ -315,6 +339,18 @@ export class BookseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      if(this.name=='Bid&BuyBooks'){
+        this.setPagenotes(1);
+      }
+      else if(this.name=='BooksTrendingNow'){
+        this.setTrending(1);
+      }
+      else if(this.name=='TopRatedBooks'){
+        this.setToprated(1);
+      }
+      else if(this.name=='RecentlyViewedBooks'){
+        this.recentnote();
+      }
     });
   }
   delfromcart(event) {
@@ -325,6 +361,18 @@ export class BookseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      if(this.name=='Bid&BuyBooks'){
+        this.setPagenotes(1);
+      }
+      else if(this.name=='BooksTrendingNow'){
+        this.setTrending(1);
+      }
+      else if(this.name=='TopRatedBooks'){
+        this.setToprated(1);
+      }
+      else if(this.name=='RecentlyViewedBooks'){
+        this.recentnote();
+      }
     });
   }
 }
