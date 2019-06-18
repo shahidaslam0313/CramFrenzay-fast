@@ -51,6 +51,7 @@ export class AddtocartComponent implements OnInit {
     { value: 'Discover', viewValue: 'Discover' },
     { value: 'American Express', viewValue: 'American Express' }
   ];
+  butDisabled: boolean = true
   form = new FormGroup({
     cardHolderName: new FormControl('',[
       Validators.minLength(3),
@@ -374,6 +375,9 @@ export class AddtocartComponent implements OnInit {
   }
   getcardid(id) {
     this.eachcardid = id;
+  }
+  card(){
+    this.butDisabled = false
   }
   check($event) { }
   buywithcard( f: NgForm) {
