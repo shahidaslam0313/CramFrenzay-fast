@@ -251,7 +251,7 @@ export class CoursesmComponent implements OnInit {
       this.global = data;
       swal({
         type: 'success',
-        title: 'Added to watchlist',
+        title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
       })
@@ -288,7 +288,7 @@ export class CoursesmComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 4500
         });
@@ -322,7 +322,7 @@ export class CoursesmComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -332,7 +332,7 @@ export class CoursesmComponent implements OnInit {
     this.global.delcart(event.cart).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from cart',
         showConfirmButton: false,
         timer: 1500
       });

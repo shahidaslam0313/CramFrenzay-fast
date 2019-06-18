@@ -266,7 +266,7 @@ export class NotesgenieComponent implements OnInit {
       this.global = Res;
       swal({
         type: 'success',
-        title: 'Added to watchlist',
+        title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
       })
@@ -343,7 +343,7 @@ export class NotesgenieComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -353,7 +353,7 @@ delfromcart(event) {
   this.global.delcart(event.cart).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from cart',
       showConfirmButton: false,
       timer: 1500
     });
@@ -365,7 +365,7 @@ delfromcart(event) {
       this.newservice.addtocart(notes, course, book, flashcard).subscribe(data => {
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 4500
         });

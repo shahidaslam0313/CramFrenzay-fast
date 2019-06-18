@@ -341,8 +341,8 @@ export class MylibraryComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         });
+        this.Shownotes();
       });
-      this.Showcards();
   }
   bidnote: any = {};
   var_final_get_date;
@@ -534,15 +534,14 @@ export class MylibraryComponent implements OnInit {
         });
         this.Showbooks()
       },
-        // error => {
-        //   swal({
-        //     type: 'error',
-        //     title: 'error',
-        //     showConfirmButton: false,
-        //     timer: 2500
-        //   });
-        // },
-      );
+        error => {
+          swal({
+            type: 'error',
+            title: 'error',
+            showConfirmButton: false,
+            timer: 2500
+          });
+        });
   }
   update(id) {
     this.http.post(
@@ -565,7 +564,6 @@ export class MylibraryComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         });
-        this.Showcourses()
       },
         error => {
           swal({
@@ -575,6 +573,7 @@ export class MylibraryComponent implements OnInit {
             timer: 2500
           });
         });
+        this.Showcourses()
   }
 
   value: any = {};
@@ -601,7 +600,7 @@ export class MylibraryComponent implements OnInit {
           timer: 2500
         });
         this.Shownotes()
-      },
+      }, 
         error => {
           swal({
             type: 'error',
@@ -610,6 +609,7 @@ export class MylibraryComponent implements OnInit {
             timer: 2500
           });
         });
+      
   }
   onsubmit(id, name) {
     this.router.navigate(['/flashcarddetail/' + id]);
