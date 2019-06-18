@@ -788,6 +788,10 @@ swal({
           showConfirmButton: false,
           timer: 2000
         });
+        this.BidBuynotes();
+        this.BidBuyflashcards();
+        this.BidBuybooks();
+        this.bidcourse();
         this.headServ.showCartItem().subscribe(cartitem => {
           this.cartitem = cartitem;
           this.Data.emittData(this.cartitem);

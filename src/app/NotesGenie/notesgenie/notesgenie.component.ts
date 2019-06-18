@@ -14,7 +14,7 @@ import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
-import {BidHistoryService} from "../../bid-history/bid-history.service";
+import { BidHistoryService } from "../../bid-history/bid-history.service";
 import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 declare const $: any;
@@ -130,7 +130,7 @@ export class NotesgenieComponent implements OnInit {
     ]
   };
   isreserved: boolean = false;
-  constructor(private bidings: BidHistoryService,private headServ: headerservice,private see: WishlistService, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService, private headServ: headerservice, private see: WishlistService, private Data: DataService, private mainpage: mainpageservice, private pagerService: PagerService, private newservice: notesgenieservice, private router: Router, public global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.global.currentMessage.subscribe(message => this.message = message);
     this.Slider();
     this.bidnote();
@@ -157,11 +157,11 @@ export class NotesgenieComponent implements OnInit {
     }
     this.showhistory(notes, this.course, this.flashcard, this.book);
   }
-  showhistory(notes,course, flashcard, book ) {
-    return this.global.offerhistory(notes, course, flashcard ,book )
- }
+  showhistory(notes, course, flashcard, book) {
+    return this.global.offerhistory(notes, course, flashcard, book)
+  }
   ngOnInit() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.global.currentMessage.subscribe(message => this.message = message);
     window.scroll(0, 0)
   }
@@ -172,7 +172,7 @@ export class NotesgenieComponent implements OnInit {
   }
   checkmainpage(id) {
     if (this.check_login() == true) {
-      this.router.navigate(['/payment'], {queryParams: {notesid : id}});
+      this.router.navigate(['/payment'], { queryParams: { notesid: id } });
     }
     else if (this.check_login() == false) {
       this.sweetalertnotes();
@@ -269,7 +269,11 @@ export class NotesgenieComponent implements OnInit {
         title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      this.trendingnote();
+      this.topratednote();
+      this.recentnote();
+      this.bidbuynotes();
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -308,36 +312,36 @@ export class NotesgenieComponent implements OnInit {
   }
   bidamount;
   biding(f: NgForm) {
-    if(this.bidform.controls.bidamount.valid){
-    this.global.bidnotes(this.bidonnotes, this.bidform.value['bidamount'])
-      .subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Your bid is listed',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      },
-        error => {
-          if (error.status == 404 || error.status == 403)
-            swal({
-              type: 'error',
-              title: 'Bid higher amount',
-              showConfirmButton: false,
-              timer: 2000
-            });
+    if (this.bidform.controls.bidamount.valid) {
+      this.global.bidnotes(this.bidonnotes, this.bidform.value['bidamount'])
+        .subscribe(Res => {
+          swal({
+            type: 'success',
+            title: 'Your bid is listed',
+            showConfirmButton: false,
+            timer: 2000
+          });
         },
+          error => {
+            if (error.status == 404 || error.status == 403)
+              swal({
+                type: 'error',
+                title: 'Bid higher amount',
+                showConfirmButton: false,
+                timer: 2000
+              });
+          },
 
-      );
+        );
       f.resetForm()
     }
-    else 
-    swal({
-      type: 'error',
-      title: 'Bid amount is required',
-      showConfirmButton: false,
-      timer: 1500
-    });
+    else
+      swal({
+        type: 'error',
+        title: 'Bid amount is required',
+        showConfirmButton: false,
+        timer: 1500
+      });
   }
   deleteFWL(event) {
     this.see.delwishlist(event.wishlist).subscribe(data => {
@@ -348,17 +352,17 @@ export class NotesgenieComponent implements OnInit {
         timer: 1500
       });
     });
-}
-delfromcart(event) {
-  this.global.delcart(event.cart).subscribe(data => {
-    swal({
-      type: 'success',
-      title: 'Item successfully deleted from cart',
-      showConfirmButton: false,
-      timer: 1500
+  }
+  delfromcart(event) {
+    this.global.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Item successfully deleted from cart',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
-  });
-}
+  }
   cartitems;
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {
@@ -369,6 +373,10 @@ delfromcart(event) {
           showConfirmButton: false,
           timer: 4500
         });
+        this.trendingnote();
+        this.topratednote();
+        this.recentnote();
+        this.bidbuynotes();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
@@ -405,5 +413,7 @@ delfromcart(event) {
   getnotebidhistory(id) {
     this.bidings.notebidhistory(this.bidonnotes).subscribe(data => {
       this.notebid = data;
-      this.notes = data['Highest Bid'];})}
+      this.notes = data['Highest Bid'];
+    })
+  }
 }
