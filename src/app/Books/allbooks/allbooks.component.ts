@@ -271,13 +271,17 @@ export class AllbooksComponent implements OnInit {
     let course = null;
     let flashcard = null;
     let notes = null;
-    this.global.addwishlist(book, course, flashcard, notes).subscribe(data => {
+    this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(data => {
       swal({
         type: 'success',
         title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      this.BidBuybooks();
+      this.trendbooks();
+      this.recentllybooks();
+      this.topratedbooks();
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -380,6 +384,10 @@ export class AllbooksComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
+        this.BidBuybooks();
+        this.trendbooks();
+        this.recentllybooks();
+        this.topratedbooks();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);

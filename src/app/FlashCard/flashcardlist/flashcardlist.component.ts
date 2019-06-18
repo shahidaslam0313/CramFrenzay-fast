@@ -123,15 +123,12 @@ export class FlashcardlistComponent implements OnInit {
   searchResult: any = [];
   cartitems;
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
-   
-
-    this.bidflash();
- 
     this.Slider();
   }
  
   ngOnInit() {
     window.scroll(0,0)
+    this.bidflash();
     this.trendingflash();
     this.topratedflash();
     this.recentflash();
@@ -303,7 +300,11 @@ export class FlashcardlistComponent implements OnInit {
         title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      this.bidflash();
+      this.trendingflash();
+      this.topratedflash();
+      this.recentflash();
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -342,6 +343,10 @@ export class FlashcardlistComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
+        this.bidflash();
+        this.trendingflash();
+        this.topratedflash();
+        this.recentflash();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);

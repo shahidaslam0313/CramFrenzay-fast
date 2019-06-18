@@ -259,7 +259,11 @@ export class CourseComponent implements OnInit {
         title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      this.Showbidcourses();
+      this.TrendingNow();
+      this.Showtopratedcourses();
+      this.Showrecentvisitedcourse();
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -342,6 +346,11 @@ export class CourseComponent implements OnInit {
           showConfirmButton: false,
           timer: 4500
         });
+        this.Showbidcourses();
+        this.TrendingNow();
+        this.Showtopratedcourses();
+        this.Showrecentvisitedcourse();
+        this.Showwatchedcourses();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
