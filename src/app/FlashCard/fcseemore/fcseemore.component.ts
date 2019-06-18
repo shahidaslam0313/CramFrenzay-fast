@@ -52,8 +52,9 @@ export class FcseemoreComponent implements OnInit {
   })
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private see: WishlistService, private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
-          this.Eid = +params['id'];
+          this.Eid = params['id'];
       });
+      alert(this.Eid)
       if (this.Eid == "1") {
           this.setPageflashcard(1);
       }
@@ -213,7 +214,19 @@ export class FcseemoreComponent implements OnInit {
         title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      if(this.Eid=='1'){
+        this.setPageflashcard(1);
+      }
+      else if(this.Eid=='2'){
+        this.trendingflash();
+      }
+      else if(this.Eid=='3'){
+        this.topratedflash();
+      }
+      else if(this.Eid=='4'){
+        this.recentflashcard();
+      }
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -248,10 +261,22 @@ export class FcseemoreComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Item successfully added to watch list',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 2000
         });
+        if(this.Eid=='1'){
+          this.setPageflashcard(1);
+        }
+        else if(this.Eid=='2'){
+          this.trendingflash();
+        }
+        else if(this.Eid=='3'){
+          this.topratedflash();
+        }
+        else if(this.Eid=='4'){
+          this.recentflashcard();
+        }
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
@@ -287,6 +312,18 @@ export class FcseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      if(this.Eid=='1'){
+        this.setPageflashcard(1);
+      }
+      else if(this.Eid=='2'){
+        this.trendingflash();
+      }
+      else if(this.Eid=='3'){
+        this.topratedflash();
+      }
+      else if(this.Eid=='4'){
+        this.recentflashcard();
+      }
     });
   }
   delFlaskFwishList(event) {
@@ -297,6 +334,18 @@ export class FcseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
+      if(this.Eid=='1'){
+        this.setPageflashcard(1);
+      }
+      else if(this.Eid=='2'){
+        this.trendingflash();
+      }
+      else if(this.Eid=='3'){
+        this.topratedflash();
+      }
+      else if(this.Eid=='4'){
+        this.recentflashcard();
+      }
     });
   }
   cardbid;

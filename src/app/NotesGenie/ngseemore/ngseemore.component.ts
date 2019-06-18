@@ -52,7 +52,7 @@ export class NgseemoreComponent implements OnInit {
     window.scroll(0, 0);
 
     this.sub = this.route.params.subscribe(params => {
-      this.name = +params['name'];
+      this.name =  params['name'];
       if (params['name'] == "Bid&BuyNotes") {
         this.setPagenotes(1);
       }
@@ -119,16 +119,16 @@ export class NgseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      if('Bid&BuyNotes'){
+      if(this.name=='Bid&BuyNotes'){
         this.setPagenotes(1);
       }
-      else if('NotesTrendingNow'){
+      else if(this.name=='NotesTrendingNow'){
         this.setTrending(1);
       }
-      else if('TopRatedNotes'){
+      else if(this.name=='TopRatedNotes'){
         this.setToprated(1);
       }
-      else if('RecentlyViewedNotes'){
+      else if(this.name=='RecentlyViewedNotes'){
         this.recentnote();
       }
       this.headServ.showwishlist().subscribe(wishList => {
@@ -271,16 +271,16 @@ export class NgseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      if('Bid&BuyNotes'){
+      if(this.name=='Bid&BuyNotes'){
         this.setPagenotes(1);
       }
-      else if('NotesTrendingNow'){
+      else if(this.name=='NotesTrendingNow'){
         this.setTrending(1);
       }
-      else if('TopRatedNotes'){
+      else if(this.name=='TopRatedNotes'){
         this.setToprated(1);
       }
-      else if('RecentlyViewedNotes'){
+      else if(this.name=='RecentlyViewedNotes'){
         this.recentnote();
       }
     });
@@ -293,20 +293,21 @@ export class NgseemoreComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      if('Bid&BuyNotes'){
+      if(this.name=='Bid&BuyNotes'){
         this.setPagenotes(1);
       }
-      else if('NotesTrendingNow'){
+      else if(this.name=='NotesTrendingNow'){
         this.setTrending(1);
       }
-      else if('TopRatedNotes'){
+      else if(this.name=='TopRatedNotes'){
         this.setToprated(1);
       }
-      else if('RecentlyViewedNotes'){
+      else if(this.name=='RecentlyViewedNotes'){
         this.recentnote();
       }
     });
   }
+  params
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {
       this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
@@ -316,16 +317,16 @@ export class NgseemoreComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-        if('Bid&BuyNotes'){
+        if(this.name =='Bid&BuyNotes'){
           this.setPagenotes(1);
         }
-        else if('NotesTrendingNow'){
+        else if(this.name=='NotesTrendingNow'){
           this.setTrending(1);
         }
-        else if('TopRatedNotes'){
+        else if(this.name=='TopRatedNotes'){
           this.setToprated(1);
         }
-        else if('RecentlyViewedNotes'){
+        else if(this.name=='RecentlyViewedNotes'){
           this.recentnote();
         }
         this.headServ.showCartItem().subscribe(cartitems => {
