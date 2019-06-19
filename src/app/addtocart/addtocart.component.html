@@ -18,12 +18,12 @@
                             <div class="col-md-12" *ngIf="!isright">
                                 <div class="col-lg-12 Saved-card-sel-list">
                                     <mat-form-field class="width50">
-                                        <mat-select class="" placeholder="Select List">
+                                        <mat-select class="" placeholder="Select Card"  (change)="card()">
                                             <mat-option *ngFor="let card of res" [value]="card.id"
-                                                (click)="getcardid(card.id)">{{card.nickname}}</mat-option>
+                                                (click)="getcardid(card.id)" >{{card.nickname}}</mat-option>
                                         </mat-select>
-                                    </mat-form-field> <a class="btn-style btn  width100 margin-top-10" (click)="buy()">Buy
-                                        Now at {{SUM | currency:'USD'}}</a>
+                                    </mat-form-field> <button class="btn-style btn  width100 margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy
+                                        Now at {{SUM | currency:'USD'}}</button>
                                 </div>
                             </div>
                             <div class="col-md-12" *ngIf="isright">
@@ -41,13 +41,15 @@
                                                             <g> </g>
                                                         </g>
                                                     </svg> </div>
-                                                <div class="number">{{model.creditno}}</div>
-                                                <div class="card-holder"> <label>CVV</label>
-                                                    <div>{{model.ccv}}</div>
-                                                </div>
-                                                <div class="card-expiration-date"> <label>Expires</label>
-                                                    <div>{{model.exp}}</div>
-                                                </div>
+                                                    <div class="card-holder sh"> <label>Card Holder</label>
+                                                        <div>{{form.controls.cardHolderName.value}}</div>
+                                                    </div>
+                                                    <div class="card-holder"> <label>Card Number</label>
+                                                        <div>{{form.controls.creditno.value}}</div>
+                                                    </div>
+                                                    <div class="card-expiration-date"> <label>Expiry Date</label>
+                                                        <div>{{form.controls.exp.value}}</div>
+                                                    </div>
                                             </div>
                                             <div class="back">
                                                 <div class="strip"></div>
@@ -61,10 +63,10 @@
                                                         </g>
                                                     </svg> </div>
                                                 <div class="card-expiration-date"> <label>Expires</label>
-                                                    <div>{{this.creditno}}</div>
+                                                    <div>{{form.controls.exp.value}}</div>
                                                 </div>
                                                 <div class="ccv"> <label>CVV</label>
-                                                    <div>{{ccv}}</div>
+                                                    <div>{{form.controls.ccv.value}}</div>
                                                 </div>
                                             </div>
                                         </div>

@@ -214,6 +214,11 @@ label {
 .select {
     position: relative
 }
+.card-holder.sh {
+    top: 80px!important;
+    right: 19px!important;
+    left: auto!important
+}
 
 .select::after {
     content: '';
