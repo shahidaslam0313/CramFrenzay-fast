@@ -32,6 +32,7 @@ export class PaymentComponent implements OnInit {
   isright;
   cid;
   default: boolean = false;
+  butDisabled: boolean = true;
   cards;
   book;
   noteprice;
@@ -214,7 +215,9 @@ export class PaymentComponent implements OnInit {
     this.geteachcard()
     this.geteachbook()
   }
-
+  cardselect(){
+    this.butDisabled = false
+  }
   nullvalue = null;
   check($event) { }
   buywithcard(f:NgForm) {
