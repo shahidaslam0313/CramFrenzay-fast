@@ -83,15 +83,15 @@
                     <div class="col-md-12" *ngIf="!isright ">
                         <div class="col-lg-12 Saved-card-sel-list">
                             <mat-form-field class="width65">
-                                <mat-select class="" placeholder="Select Card">
+                                <mat-select class="" placeholder="Select Card" (change)="cardselect()" required> 
                                     <mat-option *ngFor="let card of res" [value]="card.id" (click)="getcardid(card.id)">
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
                             </mat-form-field> 
-                            <a *ngIf="note && !course && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{note?.price | currency:'USD'}}</a>
-                            <a *ngIf="course && !note && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{course?.price | currency:'USD'}}</a>
-                            <a *ngIf="card && !note && !course && !book" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{card?.price | currency:'USD'}}</a>
-                            <a *ngIf="book && !course && !note && !card" class="btn-style width65 btn margin-top-10" (click)="buy()">Buy Now at {{book?.price | currency:'USD'}}</a>
+                            <button *ngIf="note && !course && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{note?.price | currency:'USD'}}</button>
+                            <button *ngIf="course && !note && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{course?.price | currency:'USD'}}</button>
+                            <button *ngIf="card && !note && !course && !book" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{card?.price | currency:'USD'}}</button>
+                            <button *ngIf="book && !course && !note && !card" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{book?.price | currency:'USD'}}</button>
                         </div>
                     </div>
                     <div class="col-md-12" *ngIf="isright">
