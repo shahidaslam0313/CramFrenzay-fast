@@ -1,1 +1,126 @@
-.btn-style :disabled,.btn-style :disabled:hover{background:#909090;border-color:#909090;cursor:no-drop;box-shadow:none}mat-checkbox{font-size:12px}.form-1-img{background:url(assets/img/Modify.gif) center no-repeat;background-size:100%;padding:45px 0;overflow-x:hidden}.form-1{-webkit-box-shadow:0 0 10px #ccc;box-shadow:0 0 10px #ccc;background:#fff;padding:30px;border-radius:5px;margin:0 auto;float:none}.form-width{width:442px}.have-account{font-weight:600;margin-top:10px}.have-account a{color:#0275d8}.have-account a:hover,.terms-cond:hover{color:#c00;text-decoration:underline}.terms-cond a{color:#0275d8;font-weight:400;font-size:13px;margin-left:15px}.signup-comp .form-width{width:60%}.signup-comp .form-1-header{margin-top:-50px;border-radius:3px;padding:15px}.signup-comp .form-1-header h1{text-align:left}.signup-comp app-recapcha .mat-card{float:none}.agree-button-div{text-align:left;padding-left:20px}.agree-button-div .have-account{text-align:left}.agree-button-div .mat-checkbox-layout .mat-checkbox-label{line-height:24px;font-size:14px}.agree-button-div mat-checkbox{display:block}.agree-button-div .form-1-btn{width:300px!important}.margin-top-15{margin-top:15px!important}.form-1-body>form>div{width:48%;display:inline-block;margin:0 5px}.margin-top-25{margin-top:25px!important}input{font-size: 24px}.toggle-btn{min-height: 65px}.mat-slide-toggle-bar{margin-top:5px;}
+.btn-style:disabled,
+.btn-style:disabled:hover {
+    background: #909090;
+    border-color: #909090;
+    cursor: no-drop;
+    box-shadow: none
+}
+
+mat-checkbox {
+    font-size: 12px
+}
+
+.form-1-img {
+    background: url(assets/img/Modify.gif) center no-repeat;
+    background-size: 100%;
+    padding: 45px 0;
+    overflow-x: hidden
+}
+
+.form-1 {
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 0 auto;
+    float: none
+}
+
+.form-width {
+    width: 442px
+}
+
+.have-account {
+    font-weight: 600;
+    margin-top: 10px
+}
+
+.have-account a {
+    color: #0275d8
+}
+
+.have-account a:hover,
+.terms-cond:hover {
+    color: #c00;
+    text-decoration: underline
+}
+
+.terms-cond a {
+    color: #0275d8;
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 15px
+}
+
+.signup-comp .form-width {
+    width: 60%
+}
+
+.signup-comp .form-1-header {
+    margin-top: -50px;
+    border-radius: 3px;
+    padding: 15px
+}
+
+.signup-comp .form-1-header h1 {
+    text-align: left
+}
+
+.signup-comp app-recapcha .mat-card {
+    float: none
+}
+
+.agree-button-div {
+    text-align: left;
+    padding-left: 20px
+}
+
+.agree-button-div .have-account {
+    text-align: left
+}
+
+.agree-button-div .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 24px;
+    font-size: 14px
+}
+
+.agree-button-div mat-checkbox {
+    display: block
+}
+
+.agree-button-div .form-1-btn {
+    width: 300px!important
+}
+
+.margin-top-15 {
+    margin-top: 15px!important
+}
+
+.form-1-body>form>div {
+    width: 48%;
+    display: inline-block;
+    margin: 0 5px
+}
+
+.margin-top-25 {
+    margin-top: 25px!important
+}
+
+input {
+    font-size: 24px
+}
+
+.toggle-btn {
+    min-height: 65px
+}
+
+.mat-slide-toggle-bar {
+    margin-top: 5px;
+}
+#user_signup .recapctha-div{
+    margin: 15px 5px 0;
+}
+#inst_signup .recapctha-div{
+    margin: 30px 5px 0;
+}
