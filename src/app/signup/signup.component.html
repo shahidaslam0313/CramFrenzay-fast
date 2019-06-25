@@ -103,7 +103,7 @@
                             <mat-form-field class="margin-top-10">
                                 <input matInput type="password" id="password" [type]="hide ? 'password' : 'text'"
                                     #password formControlName="password"
-                                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                                   
                                     name=password placeholder="Password" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
                                 <mat-icon class="pointer" data-toggle="tooltip"
                                     title="{{hide? 'hide' : 'show'}}Password" matSuffix (click)="hide=!hide">
@@ -120,7 +120,7 @@
                             <mat-form-field class="margin-top-20">
                                 <input matInput [type]="hide2 ? 'password' : 'text'" #password type="password"
                                     id="confirmPassword"
-                                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                                  
                                     formControlName="confirmPassword" placeholder="Confirm Password" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off required>
                                 <mat-icon class="pointer" data-toggle="tooltip"
                                     title="{{hide2? 'hide2' : 'show'}}Password" matSuffix (click)="hide2=!hide2">
@@ -138,7 +138,7 @@
                             </div>
                             <div class="agree-button-div ">
                                 <div class="toggle-btn">
-                                        <mat-slide-toggle (change)="changeCheck($event)">By clicking on the "Signup" button below, you understand and agree that the use of this Website, Mobile Apps, AI and ALL other related Technology Platforms are subject to the 
+                                        <mat-slide-toggle (change)="changeCheck($event)">By clicking on the "Signup" button below, I understand and agree that the use of this Website, Mobile Apps, AI and ALL other related Technology Platforms are subject to the 
                                         <a class="terms-cond" href="/terms"
                                             target="blank">Terms of Use </a> and<a class="terms-cond"href="/privacy-policy" target="blank">
                                             Privacy Policy</a></mat-slide-toggle>
@@ -265,7 +265,7 @@
                             </div>
                             <div class="agree-button-div ">
                                 <div class="toggle-btn">
-                                        <mat-slide-toggle (change)="changeCheck($event)">By clicking on the "Signup" button below, you understand and agree that the use of this Website, Mobile Apps, AI and ALL other related Technology Platforms are subject to the 
+                                        <mat-slide-toggle (change)="changeCheck($event)">By clicking on the "Signup" button below, I understand and agree that the use of this Website, Mobile Apps, AI and ALL other related Technology Platforms are subject to the 
                                             <a class="terms-cond" href="/terms"
                                             target="blank">Terms of Use </a> and <a class="terms-cond" href="/privacy-policy" target="blank">
                                             Privacy Policy</a></mat-slide-toggle>
