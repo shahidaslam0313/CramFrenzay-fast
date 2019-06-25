@@ -349,6 +349,7 @@ city;state;country;
           })
          
           this.getCards();
+             f.resetForm()
         },
           error => {
              if (error.status == 404) {
@@ -475,7 +476,6 @@ city;state;country;
         })
       }
     }
-    f.resetForm()
   }
   res;
   getCards() {
