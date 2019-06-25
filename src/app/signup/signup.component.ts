@@ -155,7 +155,7 @@ export class SignupComponent {
       if (this.register.valid) {
         this._serv.signUp(this.register.value['firstname'] , this.register.value['lastname'], this.register.value['username'], this.register.value['email'], this.register.value['password']).subscribe(Res => {
           swal({
-            text: 'Please check your email',
+            text: 'Please check your email for account activation instructions',
             title: "CramFrenzy",
             type: "success",
             showConfirmButton: false,
@@ -172,7 +172,7 @@ export class SignupComponent {
         error => {
           swal({
             type: 'error',
-            title: 'Oops <br> Plz fill form',
+            title: 'Please fill form',
             showConfirmButton: false,
             width: '512px',
             timer: 2500
@@ -182,7 +182,7 @@ export class SignupComponent {
         this.validateAllFormFields(this.register);
         swal({
           type: 'error',
-          title: 'Oops <br> Please enter valid data',
+          title: 'Please enter valid data',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
@@ -322,7 +322,7 @@ export class SignupComponent {
     if (this.institute.valid) {
       this._serv.instituteregister(this.institute.value['username'], this.institute.value['name'], this.institute.value['location'], this.institute.value['address'], this.institute.value['contact'], this.institute.value['email'], this.institute.value['password'], ).subscribe(Res => {
         swal({
-          text: 'Please check your email',
+          text: 'Please check your email for account activation instructions',
           title: "CramFrenzy",
           type: "success",
           showConfirmButton: false,
@@ -341,7 +341,7 @@ export class SignupComponent {
       error => {
         swal({
           type: 'error',
-          title: 'Oops <br> Plz fill form',
+          title: ' Please fill form',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
@@ -350,7 +350,7 @@ export class SignupComponent {
     } else {
       swal({
         type: 'error',
-        title: 'Oops <br> Plz fill form Correctly',
+        title: ' Please fill form Correctly',
         showConfirmButton: false,
         width: '512px',
         timer: 2500
@@ -388,7 +388,7 @@ export class SignupComponent {
   emailVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops <br> Email already registered',
+      title: 'Email already exists',
       showConfirmButton: false,
       width: '512px',
       timer: 2500
@@ -398,7 +398,7 @@ export class SignupComponent {
   usernameVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops <br> User name already exists',
+      title: 'Username already exists',
       showConfirmButton: false,
       width: '512px',
       timer: 2500
