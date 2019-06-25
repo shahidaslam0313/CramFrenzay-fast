@@ -52,9 +52,9 @@ declare interface User {
 })
 export class ChangePasswordComponent implements OnInit {
   public username;
-  currentPassword = '';
-  newPassword = '';
-  newPassword2 = '';
+  public currentPassword ;
+  public newPassword ;
+  newPassword2 ;
   hide = true;
   hide2 = true;
   hide3 = true;
@@ -66,14 +66,17 @@ export class ChangePasswordComponent implements OnInit {
   public lastname;
   profilePhoto;
   changepass: FormGroup;
-  normalPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
+  normalPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*[\/\\\!\"#$%&()*+,£^.:;=?\\\\[\\]\\-\'<>~|@_{}]).{8,}$';
   constructor(private pass: ChangePasswordService, private router: Router, private route: ActivatedRoute, private sg: SimpleGlobal, private data: DataService, public userprofile: UserprofileService, private http: Http, @Inject(PLATFORM_ID) private platformId: Object, private fb: FormBuilder) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
     }
   }
-
+  public isInvalid: boolean = false;
+  public onChange(event: any): void {
+    this.isInvalid = this.currentPassword == this.newPassword
+  }
 
   isFieldValid(form: FormGroup, field: string) {
     return !form.get(field).valid && form.get(field).touched;
@@ -107,33 +110,55 @@ export class ChangePasswordComponent implements OnInit {
     }
   }
   editclick(currentPassword, newPassword, newPassword2) {
-    this.pass.changepaassword(this.currentPassword, this.newPassword, this.newPassword2)
-      .subscribe(Res => {
+   
+      if(this.changepass.controls.currentPassword.value != null && this.changepass.controls.newPassword.value!=null && this.changepass.controls.newPassword2.value!=null){
+        if(this.changepass.controls.currentPassword.valid && this.changepass.controls.newPassword.valid && this.changepass.controls.newPassword2 ){
+        this.pass.changepaassword(this.currentPassword, this.newPassword, this.newPassword2)
+        .subscribe(Res => {
+          swal({
+            type: 'success',
+            title: 'Successfully Changed Password',
+            showConfirmButton: false,
+            timer: 1500
+          });},
+          error=>{
+            if(error.status===400){
+              swal({
+                type: 'error',
+                title: 'Incorrect Current Password',
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+            else if(error.status===404){
+              swal({
+                type: 'error',
+                title: 'Password Not Match',
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          }
+        );
+      }
+      else{
         swal({
-          type: 'success',
-          title: 'Successfully Changed Password',
+          type: 'error',
+          title: 'Please fill form correctly',
           showConfirmButton: false,
           timer: 1500
-        });},
-        error=>{
-          if(error.status===400){
-            swal({
-              type: 'error',
-              title: 'Incorrect Current Password',
-              showConfirmButton: false,
-              timer: 1500
-            });
-          }
-          else if(error.status===404){
-            swal({
-              type: 'error',
-              title: 'Password Not Match',
-              showConfirmButton: false,
-              timer: 1500
-            });
-          }
-        }
-      );
+        });
+      }
+    } 
+    else {
+      swal({
+        type: 'error',
+        title: 'Please fill all fields',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  
   }
   check_login() {
 
