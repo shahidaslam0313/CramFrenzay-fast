@@ -17,7 +17,7 @@
                 <div id="user_signup" class="form-1-body sh padding-top-10 tab-pane fade in active show">
                     <form class="sh-signup-form-fix signup-login-fonts" [formGroup]="register" id="notesbidnow"
                         #form=ngForm>
-                        <div [ngClass]="displayFieldCss(register, 'firstname')">
+                        <div [ngClass]="displayFieldCss(register, 'firstname')" class="mrg-btm">
                             <mat-form-field>
                                 <input class="text_cap" matInput type="text" id="firstname" #firstname
                                     formControlName="firstname" placeholder="First name" pattern="[a-zA-Z ]+"
@@ -41,7 +41,7 @@
                                         Only</strong></mat-error>
                             </mat-form-field>
                         </div>
-                        <div [ngClass]="displayFieldCss(register, 'lastname')">
+                        <div [ngClass]="displayFieldCss(register, 'lastname')" class="mrg-btm">
                             <mat-form-field class="margin-top-10">
                                 <input class="text_cap" matInput type="text" id="lastname" #lastname
                                     formControlName="lastname" placeholder="Last name" pattern="[a-zA-Z ]+"
