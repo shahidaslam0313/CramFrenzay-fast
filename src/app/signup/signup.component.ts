@@ -129,6 +129,7 @@ export class SignupComponent {
     this.disabledAgreement = !event.checked;
   }
 
+  password_regex = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*[\/\\\!\"#$%&()*+,£^.:;=?\\\\[\\]\\-\'<>~|@_{}]).{8,}$';
 
   constructor(private recha: RecapchaService, private _serv: SignupService, public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -136,6 +137,7 @@ export class SignupComponent {
       this.currentProducts = this.productsSource.asObservable();
 
     }
+    window.scroll(0,0);
   }
  
   isFieldValid(form: FormGroup, field: string) {
@@ -224,8 +226,9 @@ export class SignupComponent {
       email: ['', Validators.compose([Validators.required, Validators.pattern(this.emailonly)])],
       // We can use more than one validator per field. If we want to use more than one validator we have to wrap our array of validators with a Validators.compose function. Here we are using a required, minimum length and maximum length validator.
       // optionsCheckboxes: ['', Validators.required],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(100)])],
-      confirmPassword: ['', Validators.compose([Validators.required])],
+     
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(this.password_regex), Validators.maxLength(100)])],
+      confirmPassword: ['', Validators.compose([Validators.required, , Validators.pattern(this.password_regex)])],
     }, {
         validator: PasswordValidation.MatchPassword // your validation method
       });
@@ -239,8 +242,8 @@ export class SignupComponent {
 
       email: ['', Validators.compose([Validators.required, Validators.pattern(this.emailonly)])],
 
-      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(100)])],
-      confirmPassword: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(this.password_regex), Validators.maxLength(100)])],
+      confirmPassword: ['', Validators.compose([Validators.required, , Validators.pattern(this.password_regex)])],
     },
 
       {

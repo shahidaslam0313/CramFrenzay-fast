@@ -4,7 +4,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/nestedcategorylist/{{data?.id}}"
-                        (click)="nestedcatname(data.name)"> <img src="/assets/img/Logo-gray.jpg"> </a> </figure>
+                        (click)="nestedcatname(data.name)"> <img src="https://storage.cramfrenzy.com/images/{{data?.image}}"> </a> </figure>
                 <div class="product-list__content">
                     <div class="product-list__category"> <a
                             title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a> </div>
