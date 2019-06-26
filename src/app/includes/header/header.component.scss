@@ -1079,7 +1079,13 @@ a.heart-card-btn {
         margin: 20px 5px;
         font-size: 14px;
     }
-    .main-nav__list > li > a {
+    .main-nav__list > li > a,
+    .main-nav__list > .main-nav__list-icons > li > a{
         font-size: 14px;
+        padding: 25px 2px;
+    }
+    .fa-android,
+    .fa-apple {
+        font-size: 20px !important;
     }
 }

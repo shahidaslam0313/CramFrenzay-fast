@@ -1,1 +1,446 @@
-<div class="main-search search-outer "> <i class="fas fa-times" id="closeSearch"></i> <div class="container"> <div class="search-holder"> <form (ngSubmit)="onsubmits(query)"> <input type="search" autofocus placeholder="Search CramFrenzy" id="input-searchbar" name="name" (keyup)="filter(query)" [(ngModel)]="query"> </form> </div><div class="row search-results" *ngIf="notes"> <p *ngIf="notes.length==0" class="results-notfound"> No results found. Please use keywords.</p><div class="col-lg-3" *ngFor="let data of notes; let i=index"> <div class="product-list__item"> <figure class="product-list__img"> <a routerLink="/detail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> </figure> <div class="product-list__content"> <div class="product-list__category"> <a routerLink="/detail/{{data.id}}" title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a></div><div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data?.userid | titlecase}}">{{data?.userid | titlecase}}</span></div><div class="rating_and_price"> <ul class="product-list__star-list"> <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li><li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li><li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li><li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li><li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li></ul> <p class="product-list__price">{{data?.price | currency:'USD'}}</p></div></div><div class="product-list__item-info-1"> <a routerLink="/login" class="btn-style btn " (click)="checkmainpage()"> Buy Now </a> <a routerLink="/login" class="btn-style btn " (click)="checkmainpage()"> Bid Now </a></div></div></div></div></div></div><header class="wrapp-header"> <div class="main-nav"> <div class="container-fluid padding-zero"> <div class="padding-0 float_left width100"> <div class="width-20-percent float_logo logo" routerLink="/"> <img src="/assets/img/CramFrenzyLogoBlackColor.png" alt="CramFrenzy" title="Cramfrenzy - The Online CramUniverse"/></div><div class="main-nav__btn" data-toggle="collapse" data-target="#mainNav"> <div class="icon-left"></div><div class="icon-right"></div></div><div class="navbar-collapse main-nav__div" id="mainNav"> <ul class="main-nav__list main-nav__width navbar-right float_left width100"> <li> <button class="btn sellnowbtn" (click)="selllogin()"> <i class="far fa-money-bill-alt"> </i>Sell or Auction Now </button> </li><li class="active"> <a routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie </a> <div class="sub-menu"> <ul> <li> <a routerLink="/notesgenie"> <img class="notes" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes</a> </li><li> <a routerLink="/notes-category"> <img class="notes-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes Categories </a> </li><li routerLink="/uploadnotes"> <a (click)="checkNotes()"> <img class="add-notes" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Notes </a> </li></ul> </div></li><li class="main-nav__list_flash_cards"> <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards </a> <div class="sub-menu"> <ul> <li> <a routerLink="/flashcardlist"> <img class="flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Flash Cards</a> </li><li> <a routerLink="/flashcard"> <img class="flash-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Flash Card Categories</a> </li><li> <a (click)="checkflashcard()"> <img class="add-flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Sell Flash Cards</a> </li></ul> </div></li><li> <a routerLink="/course"> <i class="fa fa-th-large"></i>Courses </a> <div class="sub-menu"> <ul> <li> <a routerLink="/course"> <img class="course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Courses</a> </li><li> <a routerLink="/categories"> <img class="course-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Course Categories </a> </li><li (click)="checkcourse()"> <a> <img class="add-course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Sell Courses</a> </li></ul> </div></li><li> <a routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a> <div class="sub-menu"> <ul> <li> <a routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Tutors</a> </li><li *ngIf="!tutor()"> <a (click)="becometutor()"> <img class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Become a Tutor </a> </li><li> <a routerLink="/findtutor"> <img class="find-tutors" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Find a Tutor</a> </li></ul> </div></li><li class=""> <a routerLink="/allbooks"> <i class="fa fa-book"></i>Books </a> <div class="sub-menu"> <ul> <li> <a routerLink="/allbooks"> <img class="book" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Books</a> </li><li> <a routerLink="/books"> <img class="book-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Book Categories</a> </li><li> <a (click)="checkbooks()"> <img class="add-book" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Books</a> </li></ul> </div></li><li class="main-nav__list-bars"> <a href=""> <i class="fas fa-bars"></i> </a> <div class="sub-menu"> <ul class="cutsom-pd-bars"> <li class="main-nav__list_flash_cards_1"> <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards </a> <div class="sub-sub-menu"> <ul> <li> <a routerLink="/flashcardlist">Flash Cards</a></li><li> <a routerLink="/flashcard">Flash Card Categories</a></li><li> <a (click)="checkflashcard()">Sell Flash Card</a></li></ul> </div></li><li> <a routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events </a> <div class="sub-sub-menu"> <ul> <li> <a routerLink="/events"> <img src="../../../assets/img/Events/Events.png" alt="img">Events</a> </li><li> <a routerLink="/institute"> <img src="../../../assets/img/Events/Institute.png" alt="img">Event By Institutes</a> </li><li> <a routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png" alt="img">Upcoming Events</a> </li></ul> </div></li><li> <a routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships </a> <div class="sub-sub-menu"> <ul> <li> <a routerLink="/scholarship"> <img class="scholorships" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Scholarships</a> </li><li> <a routerLink="/scholarshiplist"> <img class="scholorship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Scholarship By Institutes</a> </li><li> <a routerLink="/upcomingscholarship"> <img class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Upcoming Scholarships</a> </li></ul> </div></li><li> <a onclick="topFunction()" routerLink="/aboutus"> <i class="fa fa-leaf"></i>What is CramFrenzy?</a> </li><li> <a onclick="topFunction()" routerLink="/who-are-we"> <i class="fa fa-plus"></i>Who Are We?</a> </li><li> <a onclick="topFunction()" routerLink="/how-it-works"> <i class="fa fa-fire"></i>How it Works?</a> </li><li> <a onclick="topFunction()" routerLink="/becomepartner"> <i class="fas fa-handshake"></i>Partnership</a> </li><li> <a onclick="topFunction()" routerLink="/faqs"> <i class="fas fa-question-circle"></i>FAQs</a> </li><li> <a onclick="topFunction()" routerLink="/comparison-matrix"> <i class="fab fa-angellist"></i>Comparison Matrix</a> </li><li> <a onclick="topFunction()" routerLink="/contactus"> <i class="fas fa-phone-volume"></i>Establish Contact</a> </li></ul> </div></li><li class="info-box-02__box-02 search-icon-responsive open-search"> <a class="search-block"> <i class="fas fa-search search-size"></i> </a> </li><div class="main-nav__list-icons"> <li class="info-box-02__box-02"> <a href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8" class="search-block" target="_blank"> <i class="fab fa-apple"></i> </a> </li><li class="info-box-02__box-02"> <a href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene" class="search-block" target="_blank"> <i class="fab fa-android"></i> </a> </li><li class="heart-li" *ngIf="check_login()"> <a routerLink="/watchlist" title="Watch List"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a> <div class="heart-sub-meun"> <div class="heart-full-div"> <h1 class="dropdown-heading" *ngIf="Data?.notes?.length !='0'">Notes</h1> <div class="heart" *ngFor="let data of Data?.notes; let i=index"> <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)="del(data?.wish_id)"> <i class="fas fa-times"></i></div><div class="heart-main-div"> <a routerLink="/notes/{{data?.id}}"><img src="{{Imageurl}}{{data.notes_thumbnail}}" class="heart-img" alt="notes" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="heart-contact"> <div class="heart-heading"><a routerLink="/notes/{{data?.id}}">{{data.name}}</a></div><div class="heart-detail"> <a routerLink="{{data?.id}}"> Author:{{data.author}}</a> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div><div class="heart-price"> <span class="heart-new-price"> <a routerLink="/notes/{{data?.id}}">{{data.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(null, null, null, data?.id, data?.wish_id)"> Move to Cart </a></div></div></div></div><h1 class="dropdown-heading" *ngIf="Data?.flashcards?.length !='0'">Flash Cards </h1> <div class="heart" *ngFor="let data of Data?.flashcards; let i=index"> <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)=" del(data?.wish_id)"> <i class="fas fa-times"></i></div><div class="heart-main-div"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}" class="heart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="heart-contact"> <div class="heart-heading"><a routerLink="/fcdetail/{{data?.id}}">{{data?.name}}</a></div><div class="heart-detail"> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div><div class="heart-price"> <span class="heart-new-price">{{data?.price | currency:'USD'}}</span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(null, null, data?.id, null, data?.wish_id)"> Move to Cart </a></div></div></div></div><h1 class="dropdown-heading" *ngIf="Data?.courses?.length !='0'">Courses</h1> <div class="heart" *ngFor="let data of Data?.courses; let i=index"> <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)="del(data?.wish_id)"> <i class="fas fa-times"></i></div><div class="heart-main-div"> <a routerLink="/eachcourse/{{data?.id}}"><img src="{{Imageurl}}{{data?.course_thumbnail}}" class="heart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="heart-contact"> <div class="heart-heading"><a routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a> </div><div class="heart-detail"> <a routerLink="/eachcourse/{{data?.id}}"> Author:{{data?.author}}</a> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div><div class="heart-price"> <span class="heart-new-price"> <a routerLink="/eachcourse/{{data?.id}}">{{data.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(null, data?.id, null, null, data?.wish_id)"> Move to Cart </a></div></div></div></div><h1 class="dropdown-heading" *ngIf="Data?.books?.length !='0'">Books</h1> <div class="heart" *ngFor="let data of Data?.books; let i=index"> <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)=" del(data?.wish_id)"> <i class="fas fa-times"></i></div><div class="heart-main-div"> <a routerLink="/detail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.book_image}}" class="heart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="heart-contact"> <div class="heart-heading"><a routerLink="/detail/{{data?.id}}">{{data.name}}</a></div><div class="heart-detail" *ngIf="data.author_name!=''"> <a routerLink="/detail/{{data?.id}}"> Author:{{data.author_name}}</a> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div><div class="heart-price"> <span class="heart-new-price"><a routerLink="/detail/{{data?.id}}">{{data?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(data?.id, null, null, null, data?.wish_id)"> Move to Cart </a></div></div></div></div></div><div class="wishlist-btn-div" *ngIf="check_login()"> <a routerLink="/watchlist" class="btn text-trans">Go to Watch List</a></div></div></li><li class="addtocart-li" *ngIf="check_login()"> <a routerLink="/addtocart" title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a> <div class="addtocart-sub-meun"> <div class="addtocart-full-div"> <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.courses?.length !='0'"> Courses</h1> <div *ngFor="let cartitems of gettingcartsitem?.courses"> <div class="addtocart cart-padding" *ngIf="cartitems !=null"> <div class="addtocart-time" (click)="removeitems(cartitems?.cart_id)"> <i class="fas fa-times"></i></div><div class="addtocart-main-div"> <a routerLink="/eachcourse/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.course_thumbnail}}" class="addtocart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="addtocart-contact"> <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a> </div><div class="heart-detail"> <a routerLink="/eachcourse/{{cartitems.id}}">Author:{{cartitems.author}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div><div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(null,cartitems.id,null,null,cartitems.cart_id)"> Move to Watch List </a> </div></div></div></div></div><h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.length !='0'">Notes </h1> <div *ngFor="let cartitems of gettingcartsitem?.notes"> <div class="addtocart cart-padding"> <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i class="fas fa-times"></i></div><div class="addtocart-main-div"> <a routerLink="/notes/{{cartitems.id}}"><img src="{{Imageurl}}{{cartitems.notes_thumbnail}}" class="addtocart-img" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="addtocart-contact"> <div class="heart-heading"><a routerLink="/notes/{{cartitems.id}}">{{cartitems.name}}</a> </div><div class="heart-detail"> <a routerLink="/notes/{{cartitems.id}}"> Author:{{cartitems.author}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div><div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(null,null,null,cartitems.id,cartitems.cart_id)"> Move to Watch List </a> </div></div></div></div></div><h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.length !='0'"> Flash Cards</h1> <div *ngFor="let cartitems of gettingcartsitem?.flashcards"> <div class="addtocart cart-padding"> <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i class="fas fa-times"></i></div><div class="addtocart-main-div"> <a routerLink="/fcdetail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.flashcard_image}}" class="addtocart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="addtocart-contact"> <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}">{{cartitems?.name}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div><div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> {{cartitems?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(null,null,cartitems.id,null,cartitems.cart_id)"> Move to Watch List </a> </div></div></div></div></div><h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books?.length !='0'">Books </h1> <div *ngFor="let cartitems of gettingcartsitem?.books"> <div class="addtocart cart-padding"> <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i class="fas fa-times"></i></div><div class="addtocart-main-div"> <a routerLink="/detail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.book_image}}" class="addtocart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a> <div class="addtocart-contact"> <div class="heart-heading"><a routerLink="/detail/{{cartitems.id}}">{{cartitems.name}}</a> </div><div class="heart-detail" *ngIf="cartitems.author_name!=''"> <a routerLink="/detail/{{cartitems.id}}"> Author:{{cartitems.author_name}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div><div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a> </span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(cartitems.id,null,null,null,cartitems.cart_id)"> Move to Watch List </a></div></div></div></div></div></div><div class="btn-div"> <div class="addtocart-main-total"> <div class="addtocart-main-total-title"> Total:</div><div class="addtocart-main-total-price"> {{totalprice | currency:'USD'}}</div></div><div class="wishlist-btn-div" *ngIf="check_login()"> <a routerLink="/addtocart" class="btn text-trans">Go to Cart</a></div></div></div></li><li class="addtocart-li" *ngIf="check_login()"> <a title="Notifications"> <i class="fas fa-bell"></i><sup>{{getnotifi?.unread}}</sup> </a> <div class="addtocart-sub-meun"> <div class="addtocart-full-div"> <div class="addtocart" *ngFor="let cartitems of notifications"> <div class="addtocart notification-box-heading false-notification" *ngIf="cartitems.read==false"> <div class="addtocart-time addtocart-cross"> <a (click)="deletenotification(cartitems?.id)"><i class="fas fa-times"></i></a></div><div class="addtocart-main-div"> <div class="addtocart-contact notification-box" (click)="getnotifid(cartitems?.id)"> <a class="display-block" (click)="putdelnotification(cartitems?.id)"> <div class="notification-heading">{{cartitems?.nf_type}}</div><div class="heart-heading" title="{{cartitems?.description}}">{{cartitems?.description}}</div></a> </div></div></div><div class="addtocart notification-box-heading" *ngIf="cartitems.read==true"> <div class="addtocart-time addtocart-cross"> <a (click)="deletenotification(cartitems?.id)"><i class="fas fa-times"></i></a></div><div class="addtocart-main-div"> <div class="addtocart-contact notification-box" (click)="getnotifid(cartitems?.id)"> <a class="display-block" (click)="putdelnotification(cartitems?.id)"> <div class="notification-heading">{{cartitems?.nf_type}}</div><div class="heart-heading" title="{{cartitems?.description}}">{{cartitems?.description}}</div></a> </div></div></div></div></div></div></li></div><div class="main-nav__list main-nav__list_right"> <li *ngIf="!check_login()"> <a routerLink="/signup"> <i class="fas fa-user-plus"></i>Sign up </a> </li><li *ngIf="!check_login()" class="list-user"> <a routerLink="/login"> <i class="fas fa-fingerprint" aria-hidden="true"></i>Sign in </a> </li><li *ngIf="check_login()"> <a routerLink="/userprofile"> <i class="fa fa-user-circle"></i>My CramFrenzy <span class="fa fa-angle-down"></span> </a> <div class="sub-menu adjustment"> <ul class="cutom-pd"> <li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/mycart"> <i class="fa fa-cart-plus"></i>My Cart </a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile </a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Sell Now </a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/mylibrary" class="text_normal"> <i class="fa fa-book"></i>Listed for Sale </a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/paymentmethods"> <i class="far fa-credit-card"></i>Payment Methods </a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/Bought"> <i class="far fa-money-bill-alt"></i>My Bought Items</a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/pendingoffers"> <i class="fas fa-volume-off"></i>Pending offers</a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/winloss"> <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/biddingactivity"> <i class="fa fa-gavel"></i>current Bidding Activity </a> </li><li *ngIf="check_login() && !institute() && !admin()"> <a routerLink="/offeractivity"> <i class="fas fa-hand-holding-usd"></i>Current Offers Activity </a> </li><li *ngIf="institute() && check_login()"> <a routerLink="/institutedetail"> <i class="fa fa-pencil-alt"></i>My Profile </a> </li><li *ngIf="institute() && check_login()"> <a routerLink="/addevents"> <i class="fa fa-pencil-alt"></i>Add Events </a> </li><li *ngIf="institute() && check_login()"> <a routerLink="/addscholarship"> <i class="fa fa-pencil-alt"></i>Add Scholarship </a> </li><li *ngIf="institute() && check_login()"> <a routerLink="/institutelibrary"> <i class="fa fa-pencil-alt"></i>My Library </a> </li><li *ngIf="institute() && check_login()"> <a routerLink="/change-password"> <i class="fa fa-pencil-alt"></i>Change Password </a> </li><li *ngIf="admin() && check_login()"> <a routerLink="/dashboard"> <i class="fa fa-pencil-alt"></i>Admin Dashboard </a> </li><li> <a routerLink="/login" (click)="logout()"> <i class="fa fa-sign-out-alt"></i>Logout </a> </li></ul> </div></li></div></ul> </div></div></div></div></header>
+<div class="main-search search-outer "> <i class="fas fa-times" id="closeSearch"></i>
+    <div class="container">
+        <div class="search-holder">
+            <form (ngSubmit)="onsubmits(query)">
+                <input type="search" autofocus placeholder="Search CramFrenzy" id="input-searchbar" name="name" (keyup)="filter(query)" [(ngModel)]="query"> </form>
+        </div>
+        <div class="row search-results" *ngIf="notes">
+            <p *ngIf="notes.length==0" class="results-notfound"> No results found. Please use keywords.</p>
+            <div class="col-lg-3" *ngFor="let data of notes; let i=index">
+                <div class="product-list__item">
+                    <figure class="product-list__img">
+                        <a routerLink="/detail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
+                    </figure>
+                    <div class="product-list__content">
+                        <div class="product-list__category"> <a routerLink="/detail/{{data.id}}" title="{{data?.name | titlecase}}">{{data?.name | titlecase}}</a></div>
+                        <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data?.userid | titlecase}}">{{data?.userid | titlecase}}</span></div>
+                        <div class="rating_and_price">
+                            <ul class="product-list__star-list">
+                                <li>
+                                    <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a>
+                                </li>
+                            </ul>
+                            <p class="product-list__price">{{data?.price | currency:'USD'}}</p>
+                        </div>
+                    </div>
+                    <div class="product-list__item-info-1"> <a routerLink="/login" class="btn-style btn " (click)="checkmainpage()"> Buy Now </a> <a routerLink="/login" class="btn-style btn " (click)="checkmainpage()"> Bid Now </a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="wrapp-header">
+    <div class="main-nav">
+        <div class="container-fluid padding-zero">
+            <div class="padding-0 float_left width100">
+                <div class="width-20-percent float_logo logo" routerLink="/"> <img src="/assets/img/CramFrenzyLogoBlackColor.png" alt="CramFrenzy" title="Cramfrenzy - The Online CramUniverse" /></div>
+                <div class="main-nav__btn" data-toggle="collapse" data-target="#mainNav">
+                    <div class="icon-left"></div>
+                    <div class="icon-right"></div>
+                </div>
+                <div class="navbar-collapse main-nav__div" id="mainNav">
+                    <ul class="main-nav__list main-nav__width navbar-right float_left width100">
+                        <li>
+                            <button class="btn sellnowbtn" (click)="selllogin()"> <i class="far fa-money-bill-alt"> </i>Sell or Auction Now </button>
+                        </li>
+                        <li class="active">
+                            <a routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie </a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li>
+                                        <a routerLink="/notesgenie"> <img class="notes" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/notes-category"> <img class="notes-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes Categories </a>
+                                    </li>
+                                    <li routerLink="/uploadnotes">
+                                        <a (click)="checkNotes()"> <img class="add-notes" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Notes </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav__list_flash_cards">
+                            <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards </a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li>
+                                        <a routerLink="/flashcardlist"> <img class="flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Flash Cards</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/flashcard"> <img class="flash-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Flash Card Categories</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="checkflashcard()"> <img class="add-flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Sell Flash Cards</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a routerLink="/course"> <i class="fa fa-th-large"></i>Courses </a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li>
+                                        <a routerLink="/course"> <img class="course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Courses</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/categories"> <img class="course-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Course Categories </a>
+                                    </li>
+                                    <li (click)="checkcourse()">
+                                        <a> <img class="add-course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Sell Courses</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li>
+                                        <a routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Tutors</a>
+                                    </li>
+                                    <li *ngIf="!tutor()">
+                                        <a (click)="becometutor()"> <img class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Become a Tutor </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/findtutor"> <img class="find-tutors" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Find a Tutor</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a routerLink="/allbooks"> <i class="fa fa-book"></i>Books </a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li>
+                                        <a routerLink="/allbooks"> <img class="book" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Books</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/books"> <img class="book-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Book Categories</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="checkbooks()"> <img class="add-book" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Books</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav__list-bars">
+                            <a href=""> <i class="fas fa-bars"></i> </a>
+                            <div class="sub-menu">
+                                <ul class="cutsom-pd-bars">
+                                    <li class="main-nav__list_flash_cards_1">
+                                        <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards </a>
+                                        <div class="sub-sub-menu">
+                                            <ul>
+                                                <li> <a routerLink="/flashcardlist">Flash Cards</a></li>
+                                                <li> <a routerLink="/flashcard">Flash Card Categories</a></li>
+                                                <li> <a (click)="checkflashcard()">Sell Flash Card</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events </a>
+                                        <div class="sub-sub-menu">
+                                            <ul>
+                                                <li>
+                                                    <a routerLink="/events"> <img src="../../../assets/img/Events/Events.png" alt="img">Events</a>
+                                                </li>
+                                                <li>
+                                                    <a routerLink="/institute"> <img src="../../../assets/img/Events/Institute.png" alt="img">Event By Institutes</a>
+                                                </li>
+                                                <li>
+                                                    <a routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png" alt="img">Upcoming Events</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships </a>
+                                        <div class="sub-sub-menu">
+                                            <ul>
+                                                <li>
+                                                    <a routerLink="/scholarship"> <img class="scholorships" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Scholarships</a>
+                                                </li>
+                                                <li>
+                                                    <a routerLink="/scholarshiplist"> <img class="scholorship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Scholarship By Institutes</a>
+                                                </li>
+                                                <li>
+                                                    <a routerLink="/upcomingscholarship"> <img class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Upcoming Scholarships</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/aboutus"> <i class="fa fa-leaf"></i>What is CramFrenzy?</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/who-are-we"> <i class="fa fa-plus"></i>Who Are We?</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/how-it-works"> <i class="fa fa-fire"></i>How it Works?</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/becomepartner"> <i class="fas fa-handshake"></i>Partnership</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/faqs"> <i class="fas fa-question-circle"></i>FAQs</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/comparison-matrix"> <i class="fab fa-angellist"></i>Comparison Matrix</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="topFunction()" routerLink="/contactus"> <i class="fas fa-phone-volume"></i>Establish Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="info-box-02__box-02 search-icon-responsive open-search">
+                            <a class="search-block"> <i class="fas fa-search search-size"></i> </a>
+                        </li>
+                        <div class="main-nav__list-icons">
+                            <li class="info-box-02__box-02">
+                                <a href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8" class="search-block" target="_blank"> <i class="fab fa-apple"></i> </a>
+                            </li>
+                            <li class="info-box-02__box-02">
+                                <a href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene" class="search-block" target="_blank"> <i class="fab fa-android"></i> </a>
+                            </li>
+                            <li class="heart-li" *ngIf="check_login()">
+                                <a routerLink="/watchlist" title="Watch List"> <i class="fa fa-heart"></i> <sup>{{count}}</sup> </a>
+                                <div class="heart-sub-meun">
+                                    <div class="heart-full-div">
+                                        <h1 class="dropdown-heading" *ngIf="Data?.notes?.length !='0'">Notes</h1>
+                                        <div class="heart" *ngFor="let data of Data?.notes; let i=index">
+                                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)="del(data?.wish_id)"> <i class="fas fa-times"></i></div>
+                                            <div class="heart-main-div">
+                                                <a routerLink="/notes/{{data?.id}}"><img src="{{Imageurl}}{{data.notes_thumbnail}}" class="heart-img" alt="notes" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                <div class="heart-contact">
+                                                    <div class="heart-heading"><a routerLink="/notes/{{data?.id}}">{{data.name}}</a></div>
+                                                    <div class="heart-detail"> <a routerLink="{{data?.id}}"> Author:{{data.author}}</a> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div>
+                                                    <div class="heart-price"> <span class="heart-new-price"> <a routerLink="/notes/{{data?.id}}">{{data.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(null, null, null, data?.id, data?.wish_id)"> Move to Cart </a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h1 class="dropdown-heading" *ngIf="Data?.flashcards?.length !='0'">Flash Cards </h1>
+                                        <div class="heart" *ngFor="let data of Data?.flashcards; let i=index">
+                                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)=" del(data?.wish_id)"> <i class="fas fa-times"></i></div>
+                                            <div class="heart-main-div">
+                                                <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}" class="heart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                <div class="heart-contact">
+                                                    <div class="heart-heading"><a routerLink="/fcdetail/{{data?.id}}">{{data?.name}}</a></div>
+                                                    <div class="heart-detail"> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div>
+                                                    <div class="heart-price"> <span class="heart-new-price">{{data?.price | currency:'USD'}}</span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(null, null, data?.id, null, data?.wish_id)"> Move to Cart </a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h1 class="dropdown-heading" *ngIf="Data?.courses?.length !='0'">Courses</h1>
+                                        <div class="heart" *ngFor="let data of Data?.courses; let i=index">
+                                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)="del(data?.wish_id)"> <i class="fas fa-times"></i></div>
+                                            <div class="heart-main-div">
+                                                <a routerLink="/eachcourse/{{data?.id}}"><img src="{{Imageurl}}{{data?.course_thumbnail}}" class="heart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                <div class="heart-contact">
+                                                    <div class="heart-heading"><a routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a> </div>
+                                                    <div class="heart-detail"> <a routerLink="/eachcourse/{{data?.id}}"> Author:{{data?.author}}</a> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div>
+                                                    <div class="heart-price"> <span class="heart-new-price"> <a routerLink="/eachcourse/{{data?.id}}">{{data.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(null, data?.id, null, null, data?.wish_id)"> Move to Cart </a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h1 class="dropdown-heading" *ngIf="Data?.books?.length !='0'">Books</h1>
+                                        <div class="heart" *ngFor="let data of Data?.books; let i=index">
+                                            <div class="addtocart-time" data-target="#myModal3" data-toggle="modal" (click)=" del(data?.wish_id)"> <i class="fas fa-times"></i></div>
+                                            <div class="heart-main-div">
+                                                <a routerLink="/detail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.book_image}}" class="heart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                <div class="heart-contact">
+                                                    <div class="heart-heading"><a routerLink="/detail/{{data?.id}}">{{data.name}}</a></div>
+                                                    <div class="heart-detail" *ngIf="data.author_name!=''"> <a routerLink="/detail/{{data?.id}}"> Author:{{data.author_name}}</a> <span class="discount-p">{{data?.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span></div>
+                                                    <div class="heart-price"> <span class="heart-new-price"><a routerLink="/detail/{{data?.id}}">{{data?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToCart(data?.id, null, null, null, data?.wish_id)"> Move to Cart </a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wishlist-btn-div" *ngIf="check_login()"> <a routerLink="/watchlist" class="btn text-trans">Go to Watch List</a></div>
+                                </div>
+                            </li>
+                            <li class="addtocart-li" *ngIf="check_login()">
+                                <a routerLink="/addtocart" title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
+                                <div class="addtocart-sub-meun">
+                                    <div class="addtocart-full-div">
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.courses?.length !='0'"> Courses</h1>
+                                        <div *ngFor="let cartitems of gettingcartsitem?.courses">
+                                            <div class="addtocart cart-padding" *ngIf="cartitems !=null">
+                                                <div class="addtocart-time" (click)="removeitems(cartitems?.cart_id)"> <i class="fas fa-times"></i></div>
+                                                <div class="addtocart-main-div">
+                                                    <a routerLink="/eachcourse/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.course_thumbnail}}" class="addtocart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                    <div class="addtocart-contact">
+                                                        <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a> </div>
+                                                        <div class="heart-detail"> <a routerLink="/eachcourse/{{cartitems.id}}">Author:{{cartitems.author}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(null,cartitems.id,null,null,cartitems.cart_id)"> Move to Watch List </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.notes?.length !='0'">Notes </h1>
+                                        <div *ngFor="let cartitems of gettingcartsitem?.notes">
+                                            <div class="addtocart cart-padding">
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i class="fas fa-times"></i></div>
+                                                <div class="addtocart-main-div">
+                                                    <a routerLink="/notes/{{cartitems.id}}"><img src="{{Imageurl}}{{cartitems.notes_thumbnail}}" class="addtocart-img" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                    <div class="addtocart-contact">
+                                                        <div class="heart-heading"><a routerLink="/notes/{{cartitems.id}}">{{cartitems.name}}</a> </div>
+                                                        <div class="heart-detail"> <a routerLink="/notes/{{cartitems.id}}"> Author:{{cartitems.author}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/notes/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(null,null,null,cartitems.id,cartitems.cart_id)"> Move to Watch List </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.flashcards?.length !='0'"> Flash Cards</h1>
+                                        <div *ngFor="let cartitems of gettingcartsitem?.flashcards">
+                                            <div class="addtocart cart-padding">
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.cart_id)"> <i class="fas fa-times"></i></div>
+                                                <div class="addtocart-main-div">
+                                                    <a routerLink="/fcdetail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.flashcard_image}}" class="addtocart-img" alt="Flash card" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                    <div class="addtocart-contact">
+                                                        <div class="heart-heading"><a routerLink="/fcdetail/{{cartitems?.id}}">{{cartitems?.name}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/fcdetail/{{cartitems.id}}"> {{cartitems?.price | currency:'USD'}}</a></span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(null,null,cartitems.id,null,cartitems.cart_id)"> Move to Watch List </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h1 class="dropdown-heading" *ngIf="gettingcartsitem?.books?.length !='0'">Books </h1>
+                                        <div *ngFor="let cartitems of gettingcartsitem?.books">
+                                            <div class="addtocart cart-padding">
+                                                <div class="addtocart-time" (click)="removeitems(cartitems.id)"> <i class="fas fa-times"></i></div>
+                                                <div class="addtocart-main-div">
+                                                    <a routerLink="/detail/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.book_image}}" class="addtocart-img" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
+                                                    <div class="addtocart-contact">
+                                                        <div class="heart-heading"><a routerLink="/detail/{{cartitems.id}}">{{cartitems.name}}</a> </div>
+                                                        <div class="heart-detail" *ngIf="cartitems.author_name!=''"> <a routerLink="/detail/{{cartitems.id}}"> Author:{{cartitems.author_name}}</a> <span class="discount-p">{{cartitems.discount | currency:'USD'}}<i class="fas fa-arrow-down"></i> </span> </div>
+                                                        <div class="addtocart-price"> <span class="addtocart-new-price"><a routerLink="/detail/{{cartitems.id}}">{{cartitems?.price | currency:'USD'}}</a> </span> <a routerLink="" class="heart-card-btn" (click)="moveToWishlist(cartitems.id,null,null,null,cartitems.cart_id)"> Move to Watch List </a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-div">
+                                        <div class="addtocart-main-total">
+                                            <div class="addtocart-main-total-title"> Total:</div>
+                                            <div class="addtocart-main-total-price"> {{totalprice | currency:'USD'}}</div>
+                                        </div>
+                                        <div class="wishlist-btn-div" *ngIf="check_login()"> <a routerLink="/addtocart" class="btn text-trans">Go to Cart</a></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="addtocart-li" *ngIf="check_login()">
+                                <a title="Notifications"> <i class="fas fa-bell"></i><sup>{{getnotifi?.unread}}</sup> </a>
+                                <div class="addtocart-sub-meun">
+                                    <div class="addtocart-full-div">
+                                        <div class="addtocart" *ngFor="let cartitems of notifications">
+                                            <div class="addtocart notification-box-heading false-notification" *ngIf="cartitems.read==false">
+                                                <div class="addtocart-time addtocart-cross"> <a (click)="deletenotification(cartitems?.id)"><i class="fas fa-times"></i></a></div>
+                                                <div class="addtocart-main-div">
+                                                    <div class="addtocart-contact notification-box" (click)="getnotifid(cartitems?.id)">
+                                                        <a class="display-block" (click)="putdelnotification(cartitems?.id)">
+                                                            <div class="notification-heading">{{cartitems?.nf_type}}</div>
+                                                            <div class="heart-heading" title="{{cartitems?.description}}">{{cartitems?.description}}</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addtocart notification-box-heading" *ngIf="cartitems.read==true">
+                                                <div class="addtocart-time addtocart-cross"> <a (click)="deletenotification(cartitems?.id)"><i class="fas fa-times"></i></a></div>
+                                                <div class="addtocart-main-div">
+                                                    <div class="addtocart-contact notification-box" (click)="getnotifid(cartitems?.id)">
+                                                        <a class="display-block" (click)="putdelnotification(cartitems?.id)">
+                                                            <div class="notification-heading">{{cartitems?.nf_type}}</div>
+                                                            <div class="heart-heading" title="{{cartitems?.description}}">{{cartitems?.description}}</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="main-nav__list main-nav__list_right">
+                            <li *ngIf="!check_login()">
+                                <a routerLink="/signup"> <i class="fas fa-user-plus"></i>Sign up </a>
+                            </li>
+                            <li *ngIf="!check_login()" class="list-user">
+                                <a routerLink="/login"> <i class="fas fa-fingerprint" aria-hidden="true"></i>Sign in </a>
+                            </li>
+                            <li *ngIf="check_login()">
+                                <a routerLink="/userprofile"> <i class="fa fa-user-circle"></i>My CramFrenzy <span class="fa fa-angle-down"></span> </a>
+                                <div class="sub-menu adjustment">
+                                    <ul class="cutom-pd">
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/mycart"> <i class="fa fa-cart-plus"></i>My Cart </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Sell Now </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/mylibrary" class="text_normal"> <i class="fa fa-book"></i>Listed for Sale </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/paymentmethods"> <i class="far fa-credit-card"></i>Payment Methods </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/Bought"> <i class="far fa-money-bill-alt"></i>My Bought Items</a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/pendingoffers"> <i class="fas fa-volume-off"></i>Pending offers</a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/winloss"> <i class="fa fa-dollar-sign"></i>Won & Lost Bids</a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/biddingactivity"> <i class="fa fa-gavel"></i>current Bidding Activity </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/offeractivity"> <i class="fas fa-hand-holding-usd"></i>Current Offers Activity </a>
+                                        </li>
+                                        <li *ngIf="institute() && check_login()">
+                                            <a routerLink="/institutedetail"> <i class="fa fa-pencil-alt"></i>My Profile </a>
+                                        </li>
+                                        <li *ngIf="institute() && check_login()">
+                                            <a routerLink="/addevents"> <i class="fa fa-pencil-alt"></i>Add Events </a>
+                                        </li>
+                                        <li *ngIf="institute() && check_login()">
+                                            <a routerLink="/addscholarship"> <i class="fa fa-pencil-alt"></i>Add Scholarship </a>
+                                        </li>
+                                        <li *ngIf="institute() && check_login()">
+                                            <a routerLink="/institutelibrary"> <i class="fa fa-pencil-alt"></i>My Library </a>
+                                        </li>
+                                        <li *ngIf="institute() && check_login()">
+                                            <a routerLink="/change-password"> <i class="fa fa-pencil-alt"></i>Change Password </a>
+                                        </li>
+                                        <li *ngIf="admin() && check_login()">
+                                            <a routerLink="/dashboard"> <i class="fa fa-pencil-alt"></i>Admin Dashboard </a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/login" (click)="logout()"> <i class="fa fa-sign-out-alt"></i>Logout </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
