@@ -1,1 +1,92 @@
-.mat-form-field{display:block}.mat-form-field textarea{min-height:200px}.contact_us_title>h1{margin:20px 0 0}.contact-us-address p{color:#333;font-weight:600}.contact-us-address h1{text-transform:capitalize;font-size:30px;text-align:left!important}.contact_us_title>p{color:grey;font-size:16px;font-weight:600}.contact_us_form_1{border-right:1px solid #efefef}.contact_us_form_2>mat-form-field{display:block;overflow:hidden}.contact_us_form_1>mat-form-field textarea{height:168px}.contact_us_btn{color:#fff!important;background:#c00;border-radius:5px;border:1px solid #c00;width:200px;font-size:22px}.contact-us-ul{padding:0}.contact-us-address p>i,.contact-us-ul>li>a>i,.contact-us-ul>li>i{width:20px}.contact_us_btn:hover{background-color:#fff;color:#c00!important;border:1px solid #c00;text-decoration:none}.contact-us-ul>li{font-size:18px;line-height:18px;color:#333;list-style:none;margin-bottom:10px;font-weight:600}.contact-us-ul>li>a{text-decoration:none;color:#333;font-weight:600}.contact-us-ul>li>a:hover{text-decoration:none}.contact_us_map iframe{width:100%;height:400px;border-radius:8px}
+.mat-form-field {
+    display: block
+}
+
+.mat-form-field textarea {
+    min-height: 115px;
+}
+
+.contact_us_title>h1 {
+    margin: 20px 0 0
+}
+
+.contact-us-address p {
+    color: #333;
+    font-weight: 600
+}
+
+.contact-us-address h1 {
+    text-transform: capitalize;
+    font-size: 30px;
+    text-align: left!important
+}
+
+.contact_us_title>p {
+    color: grey;
+    font-size: 16px;
+    font-weight: 600
+}
+
+.contact_us_form_1 {
+    border-right: 1px solid #efefef
+}
+
+.contact_us_form_2>mat-form-field {
+    display: block;
+    overflow: hidden
+}
+
+.contact_us_form_1>mat-form-field textarea {
+    height: 168px
+}
+
+.contact_us_btn {
+    color: #fff!important;
+    background: #c00;
+    border-radius: 5px;
+    border: 1px solid #c00;
+    width: 200px;
+    font-size: 22px
+}
+
+.contact-us-ul {
+    padding: 0
+}
+
+.contact-us-address p>i,
+.contact-us-ul>li>a>i,
+.contact-us-ul>li>i {
+    width: 20px
+}
+
+.contact_us_btn:hover {
+    background-color: #fff;
+    color: #c00!important;
+    border: 1px solid #c00;
+    text-decoration: none
+}
+
+.contact-us-ul>li {
+    font-size: 18px;
+    line-height: 18px;
+    color: #333;
+    list-style: none;
+    margin-bottom: 10px;
+    font-weight: 500
+}
+
+.contact-us-ul>li>a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500
+}
+
+.contact-us-ul>li>a:hover {
+    text-decoration: none
+}
+
+.contact_us_map iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px
+}
