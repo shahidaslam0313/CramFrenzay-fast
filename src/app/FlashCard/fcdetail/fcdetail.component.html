@@ -58,8 +58,8 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
-                            <h4>Author Name:{{flashcardDetail?.user_id | titlecase}}</h4>
-                            <p>Number of Terms:{{flashcardDetail?.no_of_terms}}</p>
+                            <h4>Author Name: {{flashcardDetail?.user_id | titlecase}}</h4>
+                            <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
                         </div>
                     </div>
                 </div>
@@ -260,7 +260,7 @@
                     </div>
                     <div class="col-lg-8 col-sm-12" >
                         <div class="background-grey review-section margin-bottom-20 float_left">
-                            <h4>Reviews</h4>
+                            <h4 *ngIf="view?.reviews !=null">Reviews</h4>
                             <div *ngFor="let reviews of view?.reviews">
                                 <div class="card" *ngIf="reviews !=null">
                                     <div class="card-body">
@@ -285,8 +285,8 @@
                             </div>
                             
                         </div>
-                        <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
-                        </div>
+                        <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
+                        </div> -->
                     </div>
                     
                 </div>

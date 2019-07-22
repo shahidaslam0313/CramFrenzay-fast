@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}<span>({{result?.book_edition}}Edition)</span></h1>
-                <h4>Author Name:{{result?.author_name | titlecase}}</h4>
+                <h4>Author Name: {{result?.author_name | titlecase}}</h4>
                 <p class="detail">{{result?.book_detail | titlecase}}</p>
             </div>
         </div>
@@ -240,8 +240,8 @@
                     </div><!-- <div class="float-left"> <div class="review-container"> <div class="float-left"> <div class="user-image"> <span>AT</span> </div><div class="float-left"> <div class="time-to-go"> <span>{{reviews?.commentDate}}</span> </div><div class="user-name"> <span>Anas Tahir</span> </div></div></div><div class="float-right review-box"> <div class="rating float_left width100"> <div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star-half filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> </div></div><p>{{reviews?.comment}}</p></div></div></div>-->
                     <!-- <div class="col-md-12"> <h3>Comment:{{reviews?.comment}}</h3> <h3>Post date:{{reviews?.commentDate}}</h3> </div>-->
                 </div>
-                <div class="text-center float-left" *ngIf="item==400"> <img src="../../../assets/img/Book.gif">
-                </div>
+                <!-- <div class="text-center float-left" *ngIf="item==400"> <img src="../../../assets/img/Book.gif">
+                </div> -->
             </div>
         </div>
     <!-- </div> -->

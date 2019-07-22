@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name}}</h1>
-                <h4>Author Name:{{result?.userid}}</h4>
+                <h4>Author Name: {{result?.userid}}</h4>
                 <p class="detail">{{result?.detail}}</p>
             </div>
         </div>
@@ -205,7 +205,7 @@
         </div>
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
+                <h4 *ngIf="view?.reviews !=null">Reviews</h4>
                 <div *ngFor="let reviews of view?.reviews">
                     <div class="card" *ngIf="reviews !=null">
                         <div class="card-body">
@@ -230,8 +230,8 @@
                 </div>
                 
             </div>
-            <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
-            </div>
+            <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
+            </div> -->
         </div>
     </div>
     
