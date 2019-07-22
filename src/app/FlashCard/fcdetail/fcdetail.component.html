@@ -41,9 +41,8 @@
                     <div class="item" *ngFor="let data of flashCardTermsDefinitionsData; let i=index">
                         <ng-container>
                             <div class="fc-div">
-                                <div class="fc-detail">
                                     <p class="fc-text"> Term:{{data?.title}}<br>Definition:{{data?.definition}}</p>
-                                </div><img class="fc-img" src="https://storage.cramfrenzy.com/Thumbnail/{{flashcardDetail?.flashcard_image}}"
+                                <img class="fc-img" src="https://storage.cramfrenzy.com/Thumbnail/{{flashcardDetail?.flashcard_image}}"
                                     alt="FlashCard Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
                             </div>
                         </ng-container>

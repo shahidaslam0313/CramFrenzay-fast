@@ -112,31 +112,19 @@
 .progress .progress-bar:after {
     display: none
 }
-
-.fc-text {
-    clear: both;
-    position: absolute;
-    top: 2%;
-    width: 65%;
-    font-size: 25px;
-    text-align: justify;
-    font-weight: 100
-}
-
 .fc-div {
-    position: relative
+    width: 90%;
+    margin: auto;
 }
-
-.fc-detail {
-    float: left;
+.fc-text{
     width: 70%;
-    height: 400px
+    font-size: 24px;
+    float: left;
 }
-
 .fc-img {
     float: right;
     width: 30%;
-    height: 400px
+    object-fit: none;
 }
 
 .each-upper-banner {
