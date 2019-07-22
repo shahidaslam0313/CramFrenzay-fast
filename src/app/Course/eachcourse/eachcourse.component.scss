@@ -328,11 +328,7 @@
     width: 100%;
     text-align: left
 }
-.card.each-card .relative-pos{
-    position: relative;
-    cursor: pointer;
-}
-.card.each-card .relative-pos i{
+.card.each-card .palyimg-div i{
     position: absolute;
     left: 35%;
     top: 25%;
@@ -347,7 +343,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-.card.each-card .relative-pos:hover i{
+.card.each-card .palyimg-div:hover i{
     transform: scale(1.15);
 }
 .review-3{
@@ -361,8 +357,16 @@
 .card-body{
     background: #f9f9f9;
 }
+.palyimg-div{
+    background: #f9f9f9;
+    position: relative;
+}
+.each-card .card-img-top {
+    cursor: pointer;
+    object-fit: none;
+}
 @media only screen and (max-width:1199px){
-    .card.each-card .relative-pos i {
+    .card.each-card .palyimg-div i {
         top: 30%;
         font-size: 35px;
         width: 28%;
@@ -371,7 +375,7 @@
     }
 }
 @media only screen and (max-width:991px){
-    .card.each-card .relative-pos i {
+    .card.each-card .palyimg-div i {
         top: 35%;
         font-size: 24px;
         width: 28%;

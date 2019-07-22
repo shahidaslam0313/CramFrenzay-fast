@@ -1169,12 +1169,6 @@ mat-form-field textarea {
     margin-top: -190px
 }
 
-.each-card .card-img-top {
-    height: 200px;
-    -o-object-fit: cover;
-    object-fit: cover
-}
-
 .each-card .card-body {
     padding: 15px 30px
 }

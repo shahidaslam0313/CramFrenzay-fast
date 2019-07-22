@@ -82,27 +82,27 @@
         <div class="col-lg-4 col-md-4 card-1">
             <div class="card each-card">
                     <!-- <img class="card-img-top"  *ngIf="!introvi src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">  -->
-                <div class="relative-pos" *ngIf="introvideo?.video_url || !introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)">
+                <div class="palyimg-div" *ngIf="introvideo?.video_url || !introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)">
                         <i class="fas fa-play"></i>
                         <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">
                     
                 </div>
                 
                     <!-- <i class="fa fa-play-circle" *ngIf="introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)"></i>{{introvideo?.video_title}} -->
-                <div class="card-body">
-                    <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
+                <div class="card-body text-center">
+                    <h3 class="card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
+                    <h5 class="card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Course Already Bought</a> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="courses(result?.id)">Buy Now</a>
                     <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"  (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
                         to Cart</a>
-                        <div class="text-center">
+                        <div class="">
                         <p class="already-bought" *ngIf="result?.isTeacher==true">
                             Course Added by Me </p>  </div>
-                    <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
+                    <h4 class="card-para ">30-Day Money-Back Guarantee</h4>
                 </div>
                 <hr>
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <h1 class="text-center">Share This Course</h1>
                     <ul class="card-footer-social-icon">
                         <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>

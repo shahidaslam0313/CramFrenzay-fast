@@ -80,24 +80,27 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 card-1">
-            <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.book_image}}"
-                    data-filter="*" alt="Book Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
-                <div class="card-body">
-                    <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
+            <div class="card each-card">
+                <div class="palyimg-div">
+                    <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.book_image}}"
+                        data-filter="*" alt="Book Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
+                </div>
+                <div class="card-body text-center">
+                    <h3 class="card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
+                    <h5 class="card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a> 
-                      <div class="text-center"> <p class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </p></div> <a class="card-btn"
+                      <div class=""> <p class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </p></div> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkbook(result?.id)">Buy Now</a>
                     <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
                         to Cart</a> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
                         data="https://storage.cramfrenzy.com/uploads/C_+Q+and+Answer.pdf" type="application/pdf"> <a
                             href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>
                     </button>
-                    <h4 class="text-center card-isbn">ISBN:{{result?.ISBN}}</h4>
-                    <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
+                    <h4 class="card-isbn">ISBN:{{result?.ISBN}}</h4>
+                    <h4 class="card-para">30-Day Money-Back Guarantee</h4>
                 </div>
                 <hr>
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <h1 class="text-center">Share this Book</h1>
                     <ul class="card-footer-social-icon">
                         <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>

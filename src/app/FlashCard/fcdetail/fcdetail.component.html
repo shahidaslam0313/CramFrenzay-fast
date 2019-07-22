@@ -1,6 +1,6 @@
-<div class="container-fluid padding-0">
+<div class="container-fluid padding-0 pt-3">
     <!-- <h1 class="mainbanner">{{name}}</h1> -->
-    <ul class="nav nav-tabs nav-justified fcdetail">
+    <ul class="nav nav-tabs nav-justified fcdetail pb-2">
         <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="List of Terms">List
                 of Terms</a> </li>
         <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active"
@@ -141,22 +141,25 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 card-1">
-                        <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{flashcardDetail?.flashcard_image}}"
-                                alt="FlashCard Image">
-                            <div class="card-body">
-                                <h3 class="text-center card-title current-card-price">{{flashcardDetail?.discount |
+                        <div class="card each-card">
+                            <div class="palyimg-div">
+                                <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{flashcardDetail?.flashcard_image}}"
+                                    alt="FlashCard Image">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title current-card-price">{{flashcardDetail?.discount |
                                     currency:'USD'}}</h3>
-                                <h5 class="text-center card-title old-card-price">{{flashcardDetail?.price |
+                                <h5 class="card-title old-card-price">{{flashcardDetail?.price |
                                     currency:'USD'}}</h5> <a class="card-btn" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">Flash
                                     Card Already Bought</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false && flashcardDetail?.isTeacher==false"
                                     (click)="checkfcdetail()">Buy Now</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false&& flashcardDetail?.isTeacher==false"
                                     (click)="cart(nullvalue, nullvalue, flashId, nullvalue)">Add to Cart</a>
-                                    <div class="text-center"><p class="already-bought" *ngIf="flashcardDetail?.isTeacher==true">
+                                    <div class=""><p class="already-bought" *ngIf="flashcardDetail?.isTeacher==true">
                                         Flash Card Added by Me </p></div>
-                                <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
+                                <h4 class="card-para">30-Day Money-Back Guarantee</h4>
                             </div>
                             <hr>
-                            <div class="card-footer">
+                            <div class="card-footer text-center">
                                 <h1 class="text-center">Share This Flash Card</h1>
                                 <ul class="card-footer-social-icon">
                                     <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
