@@ -36,11 +36,11 @@
                                     <table class="table" *ngIf="videos">
                                         <tbody>
                                             <tr *ngFor="let video of videos; let j=index"> <a>
-                                                    <td *ngIf="data?.chapters.id===video.chapter_id"><i class="fa fa-play-circle"
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td1"><i class="fa fa-play-circle"
                                                             (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
-                                                    <td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_minutes}}Min</a></td>
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_minutes}}Min</td>
                                                     <td *ngIf="video.allow_to_view==true"> Preview</td>
-                                                    <td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_size}}Size
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_size}}Size
                                                     </td>
                                                 </a> </tr>
                                         </tbody>

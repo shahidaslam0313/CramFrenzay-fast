@@ -417,6 +417,15 @@
 .panel-body table .fa-play-circle{
     margin-right: 5px;
 }
+.panel-body table .td1{
+    width: 50%;
+    display: inline-block;
+}
+.panel-body table .td23{
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+}
 @media only screen and (max-width:1199px){
     .card.each-card .palyimg-div i {
         top: 30%;
