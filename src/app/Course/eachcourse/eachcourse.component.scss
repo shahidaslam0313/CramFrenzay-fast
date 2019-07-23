@@ -365,6 +365,58 @@
     cursor: pointer;
     object-fit: none;
 }
+.course-content{
+    font-size: 26px;
+    font-weight: 600;
+}
+.course-time{
+    float: right;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 36px;
+}
+.panel-title{
+    margin: 0;
+}
+.panel-title a{
+    display: block;
+    position: relative;
+    background: #f9f9f9;
+    border: solid 1px #e8e9eb;
+    padding: 10px 50px;
+    color: #505763;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.panel-title > a:before {
+    content:"\2212";
+    position: absolute;
+    left: 30px;
+    top: 10px;
+}
+.panel-title > a.collapsed:before {
+    content:"\002B";
+    position: absolute;
+    left: 30px;
+    top: 10px;
+}
+.panel-body table{
+    margin-bottom: 5px;
+}
+.panel-body table td{
+    border: none;
+}
+.panel-body table tr{
+    color: #505763;
+    font-size: 16px;
+}
+.panel-body table tr a{
+    padding-left: 50px;
+    display: block;
+}
+.panel-body table .fa-play-circle{
+    margin-right: 5px;
+}
 @media only screen and (max-width:1199px){
     .card.each-card .palyimg-div i {
         top: 30%;
