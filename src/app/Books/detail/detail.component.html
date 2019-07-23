@@ -4,7 +4,6 @@
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}<span>({{result?.book_edition}}Edition)</span></h1>
                 <h4>Author Name: {{result?.author_name | titlecase}}</h4>
-                <p class="detail">{{result?.book_detail | titlecase}}</p>
             </div>
         </div>
     </div>
@@ -12,6 +11,8 @@
 <div class="container padding-top-40">
     <div class="row">
         <div class="col-lg-8 col-md-8">
+            <div class="d-heading">Detail</div>
+                <p class="detail">{{result?.book_detail | titlecase}}</p>
             <!-- <div class="details-section"> <h1 class="mt-5">Details</h1> <p class="mb-5">{{result?.detail | titlecase}}</p></div>-->
             <!-- <div class="What-will-i-learn">
                 <div class="What-will-i-learn__content">
