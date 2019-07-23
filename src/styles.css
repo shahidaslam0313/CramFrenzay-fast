@@ -313,7 +313,19 @@ mat-form-field.mat-form-field {
     right: 0;
     border: 1px solid #000
 }
-
+.fc-slider .left-arrow-slider{
+    position: absolute;
+    left: 0;
+    top: 40%;
+}
+.fc-slider .right-arrow-slider{
+    position: absolute;
+    top: 40%;
+    right: 0;
+}
+.fc-slider .slick-list{
+    z-index: -1;
+}
 .homeSlider .item .item-inner a,
 .logo img {
     display: block
@@ -1167,12 +1179,6 @@ mat-form-field textarea {
 
 .card-1 {
     margin-top: -190px
-}
-
-.each-card .card-img-top {
-    height: 200px;
-    -o-object-fit: cover;
-    object-fit: cover
 }
 
 .each-card .card-body {

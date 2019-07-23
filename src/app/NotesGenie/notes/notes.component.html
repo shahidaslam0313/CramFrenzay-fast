@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name}}</h1>
-                <h4>Author Name:{{result?.userid}}</h4>
+                <h4>Author Name: {{result?.userid}}</h4>
                 <p class="detail">{{result?.detail}}</p>
             </div>
         </div>
@@ -12,7 +12,7 @@
 <div class="container padding-top-40">
     <div class="row">
         <div class="col-lg-8 col-md-8">
-            <div class="What-will-i-learn">
+            <!-- <div class="What-will-i-learn">
                 <div class="What-will-i-learn__content">
                     <div class="What-will-i-learn__title"> What Will I Learn? </div>
                     <ul class="What-will-i-learn__items">
@@ -36,8 +36,8 @@
                                 users</span> </li>
                     </ul>
                 </div>
-            </div>
-            <div class="reviews-ans" *ngIf="result?.bidpaid==true || result?.paid==true">
+            </div> -->
+            <!-- <div class="reviews-ans" *ngIf="result?.bidpaid==true || result?.paid==true">
                 <div class="row background-grey">
                     <div class="col-lg-12">
                         <h4>Rate this Note </h4>
@@ -78,16 +78,19 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="col-lg-4 col-md-4 card-1">
-            <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.notes_thumbnail}}"
-                    alt="Notes Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
-                <div class="card-body">
-                    <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
+            <div class="card each-card">
+                <div class="palyimg-div">
+                    <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.notes_thumbnail}}"
+                        alt="Notes Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
+                </div>
+                <div class="card-body text-center">
+                    <h3 class="card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
+                    <h5 class="card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Note Already Bought</a>
-                         <div class="text-center"><p class="already-bought" *ngIf="result?.isTeacher==true">
+                         <div class=""><p class="already-bought" *ngIf="result?.isTeacher==true">
                                         Note Added by me </p>
                                     </div>   <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
@@ -97,7 +100,7 @@
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
                             <a class="fa fa-file-pdf" href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">
                                 &nbsp;View pdf</a> </button>
-                        <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
+                        <h4 class="card-para">30-Day Money-Back Guarantee</h4>
                     </div>
                     <hr>
                     <div class="card-footer">
@@ -205,7 +208,7 @@
         </div>
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
+                <h4 *ngIf="view?.reviews !=null">Reviews</h4>
                 <div *ngFor="let reviews of view?.reviews">
                     <div class="card" *ngIf="reviews !=null">
                         <div class="card-body">
@@ -230,8 +233,8 @@
                 </div>
                 
             </div>
-            <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
-            </div>
+            <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
+            </div> -->
         </div>
     </div>
     
