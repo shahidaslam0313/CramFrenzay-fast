@@ -127,7 +127,8 @@
                             </div>
                         <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
                                 alt="" allowmultiple="false" /> </div><!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)" accept="image/gif, image/jpeg, image/png" required> <img *ngIf="imagePreview" src="{{imagePreview}}"> -->
-                        <span class="btn-file margin-top-10">Upload Note Image <input (change)="handleFileInput($event.target.files); onChange($event)" type="file"
+                        <span class="btn-file margin-top-10">Upload Note Image
+                             <input (change)="handleFileInput($event.target.files); onChange($event)" type="file"
                                 #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
                                  <span  class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
