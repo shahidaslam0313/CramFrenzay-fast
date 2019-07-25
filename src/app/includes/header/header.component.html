@@ -56,9 +56,9 @@
                             <button class="btn sellnowbtn" (click)="selllogin()"> <i class="far fa-money-bill-alt"> </i>Sell or Auction Now </button>
                         </li>
                         <li class="active">
-                            <a routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie </a>
+                            <a routerLink="/notesgenie"> <i class="fa fa-file-alt"></i>NotesGenie</a>
                             <div class="sub-menu">
-                                <ul>
+                                <ul class="note-genie-w">
                                     <li>
                                         <a routerLink="/notesgenie"> <img class="notes" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Notes</a>
                                     </li>
@@ -72,57 +72,57 @@
                             </div>
                         </li>
                         <li class="main-nav__list_flash_cards">
-                            <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards </a>
+                            <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards</a>
                             <div class="sub-menu">
-                                <ul>
+                                <ul class="flash-card-w">
                                     <li>
-                                        <a routerLink="/flashcardlist"> <img class="flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Flash Cards</a>
+                                        <a routerLink="/flashcardlist"> <img class="flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Flash Cards</a>
                                     </li>
                                     <li>
-                                        <a routerLink="/flashcard"> <img class="flash-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Flash Card Categories</a>
+                                        <a routerLink="/flashcard"> <img class="flash-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Flash Card Categories</a>
                                     </li>
                                     <li>
-                                        <a (click)="checkflashcard()"> <img class="add-flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Sell Flash Cards</a>
+                                        <a (click)="checkflashcard()"> <img class="add-flash-card" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Flash Cards</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a routerLink="/course"> <i class="fa fa-th-large"></i>Courses </a>
+                            <a routerLink="/course"> <i class="fa fa-th-large"></i>Courses</a>
                             <div class="sub-menu">
-                                <ul>
+                                <ul class="course-w">
                                     <li>
-                                        <a routerLink="/course"> <img class="course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Courses</a>
+                                        <a routerLink="/course"> <img class="course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Courses</a>
                                     </li>
                                     <li>
-                                        <a routerLink="/categories"> <img class="course-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Course Categories </a>
+                                        <a routerLink="/categories"> <img class="course-categories" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Course Categories </a>
                                     </li>
                                     <li (click)="checkcourse()">
-                                        <a> <img class="add-course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Sell Courses</a>
+                                        <a> <img class="add-course" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Sell Courses</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a routerLink="/tutor"> <i class="fa fa-users"></i>Tutors </a>
+                            <a routerLink="/tutor"> <i class="fa fa-users"></i>Tutors</a>
                             <div class="sub-menu">
-                                <ul>
+                                <ul class="tutor-w">
                                     <li>
-                                        <a routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Tutors</a>
+                                        <a routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Tutors</a>
                                     </li>
                                     <li *ngIf="!tutor()">
-                                        <a (click)="becometutor()"> <img class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Become a Tutor </a>
+                                        <a (click)="becometutor()"> <img class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Become a Tutor </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/findtutor"> <img class="find-tutors" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Find a Tutor</a>
+                                        <a routerLink="/findtutor"> <img class="find-tutors" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Find a Tutor</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="">
-                            <a routerLink="/allbooks"> <i class="fa fa-book"></i>Books </a>
+                            <a routerLink="/allbooks"> <i class="fa fa-book"></i>Books</a>
                             <div class="sub-menu">
-                                <ul>
+                                <ul class="book-w">
                                     <li>
                                         <a routerLink="/allbooks"> <img class="book" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Books</a>
                                     </li>
@@ -140,7 +140,7 @@
                             <div class="sub-menu">
                                 <ul class="cutsom-pd-bars">
                                     <li class="main-nav__list_flash_cards_1">
-                                        <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards </a>
+                                        <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards</a>
                                         <div class="sub-sub-menu">
                                             <ul>
                                                 <li> <a routerLink="/flashcardlist">Flash Cards</a></li>
@@ -150,9 +150,9 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events </a>
+                                        <a routerLink="/events"> <i class="fa fa-calendar-alt"></i>Events</a>
                                         <div class="sub-sub-menu">
-                                            <ul>
+                                            <ul class="bar-event-w">
                                                 <li>
                                                     <a routerLink="/events"> <img src="../../../assets/img/Events/Events.png" alt="img">Events</a>
                                                 </li>
@@ -166,17 +166,17 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships </a>
+                                        <a routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships</a>
                                         <div class="sub-sub-menu">
-                                            <ul>
+                                            <ul class="bar-schoolarship-w">
                                                 <li>
-                                                    <a routerLink="/scholarship"> <img class="scholorships" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Scholarships</a>
+                                                    <a routerLink="/scholarship"> <img class="scholorships" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Scholarships</a>
                                                 </li>
                                                 <li>
                                                     <a routerLink="/scholarshiplist"> <img class="scholorship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Scholarship By Institutes</a>
                                                 </li>
                                                 <li>
-                                                    <a routerLink="/upcomingscholarship"> <img class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg=="> Upcoming Scholarships</a>
+                                                    <a routerLink="/upcomingscholarship"> <img class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Upcoming Scholarships</a>
                                                 </li>
                                             </ul>
                                         </div>
