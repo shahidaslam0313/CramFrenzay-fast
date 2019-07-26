@@ -17,7 +17,7 @@
                     <!-- *ngIf="view==0" -->
                 <h1>No Videos Found</h1>
                 </div>
-                <div class="col-lg-8" *ngIf="getchapter">
+                <div class="col-lg-8 p-0" *ngIf="getchapter">
                     <div class="course-content">Course content
                         <div class="course-time">
                             <span *ngIf="!time">00:00:00</span> <span>{{time}}</span>&nbsp;&nbsp;&nbsp;
@@ -28,8 +28,8 @@
                         <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" href="#collapse1"
-                                        attr.data-target="#a{{i}}"> <span>{{data?.chapters.chapter_name}}</span>
-                                       <div class="float_right"> <span class="mr-4" *ngIf="data?.chapters.Lectures">{{data?.chapters.Lectures}} Lectures</span> <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
+                                        attr.data-target="#a{{i}}"> <div class="chap-name">{{data?.chapters.chapter_name}}</div>
+                                       <div class="chap-time"> <span class="" *ngIf="data?.chapters.Lectures">{{data?.chapters.Lectures}} Lectures</span> <span class="float-right" *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
                                         </div>
                                         
                                         
@@ -52,7 +52,7 @@
                                                     </td>
                                                     
                                                 </a> </tr>
-                                                <div *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</div>
+                                                <div class="no-video" *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</div>
                                         </tbody>
                                     </table>
                                 </div>

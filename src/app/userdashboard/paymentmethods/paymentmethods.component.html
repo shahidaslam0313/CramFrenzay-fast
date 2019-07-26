@@ -45,7 +45,7 @@
                 </div>
                 <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm>
                     <div class="row">
-                        <div class="col-sm-12 col-md-12 col-xs-12 ">
+                        <div class="col-sm-12 col-md-12 col-xs-12 mb-3">
                             <mat-form-field class="card-type">
                                 <mat-select placeholder="Card Type" [formControl]="card_type"
                                     (change)="ShowButton(card_type.value)" required>
