@@ -55,12 +55,15 @@
                         <input class="signup-input-font" matInput type="text" id="email" formControlName="email" placeholder="Enter Email">
                         <mat-error *ngIf="email.touched && email.invalid">
                             <mat-error *ngIf="email.errors.required"> Email cannot be empty </mat-error>
-                            <mat-error *ngIf="email.errors.pattern"> You can enter only email </mat-error>
+                            <!-- <mat-error *ngIf="email.errors.pattern"> You can enter only email </mat-error> -->
+                            <mat-error *ngIf="email.errors.pattern"> Enter valid email </mat-error>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn-style" (click)="onSubmit(f)" data-dismiss="modal">Send</button>
+                    <button class="btn-style" (click)="onSubmit(f)" data-dismiss="modal">
+                            
+                        Send</button>
                     <button class="btn-style" data-dismiss="modal">Cancel</button>
                 </div>
             </form>

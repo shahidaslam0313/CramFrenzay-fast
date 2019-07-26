@@ -37,11 +37,10 @@ export class NotesService {
   getreview(id)
   {
     if (localStorage.getItem('currentUser')) {
-
-      const headers = new Headers({'Authorization': 'JWT ' + this.token});
+    const headers = new Headers({'Authorization': 'JWT ' + this.token});
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'bid/notesReviews/' + id ,{headers: headers}).map((response: Response) => response.json());
-  }
+    }
   else {
       return this.http.get(Config.api + 'bid/notesReviews/' + id ).map((response: Response) => response.json());
     }

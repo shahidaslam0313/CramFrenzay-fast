@@ -120,6 +120,7 @@ import { AddtocartComponent } from './addtocart/addtocart.component';
 import { InstitutedetailService } from './institutedashboard/institutedetail/institutedetail.service';
 import { AddscholarshipService } from './institutedashboard/addscholarship/addscholarship.service';
 import { AddeventsService } from './institutedashboard/addevents/addevents.service';
+// { path: 'addevents', loadChildren: './institutedashboard/addevents/addeventsupload.module#AddeventsModule', canActivate: [Auth2Service] },
 import { InstitutelibraryService } from './institutedashboard/institutelibrary/institutelibrary.service';
 import { AuthguardService } from './authguard.service';
 import { Auth2Service } from './auth2.service';

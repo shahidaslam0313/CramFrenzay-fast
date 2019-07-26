@@ -35,6 +35,8 @@ export class EachcourseComponent implements OnInit {
   videos;
   totalvideos;
   all_video;
+  lectures;
+  // "Lectures": 0,
   totalvid;
   model: any = {};
   reviewform = new FormGroup({
@@ -150,10 +152,14 @@ export class EachcourseComponent implements OnInit {
     this.eachcourse.getchaptername(this.courseId).subscribe(data => {
       this.getchapter = data.data;
       this.videos = data.vedios;
+      // this.videos = data.videos;
       this.chpt = data.chapters;
       this.time = data['Total Hours'];
       this.totalvideos = data.totalvideos;
       this.totalvid = data['Total Lectures'];
+      // Abdullah
+      // this.lectures = data['Lectures'];
+      // this.lectures = data.Lectures;
     });
   }
   SetVideoURL(video_url, SetVideoURL){
@@ -179,6 +185,7 @@ export class EachcourseComponent implements OnInit {
       ,error=>{
         if(error.status==400){
           this.view=0;
+       
         }
       });
   }
@@ -226,15 +233,27 @@ book = null;
             width: '512px',
             timer: 4500
           });
-        } else if (error.status == 400) {
+        // } else if (error.status == 400) {
+        //   swal({
+        //     type: 'error',
+        //     title: 'You have to buy before posting a review',
+        //     showConfirmButton: false,
+        //     width: '512px',
+        //     timer: 4500
+        //   });
+        }
+        //abdullah
+        else if (error.status == 400) {
           swal({
             type: 'error',
-            title: 'You have to buy before posting a review',
-            showConfirmButton: false,
+            title: 'No Reviews Found Yet',
+            showConfirmButton:false,
             width: '512px',
             timer: 4500
+
           });
-        }
+
+         }
       });
     }
     else {

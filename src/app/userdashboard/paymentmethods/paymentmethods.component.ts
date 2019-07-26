@@ -29,8 +29,8 @@ city;state;country;
   ];
   form = new FormGroup({
     cardnumber: new FormControl('', [
-      //Validators.minLength(15),
-      // Validators.maxLength(16),
+      Validators.minLength(16),
+      Validators.maxLength(16),
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
@@ -66,10 +66,11 @@ city;state;country;
       Validators.minLength(2),
       Validators.maxLength(64),
       Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
     ]),
     cardHolderName: new FormControl('', [
       Validators.minLength(2),
-      Validators.maxLength(64),
+      Validators.maxLength(14),
       Validators.required,
       Validators.pattern("[a-zA-Z ]+")
     ]),
@@ -242,7 +243,8 @@ city;state;country;
     this.serv.updateCard(this.card.nickname, this.card.street_adrress, this.card.state, this.card.city, this.card.zip_code, this.card.country, this.card.default, id).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Credit card details are updated',
+        title: 'Payment Method has been updated successfully',
+        // title: 'Credit card details are updated',
         showConfirmButton: false,
         timer: 1500
       });
@@ -355,7 +357,7 @@ city;state;country;
              if (error.status == 404) {
               swal({
                 type: 'error',
-                title: 'Card Number already exist',
+                title: 'Card already exist',
                 showConfirmButton: false,
                 timer: 1500
               })

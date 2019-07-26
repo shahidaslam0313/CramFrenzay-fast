@@ -20,10 +20,17 @@ export class EachcourseService {
   }
   getreview(id)
   {
+    if (localStorage.getItem('currentUser')){
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'bid/courseReviews/' +  id ,{headers: headers}).map((response: Response) => response.json());
   }
+else{
+return this.http.get(Config.api + 'bid/courseReviews/' + id + '', ).map((response: Response) => response.json());
+// var v=['No reviews found yet'];
+}
+}
+
   Eachcourse(id) {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
@@ -54,6 +61,7 @@ export class EachcourseService {
     //   let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     //   headers.append('Content-Type', 'application/json', );
       return this.http.get(Config.api + 'course/ChaptersWithVideosList/' + id ).map((res: Response) => res.json());
+      // return this.http.get(Config.api + '')
     }
   }
 
