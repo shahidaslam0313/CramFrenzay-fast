@@ -12,6 +12,15 @@
                             </mat-error>
                             <mat-error *ngIf="nameFormControl.hasError('required')"> Name is <strong>required</strong>
                             </mat-error>
+                            <!-- Abdullah -->
+                            <mat-error *ngIf="nameFormControl.hasError('minlength')"> Name must be between 2 to 64 characters
+                            </mat-error>
+
+                            <mat-error *ngIf="nameFormControl.hasError('maxlength')"> Name must be between 2 to 64 characters
+                            </mat-error>
+
+                            <!-- Abdullah -->
+
                         </mat-form-field>
                         <mat-form-field> <input matInput placeholder="Email" autocomplete="off"
                                 [formControl]="EmailFormControl" [(ngModel)]="model.Email" required>
@@ -26,6 +35,16 @@
                                 name </mat-error>
                             <mat-error *ngIf="CompanyFormControl.hasError('required')"> Company Name
                                 <strong>required</strong> </mat-error>
+
+                            <!-- Abdullah -->
+                            <mat-error *ngIf="CompanyFormControl.hasError('minlength')"> Company name should be between 3 to 100 characters
+                            </mat-error>
+
+                            <mat-error *ngIf="CompanyFormControl.hasError('maxlength')"> Company name should be between 3 to 100 characters
+                            </mat-error>
+
+                            <!-- Abdullah -->
+
                         </mat-form-field> <button class=" btn-style btn partner-btn float-right" type="submit"
                             (click)="onSubmit(f)">Send Message</button>
                     </div>

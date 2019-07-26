@@ -52,6 +52,7 @@ export class detailservice {
       return this.http.get(Config.api + 'bid/bookReviews/' + id, {headers: headers}).map((response: Response) => response.json());
     }
     else {
+    
       return this.http.get(Config.api + 'bid/bookReviews/' + id, ).map((response: Response) => response.json());
     }
   }

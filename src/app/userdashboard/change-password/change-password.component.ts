@@ -153,7 +153,8 @@ export class ChangePasswordComponent implements OnInit {
     else {
       swal({
         type: 'error',
-        title: 'Please fill all fields',
+        title: 'Please fill in all the fields',
+        // title: 'Please fill all fields',
         showConfirmButton: false,
         timer: 1500
       });

@@ -48,6 +48,18 @@
                     <textarea matInput placeholder=" Message" name="message" [(ngModel)]="model.message"
                         name="message" formControlName="message">
                         </textarea>
+
+                        <!-- <mat-error *ngIf="contactform.controls.message.errors.required"> </mat-error> -->
+                            <!-- Abdullah -->
+                        <mat-error *ngIf="contactform.controls.message.hasError('maxlength')"> Message should be between 30 to 300 characters
+                        </mat-error>
+
+                        <mat-error *ngIf="contactform.controls.message.hasError('minlength')"> Message should be between 30 to 300 characters
+                        </mat-error>
+                            <!-- Abdullah -->
+
+
+
                 </mat-form-field>
                 <button type="submit" class="btn-style btn  align-right" (click)="signupuserdata(f)">
                         <i class="fa fa-arrow-up"></i>Send
