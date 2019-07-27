@@ -77,13 +77,9 @@
                                     <!-- <mat-error *ngIf="form.controls.cardHolderName.hasError('minLength')"> 
                                         Card Holder Name must be at least 2 characters long.
                                     </mat-error> -->
-
-
                                     <!-- <mat-error *ngIf="form.controls.cardHolderName.hasError('maxLength')">
                                             Card Holder Name must be at least 64 characters long.
                                     </mat-error>  -->
-
-
                                     <!-- <mat-error *ngIf="form.controls.cardHolderName.errors.minlength"> Card Holder Name
                                         must be
                                         at least&nbsp;{{form.controls.cardHolderName.errors.minlength.requiredLength}}&nbsp;characters
@@ -137,18 +133,22 @@
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber">
-                            <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" 
+                            <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" minlength="6"
                                     formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
                                 <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be
                                         empty
                                     </mat-error>
                                     <mat-error *ngIf="form.controls.cardnumber.errors.minlength"> Card Number must be at
-                                            atmost{{form.controls.cardnumber.errors.minlength.requiredLength}}digits long.
+                                            atmost&nbsp;{{form.controls.cardnumber.errors.minlength.requiredLength}}&nbsp;digits long.
                                     </mat-error>
                                     <mat-error *ngIf="form.controls.cardnumber.errors.maxlength"> Card Number must be at
-                                        atmost{{form.controls.cardnumber.errors.maxlength.requiredLength}}digits long.
+                                            atmost&nbsp;{{form.controls.cardnumber.errors.maxlength.requiredLength}}&nbsp; digits long.
                                     </mat-error>
+                                    <!-- <mat-error *ngIf="form.controls.cardnumber.errors.maxlength"> Card Number must be at
+                                        atmost&nbsp;{{form.controls.cardnumber.errors.maxlength.requiredLength}}&nbsp;digits long.
+                                    </mat-error>  -->
+                                    
                                     <mat-error *ngIf="form.controls.cardnumber.hasError('pattern')"> Card number must be
                                         only
                                         in digits. </mat-error>
@@ -170,6 +170,7 @@
                                         at
                                         atmost{{form.controls.cardnumber4.errors.maxlength.requiredLength}}digits long.
                                     </mat-error>
+                                    
                                     <mat-error *ngIf="form.controls.cardnumber4.hasError('pattern')"> Card number must
                                         be only
                                         in digits. </mat-error>
@@ -236,9 +237,11 @@
                                 <mat-error *ngIf="form.controls.zipCode.hasError('pattern')"> Zip Code must be only in
                                     digits.
                                 </mat-error>
-                                <!-- <mat-error *ngIf="form.controls.zipCode.hasError('required')"> Zip Code cannot be empty
-                                </mat-error> -->
+                                
                             </mat-form-field>
+                            <div *ngIf="show_status"> invalid Zipcode
+                                </div>
+                            
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <mat-form-field>

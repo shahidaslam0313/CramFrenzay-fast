@@ -29,14 +29,14 @@ city;state;country;
   ];
   form = new FormGroup({
     cardnumber: new FormControl('', [
-      Validators.minLength(16),
-      Validators.maxLength(16),
+      // Validators.minLength(15),
+      // Validators.maxLength(16),
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
-    cardnumber4: new FormControl('', [
-      // Validators.minLength(15),
-      // Validators.maxLength(15),
+        cardnumber4: new FormControl('', [
+      Validators.minLength(14),
+      Validators.maxLength(15),
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
@@ -64,7 +64,7 @@ city;state;country;
     ]),
     cardnickname: new FormControl('', [
       Validators.minLength(2),
-      Validators.maxLength(64),
+      Validators.maxLength(14),
       Validators.required,
       Validators.pattern("[a-zA-Z ]+")
     ]),
@@ -261,6 +261,7 @@ city;state;country;
         }
       })
   }
+  show_status:boolean = false
   zipcodeCheck(zipcode1) {
     if (zipcode1.length > 4) {
     this.serv.zipcode(zipcode1).subscribe(
@@ -270,13 +271,16 @@ city;state;country;
           this.form.controls['country'].setValue(res['country']);
         },
         error => {
-          swal({
-            type: 'error',
-            title: 'Invalid Zipcode',
-            showConfirmButton: false,
-            timer: 2000,width: '512px',
-          })
-        });
+          // alert(this.show_status)
+          this.show_status= true
+          // swal({
+          //   type: 'error',
+          //   title: 'Invalid Zipcode',
+          //   showConfirmButton: false,
+          //   timer: 2000,width: '512px',
+          // })
+        }
+        );
     }
   }
   zipcodeCheckedit(zipcode1) {
@@ -294,7 +298,8 @@ city;state;country;
             showConfirmButton: false,
             timer: 2000,width: '512px',
           })
-        });
+        }
+        );
     }
   }
   deleteSingleCard(id) {
