@@ -131,15 +131,10 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-
-<<<<<<< HEAD
-                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber">
-                            <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" minlength="6"
-=======
+                        
                         <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cardnumber">
                             <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" 
->>>>>>> b5af163700355844e9b2738e03c91e9d6a68ff34
-                                    formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
+                                 formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
                                 <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be
                                         empty
@@ -159,6 +154,7 @@
                                         in digits. </mat-error>
                                 </mat-error>
                             </mat-form-field>
+                    
                         </div>
                         <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cardnumber4">
                             <mat-form-field> <input matInput type="text" placeholder="15 Digit Card Number"
