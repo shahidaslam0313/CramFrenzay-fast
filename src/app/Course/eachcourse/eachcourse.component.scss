@@ -399,6 +399,9 @@
     width: 30%;
     display: inline-block;
 }
+.float-right{
+    float: right;
+}
 .panel-title > a:before {    
     content: "\2212";
     position: absolute;
