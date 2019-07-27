@@ -45,7 +45,7 @@
                 </div>
                 <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm>
                     <div class="row">
-                        <div class="col-sm-12 col-md-12 col-xs-12 ">
+                        <div class="col-sm-12 col-md-12 col-xs-12 mb-3">
                             <mat-form-field class="card-type">
                                 <mat-select placeholder="Card Type" [formControl]="card_type"
                                     (change)="ShowButton(card_type.value)" required>
@@ -61,7 +61,7 @@
                                 <!-- </mat-error> -->
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Card Holder Name"
                                     formControlName="cardHolderName" maxlength="14" minlength="2" required>
                                 <mat-error
@@ -103,7 +103,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Payment Method Nickname"
                                     formControlName="cardnickname" maxlength="14" minlength="2" required>
                                 <mat-error
@@ -132,8 +132,13 @@
                             </mat-form-field>
                         </div>
 
+<<<<<<< HEAD
                         <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber">
                             <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" minlength="6"
+=======
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cardnumber">
+                            <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" 
+>>>>>>> b5af163700355844e9b2738e03c91e9d6a68ff34
                                     formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
                                 <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be
@@ -155,7 +160,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber4">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cardnumber4">
                             <mat-form-field> <input matInput type="text" placeholder="15 Digit Card Number"
                                     formControlName="cardnumber4" [textMask]="{mask: cardmask}" required>
                                 <mat-error
@@ -177,7 +182,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cvv">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cvv">
                             <mat-form-field> <input matInput type="password" maxlength="3" minlength="3" placeholder="CVV"
                                     formControlName="cvv" required>
                                 <mat-error *ngIf="form.controls.cvv.touched && form.controls.cvv.invalid">
@@ -213,7 +218,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field> <input matInput placeholder="Expiry Date (MM/YY)"
                                     [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
                                     (change)="chek(exp.value)" required>
@@ -230,7 +235,7 @@
                                     </span>
                             </mat-form-field>                          
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input matInput placeholder="Zip Code" formControlName="zipCode" type="text" maxlength="5"
                                  (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1 required />
@@ -243,14 +248,14 @@
                                 </div>
                             
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="Street Address" formControlName="street" type="text" required/>
                                 <!-- <mat-error *ngIf="form.controls.street.hasError('required')" > Street Address is Required
                                     </mat-error> -->
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="City" formControlName="city" type="text"readonly />
                                <!-- Abdullah -->
@@ -259,7 +264,7 @@
                             <!-- Abdullah -->
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="State" formControlName="state" type="text" readonly/>
                             
@@ -270,7 +275,7 @@
 
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="Country" formControlName="country" type="text" readonly />
                             <!-- Abdullah -->
