@@ -1395,7 +1395,10 @@ mat-form-field textarea {
 .user-profile .mat-form-field-infix {
     padding: .315em 0!important
 }
-
+.contact-us-page .mat-form-field-infix{
+    padding: 0 0 4px;
+    border-top: none;
+}
 .modal-form mat-form-field textarea {
     height: 100px!important
 }
@@ -2444,9 +2447,6 @@ mat-error>strong {
         -o-transition: .5s;
         transition: .5s
     }
-    .main-nav__list-bars {
-        display: none!important
-    }
     .main-nav__list_books,
     .main-nav__list_events,
     .main-nav__list_flash_cards,
@@ -2586,9 +2586,6 @@ mat-error>strong {
     .main-nav__list_scholarship {
         display: block!important
     }
-    .main-nav__list-bars {
-        display: none!important
-    }
     .main-nav__list {
         float: left;
         width: 100%;
@@ -2624,12 +2621,6 @@ mat-error>strong {
         margin-bottom: 30px;
         line-height: 38px
     }
-    .main-nav__btn {
-        display: block;
-        position: absolute;
-        top: 8px;
-        right: 14px
-    }
     .main-nav__list .main-nav__list-icons {
         position: static;
         float: left
@@ -2637,11 +2628,10 @@ mat-error>strong {
     .main-nav__list.main-nav__list_right {
         position: static;
         width: auto;
-        float: right;
-        margin-right: 20px
+        float: right!important;
+        overflow: unset;
     }
     .main-nav__list.main-nav__list_right li {
-        float: left;
         width: auto;
         border-bottom: none
     }
@@ -3177,25 +3167,17 @@ countdown .countdown {
     img {
         max-width: 100%
     }
-    .main-nav__btn {
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: 8px;
-        float: right
-    }
     .main-nav__list_books,
     .main-nav__list_events,
     .main-nav__list_flash_cards,
     .main-nav__list_scholarship {
         display: block!important
     }
-    .main-nav__list-bars {
-        display: none!important
-    }
     .main-nav__list {
         float: left;
         width: 100%;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         height: 300px
     }
     .main-nav__list>li {
