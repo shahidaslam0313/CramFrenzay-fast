@@ -6,7 +6,7 @@
         </div>
         <div class="row search-results" *ngIf="notes">
             <p *ngIf="notes.length==0" class="results-notfound"> No results found. Please use keywords.</p>
-            <div class="col-lg-3" *ngFor="let data of notes; let i=index">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-12" *ngFor="let data of notes; let i=index">
                 <div class="product-list__item">
                     <figure class="product-list__img">
                         <a routerLink="/detail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
@@ -135,26 +135,9 @@
                                 </ul>
                             </div>
                         </li>
-
-                        <li class="">
-                                <a routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships</a>
-                                <div class="sub-menu">
-                                    <ul class="bar-schoolarship-w">
-                                        <li>
-                                            <a routerLink="/scholarship"> <img class="scholorships" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Books</a>
-                                        </li>
-                                        <li>
-                                            <a routerLink="/scholarshiplist"> <img class="scholorship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Book Categories</a>
-                                        </li>
-                                        <li>
-                                                <a routerLink="/upcomingscholarship"> <img class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Upcoming Scholarships</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
                         <li class="main-nav__list-bars">
                             <a href=""> <i class="fas fa-bars"></i> </a>
-                            <div class="sub-menu">
+                            <div class="sub-menu barmenu-responsive">
                                 <ul class="cutsom-pd-bars">
                                     <li class="main-nav__list_flash_cards_1">
                                         <a routerLink="/flashcardlist"> <i class="fa fa-book-open"></i>Flash Cards</a>
@@ -178,6 +161,22 @@
                                                 </li>
                                                 <li>
                                                     <a routerLink="/upcomingevents"> <img src="../../../assets/img/Events/Upcoming-event.png" alt="img">Upcoming Events</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/scholarship"> <i class="fa fa-graduation-cap"></i>Scholarships</a>
+                                        <div class="sub-sub-menu">
+                                            <ul class="bar-schoolarship-w">
+                                                <li>
+                                                    <a routerLink="/scholarship"> <img class="scholorships" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Books</a>
+                                                </li>
+                                                <li>
+                                                    <a routerLink="/scholarshiplist"> <img class="scholorship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Book Categories</a>
+                                                </li>
+                                                <li>
+                                                        <a routerLink="/upcomingscholarship"> <img class="upcoming-scolarship" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Upcoming Scholarships</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -361,7 +360,7 @@
                             </li>
                             <li class="addtocart-li" *ngIf="check_login()">
                                 <a title="Notifications"> <i class="fas fa-bell"></i><sup>{{getnotifi?.unread}}</sup> </a>
-                                <div class="addtocart-sub-meun">
+                                <div class="addtocart-sub-meun noti">
                                     <div class="addtocart-full-div">
                                         <div class="addtocart" *ngFor="let cartitems of notifications">
                                             <div class="addtocart notification-box-heading false-notification" *ngIf="cartitems.read==false">

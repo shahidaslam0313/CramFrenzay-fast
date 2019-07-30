@@ -184,6 +184,27 @@ export class HeaderComponent implements OnInit {
     this.showCartItems();
     this.showlist();
 
+    function myFunction1(x) {
+      if (x.matches) {
+        $('.main-nav__btn').removeClass('collapsed');
+        $('.main-nav__div').removeClass('collapse');
+      }
+    }
+    
+    var x = window.matchMedia("(min-width: 768px)")
+    myFunction1(x)
+    x.addListener(myFunction1)
+
+    function myFunction2(x) {
+      if (x.matches) {
+        $('.main-nav__btn').addClass('collapsed');
+        $('.main-nav__div').addClass('collapse');
+      }
+    }
+    
+    var x = window.matchMedia("(max-width: 767px)")
+    myFunction2(x)
+    x.addListener(myFunction2) 
 
     if (isPlatformBrowser(this.platformId)) {
       this.currentUser = localStorage.getItem('currentUser')
