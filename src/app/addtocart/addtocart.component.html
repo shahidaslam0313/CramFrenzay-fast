@@ -233,7 +233,7 @@
             <h2 class=" bg-Bid-Courses" *ngIf="cartdata?.courses?.length !='0'">Courses</h2>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.courses">
-                    <div class="product-list__item">
+                    <div class="product-list__item">   
                             <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
                                 data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
                                     class="fas fa-trash-alt"></i> </a> </div> -->
@@ -279,6 +279,8 @@
                             (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink="/notes/{{cartitems.id}}"> <img
                                     src="{{Imageurl}}{{cartitems.notes_thumbnail}}" alt="Notes Image"> </a>
+
+                        
                             <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
                                     data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
                                         class="fas fa-trash-alt"></i> </a> </div> -->
@@ -365,6 +367,11 @@
                             (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
                                     src="{{Imageurl}}{{cartitems.book_image}}" alt="Books Image"> </a>
+
+
+                    
+
+
                             <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
                                     data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
                                         class="fas fa-trash-alt"></i> </a> </div> -->

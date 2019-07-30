@@ -78,6 +78,7 @@ export class EachcourseComponent implements OnInit {
     this.eachcourseshow();
     this.reviewsss(this.pager);
     this.getchaptername();
+  
     window['FB'] && window['FB'].XFBML.parse();
   }
   get(rating) {
