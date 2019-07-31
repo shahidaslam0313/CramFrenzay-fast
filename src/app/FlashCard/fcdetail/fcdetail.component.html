@@ -16,15 +16,15 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped css-serial">
                         <tr>
+                            
                             <th>Sr# </th>
                             <th>Terms</th>
                             <th>Definition</th>
                         </tr>
                         
                         <tr *ngFor="let data of flashCardTermsDefinitionsData; let i=index">
-                            <td>
-                                <ol type="1"></ol>
-                            </td>
+                            
+                            <td>{{i+1}}</td>
                             <td>{{data.title | titlecase}}</td>
                             <td>{{data.definition | titlecase}}</td>
                             
