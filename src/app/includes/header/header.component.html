@@ -287,6 +287,7 @@
                                     <div class="wishlist-btn-div" *ngIf="check_login()"> <a routerLink="/watchlist" class="btn text-trans">Go to Watch List</a></div>
                                 </div>
                             </li>
+                            
                             <li class="addtocart-li" *ngIf="check_login()">
                                 <a routerLink="/addtocart" title="Cart"> <i class="fa fa-cart-plus"></i> <sup>{{itemscount}}</sup> </a>
                                 <div class="addtocart-sub-meun">
@@ -296,6 +297,7 @@
                                             <div class="addtocart cart-padding" *ngIf="cartitems !=null">
                                                 <div class="addtocart-time" (click)="removeitems(cartitems?.cart_id)"> <i class="fas fa-times"></i></div>
                                                 <div class="addtocart-main-div">
+                                                    
                                                     <a routerLink="/eachcourse/{{cartitems.id}}"> <img src="{{Imageurl}}{{cartitems.course_thumbnail}}" class="addtocart-img" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"></a>
                                                     <div class="addtocart-contact">
                                                         <div class="heart-heading"><a routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a> </div>
