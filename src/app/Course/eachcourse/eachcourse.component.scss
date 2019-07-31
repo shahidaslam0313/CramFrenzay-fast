@@ -394,10 +394,12 @@
     width: 70%;
     display: inline-block;
     padding-right: 30px;
+    vertical-align: middle;
 }
 .panel-title a .chap-time{
     width: 30%;
     display: inline-block;
+    vertical-align: middle;
 }
 .float-right{
     float: right;
@@ -406,13 +408,13 @@
     content: "\2212";
     position: absolute;
     left: 18px;
-    top: 10px;
+    top: 12px;
 }
 .panel-title > a.collapsed:before {
     content:"\002B";
     position: absolute;
     left: 18px;
-    top: 10px;
+    top: 12px;
 }
 .panel-body table{
     margin-bottom: 5px;
