@@ -101,7 +101,8 @@
 
 .main-nav__btn .icon-right {
     -o-transition-duration: .5s;
-    transition-duration: .5s;
+    -webkit-transition-duration: .5s;
+            transition-duration: .5s;
     top: 23px;
     left: 25px
 }
@@ -241,7 +242,6 @@
     opacity: 1;
     visibility: visible;
     z-index: 1;
-    width: max-content;
     top: 65px
 }
 
@@ -250,14 +250,39 @@
     background-color: #fff;
     margin: 0;
     padding: 0;
-    width: auto;
     border: 1px solid #eee;
     position: relative;
     -webkit-box-shadow: 2px 3px 15px 0 rgba(0, 0, 0, .1);
     box-shadow: 2px 3px 15px 0 rgba(0, 0, 0, .1);
     max-height: 450px
 }
-
+.note-genie-w{
+    width: 175px;
+}
+.flash-card-w{
+    width: 210px;
+}
+.course-w{
+    width: 185px;
+}
+.tutor-w{
+    width: 160px;
+}
+.book-w{
+    width: 170px;
+}
+.cutsom-pd-bars{
+    width: 200px;
+}
+.bar-event-w{
+    width: 200px!important;
+}
+.bar-schoolarship-w{
+    width: 240px!important;
+}
+.cutom-pd{
+    width: 215px;
+}
 .main-nav__list>.main-nav__list-icons>li>.sub-menu>ul>li,
 .main-nav__list>li>.sub-menu>ul>li {
     list-style: none;
@@ -299,8 +324,8 @@
     right: 100%;
     opacity: 0;
     visibility: hidden;
-    width: max-content
 }
+
 
 .main-nav__list>li>.sub-menu>ul>li:hover>.sub-sub-menu {
     opacity: 1;
@@ -362,7 +387,7 @@
 }
 
 .main-nav__list>li>.sub-menu.adjustment {
-    left: -35px
+    left: -40px
 }
 
 .main-search.active {
@@ -550,7 +575,8 @@
 
 .sellnowbtn:focus {
     outline: 0;
-    box-shadow: none
+    -webkit-box-shadow: none;
+            box-shadow: none
 }
 
 .sellnowbtn i {
@@ -757,6 +783,8 @@
     color: #000;
     text-decoration: none;
     padding: 4px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -791,6 +819,8 @@
     background: #fff;
     color: #000;
     width: 450px;
+    -webkit-transition: .4s;
+    -o-transition: .4s;
     transition: .4s
 }
 
@@ -915,6 +945,8 @@
     background: #fff;
     color: #000;
     width: 450px;
+    -webkit-transition: .4s;
+    -o-transition: .4s;
     transition: .4s
 }
 
@@ -934,6 +966,8 @@
 }
 
 .addtocart-time {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
@@ -1070,6 +1104,10 @@ a.heart-card-btn {
 .text-trans {
     text-transform: none
 }
+.product-list__item {
+    max-width: unset;
+    min-width: unset;
+}
 @media only screen and (max-width:1199px) {
     .width-20-percent {
         width: 150px;
@@ -1087,5 +1125,107 @@ a.heart-card-btn {
     .fa-android,
     .fa-apple {
         font-size: 20px !important;
+    }
+    .note-genie-w {
+        width: 165px;
+    }
+    .course-w {
+        width: 175px;
+    }
+    .tutor-w {
+        width: 155px;
+    }
+    .book-w {
+        width: 160px;
+    }
+    .cutsom-pd-bars {
+        width: 195px;
+    }
+    .bar-event-w {
+        width: 185px !important;
+    }
+    .bar-schoolarship-w {
+        width: 230px !important;
+    }
+    .cutom-pd {
+        width: 212px;
+    }
+    .main-nav__list > li > .sub-menu.adjustment {
+        left: -60px;
+    }    
+}
+@media only screen and (max-width:991px) {
+    .main-nav__list>.main-nav__list-icons>li:hover>.sub-menu,
+    .main-nav__list>li:focus>.sub-menu,
+    .main-nav__list>li:hover>.sub-menu {
+        top: 40px;
+    }
+    .main-nav__list > li > .sub-menu.adjustment {
+        left: -50px;
+        top: 40px;
+    }
+    .addtocart-li:hover .addtocart-sub-meun {
+        top: 40px;
+        left: -20px;
+    }
+    .heart-li:hover .heart-sub-meun {
+        top: 40px;
+        left: -20px;
+    }
+    .main-nav__list > li > .sub-menu.barmenu-responsive{
+        left: -50px;
+    }
+}
+@media only screen and (max-width:767px) {
+    .main-nav__btn {
+        display: block!important;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+    }
+    .float_logo {
+        float: left!important;
+        margin: 12px 0!important;
+    }
+    .main-nav__list>li>a {
+        padding: 3px 8px!important;
+    }
+    .main-nav__list li .sub-sub-menu a {
+        padding: 4px 2px!important;
+    }
+    .main-nav__list>li>a.search-block{
+        padding: 10px 5px!important;
+    }
+    .main-nav__list > li:hover > .sub-menu {
+        top: 28px;
+    }
+    .main-nav__list > li > .sub-menu.barmenu-responsive {
+        left: 0;
+    }
+    .main-nav__list > li > .sub-menu > ul > li > .sub-sub-menu {
+        left: 100%;
+        right: 0;
+    }
+    .main-nav__list > li > .sub-menu > ul > li > .sub-sub-menu > ul > li {
+        padding: 0;
+    }
+    .heart-li:hover .heart-sub-meun {
+        left: -60px;
+    }
+    .addtocart-li:hover .addtocart-sub-meun {
+        left: -85px;
+    }
+    .addtocart-li:hover .noti {
+        left: -110px;
+    }
+    .main-nav__list > li > .sub-menu.adjustment {
+        left: -70px;
+    }
+    .search-results {
+        text-align: center;
+    }
+    .search-outer {
+        padding: 80px 50px 45px;
     }
 }

@@ -44,6 +44,7 @@ export class BecomepartnerComponent implements OnInit {
   loaded = false;
   lat = 31.514538;
   lng = 74.34482;
+  
 
   nameFormControl = new FormControl('', [
     Validators.required,

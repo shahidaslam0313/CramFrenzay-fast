@@ -336,7 +336,7 @@
     color: #fff;
     background: rgba(43, 43, 43, 0.59);
     width: 30%;
-    height: 50%;
+    // height: 50%;
     border-radius: 50px;
     text-align: center;
     line-height: 100px;
@@ -368,6 +368,8 @@
 .course-content{
     font-size: 26px;
     font-weight: 600;
+    color: #333;
+    text-shadow: 0 2px 3px #ccc;
 }
 .course-time{
     float: right;
@@ -383,22 +385,36 @@
     position: relative;
     background: #f9f9f9;
     border: solid 1px #e8e9eb;
-    padding: 10px 50px;
+    padding: 10px 30px;
     color: #505763;
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 5px;
 }
-.panel-title > a:before {
-    content:"\2212";
+.panel-title a .chap-name{
+    width: 70%;
+    display: inline-block;
+    padding-right: 30px;
+    vertical-align: middle;
+}
+.panel-title a .chap-time{
+    width: 30%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.float-right{
+    float: right;
+}
+.panel-title > a:before {    
+    content: "\2212";
     position: absolute;
-    left: 30px;
-    top: 10px;
+    left: 18px;
+    top: 12px;
 }
 .panel-title > a.collapsed:before {
     content:"\002B";
     position: absolute;
-    left: 30px;
-    top: 10px;
+    left: 18px;
+    top: 12px;
 }
 .panel-body table{
     margin-bottom: 5px;
@@ -413,6 +429,7 @@
 .panel-body table tr a{
     padding-left: 50px;
     display: block;
+    font-size: 14px;
 }
 .panel-body table .fa-play-circle{
     margin-right: 5px;
@@ -426,12 +443,17 @@
     display: inline-block;
     text-align: center;
 }
+.no-video{
+    padding-left: 60px;
+    font-size: 14px;
+}
+
 @media only screen and (max-width:1199px){
     .card.each-card .palyimg-div i {
         top: 30%;
         font-size: 35px;
         width: 28%;
-        height: 40%;
+        // height: 40%;
         line-height: 80px;
     }
 }
@@ -440,7 +462,7 @@
         top: 35%;
         font-size: 24px;
         width: 28%;
-        height: 30%;
+        // height: 30%;
         line-height: 60px;
     }
 }

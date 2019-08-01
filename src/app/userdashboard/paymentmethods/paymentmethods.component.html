@@ -45,7 +45,7 @@
                 </div>
                 <form class="user-add-ingo-form" [formGroup]="form" onsubmit="add(f)" #f=ngForm>
                     <div class="row">
-                        <div class="col-sm-12 col-md-12 col-xs-12 ">
+                        <div class="col-sm-12 col-md-12 col-xs-12 mb-3">
                             <mat-form-field class="card-type">
                                 <mat-select placeholder="Card Type" [formControl]="card_type"
                                     (change)="ShowButton(card_type.value)" required>
@@ -53,67 +53,110 @@
                                         [value]="card_get_datat.value">
                                         {{card_get_datat.viewValue}}</mat-option>
                                 </mat-select>
-                                <mat-error
-                                    *ngIf="form.controls.card_type.touched && form.controls.card_type.invalid">
-                                    <mat-error *ngIf="form.controls.card_type.errors.required"> Card Type cannot be
+                                <!-- <mat-error -->
+                                    <!-- *ngIf="form.controls.card_type.touched && form.controls.card_type.invalid"> -->
+                                    <!-- <mat-error *ngIf="form.controls.card_type.errors.required"> Card Type cannot be
                                         empty
-                                    </mat-error>
-                                </mat-error>
+                                    </mat-error> -->
+                                <!-- </mat-error> -->
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Card Holder Name"
-                                    formControlName="cardHolderName" maxlength="64" required>
+                                    formControlName="cardHolderName" maxlength="14" minlength="2" required>
                                 <mat-error
                                     *ngIf="form.controls.cardHolderName.touched && form.controls.cardHolderName.invalid">
                                     <mat-error *ngIf="form.controls.cardHolderName.errors.required"> Card Holder Name
                                         cannot be
                                         empty </mat-error>
+                                    <!-- <mat-error *ngIf="form.controls.cardHolderName.hasError('pattern')"> Alphabets Only
+                                    </mat-error> -->
                                     <mat-error *ngIf="form.controls.cardHolderName.hasError('pattern')"> Alphabets Only
-                                    </mat-error>
-                                    <mat-error *ngIf="form.controls.cardHolderName.errors.minlength"> Card Holder Name
+                                        </mat-error>
+
+                                    <!-- <mat-error *ngIf="form.controls.cardHolderName.hasError('minLength')"> 
+                                        Card Holder Name must be at least 2 characters long.
+                                    </mat-error> -->
+                                    <!-- <mat-error *ngIf="form.controls.cardHolderName.hasError('maxLength')">
+                                            Card Holder Name must be at least 64 characters long.
+                                    </mat-error>  -->
+                                    <!-- <mat-error *ngIf="form.controls.cardHolderName.errors.minlength"> Card Holder Name
                                         must be
                                         at least&nbsp;{{form.controls.cardHolderName.errors.minlength.requiredLength}}&nbsp;characters
                                         long.
-                                    </mat-error>
+                                    </mat-error> -->
+
+                                    <mat-error *ngIf="form.controls.cardHolderName.errors.minlength"> Card Holder Name
+                                            must be
+                                            between 2 and 14 characters
+                                            
+                                        </mat-error>
+
+                                    <!-- Abdullah -->
+                                    <!-- <mat-error *ngIf="form.controls.cardHolderName.errors.maxlength"> Card Holder Name
+                                            must be
+                                            at least&nbsp;{{form.controls.cardHolderName.errors.maxlength.requiredLength}}&nbsp;characters
+                                            long.
+                                        </mat-error> -->
+                                        <!-- Abdullah -->
+
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
-                            <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Nickname"
-                                    formControlName="cardnickname" maxlength="64" required>
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
+                            <mat-form-field> <input class="text_cap" matInput type="text" placeholder="Payment Method Nickname"
+                                    formControlName="cardnickname" maxlength="14" minlength="2" required>
                                 <mat-error
                                     *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
-                                    <mat-error *ngIf="form.controls.cardnickname.errors.required"> Nick Name cannot be
+                                    <mat-error *ngIf="form.controls.cardnickname.errors.required"> Payment Method Nickname cannot be
                                         empty </mat-error>
-                                    <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Nick Name must be
+
+                                        <mat-error *ngIf="form.controls.cardnickname.hasError('pattern')"> Alphabets Only
+                                            </mat-error>
+                                        
+                                    <!-- <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Payment Method Nickname must be
                                         at least&nbsp;{{form.controls.cardnickname.errors.minlength.requiredLength}}&nbsp;characters
                                         long.
-                                    </mat-error>
+                                    </mat-error> -->
+                                    
+                                    
+                                    <!-- Abdullah -->
+
+                                    <mat-error *ngIf="form.controls.cardnickname.errors.minlength"> Payment Method Nickname must be
+                                            between 2 and 14 characters.
+                                        </mat-error>
+                                        <!-- Abdullah  -->
+
+
                                 </mat-error>
                             </mat-form-field>
                         </div>
-
-                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber">
-                            <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number"
-                                    formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
+                        
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cardnumber">
+                            <mat-form-field class=""> <input matInput type="text" placeholder="16 Digit Card Number" 
+                                 formControlName="cardnumber" [textMask]="{mask: cardmask}" required>
                                 <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
                                     <mat-error *ngIf="form.controls.cardnumber.errors.required"> Card number cannot be
                                         empty
                                     </mat-error>
-                                    <mat-error *ngIf="form.controls.cardnumber.errors.minlength"> Card number must be
-                                        atleast{{form.controls.cardnumber.errors.minlength.requiredLength}}digits long.
+                                    <mat-error *ngIf="form.controls.cardnumber.errors.minlength"> Card Number must be at
+                                            atmost&nbsp;{{form.controls.cardnumber.errors.minlength.requiredLength}}&nbsp;digits long.
                                     </mat-error>
                                     <mat-error *ngIf="form.controls.cardnumber.errors.maxlength"> Card Number must be at
-                                        atmost{{form.controls.cardnumber.errors.maxlength.requiredLength}}digits long.
+                                            atmost&nbsp;{{form.controls.cardnumber.errors.maxlength.requiredLength}}&nbsp; digits long.
                                     </mat-error>
+                                    <!-- <mat-error *ngIf="form.controls.cardnumber.errors.maxlength"> Card Number must be at
+                                        atmost&nbsp;{{form.controls.cardnumber.errors.maxlength.requiredLength}}&nbsp;digits long.
+                                    </mat-error>  -->
+                                    
                                     <mat-error *ngIf="form.controls.cardnumber.hasError('pattern')"> Card number must be
                                         only
                                         in digits. </mat-error>
                                 </mat-error>
                             </mat-form-field>
+                    
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cardnumber4">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cardnumber4">
                             <mat-form-field> <input matInput type="text" placeholder="15 Digit Card Number"
                                     formControlName="cardnumber4" [textMask]="{mask: cardmask}" required>
                                 <mat-error
@@ -128,13 +171,14 @@
                                         at
                                         atmost{{form.controls.cardnumber4.errors.maxlength.requiredLength}}digits long.
                                     </mat-error>
+                                    
                                     <mat-error *ngIf="form.controls.cardnumber4.hasError('pattern')"> Card number must
                                         be only
                                         in digits. </mat-error>
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12" *ngIf="cvv">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3" *ngIf="cvv">
                             <mat-form-field> <input matInput type="password" maxlength="3" minlength="3" placeholder="CVV"
                                     formControlName="cvv" required>
                                 <mat-error *ngIf="form.controls.cvv.touched && form.controls.cvv.invalid">
@@ -145,7 +189,7 @@
                                     </mat-error>
                                     <!-- <mat-error *ngIf="form.controls.cvv.errors.maxlength"> CVV must be at
                                         atmost{{form.controls.cvv.errors.maxlength.requiredLength}}digits long.
-                                    </mat-error> -->
+                                    </mat-error>
                                     <mat-error *ngIf="form.controls.cvv.hasError('pattern')"> CVV must be only in
                                         digits.
                                     </mat-error>
@@ -170,7 +214,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field> <input matInput placeholder="Expiry Date (MM/YY)"
                                     [textMask]="{mask: masks}" type="text" formControlName="expirydate" #exp
                                     (change)="chek(exp.value)" required>
@@ -187,42 +231,60 @@
                                     </span>
                             </mat-form-field>                          
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input matInput placeholder="Zip Code" formControlName="zipCode" type="text" maxlength="5"
                                  (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1 required />
                                 <mat-error *ngIf="form.controls.zipCode.hasError('pattern')"> Zip Code must be only in
                                     digits.
                                 </mat-error>
-                                <mat-error *ngIf="form.controls.zipCode.hasError('required')"> Zip Code cannot be empty
-                                </mat-error>
+                                
                             </mat-form-field>
+                            <div *ngIf="show_status"> invalid Zipcode
+                                </div>
+                            
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="Street Address" formControlName="street" type="text" required/>
-                                <mat-error *ngIf="form.controls.street.hasError('required')" > Street Address is Required
-                                    </mat-error>
+                                <!-- <mat-error *ngIf="form.controls.street.hasError('required')" > Street Address is Required
+                                    </mat-error> -->
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="City" formControlName="city" type="text"readonly />
+                               <!-- Abdullah -->
+                                <!-- <mat-error *ngIf="form.controls.city.hasError('required')" > City is Required
+                                </mat-error> -->
+                            <!-- Abdullah -->
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="State" formControlName="state" type="text" readonly/>
+                            
+                            <!-- Abdullah -->
+                            <!-- <mat-error *ngIf="form.controls.state.hasError('required')" > State is Required
+                            </mat-error> -->
+                        <!-- Abdullah -->
+
                             </mat-form-field>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12 mb-3">
                             <mat-form-field>
                                 <input class="text_cap" matInput placeholder="Country" formControlName="country" type="text" readonly />
+                            <!-- Abdullah -->
+                            <!-- <mat-error *ngIf="form.controls.country.hasError('required')" > Country is Required
+                            </mat-error> -->
+                        <!-- Abdullah -->
+                           
                             </mat-form-field>
                         </div>
                     </div>
                     <mat-slide-toggle [checked]="false" formControlName="check">Set as Default Payment Method
                     </mat-slide-toggle> <button class="btn-style btn  margin-top-10 width100" (click)="add(f)">Add</button>
+                    
                 </form>
             </div>
         </div>
@@ -231,7 +293,7 @@
         <table class="table credit-card-info">
             <tr class="payment-heading">
                 <th>
-                    <h3>Nick name</h3>
+                    <h3>Payment Method Nick name</h3>
                 </th>
                 <th>
                     <h3>Card Number</h3>
@@ -292,7 +354,8 @@
             </div>
             <div class="modal-body">
                 <form class="user-add-ingo-form" *ngIf="card"  [formGroup]="editform" >
-                    <mat-form-field> <input matInput type="text" placeholder="Card Nick Name"
+                        <!-- <input matInput type="text" placeholder="Card Nick Name" -->
+                    <mat-form-field> <input matInput type="text" placeholder="Payment Method Nickname"
                             [(ngModel)]="card.nickname" name="nickname" formControlName="nickname"> </mat-form-field>
                             <mat-form-field> <input matInput type="text" placeholder="Street Address"
                                 [(ngModel)]="card.street_adrress" name="street_address"

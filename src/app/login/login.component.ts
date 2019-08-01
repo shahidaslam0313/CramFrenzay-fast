@@ -348,11 +348,14 @@ export class LoginComponent {
     }
     else {
       swal({
-        title: 'Please enter correct details',
+        // title: 'Please enter correct details',
+        title: 'Enter valid email',
         type: "error",
         showConfirmButton: false,
         timer: 2000,
+      
       });
+      
     }
     f.resetForm;
   }

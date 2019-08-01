@@ -11,24 +11,30 @@
 </div>
 <div class="container padding-top-40">
     <div class="row">
-            <div class="col-lg-8" *ngIf="!getchapter">
-                    <h1>No Videos Found</h1>
+            <!-- <div class="col-lg-8" *ngIf="lecture==0"> -->
+                    <div class="col-lg-8" *ngIf="!getchapter">
+                        
+                    <!-- *ngIf="view==0" -->
+                <h1>No Videos Found</h1>
                 </div>
-                <div class="col-lg-8" *ngIf="getchapter">
+                <div class="col-lg-8 p-0" *ngIf="getchapter">
                     <div class="course-content">Course content
                         <div class="course-time">
                             <span *ngIf="!time">00:00:00</span> <span>{{time}}</span>&nbsp;&nbsp;&nbsp;
-                            <span *ngIf="!totalvid">0 Chapter</span> <span>{{totalvid}} Chapters</span>
+                            <span *ngIf="!totalvid">0 Chapter</span> <span>{{totalvid}} Lectures</span>
                         </div>
                     </div>
                     <div class="panel-group float-left width100">
                         <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" href="#collapse1"
-                                        attr.data-target="#a{{i}}"> <span>{{data?.chapters.chapter_name}}</span>
-                                        <div class="float_right"> <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
+                                        attr.data-target="#a{{i}}"> <div class="chap-name">{{data?.chapters.chapter_name}}</div>
+                                       <div class="chap-time"> <span class="" *ngIf="data?.chapters.Lectures">{{data?.chapters.Lectures}} Lectures</span> <span class="float-right" *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
                                         </div>
+                                        
+                                        
                                     </a> </h4>
+                                    
                             </div>
                             <div attr.id=a{{i}} class="panel-collapse collapse">
                                 <div class="panel-body">
@@ -36,13 +42,17 @@
                                     <table class="table" *ngIf="videos">
                                         <tbody>
                                             <tr *ngFor="let video of videos; let j=index"> <a>
-                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td1"><i class="fa fa-play-circle"
-                                                            (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id"   class="td1"><i class="fa fa-play-circle"
+                                                    (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
+                                                    <!-- <td><div *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet> </div></td> -->
+                                                    <!-- <td *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</td> -->
                                                     <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_minutes}}Min</td>
                                                     <td *ngIf="video.allow_to_view==true"> Preview</td>
                                                     <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_size}}Size
                                                     </td>
+                                                    
                                                 </a> </tr>
+                                                <div class="no-video" *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</div>
                                         </tbody>
                                     </table>
                                 </div>
@@ -159,7 +169,8 @@
                 <div class="row">
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4 *ngIf="view?.reviews !=null">Reviews</h4>
+                <h4 *ngIf="view?.reviews !=null">Reviews </h4>
+                <!-- <h4 *ngIf="view?.reviews ==null">Reviews not found yet</h4> -->
                 <div *ngFor="let reviews of view?.reviews">
                     <div class="card" *ngIf="reviews !=null">
                         <div class="card-body">
@@ -182,12 +193,21 @@
                 </div>
                 
             </div>
-            <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Course.gif">
-            </div> -->
+            <div *ngIf="view==0"> 
+                <!-- <h1>qertr3yewurywh</h1> -->
+                <div class="course-content">Reviews</div>
+                <h4>No one has reviewed this course</h4>
+                <!-- <img src="../../../assets/img/Course.gif"> -->
+            </div>
         </div>
     </div>
     </div>
 </div>
+  <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
+                        </div> -->
+
 
     <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
+
+        <h4 class="card-para ">30-Day-Back Guarantee</h4>
     </div> -->

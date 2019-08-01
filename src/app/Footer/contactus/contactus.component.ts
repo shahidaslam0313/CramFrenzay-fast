@@ -36,11 +36,21 @@ export class ContactusComponent {
       Validators.required
     ]),
     message: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(300),
+      Validators.minLength(30),
     ]),
     phone: new FormControl('', [
       Validators.required,
       Validators.pattern('^[0-9]*$')
     ]),
+
+    // nameFormControl = new FormControl('', [
+    //   Validators.required,
+    //   Validators.maxLength(64),
+    //   Validators.minLength(2),
+    //   Validators.pattern(NAME_REGEX),
+    // ]);
     email: new FormControl('', [
       Validators.required,
       Validators.pattern(this.email),

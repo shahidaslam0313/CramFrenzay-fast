@@ -101,6 +101,8 @@ mat-form-field.mat-form-field {
     margin: 0 auto;
     border-radius: 30px;
     height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex
 }
 
@@ -158,7 +160,8 @@ mat-form-field.mat-form-field {
     -o-transition: .5s all;
     transition: .5s all;
     width: 25%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     text-decoration: none!important;
     height: 50px;
     display: -webkit-box;
@@ -415,12 +418,16 @@ mat-form-field.mat-form-field {
     left: 0;
     border-radius: 50%;
     border: 1px solid #fff;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all
 }
 
 .leftRs1,
 .rightRs {
     -webkit-border-radius: 50%;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all;
     border-radius: 50%
 }
@@ -786,6 +793,8 @@ blockquote .blockquote-author {
     list-style: none;
     display: inline-block;
     width: 100%;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all;
     border-radius: 10px;
     background-color: #fff;
@@ -848,7 +857,8 @@ blockquote .blockquote-author {
     width: 100%;
     text-transform: capitalize;
     white-space: nowrap;
-    text-overflow: ellipsis
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis
 }
 
 .product-list__category {
@@ -961,7 +971,8 @@ blockquote .blockquote-author {
     box-sizing: border-box;
     margin-top: -60px;
     border-radius: 5px;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4)
+    -webkit-box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4)
 }
 
 .search-bg__btn {
@@ -1227,6 +1238,7 @@ mat-form-field textarea {
     text-align: center;
     border: 1px solid #000;
     -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all;
     margin-bottom: 10px;
     font-weight: 600;
@@ -1383,7 +1395,13 @@ mat-form-field textarea {
 .user-profile .mat-form-field-infix {
     padding: .315em 0!important
 }
-
+.contact-us-page .mat-form-field-infix{
+    padding: 0 0 4px;
+    border-top: none;
+}
+.contact-us-page .mat-form-field-subscript-wrapper {
+    margin-top: 2px;
+}
 .modal-form mat-form-field textarea {
     height: 100px!important
 }
@@ -1399,7 +1417,8 @@ mat-form-field textarea {
 
 .img-userprofile {
     width: 150px;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     padding: 10px
 }
 
@@ -1490,12 +1509,13 @@ focus {
 .mat-focused .mat-form-field-label {
     color: #000!important
 }
-
 .display-block {
     display: block
 }
 
 .display-flex {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
     display: flex!important
 }
 
@@ -1786,6 +1806,8 @@ fieldset {
     left: 40%;
     width: 40px;
     height: 40px;
+    -webkit-transition: .2s ease-in-out all;
+    -o-transition: .2s ease-in-out all;
     transition: .2s ease-in-out all;
     display: none
 }
@@ -1801,7 +1823,8 @@ fieldset {
 
 .user-profile-form img {
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     height: 100%
 }
 
@@ -1833,7 +1856,8 @@ fieldset {
 
 .user-add-ingo-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
     font-size: 16px!important;
-    transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
+    -webkit-transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
+            transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
     -ms-transform: translateY(-10px) scale(.75)!important
 }
 
@@ -1948,6 +1972,8 @@ body.modal-open {
 .btn-reserved {
     display: block;
     text-align: left;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     margin-bottom: 10px
 }
@@ -1971,7 +1997,8 @@ body.modal-open {
 }
 
 .course-tab {
-    box-shadow: 1px 1px 7px 2px #ccc;
+    -webkit-box-shadow: 1px 1px 7px 2px #ccc;
+            box-shadow: 1px 1px 7px 2px #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px 15px
@@ -1992,7 +2019,8 @@ body.modal-open {
 .btn,
 button {
     border-radius: 50px!important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
     background: #000;
     color: #fff;
     font-weight: 600;
@@ -2003,12 +2031,14 @@ button {
 .btn:hover,
 button:hover {
     background: #c00!important;
-    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+            box-shadow: none!important;
     color: #fff
 }
 
 .user-dashboard .sidebar {
-    box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+            box-shadow: 0 0 10px #ccc;
     border-radius: 5px;
     margin-right: 10px;
     padding: 5px
@@ -2026,13 +2056,21 @@ button:hover {
 
 .rating_and_price {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between
 }
 
 .heart_cart_buy {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 5px 0
 }
 
@@ -2050,6 +2088,8 @@ button:hover {
     font-size: 13px;
     font-weight: 600;
     color: #028202!important;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex
 }
 
@@ -2092,8 +2132,6 @@ button:hover {
     position: absolute;
     background: rgba(0, 0, 0, .4);
     -webkit-transition: .3s ease all 0s;
-    -moz-transition: .3s ease all 0s;
-    -ms-transition: .3s ease all 0s;
     -o-transition: .3s ease all 0s;
     transition: .3s ease all 0s
 }
@@ -2156,13 +2194,15 @@ mat-error>strong {
 .btn-red {
     background: #c00;
     border: 1px solid #c00;
-    box-shadow: 0 0 20px -5px #c00
+    -webkit-box-shadow: 0 0 20px -5px #c00;
+            box-shadow: 0 0 20px -5px #c00
 }
 
 .btn-red:hover {
     background: #000;
     border-color: #000;
-    box-shadow: 0 0 20px -5px #000
+    -webkit-box-shadow: 0 0 20px -5px #000;
+            box-shadow: 0 0 20px -5px #000
 }
 
 .btn-style {
@@ -2213,14 +2253,23 @@ mat-error>strong {
     background: #000;
     color: #fff!important;
     text-transform: capitalize;
+    -webkit-transition: .5s all;
+    -o-transition: .5s all;
     transition: .5s all;
     width: 25%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     text-decoration: none!important;
     height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     border: none;
     -webkit-appearance: none!important;
     border-radius: 0 50px 50px 0!important
@@ -2401,9 +2450,6 @@ mat-error>strong {
         -o-transition: .5s;
         transition: .5s
     }
-    .main-nav__list-bars {
-        display: none!important
-    }
     .main-nav__list_books,
     .main-nav__list_events,
     .main-nav__list_flash_cards,
@@ -2543,9 +2589,6 @@ mat-error>strong {
     .main-nav__list_scholarship {
         display: block!important
     }
-    .main-nav__list-bars {
-        display: none!important
-    }
     .main-nav__list {
         float: left;
         width: 100%;
@@ -2581,12 +2624,6 @@ mat-error>strong {
         margin-bottom: 30px;
         line-height: 38px
     }
-    .main-nav__btn {
-        display: block;
-        position: absolute;
-        top: 8px;
-        right: 14px
-    }
     .main-nav__list .main-nav__list-icons {
         position: static;
         float: left
@@ -2594,11 +2631,10 @@ mat-error>strong {
     .main-nav__list.main-nav__list_right {
         position: static;
         width: auto;
-        float: right;
-        margin-right: 20px
+        float: right!important;
+        overflow: unset;
     }
     .main-nav__list.main-nav__list_right li {
-        float: left;
         width: auto;
         border-bottom: none
     }
@@ -2736,6 +2772,9 @@ countdown .countdown {
 .countdown .measurements {
     display: inline-block;
     padding: 10px;
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#000), color-stop(#380e18), color-stop(#6a071f), color-stop(#9d001b), to(#c00));
+    background-image: -webkit-linear-gradient(left bottom, #000, #380e18, #6a071f, #9d001b, #c00);
+    background-image: -o-linear-gradient(left bottom, #000, #380e18, #6a071f, #9d001b, #c00);
     background-image: linear-gradient(to right top, #000, #380e18, #6a071f, #9d001b, #c00);
     width: 40%;
     margin: 0 5px 10px
@@ -2798,6 +2837,8 @@ countdown .countdown {
 .search-fixed .list-normal li a {
     color: #fff;
     font-weight: 600;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex
 }
 
@@ -2898,7 +2939,9 @@ countdown .countdown {
 }
 
 .signup-comp .mat-slide-toggle-label {
-    align-items: flex-start
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start
 }
 
 .add-video .card-content {
@@ -2943,7 +2986,8 @@ countdown .countdown {
 .btn-file:hover {
     background: #000!important;
     color: #fff!important;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     border: 1px solid #000
 }
 
@@ -2958,17 +3002,15 @@ countdown .countdown {
 }
 
 .buttons-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between
 }
 
 @media only screen and (max-width:1480px) {
-    .main-nav__list>li>.sub-menu>ul {
-        width: 250px
-    }
-    .main-nav__list>li>.sub-menu>ul>li>.sub-sub-menu>ul {
-        width: 230px
-    }
     .main-nav__list_events {
         display: none!important
     }
@@ -3002,9 +3044,6 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:1199px) {
-    .main-nav__list li ul {
-        width: 210px!important
-    }
     .main-nav__list li ul::after,
     .main-nav__list li ul::before {
         margin-left: -80px
@@ -3033,7 +3072,6 @@ countdown .countdown {
     }
     .main-nav__list li a {
         font-size: 14px!important;
-        padding: 25px 2px!important
     }
     .slick-main-btn-left {
         left: -35px
@@ -3079,6 +3117,8 @@ countdown .countdown {
     .what-is-cramfrenzy-img-2 {
         max-width: 100%;
         height: auto;
+        -webkit-transition: all .8s ease-in-out 0s;
+        -o-transition: all .8s ease-in-out 0s;
         transition: all .8s ease-in-out 0s;
         margin: 0 0 25px
     }
@@ -3130,25 +3170,17 @@ countdown .countdown {
     img {
         max-width: 100%
     }
-    .main-nav__btn {
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: 8px;
-        float: right
-    }
     .main-nav__list_books,
     .main-nav__list_events,
     .main-nav__list_flash_cards,
     .main-nav__list_scholarship {
         display: block!important
     }
-    .main-nav__list-bars {
-        display: none!important
-    }
     .main-nav__list {
         float: left;
         width: 100%;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         height: 300px
     }
     .main-nav__list>li {
@@ -3212,7 +3244,8 @@ countdown .countdown {
         height: auto;
         display: block;
         border-radius: 0;
-        box-shadow: none;
+        -webkit-box-shadow: none;
+                box-shadow: none;
         margin-top: 28px
     }
     .search-bg__text {
