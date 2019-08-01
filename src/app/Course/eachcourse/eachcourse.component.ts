@@ -173,6 +173,36 @@ export class EachcourseComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+
+  SetVideoURL1(video_url) {
+   alert(this.videos.id)
+    if(this.videos.allow_to_view== true){
+      const dialogRef = this.dialog.open(VideoShowDialogComponent, {
+        width: '1366px',
+        data: {
+          video_url: video_url,
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    //   
+    }else {
+     
+         swal({
+          type: 'error',
+          title: 'Oops <br> Please bought this course first',
+          showConfirmButton: false,
+          width: '512px',
+          timer: 2500
+        })
+            
+         
+        
+        }
+    
+
+  }
+
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {
     //   return;
