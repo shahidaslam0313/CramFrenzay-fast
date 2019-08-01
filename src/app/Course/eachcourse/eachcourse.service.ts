@@ -63,15 +63,20 @@ return this.http.get(Config.api + 'bid/courseReviews/' + id + '', ).map((respons
       { headers: headers }).map((response: Response) => response.json());
   }
   getchaptername(id){
-    // if(this.token){
-    //   let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
-    //   headers.append('Content-Type', 'application/json', );
-      return this.http.get(Config.api + 'course/ChaptersWithVideosList/' + id ).map((res: Response) => res.json());
+    if (localStorage.getItem('currentUser')) {
+      let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+      headers.append('Content-Type', 'application/json', );
+      return this.http.get(Config.api + 'course/ChaptersWithVideosList/' + id , { headers : headers}).map((res: Response) => res.json());
       // return this.http.get(Config.api + '')
-    }
+    
     // getcoursedata(id){
     //   return this.http.get(Config.api + 'course/showcoursedata/' + id).map((res: Response) => res.json());
     // }
   }
+  else {
+    return this.http.get(Config.api + 'course/ChaptersWithVideosList/' + id ).map((res: Response) => res.json());
 
+  }
+}
+}
 // {headers : headers}
