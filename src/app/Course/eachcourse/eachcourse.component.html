@@ -3,7 +3,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}</h1>
-                <h4>Author Name: {{result?.author| titlecase}}</h4>
+                <!-- <h4>Author Name: {{result?.author| titlecase}}</h4> -->
+                <h4>Author Name: {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</h4>
+                <h4>Reviews: {{ tutorreview | titlecase}} reviews</h4>
+                <!-- <h4 *ngIf="result?.TutorReviews==0">Reviews: No reviews</h4> -->
+                <h4>Course Rating: {{result?.rating}} rating</h4>
+                <h4>Student: {{student}} student</h4>
                 <p class="detail">{{result?.description}}</p>
             </div>
         </div>
@@ -211,3 +216,34 @@
 
         <h4 class="card-para ">30-Day-Back Guarantee</h4>
     </div> -->
+<div class="each-upper-banner">
+    <div class="container">
+
+
+            <!-- subject;
+            description;
+            school;
+            graduating;
+            major;
+            residence;
+            interest;
+            experience;
+            rating; -->
+        <h4>About the instuctor</h4>
+        <img src="{{profileurl}}{{getresult.profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> 
+    <!-- </a> -->
+
+        <h4>Name: {{getresult.user?.first_name}}  {{getresult.user?.last_name}}</h4>
+        <h5> Description : {{getresult?.description}}</h5>
+        <h5> Tutor rating: {{getresult.rating}} stars</h5>
+        <!-- <h5> School: {{getresult.school_attended}} </h5> -->
+        <!-- <h5> Graduating year: {{getresult.graduation_year}}</h5> -->
+        <h5> Major: {{getresult.major}}</h5>
+        <!-- <h5> Residence: {{getresult.state_of_residence}}</h5> -->
+        <h5> Interests: {{getresult.Interests}}</h5>
+        <h5> Experience: {{getresult.Experience}}</h5>
+        <h5> Subjects: {{getresult.subject}}</h5>
+        <h5> Courses: {{tcourses}}</h5>
+        <!-- <h5> ID: {{getresult.user?.id}}</h5> -->
+        </div>
+    </div>

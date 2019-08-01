@@ -20,9 +20,12 @@ export class EachcourseComponent implements OnInit {
   @ViewChild(AddtocartComponent)
 
   public Imageurl = Config.Imageurlget;
+  public profileurl=Config.Imageurleach;
   result;
   pager;
+  getlocalstorgae =JSON.parse(localStorage.getItem('currentUser'))
   public courseId: any;
+  public tutorId: any;
   public sub: Subscription;
   private productsSource;
   currentProducts;
@@ -78,8 +81,10 @@ export class EachcourseComponent implements OnInit {
     this.eachcourseshow();
     this.reviewsss(this.pager);
     this.getchaptername();
+     
   
     window['FB'] && window['FB'].XFBML.parse();
+    this.gettutorinfo();
   }
   get(rating) {
     this.rate = rating;
@@ -93,12 +98,21 @@ export class EachcourseComponent implements OnInit {
       this.sweetalertlogin();
     }
   }
+
+
+  // this.tutorinfo.g
   introvideo;
+  tutorreview;
+  student;
+  tcourses;
   eachcourseshow() {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
       this.result = data.Course;
       this.introvideo = data.introvideo;
+      this.student = data.Student;
+      this.tutorreview = data.TutorReviews;
+      this.tcourses = data.TutorCourses;
       console.log(data,'EACH COURSE')
     });
   }
@@ -146,6 +160,43 @@ export class EachcourseComponent implements OnInit {
       this.sweetalertlogin();
     }
   }
+
+
+
+subject;
+description;
+school;
+graduating;
+major;
+residence;
+interest;
+rating;
+experience;
+getresult:any;
+gettutorinfo(){
+  this.eachcourse.gettutorinfo(this.getlocalstorgae.user_id).subscribe(data => {
+    // this.result = data.Course;
+this.getresult = data;
+    // this.school= data.school_attended;
+    // alert(this.school)
+    // this.graduating= data.graduation_year;
+    // this.major= data.major;
+    // this.residence= data.state_of_residence;
+    // this.interest= data.Interests;
+    // this.experience = data.Experience;
+    // this.description = data.description;
+    // this.rating = data.rating;
+    // this.subject= data.subject;
+    
+//     this.subject= data.subject;
+// this.description = data.description;
+// console.log(this.description,"subject")
+  })
+}
+
+
+
+
   getchapter;
   chpt;
   time;
