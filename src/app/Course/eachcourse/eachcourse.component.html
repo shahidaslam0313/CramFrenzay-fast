@@ -43,10 +43,10 @@
                                         <tbody>
                                             <tr *ngFor="let video of videos; let j=index"> <a>
                                                     <td *ngIf="data?.chapters.id===video.chapter_id"   class="td1"><i class="fa fa-play-circle"
-                                                    (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
+                                                    (click)="SetVideoURL1(video?.video_url)"></i>{{video.video_title}}</td>
                                                     <!-- <td><div *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet> </div></td> -->
                                                     <!-- <td *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</td> -->
-                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_minutes}}Min</td>
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td23" >{{video?.video_minutes}}Min</td>
                                                     <td *ngIf="video.allow_to_view==true"> Preview</td>
                                                     <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_size}}Size
                                                     </td>
