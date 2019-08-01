@@ -4,11 +4,11 @@
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}</h1>
                 <!-- <h4>Author Name: {{result?.author| titlecase}}</h4> -->
-                <h4>Author Name: {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</h4>
-                <h4>Reviews: {{ tutorreview | titlecase}} reviews</h4>
+                <h4>Author Name: <span> {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</span></h4>
+                <h4>Reviews: <span> {{ tutorreview | titlecase}} reviews</span></h4>
                 <!-- <h4 *ngIf="result?.TutorReviews==0">Reviews: No reviews</h4> -->
-                <h4>Course Rating: {{result?.rating}} rating</h4>
-                <h4>Student: {{student}} student</h4>
+                <h4>Course Rating: <span> {{result?.rating}} rating</span></h4>
+                <h4>Student: <span> {{student}} student</span></h4>
                 <p class="detail">{{result?.description}}</p>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     <!-- *ngIf="view==0" -->
                 <h1>No Videos Found</h1>
                 </div>
-                <div class="col-lg-8 p-0" *ngIf="getchapter">
+                <div class="col-lg-8" *ngIf="getchapter">
                     <div class="course-content">Course content
                         <div class="course-time">
                             <span *ngIf="!time">00:00:00</span> <span>{{time}}</span>&nbsp;&nbsp;&nbsp;
@@ -167,46 +167,6 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-                <!-- <div class="row">
-                    
-                </div> -->
-                <div class="row">
-        <div class="col-lg-8 col-sm-12" >
-            <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4 *ngIf="view?.reviews !=null">Reviews </h4>
-                <!-- <h4 *ngIf="view?.reviews ==null">Reviews not found yet</h4> -->
-                <div *ngFor="let reviews of view?.reviews">
-                    <div class="card" *ngIf="reviews !=null">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                </div>
-                                <div class="col-md-7">
-                                    <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
-                                    <div class="clearfix"></div>
-                                    <p>{{reviews?.comment }}</p>
-                                </div>
-                                <div class="col-md-3 review-3">
-                                    <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                                    <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-  
-                </div>
-                
-            </div>
-            <div *ngIf="view==0"> 
-                <!-- <h1>qertr3yewurywh</h1> -->
-                <div class="course-content">Reviews</div>
-                <h4>No one has reviewed this course</h4>
-                <!-- <img src="../../../assets/img/Course.gif"> -->
-            </div>
-        </div>
-    </div>
-    </div>
 </div>
   <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
                         </div> -->
@@ -216,34 +176,82 @@
 
         <h4 class="card-para ">30-Day-Back Guarantee</h4>
     </div> -->
-<div class="each-upper-banner">
-    <div class="container">
-
-
-            <!-- subject;
-            description;
-            school;
-            graduating;
-            major;
-            residence;
-            interest;
-            experience;
-            rating; -->
-        <h4>About the instuctor</h4>
-        <img src="{{profileurl}}{{getresult.profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> 
-    <!-- </a> -->
-
-        <h4>Name: {{getresult.user?.first_name}}  {{getresult.user?.last_name}}</h4>
-        <h5> Description : {{getresult?.description}}</h5>
-        <h5> Tutor rating: {{getresult.rating}} stars</h5>
-        <!-- <h5> School: {{getresult.school_attended}} </h5> -->
-        <!-- <h5> Graduating year: {{getresult.graduation_year}}</h5> -->
-        <h5> Major: {{getresult.major}}</h5>
-        <!-- <h5> Residence: {{getresult.state_of_residence}}</h5> -->
-        <h5> Interests: {{getresult.Interests}}</h5>
-        <h5> Experience: {{getresult.Experience}}</h5>
-        <h5> Subjects: {{getresult.subject}}</h5>
-        <h5> Courses: {{tcourses}}</h5>
-        <!-- <h5> ID: {{getresult.user?.id}}</h5> -->
+<div class="container about-instructor">
+    <div class="row">
+        <h4 class="course-content col-sm-12 p-0">About the instuctor</h4>
+        <div class="col-sm-3 p-0 text-center">
+            <img src="{{profileurl}}{{getresult.profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+            <div class="padd"><i class="fa fa-book mr-2"></i>{{getresult.subject}} Subjects</div>
+            <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tcourses}} Courses</div>
+            <div class="padd"><i class="fa fa-star mr-2"></i>{{getresult.rating}} Rating</div>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-6">
+                        <div class="sub-haed">Name</div>
+                        <div>{{getresult.user?.first_name}}  {{getresult.user?.last_name}}</div>
+                </div>
+                <div class="col-sm-6">
+                        <div class="sub-haed">Major</div>
+                        <div>{{getresult.major}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                        <div class="sub-haed">Interests</div>
+                        <div>{{getresult.Interests}}</div>
+                </div>
+                <div class="col-sm-6">
+                        <div class="sub-haed">Experience</div>
+                        <div>{{getresult.Experience}}</div>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-sm-12">
+                <div class="sub-haed">Description</div>
+                <div>{{getresult?.description}}</div>
+            </div>
+        </div>
         </div>
     </div>
+</div>
+<div class="container">
+        <!-- <div class="row">
+            
+        </div> -->
+        <div class="row">
+<div class="col-lg-8 col-sm-12" >
+    <div class="background-grey review-section margin-bottom-20 float_left">
+        <h4 *ngIf="view?.reviews !=null">Reviews </h4>
+        <!-- <h4 *ngIf="view?.reviews ==null">Reviews not found yet</h4> -->
+        <div *ngFor="let reviews of view?.reviews">
+            <div class="card" *ngIf="reviews !=null">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+                        </div>
+                        <div class="col-md-7">
+                            <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
+                            <div class="clearfix"></div>
+                            <p>{{reviews?.comment }}</p>
+                        </div>
+                        <div class="col-md-3 review-3">
+                            <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
+                            <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    <div *ngIf="view==0"> 
+        <!-- <h1>qertr3yewurywh</h1> -->
+        <div class="course-content">Reviews</div>
+        <h4>No one has reviewed this course</h4>
+        <!-- <img src="../../../assets/img/Course.gif"> -->
+    </div>
+</div>
+</div>
+</div>

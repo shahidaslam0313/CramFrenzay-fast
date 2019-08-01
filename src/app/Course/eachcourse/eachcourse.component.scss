@@ -146,9 +146,12 @@
 }
 
 .upper-banner-contact span {
-    font-size: 18px
+    font-size: 20px;
+    font-weight: 500;
 }
-
+.upper-banner-contact h4 {
+    font-size: 24px;
+}
 .details-section p {
     font-size: 18px;
     font-weight: 600
@@ -447,7 +450,22 @@
     padding-left: 60px;
     font-size: 14px;
 }
-
+.about-instructor{
+    margin: 20px 0;
+}
+.about-instructor img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.about-instructor .padd{
+    padding: 5px 0;
+}
+.about-instructor .sub-haed{
+    margin: 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
 @media only screen and (max-width:1199px){
     .card.each-card .palyimg-div i {
         top: 30%;
