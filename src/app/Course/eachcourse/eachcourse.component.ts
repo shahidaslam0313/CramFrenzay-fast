@@ -59,6 +59,7 @@ export class EachcourseComponent implements OnInit {
               version: 'v3.0'
           });
       };
+      
   }
 
   // load facebook sdk if required
