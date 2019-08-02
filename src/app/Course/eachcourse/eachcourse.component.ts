@@ -21,7 +21,7 @@ export class EachcourseComponent implements OnInit {
 
   public Imageurl = Config.Imageurlget;
   public profileurl=Config.Imageurleach;
-  result;
+  result :any ;
   pager;
   getlocalstorgae =JSON.parse(localStorage.getItem('currentUser'))
   public courseId: any;
@@ -82,10 +82,15 @@ export class EachcourseComponent implements OnInit {
     this.eachcourseshow();
     this.reviewsss(this.pager);
     this.getchaptername();
+    
+      this.gettutorinfo();
+      alert(this.gettutorinfo)
+  
+  
      
   
     window['FB'] && window['FB'].XFBML.parse();
-    this.gettutorinfo();
+    
   }
   get(rating) {
     this.rate = rating;
@@ -114,7 +119,8 @@ export class EachcourseComponent implements OnInit {
       this.student = data.Student;
       this.tutorreview = data.TutorReviews;
       this.tcourses = data.TutorCourses;
-      console.log(data,'EACH COURSE')
+      alert(this.result.user_id['id'].json())
+      console.log(this.result.user_id['id'],'EACH COURSE')
     });
   }
 
@@ -173,10 +179,12 @@ residence;
 interest;
 rating;
 experience;
-getresult:any;
+getresult:any =[];
 gettutorinfo(){
-  this.eachcourse.gettutorinfo(this.getlocalstorgae.user_id).subscribe(data => {
+  alert(this.result.user_id['id'])
+  this.eachcourse.gettutorinfo(this.result.user_id['id']).subscribe(data => {
     // this.result = data.Course;
+    alert('usman')
 this.getresult = data;
     // this.school= data.school_attended;
     // alert(this.school)
@@ -226,34 +234,34 @@ this.getresult = data;
     });
   }
 
-  SetVideoURL1(video_url) {
-   alert(this.videos.id)
-    if(this.videos.allow_to_view== true){
-      const dialogRef = this.dialog.open(VideoShowDialogComponent, {
-        width: '1366px',
-        data: {
-          video_url: video_url,
-        }
-      });
-      dialogRef.afterClosed().subscribe(result => {
-      });
-    //   
-    }else {
+  // SetVideoURL1(video_url) {
+  //  alert(this.videos.id)
+  //   if(this.videos.allow_to_view== true){
+  //     const dialogRef = this.dialog.open(VideoShowDialogComponent, {
+  //       width: '1366px',
+  //       data: {
+  //         video_url: video_url,
+  //       }
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //     });
+  //   //   
+  //   }else {
      
-         swal({
-          type: 'error',
-          title: 'Oops <br> Please bought this course first',
-          showConfirmButton: false,
-          width: '512px',
-          timer: 2500
-        })
+  //        swal({
+  //         type: 'error',
+  //         title: 'Oops <br> Please bought this course first',
+  //         showConfirmButton: false,
+  //         width: '512px',
+  //         timer: 2500
+  //       })
             
          
         
-        }
+  //       }
     
 
-  }
+  // }
 
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {
