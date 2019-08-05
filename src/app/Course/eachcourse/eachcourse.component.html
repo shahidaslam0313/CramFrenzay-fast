@@ -3,13 +3,31 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}</h1>
-                <!-- <h4>Author Name: {{result?.author| titlecase}}</h4> -->
-                <h4>Author Name: <span> {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</span></h4>
+                <div class="mt-2 mb-2">
+                    <span class="mr-2">
+                        <i class="fa fa-star mr-1"></i>
+                        <i class="fa fa-star mr-1"></i>
+                        <i class="fa fa-star mr-1"></i>
+                        <i class="fa fa-star mr-1"></i>
+                        <i class="fa fa-star"></i>
+                    </span>
+                    <span class="mr-3">
+                        {{result?.rating}}({{ tutorreview | titlecase}} ratings)
+                    </span>
+                    <span>
+                        {{student}} students enrolled
+                    </span>
+                </div>
+                <div class="mt-2 mb-2">
+                    <span>
+                        Created by {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}
+                    </span>
+                </div>
+                <!-- <h4>Author Name: <span> {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</span></h4>
                 <h4>Reviews: <span> {{ tutorreview | titlecase}} reviews</span></h4>
-                <!-- <h4 *ngIf="result?.TutorReviews==0">Reviews: No reviews</h4> -->
                 <h4>Course Rating: <span> {{result?.rating}} rating</span></h4>
                 <h4>Student: <span> {{student}} students</span></h4>
-                <p class="detail">{{result?.description}}</p>
+                <p class="detail">{{result?.description}}</p> -->
             </div>
         </div>
     </div>
