@@ -149,6 +149,7 @@ import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
 import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 import { PendingoffersService } from './userdashboard/pendingoffers/pendingoffers.service';
+// import { ChatComponent } from './chat/chat.component';
 //  import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
 //  import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';

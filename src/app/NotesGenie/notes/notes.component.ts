@@ -44,7 +44,7 @@ export class NotesComponent implements OnInit {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
       this.currentProducts = this.productsSource.asObservable();
     }
-    window.scroll(0, 0);
+    window.scroll(0,0);
     if (!window['fbAsyncInit']) {
       window['fbAsyncInit'] = function () {
           window['FB'].init({

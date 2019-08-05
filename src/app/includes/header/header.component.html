@@ -394,6 +394,7 @@
                             <li *ngIf="!check_login()">
                                 <a routerLink="/signup"> <i class="fas fa-user-plus"></i>Sign up </a>
                             </li>
+                            
                             <li *ngIf="!check_login()" class="list-user">
                                 <a routerLink="/login"> <i class="fas fa-fingerprint" aria-hidden="true"></i>Sign in </a>
                             </li>
@@ -403,6 +404,9 @@
                                     <ul class="cutom-pd">
                                         <li *ngIf="check_login() && !institute() && !admin()">
                                             <a routerLink="/mycart"> <i class="fa fa-cart-plus"></i>My Cart </a>
+                                        </li>
+                                        <li *ngIf="check_login() && !institute() && !admin()">
+                                            <a routerLink="/myChats">  <i class="fab fa-weixin"></i>Chats </a>
                                         </li>
                                         <li *ngIf="check_login() && !institute() && !admin()">
                                             <a routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile </a>

@@ -59,7 +59,7 @@ export const appRoutes: Routes = [
       { path: 'institutelibrary', loadChildren: './institutedashboard/institutelibrary/institutelibrary.module#InstitutedetailModule', canActivate: [Auth2Service] },
       // Userdashboard Module
       // { path: 'coursevideo', loadChildren: './userdashboard/coursevideo/coursevideo.module#CoursevideoModule', canActivate: [Auth2Service] },
-
+      {path:'myChats',loadChildren:'./chat/chat.module#ChatModule'},
       { path : 'coursevideo' , component: CoursevideoComponent},
       { path: 'eachcourse/:id', component: EachcourseComponent },
       { path: 'pendingoffers', component: PendingoffersComponent },
@@ -139,6 +139,8 @@ export const appRoutes: Routes = [
       { path: 'who-are-we', loadChildren: './Footer/who-are-we/who-are-we.module#WhoAreWeModule' },
       { path: 'terms', loadChildren: './Footer/terms/terms.module#TermsModule' },
       { path: 'privacy-policy', loadChildren: './Footer/privacy-policy/privacy-policy.module#PrivacyPolicyModule' },
+      //chat Modele
+      
     ],
   }
 
