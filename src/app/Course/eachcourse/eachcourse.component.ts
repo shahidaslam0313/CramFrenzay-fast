@@ -21,7 +21,8 @@ export class EachcourseComponent implements OnInit {
 
   public Imageurl = Config.Imageurlget;
   public profileurl=Config.Imageurleach;
-  result;
+  result :any =[];
+  getresult :any =[];
   pager;
   getlocalstorgae =JSON.parse(localStorage.getItem('currentUser'))
   public courseId: any;
@@ -41,6 +42,8 @@ export class EachcourseComponent implements OnInit {
   lectures;
   // "Lectures": 0,
   totalvid;
+  // public tutor_id;
+
   model: any = {};
   reviewform = new FormGroup({
     comment: new FormControl('', [
@@ -79,13 +82,19 @@ export class EachcourseComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.courseId = +params['id'] || 0;
     });
+    // console.log(this.courseId);
     this.eachcourseshow();
     this.reviewsss(this.pager);
     this.getchaptername();
+    
+      // this.gettutorinfo();
+      // alert(this.gettutorinfo)
+  
+  
      
   
     window['FB'] && window['FB'].XFBML.parse();
-    this.gettutorinfo();
+    
   }
   get(rating) {
     this.rate = rating;
@@ -100,6 +109,47 @@ export class EachcourseComponent implements OnInit {
     }
   }
 
+  subject;
+  firstname;
+  lastname;
+  description;
+  major;
+  interest;
+  rating;
+  experience;
+  username;
+  // ttid;
+  profile_picture;
+
+gettutorinfo(tutor){
+
+  this.eachcourse.gettutorinfo(tutor).subscribe(data => {
+    // console.log('data:',data)
+    // this.getresult = data.Course;
+    // console.log('getresult',this.getresult)
+    this.description = data.description;
+    // console.log(this.description)
+    this.major = data.major;
+    this.profile_picture = this.profileurl+data.profile_picture;
+    this.username = data.user.username;
+    this.firstname = data.user.first_name;
+    this.lastname = data.user.last_name;
+    this.interest = data.Interests;
+    this.rating = data.rating;
+    this.experience = data.Experience;
+    this.subject = data.subject;
+    // this.ttid=data.user.id;
+    // console.log(this.ttid);
+
+
+
+
+  })
+}
+
+
+
+
 
   // this.tutorinfo.g
   introvideo;
@@ -109,12 +159,22 @@ export class EachcourseComponent implements OnInit {
   eachcourseshow() {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
+
       this.result = data.Course;
       this.introvideo = data.introvideo;
       this.student = data.Student;
       this.tutorreview = data.TutorReviews;
       this.tcourses = data.TutorCourses;
-      console.log(data,'EACH COURSE')
+      // this.tutorId=data.Course.userid.id;
+      this.tutorId=data.Course.userid.id;
+      this.gettutorinfo(this.tutorId)
+     
+      // console.log(this.tutorId);
+
+      // this.ttid=data.userid.id;
+      // console.log(this.ttid);
+      // alert(this.result)
+      // console.log(this.result,'EACH COURSE')
     });
   }
 
@@ -164,36 +224,38 @@ export class EachcourseComponent implements OnInit {
 
 
 
-subject;
-description;
-school;
-graduating;
-major;
-residence;
-interest;
-rating;
-experience;
-getresult:any;
-gettutorinfo(){
-  this.eachcourse.gettutorinfo(this.getlocalstorgae.user_id).subscribe(data => {
-    // this.result = data.Course;
-this.getresult = data;
-    // this.school= data.school_attended;
-    // alert(this.school)
-    // this.graduating= data.graduation_year;
-    // this.major= data.major;
-    // this.residence= data.state_of_residence;
-    // this.interest= data.Interests;
-    // this.experience = data.Experience;
-    // this.description = data.description;
-    // this.rating = data.rating;
-    // this.subject= data.subject;
+// subject;
+// description;
+// school;
+// graduating;
+// major;
+// residence;
+// interest;
+// rating;
+// experience;
+// getresult:any;
+// gettutorinfo(){
+//   alert(this.result.user_id['id'])
+//   this.eachcourse.gettutorinfo(this.result.user_id['id']).subscribe(data => {
+//     // this.result = data.Course;
+//     alert('usman')
+// this.getresult = data;
+//     // this.school= data.school_attended;
+//     // alert(this.school)
+//     // this.graduating= data.graduation_year;
+//     // this.major= data.major;
+//     // this.residence= data.state_of_residence;
+//     // this.interest= data.Interests;
+//     // this.experience = data.Experience;
+//     // this.description = data.description;
+//     // this.rating = data.rating;
+//     // this.subject= data.subject;
     
-//     this.subject= data.subject;
-// this.description = data.description;
-// console.log(this.description,"subject")
-  })
-}
+// //     this.subject= data.subject;
+// // this.description = data.description;
+// // console.log(this.description,"subject")
+//   })
+// }
 
 
 
@@ -210,6 +272,8 @@ this.getresult = data;
       this.time = data['Total Hours'];
       this.totalvideos = data.totalvideos;
       this.totalvid = data['Total Lectures'];
+
+      
       // Abdullah
       // this.lectures = data['Lectures'];
       // this.lectures = data.Lectures;
@@ -226,34 +290,34 @@ this.getresult = data;
     });
   }
 
-  SetVideoURL1(video_url) {
-   alert(this.videos.id)
-    if(this.videos.allow_to_view== true){
-      const dialogRef = this.dialog.open(VideoShowDialogComponent, {
-        width: '1366px',
-        data: {
-          video_url: video_url,
-        }
-      });
-      dialogRef.afterClosed().subscribe(result => {
-      });
-    //   
-    }else {
+  // SetVideoURL1(video_url) {
+  //  alert(this.videos.id)
+  //   if(this.videos.allow_to_view== true){
+  //     const dialogRef = this.dialog.open(VideoShowDialogComponent, {
+  //       width: '1366px',
+  //       data: {
+  //         video_url: video_url,
+  //       }
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //     });
+  //   //   
+  //   }else {
      
-         swal({
-          type: 'error',
-          title: 'Oops <br> Please bought this course first',
-          showConfirmButton: false,
-          width: '512px',
-          timer: 2500
-        })
+  //        swal({
+  //         type: 'error',
+  //         title: 'Oops <br> Please bought this course first',
+  //         showConfirmButton: false,
+  //         width: '512px',
+  //         timer: 2500
+  //       })
             
          
         
-        }
+  //       }
     
 
-  }
+  // }
 
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {
