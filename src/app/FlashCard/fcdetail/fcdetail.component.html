@@ -57,7 +57,10 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
-                            <h4>Author Name: {{flashcardDetail?.user_id | titlecase}}</h4>
+                            <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
+                            <h4>Name: {{fname | titlecase}}</h4>
+                           
+                           
                             <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
                         </div>
                     </div>
@@ -260,6 +263,46 @@
                             </div>
                         </div>
                     </div>
+                    <div class="container about-instructor">
+                            <div class="row">
+                                <h4 class="course-content col-sm-12 p-0">About the instuctor</h4>
+                                <div class="col-sm-3 p-0 text-center">
+
+                                    <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                                    <div class="padd"><i class="fa fa-book mr-2"></i>No. of views {{tviews}} views</div>
+                                    <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tflashcards}} Flash Cards</div>
+                                    <div class="padd"><i class="fa fa-star mr-2"></i>{{rating}}/5 stars</div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                                <div class="sub-haed"><b>Name</b></div>
+                                                <div>{{firstname}}  {{lastname}}</div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                                <div class="sub-haed"><b>Major</b></div>
+                                                <div>{{major}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                                <div class="sub-haed"><b>Interests</b></div>
+                                                <div>{{interest}}</div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                                <div class="sub-haed"><b>Experience</b></div>
+                                                <div>{{experience}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                        <div class="sub-haed"><b>Description</b></div>
+                                        <div>{{description}}</div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     <div class="col-lg-8 col-sm-12" >
                         <div class="background-grey review-section margin-bottom-20 float_left">
                             <h4 *ngIf="view?.reviews !=null">Reviews</h4>
@@ -289,10 +332,10 @@
                         </div>
                         <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
                         </div> -->
-                        <div class="" *ngIf="view==0">
+                        <!-- <div class="" *ngIf="view==0">
                         <h4>Reviews</h4>
-                        <h4>No one has reviewed this course</h4>
-                    </div>
+                        <h4>No one has reviewed this flash card</h4>
+                    </div> -->
                     </div>
                     
                 </div>
@@ -300,3 +343,20 @@
         </div>
     </div>
 </div>
+<!-- <div class="mainbanner">
+    <h4>About Author</h4> -->
+    <!-- subject;
+    description;
+    major;
+    interest;
+    rating;
+    experience; -->
+    <!-- <h5>Subject {{subject}}</h5>
+    <h5>Description {{description}}</h5>
+    <h5>Major {{major}}</h5>
+    <h5>Interest{{interest}}</h5>
+    <h5>Rating {{rating}}/5.0</h5>
+    <h5>Experience {{experience}}</h5>
+    </div> -->
+
+    

@@ -181,7 +181,8 @@
             <div class="row">
                 <h4 class="course-content col-sm-12 p-0"> About the instuctor</h4>
                 <div class="col-sm-3 p-0 text-center">
-                    <img src="{{profileurl}}{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                    <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                    <!-- <img src="{{profileurl}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> -->
                     <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tcourses}} Courses</div>
                     <div class="padd"><i class="fa fa-book mr-2"></i>{{subject}} Subjects</div>
                     <div class="padd"><i class="fa fa-star mr-2"></i>{{rating}}/5 stars</div>
@@ -249,12 +250,12 @@
             </div>
             
         </div>
-        <div *ngIf="view==0"> 
-            <!-- <h1>qertr3yewurywh</h1> -->
+        <!-- <div *ngIf="view==0"> 
+            
             <div class="course-content">Reviews</div>
             <h4>No one has reviewed this course</h4>
-            <!-- <img src="../../../assets/img/Course.gif"> -->
-        </div>
+            <img src="../../../assets/img/Course.gif">
+        </div> -->
     </div>
     </div>
     </div>
