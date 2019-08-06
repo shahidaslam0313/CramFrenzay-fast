@@ -168,6 +168,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   // interest;
   firstname;
   lastname;
+  cdate;
   flashrating;
   fcardreviews;
   // rating;
@@ -182,6 +183,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
       this.lastname = data.user_id.last_name;
       this.tviews = data.number_of_views;
       this.flashrating = data.rating;
+      this.cdate = data.postdate;
       this.fcardreviews = data.flashcardreviews;
       // flashcardreviews
       this.tflashcards = data.totalflashcards;

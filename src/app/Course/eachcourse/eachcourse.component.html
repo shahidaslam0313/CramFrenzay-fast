@@ -16,7 +16,7 @@
                         <i class="fa fa-star mr-1"></i>
                         <i class="fa fa-star mr-1"></i>
                         <i class="fa fa-star"></i> -->
-                        {{result?.rating}}({{ tutorreview | titlecase}} ratings)
+                        {{result?.rating}}({{ tutorreview | titlecase}} rating)
                        
                     </span>
                     <span class="mr-3">
@@ -33,6 +33,12 @@
                     </span>
                     
                 </div>
+                <div class="mt-2 mb-2">
+                        <span>
+                         Last updated {{ cdate | date: 'MM/yyyy'}}
+                        </span>
+                        
+                    </div>
                
                 <!-- <h4>Author Name: <span> {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</span></h4>
                 <h4>Reviews: <span> {{ tutorreview | titlecase}} reviews</span></h4>
@@ -77,7 +83,7 @@
                                         <tbody>
                                             <tr *ngFor="let video of videos; let j=index"> <a>
                                                     <td *ngIf="data?.chapters.id===video.chapter_id"   class="td1"><i class="fa fa-play-circle"
-                                                    (click)="SetVideoURL(video?.video_url)"></i>{{video.video_title}}</td>
+                                                    (click)="SetVideoURL(video?.video_url,video?.allow_to_view)"></i>{{video.video_title}}</td>
                                                     <!-- <td><div *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet> </div></td> -->
                                                     <!-- <td *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</td> -->
                                                     <td *ngIf="data?.chapters.id===video.chapter_id" class="td23" >{{video?.video_minutes}}Min</td>
@@ -165,7 +171,7 @@
         <div class="col-lg-4 col-md-4 card-1">
             <div class="card each-card">
                     <!-- <img class="card-img-top"  *ngIf="!introvi src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">  -->
-                <div class="palyimg-div" *ngIf="introvideo?.video_url || !introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)">
+                <div class="palyimg-div" *ngIf="introvideo?.video_url || !introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url,video?.allow_to_view)">
                         <i class="fas fa-play"></i>
                         <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">
                     
@@ -197,11 +203,9 @@
             </div>
         </div>
 </div>
-  <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
-                        </div> -->
-
-
-    <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
+  <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif"></div> -->
+                     
+   <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
 
         <h4 class="card-para ">30-Day-Back Guarantee</h4>
     </div> -->
