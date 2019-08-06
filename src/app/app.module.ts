@@ -11,7 +11,6 @@ import { GlobalService } from './global.service';
 import { SocialLoginModule, AuthService } from 'angular5-social-login';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CountdownModule } from 'ng2-countdown-timer';
-
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
@@ -149,7 +148,7 @@ import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
 import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 import { PendingoffersService } from './userdashboard/pendingoffers/pendingoffers.service';
-import { NeutronRatingModule } from 'neutron-star-rating';
+// import { NeutronRatingModule } from 'neutron-star-rating';
 // import { ChatComponent } from './chat/chat.component';
 //  import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
@@ -202,7 +201,7 @@ export class MaterialModule { }
     CommonModule,
     MaterialModule,
     BrowserAnimationsModule,
-    NeutronRatingModule,
+    // NeutronRatingModule,
     MatInputModule,
     VgBufferingModule,
     VgCoreModule,
