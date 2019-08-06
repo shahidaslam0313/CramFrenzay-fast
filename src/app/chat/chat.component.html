@@ -6,11 +6,12 @@
 <h1>Previous Chats</h1>
 <ul *ngFor="let pChats of previouschats" (click)="getChats(pChats.room_id)">
   <li>
-    <img src="{{Imageurl}}{{pChats.profile_pic}}"><br>
+    <img src="{{pChats.receiver_pic}}"><br>
     {{pChats.receiver}} &nbsp; &nbsp;
     unread:{{pChats.unread}}<br>
     {{pChats.CreatedAt.split('T',1)}}<br>
-    {{pChats.message}}
+    {{pChats.message}}<br>
+    <img style="width: 10%; height: 5%;" src="{{pChats.sender_pic}}">
   </li>
 </ul>
 <h1>ChATS</h1>
@@ -22,8 +23,13 @@
       {{cHis.MessageText}} &nbsp; &nbsp; {{cHis.CreatedAt.slice(cHis.CreatedAt.indexOf(":")+1,cHis.CreatedAt.indexOf("."))}}
   </li>
 </ul>
-<div> </div>
-<button (click)="webSocketFunc()">Cooncet To server</button>
+  <ul id="msgUl">
+  <!-- <li id="currentUserMsg" style="text-align: right; color: blue"> </li>
+  <li id="otherUserMsg" style="text-align: left; color: silver"> </li> -->
+</ul>
+
+<!-- <button (click)="webSocketFunc()">Cooncet To server</button> -->
 <input type="text" #msg>
 <button (click)="sendMsg(msg.value)">Send</button>
+<!-- <div>{{rcvMsg}} </div> -->
 

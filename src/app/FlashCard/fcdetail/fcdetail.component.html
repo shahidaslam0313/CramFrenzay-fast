@@ -57,6 +57,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
+<<<<<<< HEAD
                             <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
                             <!-- <h4>Name: {{fname | titlecase}}</h4> -->
                             <rating class="rating-star-icons float_left" ngModel="{{flashrating}}" [readonly]="true" titles="{{flashrating}}"></rating><h4>{{flashrating}}(ratings)</h4>
@@ -65,6 +66,31 @@
                             <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>Total Views:{{tviews}} views</div> -->
                             <h4>Total Reviews: {{fcardreviews}}</h4>                           
                             <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
+=======
+                            <div class="line">
+                                <span class="mr-2">
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="mr-3">
+                                    {{tviews}} views
+                                </span>
+                                <span>
+                                    {{flashcardDetail?.no_of_terms}} number of terms
+                                </span>
+                            </div>
+                            <div class="line">
+                                <span>
+                                    Created by {{firstname | titlecase}} {{lastname | titlecase}}
+                                </span>
+                            </div>
+                            <!-- <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
+                            <h4>Name: {{fname | titlecase}}</h4>
+                            <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p> -->
+>>>>>>> 1a8d11e07343f599a50700788d3a5ab6f87e941b
                         </div>
                     </div>
                 </div>
