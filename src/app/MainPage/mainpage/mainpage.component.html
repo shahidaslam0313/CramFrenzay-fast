@@ -82,7 +82,8 @@
                             <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data?.name}}">{{data?.name}}</a></div>
                             <div class="product-list__title tutor-subject"> <span title="Authur Name:{{data?.author}}" routerLink="/eachcourse/{{data.id}}">{{data?.author}}</span></div>
                             <div class="rating_and_price">
-                                <rating class="rating-star-icons float_left" ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating> <a class="product-list__price" routerLink="/eachcourse/{{data.id}}">{{data.price | currency:'USD'}}</a></div>
+                                <rating class="rating-star-icons float_left" ngModel="{{data.rating}}" [readonly]="true" titles="{{data.rating}}"></rating> 
+                                <a class="product-list__price" routerLink="/eachcourse/{{data.id}}">{{data.price | currency:'USD'}}</a></div>
                             <div class="heart_cart_buy">
                                 <div class="heart_cart"> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Remove from wishlist" (click)="delCourseFwishList(data)"> </i> <i class=" far fa-heart" (click)="addwishlist(nullvalue,data?.id,nullvalue,nullvalue)" *ngIf="!data.wishlist==true"> </i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"> </i> <i class="wishlist material-icons" title="Add to Cart" *ngIf="!data.cart==true" (click)="addcart(nullvalue,data.id,nullvalue,nullvalue)">add_shopping_cart</i></div>
                                 <div class="buy_btn"><a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false" (click)="openDialog2(data?.id)">Offer Now</a></div>

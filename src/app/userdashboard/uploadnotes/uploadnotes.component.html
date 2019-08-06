@@ -8,14 +8,14 @@
                         <div class="profile-picture" *ngIf="!profilePhoto"> <img src="../assets/img/default-user-icon-profile.png"
                                 onerror="this.src='../assets/img/default-user-icon-profile.png'"> </div>
                     <h4 class="user-name text_cap">{{firstname}}&nbsp;{{lastname}}</h4>
-                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add
+                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Sell
                     Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
+                        class="fa fa-th-large"></i>Sell Courses</a> <a class="user-link" routerLink="/uploadcard"
                     routerLinkActive="active1" data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-book-open"></i>Add Flash Cards</a> <a class="user-link display-none" routerLink="/uploadcarddetail"
+                        class="fa fa-book-open"></i>Sell Flash Cards</a> <a class="user-link display-none" routerLink="/uploadcarddetail"
                     routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book-open"></i>FlashCard
                     Detail</a> <a class="user-link" routerLink="/uploadbook" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-book"></i>Add Books</a>
+                        class="fa fa-book"></i>Sell Books</a>
             </nav>
         </div>
         <div class="col-md-8 user-profile">

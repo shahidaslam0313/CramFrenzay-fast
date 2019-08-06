@@ -11,6 +11,7 @@ import { PagerService } from '../../paginator.service';
 import {VideoShowDialogComponent} from "../../userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
 import {MatDialog} from "@angular/material";
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-eachcourse',
   templateUrl: './eachcourse.component.html',
@@ -116,6 +117,7 @@ export class EachcourseComponent implements OnInit {
   major;
   interest;
   rating;
+  treviews;
   experience;
   username;
   // ttid;
@@ -135,6 +137,7 @@ gettutorinfo(tutor){
     this.firstname = data.user.first_name;
     this.lastname = data.user.last_name;
     this.interest = data.Interests;
+    this.treviews = data.TutorReviews;
     this.rating = data.rating;
     this.experience = data.Experience;
     this.subject = data.subject;
@@ -155,14 +158,27 @@ gettutorinfo(tutor){
   introvideo;
   tutorreview;
   student;
+  cdate;
+  
+  creview;
   tcourses;
+  starview : any =[];
+  usman: any =[];
   eachcourseshow() {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
 
       this.result = data.Course;
+      this.starview=this.result.rating;
+      this.usman= this.starview.toString();
+      // this.starview = this.usman.toString()
+      // console.log(this.provider)
+      // console.log(this.starview.toString())
       this.introvideo = data.introvideo;
       this.student = data.Student;
+      this.cdate = data.Course.postdate;
+      
+      this.creview = data.CourseReviews;
       this.tutorreview = data.TutorReviews;
       this.tcourses = data.TutorCourses;
       // this.tutorId=data.Course.userid.id;
@@ -280,6 +296,10 @@ gettutorinfo(tutor){
     });
   }
   SetVideoURL(video_url, SetVideoURL){
+    // alert(SetVideoURL)
+    if (SetVideoURL == true){
+
+    
     const dialogRef = this.dialog.open(VideoShowDialogComponent, {
       width: '800px',
       data: {
@@ -288,10 +308,19 @@ gettutorinfo(tutor){
     });
     dialogRef.afterClosed().subscribe(result => {
     });
+  }else if (SetVideoURL == false){
+    swal({
+      type: 'error',
+      title: 'Oops <br> Please bought this course first',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 2500
+    })
+  }
   }
 
   // SetVideoURL1(video_url) {
-  //  alert(this.videos.id)
+  //  alert(this.videos.id.allow_to_view)
   //   if(this.videos.allow_to_view== true){
   //     const dialogRef = this.dialog.open(VideoShowDialogComponent, {
   //       width: '1366px',
@@ -301,21 +330,16 @@ gettutorinfo(tutor){
   //     });
   //     dialogRef.afterClosed().subscribe(result => {
   //     });
-  //   //   
-  //   }else {
-     
-  //        swal({
-  //         type: 'error',
-  //         title: 'Oops <br> Please bought this course first',
-  //         showConfirmButton: false,
-  //         width: '512px',
-  //         timer: 2500
-  //       })
-            
-         
-        
-  //       }
-    
+      
+  //   }else if(this.videos.allow_to_view==false){
+  //     swal({
+  //       type: 'error',
+  //       title: 'Oops <br> Please bought this course first',
+  //       showConfirmButton: false,
+  //       width: '512px',
+  //       timer: 2500
+  //     })
+  //   } 
 
   // }
 
