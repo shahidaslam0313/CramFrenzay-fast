@@ -28,6 +28,7 @@ export class NotesCategoryComponent implements OnInit {
     }
   }
   ngOnInit() {
+    window.scrollTo(0,0);
     this.Showcategory();
   }
   onsubmit(nestedname) {
