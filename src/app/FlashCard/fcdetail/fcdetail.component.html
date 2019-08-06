@@ -57,11 +57,29 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
-                            <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
+                            <div class="line">
+                                <span class="mr-2">
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star mr-1"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="mr-3">
+                                    {{tviews}} views
+                                </span>
+                                <span>
+                                    {{flashcardDetail?.no_of_terms}} number of terms
+                                </span>
+                            </div>
+                            <div class="line">
+                                <span>
+                                    Created by {{firstname | titlecase}} {{lastname | titlecase}}
+                                </span>
+                            </div>
+                            <!-- <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
                             <h4>Name: {{fname | titlecase}}</h4>
-                           
-                           
-                            <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
+                            <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p> -->
                         </div>
                     </div>
                 </div>
@@ -269,7 +287,7 @@
                                 <div class="col-sm-2 p-0 text-center">
 
                                     <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
-                                    <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div>
+                                    <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div> -->
                                     <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tflashcards}} FlashCards</div>
                                     <div class="padd"><i class="fa fa-star mr-2"></i>{{rating}}/5 stars</div>
                                 </div>
