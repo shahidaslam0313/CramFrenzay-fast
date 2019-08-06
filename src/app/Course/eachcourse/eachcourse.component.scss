@@ -147,7 +147,6 @@
 
 .upper-banner-contact span {
     font-size: 16px;
-    font-weight: 500;
 }
 .upper-banner-contact h4 {
     font-size: 24px;
@@ -466,6 +465,9 @@
     margin: 8px 0;
     font-size: 20px;
     font-weight: 600;
+}
+.rating-icons{
+    display: inline-block;
 }
 @media only screen and (max-width:1199px){
     .card.each-card .palyimg-div i {
