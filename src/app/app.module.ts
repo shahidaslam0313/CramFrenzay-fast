@@ -149,6 +149,7 @@ import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
 import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 import { PendingoffersService } from './userdashboard/pendingoffers/pendingoffers.service';
+import { NeutronRatingModule } from 'neutron-star-rating';
 // import { ChatComponent } from './chat/chat.component';
 //  import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
@@ -201,7 +202,7 @@ export class MaterialModule { }
     CommonModule,
     MaterialModule,
     BrowserAnimationsModule,
-    
+    NeutronRatingModule,
     MatInputModule,
     VgBufferingModule,
     VgCoreModule,

@@ -11,6 +11,7 @@ import { PagerService } from '../../paginator.service';
 import {VideoShowDialogComponent} from "../../userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
 import {MatDialog} from "@angular/material";
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-eachcourse',
   templateUrl: './eachcourse.component.html',
@@ -116,6 +117,7 @@ export class EachcourseComponent implements OnInit {
   major;
   interest;
   rating;
+  treviews;
   experience;
   username;
   // ttid;
@@ -135,6 +137,7 @@ gettutorinfo(tutor){
     this.firstname = data.user.first_name;
     this.lastname = data.user.last_name;
     this.interest = data.Interests;
+    this.treviews = data.TutorReviews;
     this.rating = data.rating;
     this.experience = data.Experience;
     this.subject = data.subject;
@@ -155,14 +158,23 @@ gettutorinfo(tutor){
   introvideo;
   tutorreview;
   student;
+  creview;
   tcourses;
+  starview : any =[];
+  usman: any =[];
   eachcourseshow() {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
 
       this.result = data.Course;
+      this.starview=this.result.rating;
+      this.usman= this.starview.toString();
+      // this.starview = this.usman.toString()
+      console.log(this.usman)
+      console.log(this.starview.toString())
       this.introvideo = data.introvideo;
       this.student = data.Student;
+      this.creview = data.CourseReviews;
       this.tutorreview = data.TutorReviews;
       this.tcourses = data.TutorCourses;
       // this.tutorId=data.Course.userid.id;

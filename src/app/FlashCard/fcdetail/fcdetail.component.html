@@ -58,9 +58,12 @@
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
                             <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
-                            <h4>Name: {{fname | titlecase}}</h4>
-                           
-                           
+                            <!-- <h4>Name: {{fname | titlecase}}</h4> -->
+                            <rating class="rating-star-icons float_left" ngModel="{{flashrating}}" [readonly]="true" titles="{{flashrating}}"></rating><h4>{{flashrating}}(ratings)</h4>
+                            
+                            <h4>Total Views: {{tviews}}</h4>
+                            <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>Total Views:{{tviews}} views</div> -->
+                            <h4>Total Reviews: {{fcardreviews}}</h4>                           
                             <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
                         </div>
                     </div>
@@ -269,9 +272,12 @@
                                 <div class="col-sm-2 p-0 text-center">
 
                                     <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
-                                    <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div>
+                                    <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div> -->
                                     <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tflashcards}} FlashCards</div>
-                                    <div class="padd"><i class="fa fa-star mr-2"></i>{{rating}}/5 stars</div>
+                                    <div class="padd"><i class="fas fa-play-circle mr-2"></i>Reviews ({{treviews}} reviews)</div>
+                                    <!-- <div class="padd"><i class="fas fa-play-circle mr-2"></i><rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating></i>Rating</div> -->
+                                    <rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating><br>
+                                    <div class="padd"><i class="fa fa-star mr-2"></i>({{rating}}/5 rating)</div>
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="row">
