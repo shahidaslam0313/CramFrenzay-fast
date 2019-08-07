@@ -21,6 +21,7 @@ getCurrent:any;
 userid;
 cusername;
 obj1;
+in=0
 public Imageurl = Config.Imageurleach;
   constructor(public chatIns:ChatServiceService) { }
 
@@ -46,38 +47,59 @@ public Imageurl = Config.Imageurleach;
       }
       ws.onmessage=function(e)
       {
-        console.log('message:',e);
-        this.getCurrent=JSON.parse(e.data);
-        console.log('c1:',this.getCurrent.username);
-        this.cusername=JSON.parse(localStorage.getItem('currentUser')).username;
-        console.log('c2:',this.cusername)
-        if(this.getCurrent.username==this.cusername)
-        {
-          console.log('1')
-          var ul = document.getElementById("msgUl");
-          var li = document.createElement("li");
-          // var children = ul.children.length + 1
-          // li.setAttribute("id", "element"+children)
-          li.appendChild(document.createTextNode(this.getCurrent.message));
-          ul.appendChild(li)
-          // document.getElementById('li.setAttribute').innerText=this.getCurrent.message;
-        }
-        else if(this.getCurrent.username!=this.cusername)
-        {
-          var ul = document.getElementById("msgUl");
-          var li = document.createElement("li");
-          // var children = ul.children.length + 1
-          // li.setAttribute("id", "element"+children)
-          li.appendChild(document.createTextNode(this.getCurrent.message));
-          ul.appendChild(li)
-          // document.getElementById().innerText=this.getCurrent.message;
-          // document.getElementById('otherUserMsg').innerText=this.getCurrent.message;
+        
+          // console.log('message:',e);
+          this.getCurrent=JSON.parse(e.data);
+          console.log('message:',this.getCurrent);
+          // console.log('c1:',this.getCurrent.username);
+          this.cusername=JSON.parse(localStorage.getItem('currentUser')).username;
+          // console.log('c2:',this.cusername)
+          if(this.getCurrent.username==this.cusername)
+          {
+            if(this.in==0){
+              this.in=1
+            }
+            else
+            {
+              this.in=0;
+            console.log('1')
+            var ul = document.getElementById("msgUl");
+            var li = document.createElement("li");
+            // var children = ul.children.length + 1
+            // li.setAttribute("id", "element"+children)
+            // var style = document.createElement('style');
+            // style.type = 'text/css';
+            // document.getElementsByTagName('head')[0].appendChild(style);
+            li.appendChild(document.createTextNode(this.getCurrent.message));
+            ul.appendChild(li)
+            // document.getElementById('li.setAttribute').innerText=this.getCurrent.message;
+            }
+          }
+          else if(this.getCurrent.username!=this.cusername)
+          {
+            if(this.in==0){
+              this.in=1
+            }
+            else
+            {
+              this.in=0;
+            var ul = document.getElementById("msgUl");
+            var li = document.createElement("li");
+            // var children = ul.children.length + 1
+            // li.setAttribute("id", "element"+children)
+            li.appendChild(document.createTextNode(this.getCurrent.message));
+            ul.appendChild(li)
+            // document.getElementById().innerText=this.getCurrent.message;
+            // document.getElementById('otherUserMsg').innerText=this.getCurrent.message;
+            }
+          }
+          
         }
         // rcvMsg=JSON.parse(e.data);
         // this.msgreceive(e)
         // self.previouschats.push()
         // return this.getCurrent;
-      }
+      // }
       // console.log('gah',this.getCurrent);
     }
   //  msgreceive=function(data)
@@ -96,7 +118,7 @@ public Imageurl = Config.Imageurleach;
   }
   getPreviousChats()
   {
-    this.chatIns. getPreviousChats().subscribe(prevChats=>
+    this.chatIns.getPreviousChats().subscribe(prevChats=>
       {
         this.previouschats=prevChats.detail;
         console.log('Previous:',this.previouschats);
@@ -104,10 +126,7 @@ public Imageurl = Config.Imageurleach;
   }
   getChats(id)
   {
-    // if(ws.readyState==1)
-    // {
-    // ws.close();
-    // }
+   
     this.userid=JSON.parse(localStorage.getItem('currentUser')).user_id
     console.log('CurrentuserId:',this.userid);
     this.chatIns.getChats(id).subscribe(chathis=>
@@ -119,10 +138,7 @@ public Imageurl = Config.Imageurleach;
   }
   assignNewRoom(uname)
   {
-    // if(ws.readyState==1)
-    // {
-    // ws.close();
-    // }
+    
     console.log('unameforroom:',uname)
     this.chatIns.assignRoom(uname).subscribe(assignRoom=>
       {
@@ -144,4 +160,5 @@ public Imageurl = Config.Imageurleach;
     // console.log(this.getCurrent);
     this.getPreviousChats();
   }
+  
 }

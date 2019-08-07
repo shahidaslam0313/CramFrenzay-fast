@@ -57,26 +57,92 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
-                            <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
-                            <!-- <h4>Name: {{fname | titlecase}}</h4> -->
+                            <div class="mt-2 mb-2 disp-flex">
+                                    <span class="mr-5">
+                                        <rating class="rating-star-icons float_left" ngModel="{{flashrating}}" [readonly]="true" titles="{{flashrating}}"></rating>({{flashrating}} ratings)
+                                    </span>
+                                    <span class="mr-5">
+                                        {{fcardreviews}} Reviews
+                                    </span>
+                                    <span class="mr-5">
+                                        {{tviews}} Views
+                                    </span>
+                                    <span>
+                                        {{flashcardDetail?.no_of_terms}} Number of Terms
+                                    </span>
+                                </div>
+                                <div class="mt-2 mb-2 disp-flex">
+                                    <span>
+                                        Created by {{firstname | titlecase}} {{lastname | titlecase}}
+                                    </span>
+                                </div>
+                                <div class="mt-2 mb-2 disp-flex">
+                                    <span>
+                                        Last updated {{ cdate | date: 'MM/yyyy'}}
+                                    </span>
+                                </div>
+                            <!-- <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
                             <rating class="rating-star-icons float_left" ngModel="{{flashrating}}" [readonly]="true" titles="{{flashrating}}"></rating><h4>{{flashrating}}(ratings)</h4>
-                            
                             <h4>Total Views: {{tviews}}</h4>
-                            <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>Total Views:{{tviews}} views</div> -->
                             <h4>Total Reviews: {{fcardreviews}}</h4>                           
                             <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
                             <div class="mt-2 mb-2">
-                                    <span>
-                                     Last updated {{ cdate | date: 'MM/yyyy'}}
-                                    </span>
-                                  </div>
+                                <span>
+                                    Last updated {{ cdate | date: 'MM/yyyy'}}
+                                </span>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row my-5">
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-lg-8 col-md-8 p-0">
+                            <div class="container about-instructor">
+                                    <div class="row">
+                                        <h4 class="course-content col-sm-12 p-0">About the instructor</h4>
+                                        <div class="col-sm-3 p-0 text-center">
+        
+                                            <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                                            <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div> -->
+                                            <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tflashcards}} FlashCards</div>
+                                            <div class="padd"><i class="fas fa-search-location mr-2"></i>Reviews ({{treviews}} reviews)</div>
+                                            <!-- <div class="padd"><i class="fas fa-play-circle mr-2"></i><rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating></i>Rating</div> -->
+                                            <div class="padd">
+                                                    <rating class="rating-icons" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating>
+                                                    ({{rating}}/5 rating)
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Name</div>
+                                                        <div>{{firstname}}  {{lastname}}</div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Major</div>
+                                                        <div>{{major}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Interests</div>
+                                                        <div>{{interest}}</div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Experience</div>
+                                                        <div>{{experience}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-sm-12">
+                                                <div class="sub-haed">Description</div>
+                                                <div>{{description}}</div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
                         <!-- <div class="What-will-i-learn">
                             <div class="What-will-i-learn__content">
                                 <div class="What-will-i-learn__title"> What Will I Learn? </div>
@@ -271,49 +337,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container about-instructor">
-                            <div class="row">
-                                <h4 class="course-content col-sm-12 p-0">About the instructor</h4>
-                                <div class="col-sm-2 p-0 text-center">
-
-                                    <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
-                                    <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div> -->
-                                    <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tflashcards}} FlashCards</div>
-                                    <div class="padd"><i class="fas fa-play-circle mr-2"></i>Reviews ({{treviews}} reviews)</div>
-                                    <!-- <div class="padd"><i class="fas fa-play-circle mr-2"></i><rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating></i>Rating</div> -->
-                                    <rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating><br>
-                                    <div class="padd"><i class="fa fa-star mr-2"></i>({{rating}}/5 rating)</div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                                <div class="sub-haed">Name</div>
-                                                <div>{{firstname}}  {{lastname}}</div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                                <div class="sub-haed">Major</div>
-                                                <div>{{major}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                                <div class="sub-haed">Interests</div>
-                                                <div>{{interest}}</div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                                <div class="sub-haed">Experience</div>
-                                                <div>{{experience}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                            <div class="col-sm-12">
-                                        <div class="sub-haed">Description</div>
-                                        <div>{{description}}</div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+                    
                     <div class="col-lg-8 col-sm-12" >
                         <div class="background-grey review-section margin-bottom-20 float_left">
                             <h4 *ngIf="view?.reviews !=null">Reviews</h4>
