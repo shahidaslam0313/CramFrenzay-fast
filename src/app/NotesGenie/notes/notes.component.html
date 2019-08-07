@@ -3,16 +3,33 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name}}</h1>
-                <h4>Author Name: {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</h4>
+                <div class="mt-2 mb-2 disp-flex">
+                        <span class="mr-5">
+                            <rating class="rating-icons" ngModel="{{result?.rating}}" [readonly]="true" titles="{{result?.rating}}"></rating>({{result?.rating}} ratings)
+                        </span>
+                        <span>
+                            {{result?.number_of_views}} Views
+                        </span>
+                    </div>
+                    <div class="mt-2 mb-2 disp-flex">
+                        <span>
+                            Created by {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}
+                        </span>
+                    </div>
+                    <div class="mt-2 mb-2 disp-flex">
+                        <span>
+                            Last updated {{ result?.postdate | date: 'MM/yyyy'}}
+                        </span>
+                    </div>
+                <!-- <h4>Author Name: {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</h4>
                 <p class="detail">{{result?.detail}}</p>
                 <rating class="rating-star-icons float_left" ngModel="{{result?.rating}}" [readonly]="true" titles="{{result?.rating}}"></rating><h5>&nbsp;&nbsp;{{result?.rating}}&nbsp;(ratings)</h5>
                 <h5>Total Views: {{result?.number_of_views}}</h5>
                 <div class="mt-2 mb-2">
                     <span>
-                    Last updated {{ result?.postdate | date: 'MM/yyyy'}}
+                        Last updated {{ result?.postdate | date: 'MM/yyyy'}}
                     </span>
-                    <!-- <rating class="rating-star-icons float_left" ngModel="{{nrating}}" [readonly]="true" titles="{{nrating}}"></rating><h4>{{flashrating}}(ratings)</h4>  -->
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
