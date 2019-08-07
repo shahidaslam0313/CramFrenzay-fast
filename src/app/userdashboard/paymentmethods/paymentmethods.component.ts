@@ -29,12 +29,12 @@ city;state;country;
   ];
   form = new FormGroup({
     cardnumber: new FormControl('', [
-      // Validators.minLength(15),
-      // Validators.maxLength(16),
+      Validators.minLength(15),
+      Validators.maxLength(16),
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
-        cardnumber4: new FormControl('', [
+    cardnumber4: new FormControl('', [
       Validators.minLength(14),
       Validators.maxLength(15),
       Validators.required,

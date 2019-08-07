@@ -3,8 +3,16 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name}}</h1>
-                <h4>Author Name: {{result?.userid}}</h4>
+                <h4>Author Name: {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</h4>
                 <p class="detail">{{result?.detail}}</p>
+                <rating class="rating-star-icons float_left" ngModel="{{result?.rating}}" [readonly]="true" titles="{{result?.rating}}"></rating><h5>&nbsp;&nbsp;{{result?.rating}}&nbsp;(ratings)</h5>
+                <h5>Total Views: {{result?.number_of_views}}</h5>
+                <div class="mt-2 mb-2">
+                    <span>
+                    Last updated {{ result?.postdate | date: 'MM/yyyy'}}
+                    </span>
+                    <!-- <rating class="rating-star-icons float_left" ngModel="{{nrating}}" [readonly]="true" titles="{{nrating}}"></rating><h4>{{flashrating}}(ratings)</h4>  -->
+                </div>
             </div>
         </div>
     </div>
@@ -206,6 +214,52 @@
                 </div>
             </div>
         </div>
+        <div class="container about-instructor">
+            <div class="row">
+                <h4 class="course-content col-sm-12 p-0"> About the instructor</h4>
+                <div class="col-sm-2 p-0 text-center">
+                     <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                    <!-- <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tcourses}} Courses</div> -->
+                    <div class="padd"><i class="fa fa-book mr-2"></i>{{subject}} Subjects</div>
+                    <div class="padd">
+                    <rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating> 
+                    </div><br/>
+
+                    <div class="padd"><i class="fa fa-star mr-2"></i>({{rating}}/5 rating)</div>
+                    <div class="padd"><i class="fa fa-book mr-2"></i>Reviews ({{treviews}} reviews)</div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Name</div>
+                                <div>{{firstname}}  {{lastname}}</div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Major</div>
+                                <div>{{major}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Interests</div>
+                                <div>{{interest}}</div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Experience</div>
+                                <div>{{experience}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-12">
+                        <div class="sub-haed">Description</div>
+                        <div>{{description}}</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
                 <h4 *ngIf="view?.reviews !=null">Reviews</h4>

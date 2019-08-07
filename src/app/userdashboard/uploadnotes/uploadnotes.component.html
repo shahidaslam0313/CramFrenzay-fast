@@ -130,7 +130,8 @@
                         <span class="btn-file margin-top-10">Upload Note Image
                              <input (change)="handleFileInput($event.target.files); onChange($event)" type="file"
                                 #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
-                                 <span  class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
+                                 <span  class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)
+                                    <input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
                         </span> 
                         <!-- <div>
@@ -138,7 +139,7 @@
                             <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
                             <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
                           </div> -->
-                          <input type="submit" class="btn-style btn margin-top-10 width100" (click)="ifImageUpload(f)" [disabled]="!f.form.valid">
+                          <input type="submit" class="btn-style btn margin-top-10 width100" (click)="uploadfiles()" [disabled]="!f.form.valid">
                       
                     </form>
                 </div>
