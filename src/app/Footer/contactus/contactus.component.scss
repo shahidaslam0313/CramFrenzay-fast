@@ -1,3 +1,8 @@
+.mainbanner {
+    margin: 20px 0 30px;
+    font-size: 36px;
+    text-shadow: none;
+}
 .mat-form-field {
     display: block
 }
@@ -7,16 +12,12 @@
     resize: none;
 }
 
-.contact_us_title>h1 {
-    margin: 20px 0 0
-}
-
 .contact-us-address p {
     color: #333;
     font-weight: 600
 }
 
-.contact-us-address h1 {
+.contact-us-address h3 {
     text-transform: capitalize;
     font-size: 30px;
     text-align: left!important
@@ -86,4 +87,8 @@
     width: 100%;
     height: 300px;
     border-radius: 8px
+}
+.contact-map{
+    padding: 20px 50px 0;
+    background: #fafafa;
 }
