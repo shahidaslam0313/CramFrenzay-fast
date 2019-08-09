@@ -44,12 +44,41 @@
               </div>
             </div>
           </div>
+          <!-- <ul class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pagination" *ngIf="pager.pages && pager.pages.length">
+
+            <li [ngClass]="{hide:pager.currentPage === 1}">
+            <a (click)="Showcourses(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+            <i class="fa fa-angle-left"></i>
+            </a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a onclick="topFunction()" (click)="Showcourses(page)" class="view-plan-details">{{page}}</a>
+            </li>
+           
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage + 3) <= pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 3)">...</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>OF</a></li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li *ngIf="pager.currentPage === pager.totalPages"> <a>OF</a></li>
+            <li *ngIf="pager.currentPage === pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color" type="Next">
+            <i class="fa fa-angle-right top-set"></i>
+            </a>
+            </li>
+            </ul> -->
         </div>
         <div class="tab-pane" id="courses">
           <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
-              *ngFor="let data of result.slice().reverse(); let i=index">
+              *ngFor="let data of ShowCourse; let i=index">
+              <!-- .slice().reverse() -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
                       src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">
@@ -76,6 +105,52 @@
               </div>
             </div>
           </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcourses(1)" class="page-link">First</a>
+                      </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcourses(pager.currentPage - 1)"
+                              class="page-link">Previous</a> </li>
+                      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                          <a (click)="Showcourses(page)" class="page-link">{{page}}</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcourses(pager.currentPage + 1)"
+                              class="page-link" type="Next">Next</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcourses(pager.totalPages)"
+                              class="page-link" type="Last">Last</a> </li>
+                  </ul>
+              </div>
+          </div>
+          <!-- <ul class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pagination" *ngIf="pager.pages && pager.pages.length">
+
+            <li [ngClass]="{hide:pager.currentPage === 1}">
+            
+            <a (click)="Showcourses(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+            <i class="fa fa-angle-left"></i>
+            </a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a onclick="topFunction()" (click)="Showcourses(page)" class="view-plan-details">{{page}}</a>
+            </li>
+           
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage + 3) <= pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 3)">...</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>OF</a></li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li *ngIf="pager.currentPage === pager.totalPages"> <a>OF</a></li>
+            <li *ngIf="pager.currentPage === pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color" type="Next">
+            
+            <i class="fa fa-angle-right top-set"></i>
+            </a>
+            </li>
+            </ul> -->
         </div>
         <div class="tab-pane" id="flashcards">
           <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>

@@ -240,7 +240,7 @@ uploadItemsToActivity() {
   }
   sweetalertupload() {
     swal({
-      text: 'Upload Book Successflluy!',
+      text: 'Upload Book Successfully!',
       title: "CramFrenzy",
       type: "success",
       showConfirmButton: false,

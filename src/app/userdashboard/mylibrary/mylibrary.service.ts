@@ -21,10 +21,10 @@ export class MylibraryService {
     this.token = this.current && this.current.token;
   }
 
-  mycourses() {
+  mycourses(page) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'course/usercourses/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'course/usercourses/' + this.current.user_id +'?page=' +page, { headers: headers }).map((response: Response) => response.json());
   }
 
   mybooks() {

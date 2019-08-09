@@ -148,6 +148,7 @@ import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
 import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 import { PendingoffersService } from './userdashboard/pendingoffers/pendingoffers.service';
+// import { PagerServicenew } from './pager.service';
 // import { NeutronRatingModule } from 'neutron-star-rating';
 // import { ChatComponent } from './chat/chat.component';
 //  import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
@@ -256,7 +257,7 @@ export class MaterialModule { }
     DataService,
     PendingoffersService,
     PagerService,
-    PagerService,
+    // PagerServicenew,
     GlobalService,
     BidHistoryService,
     MycourceService,
@@ -308,6 +309,7 @@ export class MaterialModule { }
     BookcategoryService,
     booksservice,
     detailservice,
+    PagerService,
     // Event Module
     EventsService,
     InstituteeventsService,

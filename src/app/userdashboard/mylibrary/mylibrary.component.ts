@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import swal from 'sweetalert2';
 import { uploadnotesservice } from '../uploadnotes/uploadnotes.service';
 
+import { PagerService } from 'app/paginator.service';
+
 declare const $: any;
 @Component({
   selector: 'app-mylibrary',
@@ -18,7 +20,7 @@ declare const $: any;
   styleUrls: ['./mylibrary.component.scss']
 })
 export class MylibraryComponent implements OnInit {
-  public Imageurl = Config.Imageurleach;
+  public Imageurl = Config.Imageurlget;
   public ImageUrl = Config.Imageurlupload;
   public username;
   name;
@@ -42,6 +44,9 @@ export class MylibraryComponent implements OnInit {
   private productsSource;
   currentProducts;
   book_id;
+  pager: any = {};
+ 
+ item = 20;
   image;
   bidonnotes;
   author_name;
@@ -50,6 +55,7 @@ export class MylibraryComponent implements OnInit {
   ISBN;
   subcategories;
   book_rent;
+  
   cardsid;
   price;
   profile: any = {};
@@ -92,7 +98,7 @@ export class MylibraryComponent implements OnInit {
 
   url: string | ArrayBuffer;
   accept_offer: any;
-  constructor(private newService: uploadnotesservice, public newcoures: MylibraryService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private newService: uploadnotesservice, private pagerService: PagerService,public newcoures: MylibraryService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
@@ -187,7 +193,7 @@ export class MylibraryComponent implements OnInit {
       'start_time': [''],
 
     });
-    this.Showcourses();
+    this.Showcourses(1);
     this.Showbooks();
     this.Shownotes();
     this.Showcards();
@@ -260,10 +266,17 @@ export class MylibraryComponent implements OnInit {
   //   const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
   //   this.input.append('fileToUpload', target.files[0]);
   // }
-  Showcourses() {
-    this.newcoures.mycourses().subscribe(courses => {
+  ShowCourse;
+  Showcourses(page:number) {
+  
+    this.newcoures.mycourses(page).subscribe(courses => {
       this.result = courses;
+      this.ShowCourse = courses['courses']
+      console.log(this.ShowCourse['courses'])
+      this.pager = this.pagerService.getPager(courses['totalItems'], page, 10);
     });
+    
+  
   }
   Showbooks() {
     this.newcoures.mybooks().subscribe(data => {
@@ -452,7 +465,7 @@ export class MylibraryComponent implements OnInit {
         showConfirmButton: false,
         timer: 2500
       });
-      this.Showcourses();
+      this.Showcourses(1);
     }, error => {
     });
   }
@@ -573,7 +586,7 @@ export class MylibraryComponent implements OnInit {
             timer: 2500
           });
         });
-        this.Showcourses()
+        this.Showcourses(1)
   }
 
   value: any = {};
