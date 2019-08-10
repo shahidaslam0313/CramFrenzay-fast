@@ -508,9 +508,9 @@
       </div>
       <div class="modal-body">
         <form class="user-add-ingo-form" enctype="multipart/form-data">
-          <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
+          <mat-form-field class="margin-top-10 library-edit-course"> <input matInput type="text" placeholder="Title"
               [(ngModel)]="editcourse.name" name="name" #name="ngModel"> </mat-form-field>
-          <mat-form-field> <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
+          <mat-form-field class="library-edit-course"> <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
               #detail="ngModel" name="description"></textarea> </mat-form-field>
           <!-- <mat-form-field id="categoties-font">
             <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
