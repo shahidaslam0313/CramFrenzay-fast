@@ -19,7 +19,8 @@
         <div class="tab-pane active" id="notes">
           <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes.slice().reverse(), let i=index">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Shownote">
+                <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
                       src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'">
@@ -43,6 +44,25 @@
                 </div>
               </div>
             </div>
+            <!-- Abdullah -->
+            <div class="row">
+              <div class="col-lg-12">
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Shownotes(1)" class="page-link">First</a>
+                      </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Shownotes(pager.currentPage - 1)"
+                              class="page-link">Previous</a> </li>
+                      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                          <a (click)="Shownotes(page)" class="page-link">{{page}}</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Shownotes(pager.currentPage + 1)"
+                              class="page-link" type="Next">Next</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Shownotes(pager.totalPages)"
+                              class="page-link" type="Last">Last</a> </li>
+                  </ul>
+              </div>
+          </div>
+                      <!-- Abdullah -->
+
           </div>
           <!-- <ul class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pagination" *ngIf="pager.pages && pager.pages.length">
 
@@ -77,7 +97,8 @@
           <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
-              *ngFor="let data of ShowCourse; let i=index">
+              *ngFor="let data of ShowCourse">
+              <!-- ; let i=index -->
               <!-- .slice().reverse() -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
@@ -155,7 +176,8 @@
         <div class="tab-pane" id="flashcards">
           <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card.slice().reverse(), let i=index">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showcard">
+                <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
                       src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a
@@ -179,11 +201,30 @@
               </div>
             </div>
           </div>
+           <!-- Abdullah -->
+           <div class="row">
+            <div class="col-lg-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcards(1)" class="page-link">First</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcards(pager.currentPage - 1)"
+                            class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                        <a (click)="Showcards(page)" class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcards(pager.currentPage + 1)"
+                            class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcards(pager.totalPages)"
+                            class="page-link" type="Last">Last</a> </li>
+                </ul>
+            </div>
+        </div>
+         <!-- Abdullah -->
         </div>
         <div class="tab-pane" id="book">
           <h3 class="mainbanner">Books Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books.slice().reverse(); let i=index">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showbook">
+                <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
                       src="{{Imageurl}}{{item?.book_image}}" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a class="product-list__edit-btn"
@@ -207,6 +248,24 @@
               </div>
             </div>
           </div>
+           <!-- Abdullah -->
+           <div class="row">
+            <div class="col-lg-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showbooks(1)" class="page-link">First</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showbooks(pager.currentPage - 1)"
+                            class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                        <a (click)="Showbooks(page)" class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showbooks(pager.currentPage + 1)"
+                            class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showbooks(pager.totalPages)"
+                            class="page-link" type="Last">Last</a> </li>
+                </ul>
+            </div>
+        </div>
+                    <!-- Abdullah -->
         </div>
       </div>
     </div>
@@ -224,7 +283,7 @@
         <form class="user-add-ingo-form" enctype="multipart/form-data" *ngIf="editnotes">
           <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
               [(ngModel)]="editnotes.name" #name="ngModel" name="name"> </mat-form-field>
-          <mat-form-field> <textarea matInput placeholder="Description" [(ngModel)]="editnotes.detail" #detail="ngModel"
+          <mat-form-field> <textarea matInput placeholder="Description"   [(ngModel)]="editnotes.detail" #detail="ngModel"
               name="detail"></textarea> </mat-form-field>
           <mat-form-field id="categoties-font">
             <mat-select placeholder="Select Categories" type="number" id="categories" [(ngModel)]="editnotes.categories"
@@ -453,7 +512,7 @@
               [(ngModel)]="editcourse.name" name="name" #name="ngModel"> </mat-form-field>
           <mat-form-field> <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
               #detail="ngModel" name="description"></textarea> </mat-form-field>
-          <mat-form-field id="categoties-font">
+          <!-- <mat-form-field id="categoties-font">
             <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
               [(ngModel)]="editcourse.categories" #categories="ngModel" name="categories">
               <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
@@ -472,7 +531,7 @@
               name="nestedcategory">
               <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
           <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="editcourse.accept_offer" name="accept_offer">
             Accept Offer</mat-slide-toggle>
           <div *ngIf="editcourse.accept_offer==true">
@@ -539,10 +598,10 @@
           <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
               alt="" allowmultiple="false" /> </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update Course Image <input (change)="onChange($event)" type="file"
+            <!-- <span class="btn-file ">Update Course Image <input (change)="onChange($event)" type="file"
                 [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" #course_thumbnail
-                accept="image/gif, image/jpeg, image/png" required> </span>
-            <a class="btn-style btn " (click)="update(editcourse.id)" data-dismiss="modal">Update Course</a>
+                accept="image/gif, image/jpeg, image/png" required> </span> -->
+            <a class="btn-style btn " (click)="ifCourseImageUpload()" data-dismiss="modal">Update Course</a>
           </div>
         </form>
       </div>

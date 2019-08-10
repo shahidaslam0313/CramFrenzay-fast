@@ -27,22 +27,22 @@ export class MylibraryService {
     return this.http.get(Config.api + 'course/usercourses/' + this.current.user_id +'?page=' +page, { headers: headers }).map((response: Response) => response.json());
   }
 
-  mybooks() {
+  mybooks(page) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'book/userbooks/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'book/userbooks/' + this.current.user_id +'?page=' +page, { headers: headers }).map((response: Response) => response.json());
   }
 
-  mynotes() {
+  mynotes(page) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'notesgenie/usernotes/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'notesgenie/usernotes/' + this.current.user_id +'?page=' +page, { headers: headers }).map((response: Response) => response.json());
   }
 
-  mycards() {
+  mycards(page) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'flash/userflashcards/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'flash/userflashcards/' + this.current.user_id + '?page=' +page, { headers: headers }).map((response: Response) => response.json());
   }
   mycardsdelete(id) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
@@ -75,7 +75,7 @@ export class MylibraryService {
   courseedit(id) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'course/searchusercourse/' + id + '', { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'course/searchusercourse/' + id , { headers: headers }).map((response: Response) => response.json());
   }
 
   //------------------------------------------------------Start Here With Out Token ------------------------------------------------------
@@ -89,7 +89,7 @@ export class MylibraryService {
   getnotesid(id) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get(Config.api + 'notesgenie/eachnotes/' + id + '', { headers: headers }).map((response: Response) => response.json());
+    return this.http.get(Config.api + 'notesgenie/eachnotes/' + id , { headers: headers }).map((response: Response) => response.json());
   }
 
   CoursesonHeader() {
@@ -112,6 +112,31 @@ export class MylibraryService {
   //------------------------------------------------------Ends Here With Out Token ------------------------------------------------------
 
   /////update book///
+  uploading1(id, name, author_name, categories, subcategories, nestedcategory, book_detail, book_edition, ISBN, min_amount, max_amount, sell_status, price, sell_days, bid_status, book_image, datafile ) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(Config.api + 'book/bookdel/' + id,
+      {
+        userid: this.current.user_id,
+        name: name,
+        author_name: author_name,
+        categories: categories,
+        subcategories: subcategories,
+        nestedcategory: nestedcategory,
+        book_detail: book_detail,
+        book_edition: book_edition,
+        ISBN: ISBN,
+        min_amount: min_amount,
+        max_amount: max_amount,
+        sell_status: sell_status,
+        price: price,
+        sell_days: sell_days,
+        bid_status: bid_status,
+        book_image: book_image,
+        data: datafile
+      },
+      { headers: headers })
+  }
   uploading(id, bidid, name, author_name, categories, subcategories, nestedcategory, book_detail, book_edition, ISBN, min_amount, max_amount, sell_status, price, sell_days, bid_status, book_image, datafile,
     initial_amount, end_time, isreserved, reservedprice, start_time, ) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
@@ -149,6 +174,27 @@ export class MylibraryService {
   }
 
   /////update course/////
+  updatecourse1(id,name, description, categories, subcategories, nestedcategory, min_amount, max_amount, sell_status, price, sell_days, datafile, course_thumbnail){
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(Config.api + 'course/searchusercourse/' + id,
+      {
+        userid: this.current.user_id,
+        name: name,
+        description: description,
+        categories: categories,
+        subcategories: subcategories,
+        nestedcategory: nestedcategory,
+        min_amount: min_amount,
+        max_amount: max_amount,
+        sell_status: sell_status,
+        actual_price: price,
+        sell_days: sell_days,
+        data: datafile,
+        course_thumbnail: course_thumbnail,
+      },
+      { headers: headers })
+  }
   updatecourse(id, bidid, name, description, categories, subcategories, nestedcategory, min_amount, max_amount, sell_status, price, sell_days, datafile, course_thumbnail,
     initial_amount, end_time, isreserved, reservedprice, start_time, bid_status) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
@@ -182,6 +228,29 @@ export class MylibraryService {
       { headers: headers })
   }
   //////update notes/////////
+    updatenote1(id, name, detail, categories, subcategory, nestedcategory, min_amount, max_amount,
+      sell_status, price, sell_days, notes_thumbnail, datafile, bid_status) {
+      let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
+      headers.append('Content-Type', 'application/json');
+      return this.http.put(Config.api + 'notesgenie/searchnotesbyuser/' + id,
+        {
+          userid: this.current.user_id,
+          name: name,
+          detail: detail,
+          categories: categories,
+          subcategory: subcategory,
+          nestedcategory: nestedcategory,
+          min_amount: min_amount,
+          max_amount: max_amount,
+          sell_status: sell_status,
+          price: price,
+          sell_days: sell_days,
+          notes_thumbnail: notes_thumbnail,
+          data: datafile,
+          bid_status: bid_status,
+        },
+        { headers: headers })
+  }
   updatenote(id, bidid, initial_amount, end_time, isreserved, reservedprice, start_time, name, detail, categories, subcategory, nestedcategory, min_amount, max_amount,
     sell_status, price, sell_days, notes_thumbnail, datafile, bid_status) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.token });
@@ -218,7 +287,25 @@ export class MylibraryService {
   }
 
   ///////////////update flash cards////////////
-
+  uploadcard1(id, name, no_of_terms, category, subcategory, nestedcategory, min_amount, max_amount, bid_status, price, flashcard_image){
+    let headers = new Headers({ 'Authorization': ' JWT ' + this.current.token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(Config.api + 'flash/searchflashbyuser/' + id,
+      {
+        user_id: this.current.user_id,
+        name: name,
+        no_of_terms: no_of_terms,
+        category: category,
+        subcategory: subcategory,
+        nestedcategory: nestedcategory,
+        min_amount: min_amount,
+        max_amount: max_amount,
+        bid_status: bid_status,
+        price: price,
+        flashcard_image: flashcard_image,
+      },
+      { headers: headers })
+  }
   uploadcard(id, bidid, name, no_of_terms, category, subcategory, nestedcategory, min_amount, max_amount, bid_status, price, flashcard_image, initial_amount, end_time, isreserved, reservedprice, start_time) {
     let headers = new Headers({ 'Authorization': ' JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
