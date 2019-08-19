@@ -32,6 +32,10 @@ export class MylibraryComponent implements OnInit {
   input;
   bid_status;
   id;
+  notespage: boolean = true;
+  coursepage: boolean = false;
+  bookpage: boolean = false;
+  fcardpage: boolean = false;
   modal: any = {};
   c_name;
   bookID;
@@ -45,6 +49,7 @@ export class MylibraryComponent implements OnInit {
   currentProducts;
   book_id;
   pager: any = {};
+  Showcoursespager:any={};
 
   item = 20;
   image;
@@ -55,7 +60,7 @@ export class MylibraryComponent implements OnInit {
   ISBN;
   subcategories;
   book_rent;
-
+  
   cardsid;
   price;
   profile: any = {};
@@ -194,11 +199,11 @@ export class MylibraryComponent implements OnInit {
       'start_time': [''],
 
     });
-    this.Showcourses(1);
-    this.Showbooks(1);
+    // this.Showcourses(1);
+    // this.Showbooks(1);
     this.Shownotes(1);
-    this.Showcards(1);
-    this.courses();
+    // this.Showcards(1);
+    // this.courses();
     // this.clickcardsedit(this.id);
     // this.singlenotes(this.id);
     // this.notesss(this.id);
@@ -275,21 +280,27 @@ export class MylibraryComponent implements OnInit {
     this.newcoures.mycourses(page).subscribe(courses => {
       this.result = courses;
       this.ShowCourse = courses['courses']
-      console.log(this.ShowCourse)
-      this.pager = this.pagerService.getPager(courses['totalItems'], page, 8);
+      console.log(this.ShowCourse,'showcourse')
+      console.log(this.result['totalItems'],'result')
+      // this.coursepage = true;
+      this.pager = this.pagerService.getPager(this.result['totalItems'], page, 8);
+      // alert(this.coursepage)
+    
     });
   }
   Showbook;
   Showbooks(page: number) {
-    // if (page < 1 || page > this.pager.totalPages) {
-    //   return;
-    // }
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
     this.newcoures.mybooks(page).subscribe(data => {
       this.books = data;
       this.Showbook = data['courses']
       console.log(this.Showbook)
-      this.pager = this.pagerService.getPager(data['totalItems'], page, 8);
+      // this.bookpage = true;
+      this.pager = this.pagerService.getPager(this.books['totalItems'], page, 8);
       console.log(this.pager)
+      // alert(this.bookpage)
     });
   }
   Shownote;
@@ -301,10 +312,21 @@ export class MylibraryComponent implements OnInit {
       this.notes = notes;
       this.Shownote = notes['courses']
       console.log(this.Shownote)
-      this.pager = this.pagerService.getPager(notes['totalItems'], page, 8);
-
+      // this.notespage = true;
+      this.pager = this.pagerService.getPager(this.notes['totalItems'], page, 8);
+      //  alert(this.pager)
     });
   }
+
+  // setTrending(page: number) {
+  //   if (page < 1 || page > this.pager.totalPages) {
+  //     return;
+  //   }
+  //   this.seemore.TrendingNotes(page).subscribe(data => {
+  //     this.trendingnotes = data;
+  //     this.pager = this.pagerService.getPager(this.trendingnotes['totalItems'], page, 10);
+  //   });
+  // };
   notesss(id) {
     this.newcoures.getnotesid(id).subscribe(notes => {
       this.bidnotes = notes;
@@ -339,8 +361,9 @@ export class MylibraryComponent implements OnInit {
       this.card = card;
       this.Showcard = card['courses']
       console.log(this.Showcard)
-      this.pager = this.pagerService.getPager(card['totalItems'], page, 8)
-
+      // this.fcardpage = true;
+      this.pager = this.pagerService.getPager(this.card['totalItems'], page, 8)
+      // alert(this.fcardpage)
     });
 
 
