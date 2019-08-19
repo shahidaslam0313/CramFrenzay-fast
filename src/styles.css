@@ -2845,7 +2845,10 @@ countdown .countdown {
 .signup-login-fonts .mat-form-field-label {
     top: 1.8em
 }
-
+.library-edit-course .mat-form-field-label {
+    top: 0;
+    margin: 0;
+}
 .sh-signup-form-fix .mat-error strong {
     font-weight: 700;
 }
