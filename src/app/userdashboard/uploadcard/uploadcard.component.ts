@@ -13,6 +13,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
 import { GlobalService } from '../../global.service';
 
+
 declare const $: any;
 
 @Component({
@@ -45,7 +46,7 @@ export class UploadcardComponent implements OnInit {
   addEvent;
   events;
   name;
-  accept_offer: boolean = false;
+  accept_offer: boolean = true;
   sell_days;
   end_time;
   public min_amount;
@@ -198,7 +199,9 @@ this.getindcardname();
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
       this.newcard.uploadcard(this.model.name,this.fileName,this.model ,this.sell_status, this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount, this.initial_amount,this.reservedprice, this.bid_status)
+      
       .subscribe(Res => { });
+      
     f.resetForm();
     }
   onSubmited(form: NgForm) {
