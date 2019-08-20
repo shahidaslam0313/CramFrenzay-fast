@@ -1,7 +1,8 @@
 <!-- subcatgory -->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Sub-Categories in {{c_name}}</h1> -->
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
             <div class="product-list__item">
@@ -25,7 +26,8 @@
 
 <div class="container">
     
-    <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Notes Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{c_name}}</h1> -->
     <h4 class="text-center bg-Bid-Notes" *ngIf="eachnotes?.length =='0'">No Notes in {{c_name}}</h4>
     <div class="row" *ngIf="eachnotes?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachnotes; let i=index">
@@ -47,7 +49,8 @@
 <!-- course sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Sub-Categories in {{c_name}}</h1> -->
     <h4  class="text-center bg-Bid-Notes" *ngIf="eachcourse?.length =='0'">No Courses in {{c_name}}</h4>
     <div class="row " *ngIf="eachcourse?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachcourse; let i=index">
@@ -69,7 +72,8 @@
 <!-- crads sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Flash Cards Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Flash Cards Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Flash Cards Sub-Categories in {{c_name}}</h1> -->
     <h4 class="text-center bg-Bid-Notes" *ngIf="eachcards?.length =='0'">No Flash Cards in {{c_name}}</h4>
     <div class="row" *ngIf="eachcards?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachcards; let i=index">
@@ -91,7 +95,8 @@
 <!-- book sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Books Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Books Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Books Sub-Categories in {{c_name}}</h1> -->
     <h4 class="text-center bg-Bid-Notes" *ngIf="eachbook?.length =='0'">No Books in {{c_name}}</h4>
     <div class="row" *ngIf="eachbook?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachbook; let i=index">
