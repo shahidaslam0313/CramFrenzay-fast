@@ -159,6 +159,27 @@ export class NotesgenieComponent implements OnInit {
     window.scroll(0,0);
     this.global.currentMessage.subscribe(message => this.message = message);
     window.scroll(0, 0)
+
+
+    // $(".search-bg__text").click(function(){
+    //   $(".search-results").css({"display": "block"});
+    // });
+
+
+
+
+    $(".search-bg__text").keyup(function() {
+      var x = document.getElementById('showSearchDiv');
+      if($(this).val() == "") {
+        x.style.display = 'none';
+      } else {
+        x.style.display = 'block';
+      }
+    });
+  
+
+
+
   }
   Slider() {
     this.global.InnerslideronMainPage().subscribe(Res => {

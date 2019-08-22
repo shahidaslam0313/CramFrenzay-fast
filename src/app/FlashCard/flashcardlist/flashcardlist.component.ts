@@ -15,7 +15,7 @@ import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { NgForm } from '@angular/forms';
-
+declare const $: any;
 @Component({
   selector: 'app-flashcardlist',
   templateUrl: './flashcardlist.component.html',
@@ -130,6 +130,19 @@ export class FlashcardlistComponent implements OnInit {
     this.trendingflash();
     this.topratedflash();
     this.recentflash();
+
+
+    $(".search-bg__text").keyup(function() {
+      var x = document.getElementById('showSearchDiv');
+      if($(this).val() == "") {
+        x.style.display = 'none';
+      } else {
+        x.style.display = 'block';
+      }
+    });
+
+
+
   }
 
   Slider() {

@@ -218,9 +218,9 @@ export class MainpageComponent implements OnInit {
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 780,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 3,
               slidesToScroll: 2
             }
           },
