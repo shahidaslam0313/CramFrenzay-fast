@@ -3,16 +3,84 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name}}</h1>
-                <h4>Author Name:{{result?.userid}}</h4>
+                <div class="mt-2 mb-2 disp-flex">
+                        <span class="mr-5">
+                            <rating class="rating-icons" ngModel="{{result?.rating}}" [readonly]="true" titles="{{result?.rating}}"></rating>({{result?.rating}} ratings)
+                        </span>
+                        <span>
+                            {{result?.number_of_views}} Views
+                        </span>
+                    </div>
+                    <div class="mt-2 mb-2 disp-flex">
+                        <span>
+                            Created by {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}
+                        </span>
+                    </div>
+                    <div class="mt-2 mb-2 disp-flex">
+                        <span>
+                            Last updated {{ result?.postdate | date: 'MM/yyyy'}}
+                        </span>
+                    </div>
+                <!-- <h4>Author Name: {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</h4>
                 <p class="detail">{{result?.detail}}</p>
+                <rating class="rating-star-icons float_left" ngModel="{{result?.rating}}" [readonly]="true" titles="{{result?.rating}}"></rating><h5>&nbsp;&nbsp;{{result?.rating}}&nbsp;(ratings)</h5>
+                <h5>Total Views: {{result?.number_of_views}}</h5>
+                <div class="mt-2 mb-2">
+                    <span>
+                        Last updated {{ result?.postdate | date: 'MM/yyyy'}}
+                    </span>
+                </div> -->
             </div>
         </div>
     </div>
 </div>
 <div class="container padding-top-40">
     <div class="row">
-        <div class="col-lg-8 col-md-8">
-            <div class="What-will-i-learn">
+        <div class="col-lg-8 col-md-8 p-0">
+                <div class="container about-instructor">
+                        <div class="row">
+                            <h4 class="course-content col-sm-12 p-0"> About the instructor</h4>
+                            <div class="col-sm-3 p-0 text-center">
+                                 <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                                <!-- <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tcourses}} Courses</div> -->
+                                <div class="padd"><i class="fa fa-book mr-2"></i>{{subject}} Subjects</div>
+                                <div class="padd">
+                                    <rating class="rating-icons" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating> 
+                                    ({{rating}}/5 rating)
+                                </div>
+                                <div class="padd"><i class="fas fa-search-location mr-2"></i>Reviews ({{treviews}} reviews)</div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                            <div class="sub-haed">Name</div>
+                                            <div>{{firstname}}  {{lastname}}</div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                            <div class="sub-haed">Major</div>
+                                            <div>{{major}}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                            <div class="sub-haed">Interests</div>
+                                            <div>{{interest}}</div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                            <div class="sub-haed">Experience</div>
+                                            <div>{{experience}}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-sm-12">
+                                    <div class="sub-haed">Description</div>
+                                    <div>{{description}}</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+            <!-- <div class="What-will-i-learn">
                 <div class="What-will-i-learn__content">
                     <div class="What-will-i-learn__title"> What Will I Learn? </div>
                     <ul class="What-will-i-learn__items">
@@ -36,8 +104,8 @@
                                 users</span> </li>
                     </ul>
                 </div>
-            </div>
-            <div class="reviews-ans" *ngIf="result?.bidpaid==true || result?.paid==true">
+            </div> -->
+            <!-- <div class="reviews-ans" *ngIf="result?.bidpaid==true || result?.paid==true">
                 <div class="row background-grey">
                     <div class="col-lg-12">
                         <h4>Rate this Note </h4>
@@ -65,7 +133,7 @@
                     
                     <div class="col-lg-12">
                         <form name="form" role="form" method="post" [formGroup]="reviewform" #f="ngForm">
-                            <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a Review"
+                            <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a review"
                                 name="comment" [(ngModel)]="model.comment" clear-field formControlName="comment"
                                 required></textarea>
                             <mat-error *ngIf="reviewform.controls.comment.touched && reviewform.controls.comment.invalid">
@@ -78,25 +146,29 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="col-lg-4 col-md-4 card-1">
-            <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.notes_thumbnail}}"
-                    alt="Notes Image">
-                <div class="card-body">
-                    <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
+            <div class="card each-card">
+                <div class="palyimg-div">
+                    <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.notes_thumbnail}}"
+                        alt="Notes Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
+                </div>
+                <div class="card-body text-center">
+                    <h3 class="card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
+                    <h5 class="card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Note Already Bought</a>
-                        <p class="already-bought" *ngIf="result?.isTeacher==true">
-                                Note add by me </p> <a class="card-btn"
+                         <div class=""><p class="already-bought" *ngIf="result?.isTeacher==true">
+                                        Note Added by me </p>
+                                    </div>   <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkmainpage(result?.id)">Buy
                         Now</a> <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"
                         (click)="cart(nullvalue, nullvalue, nullvalue, Eid)">Add to Cart</a>
-                    <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
+                    <div> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true && result?.isTeacher==true"
                             data="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf" type="application/pdf">
                             <a class="fa fa-file-pdf" href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">
                                 &nbsp;View pdf</a> </button>
-                        <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
+                        <h4 class="card-para">30-Day Money-Back Guarantee</h4>
                     </div>
                     <hr>
                     <div class="card-footer">
@@ -106,7 +178,7 @@
                             <li> <a class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
                             <li> <a class="pinterest"> <i class="fab fa-pinterest"></i> </a> </li>
                         </ul>
-                        <div><a class="fb-like" [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></a></div>
+                        <div><a class="fb-like"  [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></a></div>
                     </div>
                 </div>
             </div>
@@ -202,33 +274,43 @@
                 </div>
             </div>
         </div>
+        
+
         <div class="col-lg-8 col-sm-12" >
             <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
+                <h4 *ngIf="view?.reviews !=null">Reviews</h4>
                 <div *ngFor="let reviews of view?.reviews">
                     <div class="card" *ngIf="reviews !=null">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                    <p class="text-secondary review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
-                                    <p> </p>
+                                    
+                                   
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
                                     <div class="clearfix"></div>
                                     <p>{{reviews?.comment }}</p>
                                 </div>
+                            <div class="col-md-3 review-3">
                                 <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                             
+                                <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
                             </div>
+                        </div>
                         </div>
                     </div>
   
                 </div>
                 
             </div>
-            <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
-            </div>
+            <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Note.gif">
+            </div> -->
+            <!-- <div class="" *ngIf="view==0"> 
+                    <h1>qertr3yewurywh</h1>
+                    <h4>Reviews</h4>
+                    <h4>No one has reviewed this course</h4>
+                    <img src="../../../assets/img/Course.gif">
+                </div> -->
         </div>
     </div>
     

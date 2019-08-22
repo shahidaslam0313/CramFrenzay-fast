@@ -3,15 +3,89 @@
         <div class="row">
             <div class="col-lg-8 col-lg-8 upper-banner-contact">
                 <h1>{{result?.name | titlecase}}</h1>
-                <h4>Author Name:{{result?.author| titlecase}}</h4>
-                <p class="detail">{{result?.description}}</p>
+                <div class="mt-2 mb-2">
+                    <span class="mr-5">
+                        <rating class="rating-star-icons float_left" ngModel="{{starview}}" [readonly]="true" titles="{{starview}}"></rating>
+                    </span>
+                    <span class="mr-5">
+                          {{creview}} Reviews
+                    </span>
+                    <span>
+                        {{student}} Students Enrolled
+                    </span>
+                </div>
+                <div class="mt-2 mb-2">
+                    <span>
+                        Created by {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}
+                    </span>
+                </div>
+                <div class="mt-2 mb-2">
+                    <span>
+                        Last updated {{ cdate | date: 'MM/yyyy'}}
+                    </span>
+                </div>
+               
+                <!-- <h4>Author Name: <span> {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</span></h4>
+                <h4>Reviews: <span> {{ tutorreview | titlecase}} reviews</span></h4>
+                <h4>Course Rating: <span> {{result?.rating}} rating</span></h4>
+                <h4>Student: <span> {{student}} students</span></h4>
+                <p class="detail">{{result?.description}}</p> -->
             </div>
         </div>
     </div>
 </div>
 <div class="container padding-top-40">
     <div class="row">
-        <div class="col-lg-8 col-md-8">
+            <!-- <div class="col-lg-8" *ngIf="lecture==0"> -->
+                    <div class="col-lg-8" *ngIf="!getchapter">
+                        
+                    <!-- *ngIf="view==0" -->
+                <h1>No Videos Found</h1>
+                </div>
+                <div class="col-lg-8" *ngIf="getchapter">
+                    <div class="course-content">Course content
+                        <div class="course-time">
+                            <span *ngIf="!time">00:00:00</span> <span>{{time}}</span>&nbsp;&nbsp;&nbsp;
+                            <span *ngIf="!totalvid">0 Chapter</span> <span>{{totalvid}} Lectures</span>
+                        </div>
+                    </div>
+                    <div class="panel-group float-left width100">
+                        <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" href="#collapse1"
+                                        attr.data-target="#a{{i}}"> <div class="chap-name">{{data?.chapters.chapter_name}}</div>
+                                       <div class="chap-time"> <span class="" *ngIf="data?.chapters.Lectures">{{data?.chapters.Lectures}} Lectures</span> <span class="float-right" *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
+                                        </div>
+                                        
+                                        
+                                    </a> </h4>
+                                    
+                            </div>
+                            <div attr.id=a{{i}} class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="float_left"> </div>
+                                    <table class="table" *ngIf="videos">
+                                        <tbody>
+                                            <tr *ngFor="let video of videos; let j=index"> <a>
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id"   class="td1"><i class="fa fa-play-circle"
+                                                    (click)="SetVideoURL(video?.video_url,video?.allow_to_view)"></i>{{video.video_title}}</td>
+                                                    <!-- <td><div *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet> </div></td> -->
+                                                    <!-- <td *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</td> -->
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td23" >{{video?.video_minutes}}Min</td>
+                                                    <!-- <td *ngIf="video.allow_to_view==true" class="td23" > Preview</td> -->
+                                                    <td *ngIf="data?.chapters.id===video.chapter_id" class="td23">{{video?.video_size}}Size
+                                                    </td>
+                                                    
+                                                </a> </tr>
+                                                <div class="no-video" *ngIf="data?.chapters.Lectures==0"> No Videos Found Yet</div>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- <div class="col-md-9 float-right course-tab"> <div class="tab-content"> <div class="tab-pane" id="home1"> <div class="lec-info float-right"> <span *ngIf="!time">Total Time:00:00:00</span> <span>Total Time:{{time}}</span> <span *ngIf="!totalvid">Total Chapters: 0</span> <span>Total Chapters:{{totalvid}}</span> </div></div></div></div>-->
+                </div>
+        <!-- <div class="col-lg-8 col-md-8">
             <div class="What-will-i-learn">
                 <div class="What-will-i-learn__content">
                     <div class="What-will-i-learn__title"> What Will I Learn? </div>
@@ -64,7 +138,7 @@
                     </div>
                     <div class="col-lg-12">
                         <form name="form" role="form" method="post" [formGroup]="reviewform" #f="ngForm">
-                            <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a Review"
+                            <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a review"
                                 name="comment" [(ngModel)]="model.comment" clear-field formControlName="comment"
                                 required></textarea>
                             <mat-error *ngIf="reviewform.controls.comment.touched && reviewform.controls.comment.invalid">
@@ -78,23 +152,31 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="col-lg-4 col-md-4 card-1">
-            <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}"
-                    alt="Course Image">
-                <div class="card-body">
-                    <h3 class="text-center card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
-                    <h5 class="text-center card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
+            <div class="card each-card">
+                    <!-- <img class="card-img-top"  *ngIf="!introvi src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">  -->
+                <div class="palyimg-div" *ngIf="introvideo?.video_url || !introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url,video?.allow_to_view)">
+                        <i class="fas fa-play"></i>
+                        <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">
+                    
+                </div>
+                
+                    <!-- <i class="fa fa-play-circle" *ngIf="introvideo?.video_url" (click)="SetVideoURL(introvideo?.video_url)"></i>{{introvideo?.video_title}} -->
+                <div class="card-body text-center">
+                    <h3 class="card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
+                    <h5 class="card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
                         *ngIf="result?.bidpaid==true || result?.paid==true">Course Already Bought</a> <a class="card-btn"
                         *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="courses(result?.id)">Buy Now</a>
                     <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false"  (click)="cart(nullvalue, courseId, nullvalue, nullvalue)">Add
                         to Cart</a>
-                        <a class="text-center already-bought" *ngIf="result?.isTeacher==true">
-                            Course Added by Me </a>  
-                    <h4 class="text-center card-para ">30-Day Money-Back Guarantee</h4>
+                        <div class="">
+                        <p class="already-bought" *ngIf="result?.isTeacher==true">
+                            Course Added by Me </p>  </div>
+                    <h4 class="card-para ">30-Day Money-Back Guarantee</h4>
                 </div>
                 <hr>
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <h1 class="text-center">Share This Course</h1>
                     <ul class="card-footer-social-icon">
                         <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
@@ -105,109 +187,113 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-                <div class="row">
-                    <div class="col-lg-12" *ngIf="!getchapter">
-                        <h1>No courses upload by{{result?.author| titlecase}}</h1>
+</div>
+  <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif"></div> -->
+                     
+   <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
+
+        <h4 class="card-para ">30-Day-Back Guarantee</h4>
+    </div> -->
+
+    <div class="container about-instructor">
+            <div class="row">
+                <h4 class="course-content col-sm-12 p-0"> About the instructor</h4>
+                <div class="col-sm-2 p-0 text-center">
+                    <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                    <!-- <img src="{{profileurl}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> -->
+                    <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tcourses}} Courses</div>
+                    <div class="padd"><i class="fa fa-book mr-2"></i>{{subject}} Subjects</div>
+                    <div class="padd">
+                        <rating class="rating-icons" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating>
+                        ({{rating}}/5 rating)
                     </div>
-                    <div class="col-lg-12" *ngIf="getchapter">
-                        <h1>Course content</h1> <span *ngIf="!time">Total Time:00:00:00</span> <span>Total Time:{{time}}</span>
-                        <span *ngIf="!totalvid">Total Chapters: 0</span> <span>Total Chapters:{{totalvid}}</span>
-                        <div class="panel-group float-left width100 course-tab">
-                            <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" href="#collapse1"
-                                            attr.data-target="#a{{i}}"> <span>{{data?.chapters.chapter_name}}</span>
-                                            <div class="mr-5 float_right"> <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
-                                            </div>
-                                        </a> </h4>
-                                </div>
-                                <div attr.id=a{{i}} class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="float_left"> </div>
-                                        <table class="table table-hover" *ngIf="videos">
-                                            <tbody>
-                                                <tr *ngFor="let video of videos; let j=index"> <a>
-                                                        <td *ngIf="data?.chapters.id===video.chapter_id"><i class="fa fa-play-circle"
-                                                                (click)="SetVideoURL(video.video_url)"></i>{{video.video_title}}</td>
-                                                        <td *ngIf="data?.chapters.id===video.chapter_id"><a>{{video?.video_minutes}}Min</a></td>
-                                                        <td *ngIf="video.allow_to_view==true"> Preview</td>
-                                                        <td *ngIf="data?.chapters.id===video.chapter_id">{{video?.video_size}}Size
-                                                        </td>
-                                                    </a> </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- <div class="col-md-9 float-right course-tab"> <div class="tab-content"> <div class="tab-pane" id="home1"> <div class="lec-info float-right"> <span *ngIf="!time">Total Time:00:00:00</span> <span>Total Time:{{time}}</span> <span *ngIf="!totalvid">Total Chapters: 0</span> <span>Total Chapters:{{totalvid}}</span> </div></div></div></div>-->
-                    </div>
+                    <div class="padd"><i class="fas fa-search-location mr-2"></i>Reviews ({{treviews}} reviews)</div>
                 </div>
-        <!-- <div class="col-lg-8 col-sm-12">
-            <div class="background-grey review-section ">
-                <h4>Reviews</h4>
-                <div *ngFor="let reviews of view?.reviews">
-                    <div *ngIf="reviews !=null">
-                        <div class="review-container">
-                            <div class="user-image"> <span>AT</span> </div>
-                            <div>
-                                <div class="user-name"> <span>Anas Tahir</span> </div>
-                                <div class="time-to-go">
-                                    <div> <span>{{reviews?.commentDate | date:'medium'}}</span> </div>
-                                    <div class="review-box">
-                                        <div class="rating float_left width100">
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star-half filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Name</div>
+                                <div>{{firstname}}  {{lastname}}</div>
                         </div>
-                        <div class="review-body">
-                            <p>{{reviews?.comment}}</p>
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Major</div>
+                                <div>{{major}}</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div> -->
-        <div class="col-lg-8 col-sm-12" >
-            <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
-                <div *ngFor="let reviews of view?.reviews">
-                    <div class="card" *ngIf="reviews !=null">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                    <p class="text-secondary review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
-                                    <p> </p>
-                                </div>
-                                <div class="col-md-8">
-                                    <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
-                                    <div class="clearfix"></div>
-                                    <p>{{reviews?.comment }}</p>
-                                </div>
-                                <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                             
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Interests</div>
+                                <div>{{interest}}</div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="sub-haed">Experience</div>
+                                <div>{{experience}}</div>
                         </div>
                     </div>
-  
+                    <div class="row">
+                            <div class="col-sm-12">
+                        <div class="sub-haed">Description</div>
+                        <div>{{description}}</div>
+                    </div>
                 </div>
-                
-            </div>
-            <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Course.gif">
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        
 
-    <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
-    </div> -->
+    <div class="container">
+            <!-- <div class="row">
+                
+            </div> -->
+            <div class="row">
+    <div class="col-lg-8 col-sm-12" >
+        <div class="background-grey review-section margin-bottom-20 float_left">
+            <h4 *ngIf="view?.reviews !=null">Reviews </h4>
+            <!-- <h4 *ngIf="view?.reviews ==null">Reviews not found yet</h4> -->
+            <div *ngFor="let reviews of view?.reviews">
+                <div class="card" *ngIf="reviews !=null">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+                            </div>
+                            <div class="col-md-7">
+                                <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
+                                <div class="clearfix"></div>
+                                <p>{{reviews?.comment }}</p>
+                            </div>
+                            <div class="col-md-3 review-3">
+                                <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
+                                <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            
+        </div>
+        <!-- <div *ngIf="view==0"> 
+            
+            <div class="course-content">Reviews</div>
+            <h4>No one has reviewed this course</h4>
+            <img src="../../../assets/img/Course.gif">
+        </div> -->
+    </div>
+    </div>
+    </div>
+<!-- <div class="each-upper-banner">
+    <div class="container"> -->
+
+
+            <!-- subject;
+            description;
+            school;
+            graduating;
+            major;
+            residence;
+            interest;
+            experience;
+            rating; -->
+        <!-- <h4>About the instuctor</h4> -->
+        <!-- <img src="{{profileurl}}{{getresult?.profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">  -->
+    <!-- </a> -->

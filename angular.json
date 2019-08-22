@@ -82,9 +82,7 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.min.js"
-            ],
+            "scripts": [ ],
             "styles": [
             ],
             "assets": [

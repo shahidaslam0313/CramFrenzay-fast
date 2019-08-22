@@ -1,6 +1,6 @@
-<div class="container-fluid padding-0">
+<div class="container-fluid padding-0 pt-3">
     <!-- <h1 class="mainbanner">{{name}}</h1> -->
-    <ul class="nav nav-tabs nav-justified fcdetail">
+    <ul class="nav nav-tabs nav-justified fcdetail pb-2">
         <li class="nav-item"> <a data-toggle="tab" href="#listofterms" class="nav-link nav-active active" title="List of Terms">List
                 of Terms</a> </li>
         <li class="nav-item"> <a data-toggle="tab" href="#flipflashcards" id="flipFlash" class="nav-link nav-active"
@@ -16,15 +16,15 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped css-serial">
                         <tr>
+                            
                             <th>Sr# </th>
                             <th>Terms</th>
                             <th>Definition</th>
                         </tr>
                         
                         <tr *ngFor="let data of flashCardTermsDefinitionsData; let i=index">
-                            <td>
-                                <ol type="1"></ol>
-                            </td>
+                            
+                            <td>{{i+1}}</td>
                             <td>{{data.title | titlecase}}</td>
                             <td>{{data.definition | titlecase}}</td>
                             
@@ -41,10 +41,9 @@
                     <div class="item" *ngFor="let data of flashCardTermsDefinitionsData; let i=index">
                         <ng-container>
                             <div class="fc-div">
-                                <div class="fc-detail">
                                     <p class="fc-text"> Term:{{data?.title}}<br>Definition:{{data?.definition}}</p>
-                                </div><img class="fc-img" src="https://storage.cramfrenzy.com/images/{{flashcardDetail?.flashcard_image}}"
-                                    alt="FlashCard Image">
+                                <img class="fc-img" src="https://storage.cramfrenzy.com/Thumbnail/{{flashcardDetail?.flashcard_image}}"
+                                    alt="FlashCard Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
                             </div>
                         </ng-container>
                     </div>
@@ -58,16 +57,93 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-8 upper-banner-contact">
                             <h1>{{flashcardDetail?.name | titlecase}}</h1>
-                            <h4>Author Name:{{flashcardDetail?.user_id | titlecase}}</h4>
-                            <p>Number of Terms:{{flashcardDetail?.no_of_terms}}</p>
+                            <div class="mt-2 mb-2 disp-flex">
+                                    <span class="mr-5">
+                                        <rating class="rating-star-icons float_left" ngModel="{{flashrating}}" [readonly]="true" titles="{{flashrating}}"></rating>({{flashrating}} ratings)
+                                    </span>
+                                    <span class="mr-5">
+                                        {{fcardreviews}} Reviews
+                                    </span>
+                                    <span class="mr-5">
+                                        {{tviews}} Views
+                                    </span>
+                                    <span>
+                                        {{flashcardDetail?.no_of_terms}} Number of Terms
+                                    </span>
+                                </div>
+                                <div class="mt-2 mb-2 disp-flex">
+                                    <span>
+                                        Created by {{firstname | titlecase}} {{lastname | titlecase}}
+                                    </span>
+                                </div>
+                                <div class="mt-2 mb-2 disp-flex">
+                                    <span>
+                                        Last updated {{ cdate | date: 'MM/yyyy'}}
+                                    </span>
+                                </div>
+                            <!-- <h4>Author Name: {{firstname | titlecase}} {{lastname | titlecase}}</h4>
+                            <rating class="rating-star-icons float_left" ngModel="{{flashrating}}" [readonly]="true" titles="{{flashrating}}"></rating><h4>{{flashrating}}(ratings)</h4>
+                            <h4>Total Views: {{tviews}}</h4>
+                            <h4>Total Reviews: {{fcardreviews}}</h4>                           
+                            <p>Number of Terms: {{flashcardDetail?.no_of_terms}}</p>
+                            <div class="mt-2 mb-2">
+                                <span>
+                                    Last updated {{ cdate | date: 'MM/yyyy'}}
+                                </span>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row my-5">
-                    <div class="col-lg-8 col-md-8">
-                        <div class="What-will-i-learn">
+                    <div class="col-lg-8 col-md-8 p-0">
+                            <div class="container about-instructor">
+                                    <div class="row">
+                                        <h4 class="course-content col-sm-12 p-0">About the instructor</h4>
+                                        <div class="col-sm-3 p-0 text-center">
+        
+                                            <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                                            <!-- <div class="padd"><i class="fa fa-eye mr-2"></i>{{tviews}} views</div> -->
+                                            <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tflashcards}} FlashCards</div>
+                                            <div class="padd"><i class="fas fa-search-location mr-2"></i>Reviews ({{treviews}} reviews)</div>
+                                            <!-- <div class="padd"><i class="fas fa-play-circle mr-2"></i><rating class="rating-star-icons float_left" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating></i>Rating</div> -->
+                                            <div class="padd">
+                                                    <rating class="rating-icons" ngModel="{{rating}}" [readonly]="true" titles="{{rating}}"></rating>
+                                                    ({{rating}}/5 rating)
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Name</div>
+                                                        <div>{{firstname}}  {{lastname}}</div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Major</div>
+                                                        <div>{{major}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Interests</div>
+                                                        <div>{{interest}}</div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                        <div class="sub-haed">Experience</div>
+                                                        <div>{{experience}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-sm-12">
+                                                <div class="sub-haed">Description</div>
+                                                <div>{{description}}</div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        <!-- <div class="What-will-i-learn">
                             <div class="What-will-i-learn__content">
                                 <div class="What-will-i-learn__title"> What Will I Learn? </div>
                                 <ul class="What-will-i-learn__items">
@@ -94,8 +170,8 @@
                                             and process credit card payments from users</span> </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="reviews-ans" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">
+                        </div> -->
+                        <!-- <div class="reviews-ans" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">
                             <div class="row background-grey">
                                 <div class="col-lg-12">
                                     <h4>Rate this course </h4>
@@ -125,38 +201,41 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <form name="form" role="form" method="post" [formGroup]="reviewform" #f="ngForm">
-                                        <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a Review"
+                                        <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a review"
                                             name="comment" [(ngModel)]="model.comment" clear-field formControlName="comment"
                                             required></textarea>
                                         <mat-error *ngIf="reviewform.controls.comment.touched && reviewform.controls.comment.invalid">
                                             <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review
                                                 cannot be empty </mat-error>
                                         </mat-error>
-                                        <div class="text-right review-button"> <a class="margin-top-10 Reviewbtn-style btn"
+                                        <div class="text-right review-button"> <a class="margin-top-10 Review btn-style btn"
                                                 title="Submit " (click)="reviews(rate, comment, nullvalue, nullvalue, flashcardDetail.id, nullvalue, f)">
                                                 <span> <i class="far fa-thumbs-up"></i> Review </span> </a> </div>
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-4 col-md-4 card-1">
-                        <div class="card each-card"> <img class="card-img-top" src="https://storage.cramfrenzy.com/images/{{flashcardDetail?.flashcard_image}}"
-                                alt="FlashCard Image">
-                            <div class="card-body">
-                                <h3 class="text-center card-title current-card-price">{{flashcardDetail?.discount |
+                        <div class="card each-card">
+                            <div class="palyimg-div">
+                                <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{flashcardDetail?.flashcard_image}}"
+                                    alt="FlashCard Image">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title current-card-price">{{flashcardDetail?.discount |
                                     currency:'USD'}}</h3>
-                                <h5 class="text-center card-title old-card-price">{{flashcardDetail?.price |
+                                <h5 class="card-title old-card-price">{{flashcardDetail?.price |
                                     currency:'USD'}}</h5> <a class="card-btn" *ngIf="flashcardDetail?.bidpaid==true || flashcardDetail?.paid==true">Flash
                                     Card Already Bought</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false && flashcardDetail?.isTeacher==false"
                                     (click)="checkfcdetail()">Buy Now</a> <a class="card-btn" *ngIf="flashcardDetail?.paid==false && flashcardDetail?.bidpaid==false&& flashcardDetail?.isTeacher==false"
                                     (click)="cart(nullvalue, nullvalue, flashId, nullvalue)">Add to Cart</a>
-                                    <p class="already-bought" *ngIf="flashcardDetail?.isTeacher==true">
-                                        Flash Card Added by Me </p>
-                                <h4 class="text-center card-para">30-Day Money-Back Guarantee</h4>
+                                    <div class=""><p class="already-bought" *ngIf="flashcardDetail?.isTeacher==true">
+                                        Flash Card Added by Me </p></div>
+                                <h4 class="card-para">30-Day Money-Back Guarantee</h4>
                             </div>
                             <hr>
-                            <div class="card-footer">
+                            <div class="card-footer text-center">
                                 <h1 class="text-center">Share This Flash Card</h1>
                                 <ul class="card-footer-social-icon">
                                     <li> <a class="facebook" routerLink=""> <i class="fab fa-facebook-f"></i> </a> </li>
@@ -258,24 +337,27 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-lg-8 col-sm-12" >
                         <div class="background-grey review-section margin-bottom-20 float_left">
-                            <h4>Reviews</h4>
+                            <h4 *ngIf="view?.reviews !=null">Reviews</h4>
                             <div *ngFor="let reviews of view?.reviews">
                                 <div class="card" *ngIf="reviews !=null">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                                <p class="text-secondary review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
-                                                <p> </p>
+                                                
+                                                
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
                                                 <div class="clearfix"></div>
                                                 <p>{{reviews?.comment }}</p>
                                             </div>
-                                            <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                                         
+                                            <div class="col-md-3 review-3">
+                                             <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
+                                             <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -283,8 +365,12 @@
                             </div>
                             
                         </div>
-                        <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
-                        </div>
+                        <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/Flash-Card.gif">
+                        </div> -->
+                        <!-- <div class="" *ngIf="view==0">
+                        <h4>Reviews</h4>
+                        <h4>No one has reviewed this flash card</h4>
+                    </div> -->
                     </div>
                     
                 </div>
@@ -292,3 +378,20 @@
         </div>
     </div>
 </div>
+<!-- <div class="mainbanner">
+    <h4>About Author</h4> -->
+    <!-- subject;
+    description;
+    major;
+    interest;
+    rating;
+    experience; -->
+    <!-- <h5>Subject {{subject}}</h5>
+    <h5>Description {{description}}</h5>
+    <h5>Major {{major}}</h5>
+    <h5>Interest{{interest}}</h5>
+    <h5>Rating {{rating}}/5.0</h5>
+    <h5>Experience {{experience}}</h5>
+    </div> -->
+
+    

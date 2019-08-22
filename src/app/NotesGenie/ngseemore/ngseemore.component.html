@@ -15,18 +15,18 @@
                             routerLink="/notes/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" (click)="bididget(data?.id)"></i>
-                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Delete From watch-list"
+                        <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to Watch List" (click)="bididget(data?.id)"></i>
+                            <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red " title="Remove from Watch List"
                                 (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false" class="fa fa-cart-plus"
-                                title="Click and remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
+                                title="Remove from Cart" (click)="delfromcart(data)"></i> <i *ngIf="!data.cart==true"
                                 class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                 add_shopping_cart</i> </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
-                    <div class="product-list__item-info-1"> <a class="btn-style btn" (click)="checkmainpage(data?.id)"
+                    <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="checkmainpage(data?.id)"
                             *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at&nbsp;{{data.price |
-                            currency:'USD'}}</a> <a class="btn-style btn" data-toggle="modal" data-target="#notesbidnow"
+                            currency:'USD'}}</a> <a class="btn-style btn text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                             (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
                             Bid Now at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
@@ -74,16 +74,16 @@
                     <div class="heart_cart_buy">
                         <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to watchlist"
                                 (click)="bididget(data?.id)"></i> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red "
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                title="Remove from Watchlist" (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false"
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                 add_shopping_cart</i> </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
-                    <div class="product-list__item-info-1"> <a class="btn-style btn" (click)="checkmainpage(data?.id)"
+                    <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="checkmainpage(data?.id)"
                             *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at&nbsp;{{data.price |
-                            currency:'USD'}}</a> <a class="btn-style btn" data-toggle="modal" data-target="#notesbidnow"
+                            currency:'USD'}}</a> <a class="btn-style btn text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                             (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
                             Bid Now at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
@@ -127,16 +127,16 @@
                     <div class="heart_cart_buy">
                         <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to watchlist"
                                 (click)="bididget(data?.id)"></i> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red "
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                title="Remove from Watchlist" (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false"
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                 add_shopping_cart</i> </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
-                    <div class="product-list__item-info-1"> <a class="btn-style btn" (click)="checkmainpage(data?.id)"
+                    <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="checkmainpage(data?.id)"
                             *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at&nbsp;{{data.price |
-                            currency:'USD'}}</a> <a class="btn-style btn" data-toggle="modal" data-target="#notesbidnow"
+                            currency:'USD'}}</a> <a class="btn-style btn text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                             (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
                             Bid Now at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
@@ -180,16 +180,16 @@
                     <div class="heart_cart_buy">
                         <div class="heart_cart"> <i class="far fa-heart" *ngIf="!data.wishlist==true" title="Add to watchlist"
                                 (click)="bididget(data?.id)"></i> <i *ngIf="!data.wishlist==false" class=" fas fa-heart sh-red "
-                                title="Delete From watch-list" (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                title="Remove from Watchlist" (click)="deleteFWL(data)"></i> <i *ngIf="!data.cart==false"
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(data.id,nullvalue,nullvalue,nullvalue)">
                                 add_shopping_cart</i> </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false"
                                 (click)="openDialog3(data?.id)">Offer Now</a> </div>
                     </div>
-                    <div class="product-list__item-info-1"> <a class="btn-style btn" (click)="checkmainpage(data?.id)"
+                    <div class="product-list__item-info-1"> <a class="btn-style btn text-transform-none" (click)="checkmainpage(data?.id)"
                             *ngIf="data.sell_status==true && !data.Purchased && data.isTeacher==false"> Buy Now at&nbsp;{{data.price |
-                            currency:'USD'}}</a> <a class="btn-style btn" data-toggle="modal" data-target="#notesbidnow"
+                            currency:'USD'}}</a> <a class="btn-style btn text-transform-none" data-toggle="modal" data-target="#notesbidnow"
                             (click)="bidnotesid(data?.id)" data-dismiss="modal" *ngIf="data.bid_status==true && !data.Purchased && data.isTeacher==false">
                             Bid Now at&nbsp;{{data.bid_price | currency:'USD'}}</a> <a class="already-bought" *ngIf="data.Purchased==true"
                             data-target="#notesbid"> <img src="../../../assets/img/CramFrenzyFavicon.png" alt="img">
@@ -201,9 +201,10 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="notesbidnow" role="dialog">
+</div>
+<div class="modal fade" id="notesbidnow" role="dialog">
         <div class="modal-dialog">
-            <div class="modal-content margin-top-175">
+            <div class="modal-content ">
                 <div class="modal-header">
                     <div class="form-1-header">
                         <h1>Bid on Note</h1>
@@ -212,20 +213,24 @@
                 <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'notes', id:bidonnotes}"
                         data-dismiss="modal" class="view-bid">view bid history </a> <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'notes', id:bidonnotes}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
+                        <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{notebid?.endtime}}"></countdown>
                      
                         <p *ngIf="notes?.bidamount">Highest bid amount:{{notes?.bidamount}}</p>
                         <p *ngIf="!notes?.bidamount">No bid received yet</p>
                     </a>
-                    <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
+                    <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
                         <mat-form-field> <input matInput type="number" min="1" oninput="validity.valid||(value='');"
                              onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)*"
-                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
+                                formControlName="bidamount" name="bidamount"><span matPrefix>$&nbsp;</span>
+                                <mat-error
+                                *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                                <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                    </mat-error>
+                                </mat-error>  </mat-form-field>
                         <a class="btn-style btn" (click)="biding(f)" data-dismiss="modal">Bid Now </a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>

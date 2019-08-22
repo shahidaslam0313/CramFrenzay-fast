@@ -106,7 +106,7 @@
 <div class="container-fluid padding-l-r-60">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes">More Courses by {{profileinfo?.firstname}}{{profileinfo?.lastname}}</h2>
+            <h2 class="mainbanner bg-Bid-Notes">More Courses by {{profileinfo?.firstname}} {{profileinfo?.lastname}}</h2>
         </div>
     </div>
     <div class="row">
@@ -114,7 +114,7 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div class="item" ngxSlickItem *ngFor="let data of courses; let i=index">
                     <div class="product-list__item min-height-product-list">
-                        <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.course_thumbnail}}"
+                        <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="https://storage.cramfrenzy.com/Thumbnail/{{data?.course_thumbnail}}"
                                     alt="Courses"> </a> </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data?.name}}">{{data?.name}}</a>

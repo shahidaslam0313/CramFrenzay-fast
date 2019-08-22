@@ -1,1 +1,55 @@
-<section class="partnership padding-top-20"> <div class="container padding-bottom-50"> <div class="row"> <div class="col-lg-offset-7 col-md-offset-6 col-xs-12 col-sm-12 col-md-12 col-lg-6"> <form #f="ngForm"> <h1>Become a Partner</h1> <p class="lead"> Transform your collaborative dimension to a whole new level. </p><div class="contact_form"> <mat-form-field> <input class="text_cap" matInput placeholder="Name" autocomplete="off" [formControl]="nameFormControl" [(ngModel)]="model.name" required> <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid name </mat-error> <mat-error *ngIf="nameFormControl.hasError('required')"> Name is <strong>required</strong> </mat-error> </mat-form-field> <mat-form-field> <input matInput placeholder="Email" autocomplete="off" [formControl]="EmailFormControl" [(ngModel)]="model.Email" required> <mat-error *ngIf="EmailFormControl.hasError('pattern')"> Please enter a valid email address </mat-error> <mat-error *ngIf="EmailFormControl.hasError('required')"> Email is <strong>required</strong> </mat-error> </mat-form-field> <mat-form-field> <input class="text_cap" matInput placeholder="Company Name" autocomplete="off" [formControl]="CompanyFormControl" [(ngModel)]="model.Company" required> <mat-error *ngIf="CompanyFormControl.hasError('pattern')"> Please Enter valid institution name </mat-error> <mat-error *ngIf="CompanyFormControl.hasError('required')"> Company Name <strong>required</strong> </mat-error> </mat-form-field> <button class=" btn-style btn partner-btn pull-right" type="submit" (click)="onSubmit(f)">Send Message</button> </div></form> </div></div></div></section>
+<section class="partnership padding-top-20">
+    <div class="container padding-bottom-50">
+        <div class="row">
+            <div class="col-lg-offset-7 col-md-offset-6 col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                <form #f="ngForm">
+                    <h1>Become a Partner</h1>
+                    <p class="lead"> Transform your collaborative dimension to a whole new level. </p>
+                    <div class="contact_form">
+                        <mat-form-field> <input class="text_cap" matInput placeholder="Name" autocomplete="off"
+                                [formControl]="nameFormControl" [(ngModel)]="model.name" required>
+                            <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid name
+                            </mat-error>
+                            <mat-error *ngIf="nameFormControl.hasError('required')"> Name is <strong>required</strong>
+                            </mat-error>
+                            <!-- Abdullah -->
+                            <mat-error *ngIf="nameFormControl.hasError('minlength')"> Name must be between 2 to 64 characters
+                            </mat-error>
+
+                            <mat-error *ngIf="nameFormControl.hasError('maxlength')"> Name must be between 2 to 64 characters
+                            </mat-error>
+
+                            <!-- Abdullah -->
+
+                        </mat-form-field>
+                        <mat-form-field> <input matInput placeholder="Email" autocomplete="off"
+                                [formControl]="EmailFormControl" [(ngModel)]="model.Email" required>
+                            <mat-error *ngIf="EmailFormControl.hasError('pattern')"> Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="EmailFormControl.hasError('required')"> Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field> <input class="text_cap" matInput placeholder="Company Name" autocomplete="off"
+                                [formControl]="CompanyFormControl" [(ngModel)]="model.Company" required>
+                            <mat-error *ngIf="CompanyFormControl.hasError('pattern')"> Please Enter valid institution
+                                name </mat-error>
+                            <mat-error *ngIf="CompanyFormControl.hasError('required')"> Company Name
+                                <strong>required</strong> </mat-error>
+
+                            <!-- Abdullah -->
+                            <mat-error *ngIf="CompanyFormControl.hasError('minlength')"> Company name should be between 3 to 100 characters
+                            </mat-error>
+
+                            <mat-error *ngIf="CompanyFormControl.hasError('maxlength')"> Company name should be between 3 to 100 characters
+                            </mat-error>
+
+                            <!-- Abdullah -->
+
+                        </mat-form-field> <button class=" btn-style btn partner-btn float-right" type="submit"
+                            (click)="onSubmit(f)">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

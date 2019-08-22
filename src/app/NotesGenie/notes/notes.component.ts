@@ -27,7 +27,11 @@ export class NotesComponent implements OnInit {
   currentProducts;
   model: any = {};
   role;
+  getresult :any =[];
   rate;
+  public profileurl=Config.Imageurleach;
+  
+  public tutorId: any = [];
   pager: any = {};
   review;
   id;
@@ -44,7 +48,7 @@ export class NotesComponent implements OnInit {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('username'));
       this.currentProducts = this.productsSource.asObservable();
     }
-    window.scroll(0, 0);
+    window.scroll(0,0);
     if (!window['fbAsyncInit']) {
       window['fbAsyncInit'] = function () {
           window['FB'].init({
@@ -78,6 +82,7 @@ export class NotesComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.Eid = +params['id'];
     });
+    // this.gettutorinfo();
     this.singlenotes();
     this.reviewsss(this.pager);
     window['FB'] && window['FB'].XFBML.parse();
@@ -117,9 +122,13 @@ export class NotesComponent implements OnInit {
         }
       });
   }
+
+
   singlenotes() {
     this.each.Eachnotes(this.Eid).subscribe(data => {
       this.result = data;
+      this.tutorId=data.userid.id;
+      this.gettutorinfo(this.tutorId)
     });
   }
   checkcate() {
@@ -153,6 +162,40 @@ export class NotesComponent implements OnInit {
 
   get(rating) {
     this.rate = rating;
+  }
+
+  subject;
+  firstname;
+  lastname;
+  description;
+  major;
+  interest;
+  rating;
+  treviews;
+  experience;
+  username;
+  // ttid;
+  profile_picture;
+
+  gettutorinfo(tutor){
+
+    this.each.gettutorinfo(tutor).subscribe(data => {
+      // console.log('data:',data)
+      // this.getresult = data.Course;
+      // console.log('getresult',this.getresult)
+      this.description = data.description;
+      // console.log(this.description)
+      this.major = data.major;
+      this.profile_picture = this.profileurl+data.profile_picture;
+      this.username = data.user.username;
+      this.firstname = data.user.first_name;
+      this.lastname = data.user.last_name;
+      this.interest = data.Interests;
+      this.treviews = data.TutorReviews;
+      this.rating = data.rating;
+      this.experience = data.Experience;
+      this.subject = data.subject;
+    })
   }
 
   reviews(rate, comment, result, book, course, flashcard,f: NgForm) {

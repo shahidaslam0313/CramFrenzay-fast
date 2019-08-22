@@ -19,6 +19,17 @@ export class fcdetailservice {
     }
   }
 
+  gettutorinfo(id){
+    if(localStorage.getItem('currentUser')){
+    const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'tutor/showinfo/' + id ,{headers:headers}).map((response: Response) => response.json());
+  } 
+  else{
+    return this.http.get(Config.api + 'tutor/showinfo/' + id + '').map((response: Response) => response.json());
+  }
+}
+
   uploading(name, description, flashcard_image, visibility) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -34,7 +45,7 @@ export class fcdetailservice {
 
   newfcdetail(flashId) {
     if (localStorage.getItem('currentUser')) {
-      const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+      const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json');
       return this.http.get(Config.api + 'flash/showinfo/' + flashId + '', {headers: headers}).map((response: Response) => response.json());
     }else {
@@ -45,7 +56,7 @@ export class fcdetailservice {
 
   flipdetail(flashId) {
     if (localStorage.getItem('currentUser')) {
-      const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+      const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json');
       return this.http.get(Config.api + 'flash/lotinflashcard/' + flashId + '', {headers: headers}).map((response: Response) => response.json());
     }else {
@@ -56,7 +67,7 @@ export class fcdetailservice {
 
   flashCardTermsDefinitions(id) {
     if (localStorage.getItem('currentUser')) {
-      const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+      const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json');
       return this.http.get(Config.api + 'flash/lotinflashcard/' + id + '', {headers: headers}).map((response: Response) => response.json());
     } else {
@@ -65,7 +76,7 @@ export class fcdetailservice {
     }
   }
   review(rating, comment, book, course, flashcard, notes) {
-    let headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+    let headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json', );
     return this.http.post(  Config.api + 'bid/reviewsPost/' ,
       JSON.stringify({

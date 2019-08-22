@@ -10,7 +10,7 @@ import { DataService } from '../../data.service';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { WishlistService } from '../../wishlist/wishlist.service';
-import {GlobalService} from '../../global.service';
+import { GlobalService } from '../../global.service';
 
 declare const $: any;
 
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
   wishlistCourses;
   emptyWishlist;
   totalprice: any;
-  constructor( private route: ActivatedRoute, public router: Router,  public header: headerservice, private wish: WishlistService, private Data: DataService, public global: GlobalService , private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private route: ActivatedRoute, public router: Router, public header: headerservice, private wish: WishlistService, private Data: DataService, public global: GlobalService, private http: Http, @Inject(PLATFORM_ID) private platformId: Object) {
 
     if (isPlatformBrowser(this.platformId)) {
       this.Logedin = localStorage.getItem("loged_in");
@@ -74,9 +74,9 @@ export class HeaderComponent implements OnInit {
 
     this.global.GlobalWishListCourses$.subscribe(
       data => {
-        if (data.length===0){
+        if (data.length === 0) {
           this.wishlistCourses = [];
-        }else {
+        } else {
           this.wishlistCourses = data;
         }
       });
@@ -89,17 +89,17 @@ export class HeaderComponent implements OnInit {
         this.emptyWishlist = data;
       });
     this.token = localStorage.getItem('Authorization');
-    if(this.token!=null){
+    if (this.token != null) {
       this.global.setGlobalToken(true);
-    }else{
+    } else {
       this.global.setGlobalToken(false);
     }
 
     this.global.GlobalWishListCourses$.subscribe(
       data => {
-        if (data.length===0){
+        if (data.length === 0) {
           this.GlobalWishListCourses = [];
-        }else {
+        } else {
           this.GlobalWishListCourses = data;
         }
       });
@@ -158,13 +158,13 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
-    this.Data.getEmittValue().subscribe(data =>{
+    this.Data.getEmittValue().subscribe(data => {
       this.showlist()
       this.itemscount = data.counts;
     })
     if (this.Logedin === '1') {
       this.header.showwishlist().subscribe(response => {
-        if(response.hasOwnProperty("status")) {
+        if (response.hasOwnProperty("status")) {
           this.wishlistCourses = [];
           this.emptyWishlist = true;
         }
@@ -176,14 +176,35 @@ export class HeaderComponent implements OnInit {
 
       });
     }
-    
+
     this.sub = this.route.params.subscribe(params => {
       this.name = +params['name'];
     });
     this.notification();
     this.showCartItems();
     this.showlist();
-   
+
+    function myFunction1(x) {
+      if (x.matches) {
+        $('.main-nav__btn').removeClass('collapsed');
+        $('.main-nav__div').removeClass('collapse');
+      }
+    }
+    
+    var x = window.matchMedia("(min-width: 768px)")
+    myFunction1(x)
+    x.addListener(myFunction1)
+
+    function myFunction2(x) {
+      if (x.matches) {
+        $('.main-nav__btn').addClass('collapsed');
+        $('.main-nav__div').addClass('collapse');
+      }
+    }
+    
+    var x = window.matchMedia("(max-width: 767px)")
+    myFunction2(x)
+    x.addListener(myFunction2) 
 
     if (isPlatformBrowser(this.platformId)) {
       this.currentUser = localStorage.getItem('currentUser')
@@ -341,7 +362,7 @@ export class HeaderComponent implements OnInit {
     if (this.check_login() === true) {
       this.router.navigate(['/uploadnotes']);
     }
-    else if (this.check_login() === false){
+    else if (this.check_login() === false) {
       this.sweetalertlogin();
       this.router.navigate(['/login']);
 
@@ -369,45 +390,38 @@ export class HeaderComponent implements OnInit {
   }
   logoutsweetalert() {
 
-      swal({
-        title: "CramFrenzy<br> Thanks for visting us",
-        type: "success",
-        showConfirmButton: false,
-        timer: 2000,
-      })
+    swal({
+      title: "CramFrenzy<br> Thanks for visting us",
+      type: "success",
+      showConfirmButton: false,
+      timer: 2000,
+    })
 
   }
-
+  getwtachid
   showlist() {
     this.header.showwishlist().subscribe(data => {
       this.count = data.count;
-      this.Data = data.Wishlist;
-      for (let val in this.Data) {
-        if (this.Data[val].course) {
-          this.wishId.push(this.Data[val])
-        } else if (this.Data[val].notes) {
-          this.wishnotesId.push(this.Data[val])
-        } else if (this.Data[val].book) {
-          this.wishbook.push(this.Data[val])
-        } else if (this.Data[val].flashcard) {
-          this.cardwish.push(this.Data[val])
-        }
-      }
+      this.Data = data;
+      this.getwtachid = data.notes;
+      // console.log(this.getwtachid.wish_id)
+
     });
   }
-
+  Course;
   del(id) {
     this.wishlistdelete = id;
     this.header.delwishlist(id).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item deleted from watchlist',
+        title: 'Item successfully deleted from watch List',
         showConfirmButton: false,
         timer: 1500
       });
       this.clearWishList();
       this.showlist();
-    });
+    }); this.AddToCart(this.Book, this.Course, this.FlashCard, this.Notes)
+
   }
 
   filter(query) {
@@ -421,9 +435,9 @@ export class HeaderComponent implements OnInit {
     }
 
   }
-onsubmits(query) {
+  onsubmits(query) {
     // this.router.navigate(['/generalsearch/' + query]);
-    this.router.navigate(['/generalsearch/'], {queryParams: {query : query}});
+    this.router.navigate(['/generalsearch/'], { queryParams: { query: query } });
 
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('name', query);
@@ -437,7 +451,7 @@ onsubmits(query) {
     $('.form-search').removeClass('flipInX');
 
     this.router.navigate(['/generalsearch/' + this.name]);
-this.filter(query);
+    this.filter(query);
   }
 
   search(name) {
@@ -449,22 +463,22 @@ this.filter(query);
     });
   }
   getid;
- getnotifid(id){
+  getnotifid(id) {
     this.getid = id;
     this.putdelnotification(this.getid);
- }
+  }
   deleid;
-deletenotification(id){
-   this.deleid = id;
-   this.delenoti(this.deleid);
-}
+  deletenotification(id) {
+    this.deleid = id;
+    this.delenoti(this.deleid);
+  }
   notification() {
     this.header.getnotification()
-        .subscribe(data => {
-      this.getnotifi = data;
-      this.notifications = data.notifications;
-      this.id = data.notifications.id;
-    });
+      .subscribe(data => {
+        this.getnotifi = data;
+        this.notifications = data.notifications;
+        this.id = data.notifications.id;
+      });
   }
   read;
   putdelnotification(id) {
@@ -512,7 +526,7 @@ deletenotification(id){
       this.header.addwishlist(Book, Course, FlashCard, Notes).subscribe(Data => {
         swal({
           type: 'success',
-          title: 'Item added in watchlist',
+          title: 'Item added in watch List',
           showConfirmButton: false,
           timer: 1500
         })
@@ -520,7 +534,7 @@ deletenotification(id){
         error => {
           swal(
             'CramFrenzy',
-            'Item is already in your watchlist',
+            'Item is already in your watch List',
             'error'
           )
         });
@@ -563,6 +577,7 @@ deletenotification(id){
             'error'
           )
         });
+
       this.clearWishList();
       this.showlist();
       this.showCartItems();
@@ -606,7 +621,7 @@ deletenotification(id){
     this.header.removeFromCart(cartID).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Item deleted from cart',
+        title: 'Item  successfully deleted from cart',
         showConfirmButton: false,
         timer: 1500
       })
@@ -614,26 +629,26 @@ deletenotification(id){
     });
 
   }
-
+  gettingcartsitem;
   showCartItems() {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
-
-      for (let vall in Data.Cart) {
-        if (Data.Cart[vall].course) {
-          this.Courses.push(Data.Cart[vall]);
-        }
-        else if (Data.Cart[vall].notes) {
-          this.Notes.push(Data.Cart[vall]);
-        }
-        else if (Data.Cart[vall].book) {
-          this.Book.push(Data.Cart[vall]);
-        }
-        else if (Data.Cart[vall].flashcard) {
-          this.FlashCard.push(Data.Cart[vall]);
-        }
-      }
+      this.gettingcartsitem = Data;
+      // for (let vall in Data.Cart) {
+      //   if (Data.Cart[vall].course) {
+      //     this.Courses.push(Data.Cart[vall]);
+      //   }
+      //   else if (Data.Cart[vall].notes) {
+      //     this.Notes.push(Data.Cart[vall]);
+      //   }
+      //   else if (Data.Cart[vall].book) {
+      //     this.Book.push(Data.Cart[vall]);
+      //   }
+      //   else if (Data.Cart[vall].flashcard) {
+      //     this.FlashCard.push(Data.Cart[vall]);
+      //   }
+      // }
     })
   }
 }

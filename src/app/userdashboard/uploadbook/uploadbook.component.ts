@@ -12,9 +12,9 @@ import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
-import { Ng2ImgMaxService } from 'ng2-img-max';
-import { DomSanitizer } from '@angular/platform-browser';
-// declare var localStorage: any;
+
+import { GlobalService } from '../../global.service';
+
 declare const $: any;
 @Component({
   selector: 'app-uploadbook',
@@ -36,8 +36,6 @@ export class UploadbookComponent implements OnInit {
   book_file : any;
   role;
   accept_offer:boolean = false;
-  min_amount;
-  max_amount;
   signupForm: FormGroup;
   sell_status: boolean = true;
   date = new Date().toString();
@@ -46,6 +44,18 @@ export class UploadbookComponent implements OnInit {
   public firstname;
   public lastname;
   profilePhoto;
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange3(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
+  public initial_amount;
+  public reservedprice;
+  public Invalid: boolean = false;
+  public onChange4(event: any): void {
+    this.Invalid = this.initial_amount == this.reservedprice || this.initial_amount > this.reservedprice;
+  }
   isreserved: boolean = false;
   range = [
     {value: '3', viewValue: '3'},
@@ -64,26 +74,10 @@ export class UploadbookComponent implements OnInit {
     {value: '60', viewValue: '60'}
   ];
   check($event){}
-
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   isbnFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
     Validators.maxLength(50)
-  ]);
-  authernameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
-  detailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(500)
   ]);
   subcatFormControl = new FormControl('', [
     Validators.required,
@@ -99,7 +93,7 @@ export class UploadbookComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-  constructor(private newService: uploadbookservice,private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute,
+  constructor(private globalimage : GlobalService, private newService: uploadbookservice,  private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -151,44 +145,60 @@ uploadfile(){
       }
     })
 }
-  onSubmit(f: NgForm) {
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
-          // EditCourseDialogComponent.ImageUploadFailer();
-          this.CourseFailure();
-        } else {
 
-          this.CourseSuccess();
-          this.model.book_image = data;
+handleFileInput(files: FileList) {
+  this.filetoup = files;
+  console.log('uploaded filetoup  ', this.filetoup);
 
-          this.ifImageUpload(f);
-          this.uploadfile();
-        }
-      });
-  }
+this.fileName=  this.filetoup[0].name;
+console.log('File Name is:' ,this.fileName);
+this.uploadItemsToActivity();
+}
+filetoup: FileList;
+  fileName;
+uploadItemsToActivity() {
+  console.log('I am in 1 Component');
+  this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+    data => {
+     
+  
+    },
+    error => {
+      // console.log(error);
+    });
+
+}
+  // onSubmit(f: NgForm) {
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
+  //         // EditCourseDialogComponent.ImageUploadFailer();
+  //         this.CourseFailure();
+  //       } else {
+
+  //         this.CourseSuccess();
+  //         this.model.book_image = data;
+
+  //         this.ifImageUpload(f);
+  //         this.uploadfile();
+  //       }
+  //     });
+  // }
   sell_days;
-  public ifImageUpload(f: NgForm) {
+   ifImageUpload(f: NgForm) {
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
-if(this.model.name.valid && this.model.author_name.valid && this.model.price.valid && this.model.ISBN.valid && this.model.book_detail.valid){
-  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.model.book_image, this.model.book_edition, this.book_file,  this.accept_offer, this.model.min_amount, this.model.max_amount, this.model.initial_amount, bid_date , this.model.isreserved, this.model.reservedprice, date)
+    
+  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.fileName, this.model.book_edition, this.book_file,  this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
   .subscribe(Res => {
-    this.uploadfile();
+    this.CourseSuccess();
   });
+  this.uploadfile();
   f.resetForm();
 }
-else 
-swal({
-  type: 'error',
-  title: 'Please enter correct details',
-  showConfirmButton: false,
-  width: '512px',
-  timer: 2500
-})
-}
+
   CourseSuccess() {
     swal({
       type: 'success',
@@ -232,7 +242,7 @@ swal({
   }
   sweetalertupload() {
     swal({
-      text: 'Upload Book Successflluy!',
+      text: 'Upload Book Successfully!',
       title: "CramFrenzy",
       type: "success",
       showConfirmButton: false,
@@ -307,16 +317,7 @@ c_name;
     //     console.log('😢 Oh no!', error);
     //   }
     // );
-    this.ng2ImgMax.resizeImage(this.file, 4, 4).subscribe(
-      result => {
-        this.uploadedImage = result;
-        this.getImagePreview(this.uploadedImage);
-        console.log(result,'RESULT')
-      },
-      error => {
-        console.log('😢 Oh no!', error);
-      }
-    );
+ 
   }
   file;
   getImagePreview(file: File) {

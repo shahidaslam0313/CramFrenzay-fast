@@ -6,6 +6,7 @@ import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {UploadcardComponent} from './uploadcard.component';
 
+
 const uploadcardRoutes: Routes = [
   { path: '', component: UploadcardComponent }
 ];
@@ -14,6 +15,7 @@ const uploadcardRoutes: Routes = [
   imports: [
     RouterModule.forChild(uploadcardRoutes),
     MaterialModule,
+  
     CommonModule,
     FormsModule, ReactiveFormsModule
   ],

@@ -312,7 +312,6 @@ mat-form-field.mat-form-field {
     right: 0;
     border: 1px solid #000
 }
-
 .homeSlider .item .item-inner a,
 .logo img {
     display: block
@@ -413,11 +412,6 @@ mat-form-field.mat-form-field {
 .leftRs1,
 .rightRs {
     -webkit-border-radius: 50%;
-    transition: .5s all;
-    border-radius: 50%
-}
-
-.rightRs {
     right: 0;
     border: 1px solid #fff
 }
@@ -948,7 +942,8 @@ blockquote .blockquote-author {
     box-sizing: border-box;
     margin-top: -60px;
     border-radius: 5px;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4)
+    -webkit-box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 0, 0, .4)
 }
 
 .search-bg__btn {
@@ -982,8 +977,7 @@ blockquote .blockquote-author {
 }
 
 .mat-slide-toggle-content {
-    font-weight: 600!important;
-    font-size: 13px!important
+    font-size: 12px!important
 }
 
 .modal-content>.modal-footer,
@@ -1058,42 +1052,6 @@ blockquote .blockquote-author {
 mat-form-field textarea {
     height: 80px;
     border: none
-}
-
-.btn-file {
-    display: inline-block;
-    text-transform: capitalize;
-    padding: 8px 11px;
-    position: relative;
-    font-weight: 600;
-    background: #000;
-    border-radius: 50px;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 1px solid #000;
-    -webkit-transition: .4s;
-    -o-transition: .4s;
-    transition: .4s;
-    vertical-align: top;
-    cursor: pointer
-}
-
-.btn-file input[type=file] {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer
-}
-
-.btn-file:hover {
-    background: #c00;
-    border: 1px solid #c00;
-    box-shadow: 0 0 20px -5px #c00
 }
 
 .apply-now-link,
@@ -1203,12 +1161,6 @@ mat-form-field textarea {
 
 .card-1 {
     margin-top: -190px
-}
-
-.each-card .card-img-top {
-    height: 200px;
-    -o-object-fit: cover;
-    object-fit: cover
 }
 
 .each-card .card-body {
@@ -1413,7 +1365,6 @@ mat-form-field textarea {
 .user-profile .mat-form-field-infix {
     padding: .315em 0!important
 }
-
 .modal-form mat-form-field textarea {
     height: 100px!important
 }
@@ -1520,7 +1471,6 @@ focus {
 .mat-focused .mat-form-field-label {
     color: #000!important
 }
-
 .display-block {
     display: block
 }
@@ -2040,11 +1990,6 @@ button {
 button:hover {
     background: #c00!important;
     box-shadow: none!important;
-    color: #fff
-}
-
-.user-dashboard .sidebar {
-    box-shadow: 0 0 10px #ccc;
     border-radius: 5px;
     margin-right: 10px;
     padding: 5px

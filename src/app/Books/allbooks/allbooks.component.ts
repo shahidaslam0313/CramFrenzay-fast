@@ -15,7 +15,7 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
 import { WishlistService } from 'app/wishlist/wishlist.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 declare const $: any;
 @Component({
@@ -34,6 +34,11 @@ export class AllbooksComponent implements OnInit {
   booktrend;
   token;
   trends;
+  bidform = new FormGroup({
+    bidamount: new FormControl('',[
+      Validators.required
+    ])
+  })
   public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
@@ -266,13 +271,17 @@ export class AllbooksComponent implements OnInit {
     let course = null;
     let flashcard = null;
     let notes = null;
-    this.global.addwishlist(book, course, flashcard, notes).subscribe(data => {
+    this.mainpage.addwishlist(book, course, flashcard, notes).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Added to watchlist',
+        title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      this.BidBuybooks();
+      this.trendbooks();
+      this.recentllybooks();
+      this.topratedbooks();
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -331,7 +340,8 @@ export class AllbooksComponent implements OnInit {
 
 
   bidc(f: NgForm) {
-    this.global.bidonbook(this.bidbookid, this.model.bidamount)
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidonbook(this.bidbookid, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -352,6 +362,14 @@ export class AllbooksComponent implements OnInit {
         }
       );
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Bid amount is required',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   addcart(notes, course, book, flashcard) {
     if (this.check_login() == true) {
@@ -362,10 +380,14 @@ export class AllbooksComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to Cart',
           showConfirmButton: false,
           timer: 2000
         });
+        this.BidBuybooks();
+        this.trendbooks();
+        this.recentllybooks();
+        this.topratedbooks();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
@@ -406,7 +428,7 @@ export class AllbooksComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -417,7 +439,7 @@ export class AllbooksComponent implements OnInit {
     this.book.delcart(event.cart).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from cart',
         showConfirmButton: false,
         timer: 1500
       });

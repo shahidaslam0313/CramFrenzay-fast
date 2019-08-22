@@ -44,10 +44,12 @@ export class WishlistComponent implements OnInit {
     window.scroll(0,0)
     this.showlist();
   }
-
+  watchlist
   showlist() {
     this.see.showwishlist().subscribe(data => {
       this.count = data.count
+      this.watchlist=data
+      console.log(data,'Get Watch List')
       for (let val in data.Wishlist) {
         if (data.Wishlist[val].course) {
           this.wishId.push(data.Wishlist[val])
@@ -81,15 +83,15 @@ export class WishlistComponent implements OnInit {
   }
 
   del(id) {
-    swal({
-      title: 'Offers',
-      text: "Buyers will not be able to send you offers on different amount per item",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then((result) => {
+    // swal({
+    //   title: 'Offers',
+    //   text: "Buyers will not be able to send you offers on different amount per item",
+    //   type: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Yes'
+    // }).then((result) => {
       this.see.delwishlist(id).subscribe(data => {
         swal({
           type: 'success',
@@ -100,7 +102,7 @@ export class WishlistComponent implements OnInit {
         this.showlist();
       });
 
-    })
+    // })
   }
 
   check_login() {

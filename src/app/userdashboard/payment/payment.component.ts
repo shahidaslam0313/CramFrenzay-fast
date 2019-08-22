@@ -14,12 +14,14 @@ import { Config } from '../../Config';
 import * as moment from 'moment';
 import { noSpaceValidator } from '../../login/noSpaceValidator.component';
 import { PaymentmethodsService } from '../paymentmethods/paymentmethods.service';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  public Imageurl = Config.Imageurlget;
   model: any = {};
   private productsSource;
   currentProducts;
@@ -29,8 +31,8 @@ export class PaymentComponent implements OnInit {
   notesid;
   isright;
   cid;
-  course;
   default: boolean = false;
+  butDisabled: boolean = true;
   cards;
   book;
   noteprice;
@@ -58,7 +60,6 @@ export class PaymentComponent implements OnInit {
     { value: 'American Express', viewValue: 'American Express' }
   ];
   private sub: Subscription;
-  public Imageurl = Config.Imageurlget;
   flipclass = 'credit-card-box';
   card_type;
   coursepay;
@@ -200,7 +201,7 @@ export class PaymentComponent implements OnInit {
   cardspay;
   ngOnInit() {
     window.scroll(0,0);
-    this.getCards();
+    this.getCards(); 
     this.getcardid(this.id);
     this.form.controls['check'].setValue(false);
     this.route.queryParams.subscribe(params => {
@@ -209,8 +210,14 @@ export class PaymentComponent implements OnInit {
       this.cardspay = params['cardsid'];
       this.bookpay = params['bookid'];
     });
+    this.geteachnotes()
+    this.geteachcourse()
+    this.geteachcard()
+    this.geteachbook()
   }
-
+  cardselect(){
+    this.butDisabled = false
+  }
   nullvalue = null;
   check($event) { }
   buywithcard(f:NgForm) {
@@ -423,6 +430,18 @@ export class PaymentComponent implements OnInit {
         showConfirmButton: false,
         timer: 4500
       })
+      if(this.cardspay){
+        this.router.navigate(['/fcdetail/'+ this.cardspay]);
+      }  
+      else if(this.itemid){
+        this.router.navigate(['/notes/'+ this.itemid]);
+      }
+      else if(this.coursepay){
+        this.router.navigate(['/eachcourse/'+ this.coursepay]);
+      }
+      else if(this.bookpay){
+        this.router.navigate(['/detail/'+ this.bookpay]);
+      }
     }, error => {
       if (error.status == 404){
         swal({
@@ -442,6 +461,7 @@ export class PaymentComponent implements OnInit {
       }
         
     });
+
   }
 
   singlenotes(Eid) {
@@ -476,7 +496,32 @@ export class PaymentComponent implements OnInit {
         }
       })
   }
-
+  note
+  geteachnotes(){
+    this.newService.eachnotes(this.itemid).subscribe(data =>{
+      this.note =data
+      console.log(this.note,'eachnotes')
+    })
+  }
+  course
+  geteachcourse(){
+    this.newService.eachcourse(this.coursepay).subscribe(data =>{
+      this.course=data.Course
+      console.log(this.course,'eachcourse')
+    })
+  }
+  geteachcard(){
+    this.newService.eachcard(this.cardspay).subscribe(data =>{
+      this.card=data
+      console.log(this.card,'eachcard')
+    })
+  }
+  geteachbook(){
+    this.newService.eachbook(this.bookpay).subscribe(data =>{
+      this.book=data
+      console.log(this.book,'eachbook')
+    })
+  }
   Status = false;
   defaultCheck;
   changeDefault(card,id,name) {

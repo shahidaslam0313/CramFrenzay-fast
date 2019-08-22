@@ -16,7 +16,7 @@ import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fcseemore',
@@ -44,11 +44,17 @@ export class FcseemoreComponent implements OnInit {
   wishlist;
   notes;
   course;
-  book
+  book;
+  bidform = new FormGroup({
+    bidamount: new FormControl('', [
+      Validators.required
+    ])
+  })
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private mainpage: mainpageservice, private see: WishlistService, private pagerService: PagerService, private seemore: FcseemoreService, private router: Router, private route: ActivatedRoute,   @Inject(PLATFORM_ID) private platformId: Object, private dialogRef: MatDialog, public global:GlobalService) {
       this.sub = this.route.params.subscribe(params => {
-          this.Eid = +params['id'];
+          this.Eid = params['id'];
       });
+      alert(this.Eid)
       if (this.Eid == "1") {
           this.setPageflashcard(1);
       }
@@ -125,7 +131,8 @@ export class FcseemoreComponent implements OnInit {
     }
   }
   bidc(f: NgForm) {
-    this.seemore.bidoncourses( this.cardid, this.model.bidamount, )
+    if(this.bidform.controls.bidamount.valid){
+    this.seemore.bidoncourses( this.cardid,this.bidform.value['bidamount'] )
       .subscribe(Res => {
           swal({
             type: 'success',
@@ -145,6 +152,14 @@ export class FcseemoreComponent implements OnInit {
         }
       );
       f.resetForm()
+    }
+    else 
+    swal({
+      type: 'error',
+      title: 'Bid amount is required',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   sweetalertnotes() {
     swal({
@@ -196,10 +211,22 @@ export class FcseemoreComponent implements OnInit {
 
       swal({
         type: 'success',
-        title: 'Added to watchlist',
+        title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      if(this.Eid=='1'){
+        this.setPageflashcard(1);
+      }
+      else if(this.Eid=='2'){
+        this.trendingflash();
+      }
+      else if(this.Eid=='3'){
+        this.topratedflash();
+      }
+      else if(this.Eid=='4'){
+        this.recentflashcard();
+      }
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -234,10 +261,22 @@ export class FcseemoreComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 2000
         });
+        if(this.Eid=='1'){
+          this.setPageflashcard(1);
+        }
+        else if(this.Eid=='2'){
+          this.trendingflash();
+        }
+        else if(this.Eid=='3'){
+          this.topratedflash();
+        }
+        else if(this.Eid=='4'){
+          this.recentflashcard();
+        }
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
@@ -269,20 +308,44 @@ export class FcseemoreComponent implements OnInit {
     this.seemore.delcart(event.cart).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from cart',
         showConfirmButton: false,
         timer: 1500
       });
+      if(this.Eid=='1'){
+        this.setPageflashcard(1);
+      }
+      else if(this.Eid=='2'){
+        this.trendingflash();
+      }
+      else if(this.Eid=='3'){
+        this.topratedflash();
+      }
+      else if(this.Eid=='4'){
+        this.recentflashcard();
+      }
     });
   }
   delFlaskFwishList(event) {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
+      if(this.Eid=='1'){
+        this.setPageflashcard(1);
+      }
+      else if(this.Eid=='2'){
+        this.trendingflash();
+      }
+      else if(this.Eid=='3'){
+        this.topratedflash();
+      }
+      else if(this.Eid=='4'){
+        this.recentflashcard();
+      }
     });
   }
   cardbid;

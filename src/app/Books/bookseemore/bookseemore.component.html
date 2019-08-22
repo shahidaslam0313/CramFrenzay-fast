@@ -15,10 +15,10 @@
                             routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
-                                (click)="addwishlist(data.id)"></i> <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false"
+                        <div class="heart_cart"> <i class="far fa-heart" title="Add to Watch List" *ngIf="!data.wishlist==true"
+                                (click)="addwishlist(data.id)"></i> <i title="Remove from Watch List" *ngIf="!data.wishlist==false"
                                 class="fas fa-heart sh-red" (click)="delBookFwishList(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                         </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false" (click)="openDialog3(data?.id)">Offer
@@ -71,10 +71,10 @@
                             routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
-                                (click)="addwishlist(data.id)"></i> <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false"
+                        <div class="heart_cart"> <i class="far fa-heart" title="Add to Watch List" *ngIf="!data.wishlist==true"
+                                (click)="addwishlist(data.id)"></i> <i title="Remove from Watch List" *ngIf="!data.wishlist==false"
                                 class="fas fa-heart sh-red" (click)="delBookFwishList(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                         </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true  && !data.Purchased && data.isTeacher==false" (click)="openDialog3(data?.id)">Offer
@@ -123,10 +123,10 @@
                             routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
-                                (click)="addwishlist(data.id)"></i> <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false"
+                        <div class="heart_cart"> <i class="far fa-heart" title="Add to Watch List" *ngIf="!data.wishlist==true"
+                                (click)="addwishlist(data.id)"></i> <i title="Remove from Watch List" *ngIf="!data.wishlist==false"
                                 class="fas fa-heart sh-red" (click)="delBookFwishList(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                         </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && !data.Purchased && data.isTeacher==false" (click)="openDialog3(data?.id)">Offer
@@ -175,10 +175,10 @@
                             routerLink="/detail/{{data.id}}">{{data.price | currency:'USD'}}</a>
                     </div>
                     <div class="heart_cart_buy">
-                        <div class="heart_cart"> <i class="far fa-heart" title="Add to wishlist" *ngIf="!data.wishlist==true"
-                                (click)="addwishlist(data.id)"></i> <i title="Delete ffrom wishlist" *ngIf="!data.wishlist==false"
+                        <div class="heart_cart"> <i class="far fa-heart" title="Add to Watch List" *ngIf="!data.wishlist==true"
+                                (click)="addwishlist(data.id)"></i> <i title="Remove from Watch List" *ngIf="!data.wishlist==false"
                                 class="fas fa-heart sh-red" (click)="delBookFwishList(data)"></i> <i *ngIf="!data.cart==false"
-                                class="fa fa-cart-plus" title="Click and remove from Cart" (click)="delfromcart(data)"></i>
+                                class="fa fa-cart-plus" title="Remove from Cart" (click)="delfromcart(data)"></i>
                             <i *ngIf="!data.cart==true" class="wishlist material-icons" title="Add to Cart" (click)="addcart(nullvalue,nullvalue,data.id,nullvalue)">add_shopping_cart</i>
                         </div>
                         <div class="buy_btn"> <a class="btn-style btn" *ngIf="data?.accept_offer==true && data.isTeacher==false" (click)="openDialog3(data?.id)">Offer
@@ -197,9 +197,10 @@
             </div>
         </div>
     </div>
+</div>
     <div class="modal fade" id="notesbidnow" role="dialog">
         <div class="modal-dialog">
-            <div class="modal-content margin-top-175">
+            <div class="modal-content ">
                 <div class="modal-header">
                     <div class="form-1-header">
                         <h1>Bid on Book</h1>
@@ -208,18 +209,25 @@
                 <div class="modal-body"> <a [routerLink]="['/bid-history']" [queryParams]="{cat:'book', id:bidbookid}"
                         data-dismiss="modal" class="view-bid">view bid history </a> <a [routerLink]="['/bid-history']"
                         [queryParams]="{cat:'book', id:bidbookid}" data-dismiss="modal">
-                        <countdown class="col-lg-12" units="Days | Hours | Minutes | Seconds" end="{{book?.endtime}}"></countdown>
+                        <countdown class="col-lg-12 mainpagee" units="Days | Hours | Minutes | Seconds" end="{{booksendtime?.endtime}}"></countdown>
                         
                                
                         <p *ngIf="getbooks?.bidamount">Highest bid amount:{{getbooks?.bidamount}}</p>
                         <p *ngIf="!getbooks?.bidamount">No bid received yet</p>
                     </a>
-                    <form name="form" role="form" method="post" #f="ngForm" class="user-add-ingo-form"> <label>Place
+                    <form name="form" role="form" method="post" #f="ngForm" [formGroup]="bidform" class="user-add-ingo-form"> <label>Place
                             Your own bid:</label>
                         <mat-form-field> <input matInput type="number" min="1" oninput="validity.valid||(value='');"
-                             onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)*"
-                                [(ngModel)]="model.bidamount" #bidamount="ngModel" name="bidamount"><span matPrefix>$&nbsp;</span> </mat-form-field>
+                             onKeyPress="if(this.value.length==4) return false;" placeholder="Enter bid amount (US $)"
+                             formControlName="bidamount" name="bidamount" required><span matPrefix>$&nbsp;</span> 
+                             <mat-error
+                             *ngIf="bidform.controls.bidamount.touched && bidform.controls.bidamount.invalid">
+                             <mat-error *ngIf="bidform.controls.bidamount.errors.required">Amount is required
+                                 </mat-error>
+                             </mat-error></mat-form-field>
+                    <div class="text-center">
                         <a class="btn-style btn" (click)="bidc(f)" data-dismiss="modal">Bid Now </a>
+                    </div>
                     </form>
                 </div>
             </div>

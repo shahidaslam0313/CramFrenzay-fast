@@ -8,14 +8,14 @@
                         <div class="profile-picture" *ngIf="!profilePhoto"> <img src="../assets/img/default-user-icon-profile.png"
                                 onerror="this.src='../assets/img/default-user-icon-profile.png'"> </div>
                     <h4 class="user-name text_cap">{{firstname}}&nbsp;{{lastname}}</h4>
-                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Add
+                </form> <a class="user-link" routerLink="/uploadnotes" routerLinkActive="active1"><i class="fa fa-file-alt"></i>Sell
                     Notes</a> <a class="user-link" routerLink="/upload" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-th-large"></i>Add Courses</a> <a class="user-link" routerLink="/uploadcard"
+                        class="fa fa-th-large"></i>Sell Courses</a> <a class="user-link" routerLink="/uploadcard"
                     routerLinkActive="active1" data-toggle="collapse" data-parent="#MainMenu" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-book-open"></i>Add Flash Cards</a> <a class="user-link display-none" routerLink="/uploadcarddetail"
+                        class="fa fa-book-open"></i>Sell Flash Cards</a> <a class="user-link display-none" routerLink="/uploadcarddetail"
                     routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i class="fa fa-book-open"></i>FlashCard
                     Detail</a> <a class="user-link" routerLink="/uploadbook" routerLinkActive="active1" *ngIf="check_login() && checkrole()"><i
-                        class="fa fa-book"></i>Add Books</a>
+                        class="fa fa-book"></i>Sell Books</a>
             </nav>
         </div>
         <div class="col-md-8 user-profile">
@@ -29,18 +29,22 @@
             <div class="tab-content padding-top-10">
                 <div id="user_signup" class="form-1-body padding-top-10 tab-pane active">
                     <form class="user-add-ingo-form" enctype="multipart/form-data" #f="ngForm">
-                        <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text"
-                                placeholder="Title" id="name" [(ngModel)]="model.name" name="name" required>
-                            <mat-error *ngIf="nameFormControl.hasError('required')"> Title is <strong>Required</strong>
+                        <mat-form-field class="margin-top-20"> <input class="Input-capitalize" matInput type="text" minlength="2" maxlength="64"
+                                placeholder="Title" id="name" [(ngModel)]="model.name" name="name" #name="ngModel" required>
+                            <mat-error *ngIf="name.hasError('required')"> Title is <strong>Required</strong>
                             </mat-error>
-                            <mat-error *ngIf="nameFormControl.hasError('pattern')"> Please enter a valid Title
+                            <mat-error *ngIf="name.hasError('minlength')"> Title should be at least 2 character long
+                            </mat-error>
+                            <mat-error *ngIf="name.hasError('pattern')"> Please enter a valid Title
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field> <textarea matInput placeholder="Description" id="detail" [(ngModel)]="model.detail"
-                                name="detail" required></textarea>
-                                <mat-error *ngIf="detailFormControl.hasError('required')"> Description is <strong>Required</strong>
+                                name="detail" minlength="50" maxlength="300" #detail="ngModel" required></textarea>
+                                <mat-error *ngIf="detail.hasError('required')"> Description is <strong>Required</strong>
                                 </mat-error>
-                                <mat-error *ngIf="detailFormControl.hasError('pattern')"> Please enter valid Description
+                                <mat-error *ngIf="detail.hasError('minlength')"> Description should be at least 50 character long
+                                    </mat-error>
+                                <mat-error *ngIf="detail.hasError('pattern')"> Please enter valid Description
                                 </mat-error> </mat-form-field>
                         <mat-form-field id="categoties-font">
                             <mat-select placeholder="Select Category" type="number" id="notessubcategories" [(ngModel)]="model.notessubcategories"
@@ -59,22 +63,23 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field id="fonts" *ngIf="nestedresult">
-                            <mat-select placeholder="Select Nested Sub-Category" type="number" [(ngModel)]="model.nestedcategory"
+                            <mat-select placeholder="Select Nested Category" type="number" [(ngModel)]="model.nestedcategory"
                                 name="nestedcategory" id="nestedcategory" required>
                                 <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
                             </mat-select>
-                            <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Sub-Category is <strong>Required</strong>
+                            <mat-error *ngIf="nestedcategoryFormControl.hasError('required')"> Nested Category is <strong>Required</strong>
                             </mat-error>
                         </mat-form-field>
                         <mat-slide-toggle id="showhide6" class="margin-bottom-10" [(ngModel)]="accept_offer" name="accept_offer">Accept
                             Offers</mat-slide-toggle>
-                        <div id="showdiv6" style="display: none;">
-                            <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least $"
-                                    [(ngModel)]="model.min_amount" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
+                        <div id="showdiv6" class="showid-6">
+                            <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then"
+                                    [(ngModel)]="min_amount" (ngModelChange)="onChange3($event)" name="min_amount" onKeyPress="if(this.value.length==4) return false;">
                                 <span matPrefix>$&nbsp;</span> </mat-form-field>
-                            <mat-form-field> <input matInput type="number" placeholder="Automatically decline offers lower then $"
-                                    [(ngModel)]="model.max_amount" name="max_amount" onKeyPress="if(this.value.length==4) return false;">
-                                <span matPrefix>$&nbsp;</span> </mat-form-field>
+                            <mat-form-field> <input matInput type="number" placeholder="Automatically accept offers of at least"
+                                    [(ngModel)]="max_amount" (ngModelChange)="onChange3($event)" name="max_amount" onKeyPress="if(this.value.length==4) return false;">
+                                <span matPrefix>$&nbsp;</span></mat-form-field>
+                                <div class="max-amount-alert" *ngIf="isInvalid">Accept Price should not be less or equal to Decline Price </div>     
                         </div>
                         <mat-slide-toggle id="showhide" class="margin-right-10" [checked]="true" [(ngModel)]="sell_status"
                             name="sell_status">List for Sale</mat-slide-toggle>
@@ -89,24 +94,26 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <mat-slide-toggle id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
-                            <span *ngIf="sell_status==true">Also List for Auction </span> <span *ngIf="sell_status==false">
+                        <mat-slide-toggle class="btn-auction" id="showhide2" [checked]="true" [(ngModel)]="bid_status" name="bid_status">
+                            <span *ngIf="sell_status==true">Also List for Auction (You can list for Sale and Auction them off at the same time)</span> <span *ngIf="sell_status==false">
                                 List for Auction </span></mat-slide-toggle>
                         <div id="showdiv2">
-                            <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price" [(ngModel)]="model.initial_amount"
-                                    name="initial_amount" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
+                            <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price" [(ngModel)]="initial_amount"
+                                (ngModelChange)="onChange4($event)" name="initial_amount" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
                                     matPrefix>$&nbsp;</span> </mat-form-field>
                             <mat-form-field>
                                 <mat-select placeholder="Listing Duration" [(ngModel)]="end_time" name="end_time">
                                     <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <mat-checkbox id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve
-                                Auction</mat-checkbox>
+                        </div>
+                        <mat-slide-toggle id="showhide3" class="btn-reserved" [(ngModel)]="model.isreserved" name="isreserved">Reserve
+                                Auction</mat-slide-toggle>
                             <div id="showdiv3">
-                                <mat-form-field> <input matInput type="number" placeholder="Reserve Price" [(ngModel)]="model.reservedprice"
-                                        name="reservedprice" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
+                                <mat-form-field> <input matInput type="number" placeholder="Reserve Price" [(ngModel)]="reservedprice"
+                                    (ngModelChange)="onChange4($event)" name="reservedprice" onKeyPress="if(this.value.length==4) return false;" oninput="validity.valid||(value='');" min="1"> <span
                                         matPrefix>$&nbsp;</span> </mat-form-field>
+                                        <div class="max-amount-alert" *ngIf="Invalid">Reserve bid amount must be higher than the starting bid</div>     
                             </div>
                             <mat-slide-toggle id="showhide4">Start Auction Later</mat-slide-toggle>
                             <div id="showdiv4">
@@ -118,14 +125,22 @@
                                     <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
                                 </mat-form-field>
                             </div>
-                        </div>
                         <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
                                 alt="" allowmultiple="false" /> </div><!-- <input class="btn-file margin-top-10" type="file" (change)="onChange($event)" accept="image/gif, image/jpeg, image/png" required> <img *ngIf="imagePreview" src="{{imagePreview}}"> -->
-                        <span class="btn-file margin-top-10">Upload Note Image <input (change)="onChange($event)" type="file"
-                                #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span> <span
-                            class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)<input
+                        <span class="btn-file margin-top-10">Upload Note Image
+                             <input (change)="handleFileInput($event.target.files); onChange($event)" type="file"
+                                #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
+                                 <span  class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)
+                                    <input
                                 (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> <a class="btn-style btn  margin-top-10" (click)="onSubmit(f)">Submit</a>
+                        </span> 
+                        <!-- <div>
+                            <button (click)="compressFile()">Upload and compress Image</button>
+                            <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
+                            <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
+                          </div> -->
+                          <input type="submit" class="btn-style btn margin-top-10 width100" (click)="uploadfiles()" [disabled]="!f.form.valid">
+                      
                     </form>
                 </div>
                 <div id="inst_signup" class="form-1-body padding-top-10 tab-pane">
@@ -143,7 +158,7 @@
                             </mat-select>
                         </mat-form-field>
                         <div *ngIf='(default=="Lecture Note")'>
-                            <mat-form-field> <label>Lecture #: </label> <input matInput type="text" placeholder="i.e 1-5"
+                            <mat-form-field><input matInput type="text" placeholder="Lecture #: i.e 1-5"
                                     name="lectureNumber" [(ngModel)]="model.lectureNumber"> </mat-form-field>
                         </div>
                         <div *ngIf='(default=="Exam Note")'>

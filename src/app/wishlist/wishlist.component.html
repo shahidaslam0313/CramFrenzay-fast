@@ -2,29 +2,28 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="addtocart-heading">
-                <h2 class="mainbanner">Watchlist
-                    <p class="watchlist-items"><span>{{count}}</span> Items in Watchlist </p>
-                </h2>
-                
+                    <p class="mainbanner">Total items in Watch List: {{count}} </p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes"  *ngIf="wishnotesId?.length != '0'">Notes</h2>
+            <h2 class="mainbanner bg-Bid-Notes"  *ngIf="watchlist?.notes?.length != '0'">Notes</h2>
             <!-- <h4 class="bg-Bid-Notes text-center" *ngIf="wishnotesId?.length == '0'">No Notes In Watchlist</h4> -->
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of wishnotesId; let i=index">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.notes; let i=index">
             <div class="product-list__item">
-                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.notes.notes_thumbnail}}"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                    (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
+                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.notes_thumbnail}}"
                             alt="Notes Image"> </a>
                 </figure>
                 <div class="product-list__content">
-                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.notes.name | titlecase}}">{{data.notes.name
+                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.name | titlecase}}">{{data.name
                             | titlecase}}</a> </div>
-                    <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data.notes.userid | titlecase}}">{{data.notes.userid
+                    <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data.userid | titlecase}}">{{data.userid
                             | titlecase}}</span> </div>
                     <ul class="product-list__star-list">
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -33,29 +32,31 @@
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                     </ul>
-                    <p class="product-list__price">{{data.notes.price | currency:'USD'}}</p>
+                    <p class="product-list__price">{{data.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="addtocart(null,null,null,data.notes.id,data.id)">
-                        Add to Cart </a> </div>
+                <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="addtocart(null,null,null,data.id,data.wish_id)">
+                        Move to Cart </a> </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Courses" *ngIf="wishId?.length != '0'">Courses</h2>
+            <h2 class="mainbanner bg-Bid-Courses" *ngIf="watchlist?.courses?.length != '0'">Courses</h2>
             <!-- <h4 class="bg-Bid-Courses text-center" *ngIf="wishId?.length == '0'">No Courses In Watchlist</h4> -->
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of wishId; let i=index">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.courses; let i=index">
             <div class="product-list__item">
-                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.course.course_thumbnail}}"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                    (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
+                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data.course_thumbnail}}"
                             alt="Course Image"> </a>
                 </figure>
                 <div class="product-list__content">
-                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.course.name | titlecase}}">{{data.course.name
+                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.name | titlecase}}">{{data.name
                             | titlecase}}</a> </div>
-                    <div class="product-list__title tutor-subject mb-3"> <span title="Author Name:{{data.course.author | titlecase}}">{{data.course.author
+                    <div class="product-list__title tutor-subject mb-3"> <span title="Author Name:{{data.author | titlecase}}">{{data.author
                             | titlecase}}</span> </div>
                     <ul class="product-list__star-list">
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -64,29 +65,31 @@
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                     </ul>
-                    <p class="product-list__price">{{data.course.price | currency:'USD'}}</p>
+                    <p class="product-list__price">{{data.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="addtocart(null,data.course.id,null,null,data.id)">
-                        Add to Cart </a> </div>
+                <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="addtocart(null,data.id,null,null,data.wish_id)">
+                        Move to Cart </a> </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes" *ngIf="cardwish?.length != '0'">Flash Cards</h2>
+            <h2 class="mainbanner bg-Bid-Notes" *ngIf="watchlist?.flashcards?.length != '0'">Flash Cards</h2>
             <!-- <h4 class="bg-Bid-Notes text-center" *ngIf="cardwish?.length == '0'">No Flash Cards In Watchlist</h4> -->
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of cardwish; let i=index">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.flashcards; let i=index">
             <div class="product-list__item">
-                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.flashcard.flashcard_image}}"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                    (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
+                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}"
                             alt="Notes Image"> </a>
                 </figure>
                 <div class="product-list__content">
-                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.flashcard.name}}">{{data.flashcard.name}}</a>
+                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.name}}">{{data.name}}</a>
                     </div>
-                    <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data.flashcard.author_name}}">{{data.flashcard.author_name}}</span>
+                    <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data.author_name}}">{{data.author_name}}</span>
                     </div>
                     <ul class="product-list__star-list">
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -95,29 +98,31 @@
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                     </ul>
-                    <p class="product-list__price">{{data?.flashcard.price | currency:'USD'}}</p>
+                    <p class="product-list__price">{{data?.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a class="btn-style btn " routerLink="javascript:void(0)"
-                        (click)="addtocart(null,null,data.flashcard.id,null,data.id)"> Add to Cart </a> </div>
+                <div class="product-list__item-info-1"> <a class="btn-style btn"
+                        (click)="addtocart(null,null,data.id,null,data.wish_id)"> Move to Cart </a> </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="mainbanner bg-Bid-Notes" *ngIf="wishbook?.length != '0'">Books</h2>
+            <h2 class="mainbanner bg-Bid-Notes" *ngIf="watchlist?.books?.length != '0'">Books</h2>
             <!-- <h4 class="mainbanner bg-Bid-Notes" *ngIf="wishbook?.length == '0'">No Books In Watchlist</h4> -->
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of wishbook; let i=index">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of watchlist?.books; let i=index">
             <div class="product-list__item">
-                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.book.book_image}}"
+                    <a class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                    (click)="del(data?.wish_id)"> <i class="fas fa-times"></i> </a>
+                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data.id}}"> <img src="{{Imageurl}}{{data?.book_image}}"
                             alt="Notes Image"> </a>
                 </figure>
                 <div class="product-list__content">
-                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.book.name}}">{{data.book.name}}</a>
+                    <div class="product-list__category"> <a routerLink="/eachcourse/{{data.id}}" title="{{data.name}}">{{data.name}}</a>
                     </div>
-                    <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data.book.author_name}}">{{data.book.author_name}}</span>
+                    <div class="product-list__title tutor-subject mb-3"> <span title="User Name:{{data.author_name}}">{{data.author_name}}</span>
                     </div>
                     <ul class="product-list__star-list">
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -126,10 +131,10 @@
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                         <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                     </ul>
-                    <p class="product-list__price">{{data?.book.price | currency:'USD'}}</p>
+                    <p class="product-list__price">{{data?.price | currency:'USD'}}</p>
                 </div>
-                <div class="product-list__item-info-1"> <a routerLink="javascript:void(0)" class="btn-style btn "
-                        (click)="addtocart(data.book.id,null,null,null,data.id)"> Add to Cart </a> </div>
+                <div class="product-list__item-info-1"> <a class="btn-style btn "
+                        (click)="addtocart(data.id,null,null,null,data.wish_id)"> Move to Cart </a> </div>
             </div>
         </div>
     </div>

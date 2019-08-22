@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoursesmComponent }   from './coursesm.component';
 import {RouterModule, Routes} from "@angular/router";
 import { MaterialModule } from '../../app.module';
@@ -17,7 +17,8 @@ const coursesmRoutes: Routes = [
     CommonModule,
     MaterialModule,
     RatingModule,
-    CountdownModule
+    CountdownModule,
+    FormsModule, ReactiveFormsModule,
   ],
   declarations: [
     CoursesmComponent,

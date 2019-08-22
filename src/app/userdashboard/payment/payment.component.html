@@ -1,4 +1,71 @@
-<div class="container-fluid width-90 margin-bottom-20 pt-5">
+<div class="container-fluid width-70 margin-bottom-20 pt-5">
+    <div *ngIf="note" class="check-img-payment">
+        <div class="product-list__item">
+            <figure class="product-list__img"> <a routerLink="/notes/{{note?.id}}"><img src="{{Imageurl}}{{note?.notes_thumbnail}}"
+                    onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> </a></figure>
+            <div class="product-list__content">
+                <div class="product-list__category"> <a routerLink="/notes/{{note?.id}}"
+                        title="{{note?.name}}">{{note?.name}}</a>
+                </div>
+            </div>
+            <div class="rating_and_price">
+                 
+                <rating class="rating-star-icons float_left" ngModel="{{note?.rating}}" [readonly]="true"
+                    titles="{{note?.rating}}"></rating>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="course" class="check-img-payment">
+            <div class="product-list__item">
+                <figure class="product-list__img"> <a routerLink="/eachcourse/{{course?.id}}"><img src="{{Imageurl}}{{course?.course_thumbnail}}"
+                        onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course"> </a></figure>
+                <div class="product-list__content">
+                    <div class="product-list__category"> <a routerLink="/eachcourse/{{course?.id}}"
+                            title="{{course?.name}}">{{course?.name}}</a>
+                    </div>
+                </div>
+                <div class="rating_and_price">
+                        <a class="product-list__price" routerLink="/eachcourse/{{course?.id}}">{{course?.price
+                            | currency:'USD'}}</a>
+                    <rating class="rating-star-icons float_left" ngModel="{{course?.rating}}" [readonly]="true"
+                        titles="{{course?.rating}}"></rating>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="card" class="check-img-payment">
+                <div class="product-list__item">
+                    <figure class="product-list__img"> <a routerLink="/fcdetail/{{card?.id}}"><img src="{{Imageurl}}{{card?.flashcard_image}}"
+                            onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Flash Card"> </a></figure>
+                    <div class="product-list__content">
+                        <div class="product-list__category"> <a routerLink="/fcdetail/{{card?.id}}"
+                                title="{{card?.name}}">{{card?.name}}</a>
+                        </div>
+                    </div>
+                    <div class="rating_and_price">
+                            <a class="product-list__price" routerLink="/fcdetail/{{card?.id}}">{{card?.price
+                                | currency:'USD'}}</a>
+                        <rating class="rating-star-icons float_left" ngModel="{{card?.rating}}" [readonly]="true"
+                            titles="{{card?.rating}}"></rating>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="book" class="check-img-payment">
+                    <div class="product-list__item">
+                        <figure class="product-list__img"> <a routerLink="/detail/{{book?.id}}"><img src="{{Imageurl}}{{book?.book_image}}"
+                                onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Book"> </a></figure>
+                        <div class="product-list__content">
+                            <div class="product-list__category"> <a routerLink="/detail/{{book?.id}}"
+                                    title="{{book?.name}}">{{book?.name}}</a>
+                            </div>
+                        </div>
+                        <div class="rating_and_price">
+                                <a class="product-list__price" routerLink="/detail/{{book?.id}}">{{book?.price
+                                    | currency:'USD'}}</a>
+                            <rating class="rating-star-icons float_left" ngModel="{{book?.rating}}" [readonly]="true"
+                                titles="{{book?.rating}}"></rating>
+                        </div>
+                    </div>
+                </div>
     <div class="row checkout-select-box">
         <div class="width100">
             <div id="section-pricing" class="text-center">
@@ -15,12 +82,16 @@
                 <div id="pricing-switch" class="">
                     <div class="col-md-12" *ngIf="!isright ">
                         <div class="col-lg-12 Saved-card-sel-list">
-                            <mat-form-field class="width50">
-                                <mat-select class="" placeholder="Select List">
+                            <mat-form-field class="width65">
+                                <mat-select class="" placeholder="Select Card" (change)="cardselect()" required> 
                                     <mat-option *ngFor="let card of res" [value]="card.id" (click)="getcardid(card.id)">
                                         {{card.nickname}}</mat-option>
                                 </mat-select>
-                            </mat-form-field> <a class="btn-style width50 btn margin-top-10" (click)="buy()">Place Order</a>
+                            </mat-form-field> 
+                            <button *ngIf="note && !course && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{note?.price | currency:'USD'}}</button>
+                            <button *ngIf="course && !note && !card && !book" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{course?.price | currency:'USD'}}</button>
+                            <button *ngIf="card && !note && !course && !book" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{card?.price | currency:'USD'}}</button>
+                            <button *ngIf="book && !course && !note && !card" class="btn-style width65 btn margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy Now at {{book?.price | currency:'USD'}}</button>
                         </div>
                     </div>
                     <div class="col-md-12" *ngIf="isright">
@@ -83,8 +154,8 @@
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                        <mat-form-field> <input class="text_cap" matInput placeholder="Card Holder Name" type="text"
-                                                formControlName="cardHolderName" />
+                                        <mat-form-field> <input class="text_cap" matInput placeholder="Card Holder Name"
+                                                type="text" formControlName="cardHolderName" />
                                             <mat-error
                                                 *ngIf="form.controls.cardHolderName.touched && form.controls.cardHolderName.invalid">
                                                 <mat-error *ngIf="form.controls.cardHolderName.errors.required"> Card
@@ -103,8 +174,8 @@
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                        <mat-form-field> <input matInput placeholder="Nick Name" class="text_cap" type="text"
-                                                formControlName="cardnickname" />
+                                        <mat-form-field> <input matInput placeholder="Nick Name" class="text_cap"
+                                                type="text" formControlName="cardnickname" />
                                             <mat-error
                                                 *ngIf="form.controls.cardnickname.touched && form.controls.cardnickname.invalid">
                                                 <mat-error *ngIf="form.controls.cardnickname.errors.required"> Nick Name
@@ -178,8 +249,8 @@
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12" *ngIf="cvv4">
-                                        <mat-form-field > <input matInput type="text" maxlength="4"
-                                                minlength="4" placeholder="CVV No." formControlName="cvv4">
+                                        <mat-form-field> <input matInput type="text" maxlength="4" minlength="4"
+                                                placeholder="CVV No." formControlName="cvv4">
                                             <mat-error *ngIf="form.controls.cvv4.touched && form.controls.cvv4.invalid">
                                                 <mat-error *ngIf="form.controls.cvv4.errors.required"> CVV cannot be
                                                     empty </mat-error>
@@ -217,8 +288,8 @@
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                        <mat-form-field> <input class="text_cap" matInput placeholder="Street" type="text"
-                                                formControlName="street" />
+                                        <mat-form-field> <input class="text_cap" matInput placeholder="Street"
+                                                type="text" formControlName="street" />
                                             <mat-error *ngIf="form.controls.street.hasError('required')"> Street cannot
                                                 be empty </mat-error>
                                         </mat-form-field>
@@ -231,15 +302,15 @@
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                        <mat-form-field> <input class="text_cap" matInput placeholder="State" type="text"
-                                                formControlName="state" />
+                                        <mat-form-field> <input class="text_cap" matInput placeholder="State"
+                                                type="text" formControlName="state" />
                                             <mat-error *ngIf="form.controls.state.hasError('pattern')"> State Name Must
                                                 Be In Alphabets Only </mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                                        <mat-form-field> <input class="text_cap" matInput placeholder="Country" type="text"
-                                                formControlName="country" />
+                                        <mat-form-field> <input class="text_cap" matInput placeholder="Country"
+                                                type="text" formControlName="country" />
                                             <mat-error *ngIf="form.controls.country.hasError('pattern')"> Country Name
                                                 Must Be In Alphabets Only </mat-error>
                                         </mat-form-field>
@@ -248,7 +319,11 @@
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle>
                                     </div>
-                                </div><a class="btn-style btn width50 margin-top-10" (click)="buywithcard(f)">Place Order</a>
+                                </div>
+                                    <a *ngIf="note && !course && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{note?.price | currency:'USD'}}</a>
+                                    <a *ngIf="course && !note && !card && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{course?.price | currency:'USD'}}</a>
+                                    <a *ngIf="card && !note && !course && !book" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{card?.price | currency:'USD'}}</a>
+                                    <a *ngIf="book && !course && !note && !card" class="btn-style width50 btn margin-top-10" (click)="buywithcard(f)">Buy Now at {{book?.price | currency:'USD'}}</a>
                             </form>
                         </div>
                     </div>

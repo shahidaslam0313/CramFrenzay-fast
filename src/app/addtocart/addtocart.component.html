@@ -18,12 +18,12 @@
                             <div class="col-md-12" *ngIf="!isright">
                                 <div class="col-lg-12 Saved-card-sel-list">
                                     <mat-form-field class="width50">
-                                        <mat-select class="" placeholder="Select List">
+                                        <mat-select class="" placeholder="Select Card"  (change)="card()" required>
                                             <mat-option *ngFor="let card of res" [value]="card.id"
-                                                (click)="getcardid(card.id)">{{card.nickname}}</mat-option>
+                                                (click)="getcardid(card.id)" >{{card.nickname}}</mat-option>
                                         </mat-select>
-                                    </mat-form-field> <a class="btn-style btn  width100 margin-top-10" (click)="buy()">Place
-                                        Order</a>
+                                    </mat-form-field> <button class="btn-style btn  width100 margin-top-10" (click)="buy()" [disabled]="butDisabled">Buy
+                                        Now at {{SUM | currency:'USD'}}</button>
                                 </div>
                             </div>
                             <div class="col-md-12" *ngIf="isright">
@@ -41,13 +41,15 @@
                                                             <g> </g>
                                                         </g>
                                                     </svg> </div>
-                                                <div class="number">{{model.creditno}}</div>
-                                                <div class="card-holder"> <label>CVV</label>
-                                                    <div>{{model.ccv}}</div>
-                                                </div>
-                                                <div class="card-expiration-date"> <label>Expires</label>
-                                                    <div>{{model.exp}}</div>
-                                                </div>
+                                                    <div class="card-holder sh"> <label>Card Holder</label>
+                                                        <div>{{form.controls.cardHolderName.value}}</div>
+                                                    </div>
+                                                    <div class="card-holder"> <label>Card Number</label>
+                                                        <div>{{form.controls.creditno.value}}</div>
+                                                    </div>
+                                                    <div class="card-expiration-date"> <label>Expiry Date</label>
+                                                        <div>{{form.controls.exp.value}}</div>
+                                                    </div>
                                             </div>
                                             <div class="back">
                                                 <div class="strip"></div>
@@ -61,10 +63,10 @@
                                                         </g>
                                                     </svg> </div>
                                                 <div class="card-expiration-date"> <label>Expires</label>
-                                                    <div>{{this.creditno}}</div>
+                                                    <div>{{form.controls.exp.value}}</div>
                                                 </div>
                                                 <div class="ccv"> <label>CVV</label>
-                                                    <div>{{ccv}}</div>
+                                                    <div>{{form.controls.ccv.value}}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,8 +215,8 @@
                                         </mat-form-field>
                                         <mat-slide-toggle [checked]="false" formControlName="check">Set as Default
                                             Payment Method </mat-slide-toggle> <a
-                                            class="btn-style btn  margin-top-10 width100" (click)="buywithcard(f)">Place
-                                            Order</a>
+                                            class="btn-style btn  margin-top-10 width100" (click)="buywithcard(f)">Buy 
+                                            Now</a>
                                     </form>
                                 </div>
                             </div>
@@ -225,28 +227,31 @@
         </div>
         <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
             <div class="addtocart-heading">
-                <h2 class="mainbanner">Items in Cart <p class="watchlist-items"><span>{{itemscount}}</span> Items in
-                        Cart </p>
-                </h2>
+                <p class="mainbanner">Total Items in
+                        Cart: {{itemscount}} </p>
             </div>
-            <h2 class=" bg-Bid-Courses" *ngIf="Courses?.length !='0'">Courses</h2>
+            <h2 class=" bg-Bid-Courses" *ngIf="cartdata?.courses?.length !='0'">Courses</h2>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of Courses">
-                    <div class="product-list__item">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.courses">
+                    <div class="product-list__item">   
+                            <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
+                                    class="fas fa-trash-alt"></i> </a> </div> -->
+                                    <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                                    (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
-                                    src="{{Imageurl}}{{cartitems.course.course_thumbnail}}" alt="Course Image"> </a>
-                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
-                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
-                                        class="fas fa-trash-alt"></i> </a> </div>
+                                    src="{{Imageurl}}{{cartitems.course_thumbnail}}" alt="Course Image"> </a>
                         </figure>
                         <div class="product-list__content">
-                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.course.name}}"
-                                    routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.name}}</a>
+                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.name}}"
+                                    routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.name}}</a>
                             </div>
                             <div class="product-list__title tutor-subject mb-3"> <span
-                                    title="Author Name:{{cartitems.course.author}}"
-                                    routerLink="/eachcourse/{{cartitems.course.id}}">{{cartitems.course.author}}</span>
+                                    title="Author Name:{{cartitems.author}}"
+                                    routerLink="/eachcourse/{{cartitems.id}}">{{cartitems.author}}</span>
                             </div>
+                            <div class="price-row">
+                                    <p class="product-list__price">{{cartitems.price | currency:'USD'}}</p>
                             <ul class="product-list__star-list">
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -254,35 +259,41 @@
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                             </ul>
+                        </div>
                             <div class="addtocart-prices">
-                                <p class="product-list__price">${{cartitems.course.price}}</p>
                                 <p class="product-list__price main-nav__list_right">
-                                    ${{cartitems.course.discount}}Discount </p>
+                                    {{cartitems.discount | currency:'USD'}}&nbsp;Discount </p>
                             </div>
                         </div>
                         <div class="product-list__item-info-1"> <a class="btn-style btn "
-                                (click)="wishList(null,cartitems.course.id,null,null,cartitems.id)"> Move to Wishlist
+                                (click)="wishList(null,cartitems.id,null,null,cartitems.cart_id)"> Move to Watch List
                             </a> </div>
                     </div>
                 </div>
             </div>
-            <h2 class="bg-Bid-Courses" *ngIf="Notes?.length !='0'">Notes</h2>
+            <h2 class="bg-Bid-Courses" *ngIf="cartdata?.notes?.length !='0'">Notes</h2>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of Notes">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.notes">
                     <div class="product-list__item">
-                        <figure class="product-list__img"> <a routerLink="/notes/{{cartitems.notes.id}}"> <img
-                                    src="{{Imageurl}}{{cartitems.notes.notes_thumbnail}}" alt="Notes Image"> </a>
-                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
-                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
-                                        class="fas fa-trash-alt"></i> </a> </div>
+                            <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
+                        <figure class="product-list__img"> <a routerLink="/notes/{{cartitems.id}}"> <img
+                                    src="{{Imageurl}}{{cartitems.notes_thumbnail}}" alt="Notes Image"> </a>
+
+                        
+                            <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div> -->
                         </figure>
                         <div class="product-list__content">
-                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.notes.name}}"
-                                    routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.name}}</a> </div>
+                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.name}}"
+                                    routerLink="/notes/{{cartitems.id}}">{{cartitems.name}}</a> </div>
                             <div class="product-list__title tutor-subject mb-3"> <span
-                                    title="Author Name:{{cartitems.notes.author_name}}"
-                                    routerLink="/notes/{{cartitems.notes.id}}">{{cartitems.notes.author_name}}</span>
+                                    title="Author Name:{{cartitems.author_name}}"
+                                    routerLink="/notes/{{cartitems.id}}">{{cartitems.author_name}}</span>
                             </div>
+                            <div class="price-row">
+                                    <p class="product-list__price">{{cartitems.price | currency:'USD'}}</p>
                             <ul class="product-list__star-list">
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -290,41 +301,45 @@
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                             </ul>
+                        </div>
                             <div class="addtocart-prices">
-                                <p class="product-list__price">${{cartitems.notes.price}}</p>
                                 <p class="product-list__price main-nav__list_right">
-                                    ${{cartitems.notes.discount}}Discount </p>
+                                    {{cartitems.discount | currency:'USD'}}&nbsp;Discount </p>
                             </div>
                         </div>
                         <div class="product-list__item-info-1"> <a class="btn-style btn "
-                                (click)="wishList(null,null,null,cartitems.notes.id,cartitems.id)"> Move to Wishlist
+                                (click)="wishList(null,null,null,cartitems.id,cartitems.cart_id)"> Move to Watch List
                             </a> </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="bg-Bid-Courses" *ngIf="FlashCard?.length !='0'">Flash Cards</h2>
+                    <h2 class="bg-Bid-Courses" *ngIf="cartdata?.flashcards?.length !='0'">Flash Cards</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of FlashCard">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.flashcards">
                     <div class="product-list__item">
+                            <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
-                                    src="{{Imageurl}}{{cartitems.flashcard.flashcard_image}}" alt="FlashCard Image">
+                                    src="{{Imageurl}}{{cartitems.flashcard_image}}" alt="FlashCard Image">
                             </a>
-                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
-                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
-                                        class="fas fa-trash-alt"></i> </a> </div>
+                            <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div> -->
                         </figure>
                         <div class="product-list__content">
-                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.flashcard.name}}"
-                                    routerLink="/fcdetail/{{cartitems.flashcard.id}}">{{cartitems.flashcard.name}}</a>
+                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.name}}"
+                                    routerLink="/fcdetail/{{cartitems.id}}">{{cartitems.name}}</a>
                             </div>
                             <div class="product-list__title tutor-subject mb-3"> <span
-                                    title="Author Name:{{cartitems.flashcard.author_name}}"
-                                    routerLink="/fcdetail/{{cartitems.flashcard.id}}">{{cartitems.flashcard.author_name}}</span>
+                                    title="Author Name:{{cartitems.author_name}}"
+                                    routerLink="/fcdetail/{{cartitems.id}}">{{cartitems.author_name}}</span>
                             </div>
+                            <div class="price-row">
+                                    <p class="product-list__price"> {{cartitems.price | currency:'USD'}}</p>
                             <ul class="product-list__star-list">
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -332,35 +347,44 @@
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                             </ul>
+                        </div>
                             <div class="addtocart-prices">
-                                <p class="product-list__price"> ${{cartitems.flashcard.price}}</p>
                                 <p class="product-list__price main-nav__list_right">
-                                    ${{cartitems.flashcard.discount}}Discount</p>
+                                    {{cartitems.discount | currency:'USD'}}&nbsp;Discount</p>
                             </div>
                         </div>
                         <div class="product-list__item-info-1"> <a class="btn-style btn "
-                                (click)="wishList(null,null,cartitems.flashcard.id,null,cartitems.id)"> Move to Wishlist
+                                (click)="wishList(null,null,cartitems.id,null,cartitems.cart_id)"> Move to Watch List
                             </a> </div>
                     </div>
                 </div>
             </div>
-            <h2 class="bg-Bid-Courses" *ngIf="Book?.length !='0'">Books</h2>
+            <h2 class="bg-Bid-Courses" *ngIf="cartdata?.books?.length !='0'">Books</h2>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of Book">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let cartitems of cartdata?.books">
                     <div class="product-list__item">
+                            <div class="addtocart-time cross-icon" data-target="#myModal3" data-toggle="modal"
+                            (click)="removeFromCart(cartitems.cart_id)"> <i class="fas fa-times cross"></i> </div>
                         <figure class="product-list__img"> <a routerLink=""> <img
-                                    src="{{Imageurl}}{{cartitems.book.book_image}}" alt="Books Image"> </a>
-                            <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
-                                    data-toggle="modal" (click)="removeFromCart(cartitems.id)"> <i
-                                        class="fas fa-trash-alt"></i> </a> </div>
+                                    src="{{Imageurl}}{{cartitems.book_image}}" alt="Books Image"> </a>
+
+
+                    
+
+
+                            <!-- <div class="wishlist-overlay"> <a class="product-list__wishlist" data-target="#myModal3"
+                                    data-toggle="modal" (click)="removeFromCart(cartitems.cart_id)"> <i
+                                        class="fas fa-trash-alt"></i> </a> </div> -->
                         </figure>
                         <div class="product-list__content">
-                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.book.name}}"
-                                    routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.name}}</a> </div>
+                            <div class="product-list__category"> <a routerLink="" title="{{cartitems.name}}"
+                                    routerLink="/detail/{{cartitems.id}}">{{cartitems.name}}</a> </div>
                             <div class="product-list__title tutor-subject mb-3"> <span
-                                    title="Author Name:{{cartitems.book.author_name}}"
-                                    routerLink="/detail/{{cartitems.book.id}}">{{cartitems.book.author_name}}</span>
+                                    title="Author Name:{{cartitems.author_name}}"
+                                    routerLink="/detail/{{cartitems.id}}">{{cartitems.author_name}}</span>
                             </div>
+                        <div class="price-row">
+                            <p class="product-list__price"> {{cartitems.price | currency:'USD'}}</p>
                             <ul class="product-list__star-list">
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
@@ -368,14 +392,14 @@
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                                 <li> <a href=""> <i class="fa fa-star" aria-hidden="true"></i> </a> </li>
                             </ul>
+                        </div>
                             <div class="addtocart-prices">
-                                <p class="product-list__price"> ${{cartitems.book.price}}</p>
-                                <p class="product-list__price main-nav__list_right">${{cartitems.book.discount}}Discount
+                                <p class="product-list__price main-nav__list_right">{{cartitems.discount | currency:'USD'}}&nbsp;Discount
                                 </p>
                             </div>
                         </div>
                         <div class="product-list__item-info-1"> <a class="btn-style btn "
-                                (click)="wishList(cartitems.book.id,null,null,null,cartitems.id)"> Move to Wishlist </a>
+                                (click)="wishList(cartitems.id,null,null,null,cartitems.cart_id)"> Move to Watch List </a>
                         </div>
                     </div>
                 </div>

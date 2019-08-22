@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
 import { uploadservice } from './upload.service';
 import { Router } from '@angular/router';
 import { Config } from '../../Config';
@@ -7,11 +6,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SimpleGlobal } from 'ng2-simple-global';
 import { DataService } from '../../data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidatorFn, FormControl, NgForm, Validators } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 import swal from 'sweetalert2';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
+import { GlobalService } from '../../global.service';
 declare const $: any;
 @Component({
   selector: 'app-upload',
@@ -35,12 +35,11 @@ export class UploadComponent implements OnInit {
   public firstname;
   public lastname;
   profilePhoto;
-date = new Date().toString();
+  date = new Date().toString();
 
   Auction = true;
   file: any;
   file1: any;
-  // files: File;
   input;
   clicked = false;
   color = 'accent';
@@ -48,31 +47,40 @@ date = new Date().toString();
   disabled = false;
   sell_status: boolean = true;
   c_name;
-  hide= true;
-  isActive= true;
+  hide = true;
+  isActive = true;
   end_time;
   sell_days;
   response;
-role;
-  check($event) {}
+  role;
+  filetoup: FileList;
+  fileName = '';
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange2(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
+  public initial_amount;
+  public reservedprice;
+  public Invalid: boolean = false;
+  public onChange3(event: any): void {
+    this.Invalid = this.initial_amount == this.reservedprice || this.initial_amount > this.reservedprice;
+  }
+  check($event) { }
   ranges = [
-    {value: '10', viewValue: '10'},
-    {value: '15', viewValue: '15'},
-    {value: '21', viewValue: '21'},
-    {value: '30', viewValue: '30'},
-    {value: '60', viewValue: '60'}
+    { value: '10', viewValue: '10' },
+    { value: '15', viewValue: '15' },
+    { value: '21', viewValue: '21' },
+    { value: '30', viewValue: '30' },
+    { value: '60', viewValue: '60' }
   ];
   range = [
-    {value: '3', viewValue: '3'},
-    {value: '5', viewValue: '5'},
-    {value: '7', viewValue: '7'},
-    {value: '15', viewValue: '15'},
+    { value: '3', viewValue: '3' },
+    { value: '5', viewValue: '5' },
+    { value: '7', viewValue: '7' },
+    { value: '15', viewValue: '15' },
   ];
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   priceFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
@@ -92,8 +100,7 @@ role;
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-
-  constructor(private newService: uploadservice, private router: Router, private route: ActivatedRoute,
+  constructor(private newService: uploadservice, private globalimage : GlobalService, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -103,6 +110,7 @@ role;
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.firstname = localStorage.getItem('fname');
     this.lastname = localStorage.getItem('lname');
     this.profilePhoto = localStorage.getItem('pic');
@@ -111,72 +119,83 @@ role;
       this.courses();
     }
 
-    $('#showhide').click(function() {
+    $('#showhide').click(function () {
       $('#showdiv').toggle();
     });
-    $('#showhide2').click(function() {
+    $('#showhide2').click(function () {
       $('#showdiv2').toggle();
     });
 
-    $('#showhide3').click(function() {
+    $('#showhide3').click(function () {
       $('#showdiv3').toggle();
     });
 
-    $('#showhide4').click(function() {
+    $('#showhide4').click(function () {
       $('#showdiv4').toggle();
     });
 
-    $('#showhide5').click(function() {
+    $('#showhide5').click(function () {
       $('#showdiv5').toggle();
     });
-    $('#showhide6').click(function() {
+    $('#showhide6').click(function () {
       $('#showdiv6').toggle();
     });
   }
+  
 
-  onSubmit(f: NgForm) {
 
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
-          this.CourseFailure();
-        }
-        else {
 
-          // this.CourseSuccess();
-          this.model.course_thumbnail = data;
-          this.ifImageUpload(f);
-        }
-      });
-      f.resetForm();
-  }
+handleFileInput(files: FileList) {
+  this. filetoup = files;
+  console.log('uploaded filetoup  ', this.filetoup);
+
+this.fileName=  this.filetoup[0].name;
+console.log('File Name is:' ,this.fileName);
+this.uploadItemsToActivity();
+}
+
+uploadItemsToActivity() {
+  console.log('I am in 1 Component');
+  this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+    data => {
+   
+    },
+    error => {
+      // console.log(error);
+    });
+
+}
+
+  // onSubmit(f: NgForm) {
+
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === 'Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.') {
+  //         this.CourseFailure();
+  //       }
+  //       else {
+
+  //         // this.CourseSuccess();
+  //         this.model.course_thumbnail = data;
+  //         this.ifImageUpload(f);
+  //       }
+  //     });
+  // }
   accept_offer: boolean = false;
-  private ifImageUpload(f: NgForm) {
-    var currentdate = moment(new Date,' YYYY-MM-DD ');
-    var new_date = moment(currentdate).add(this.sell_days,'days');
+   ifImageUpload(f: NgForm) {
+    var currentdate = moment(new Date, ' YYYY-MM-DD ');
+    var new_date = moment(currentdate).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
-    var bid_date = moment(currentdate).add(this.end_time,'days');
-    console.log(new_date, this.sell_status , this.model,  this.bid_status , bid_date);
-    if(this.model.valid){
-      this.newService.uploading(new_date, this.sell_status , this.model, this.accept_offer,  this.bid_status , bid_date, currentdate)
+    var bid_date = moment(currentdate).add(this.end_time, 'days');
+    console.log(new_date, this.sell_status, this.model, this.bid_status, bid_date);
+    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
       .subscribe(Res => {
-
-        console.log(this.response);
         this.CourseSuccess();
       }
 
       );
-      f.resetForm()
-    }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 2000
-    });
+    f.resetForm()
   }
   reserved() {
     if (this.hide) {
@@ -214,8 +233,8 @@ role;
   onChange(event: EventTarget) {
     this.input = new FormData();
 
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
+    const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
     this.input.append('fileToUpload', target.files[0]);
     this.files = target.files;
     this.file = this.files[0];
@@ -239,7 +258,7 @@ role;
       timer: 2500
     });
   }
- files;
+  files;
   ImgSrc;
   base64textString;
   _handleReaderLoaded(readerEvt) {
@@ -259,11 +278,11 @@ role;
       }
     }
   }
-  checkrole(){
-    if(isPlatformBrowser(this.platformId)){
-      if(localStorage.getItem('role') == "T" || localStorage.getItem('role') == "A" ){
+  checkrole() {
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('role') == "T" || localStorage.getItem('role') == "A") {
         return true;
-      } else if( this.role == "U" || this.role == "I") {
+      } else if (this.role == "U" || this.role == "I") {
         return false;
       }
     }

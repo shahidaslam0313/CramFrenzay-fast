@@ -20,7 +20,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active mt-3" id="notes">
                             <h3 class="mainbanner">My Bought Items</h3>
-                            <h4 class="text-center" *ngIf="bought?.notes==0">Not note card bought yet</h4>
+                            <h4 class="text-center" *ngIf="bought?.notes==0">No notes bought yet</h4>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of bought?.notes, let i=index">
                                 <div *ngIf="item !=null ">
@@ -28,6 +28,10 @@
                                         <figure class="product-list__img">
                                             <a routerLink="/notes/{{item.id}}"> <img src="{{Imageurl}}{{item?.notes_thumbnail}}"> </a>
                                         </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a routerLink="/notes/{{item.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -43,6 +47,13 @@
                                         <figure class="product-list__img">
                                             <a routerLink="/eachcourse/{{item.id}}"> <img src="{{Imageurl}}{{item?.course_thumbnail}}" data-filter="*" alt="Course"> </a>
                                         </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a routerLink="/eachcourse/{{item.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a></div>
+                                                <div class="product-list__title tutor-subject"> <span
+                                                    title="User Name :{{item.author}}"
+                                                    routerLink="/eachcourse/{{item.id}}">{{item.author}}</span></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +69,10 @@
                                         <figure class="product-list__img">
                                             <a routerLink="/fcdetail/{{item?.id}}"> <img src="{{Imageurl}}{{item.flashcard_image}}" data-filter="*" alt=""> </a>
                                         </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a routerLink="/fcdetail/{{item.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -73,6 +88,13 @@
                                         <figure class="product-list__img">
                                             <a routerLink="/detail/{{item?.id}}"> <img src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a>
                                         </figure>
+                                        <div class="product-list__content">
+                                            <div class="product-list__category"> <a routerLink="/detail/{{item.id}}"
+                                                title="{{item?.name}}">{{item?.name}}</a></div>
+                                                <div class="product-list__title tutor-subject"> <span
+                                                    title="User Name :{{item.author_name}}"
+                                                    routerLink="/eachcourse/{{item.id}}">{{item.author_name}}</span></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

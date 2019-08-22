@@ -15,9 +15,11 @@ import { NestedcategorylistComponent } from './nestedcategorylist/nestedcategory
 import {CoursevideoComponent} from './userdashboard/coursevideo/coursevideo.component';
 import {EachcourseComponent} from './Course/eachcourse/eachcourse.component';
 import { MycartComponent } from './userdashboard/mycart/mycart.component';
+import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 
 export const appRoutes: Routes = [
   { path: '', component: MainpageComponent },
+  // { path: 'mainpage/:name', component: MainpageComponent },
   { path : 'header' , component: HeaderComponent},
   { path : 'footer' , component: FooterComponent},
   {
@@ -57,10 +59,10 @@ export const appRoutes: Routes = [
       { path: 'institutelibrary', loadChildren: './institutedashboard/institutelibrary/institutelibrary.module#InstitutedetailModule', canActivate: [Auth2Service] },
       // Userdashboard Module
       // { path: 'coursevideo', loadChildren: './userdashboard/coursevideo/coursevideo.module#CoursevideoModule', canActivate: [Auth2Service] },
-
+      {path:'myChats',loadChildren:'./chat/chat.module#ChatModule'},
       { path : 'coursevideo' , component: CoursevideoComponent},
       { path: 'eachcourse/:id', component: EachcourseComponent },
-
+      { path: 'pendingoffers', component: PendingoffersComponent },
       { path: 'experience', loadChildren: './userdashboard/experience/experience.module#ExperienceModule' },
       { path: 'paymentmethods', loadChildren: './userdashboard/paymentmethods/paymentmethods.module#PaymentmethodsModule' },
       { path: 'biddingactivity', loadChildren: './userdashboard/biditems/biditems.module#BiditemsModule', canActivate: [Auth2Service] },
@@ -137,6 +139,8 @@ export const appRoutes: Routes = [
       { path: 'who-are-we', loadChildren: './Footer/who-are-we/who-are-we.module#WhoAreWeModule' },
       { path: 'terms', loadChildren: './Footer/terms/terms.module#TermsModule' },
       { path: 'privacy-policy', loadChildren: './Footer/privacy-policy/privacy-policy.module#PrivacyPolicyModule' },
+      //chat Modele
+      
     ],
   }
 

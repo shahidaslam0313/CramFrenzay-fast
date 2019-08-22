@@ -29,14 +29,14 @@ city;state;country;
   ];
   form = new FormGroup({
     cardnumber: new FormControl('', [
-      //Validators.minLength(15),
-      // Validators.maxLength(16),
+      Validators.minLength(15),
+      Validators.maxLength(16),
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
     cardnumber4: new FormControl('', [
-      // Validators.minLength(15),
-      // Validators.maxLength(15),
+      Validators.minLength(14),
+      Validators.maxLength(15),
       Validators.required,
       // Validators.pattern('^[0-9]*$')
     ]),
@@ -63,13 +63,14 @@ city;state;country;
       Validators.pattern('(0[1-9]|10|11|12)/[0-9]{2}$')
     ]),
     cardnickname: new FormControl('', [
-      Validators.minLength(3),
-      Validators.maxLength(25),
+      Validators.minLength(2),
+      Validators.maxLength(14),
       Validators.required,
+      Validators.pattern("[a-zA-Z ]+")
     ]),
     cardHolderName: new FormControl('', [
-      Validators.minLength(3),
-      Validators.maxLength(25),
+      Validators.minLength(2),
+      Validators.maxLength(14),
       Validators.required,
       Validators.pattern("[a-zA-Z ]+")
     ]),
@@ -128,6 +129,17 @@ city;state;country;
     check2: new FormControl(),
   });
   card_type = new FormControl();
+  editform= new FormGroup({
+    street : new FormControl('',[]),
+    city : new FormControl('',[]),
+    country : new FormControl('',[]),
+    zipCode : new FormControl('',[]),
+    nickname : new FormControl('',[]),
+    state : new FormControl('',[]),
+    defaultcheck : new FormControl('',[]),
+    expirydate:  new FormControl('',[]),
+    ccv: new FormControl('',[])
+  })
   private productsSource;
   currentProducts;
   cardtype;
@@ -181,6 +193,7 @@ city;state;country;
   Eachcard (id){
     this.serv.singleCard(id).subscribe(data=> {
       this.card = data
+      console.log(data,'save card')
     })
   }
   ShowButton(card_type) {
@@ -230,7 +243,8 @@ city;state;country;
     this.serv.updateCard(this.card.nickname, this.card.street_adrress, this.card.state, this.card.city, this.card.zip_code, this.card.country, this.card.default, id).subscribe(Data => {
       swal({
         type: 'success',
-        title: 'Credit card details are updated',
+        title: 'Payment Method has been updated successfully',
+        // title: 'Credit card details are updated',
         showConfirmButton: false,
         timer: 1500
       });
@@ -247,6 +261,7 @@ city;state;country;
         }
       })
   }
+  show_status:boolean = false
   zipcodeCheck(zipcode1) {
     if (zipcode1.length > 4) {
     this.serv.zipcode(zipcode1).subscribe(
@@ -256,13 +271,35 @@ city;state;country;
           this.form.controls['country'].setValue(res['country']);
         },
         error => {
+          // alert(this.show_status)
+          this.show_status= true
+          // swal({
+          //   type: 'error',
+          //   title: 'Invalid Zipcode',
+          //   showConfirmButton: false,
+          //   timer: 2000,width: '512px',
+          // })
+        }
+        );
+    }
+  }
+  zipcodeCheckedit(zipcode1) {
+    if (zipcode1.length > 4) {
+    this.serv.zipcode(zipcode1).subscribe(
+        res => {
+          this.editform.controls['city'].setValue(res['city']);
+          this.editform.controls['state'].setValue(res['state']);
+          this.editform.controls['country'].setValue(res['country']);
+        },
+        error => {
           swal({
             type: 'error',
             title: 'Invalid Zipcode',
             showConfirmButton: false,
             timer: 2000,width: '512px',
           })
-        });
+        }
+        );
     }
   }
   deleteSingleCard(id) {
@@ -311,14 +348,6 @@ city;state;country;
         this.serv.addCard(this.form.value['cardnumber4'].split('-').join(''), this.form.value['cvv4'], this.form.value['expirydate'].split('/').join(''), this.form.value['cardnickname'], this.cardtype, this.form.value['cardHolderName'],this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
           data => {
-          // if(data.Message == "Card Number already exist"){
-          //   swal({
-          //     type: 'error',
-          //     title: 'Card Number already exist',
-          //     showConfirmButton: false,
-          //     timer: 1500
-          //   })
-          // }
           swal({
             type: 'success',
             title: 'Payment method is listed',
@@ -327,12 +356,21 @@ city;state;country;
           })
          
           this.getCards();
+             f.resetForm()
         },
           error => {
              if (error.status == 404) {
               swal({
                 type: 'error',
-                title: 'Card Number already exist',
+                title: 'Card already exist',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            if (error.status == 403) {
+              swal({
+                type: 'error',
+                title: 'You cannot enter more than 8 cards',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -372,19 +410,13 @@ city;state;country;
     }
     else {
       if (this.form.controls.cvv.valid && this.form.controls.cardnumber.valid &&
-        this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid) {
+        this.form.controls.cardnickname.valid && this.form.controls.expirydate.valid &&
+        this.form.controls.cardHolderName.valid && this.form.controls.zipCode.valid &&
+        this.form.controls.street.valid && this.form.controls.city.valid &&
+        this.form.controls.state.valid && this.form.controls.country.valid) {
         this.serv.addCard(this.form.value['cardnumber'].split('-').join(''), this.form.value['cvv'], this.form.value['expirydate'].split('/').join(''),this.form.value['cardHolderName'], this.form.value['cardnickname'],this.cardtype,  this.form.value['zipCode'],
         this.form.value['street'],this.form.value['city'],this.form.value['state'],this.form.value['country'],this.form.value['check']).subscribe(
-          data => {
-          // if(data.Message == "Card Number already exist"){
-          //   swal({
-          //     type: 'error',
-          //     title: 'Card Number already exist',
-          //     showConfirmButton: false,
-          //     timer: 1500
-          //   })
-          // }
-          
+          data => {         
           swal({
             type: 'success',
             title: 'Payment method is listed',
@@ -397,7 +429,15 @@ city;state;country;
             if (error.status == 404) {
               swal({
                 type: 'error',
-                title: 'Card Number already exist',
+                title: 'Card number already exist',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            if (error.status == 403) {
+              swal({
+                type: 'error',
+                title: 'You cannot enter more than 8 cards',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -406,6 +446,14 @@ city;state;country;
               swal({
                 type: 'error',
                 title: 'Please enter correct details',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+            else if (error.status == 406) {
+              swal({
+                type: 'error',
+                title: 'Card holder name already exist with same card type',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -435,12 +483,12 @@ city;state;country;
         })
       }
     }
-    f.resetForm()
   }
   res;
   getCards() {
     this.serv.showCards().subscribe(Data => {
       this.res = Data;
+      console.log(this.res,'GEtCARD')
     },
       error => {
         if (error.status == 404) {

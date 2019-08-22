@@ -1,13 +1,17 @@
-<div class="card"> <button  class="close" aria-label="Close" (click)="onNoClick()" tabindex="-1"> <span
-      aria-hidden="true">&times;</span> </button>
+<div class="card add-video"> 
   <form (ngSubmit)="!video_title.hasError('required') && !video_title.hasError('pattern') && onSubmit(f)" #f="ngForm" enctype="multipart/form-data" id="videoform" name="videoform" method="post">
     <div class="card-header text-center" data-background-color="rose">
       <div class="form-1-header">
         <h1>Add New Videos</h1>
       </div>
     </div>
-    <div class="card-content"> <label> Browse Video </label> <input (change)="onChange($event)" #image type="file"
-        accept="video/*" required>
+    <div class="card-content">
+      <div class="browse_video">
+          <label> Browse Video </label> 
+          <input (change)="onChange($event)" #image type="file"
+            accept="video/*" required>
+      </div>
+     
       <mat-form-field class="width100 mat-size"> <input type="text" matInput placeholder="Enter video title"
           [formControl]="video_title" name="video_title" [(ngModel)]="model.video_title" required>
         <mat-error *ngIf="video_title.hasError('required')"> Video title is <strong>required</strong>
@@ -20,4 +24,3 @@
     </div>
   </form>
 </div>
-<!--<script>function move() { alert("yes"); var elem = document.getElementById("myBar"); var width = 1; var id = setInterval(frame, 1); function frame() { if (width >= 100) { clearInterval(id); } else { width++; elem.style.width = width + '%'; } } }</script>-->

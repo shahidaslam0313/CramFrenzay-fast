@@ -2,9 +2,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from '../../Config';
-import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Router } from '@angular/router';
 @Injectable()
 
 export class uploadnotesservice {
@@ -20,7 +18,7 @@ model;
   }
 
 
-  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer, sell_days,  end_time , bid_status) {
+  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer,datafile, sell_days, notes_thumbnail,  end_time , bid_status, min_amount, max_amount, initial_amount, reservedprice) {
 
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
@@ -30,25 +28,24 @@ model;
         name: model.name,
         detail: model.detail,
         categories: notessubcategories,
-          subcategory : subcategory,
+        subcategory : subcategory,
         nestedcategory : nestedcategory,
         sell_status : sell_status,
         price: model.price,
         sell_days: sell_days,
-        notes_thumbnail: model.notes_thumbnail,
+        notes_thumbnail: notes_thumbnail,
         accept_offer : accept_offer,
-        min_amount: model.min_amount,
-        max_amount : model.max_amount,
-        data : model.datafile,
+        data : datafile,
+        bid_status : bid_status,
         bidnotes: {
-          initial_amount: model.initial_amount,
+          initial_amount: initial_amount,
           end_time : end_time,
           isreserved : model.isreserved,
-          reservedprice : model.reservedprice,
+          reservedprice : reservedprice,
           start_time : model.start_time,
-          bid_status : bid_status
-        }
-
+        },
+        min_amount: min_amount,
+        max_amount: max_amount
       }),
       { headers: headers }).map((response: Response) => response.json());
   }

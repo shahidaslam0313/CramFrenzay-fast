@@ -1,674 +1,817 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 ">
-            <ul class="nav nav-tabs side-tabs s_sidebar">
-                <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i
-                            class="fa fa-edit"></i>Notes Listed for Sale by Me </a> </li>
-                <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#courses" data-toggle="tab"
-                        class="nav-link" title="Courses"> <i class="fa fa-th-large"></i>Courses Listed for Sale by Me
-                    </a> </li>
-                <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#flashcards" data-toggle="tab"
-                        class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>FlashCards Listed for Sale by
-                        Me </a> </li>
-                <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#book" data-toggle="tab"
-                        class="nav-link" title="Books"> <i class="fa fa-book"></i>Books Listed for Sale by Me </a> </li>
-            </ul>
+  <div class="row">
+    <div class="col-sm-3 ">
+      <ul class="nav nav-tabs side-tabs s_sidebar">
+        <li class="nav-item"> <a href="#notes" (click)="Shownotes(1)" data-toggle="tab" class="nav-link active" title="Notes"> <i
+              class="fa fa-edit"></i>Notes Listed for Sale by Me </a> </li>
+        <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#courses" (click)="Showcourses(1)"  data-toggle="tab" class="nav-link"
+            title="Courses"> <i class="fa fa-th-large"></i>Courses Listed for Sale by Me
+          </a> </li>
+        <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#flashcards" (click)="Showcards(1)" data-toggle="tab"
+            class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>FlashCards Listed for Sale by
+            Me </a> </li>
+        <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#book" (click)="Showbooks(1)" 
+          data-toggle="tab" class="nav-link"
+            title="Books"> <i class="fa fa-book"></i>Books Listed for Sale by Me </a> </li>
+      </ul>
+    </div>
+    <div class="col-sm-9 ">
+      <div class="tab-content">
+        <div class="tab-pane active" id="notes">
+          <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Shownote">
+                <!-- .slice().reverse() ; let i=index -->
+              <div class="product-list__item">
+                <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
+                      src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'">
+                  </a> <a class="product-list__edit-btn" data-toggle="modal" data-target="#edit-notes-modal"
+                    (click)="singlenotes(item?.id)"> <i class="fas fa-edit"></i> </a> <a
+                    class="product-list__delete-btn" value="Delete" data-toggle="modal"
+                    data-target="#delete-notes-modal" (click)="btndelnotes(item?.id)"> <i class="fas fa-trash-alt"></i>
+                  </a> </figure>
+                <div class="product-list__content"> <a class="product-list__category"
+                    routerLink="/notes/{{item?.id}}">{{item?.name}}</a>
+                  <div class="product-list__title tutor-subject "> <a
+                      (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)" title="{{item?.name}}"
+                      *ngIf="item?.status==true">Approved by Admin</a><a routerLink="/notes/{{item?.id}}"
+                      *ngIf="item?.status !=true || item?.status==null">Pending Approval </a>
+                  </div><a class="product-list__price"
+                    routerLink="/notes/{{item?.id}}">{{item?.price | currency:'USD'}}</a> <a class="btn-style btn"
+                    *ngIf="item?.status==true && item?.publish==false "
+                    (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)">Publish</a> <a
+                    class="already-bought float_right " *ngIf="item?.publish==true"> <i class="fa fa-check"></i>
+                    Published</a>
+                </div>
+              </div>
+            </div>
+            <!-- Abdullah -->
+            <div class="row">
+              <div class="col-lg-12">
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Shownotes(1)" class="page-link">First</a>
+                      </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Shownotes(pager.currentPage - 1)"
+                              class="page-link">Previous</a> </li>
+                      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                          <a (click)="Shownotes(page)" class="page-link">{{page}}</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Shownotes(pager.currentPage + 1)"
+                              class="page-link" type="Next">Next</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Shownotes(pager.totalPages)"
+                              class="page-link" type="Last">Last</a> </li>
+                  </ul>
+              </div>
+          </div>
+                      <!-- Abdullah -->
+
+          </div>
+          <!-- <ul class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pagination" *ngIf="pager.pages && pager.pages.length">
+
+            <li [ngClass]="{hide:pager.currentPage === 1}">
+            <a (click)="Showcourses(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+            <i class="fa fa-angle-left"></i>
+            </a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a onclick="topFunction()" (click)="Showcourses(page)" class="view-plan-details">{{page}}</a>
+            </li>
+           
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage + 3) <= pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 3)">...</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>OF</a></li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li *ngIf="pager.currentPage === pager.totalPages"> <a>OF</a></li>
+            <li *ngIf="pager.currentPage === pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color" type="Next">
+            <i class="fa fa-angle-right top-set"></i>
+            </a>
+            </li>
+            </ul> -->
         </div>
-        <div class="col-sm-9 ">
-            <div class="tab-content">
-                <div class="tab-pane active" id="notes">
-                    <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes.slice().reverse(), let i=index">
-                            <div class="product-list__item">
-                                <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
-                                            src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes">
-                                    </a> <a class="product-list__edit-btn" data-toggle="modal"
-                                        data-target="#edit-notes-modal" (click)="singlenotes(item?.id)"> <i
-                                            class="fas fa-edit"></i> </a> <a class="product-list__delete-btn"
-                                        value="Delete" data-toggle="modal" data-target="#delete-notes-modal"
-                                        (click)="btndelnotes(item?.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
-                                <div class="product-list__content"> <a class="product-list__category"
-                                        routerLink="/notes/{{item?.id}}">{{item?.name}}</a>
-                                    <div class="product-list__title tutor-subject "> <a (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)"
-                                            title="{{item?.name}}" *ngIf="item?.status==true">Approved by Admin</a><a
-                                            routerLink="/notes/{{item?.id}}"
-                                            *ngIf="item?.status !=true || item?.status==null">Pending Approval </a>
-                                    </div><a class="product-list__price"
-                                        routerLink="/notes/{{item?.id}}">{{item?.price | currency:'USD'}}</a> <a
-                                        class="btn-style btn" *ngIf="item?.status==true && item?.publish==false "
-                                        (click)="publish(item?.id,nullvalue,nullvalue,nullvalue)">Publish</a> <a
-                                        class="already-bought float_right " *ngIf="item?.publish==true"> <i
-                                            class="fa fa-check"></i>  Published</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="tab-pane" id="courses">
+          <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
+          <div class="row">
+            <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
+              *ngFor="let data of ShowCourse">
+              <!-- ; let i=index -->
+              <!-- .slice().reverse() -->
+              <div class="product-list__item">
+                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
+                      src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">
+                  </a> <a class="product-list__edit-btn" value="Delete" data-toggle="modal"
+                    data-target="#edit-course-modal" (click)="coursesupdate(data?.id)"> <i class="fas fa-edit"></i> </a>
+                  <a class="product-list__delete-btn" value="Delete" data-toggle="modal"
+                    data-target="#delete-course-modal" (click)="btndelcourse(data.id)"> <i class="fas fa-trash-alt"></i>
+                  </a> </figure>
+                <div class="product-list__content"> <a class="product-list__category"
+                    routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a>
+                  <div class="product-list__title tutor-subject "> <a
+                      (click)="publish(nullvalue,data?.id,nullvalue,nullvalue)" title="{{data?.name}}"
+                      *ngIf="data?.status==true">Approved by Admin</a><a routerLink="/eachcourse/{{data?.id}}"
+                      *ngIf="data?.status !=true || data?.status==null">Pending Approval</a>
+                  </div><a class="btn-style btn" *ngIf="data?.status==true && data?.publish==false"
+                    (click)="publish(nullvalue,data?.id,nullvalue,nullvalue)">Publish</a> <a
+                    class="already-bought float_right " *ngIf="data?.publish==true"> <i class="fa fa-check"></i>
+                    Published</a> <a class="product-list__price"
+                    routerLink="/eachcourse/{{data?.id}}">{{data?.price | currency:'USD'}}</a>
+                  <button class="btn-style btn width100 float_left display-block mt-2 mb-2"
+                    [routerLink]="['/coursevideo/']" [queryParams]="{id : data.id}"
+                    (click)="coursesupdate(data?.id)">Upload Video</button>
                 </div>
-                <div class="tab-pane" id="courses">
-                    <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result.slice().reverse(); let i=index">
-                            <div class="product-list__item">
-                                <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
-                                            src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course">
-                                    </a> <a class="product-list__edit-btn" value="Delete" data-toggle="modal"
-                                        data-target="#edit-course-modal" (click)="coursesupdate(data?.id)"> <i
-                                            class="fas fa-edit"></i> </a> <a class="product-list__delete-btn"
-                                        value="Delete" data-toggle="modal" data-target="#delete-course-modal"
-                                        (click)="btndelcourse(data.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
-                                <div class="product-list__content"> <a class="product-list__category"
-                                        routerLink="/eachcourse/{{data?.id}}">{{data?.name}}</a>
-                                    <div class="product-list__title tutor-subject "> <a
-                                        (click)="publish(nullvalue,data?.id,nullvalue,nullvalue)" title="{{data?.name}}"
-                                            *ngIf="data?.status==true">Approved by Admin</a><a
-                                            routerLink="/eachcourse/{{data?.id}}"
-                                            *ngIf="data?.status !=true || data?.status==null">Pending Approval</a>
-                                    </div><a class="btn-style btn" *ngIf="data?.status==true && data?.publish==false"
-                                        (click)="publish(nullvalue,data?.id,nullvalue,nullvalue)">Publish</a> <a
-                                        class="already-bought float_right " *ngIf="data?.publish==true"> <i
-                                            class="fa fa-check"></i>  Published</a> <a
-                                        class="product-list__price"
-                                        routerLink="/eachcourse/{{data?.id}}">{{data?.price | currency:'USD'}}</a>
-                                    <button class="btn-style btn width100 float_left display-block mt-2 mb-2"
-                                        [routerLink]="['/coursevideo/']" [queryParams]="{id : data.id}"
-                                        (click)="coursesupdate(data?.id)">Upload Video</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcourses(1)" class="page-link">First</a>
+                      </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcourses(pager.currentPage - 1)"
+                              class="page-link">Previous</a> </li>
+                      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                          <a (click)="Showcourses(page)" class="page-link">{{page}}</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcourses(pager.currentPage + 1)"
+                              class="page-link" type="Next">Next</a> </li>
+                      <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcourses(pager.totalPages)"
+                              class="page-link" type="Last">Last</a> </li>
+                  </ul>
+              </div>
+          </div>
+          <!-- <ul class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pagination" *ngIf="pager.pages && pager.pages.length">
+
+            <li [ngClass]="{hide:pager.currentPage === 1}">
+            
+            <a (click)="Showcourses(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+            <i class="fa fa-angle-left"></i>
+            </a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a onclick="topFunction()" (click)="Showcourses(page)" class="view-plan-details">{{page}}</a>
+            </li>
+           
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage + 3) <= pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 3)">...</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>OF</a></li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li *ngIf="pager.currentPage === pager.totalPages"> <a>OF</a></li>
+            <li *ngIf="pager.currentPage === pager.totalPages">
+            <a onclick="topFunction()" (click)="Showcourses(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages}}</a>
+            </li>
+            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+            <a onclick="topFunction()" (click)="Showcourses(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color" type="Next">
+            
+            <i class="fa fa-angle-right top-set"></i>
+            </a>
+            </li>
+            </ul> -->
+        </div>
+        <div class="tab-pane" id="flashcards">
+          <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showcard">
+                <!-- .slice().reverse() ; let i=index -->
+              <div class="product-list__item">
+                <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
+                      src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a
+                    class="product-list__edit-btn" value="Delete" data-toggle="modal" data-target="#edit-card-modal"
+                    (click)="clickcardsedit(item.id)"> <i class="fas fa-edit"></i> </a> <a
+                    class="product-list__delete-btn" value="Delete" data-toggle="modal" data-target="#delete-card-modal"
+                    (click)="btndelcards(item?.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
+                <div class="product-list__content"> <a class="product-list__category"
+                    routerLink="/fcdetail/{{item?.id}}">{{item?.name}}</a>
+                  <div class="product-list__title tutor-subject mt-3 "> <a title="{{item?.name}}"
+                      *ngIf="item?.status==true" (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Approved by
+                      Admin</a><a routerLink="/flashcarddetail"
+                      *ngIf="item?.status !=true || item?.status==null">Pending Approval </a>
+                  </div><a class="product-list__price"
+                    routerLink="/fcdetail/{{item?.id}}">{{item.price | currency:'USD'}}</a> <a class="btn-style btn"
+                    *ngIf="item?.status==true && item?.publish==false "
+                    (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Publish</a> <a
+                    class="already-bought float_right " *ngIf="item?.publish==true"> <i class="fa fa-check"></i>
+                    Published</a>
                 </div>
-                <div class="tab-pane" id="flashcards">
-                    <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card.slice().reverse(), let i=index">
-                            <div class="product-list__item">
-                                <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
-                                            src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard"> </a> <a
-                                        class="product-list__edit-btn" value="Delete" data-toggle="modal"
-                                        data-target="#edit-card-modal" (click)="clickcardsedit(item.id)"> <i
-                                            class="fas fa-edit"></i> </a> <a class="product-list__delete-btn"
-                                        value="Delete" data-toggle="modal" data-target="#delete-card-modal"
-                                        (click)="btndelcards(item?.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
-                                <div class="product-list__content"> <a class="product-list__category"
-                                        routerLink="/fcdetail/{{item?.id}}">{{item?.name}}</a>
-                                    <div class="product-list__title tutor-subject mt-3 "> <a
-                                             title="{{item?.name}}"
-                                            *ngIf="item?.status==true"  (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Approved by Admin</a><a
-                                            routerLink="/flashcarddetail"
-                                            *ngIf="item?.status !=true || item?.status==null">Pending Approval </a>
-                                    </div><a class="product-list__price"
-                                        routerLink="/fcdetail/{{item?.id}}">{{item.price | currency:'USD'}}</a> <a
-                                        class="btn-style btn" *ngIf="item?.status==true && item?.publish==false "
-                                        (click)="publish(nullvalue,nullvalue,item?.id,nullvalue)">Publish</a> <a
-                                        class="already-bought float_right " *ngIf="item?.publish==true"> <i
-                                            class="fa fa-check"></i>  Published</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="book">
-                    <h3 class="mainbanner">Books Listed for Sale by Me </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books.slice().reverse(); let i=index">
-                            <div class="product-list__item">
-                                <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
-                                            src="{{Imageurl}}{{item?.book_image}}" alt="Book"> </a> <a
-                                        class="product-list__edit-btn" value="Delete" data-toggle="modal"
-                                        data-target="#edit-book-modal" (click)="editbooks(item?.id)"> <i
-                                            class="fas fa-edit"></i> </a> <a class="product-list__delete-btn"
-                                        value="Delete" data-toggle="modal" data-target="#delete-book-modal"
-                                        (click)="btndelbook(item?.id)"> <i class="fas fa-trash-alt"></i> </a> </figure>
-                                <div class="product-list__content"> <a class="product-list__category"
-                                        routerLink="/detail/{{item?.id}}">{{item?.name}}</a>
-                                    <div class="product-list__title tutor-subject "> <a
-                                        (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)" title="Published Flash Card"
-                                            *ngIf="item?.status==true">Approved by Admin</a><a
-                                            routerLink="/detail/{{item?.id}}"
-                                            *ngIf="item?.status !=true || item?.status==null">Pending Approval</a>
-                                    </div><a class="product-list__price"
-                                        routerLink="/detail/{{item?.id}}">{{item?.price | currency:'USD'}}</a> <a
-                                        class="btn-style btn" *ngIf="item?.status==true && item?.publish==false"
-                                        (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)">Publish</a> <a
-                                        class="already-bought float_right " *ngIf="item?.publish==true"> <i
-                                            class="fa fa-check"></i>  Published</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
+            </div>
+          </div>
+           <!-- Abdullah -->
+           <div class="row">
+            <div class="col-lg-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcards(1)" class="page-link">First</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showcards(pager.currentPage - 1)"
+                            class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                        <a (click)="Showcards(page)" class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcards(pager.currentPage + 1)"
+                            class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showcards(pager.totalPages)"
+                            class="page-link" type="Last">Last</a> </li>
+                </ul>
             </div>
         </div>
+         <!-- Abdullah -->
+        </div>
+        <div class="tab-pane" id="book">
+          <h3 class="mainbanner">Books Listed for Sale by Me </h3>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showbook">
+                <!-- .slice().reverse() ; let i=index -->
+              <div class="product-list__item">
+                <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
+                      src="{{Imageurl}}{{item?.book_image}}" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a class="product-list__edit-btn"
+                    value="Delete" data-toggle="modal" data-target="#edit-book-modal" (click)="editbooks(item?.id)"> <i
+                      class="fas fa-edit"></i> </a> <a class="product-list__delete-btn" value="Delete"
+                    data-toggle="modal" data-target="#delete-book-modal" (click)="btndelbook(item?.id)"> <i
+                      class="fas fa-trash-alt"></i> </a> </figure>
+                <div class="product-list__content"> <a class="product-list__category"
+                    routerLink="/detail/{{item?.id}}">{{item?.name}}</a>
+                  <div class="product-list__title tutor-subject "> <a
+                      (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)" title="Published Flash Card"
+                      *ngIf="item?.status==true">Approved by Admin</a><a routerLink="/detail/{{item?.id}}"
+                      *ngIf="item?.status !=true || item?.status==null">Pending Approval</a>
+                  </div><a class="product-list__price"
+                    routerLink="/detail/{{item?.id}}">{{item?.price | currency:'USD'}}</a> <a class="btn-style btn"
+                    *ngIf="item?.status==true && item?.publish==false"
+                    (click)="publish(nullvalue,nullvalue,nullvalue,item?.id)">Publish</a> <a
+                    class="already-bought float_right " *ngIf="item?.publish==true"> <i class="fa fa-check"></i>
+                    Published</a>
+                </div>
+              </div>
+            </div>
+          </div>
+           <!-- Abdullah -->
+           <div class="row">
+            <div class="col-lg-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showbooks(1)" class="page-link">First</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Showbooks(pager.currentPage - 1)"
+                            class="page-link">Previous</a> </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage===page}">
+                        <a (click)="Showbooks(page)" class="page-link">{{page}}</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showbooks(pager.currentPage + 1)"
+                            class="page-link" type="Next">Next</a> </li>
+                    <li class="page-item" [ngClass]="{hide:pager.currentPage===pager.totalPages}"> <a (click)="Showbooks(pager.totalPages)"
+                            class="page-link" type="Last">Last</a> </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Abdullah -->
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="edit-notes-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Edit Note</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <form class="user-add-ingo-form" enctype="multipart/form-data" *ngIf="editnotes">
-                    <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
-                            [(ngModel)]="editnotes.name" #name="ngModel" name="name"> </mat-form-field>
-                    <mat-form-field> <textarea matInput placeholder="Description" [(ngModel)]="editnotes.detail"
-                            #detail="ngModel" name="detail"></textarea> </mat-form-field>
-                    <mat-form-field id="categoties-font">
-                        <mat-select placeholder="Select Categories" type="number" id="categories"
-                            [(ngModel)]="editnotes.categories" name="categories">
-                            <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
-                                {{data.c_name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field id="font" *ngIf="result">
-                        <mat-select placeholder="Select Subcategories" type="number" [(ngModel)]="editnotes.subcategory"
-                            name="subcategory">
-                            <mat-option *ngFor="let data of result" (click)="nestedcategorys()" [value]="data.id">
-                                {{data.sub_category_name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field id="fonts" *ngIf="nestedresult">
-                        <mat-select placeholder="Select Nested Subcategories" type="number"
-                            [(ngModel)]="editnotes.nestedcategory" name="nestedcategory">
-                            <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data?.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="accept_offer" name="accept_offer">
-                        Accept Offer</mat-slide-toggle>
-                    <div *ngIf="accept_offer==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
-                                [(ngModel)]="editnotes.min_amount" name="min_amount" #min_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
-                                [(ngModel)]="editnotes.max_amount" name="max_amount" #max_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [checked]="true"
-                        [(ngModel)]="editnotes.sell_status" #sell_status="ngModel" name="sell_status">List for Sale
-                    </mat-slide-toggle>
-                    <div *ngIf="editnotes.sell_status">
-                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price"
-                                [(ngModel)]="editnotes.price" #actual_price="ngModel" name="price"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field class="material-select">
-                            <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="var_final_get_date"
-                                #sell_days="ngModel" name="sell_days">
-                                <mat-option *ngFor="let range of ranges" [value]="var_final_get_date">
-                                    {{range.viewValue}}&nbsp;Days</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10" [checked]="true" [(ngModel)]="editnotes.bid_status"
-                        name="bid_status" #bid_status="ngModel">List for Auction</mat-slide-toggle>
-                    <div *ngIf="editnotes.bid_status">
-                        <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
-                                [(ngModel)]="bidnote.initial_amount" name="initial_amount" #initial_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-select placeholder="Listing Duration" [(ngModel)]="var_final_get_date"
-                                #end_time="ngModel" name="end_time">
-                                <mat-option *ngFor="let range of range" [value]="var_final_get_date">{{range.viewValue}}&nbsp;Days
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-checkbox class="d-block" [(ngModel)]="bidnote.isreserved" name="isreserved"
-                            #isreserved="ngModel">Reserved!</mat-checkbox>
-                        <div *ngIf="bidnote.isreserved">
-                            <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
-                                    [(ngModel)]="bidnote.reservedprice" name="reservedprice" #reservedprice="ngModel"
-                                    onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                            </mat-form-field>
-                        </div>
-                        <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
-                        <div>
-                            <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
-                                    [(ngModel)]="bidnote.start_time" name="start_time" #start_time="ngModel"> <span
-                                    placeholder="MM/DD/YYYY HH:MM AM"></span>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
-                            </mat-form-field>
-                        </div>
-                    </div><br>
-                    <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{editnotes.notes_thumbnail}}"
-                            [(ngModel)]="editnotes.notes_thumbnail" name="notes_thumbnail" ngDefaultControl
-                            class="img-userprofile"> </div>
-                    <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png"
-                            src="{{ImgSrc}}" alt="" allowmultiple="false" /> </div><span
-                        class="btn-file margin-top-10">Update Note Image <input (change)="onChange($event)" type="file"
-                            [(ngModel)]="editnotes.notes_thumbnail" name="notes_thumbnail" #notes_thumbnail
-                            accept="image/gif, image/jpeg, image/png" required> </span> <span
-                        class="btn-file margin-top-20 margin-left-10">Update Note File (PDF) <input
-                            (change)="onChange2($event)" #updata type="file" accept="application/pdf" required> </span>
-                    <a class="btn-style btn margin-top-10" (click)="updatenotes(bidnote.id)">Update Note</a>
-                </form>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Edit Note</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <form class="user-add-ingo-form" enctype="multipart/form-data" *ngIf="editnotes">
+          <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
+              [(ngModel)]="editnotes.name" #name="ngModel" name="name"> </mat-form-field>
+          <mat-form-field> <textarea matInput placeholder="Description"   [(ngModel)]="editnotes.detail" #detail="ngModel"
+              name="detail"></textarea> </mat-form-field>
+          <mat-form-field id="categoties-font">
+            <mat-select placeholder="Select Categories" type="number" id="categories" [(ngModel)]="editnotes.categories"
+              name="categories">
+              <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
+                {{data.c_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field id="font" *ngIf="result">
+            <mat-select placeholder="Select Subcategories" type="number" [(ngModel)]="editnotes.subcategory"
+              name="subcategory">
+              <mat-option *ngFor="let data of result" (click)="nestedcategorys()" [value]="data.id">
+                {{data.sub_category_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field id="fonts" *ngIf="nestedresult">
+            <mat-select placeholder="Select Nested Subcategories" type="number" [(ngModel)]="editnotes.nestedcategory"
+              name="nestedcategory">
+              <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data?.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="accept_offer" name="accept_offer">
+            Accept Offer</mat-slide-toggle>
+          <div *ngIf="accept_offer==true">
+            <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                [(ngModel)]="editnotes.min_amount" name="min_amount" #min_amount="ngModel"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                [(ngModel)]="editnotes.max_amount" name="max_amount" #max_amount="ngModel"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [checked]="true" [(ngModel)]="editnotes.sell_status"
+            #sell_status="ngModel" name="sell_status">List for Sale
+          </mat-slide-toggle>
+          <div *ngIf="editnotes.sell_status">
+            <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" [(ngModel)]="editnotes.price"
+                #actual_price="ngModel" name="price" onKeyPress="if(this.value.length==4) return false;"> <span
+                matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field class="material-select">
+              <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="var_final_get_date"
+                #sell_days="ngModel" name="sell_days">
+                <mat-option *ngFor="let range of ranges" [value]="var_final_get_date">
+                  {{range.viewValue}}&nbsp;Days</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10" [checked]="true" [(ngModel)]="editnotes.bid_status"
+            name="bid_status" #bid_status="ngModel">List for Auction</mat-slide-toggle>
+          <div *ngIf="editnotes.bid_status">
+            <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
+                [(ngModel)]="bidnote.initial_amount" name="initial_amount" #initial_amount="ngModel"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Listing Duration" [(ngModel)]="var_final_get_date" #end_time="ngModel"
+                name="end_time">
+                <mat-option *ngFor="let range of range" [value]="var_final_get_date">{{range.viewValue}}&nbsp;Days
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle class="d-block" [(ngModel)]="bidnote.isreserved" name="isreserved" #isreserved="ngModel">
+              Reserved!</mat-slide-toggle>
+            <div *ngIf="bidnote.isreserved">
+              <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
+                  [(ngModel)]="bidnote.reservedprice" name="reservedprice" #reservedprice="ngModel"
+                  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+              </mat-form-field>
+            </div>
+            <mat-slide-toggle class="toggle-margin">Start Auction Later</mat-slide-toggle>
+            <div>
+              <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
+                  [(ngModel)]="bidnote.start_time" name="start_time" #start_time="ngModel"> <span
+                  placeholder="MM/DD/YYYY HH:MM AM"></span>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
+              </mat-form-field>
+            </div>
+          </div><br>
+          <div *ngIf="changeImage==false">
+            <img src="{{Imageurl}}{{editnotes.notes_thumbnail}}" [(ngModel)]="editnotes.notes_thumbnail"
+              name="notes_thumbnail" ngDefaultControl class="img-userprofile"> </div>
+          <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+              alt="" allowmultiple="false" />
+          </div>
+          <div class="buttons-flex">
+            <span class="btn-file ">Update Note Image <input (change)="onChange($event)" type="file"
+                [(ngModel)]="editnotes.notes_thumbnail" name="notes_thumbnail" #notes_thumbnail
+                accept="image/gif, image/jpeg, image/png" required>
+            </span>
+            <span class="btn-file ">Update Note File (PDF) <input (change)="onChange2($event)" #updata type="file"
+                accept="application/pdf" required>
+            </span>
+            <a class="btn-style btn " (click)="updatenotes(bidnote.id)" data-dismiss="modal">Update Note</a>
+          </div>
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="edit-card-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Edit Flash card</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <form class="user-add-ingo-form" enctype="multipart/form-data" *ngIf="flashcard">
-                    <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
-                            [(ngModel)]="cardedit.name" #name="ngModel" name="cardedit?.name"> </mat-form-field>
-                    <mat-form-field> <textarea matInput placeholder="No of Terms" [(ngModel)]="cardedit.no_of_terms"
-                            #no_of_terms="ngModel" name="no_of_terms"></textarea> </mat-form-field>
-                    <mat-form-field id="categoties-font">
-                        <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
-                            [(ngModel)]="cardedit.category" #category="ngModel" name="category">
-                            <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
-                                {{data.c_name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field id="font" *ngIf="result">
-                        <mat-select placeholder="Select Subcategories" type="number" [(ngModel)]="cardedit.subcategory"
-                            #subcategory="ngModel" name="subcategory">
-                            <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys()">
-                                {{data.sub_category_name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field id="fonts" *ngIf="nestedresult">
-                        <mat-select placeholder="Select Nested Subcategories" type="number"
-                            [(ngModel)]="cardedit.nestedcategory" #nestedcategory="ngModel" name="nestedcategory">
-                            <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="cardedit.accept_offer"
-                        name="accept_offer"> Accept Offer</mat-slide-toggle>
-                    <div *ngIf="cardedit.accept_offer==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
-                                [(ngModel)]="cardedit.min_amount" name="min_amount" #min_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
-                                [(ngModel)]="cardedit.max_amount" name="max_amount" #max_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="cardedit.sell_status"
-                        #sell_status="ngModel" name="sell_status">List for Sale</mat-slide-toggle>
-                    <div *ngIf="cardedit.sell_status==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" name="price"
-                                [(ngModel)]="cardedit.price" #actual_price="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field class="material-select">
-                            <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="varr_final_get_date"
-                                name="sell_days" #sell_days="ngModel">
-                                <mat-option *ngFor="let range of ranges" [value]="varr_final_get_date">
-                                    {{range.viewValue}}&nbsp;Days </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle [checked]="true" [(ngModel)]="cardedit.bid_status" name="bid_status"
-                        #bid_status="ngModel">List for Auction</mat-slide-toggle>
-                    <div *ngIf="cardedit.bid_status==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
-                                [(ngModel)]="bidflashcard.initial_amount" #initial_amount="ngModel"
-                                name="initial_amount" onKeyPress="if(this.value.length==4) return false;"> <span
-                                matPrefix>$&nbsp;</span> </mat-form-field>
-                        <mat-form-field>
-                            <mat-select placeholder="Listing Duration" [(ngModel)]="varr_final_get_date"
-                                #end_time="ngModel" name="end_time">
-                                <mat-option *ngFor="let range of range" [value]="varr_final_get_date">
-                                    {{range.viewValue}}&nbsp;Days </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-checkbox class="d-block" [(ngModel)]="bidflashcard.isreserved" name="isreserved"
-                            #isreserved="ngModel">Reserved!</mat-checkbox>
-                        <div *ngIf="bidflashcard.isreserved">
-                            <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
-                                    [(ngModel)]="bidflashcard.reservedprice" name="reservedprice"
-                                    #reservedprice="ngModel" onKeyPress="if(this.value.length==4) return false;"> <span
-                                    matPrefix>$&nbsp;</span> </mat-form-field>
-                        </div>
-                        <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
-                        <div>
-                            <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
-                                    [(ngModel)]="bidflashcard.start_time" name="start_time" #start_time="ngModel"> <span
-                                    placeholder="MM/DD/YYYY HH:MM AM"></span>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
-                            </mat-form-field>
-                        </div>
-                    </div><br>
-                    <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{cardedit.flashcard_image}}"
-                            [(ngModel)]="cardedit.flashcard_image" name="flashcard_image" ngDefaultControl
-                            class="img-userprofile"></div>
-                    <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png"
-                            src="{{ImgSrc}}" alt="" allowmultiple="false" /> </div><span
-                        class="btn-file margin-top-10">Update FlashCard Image <input (change)="onChange($event)"
-                            type="file" name="flashcard_image" #flashcard_image [(ngModel)]="cardedit.flashcard_image"
-                            accept="image/gif, image/jpeg, image/png" required> </span> <a
-                        class="btn-style btn margin-top-10" (click)="updatecard(bidflashcard.id)">Update FlashCard</a>
-                </form>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Edit Flash card</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <form class="user-add-ingo-form" enctype="multipart/form-data" *ngIf="flashcard">
+          <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
+              [(ngModel)]="cardedit.name" #name="ngModel" name="cardedit?.name"> </mat-form-field>
+          <mat-form-field> <textarea matInput placeholder="No of Terms" [(ngModel)]="cardedit.no_of_terms"
+              #no_of_terms="ngModel" name="no_of_terms"></textarea> </mat-form-field>
+          <mat-form-field id="categoties-font">
+            <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
+              [(ngModel)]="cardedit.category" #category="ngModel" name="category">
+              <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
+                {{data.c_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field id="font" *ngIf="result">
+            <mat-select placeholder="Select Subcategories" type="number" [(ngModel)]="cardedit.subcategory"
+              #subcategory="ngModel" name="subcategory">
+              <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys()">
+                {{data.sub_category_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field id="fonts" *ngIf="nestedresult">
+            <mat-select placeholder="Select Nested Subcategories" type="number" [(ngModel)]="cardedit.nestedcategory"
+              #nestedcategory="ngModel" name="nestedcategory">
+              <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="cardedit.accept_offer" name="accept_offer">
+            Accept Offer</mat-slide-toggle>
+          <div *ngIf="cardedit.accept_offer==true">
+            <mat-form-field> <input matInput type="number" placeholder="Minimum Price" [(ngModel)]="cardedit.min_amount"
+                name="min_amount" #min_amount="ngModel" onKeyPress="if(this.value.length==4) return false;"> <span
+                matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field> <input matInput type="number" placeholder="Maximum Price" [(ngModel)]="cardedit.max_amount"
+                name="max_amount" #max_amount="ngModel" onKeyPress="if(this.value.length==4) return false;"> <span
+                matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="cardedit.sell_status" #sell_status="ngModel"
+            name="sell_status">List for Sale</mat-slide-toggle>
+          <div *ngIf="cardedit.sell_status==true">
+            <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" name="price"
+                [(ngModel)]="cardedit.price" #actual_price="ngModel"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field class="material-select">
+              <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="varr_final_get_date" name="sell_days"
+                #sell_days="ngModel">
+                <mat-option *ngFor="let range of ranges" [value]="varr_final_get_date">
+                  {{range.viewValue}}&nbsp;Days </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="toggle-margin" [checked]="true" [(ngModel)]="cardedit.bid_status" name="bid_status" #bid_status="ngModel">
+            List for Auction</mat-slide-toggle>
+          <div *ngIf="cardedit.bid_status==true">
+            <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
+                [(ngModel)]="bidflashcard.initial_amount" #initial_amount="ngModel" name="initial_amount"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Listing Duration" [(ngModel)]="varr_final_get_date" #end_time="ngModel"
+                name="end_time">
+                <mat-option *ngFor="let range of range" [value]="varr_final_get_date">
+                  {{range.viewValue}}&nbsp;Days </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle class="d-block" [(ngModel)]="bidflashcard.isreserved" name="isreserved" #isreserved="ngModel">
+              Reserved!</mat-slide-toggle>
+            <div *ngIf="bidflashcard.isreserved">
+              <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
+                  [(ngModel)]="bidflashcard.reservedprice" name="reservedprice" #reservedprice="ngModel"
+                  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
+            </div>
+            <mat-slide-toggle class="toggle-margin">Start Auction Later</mat-slide-toggle>
+            <div>
+              <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
+                  [(ngModel)]="bidflashcard.start_time" name="start_time" #start_time="ngModel"> <span
+                  placeholder="MM/DD/YYYY HH:MM AM"></span>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
+              </mat-form-field>
+            </div>
+          </div><br>
+          <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{cardedit.flashcard_image}}"
+              [(ngModel)]="cardedit.flashcard_image" name="flashcard_image" ngDefaultControl class="img-userprofile">
+          </div>
+          <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">
+            <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false" />
+          </div>
+          <div class="buttons-flex">
+            <span class="btn-file ">Update FlashCard Image <input (change)="onChange($event)" type="file"
+                name="flashcard_image" #flashcard_image [(ngModel)]="cardedit.flashcard_image"
+                accept="image/gif, image/jpeg, image/png" required>
+            </span> <a class="btn-style btn" (click)="updatecard(bidflashcard.id)" data-dismiss="modal">Update Flash Card</a>
+          </div>
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="edit-course-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Edit Course</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <form class="user-add-ingo-form" enctype="multipart/form-data">
-                    <mat-form-field class="margin-top-10"> <input matInput type="text" placeholder="Title"
-                            [(ngModel)]="editcourse.name" name="name" #name="ngModel"> </mat-form-field>
-                    <mat-form-field> <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
-                            #detail="ngModel" name="description"></textarea> </mat-form-field>
-                    <mat-form-field id="categoties-font">
-                        <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
-                            [(ngModel)]="editcourse.categories" #categories="ngModel" name="categories">
-                            <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
-                                {{data.c_name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field id="font" *ngIf="result">
-                        <mat-select placeholder="Select Subcategories" type="number"
-                            [(ngModel)]="editcourse.subcategories" name="subcategories">
-                            <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys()">
-                                {{data.sub_category_name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field id="fonts" *ngIf="nestedresult">
-                        <mat-select placeholder="Select Nested Subcategories" type="number"
-                            [(ngModel)]="editcourse.nestedcategory" name="nestedcategory">
-                            <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="editcourse.accept_offer"
-                        name="accept_offer"> Accept Offer</mat-slide-toggle>
-                    <div *ngIf="editcourse.accept_offer==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
-                                [(ngModel)]="editcourse.min_amount" name="min_amount" #min_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
-                                [(ngModel)]="editcourse.max_amount" name="max_amount" #max_amount="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [checked]="true"
-                        [(ngModel)]="editcourse.sell_status" #sell_status="ngModel" name="sell_status">List for Sale
-                    </mat-slide-toggle>
-                    <div *ngIf="editcourse.sell_status==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" id="price"
-                                [(ngModel)]="editcourse.price" #actual_price="ngModel" name="price"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field class="material-select">
-                            <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="editcourse.sell_days"
-                                #sell_days="ngModel" name="sell_days">
-                                <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} &nbsp; Days
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10" [checked]="true" [(ngModel)]="editcourse.bid_status"
-                        name="bid_status" #bid_status="ngModel">List for Auction</mat-slide-toggle>
-                    <div *ngIf="editcourse.bid_status">
-                        <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
-                                [(ngModel)]="bidcourses.initial_amount" name="initial_amount"
-                                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-select placeholder="Listing Duration" [(ngModel)]="bidcourses.end_time"
-                                #end_time="ngModel" name="end_time">
-                                <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-checkbox [(ngModel)]="bidcourses.isreserved" name="isreserved" #isreserved="ngModel">
-                            Reserved!</mat-checkbox>
-                        <div *ngIf="bidcourses.isreserved">
-                            <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
-                                    [(ngModel)]="bidcourses.reservedprice" #reservedprice="ngModel" name="reservedprice"
-                                    onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                            </mat-form-field>
-                        </div><br>
-                        <mat-slide-toggle>Start Auction Later</mat-slide-toggle>
-                        <div>
-                            <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
-                                    [(ngModel)]="bidcourses.start_time" name="start_time"> <span
-                                    placeholder="MM/DD/YYYY HH:MM AM"></span>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
-                            </mat-form-field>
-                        </div>
-                    </div><br>
-                    <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{editcourse.course_thumbnail}}"
-                            [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" ngDefaultControl
-                            #course_thumbnail="ngModel" class="img-userprofile"></div>
-                    <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png"
-                            src="{{ImgSrc}}" alt="" allowmultiple="false" /> </div><span
-                        class="btn-file margin-top-10">Update Course Image <input (change)="onChange($event)"
-                            type="file" [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail"
-                            #course_thumbnail accept="image/gif, image/jpeg, image/png" required> </span> <a
-                        class="btn-style btn margin-top-10" (click)="update(editcourse.id)">Update Course</a>
-                </form>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Edit Course</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <form class="user-add-ingo-form" enctype="multipart/form-data">
+          <mat-form-field class="margin-top-10 library-edit-course"> <input matInput type="text" placeholder="Title"
+              [(ngModel)]="editcourse.name" name="name" #name="ngModel"> </mat-form-field>
+          <mat-form-field class="library-edit-course"> <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
+              #detail="ngModel" name="description"></textarea> </mat-form-field>
+          <!-- <mat-form-field id="categoties-font">
+            <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
+              [(ngModel)]="editcourse.categories" #categories="ngModel" name="categories">
+              <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
+                {{data.c_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field id="font" *ngIf="result">
+            <mat-select placeholder="Select Subcategories" type="number" [(ngModel)]="editcourse.subcategories"
+              name="subcategories">
+              <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys()">
+                {{data.sub_category_name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field id="fonts" *ngIf="nestedresult">
+            <mat-select placeholder="Select Nested Subcategories" type="number" [(ngModel)]="editcourse.nestedcategory"
+              name="nestedcategory">
+              <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="editcourse.accept_offer" name="accept_offer">
+            Accept Offer</mat-slide-toggle>
+          <div *ngIf="editcourse.accept_offer==true">
+            <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                [(ngModel)]="editcourse.min_amount" name="min_amount" #min_amount="ngModel"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                [(ngModel)]="editcourse.max_amount" name="max_amount" #max_amount="ngModel"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [checked]="true" [(ngModel)]="editcourse.sell_status"
+            #sell_status="ngModel" name="sell_status">List for Sale
+          </mat-slide-toggle>
+          <div *ngIf="editcourse.sell_status==true">
+            <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" id="price"
+                [(ngModel)]="editcourse.price" #actual_price="ngModel" name="price"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field class="material-select">
+              <mat-select placeholder="Buy It Now Listing Duration" [(ngModel)]="editcourse.sell_days"
+                #sell_days="ngModel" name="sell_days">
+                <mat-option *ngFor="let range of ranges" [value]="range.viewValue">{{range.viewValue}} &nbsp; Days
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10" [checked]="true" [(ngModel)]="editcourse.bid_status"
+            name="bid_status" #bid_status="ngModel">List for Auction</mat-slide-toggle>
+          <div *ngIf="editcourse.bid_status">
+            <mat-form-field> <input matInput type="number" placeholder="Starting Bid Price"
+                [(ngModel)]="bidcourses.initial_amount" name="initial_amount"
+                onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Listing Duration" [(ngModel)]="bidcourses.end_time" #end_time="ngModel"
+                name="end_time">
+                <mat-option *ngFor="let range of range" [value]="range.viewValue">{{range.viewValue}}&nbsp;Days
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle [(ngModel)]="bidcourses.isreserved" name="isreserved" #isreserved="ngModel">
+              Reserved!</mat-slide-toggle>
+            <div *ngIf="bidcourses.isreserved">
+              <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
+                  [(ngModel)]="bidcourses.reservedprice" #reservedprice="ngModel" name="reservedprice"
+                  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+              </mat-form-field>
+            </div>
+            <mat-slide-toggle class="toggle-margin">Start Auction Later</mat-slide-toggle>
+            <div>
+              <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
+                  [(ngModel)]="bidcourses.start_time" name="start_time"> <span placeholder="MM/DD/YYYY HH:MM AM"></span>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
+              </mat-form-field>
+            </div>
+          </div><br>
+          <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{editcourse.course_thumbnail}}"
+              [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" ngDefaultControl
+              #course_thumbnail="ngModel" class="img-userprofile"></div>
+          <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+              alt="" allowmultiple="false" /> </div>
+          <div class="buttons-flex">
+            <!-- <span class="btn-file ">Update Course Image <input (change)="onChange($event)" type="file"
+                [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" #course_thumbnail
+                accept="image/gif, image/jpeg, image/png" required> </span> -->
+            <a class="btn-style btn " (click)="ifCourseImageUpload()" data-dismiss="modal">Update Course</a>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="edit-book-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Edit Book</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <form class="user-add-ingo-form" *ngIf="register">
-                    <div>
-                        <mat-form-field> <input matInput type="text" placeholder="Title" [(ngModel)]="profile.name"
-                                #name="ngModel" name="name" /> </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field> <input matInput type="text" placeholder="Author"
-                                [(ngModel)]="profile.author_name" name="author_name" #author_name="ngModel" />
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-select placeholder="Categories" type="text" id="categories"
-                                [(ngModel)]="profile.categories" name="categories">
-                                <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
-                                    {{data.c_name}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field id="font" *ngIf="result">
-                            <mat-select placeholder="Select Subcategories" type="text" id="subcategories"
-                                [(ngModel)]="profile.subcategories" name="subcategories">
-                                <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys()">
-                                    {{data.sub_category_name}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field id="fonts" *ngIf="nestedresult">
-                            <mat-select placeholder="Select Nested Subcategories" type="number"
-                                [(ngModel)]="profile.nestedcategory" name="nestedcategory">
-                                <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <mat-form-field><textarea matInput placeholder="Description" [(ngModel)]="profile.book_detail"
-                            #detail="ngModel" name="book_detail"></textarea> </mat-form-field>
-                    <div>
-                        <mat-form-field> <input matInput type="text" placeholder="Edition"
-                                [(ngModel)]="profile.book_edition" name="book_edition" #book_edition="ngModel" />
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field> <input matInput type="text" placeholder="ISBN" [(ngModel)]="profile.ISBN"
-                                name="ISBN" #ISBN="ngModel" /> </mat-form-field>
-                        <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.accept_offer"
-                            name="accept_offer"> Accept Offer</mat-slide-toggle>
-                        <div *ngIf="profile.accept_offer==true">
-                            <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
-                                    [(ngModel)]="profile.min_amount" name="min_amount" #min_amount="ngModel"
-                                    onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                            </mat-form-field>
-                            <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
-                                    [(ngModel)]="profile.max_amount" name="max_amount" #max_amount="ngModel"
-                                    onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.sell_status"
-                        [checked]="profile.sell_status==true" name="sell_status" #sell_status="ngModel">List for sale
-                    </mat-slide-toggle>
-                    <div *ngIf="profile.sell_status==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price"
-                                [(ngModel)]="profile.price" name="price" #price="ngModel"
-                                onKeyPress="if(this.value.length==4) return false;" /> </mat-form-field>
-                        <mat-form-field class="material-select">
-                            <mat-select placeholder="Buy It Now Listing Duration" name="sell_days" #sell_days="ngModel"
-                                [(ngModel)]="profile.sell_days" value="{{profile.sell_days}}">
-                                <mat-option *ngFor="let range of ranges" [value]="profile.sell_days">
-                                    {{range.viewValue}}&nbsp;Days </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.bid_status"
-                        [checked]="profile.bid_status==true" name="bid_status" #bid_status="ngModel">List for Auction
-                    </mat-slide-toggle>
-                    <div *ngIf="profile.bid_status==true">
-                        <mat-form-field> <input matInput type="number" placeholder="Bid Price"
-                                [(ngModel)]="bidbooks.initial_amount" #initial_amount="ngModel" name="initial_amount"
-                                onKeyPress="if(this.value.length==4) return false;"> </mat-form-field>
-                        <mat-form-field>
-                            <mat-select placeholder="Listing Duration" [ngModel]="var_final_get_date" name="end_time"
-                                #end_time="ngModel">
-                                <mat-option *ngFor="let range of range" [value]="var_final_get_date">
-                                    {{range.viewValue}}&nbsp;Days </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-checkbox [(ngModel)]="bidbooks.isreserved" #isreserved="ngModel" name="isreserved">
-                            Reserved!</mat-checkbox>
-                        <div *ngIf="bidbooks.isreserved">
-                            <mat-form-field> <input matInput type="number" placeholder="Reserved Price"
-                                    [(ngModel)]="bidbooks.reservedprice" name="reservedprice" #reservedprice="ngModel"
-                                    onKeyPress="if(this.value.length==4) return false;"> </mat-form-field>
-                        </div>
-                        <mat-slide-toggle class="margin-bottom-10 d-block" id="showhide4">Start Auction Later
-                        </mat-slide-toggle>
-                        <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
-                                [ngModel]="bidbooks.start_time" name="start_time" #start_time="ngModel"> <span
-                                placeholder="MM/DD/YYYY HH:MM AM/PM"></span>
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                            <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
-                        </mat-form-field>
-                    </div><br>
-                    <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{profile.book_image}}" name="book_image"
-                            ngDefaultControl class="img-userprofile"></div>
-                    <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png"
-                            src="{{ImgSrc}}" alt="" allowmultiple="false" /> </div><span
-                        class="btn-file margin-top-10">Update Book Image <input (change)="onChange($event)" type="file"
-                            name="book_image" #book_image accept="image/gif, image/jpeg, image/png" required> </span> <a
-                        class="btn-style btn" (click)="onSubmit(profile.id)">Update Book</a>
-                </form>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Edit Book</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <form class="user-add-ingo-form" *ngIf="register">
+          <div>
+            <mat-form-field> <input matInput type="text" placeholder="Title" [(ngModel)]="profile.name" #name="ngModel"
+                name="name" /> </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field> <input matInput type="text" placeholder="Author" [(ngModel)]="profile.author_name"
+                name="author_name" #author_name="ngModel" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Categories" type="text" id="categories" [(ngModel)]="profile.categories"
+                name="categories">
+                <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
+                  {{data.c_name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field id="font" *ngIf="result">
+              <mat-select placeholder="Select Subcategories" type="text" id="subcategories"
+                [(ngModel)]="profile.subcategories" name="subcategories">
+                <mat-option *ngFor="let data of result" [value]="data.id" (click)="nestedcategorys()">
+                  {{data.sub_category_name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field id="fonts" *ngIf="nestedresult">
+              <mat-select placeholder="Select Nested Subcategories" type="number" [(ngModel)]="profile.nestedcategory"
+                name="nestedcategory">
+                <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-form-field><textarea matInput placeholder="Description" [(ngModel)]="profile.book_detail"
+              #detail="ngModel" name="book_detail"></textarea> </mat-form-field>
+          <div>
+            <mat-form-field> <input matInput type="text" placeholder="Edition" [(ngModel)]="profile.book_edition"
+                name="book_edition" #book_edition="ngModel" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field> <input matInput type="text" placeholder="ISBN" [(ngModel)]="profile.ISBN" name="ISBN"
+                #ISBN="ngModel" /> </mat-form-field>
+            <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.accept_offer" name="accept_offer">
+              Accept Offer</mat-slide-toggle>
+            <div *ngIf="profile.accept_offer==true">
+              <mat-form-field> <input matInput type="number" placeholder="Minimum Price"
+                  [(ngModel)]="profile.min_amount" name="min_amount" #min_amount="ngModel"
+                  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+              </mat-form-field>
+              <mat-form-field> <input matInput type="number" placeholder="Maximum Price"
+                  [(ngModel)]="profile.max_amount" name="max_amount" #max_amount="ngModel"
+                  onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
+              </mat-form-field>
+            </div>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.sell_status"
+            [checked]="profile.sell_status==true" name="sell_status" #sell_status="ngModel">List for sale
+          </mat-slide-toggle>
+          <div *ngIf="profile.sell_status==true">
+            <mat-form-field> <input matInput type="number" placeholder="Buy It Now Price" [(ngModel)]="profile.price"
+                name="price" #price="ngModel" onKeyPress="if(this.value.length==4) return false;" /> </mat-form-field>
+            <mat-form-field class="material-select">
+              <mat-select placeholder="Buy It Now Listing Duration" name="sell_days" #sell_days="ngModel"
+                [(ngModel)]="profile.sell_days" value="{{profile.sell_days}}">
+                <mat-option *ngFor="let range of ranges" [value]="profile.sell_days">
+                  {{range.viewValue}}&nbsp;Days </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="profile.bid_status"
+            [checked]="profile.bid_status==true" name="bid_status" #bid_status="ngModel">List for Auction
+          </mat-slide-toggle>
+          <div *ngIf="profile.bid_status">
+            <mat-form-field> <input matInput type="number" placeholder="Bid Price" [(ngModel)]="bidbooks.initial_amount"
+                #initial_amount="ngModel" name="initial_amount" onKeyPress="if(this.value.length==4) return false;">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Listing Duration" [ngModel]="var_final_get_date" name="end_time"
+                #end_time="ngModel">
+                <mat-option *ngFor="let range of range" [value]="var_final_get_date">
+                  {{range.viewValue}}&nbsp;Days </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle [(ngModel)]="bidbooks.isreserved" #isreserved="ngModel" name="isreserved">
+              Reserved!</mat-slide-toggle>
+            <div *ngIf="bidbooks.isreserved">
+              <mat-form-field> <input matInput type="number" placeholder="Reserved Price"
+                  [(ngModel)]="bidbooks.reservedprice" name="reservedprice" #reservedprice="ngModel"
+                  onKeyPress="if(this.value.length==4) return false;"> </mat-form-field>
+            </div>
+            <mat-slide-toggle class="margin-bottom-10 d-block toggle-margin" id="showhide4">Start Auction Later
+            </mat-slide-toggle>
+            <mat-form-field> <input matInput [matDatepicker]="picker" placeholder="Date&Time"
+                [ngModel]="bidbooks.start_time" name="start_time" #start_time="ngModel"> <span
+                placeholder="MM/DD/YYYY HH:MM AM/PM"></span>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-hint>MM/DD/YYYY HH:MM AM</mat-hint>
+            </mat-form-field>
+          </div>
+          <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{profile.book_image}}" name="book_image"
+              ngDefaultControl class="img-userprofile">
+          </div>
+          <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+              alt="" allowmultiple="false" />
+          </div>
+          <div class="buttons-flex">
+            <span class="btn-file ">Update Book Image <input (change)="onChange($event)" type="file" name="book_image"
+                #book_image accept="image/gif, image/jpeg, image/png" required>
+            </span>
+            <a class="btn-style btn" (click)="onSubmit(profile.id)" data-dismiss="modal">Update Book</a>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="delete-notes-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Detele Notes</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <h4 class="modal-title-cust"> Confirmation Alert </h4>
-                    <p class="modal-para-cust"> Do you want to Delete this Note? </p>
-                </div>
-            </div>
-            <div class="modal-footer"> <button class="btn-style btn" (click)="deletenotes(notesid)"
-                    data-dismiss="modal"> Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel
-                </button> </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Detele Note</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h4 class="modal-title-cust"> Confirmation Alert </h4>
+          <p class="modal-para-cust"> Do you want to Delete this Note? </p>
+        </div>
+      </div>
+      <div class="modal-footer"> <button class="btn-style btn" data-dismiss="modal"> Cancel
+        </button> <button class="btn-style btn" (click)="deletenotes(notesid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="delete-course-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Detele Course</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <h4 class="modal-title-cust"> Confirmation Alert </h4>
-                    <p class="modal-para-cust"> Do you want to Delete this Course? </p>
-                </div>
-            </div>
-            <div class="modal-footer"> <button class="btn-style btn" (click)="deletecourese(courseid)"
-                    data-dismiss="modal"> Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel
-                </button> </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Detele Course</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h4 class="modal-title-cust"> Confirmation Alert </h4>
+          <p class="modal-para-cust"> Do you want to Delete this Course? </p>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn-style btn" data-dismiss="modal"> Cancel
+        </button>  <button class="btn-style btn" (click)="deletecourese(courseid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="delete-book-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Detele Book</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <h4 class="modal-title-cust"> Confirmation Alert </h4>
-                    <p class="modal-para-cust"> Do you want to Delete this Book? </p>
-                </div>
-            </div>
-            <div class="modal-footer"> <button class="btn-style btn" (click)="bookdelete(bookid)" data-dismiss="modal">
-                    Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel </button> </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Detele Book</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h4 class="modal-title-cust"> Confirmation Alert </h4>
+          <p class="modal-para-cust"> Do you want to Delete this Book? </p>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn-style btn" data-dismiss="modal"> Cancel </button>  <button class="btn-style btn" (click)="bookdelete(bookid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
+  </div>
 </div>
 <div class="modal" id="delete-card-modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content margin-top-175">
-            <div class="modal-header">
-                <div class="form-1-header">
-                    <h1>Detele FlashCard</h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <h4 class="modal-title-cust"> Confirmation Alert </h4>
-                    <p class="modal-para-cust"> Do you want to Delete this Flashcard? </p>
-                </div>
-            </div>
-            <div class="modal-footer"> <button class="btn-style btn" (click)="flashcardsdelete(cardsid)"
-                    data-dismiss="modal"> Delete </button> <button class="btn-style btn" data-dismiss="modal"> Cancel
-                </button> </div>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div class="form-1-header">
+          <h1>Detele Flash Card</h1>
         </div>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h4 class="modal-title-cust"> Confirmation Alert </h4>
+          <p class="modal-para-cust"> Do you want to Delete this Flashcard? </p>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn-style btn" data-dismiss="modal"> Cancel
+        </button>  <button class="btn-style btn" (click)="flashcardsdelete(cardsid)" data-dismiss="modal">
+          Delete </button> </div>
     </div>
+  </div>
 </div>

@@ -25,7 +25,7 @@
                                 <a onclick="topFunction()" routerLink="/comparison-matrix"> <i class="fa fa-chevron-right" aria-hidden="true"></i> Comparison Matrix</a>
                             </li>
                             <li>
-                                <a onclick="topFunction()" routerLink="/contactus"> <i class="fa fa-chevron-right" aria-hidden="true"></i> Establish Contact</a>
+                                <a onclick="topFunction()" routerLink="/contactus"> <i class="fa fa-chevron-right" aria-hidden="true"></i> Contact Us</a>
                             </li>
                         </ul>
                         <h3 class="text-left">Stalk Us</h3>
@@ -46,7 +46,7 @@
                     <div class="footer-widget">
                         <h3 class="offset-md-3 padding-bottom-15">Categories</h3>
                         <div class="row">
-                            <div class=" col-sm-6"> <a *ngFor="let data of result | slice:0:6; let i=index " onclick="topFunction()" class="footer-cate" (click)="sliderClick(data?.c_name)" routerLink="/subcategory/{{data.id}}"><i class="fa fa-chevron-right" aria-hidden="true"></i>{{data?.c_name}}</a> </div>
+                            <div class=" col-sm-6"> <a *ngFor="let data of result | slice:0:6; let i=index " onclick="topFunction()" class="footer-cate" (click)="sliderClick(data?.c_name)" routerLink="/subcategory/{{data.id}}"><i class="fa fa-chevron-right" aria-hidden="true"></i>{{data?.c_name}}</a></div>
                             <div class=" col-sm-6">
                                 <a *ngFor="let data of result | slice:6:12; let i=index " onclick="topFunction()" class="footer-cate" (click)="sliderClick(data?.c_name)" routerLink="/subcategory/{{data.id}}"> <i class="fa fa-chevron-right" aria-hidden="true"></i>{{data?.c_name}}</a>
                             </div>
@@ -54,18 +54,20 @@
                     </div>
                     <div class="footer-stores-img">
                         <h2>Download and experience our Super-Cool Next-Generation Mobile App Now.</h2>
-                        <a onclick="topFunction()" href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene" target="_blank" class="display-inline-block"> <img class="adroid-badge" src="../../../assets/img/Adroid-Badge.png"> </a>
-                        <a onclick="topFunction()" href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8" target="_blank" class="display-inline-block"> <img class="ios-badge" src="../../../assets/img/IOS-Badge.png"> </a>
+                        <div class="image-width">
+                            <a onclick="topFunction()" href="https://play.google.com/store/apps/details?id=com.brainplow.notesgiene" target="_blank" class="display-inline-block"> <img class="adroid-badge" src="../../../assets/img/Adroid-Badge.png"> </a>
+                            <a onclick="topFunction()" href="https://itunes.apple.com/us/app/cramfrenzy/id1365621608?mt=8" target="_blank" class="display-inline-block"> <img class="ios-badge" src="../../../assets/img/IOS-Badge.png"> </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <h3 class="color_white padding-bottom-15">What is CramFrenzy</h3>
                     <div class="footer-widget">
-                        <p class="detail"> CramFrenzy is a next generation Artificially Intelligent Auction Marketplace to connect Instructors and Students together for a Super-Fast Ultra-Cool worldwide learning experience. Courses can be Sold, Bought or Bid on through an auction experience. </p>
+                        <p class="detail"> CramFrenzy is a next generation Artificially Intelligent Auction Marketplace to connect Instructors and Students together for a Super-Fast Ultra-Cool worldwide learning experience. Courses, Books, Flash Cards and Notes can be Sold, Offers, and Bought or Bid on through an auction experience.</p>
                     </div>
                     <div class="subscribe-form">
-                        <h4>Subscribe Now:</h4>
-                        <p> Get the latest CramFrenzy News/Information straight to your inbox </p>
+                        <h4>Subscribe Now</h4>
+                        <p> Get the latest CramFrenzy News/Information straight to your inbox</p>
                         <form class="subscribe-form-1" name="form" role="form" method="post" (ngSubmit)="onSubmit(f)" #f="ngForm" enctype="multipart/form-data">
                             <div class="input-group footer-input">
                                 <input placeholder="Subscribe to CramFrenzy" [(ngModel)]="model.email" #email="ngModel" name="email" name="email" required>
@@ -82,7 +84,7 @@
     <div id="footerhide1" class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-sm-12 text-left"> <span class="copyright-info">Copyright &copy; 2019, CramFrenzy. All rights reserved</span> </div>
+                <div class="col-lg-5 col-sm-12 text-left"> <span class="copyright-info">Copyright &copy; 2019, CramFrenzy. All rights reserved</span></div>
                 <div class="col-lg-7 col-sm-12 text-right"> <span> <a onclick="topFunction()" href="/terms" target="_blank">Terms of Use</a> <span class="footer_bottom_border"></span> <a onclick="topFunction()" href="/privacy-policy" target="_blank">Privacy Policy</a> <span class="footer_bottom_border"></span> <a onclick="topFunction()" href="/intellectual-property" target="_blank">Intellectual Property</a> </span>
                 </div>
             </div>

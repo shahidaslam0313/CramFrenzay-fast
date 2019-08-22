@@ -2,7 +2,7 @@
     <div class="row">
         <div class="form-1 form-width">
             <div class="form-1-header">
-                <h1>Sign In to Your Account</h1>
+                <h1>Please Login to CramFrenzy</h1>
                 <ul class="form-1-sl">
                     <li>
                         <a (click)="facebooklogin()"> <img src="../../assets/img/icon-facebook.png"> </a>
@@ -13,7 +13,7 @@
                 </ul>
             </div>
             <div class="form-1-body text-center">
-                <form [formGroup]="loginForm" class="sh-signup-form-fix login-form">
+                <form [formGroup]="loginForm" class="sh-signup-form-fix login-form" >
                     <mat-form-field class="singup-feilds-padding">
                         <input class="signup-input-font" matInput placeholder="Username" type="text" formControlName="username">
                         <mat-error *ngIf="username.touched && username.invalid">
@@ -22,7 +22,8 @@
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="singup-feilds-padding margin-top-10">
-                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" type="password" formControlName="password">
+                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" type="password" formControlName="password"
+                        onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off >
                         <mat-icon class="pointer" data-toggle="tooltip" title="{{hide? 'Show' : 'Hide'}}Password" matSuffix (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         <mat-error *ngIf="password.touched && password.invalid">
                             <mat-error *ngIf="password.errors.required"> Password cannot be empty </mat-error>
@@ -54,12 +55,15 @@
                         <input class="signup-input-font" matInput type="text" id="email" formControlName="email" placeholder="Enter Email">
                         <mat-error *ngIf="email.touched && email.invalid">
                             <mat-error *ngIf="email.errors.required"> Email cannot be empty </mat-error>
-                            <mat-error *ngIf="email.errors.pattern"> You can enter only email </mat-error>
+                            <!-- <mat-error *ngIf="email.errors.pattern"> You can enter only email </mat-error> -->
+                            <mat-error *ngIf="email.errors.pattern"> Enter valid email </mat-error>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn-style" (click)="onSubmit(f)" data-dismiss="modal">Send</button>
+                    <button class="btn-style" (click)="onSubmit(f)" data-dismiss="modal">
+                            
+                        Send</button>
                     <button class="btn-style" data-dismiss="modal">Cancel</button>
                 </div>
             </form>

@@ -13,8 +13,7 @@ import swal from "sweetalert2";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
-import { Ng2ImgMaxService } from 'ng2-img-max';
-import { formControlBinding } from '@angular/forms/src/directives/ng_model';
+import { GlobalService } from '../../global.service';
 
 declare const $: any;
 @Component({
@@ -39,7 +38,7 @@ export class UploadnotesComponent implements OnInit {
   public firstname;
   public lastname;
   notes_thumbnail;
-  public id : any;
+  public id: any;
   profilePhoto;
   result;
   sell_status: boolean = true;
@@ -51,12 +50,26 @@ export class UploadnotesComponent implements OnInit {
   startprice;
   default;
   notes: FormGroup;
-  notesTypes : FormGroup;
+  filetoup: FileList;
+  fileName = '';
+  notesTypes: FormGroup;
   uploadnotesservice: any;
   accept_offer: boolean = false;
   private sub: Subscription;
-  select(val){
-    this.default=val;
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange3(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
+  public initial_amount;
+  public reservedprice;
+  public Invalid: boolean = false;
+  public onChange4(event: any): void {
+    this.Invalid = this.initial_amount == this.reservedprice || this.initial_amount > this.reservedprice;
+  }
+  select(val) {
+    this.default = val;
   }
   date = new Date().toString();
   endprice;
@@ -77,13 +90,13 @@ export class UploadnotesComponent implements OnInit {
     { value: '15', viewValue: '15' },
   ];
   notesType = [
-    'Lecture Note','Textbook Note', 'Exam Note'
+    'Lecture Note', 'Textbook Note', 'Exam Note'
   ];
   examkind = [
-    'Quiz' , 'Mid Term' , 'Final'
+    'Quiz', 'Mid Term', 'Final'
   ];
   chapters = [
-    '1','2','3','4','5','6','7','8','9','10'
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
   ]
   onchange($event) {
   }
@@ -102,41 +115,44 @@ export class UploadnotesComponent implements OnInit {
   notesname;
   bid_status: boolean = true;
   // notes_thumbnail;
-  nameFormControl = new FormControl('', [
+  name = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
+    Validators.maxLength(60),
+    Validators.minLength(2)
   ]);
-  detailFormControl = new FormControl('', [
+  detail = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(500)
+    Validators.maxLength(300),
+    Validators.minLength(50)
   ]);
-  notessubcategoriesFormControl= new FormControl('',[
+  notessubcategoriesFormControl = new FormControl('', [
     Validators.required
   ])
-  subcategoryFormControl= new FormControl('',[
+  subcategoryFormControl = new FormControl('', [
     Validators.required
   ])
-  nestedcategoryFormControl= new FormControl('',[
+  nestedcategoryFormControl = new FormControl('', [
     Validators.required
   ])
   authornameFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
+    Validators.maxLength(64),
+    Validators.minLength(2)
   ]);
-  constructor(private ng2ImgMax: Ng2ImgMaxService, private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
+  constructor( private globalimage : GlobalService, private newService: uploadnotesservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private data: DataService, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
     }
- 
+
   }
 
   ngOnInit() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.firstname = localStorage.getItem('fname');
     this.lastname = localStorage.getItem('lname');
     this.profilePhoto = localStorage.getItem('pic');
@@ -172,7 +188,7 @@ export class UploadnotesComponent implements OnInit {
     $('#showhide4').click(function () {
       $('#showdiv4').toggle();
     });
-    $('#showhide6').click(function() {
+    $('#showhide6').click(function () {
       $('#showdiv6').toggle();
     });
   }
@@ -182,11 +198,36 @@ export class UploadnotesComponent implements OnInit {
         this.CourseFailure();
       }
       else {
+        // alert(this.datafile)
         this.datafile = data;
-        console.log(this.datafile);
+        // console.log(this.datafile);
+        this.ifImageUpload();
       }
     })
   }
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+  
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  this.uploadItemsToActivity();
+  }
+  imagepath;
+  uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+      data => {
+      this.imagepath = data
+        alert(data)
+    
+      },
+      error => {
+        // console.log(error);
+      });
+  
+  }
+  pdfviewlink;
   onSubmit(f: NgForm) {
 
     this.http.post(
@@ -195,43 +236,37 @@ export class UploadnotesComponent implements OnInit {
           this.sweetalertupload();
         }
         else {
-          this.model.notes_thumbnail = data;
-          console.log(this.model.notes_thumbnail);
-          this.uploadfiles();
-          this.ifImageUpload(this.sell_days, f);
           
+          // alert(this.pdfviewlink)
+          this.pdfviewlink = data;
+          this.model.notes_thumbnail = data;
+          // console.log(this.model.notes_thumbnail);
+         
+          // this.ifImageUpload(this.sell_days);
+
         }
       });
-     }
+  }
 
   sell_days;
 
-    subcategory;
+  subcategory;
   nestedcategory;
-  private ifImageUpload(sell_days,f: NgForm) {
-    console.log(this.sell_days);
+   ifImageUpload( ) {
+    // console.log(this.sell_days);
+    // alert(this.pdfviewlink)
     var date = moment(new Date, "YYYY-MM-DD");
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    console.log(new_date);
-    if(this.model.valid){
-      this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory , this.model.nestedcategory , this.sell_status, this.accept_offer,  new_date,  bid_date , this.bid_status )
+    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,this.file,new_date, this.notes_thumbnail, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
       .subscribe(Res => {
-        // this.date = Res
-        // console.log(this.date);
+        console.log(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,new_date, bid_date, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
+
       });
-      this.CourseSuccess();
-      f.resetForm()
-    }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 4500
-    })
+     
+    this.CourseSuccess();
+    // f.resetForm()
   }
   CourseSuccess() {
     swal({
@@ -257,8 +292,8 @@ export class UploadnotesComponent implements OnInit {
   onChange(event) {
     this.input = new FormData();
 
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
+    const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
     this.input.append('fileToUpload', event.target.files[0]);
     this.files = target.files;
     this.file = this.files[0];
@@ -274,7 +309,7 @@ export class UploadnotesComponent implements OnInit {
     reader1.readAsDataURL(this.file);
 
     // let image = event.target.files[0];
-  
+
     // this.ng2ImgMax.resizeImage(image, 200, 150).subscribe(
     //   result => {
     //     this.uploadedImage = result; 
@@ -291,11 +326,11 @@ export class UploadnotesComponent implements OnInit {
     //     console.log('😢 Oh no!', error);
     //   }
     // );
-  // file;
+    // file;
   }
   // onImageChange(event) {
   //   let image = event.target.files[0];
-  
+
   //   this.ng2ImgMax.resizeImage(image, 238, 170).subscribe(
   //     result => {
   //       this.uploadedImage = result;
@@ -308,18 +343,19 @@ export class UploadnotesComponent implements OnInit {
   //   );
   //   }
 
-    // getImagePreview(file: File) {
-    //   const reader: FileReader = new FileReader();
-    //   reader.readAsDataURL(file);
-    //   reader.onload = () => {
-    //     this.imagePreview = reader.result;
-    //   };
-    // }
+  // getImagePreview(file: File) {
+  //   const reader: FileReader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //     this.imagePreview = reader.result;
+  //   };
+  // }
   onChange2(event: EventTarget) {
     this.input = new FormData();
     const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
     const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
     this.input.append('fileToUpload', target.files[0]);
+    // alert(this.input)
   }
   _handleReaderLoaded(readerEvt) {
     console.log('base64');
@@ -394,38 +430,50 @@ export class UploadnotesComponent implements OnInit {
       }
     }
   }
-  onsubmitt(f: NgModel){
+  onsubmitt(f: NgModel) {
     // alert(this.model);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    this.newService.uploadNotesType(this.model.note, this.model.notestype, this.model.examNote,  this.model.lectureNumber  ,  this.model.chapter  )
-    .subscribe(Res => {
-      swal({
-        text: 'Notes Added Successfully!',
-        title: "CramFrenzy",
-        type: "success",
-        showConfirmButton: false,
-        confirmButtonColor: "#DD6B55",
-        timer: 4500,
-        confirmButtonText: "OK",
-
-      });
-    },
-      error => {
+    this.newService.uploadNotesType(this.model.note, this.model.notestype, this.model.examNote, this.model.lectureNumber, this.model.chapter)
+      .subscribe(Res => {
         swal({
-          text: 'Notes Not Added',
+          text: 'Notes Added Successfully!',
           title: "CramFrenzy",
-          type: "error",
+          type: "success",
           showConfirmButton: false,
           confirmButtonColor: "#DD6B55",
           timer: 4500,
           confirmButtonText: "OK",
+
         });
-      }
-    )
-    ;
-}
-
-
+      },
+        error => {
+          swal({
+            text: 'Notes Not Added',
+            title: "CramFrenzy",
+            type: "error",
+            showConfirmButton: false,
+            confirmButtonColor: "#DD6B55",
+            timer: 4500,
+            confirmButtonText: "OK",
+          });
+        }
+      )
+      ;
   }
+  // checkamount(min_amount,max_amount){
+  // if(min_amount == max_amount){
+  //   swal({
+  //     text: 'Min amount',
+  //     title: "CramFrenzy",
+  //     type: "error",
+  //     showConfirmButton: false,
+  //     confirmButtonColor: "#DD6B55",
+  //     timer: 4500,
+  //     confirmButtonText: "OK",
+  //   });
+  // }
+  // }
+
+}
 

@@ -183,6 +183,7 @@ export class LoginComponent {
   googlelogin() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(this.socialCallBack).catch(message => console.log(message));
   }
+
   id;
   Login() {
     if (isPlatformBrowser(this.platformId)) {
@@ -215,7 +216,7 @@ export class LoginComponent {
             this.global.setGlobalToken(true);
 
             if (this.role === "T") {
-              this.router.navigate(['/userprofile/' + this.username.value]);
+              this.router.navigate(['']);
 
               this.getwishlist.showwishlist().subscribe(response => {
                 if (response.hasOwnProperty("status")) {
@@ -234,7 +235,7 @@ export class LoginComponent {
               this.showSuccess();
             }
             else if (this.role === "U") {
-              this.router.navigate(['/userprofile/' + this.username.value]);
+              this.router.navigate(['' ]);
               this.showSuccess();
             }
             // if (this.role == "A" || this.role == "U" || this.role == "T") {
@@ -347,11 +348,14 @@ export class LoginComponent {
     }
     else {
       swal({
-        title: 'Please enter correct details',
+        // title: 'Please enter correct details',
+        title: 'Enter valid email',
         type: "error",
         showConfirmButton: false,
         timer: 2000,
+      
       });
+      
     }
     f.resetForm;
   }

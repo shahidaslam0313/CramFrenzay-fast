@@ -29,6 +29,6 @@ export class RecapchaComponent implements OnInit {
 
   }
   onKeydown(event) {
-    console.log(event);
+  
   }
 }

@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core
 import { CourseService } from "./course.service";
 import { Router } from "@angular/router";
 import { Config } from "../../Config";
-import {GlobalService} from '../../global.service';
+import { GlobalService } from '../../global.service';
 import swal from "sweetalert2";
 import { isPlatformBrowser } from '@angular/common';
 import { MainpageComponent } from '../../MainPage/mainpage/mainpage.component';
@@ -12,8 +12,8 @@ import { AcceptofferComponent } from 'app/acceptoffer/acceptoffer.component';
 import { mainpageservice } from 'app/MainPage/mainpage/mainpage.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
-import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { NgForm } from '@angular/forms';
+import { BidHistoryService } from "../../bid-history/bid-history.service";
+import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
 
 declare const $: any;
 
@@ -41,6 +41,11 @@ export class CourseComponent implements OnInit {
   notes;
   flashcard;
   book;
+  bidform = new FormGroup({
+    bidamount: new FormControl('', [
+      Validators.required
+    ])
+  })
   searchResult: any = [];
   slideConfig2 = {
     infinite: true,
@@ -121,7 +126,7 @@ export class CourseComponent implements OnInit {
   message: string;
   model: any = {};
   cartitems;
-  constructor(private bidings: BidHistoryService,private headServ: headerservice,private see: WishlistService, private Data: DataService,private mainpage: mainpageservice,public course: CourseService, private router: Router, public header: headerservice, private global: GlobalService,  @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
+  constructor(private bidings: BidHistoryService, private headServ: headerservice, private see: WishlistService, private Data: DataService, private mainpage: mainpageservice, public course: CourseService, private router: Router, public header: headerservice, private global: GlobalService, @Inject(PLATFORM_ID) private platformId: Object, public dialogRef: MatDialog) {
     this.Showbidcourses();
     this.TrendingNow();
     this.Showtopratedcourses();
@@ -148,11 +153,11 @@ export class CourseComponent implements OnInit {
     }
     this.showhistory(this.notes, course, this.flashcard, this.book);
   }
-  showhistory(notes,course, flashcard, book ) {
-    return this.global.offerhistory(notes, course, flashcard ,book )
- }
+  showhistory(notes, course, flashcard, book) {
+    return this.global.offerhistory(notes, course, flashcard, book)
+  }
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
   Innerslider() {
@@ -160,16 +165,16 @@ export class CourseComponent implements OnInit {
       this.inner = Res;
     });
   }
-id;
-courses(id) {
-  if (this.check_login() == true) {
-    this.router.navigate(['/payment'], {queryParams: {courseid : id}});
-    // localStorage.setItem('course', id);
-  } else if (this.check_login() == false) {
-    this.sweetalertlogin();
-    this.router.navigate(['/login']);
+  id;
+  courses(id) {
+    if (this.check_login() == true) {
+      this.router.navigate(['/payment'], { queryParams: { courseid: id } });
+      // localStorage.setItem('course', id);
+    } else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
-}
   check_login() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('currentUser')) {
@@ -251,31 +256,35 @@ courses(id) {
       this.global = data;
       swal({
         type: 'success',
-        title: 'Added to watchlist',
+        title: 'Item successfully added to watch list',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
+      this.Showbidcourses();
+      this.TrendingNow();
+      this.Showtopratedcourses();
+      this.Showrecentvisitedcourse();
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
       })
     }, error => {
-      if (error.status == 404){
+      if (error.status == 404) {
         swal({
-        type: 'warning',
-        title: 'This course is already in your watchlist',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    }
-    else if(error.status===406){
-      swal({
-        type: 'error',
-        title: 'Course Already Purchased',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    }  
+          type: 'warning',
+          title: 'This course is already in your watchlist',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      else if (error.status === 406) {
+        swal({
+          type: 'error',
+          title: 'Course Already Purchased',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
     }
     );
   }
@@ -292,42 +301,56 @@ courses(id) {
 
   }
   bidc(f: NgForm) {
-    this.global.bidoncourses( this.bidingcourse, this.model.bidamount, )
+    if(this.bidform.controls.bidamount.valid){
+      this.global.bidoncourses(this.bidingcourse, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
           title: 'Your bid is listed',
           showConfirmButton: false,
-          timer: 5500
+          timer: 1500
         });
       },
         error => {
-          if(error.status==403){
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
+          if (error.status == 403) {
+            swal({
+              type: 'error',
+              title: 'Bid higher amount',
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
         }
       );
-      f.resetForm()
+    f.resetForm()
+    }
+  else 
+  swal({
+    type: 'error',
+    title: 'Bid amount is required',
+    showConfirmButton: false,
+    timer: 1500
+  });
   }
   null;
-  addcart( notes, course, book, flashcard){
+  addcart(notes, course, book, flashcard) {
     notes = null;
     book = null;
-    flashcard=null;
+    flashcard = null;
     if (this.check_login() == true) {
       this.course.addtocart(notes, course, book, flashcard).subscribe(data => {
 
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to cart',
           showConfirmButton: false,
           timer: 4500
         });
+        this.Showbidcourses();
+        this.TrendingNow();
+        this.Showtopratedcourses();
+        this.Showrecentvisitedcourse();
+        this.Showwatchedcourses();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
@@ -340,46 +363,46 @@ courses(id) {
             showConfirmButton: false,
             timer: 4500
           })
-          else if ( error.status === 406)
+        else if (error.status === 406)
           swal({
             type: 'error',
             title: 'Item Already Purchased',
             showConfirmButton: false,
             timer: 4500
           })
-        });
+      });
+    }
+    else if (this.check_login() == false) {
+      this.sweetalertlogin();
+      this.router.navigate(['/login']);
+    }
   }
-  else if (this.check_login() == false) {
-    this.sweetalertlogin();
-    this.router.navigate(['/login']);
+  submit(nestedname) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('nestedname', nestedname);
+      localStorage.setItem('nameID', 'notes');
+    }
   }
-}
-submit(nestedname) {
-  if (isPlatformBrowser(this.platformId)) {
-    localStorage.setItem('nestedname', nestedname);
-    localStorage.setItem('nameID', 'notes');
-  }
-}
-delCourseFwishList(event) {
-  this.see.delwishlist(event.wishlist).subscribe(data => {
-    swal({
-      type: 'success',
-      title: 'Successfully deleted',
-      showConfirmButton: false,
-      timer: 1500
+  delCourseFwishList(event) {
+    this.see.delwishlist(event.wishlist).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Item successfully deleted from watch list',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
-  });
-}
-delfromcart(event) {
-  this.global.delcart(event.cart).subscribe(data => {
-    swal({
-      type: 'success',
-      title: 'Successfully deleted',
-      showConfirmButton: false,
-      timer: 1500
+  }
+  delfromcart(event) {
+    this.global.delcart(event.cart).subscribe(data => {
+      swal({
+        type: 'success',
+        title: 'Item successfully deleted from cart',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
-  });
-}
+  }
   coursebid;
   coursesitem;
   ////////////course  biding history////////

@@ -11,7 +11,6 @@ import { GlobalService } from './global.service';
 import { SocialLoginModule, AuthService } from 'angular5-social-login';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CountdownModule } from 'ng2-countdown-timer';
-import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { WinbidDialogComponent } from '../app/userdashboard/winbid-dialog/winbid-dialog.component';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
@@ -120,6 +119,7 @@ import { AddtocartComponent } from './addtocart/addtocart.component';
 import { InstitutedetailService } from './institutedashboard/institutedetail/institutedetail.service';
 import { AddscholarshipService } from './institutedashboard/addscholarship/addscholarship.service';
 import { AddeventsService } from './institutedashboard/addevents/addevents.service';
+// { path: 'addevents', loadChildren: './institutedashboard/addevents/addeventsupload.module#AddeventsModule', canActivate: [Auth2Service] },
 import { InstitutelibraryService } from './institutedashboard/institutelibrary/institutelibrary.service';
 import { AuthguardService } from './authguard.service';
 import { Auth2Service } from './auth2.service';
@@ -146,7 +146,11 @@ import {CoursevideoComponent} from "./userdashboard/coursevideo/coursevideo.comp
 import {EachcourseComponent} from "./Course/eachcourse/eachcourse.component";
 import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
-
+import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
+import { PendingoffersService } from './userdashboard/pendingoffers/pendingoffers.service';
+// import { PagerServicenew } from './pager.service';
+// import { NeutronRatingModule } from 'neutron-star-rating';
+// import { ChatComponent } from './chat/chat.component';
 //  import { FlashcardSubcategoryComponent } from './FlashCard/flashcard-subcategory/flashcard-subcategory.component';
 
 //  import { CourseSubcategoryComponent } from './Course/course-subcategory/course-subcategory.component';
@@ -198,7 +202,7 @@ export class MaterialModule { }
     CommonModule,
     MaterialModule,
     BrowserAnimationsModule,
-    
+    // NeutronRatingModule,
     MatInputModule,
     VgBufferingModule,
     VgCoreModule,
@@ -209,7 +213,7 @@ export class MaterialModule { }
     MatButtonModule,
     HttpModule,
     Routing,
-    Ng2ImgMaxModule,
+
     HttpClientModule,
     RatingModule,
     SocialLoginModule,
@@ -240,7 +244,8 @@ export class MaterialModule { }
     AddVideoComponent,
     IntroVideoComponent ,
     VideoShowDialogComponent,
-    MycartComponent
+    MycartComponent,
+    PendingoffersComponent
   ],
   providers: [
     {
@@ -250,8 +255,9 @@ export class MaterialModule { }
     AddtocartComponent,
     SimpleGlobal,
     DataService,
+    PendingoffersService,
     PagerService,
-    PagerService,
+    // PagerServicenew,
     GlobalService,
     BidHistoryService,
     MycourceService,
@@ -303,6 +309,7 @@ export class MaterialModule { }
     BookcategoryService,
     booksservice,
     detailservice,
+    PagerService,
     // Event Module
     EventsService,
     InstituteeventsService,

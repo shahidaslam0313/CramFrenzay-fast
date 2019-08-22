@@ -129,6 +129,7 @@ export class SignupComponent {
     this.disabledAgreement = !event.checked;
   }
 
+  password_regex = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*[\/\\\!\"#$%&()*+,£^.:;=?\\\\[\\]\\-\'<>~|@_{}]).{8,}$';
 
   constructor(private recha: RecapchaService, private _serv: SignupService, public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -136,6 +137,7 @@ export class SignupComponent {
       this.currentProducts = this.productsSource.asObservable();
 
     }
+    window.scroll(0,0);
   }
  
   isFieldValid(form: FormGroup, field: string) {
@@ -153,7 +155,7 @@ export class SignupComponent {
       if (this.register.valid) {
         this._serv.signUp(this.register.value['firstname'] , this.register.value['lastname'], this.register.value['username'], this.register.value['email'], this.register.value['password']).subscribe(Res => {
           swal({
-            text: 'Please check your email',
+            text: 'Please check your email for account activation instructions',
             title: "CramFrenzy",
             type: "success",
             showConfirmButton: false,
@@ -170,7 +172,7 @@ export class SignupComponent {
         error => {
           swal({
             type: 'error',
-            title: 'Oops <br> Plz fill form',
+            title: 'Please fill form',
             showConfirmButton: false,
             width: '512px',
             timer: 2500
@@ -180,7 +182,7 @@ export class SignupComponent {
         this.validateAllFormFields(this.register);
         swal({
           type: 'error',
-          title: 'Oops <br> Please enter valid data',
+          title: 'Please enter valid data',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
@@ -224,8 +226,9 @@ export class SignupComponent {
       email: ['', Validators.compose([Validators.required, Validators.pattern(this.emailonly)])],
       // We can use more than one validator per field. If we want to use more than one validator we have to wrap our array of validators with a Validators.compose function. Here we are using a required, minimum length and maximum length validator.
       // optionsCheckboxes: ['', Validators.required],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(100)])],
-      confirmPassword: ['', Validators.compose([Validators.required])],
+     
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(this.password_regex), Validators.maxLength(100)])],
+      confirmPassword: ['', Validators.compose([Validators.required, , Validators.pattern(this.password_regex)])],
     }, {
         validator: PasswordValidation.MatchPassword // your validation method
       });
@@ -239,8 +242,8 @@ export class SignupComponent {
 
       email: ['', Validators.compose([Validators.required, Validators.pattern(this.emailonly)])],
 
-      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(100)])],
-      confirmPassword: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(this.password_regex), Validators.maxLength(100)])],
+      confirmPassword: ['', Validators.compose([Validators.required, , Validators.pattern(this.password_regex)])],
     },
 
       {
@@ -319,14 +322,14 @@ export class SignupComponent {
     if (this.institute.valid) {
       this._serv.instituteregister(this.institute.value['username'], this.institute.value['name'], this.institute.value['location'], this.institute.value['address'], this.institute.value['contact'], this.institute.value['email'], this.institute.value['password'], ).subscribe(Res => {
         swal({
-          text: 'Please check your email',
+          text: 'Please check your email for account activation instructions',
           title: "CramFrenzy",
           type: "success",
           showConfirmButton: false,
           confirmButtonColor: "#DD6B55",
           confirmButtonText: "OK",
           width: '512px',
-          timer: 4500
+          timer: 2500
 
         });
         if (Res.status == true) {
@@ -338,7 +341,7 @@ export class SignupComponent {
       error => {
         swal({
           type: 'error',
-          title: 'Oops <br> Plz fill form',
+          title: ' Please fill form',
           showConfirmButton: false,
           width: '512px',
           timer: 2500
@@ -347,7 +350,7 @@ export class SignupComponent {
     } else {
       swal({
         type: 'error',
-        title: 'Oops <br> Plz fill form Correctly',
+        title: ' Please fill form Correctly',
         showConfirmButton: false,
         width: '512px',
         timer: 2500
@@ -376,7 +379,7 @@ export class SignupComponent {
         }
       },
         error => {
-          this.emailstatus = false;
+          this.emailstatus = true;
         }
       );
     }
@@ -385,7 +388,7 @@ export class SignupComponent {
   emailVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops <br> Email alreday registered',
+      title: 'Email already exists',
       showConfirmButton: false,
       width: '512px',
       timer: 2500
@@ -395,7 +398,7 @@ export class SignupComponent {
   usernameVerificationError() {
     swal({
       type: 'error',
-      title: 'Oops <br> User name already exists',
+      title: 'Username already exists',
       showConfirmButton: false,
       width: '512px',
       timer: 2500

@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FooterService } from './footer.service';
-import { isPlatformBrowser } from '@angular/common';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 import swal from "sweetalert2";
 import {  HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,7 +9,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, AuthService } from 'angular
 import { JwtHelper } from 'angular2-jwt';
 import { Config } from '../../Config';
 
-
+import { GlobalService } from '../../global.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -28,7 +27,7 @@ export class FooterComponent implements OnInit {
   username
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(  private footer: FooterService,private router: Router,private authService: AuthService,private http: HttpClient,  @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor( public global: GlobalService , private footer: FooterService,private router: Router,private authService: AuthService,private http: HttpClient,  @Inject(PLATFORM_ID) private platformId: Object) {
     this.courses();
   }
 
@@ -37,7 +36,7 @@ export class FooterComponent implements OnInit {
   }
 
   courses() {
-    this.footer.Coursesonfooter().subscribe(data => {
+    this.global.InnerslideronMainPage().subscribe(data => {
       this.result = data;
     });
   }

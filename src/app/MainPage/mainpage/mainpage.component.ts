@@ -6,13 +6,13 @@ import { DataService } from '../../data.service';
 import swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { GlobalService } from '../../global.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { headerservice } from '../../includes/header/header.service';
 import {WishlistService} from '../../wishlist/wishlist.service';
 import {AcceptofferComponent} from '../../acceptoffer/acceptoffer.component';
 import { MatDialog } from '@angular/material';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { idText } from 'typescript';
+
 
 declare const $: any;
 
@@ -56,13 +56,18 @@ export class MainpageComponent implements OnInit {
   chapter_id;
   message: string;
   cartitem: any;
- 
+ bidform = new FormGroup({
+   bidamount: new FormControl('',[
+     Validators.required
+   ])
+ })
   constructor( public bidings: BidHistoryService, private headServ: headerservice,  private mainpage: mainpageservice,  private see: WishlistService, private router: Router, private Data: DataService, public global: GlobalService ,  @Inject(PLATFORM_ID) private platformId: Object,  public dialogRef: MatDialog) {
     this.Innerslider();
     this.BidBuynotes();
   }
 
   ngOnInit() {
+    window.scroll(0,0)
     this.global.currentMessage.subscribe(message => this.message = message);
     this.bidcourse();
     this.BidBuyflashcards();
@@ -97,18 +102,19 @@ export class MainpageComponent implements OnInit {
           this.getwishlis();
           swal({
             type: 'success',
-            title: 'Successfully deleted',
+            title: 'Item successfully deleted from watch list',
             showConfirmButton: false,
             timer: 1500
           });
           this.BidBuynotes();
         });
   }
+ 
   delTrendingCFwishList(event) {
         this.see.delwishlist(event.wishlist).subscribe(data => {
           swal({
             type: 'success',
-            title: 'Successfully deleted',
+            title: 'Item successfully deleted from watch list',
             showConfirmButton: false,
             timer: 1500
           });
@@ -269,7 +275,7 @@ export class MainpageComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -280,7 +286,7 @@ export class MainpageComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -291,7 +297,7 @@ export class MainpageComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Successfully deleted',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       });
@@ -302,7 +308,7 @@ export class MainpageComponent implements OnInit {
     this.mainpage.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item deleted from watchlist',
+        title: 'Item successfully deleted from watch list',
         showConfirmButton: false,
         timer: 1500
       })
@@ -544,7 +550,7 @@ export class MainpageComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Add to Watch List',
+          title: 'Item successfully added to watch list',
           showConfirmButton: false,
           timer: 2000
         });
@@ -625,49 +631,67 @@ export class MainpageComponent implements OnInit {
     }
   }
   bidc(f: NgForm) {
-    this.global.bidoncourses(this.bidingcourse, this.model.bidamount, )
-      .subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Your bid is listed',
-          showConfirmButton: false,
-          timer: 5500
-        });
-      },
-      error => {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidoncourses(this.bidingcourse, this.bidform.value['bidamount'] )
+    .subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Your bid is listed',
+        showConfirmButton: false,
+        timer: 5500
+      });
+    },
+    error => {
+      if (error.status == 403)
         swal({
           type: 'error',
           title: 'Bid higher amount',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
-      }
-      );
-f.reset();
-  }
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   biding(f: NgForm) {
-    this.global.bidnotes(this.bidonnotes, this.model.bidamount)
-      .subscribe(Res => {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidnotes(this.bidonnotes, this.bidform.value['bidamount'])
+    .subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Your bid is listed',
+        showConfirmButton: false,
+        timer: 5500
+      });
+    },
+    error => {
+      if (error.status == 403)
         swal({
-          type: 'success',
-          title: 'Your bid is listed',
+          type: 'error',
+          title: 'Bid higher amount',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
-      },
-      error => {
-        if (error.status === 403 || error.status === 500)
-          swal({
-            type: 'error',
-            title: 'Bid higher amount',
-            showConfirmButton: false,
-            timer: 5500
-          });
-      },
-
-    );
-    f.resetForm();
-  }
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   getcardid(id) {
 
     if (this.check_login() == true) {
@@ -680,26 +704,36 @@ f.reset();
     }
   }
   bidcard(f: NgForm) {
-    this.global.bidoncards(this.cardid, this.model.bidamount, )
-      .subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Your bid is listed',
-          showConfirmButton: false,
-          timer: 5500
-        });
-      },
-      error => {
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidoncards(this.cardid, this.bidform.value['bidamount'] )
+    .subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Your bid is listed',
+        showConfirmButton: false,
+        timer: 5500
+      });
+    },
+    error => {
+      if (error.status == 403)
         swal({
           type: 'error',
           title: 'Bid higher amount',
           showConfirmButton: false,
-          timer: 5500
+          timer: 2000
         });
-      }
-      );
-    f.resetForm();
-  }
+    },
+  );
+  f.resetForm()
+}
+else 
+swal({
+  type: 'error',
+  title: 'Bid amount is required',
+  showConfirmButton: false,
+  timer: 1500
+});
+}
   bidbookid;
   /////////////biding in books/////////
   booksid(id) {
@@ -714,7 +748,8 @@ f.reset();
 
 
   bidingonbook(f: NgForm) {
-    this.global.bidonbook(this.bidbookid, this.model.bidamount, )
+    if(this.bidform.controls.bidamount.valid){
+    this.global.bidonbook(this.bidbookid, this.bidform.value['bidamount'])
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -724,26 +759,39 @@ f.reset();
         });
       },
       error => {
-        swal({
-          type: 'error',
-          title: 'Bid higher amount',
-          showConfirmButton: false,
-          timer: 5500
-        });
-      }
-      );
-    f.resetForm();
+        if (error.status == 403)
+          swal({
+            type: 'error',
+            title: 'Bid higher amount',
+            showConfirmButton: false,
+            timer: 2000
+          });
+      },
+    );
+    f.resetForm()
   }
+  else 
+  swal({
+    type: 'error',
+    title: 'Bid amount is required',
+    showConfirmButton: false,
+    timer: 1500
+  });
+}
   addcart( notes, course, book, flashcard){
     if (this.check_login() == true) {
       this.mainpage.addtocart(notes, course, book, flashcard).subscribe(data => {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Added to Cart',
+          title: 'Item successfully added to Cart',
           showConfirmButton: false,
           timer: 2000
         });
+        this.BidBuynotes();
+        this.BidBuyflashcards();
+        this.BidBuybooks();
+        this.bidcourse();
         this.headServ.showCartItem().subscribe(cartitem => {
           this.cartitem = cartitem;
           this.Data.emittData(this.cartitem);
@@ -774,7 +822,7 @@ delfromcart(event) {
   this.global.delcart(event.cart).subscribe(data => {
     swal({
       type: 'success',
-      title: 'Successfully deleted',
+      title: 'Item successfully deleted from Cart',
       showConfirmButton: false,
       timer: 1500
     });

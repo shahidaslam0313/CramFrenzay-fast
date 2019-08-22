@@ -66,6 +66,26 @@ export class paymentservice {
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'purchase/getcards/' + this.current.user_id, { headers: headers }).map((response: Response) => response.json());
   }
+  eachnotes(id){
+    const headers = new Headers({'Authorization': 'JWT ' + this.token});
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'notesgenie/eachnotes/' + id + '',{headers: headers}).map((response: Response) => response.json());
+  }
+  eachcourse(id){
+    const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'course/showcoursedata/' + id + '', {headers: headers}).map((response: Response) => response.json());
+  }
+  eachcard(id){
+    const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'flash/showinfo/' + id + '', {headers: headers}).map((response: Response) => response.json());
+  }
+  eachbook(id){
+    const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'book/getbookdetail/' + id + '', {headers: headers}).map((response: Response) => response.json());
+  }
   updateCard( id, defaultCheck,name) {
     const header = new Headers({ 'Authorization': 'JWT ' + this.token });
     header.append('Content-Type', 'application/json');

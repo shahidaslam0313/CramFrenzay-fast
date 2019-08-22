@@ -11,6 +11,8 @@ import swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as moment from 'moment';
+import { GlobalService } from '../../global.service';
+
 
 declare const $: any;
 
@@ -44,9 +46,21 @@ export class UploadcardComponent implements OnInit {
   addEvent;
   events;
   name;
-  accept_offer: boolean = false;
+  accept_offer: boolean = true;
   sell_days;
   end_time;
+  public min_amount;
+  public max_amount;
+  public isInvalid: boolean = false;
+  public onChange2(event: any): void {
+    this.isInvalid = this.min_amount == this.max_amount || this.min_amount > this.max_amount;
+  }
+  public initial_amount;
+  public reservedprice;
+  public Invalid: boolean = false;
+  public onChange3(event: any): void {
+    this.Invalid = this.initial_amount == this.reservedprice || this.initial_amount > this.reservedprice;
+  }
   check2($event) {
 
   }
@@ -65,11 +79,6 @@ export class UploadcardComponent implements OnInit {
     {value: '60', viewValue: '60'}
   ];
   LoginForm: FormGroup;
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z0-9_.-]+?'),
-    Validators.maxLength(50)
-  ]);
   categoryFormControl = new FormControl('', [
     Validators.required,
   ]);
@@ -79,7 +88,10 @@ export class UploadcardComponent implements OnInit {
   nestedcategoryFormControl = new FormControl('', [
     Validators.required,
   ]);
-  constructor(private newcard: uploadcardservice, private router: Router, private route: ActivatedRoute,
+  flashcard= new FormControl('',[
+    Validators.required
+  ])
+  constructor(private globalimage : GlobalService, private newcard: uploadcardservice, private router: Router, private route: ActivatedRoute,
     private sg: SimpleGlobal, private http: HttpClient, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
@@ -165,42 +177,34 @@ this.getindcardname();
   }
   ImgSrc;
   base64textString;
-  onSubmit(f: NgForm) {
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
-          this.CourseFailure();
-        }
-        else {
+  // onSubmit(f: NgForm) {
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
+  //         this.CourseFailure();
+  //       }
+  //       else {
 
 
-          this.model.flashcard_image = data;
-          this.ifImageUpload2(f);
-          this.CourseSuccess();
-        }
-      });
-  }
-  private ifImageUpload2(f: NgForm) {
+  //         this.model.flashcard_image = data;
+  //         this.ifImageUpload2(f);
+  //         this.CourseSuccess();
+  //       }
+  //     });
+  // }
+   ifImageUpload2(f: NgForm) {
     console.log(this.sell_days);
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
-    if(this.model.valid){
-      this.newcard.uploadcard(this.model , this.accept_offer , new_date,  bid_date, date )
+      this.newcard.uploadcard(this.model.name,this.fileName,this.model ,this.sell_status, this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount, this.initial_amount,this.reservedprice, this.bid_status)
+      
       .subscribe(Res => { });
+      
     f.resetForm();
     }
-    else 
-    swal({
-      type: 'error',
-      title: 'Please enter correct details',
-      showConfirmButton: false,
-      width: '512px',
-      timer: 2000
-    });
-  }
-  onSubmited(f: NgForm) {
+  onSubmited(form: NgForm) {
     this.http.post(
       Config.Imageurlupload,
       this.input, { responseType: 'text' }).subscribe(data => {
@@ -209,20 +213,21 @@ this.getindcardname();
       }
       else {
            this.model.image = data;
-        this.detailpost(f);
+        this.detailpost(form);
         this.CourseSuccess();
       }
     });
+    
   }
-  detailpost(f){
+  detailpost(form: NgForm){
     this.newcard.carddetail(this.model).subscribe(Res => {
       swal({
         type: 'success',
         title: 'Flash Card Detail Added !.',
         width: '512px'
       });
-console.log(this.model); });
-    f.resetForm();
+});
+form.resetForm()
   }
 
   sweetalertupload() {
@@ -237,7 +242,30 @@ console.log(this.model); });
 
     })
   }
+  filetoup: FileList;
+  fileName;
 
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+  
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  this.uploadItemsToActivity();
+  }
+  
+  uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+      data => {
+        // alert(data)
+    
+      },
+      error => {
+        console.log(error);
+      });
+  
+  }
   CourseSuccess() {
     swal({
       type: 'success',

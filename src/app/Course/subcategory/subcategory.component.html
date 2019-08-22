@@ -1,20 +1,20 @@
 <!-- subcatgory -->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Sub-Categories in {{c_name}}</h1> -->
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of result; let i=index">
             <div class="product-list__item">
                  <figure class="product-list__img">
                     <a routerLink="/nestedcateroy/{{data?.id}}" (click)="sliderClick(data.sub_category_name)">
-                        <img src="{{Imageurl}}{{data?.icon}}" alt="Course"> </a>
+                        <img src="{{Imageurl}}{{data?.icon}}" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
                         <a routerLink="/nestedcateroy/{{data.id}}" title="{{data?.sub_category_name | titlecase}}">{{data?.sub_category_name | titlecase}}</a>
                     </div>
                     <div class="product-list__item-info-1"> <a class="btn-style btn " (click)="checkmainpage(data?.id, nullvalue , nullvalue, nullvalue)" *ngIf="data.sell_status==true"> Buy Now </a>  <a class="btn-style btn " data-toggle="modal" (click)="bidnotesid(data?.id)" *ngIf="data.bid_status==true" data-target="#notesbid"> Bid Now </a>
-
                     </div>
 
             </div>
@@ -25,14 +25,16 @@
 <!-- notes sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{c_name}}</h1>
+    
+    <h1  class="mainbanner bg-Bid-Notes">Notes Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Notes Sub-Categories in {{c_name}}</h1> -->
     <h4 class="text-center bg-Bid-Notes" *ngIf="eachnotes?.length =='0'">No Notes in {{c_name}}</h4>
     <div class="row" *ngIf="eachnotes?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachnotes; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/notes/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes"> </a>
+                        <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -47,14 +49,15 @@
 <!-- course sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes" *ngIf="eachcourse">Course Sub-Categories in {{c_name}}</h1> -->
     <h4  class="text-center bg-Bid-Notes" *ngIf="eachcourse?.length =='0'">No Courses in {{c_name}}</h4>
     <div class="row " *ngIf="eachcourse?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachcourse; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/eachcourse/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course"> </a>
+                        <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -69,14 +72,15 @@
 <!-- crads sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Flash Cards Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Flash Cards Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Flash Cards Sub-Categories in {{c_name}}</h1> -->
     <h4 class="text-center bg-Bid-Notes" *ngIf="eachcards?.length =='0'">No Flash Cards in {{c_name}}</h4>
     <div class="row" *ngIf="eachcards?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachcards; let i=index">
             <div class="product-list__item" >
                 <figure class="product-list__img">
                     <a routerLink="/fcdetail/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards"> </a>
+                        <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -91,14 +95,15 @@
 <!-- book sb category-->
 
 <div class="container">
-    <h1  class="mainbanner bg-Bid-Notes">Books Sub-Categories in {{c_name}}</h1>
+    <h1  class="mainbanner bg-Bid-Notes">Books Categories in {{c_name}}</h1>
+    <!-- <h1  class="mainbanner bg-Bid-Notes">Books Sub-Categories in {{c_name}}</h1> -->
     <h4 class="text-center bg-Bid-Notes" *ngIf="eachbook?.length =='0'">No Books in {{c_name}}</h4>
     <div class="row" *ngIf="eachbook?.length !='0'">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of eachbook; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/detail/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.book_image}}" alt="book"> </a>
+                        <img src="{{Imageurl}}{{data?.book_image}}" alt="book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
