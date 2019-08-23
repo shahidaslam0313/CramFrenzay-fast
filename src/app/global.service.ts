@@ -237,23 +237,9 @@ export class GlobalService {
   }
   ////////////////compressing upload img////////////
   PostImage(fileToUpload: FileList,Course_name): Observable<boolean> {
-    console.log('I am in 1 Service');
     const formData: FormData = new FormData();
-    console.log('File to upload in service is:', fileToUpload);
-    // for(let i=0; i<fileToUpload.length;i++) {
       formData.append('image' , fileToUpload[0]);
-    // }
     formData.append('name', Course_name);
-    // formData.append('image', Course_image);
-
-console.log('formData is:', formData);
-console.log( formData.append('name', Course_name))
-// console.log(formData.append('image', Course_image))
-
-return this.http.post('https://apis.cramfrenzy.com/user/image_upload_web/', formData)
-  .map((d) => { return true; })
-  .catch((e) => {
-    return Observable.throw(e.statusText);
-  });
+return this.http.post('https://apis.cramfrenzy.com/user/image_upload_web/', formData).map((res : Response) => res.json())
   }
 }

@@ -33,7 +33,7 @@ export class UploadnotesComponent implements OnInit {
   private productsSource;
   currentProducts;
   c_name;
-  image;
+  // image:  boolean;
   file;
   public firstname;
   public lastname;
@@ -51,7 +51,8 @@ export class UploadnotesComponent implements OnInit {
   default;
   notes: FormGroup;
   filetoup: FileList;
-  fileName = '';
+
+  fileName:any ;
   notesTypes: FormGroup;
   uploadnotesservice: any;
   accept_offer: boolean = false;
@@ -205,28 +206,43 @@ export class UploadnotesComponent implements OnInit {
       }
     })
   }
+  
   handleFileInput(files: FileList) {
+  
+    // alert(files);
     this. filetoup = files;
     console.log('uploaded filetoup  ', this.filetoup);
-  
+    // alert(this.filetoup[0].name)
   this.fileName=  this.filetoup[0].name;
   console.log('File Name is:' ,this.fileName);
-  this.uploadItemsToActivity();
+  // alert(this.filetoup);
+
+  this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+    data => {
+      alert(data)
+    this.fileName = data;
+   alert(this.fileName.image)
+  
+    },
+    error => {
+      // console.log(error);
+    });
+  // this.uploadItemsToActivity();
   }
   imagepath;
-  uploadItemsToActivity() {
-    console.log('I am in 1 Component');
-    this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
-      data => {
-      this.imagepath = data
-        alert(data)
+  // uploadItemsToActivity() {
+  //   console.log('I am in 1 Component');
+  //   this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+  //     data => {
+  //     this.fileName = data;
+  //       alert(this.fileName)
     
-      },
-      error => {
-        // console.log(error);
-      });
+  //     },
+  //     error => {
+  //       // console.log(error);
+  //     });
   
-  }
+  // }
   pdfviewlink;
   onSubmit(f: NgForm) {
 
@@ -259,7 +275,7 @@ export class UploadnotesComponent implements OnInit {
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,this.file,new_date, this.notes_thumbnail, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
+    this.newService.uploading(this.model.name, this.model.detail, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.model.price,new_date,this.fileName.image,this.accept_offer, this.datafile, this.bid_status,bid_date, this.initial_amount,this.min_amount, this.max_amount, this.initial_amount, this.reservedprice, this.model.start_time)
       .subscribe(Res => {
         console.log(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,new_date, bid_date, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
 
@@ -430,14 +446,14 @@ export class UploadnotesComponent implements OnInit {
       }
     }
   }
+  
   onsubmitt(f: NgModel) {
     // alert(this.model);
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+
     this.newService.uploadNotesType(this.model.note, this.model.notestype, this.model.examNote, this.model.lectureNumber, this.model.chapter)
       .subscribe(Res => {
         swal({
-          text: 'Notes Added Successfully!',
+          text: 'Notes Detail added Successfully',
           title: "CramFrenzy",
           type: "success",
           showConfirmButton: false,

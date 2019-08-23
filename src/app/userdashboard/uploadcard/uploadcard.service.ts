@@ -71,15 +71,15 @@ export class uploadcardservice {
     headers.append('Content-Type', 'application/json');
     return this.http.get(Config.api + 'course/nestedcategory/' + Cid + '', { headers: headers }).map((response: Response) => response.json());
   }
-  carddetail(model) {
+  carddetail(model,title, image) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'flash/adddetails',
       JSON.stringify({
        flashcard : model.flashcard,
-        title: model.title,
+        title: title,
         definition : model.definition,
-        image : model.image
+        image : image
 
       }),
       { headers: headers }).map((response: Response) => response.json());

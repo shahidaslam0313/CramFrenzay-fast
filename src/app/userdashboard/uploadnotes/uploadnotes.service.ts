@@ -18,20 +18,20 @@ model;
   }
 
 
-  uploading(model, notessubcategories, subcategory , nestedcategory , sell_status ,accept_offer,datafile, sell_days, notes_thumbnail,  end_time , bid_status, min_amount, max_amount, initial_amount, reservedprice) {
+  uploading(name,detail, notessubcategories, subcategory , nestedcategory , sell_status ,price, sell_days,notes_thumbnail, accept_offer,datafile,  end_time ,isreserved, bid_status, min_amount, max_amount, initial_amount, reservedprice, start_time) {
 
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'notesgenie/postnotes/',
       JSON.stringify({
         userid: this.current.user_id,
-        name: model.name,
-        detail: model.detail,
+        name: name,
+        detail: detail,
         categories: notessubcategories,
         subcategory : subcategory,
         nestedcategory : nestedcategory,
         sell_status : sell_status,
-        price: model.price,
+        price: price,
         sell_days: sell_days,
         notes_thumbnail: notes_thumbnail,
         accept_offer : accept_offer,
@@ -40,9 +40,9 @@ model;
         bidnotes: {
           initial_amount: initial_amount,
           end_time : end_time,
-          isreserved : model.isreserved,
+          isreserved : isreserved,
           reservedprice : reservedprice,
-          start_time : model.start_time,
+          start_time : start_time,
         },
         min_amount: min_amount,
         max_amount: max_amount

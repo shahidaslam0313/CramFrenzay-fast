@@ -168,7 +168,7 @@
                             <mat-select placeholder="Select FlashCard" type="text" 
                                 [(ngModel)]="model.flashcard" name="flashcard" required>
                              <!-- error resolved -->
-                                <mat-option *ngFor="let item of data" [value]="item.id">{{item.name}}</mat-option>
+                                <mat-option *ngFor="let item of names?.flashcards" [value]="item.id">{{item.name}}</mat-option>
                             </mat-select>
                             <mat-error *ngIf="flashcard.hasError('required')"> Flashcard is
                                     <strong>Required</strong>
@@ -189,9 +189,9 @@
                                 </mat-error> </mat-form-field>
                         <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png"
                                 src="{{ImgSrc}}" alt="" allowmultiple="false" /> </div><span class="btn-file"> Upload
-                            Image <input (change)="onChange($event)" name="image" #image
+                            Image <input (change)="handleFileInput2($event.target.files); onChange($event)"  name="image" #image
                                 type="file" accept="image/gif, image/jpeg, image/png" required> </span>
-                                 <input type="submit" class="btn-style btn margin-top-10 width100" (click)="onSubmited(form)"  [disabled]="!form.form.valid">
+                                 <input type="submit" class="btn-style btn margin-top-10 width100" (click)="detailpost(form)"  [disabled]="!form.form.valid">
                               
                     </form>
                 </div>

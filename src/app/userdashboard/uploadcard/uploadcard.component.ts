@@ -198,29 +198,29 @@ this.getindcardname();
     var date = moment(new Date,'YYYY-MM-DD');
     var new_date = moment(date).add(this.sell_days,'days');
     var bid_date = moment(date).add(this.end_time,'days');
-      this.newcard.uploadcard(this.model.name,this.fileName,this.model ,this.sell_status, this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount, this.initial_amount,this.reservedprice, this.bid_status)
+      this.newcard.uploadcard(this.model.name,this.fileName.image,this.model ,this.sell_status, this.accept_offer , new_date,  bid_date, date , this.min_amount, this.max_amount, this.initial_amount,this.reservedprice, this.bid_status)
       
       .subscribe(Res => { });
-      
+      this.CourseSuccess();
     f.resetForm();
     }
-  onSubmited(form: NgForm) {
-    this.http.post(
-      Config.Imageurlupload,
-      this.input, { responseType: 'text' }).subscribe(data => {
-      if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
-        this.CourseFailure();
-      }
-      else {
-           this.model.image = data;
-        this.detailpost(form);
-        this.CourseSuccess();
-      }
-    });
+  // onSubmited(form: NgForm) {
+  //   this.http.post(
+  //     Config.Imageurlupload,
+  //     this.input, { responseType: 'text' }).subscribe(data => {
+  //     if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
+  //       this.CourseFailure();
+  //     }
+  //     else {
+  //          this.model.image = data;
+  //       this.detailpost(form);
+  //       this.CourseSuccess();
+  //     }
+  //   });
     
-  }
+  // }
   detailpost(form: NgForm){
-    this.newcard.carddetail(this.model).subscribe(Res => {
+    this.newcard.carddetail(this.model,this.model.title, this.fileName.image).subscribe(Res => {
       swal({
         type: 'success',
         title: 'Flash Card Detail Added !.',
@@ -244,27 +244,49 @@ form.resetForm()
   }
   filetoup: FileList;
   fileName;
-
-  handleFileInput(files: FileList) {
+  handleFileInput2(files: FileList) {
+  
+    // alert(files);
     this. filetoup = files;
     console.log('uploaded filetoup  ', this.filetoup);
-  
+    // alert(this.filetoup[0].name)
   this.fileName=  this.filetoup[0].name;
   console.log('File Name is:' ,this.fileName);
-  this.uploadItemsToActivity();
+  // alert(this.filetoup);
+
+  this.globalimage.PostImage(this.filetoup,this.model.title  ).subscribe(
+    data => {
+      // alert(data)
+    this.fileName = data;
+  //  alert(this.fileName.image)
+  
+    },
+    error => {
+      // console.log(error);
+    });
+  // this.uploadItemsToActivity();
   }
+  handleFileInput(files: FileList) {
   
-  uploadItemsToActivity() {
-    console.log('I am in 1 Component');
-    this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
-      data => {
-        // alert(data)
-    
-      },
-      error => {
-        console.log(error);
-      });
+    // alert(files);
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+    // alert(this.filetoup[0].name)
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  // alert(this.filetoup);
+
+  this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
+    data => {
+      // alert(data)
+    this.fileName = data;
+  //  alert(this.fileName.image)
   
+    },
+    error => {
+      // console.log(error);
+    });
+  // this.uploadItemsToActivity();
   }
   CourseSuccess() {
     swal({
