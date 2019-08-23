@@ -19,7 +19,7 @@
         <div class="tab-pane active" id="notes">
           <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes.slice().reverse(), let i=index">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of notes, let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
                       src="{{Imageurl}}{{item?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'">
@@ -49,7 +49,7 @@
           <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
-              *ngFor="let data of result.slice().reverse(); let i=index">
+              *ngFor="let data of result; let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
                       src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">
@@ -80,7 +80,7 @@
         <div class="tab-pane" id="flashcards">
           <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card.slice().reverse(), let i=index">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of card, let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
                       src="{{Imageurl}}{{item?.flashcard_image}}" alt="FlashCard" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a
@@ -108,7 +108,7 @@
         <div class="tab-pane" id="book">
           <h3 class="mainbanner">Books Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books.slice().reverse(); let i=index">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of books; let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
                       src="{{Imageurl}}{{item?.book_image}}" alt="Book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a> <a class="product-list__edit-btn"
