@@ -54,7 +54,7 @@ export class UploadComponent implements OnInit {
   response;
   role;
   filetoup: FileList;
-  fileName = '';
+  fileName;
   public min_amount;
   public max_amount;
   public isInvalid: boolean = false;
@@ -144,27 +144,29 @@ export class UploadComponent implements OnInit {
   
 
 
+  image;
+  handleFileInput(files: FileList) {
+  
+    // alert(files);
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+    // alert(this.filetoup[0].name)
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  // alert(this.filetoup);
 
-handleFileInput(files: FileList) {
-  this. filetoup = files;
-  console.log('uploaded filetoup  ', this.filetoup);
-
-this.fileName=  this.filetoup[0].name;
-console.log('File Name is:' ,this.fileName);
-this.uploadItemsToActivity();
-}
-
-uploadItemsToActivity() {
-  console.log('I am in 1 Component');
   this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
     data => {
-   
+      alert(data)
+    this.fileName = data;
+  //  alert(this.fileName.image)
+  
     },
     error => {
       // console.log(error);
     });
-
-}
+  // this.uploadItemsToActivity();
+  }
 
   // onSubmit(f: NgForm) {
 
@@ -189,7 +191,7 @@ uploadItemsToActivity() {
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(currentdate).add(this.end_time, 'days');
     console.log(new_date, this.sell_status, this.model, this.bid_status, bid_date);
-    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
+    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName.image, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
       .subscribe(Res => {
         this.CourseSuccess();
       }

@@ -97,10 +97,8 @@
         <div class="tab-pane" id="courses">
           <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
           <div class="row">
-            <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
-              *ngFor="let data of ShowCourse">
-              <!-- ; let i=index -->
-              <!-- .slice().reverse() -->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
+              *ngFor="let data of result; let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
                       src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">

@@ -148,7 +148,7 @@
                         <mat-form-field>
                             <mat-select placeholder="Notes" type="number" (ngModelChange)="check($event)" id="notesTypes"
                                 name="note" [(ngModel)]="model.note">
-                                <mat-option *ngFor="let data of notesname" [value]="data.id">{{data.name}}</mat-option>
+                                <mat-option *ngFor="let data of notesname?.notes" [value]="data.id">{{data.name}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field>
@@ -174,7 +174,7 @@
                                     <mat-option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div><a class="btn-style btn margin-top-10" (click)="onSubmit(f)">Submit</a>
+                        </div><a class="btn-style btn margin-top-10" (click)="onSubmitt(f)">Submit</a>
                     </form>
                 </div>
             </div>

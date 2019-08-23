@@ -33,7 +33,7 @@ export class UploadbookComponent implements OnInit {
   sub_category_name;
   book_image;
   public Imageurl = Config.Imageurleach;
-  book_file : any;
+  book_file;
   role;
   accept_offer:boolean = false;
   signupForm: FormGroup;
@@ -142,32 +142,45 @@ uploadfile(){
         // this.CourseSuccess();
         this.model.book_file = data;
         console.log(this.book_file);
+        alert(this.book_file);
       }
     })
 }
 
-handleFileInput(files: FileList) {
-  this.filetoup = files;
-  console.log('uploaded filetoup  ', this.filetoup);
-
-this.fileName=  this.filetoup[0].name;
-console.log('File Name is:' ,this.fileName);
-this.uploadItemsToActivity();
-}
+notpost;
 filetoup: FileList;
   fileName;
-uploadItemsToActivity() {
-  console.log('I am in 1 Component');
+  handleFileInput(files: FileList) {
+  
+    // alert(files);
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+    // alert(this.filetoup[0].name)
+  this.fileName=  this.filetoup[0].name;
+  console.log('File Name is:' ,this.fileName);
+  // alert(this.filetoup);
+
   this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
     data => {
-     
+      // alert(data)
+    this.fileName = data;
+  //  alert(this.fileName.image)
   
     },
     error => {
+      if(error.status == '500')
+      this.notpost = error.status;
+      {
+        swal({
+          type: 'error',
+          title: 'Book Image is required',
+          width: '512px'
+        })
+      }
       // console.log(error);
     });
-
-}
+  // this.uploadItemsToActivity();
+  }
   // onSubmit(f: NgForm) {
   //   this.http.post(
   //     Config.Imageurlupload,
@@ -187,18 +200,28 @@ uploadItemsToActivity() {
   // }
   sell_days;
    ifImageUpload(f: NgForm) {
+     if(this.fileName ){
+      // this.uploadfile();
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
-    
-  this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.fileName, this.model.book_edition, this.book_file,  this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
+    // alert(this.model.book_file);
+ 
+  this.newService.uploading(this.model.name, this.model.author_name, this.model.book_edition,this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.model.subcategories,this.model.nestedcategory,  this.sell_status, new_date, this.fileName.image, this.bid_status,    this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
   .subscribe(Res => {
     this.CourseSuccess();
   });
-  this.uploadfile();
+ 
   f.resetForm();
 }
-
+else{
+  swal({
+    type: 'error',
+    title: 'Book image is required.',
+    width: '512px'
+  })
+}
+   }
   CourseSuccess() {
     swal({
       type: 'success',

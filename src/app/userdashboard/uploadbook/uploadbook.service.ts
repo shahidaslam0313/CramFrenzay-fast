@@ -22,15 +22,17 @@ export class uploadbookservice {
 
   }
 
-  uploading(name, author_name, price, ISBN, book_rent, book_detail, categories, bid_status, subcategories, nestedcategory,  sell_status, sell_days,  book_image, book_edition, book_file, accept_offer, initial_amount, end_time , isreserved, reservedprice, start_time, min_amount, max_amount) {
+  uploading(name, author_name,book_edition, price, ISBN, book_rent, book_detail, categories, subcategories, nestedcategory,   sell_status, sell_days,  book_image, accept_offer, bid_status, initial_amount, end_time , isreserved, reservedprice, start_time, min_amount, max_amount) {
+  
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json', );
     return this.http.post(Config.api +'book/postbook/',
       JSON.stringify({
         userid: this.current.user_id,
         name: name,
-        book_edition: book_edition,
         author_name: author_name,
+        book_edition: book_edition,
+      
         price: price,
         ISBN: ISBN,
         book_rent: book_rent,
@@ -41,7 +43,7 @@ export class uploadbookservice {
         sell_status : sell_status,
         sell_days: sell_days,
         book_image: book_image,
-        book_file: book_file,
+        // book_file: model.book_file,
         accept_offer : accept_offer,
         bid_status : bid_status,
         bidbooks: {
