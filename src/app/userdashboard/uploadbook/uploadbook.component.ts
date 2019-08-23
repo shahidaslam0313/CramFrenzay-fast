@@ -190,13 +190,15 @@ uploadItemsToActivity() {
     var  date = moment(new Date, 'YYYY-MM-DD');
     var  new_date = moment(date).add(this.sell_days, 'days');
     var bid_date = moment(date).add(this.end_time,'days');
+    
   this.newService.uploading(this.model.name, this.model.author_name, this.model.price, this.model.ISBN, this.model.book_rent, this.model.book_detail, this.model.categories , this.bid_status, this.model.subcategories, this.model.nestedcategory, this.sell_status, new_date, this.fileName, this.model.book_edition, this.book_file,  this.accept_offer, this.initial_amount, bid_date , this.model.isreserved, this.reservedprice, date,this.min_amount, this.max_amount)
   .subscribe(Res => {
-  
+    this.CourseSuccess();
   });
   this.uploadfile();
   f.resetForm();
 }
+
   CourseSuccess() {
     swal({
       type: 'success',
@@ -240,7 +242,7 @@ uploadItemsToActivity() {
   }
   sweetalertupload() {
     swal({
-      text: 'Upload Book Successflluy!',
+      text: 'Upload Book Successfully!',
       title: "CramFrenzy",
       type: "success",
       showConfirmButton: false,

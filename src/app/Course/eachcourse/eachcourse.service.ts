@@ -35,12 +35,40 @@ return this.http.get(Config.api + 'bid/courseReviews/' + id + '', ).map((respons
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json');
-      return this.http.get(Config.api + 'course/showcoursedata/' + id + '', {headers: headers}).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'course/showcoursedata/' + id , {headers: headers}).map((response: Response) => response.json());
     } else {
-      return this.http.get(Config.api + 'course/showcoursedata/' + id + '', ).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'course/showcoursedata/' + id  ).map((response: Response) => response.json());
 
     }
   }
+  // gettutorinfo(id){
+  
+  //   if (localStorage.getItem('currentUser') != null){
+  //     const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+  //     headers.append('Content-Type', 'application/json');
+  //   return this.http.get(Config.api + 'tutor/showinfo/' + id + '' ).map((response: Response) => response.json()); 
+  //   return this.http.get(Config.api + 'tutor/showinfo/' + id,{headers:headers} ).map((response: Response) => response.json()); 
+  //   }
+  //   else if (localStorage.getItem('currentUser') == null) {
+  //     return this.http.get(Config.api + 'tutor/showinfo/' + id ).map((response: Response) => response.json()); 
+
+
+  //   }
+
+  // }
+
+  gettutorinfo(id){
+    if (localStorage.getItem('currentUser')) {
+      const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+      headers.append('Content-Type', 'application/json');
+      return this.http.get(Config.api + 'tutor/showinfo/' + id , {headers: headers}).map((response: Response) => response.json());
+    } else {
+      return this.http.get(Config.api + 'tutor/showinfo/' + id  ).map((response: Response) => response.json());
+
+    }
+
+  }
+
   review(rating, comment,  course, book, flashcard, notes) {
     let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
     headers.append('Content-Type', 'application/json', );

@@ -25,8 +25,10 @@ declare const $: any;
 export class FcdetailComponent implements OnInit, AfterContentInit {
   @ViewChild(AddtocartComponent)
   public Imageurl = Config.Imageurlget;
+  public profileurl=Config.Imageurleach;
   model: any = {};
   public result;
+  public tutorid: any;
   public flashcardDetail: any;
   public sub: Subscription;
   public flashId: any;
@@ -42,6 +44,8 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   id;
   rate;
   comment;
+  public tutor_id;
+
   reviewform = new FormGroup({
     comment: new FormControl('', [
       Validators.required
@@ -89,6 +93,7 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
       this.flashId = +params['id'] || 0;
     });
     this.reviewsss(this.pager);
+    // this.gettutorinfo();
 
     this.fcdetail();
     this.flipdetail();
@@ -153,11 +158,41 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
   getfcid(id){
     this.getid = id;
   }
+
+  subject;
+  fname;
+  tviews;
+  // description;
+  // major;
+  tflashcards;
+  // interest;
+  firstname;
+  lastname;
+  cdate;
+  flashrating;
+  fcardreviews;
+  // rating;
+  tname;
+  // experience;
+  getresult:any =[];
   fcdetail() {
     this.newService.newfcdetail(this.flashId).subscribe(data => {
       this.flashcardDetail = data;
+      this.fname = data.name;
+      this.firstname = data.user_id.first_name;
+      this.lastname = data.user_id.last_name;
+      this.tviews = data.number_of_views;
+      this.flashrating = data.rating;
+      this.cdate = data.postdate;
+      this.fcardreviews = data.flashcardreviews;
+      // flashcardreviews
+      this.tflashcards = data.totalflashcards;
+      this.tutor_id=data.user_id.id;
+      // console.log(this.tutor_id);
+      this.gettutorinfo(this.tutor_id)
       
-      console.log(this.flashcardDetail,'FC DEATAIL')
+      
+      // console.log(this.flashcardDetail,'FC DEATAIL')
     });
   }
   flipdetail() {
@@ -170,6 +205,38 @@ export class FcdetailComponent implements OnInit, AfterContentInit {
     this.newService.flashCardTermsDefinitions(this.flashId).subscribe(data => {
       this.flashCardTermsDefinitionsData = data;
     });
+  }
+
+  
+  // subject;
+  // tviews;
+  description;
+  major;
+  // tflashcards;
+  interest;
+  rating;
+  profile_picture;
+  // tname;
+  treviews;
+  experience;
+  tresult:any =[];
+  gettutorinfo(tutor){
+    this.newService.gettutorinfo(tutor).subscribe( data =>{
+    this.tresult = data;
+  //   // alert(this.getresult);
+    this.major= data.major;
+  //   this.tviews = data.number_of_views;
+    this.interest= data.Interests;
+  //   this.tflashcards = data.totalflashcards;
+    this.experience = data.Experience;
+    this.description = data.description;
+    this.profile_picture = this.profileurl+data.profile_picture;
+    this.rating = data.rating;
+    this.treviews = data.TutorReviews;
+    
+  //   this.subject= data.subject;
+    })
+
   }
 
   get(rating) {

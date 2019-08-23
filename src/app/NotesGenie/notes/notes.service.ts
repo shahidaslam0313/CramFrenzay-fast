@@ -34,6 +34,18 @@ export class NotesService {
       return this.http.get(Config.api + 'notesgenie/eachnotes/' + id+ '' ).map((response: Response) => response.json());
     }
   }
+
+  gettutorinfo(id){
+    if (localStorage.getItem('currentUser')) {
+      const headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+      headers.append('Content-Type', 'application/json');
+      return this.http.get(Config.api + 'tutor/showinfo/' + id , {headers: headers}).map((response: Response) => response.json());
+    } else {
+      return this.http.get(Config.api + 'tutor/showinfo/' + id  ).map((response: Response) => response.json());
+
+    }
+
+  }
   getreview(id)
   {
     if (localStorage.getItem('currentUser')) {

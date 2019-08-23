@@ -187,7 +187,7 @@
 }
 
 .upper-banner-contact span {
-    font-size: 18px
+    font-size: 16px;
 }
 
 .details-section p {
@@ -387,4 +387,33 @@
 .each-card .card-img-top {
     cursor: pointer;
     object-fit: none;
+}
+.course-content{
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    text-shadow: 0 2px 3px #ccc;
+}
+.about-instructor{
+    margin: 20px 0;
+}
+.about-instructor img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+.about-instructor .padd{
+    padding: 5px 0;
+}
+.about-instructor .sub-haed{
+    margin: 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.rating-icons{
+    display: inline-block;
+}
+.disp-flex{
+    display: flex;
 }

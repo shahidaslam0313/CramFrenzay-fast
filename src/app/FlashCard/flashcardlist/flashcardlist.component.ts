@@ -14,8 +14,8 @@ import { headerservice } from 'app/includes/header/header.service';
 import { DataService } from 'app/data.service';
 import { WishlistService } from 'app/wishlist/wishlist.service';
 import {BidHistoryService} from "../../bid-history/bid-history.service";
-import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
-
+import { NgForm } from '@angular/forms';
+declare const $: any;
 @Component({
   selector: 'app-flashcardlist',
   templateUrl: './flashcardlist.component.html',
@@ -36,12 +36,7 @@ export class FlashcardlistComponent implements OnInit {
   wishlist;
   notes;
   course;
-  book;
-  bidform = new FormGroup({
-    bidamount: new FormControl('', [
-      Validators.required
-    ])
-  })
+  book
   public searchResultStatus = true;
   slideConfig2 = {
     infinite: true,
@@ -123,15 +118,31 @@ export class FlashcardlistComponent implements OnInit {
   searchResult: any = [];
   cartitems;
   constructor(private bidings: BidHistoryService,private headServ: headerservice, private Data: DataService,private see: WishlistService, private mainpage: mainpageservice, private newService: FlashcardlistService, private router: Router, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object, private global: GlobalService, public dialogRef: MatDialog) {
+   
+
+    this.bidflash();
+ 
     this.Slider();
   }
  
   ngOnInit() {
     window.scroll(0,0)
-    this.bidflash();
     this.trendingflash();
     this.topratedflash();
     this.recentflash();
+
+
+    $(".search-bg__text").keyup(function() {
+      var x = document.getElementById('showSearchDiv');
+      if($(this).val() == "") {
+        x.style.display = 'none';
+      } else {
+        x.style.display = 'block';
+      }
+    });
+
+
+
   }
 
   Slider() {
@@ -257,8 +268,7 @@ export class FlashcardlistComponent implements OnInit {
     });
   }
   bidc(f:NgForm) {
-    if(this.bidform.controls.bidamount.valid){
-      this.global.bidoncards(this.cardid, this.bidform.value['bidamount'])
+    this.global.bidoncards(this.cardid, this.model.bidamount)
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -279,14 +289,6 @@ export class FlashcardlistComponent implements OnInit {
         }
       );
       f.resetForm()
-    }
-  else 
-  swal({
-    type: 'error',
-    title: 'Bid amount is required',
-    showConfirmButton: false,
-    timer: 1500
-  });
   }
   addwishlist(flashcard) {
     let course = null;
@@ -297,14 +299,10 @@ export class FlashcardlistComponent implements OnInit {
 
       swal({
         type: 'success',
-        title: 'Item successfully added to watch list',
+        title: 'Added to watchlist',
         showConfirmButton: false,
         timer: 1500
-      });
-      this.bidflash();
-      this.trendingflash();
-      this.topratedflash();
-      this.recentflash();
+      })
       this.headServ.showwishlist().subscribe(wishList => {
         this.wishlist = wishList;
         this.Data.emittedData(this.wishlist);
@@ -339,14 +337,10 @@ export class FlashcardlistComponent implements OnInit {
         this.global = data;
         swal({
           type: 'success',
-          title: 'Item successfully added to cart',
+          title: 'Added to Cart',
           showConfirmButton: false,
           timer: 2000
         });
-        this.bidflash();
-        this.trendingflash();
-        this.topratedflash();
-        this.recentflash();
         this.headServ.showCartItem().subscribe(cartitems => {
           this.cartitems = cartitems;
           this.Data.emittData(this.cartitems);
@@ -378,7 +372,7 @@ export class FlashcardlistComponent implements OnInit {
     this.global.delcart(event.cart).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item successfully deleted from cart',
+        title: 'Successfully deleted',
         showConfirmButton: false,
         timer: 1500
       });
@@ -388,7 +382,7 @@ export class FlashcardlistComponent implements OnInit {
     this.see.delwishlist(event.wishlist).subscribe(data => {
       swal({
         type: 'success',
-        title: 'Item successfully deleted from watch list',
+        title: 'Successfully deleted',
         showConfirmButton: false,
         timer: 1500
       });

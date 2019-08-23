@@ -11,6 +11,7 @@ import { PagerService } from '../../paginator.service';
 import {VideoShowDialogComponent} from "../../userdashboard/coursevideo/video-show-dialog/video-show-dialog.component";
 import {MatDialog} from "@angular/material";
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-eachcourse',
   templateUrl: './eachcourse.component.html',
@@ -20,9 +21,13 @@ export class EachcourseComponent implements OnInit {
   @ViewChild(AddtocartComponent)
 
   public Imageurl = Config.Imageurlget;
-  result;
+  public profileurl=Config.Imageurleach;
+  result :any =[];
+  getresult :any =[];
   pager;
+  getlocalstorgae =JSON.parse(localStorage.getItem('currentUser'))
   public courseId: any;
+  public tutorId: any;
   public sub: Subscription;
   private productsSource;
   currentProducts;
@@ -38,6 +43,8 @@ export class EachcourseComponent implements OnInit {
   lectures;
   // "Lectures": 0,
   totalvid;
+  // public tutor_id;
+
   model: any = {};
   reviewform = new FormGroup({
     comment: new FormControl('', [
@@ -76,11 +83,19 @@ export class EachcourseComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.courseId = +params['id'] || 0;
     });
+    // console.log(this.courseId);
     this.eachcourseshow();
     this.reviewsss(this.pager);
     this.getchaptername();
+    
+      // this.gettutorinfo();
+      // alert(this.gettutorinfo)
+  
+  
+     
   
     window['FB'] && window['FB'].XFBML.parse();
+    
   }
   get(rating) {
     this.rate = rating;
@@ -94,13 +109,88 @@ export class EachcourseComponent implements OnInit {
       this.sweetalertlogin();
     }
   }
+
+  subject;
+  firstname;
+  lastname;
+  description;
+  major;
+  interest;
+  rating;
+  treviews;
+  experience;
+  username;
+  // ttid;
+  profile_picture;
+
+gettutorinfo(tutor){
+
+  this.eachcourse.gettutorinfo(tutor).subscribe(data => {
+    // console.log('data:',data)
+    // this.getresult = data.Course;
+    // console.log('getresult',this.getresult)
+    this.description = data.description;
+    // console.log(this.description)
+    this.major = data.major;
+    this.profile_picture = this.profileurl+data.profile_picture;
+    this.username = data.user.username;
+    this.firstname = data.user.first_name;
+    this.lastname = data.user.last_name;
+    this.interest = data.Interests;
+    this.treviews = data.TutorReviews;
+    this.rating = data.rating;
+    this.experience = data.Experience;
+    this.subject = data.subject;
+    // this.ttid=data.user.id;
+    // console.log(this.ttid);
+
+
+
+
+  })
+}
+
+
+
+
+
+  // this.tutorinfo.g
   introvideo;
+  tutorreview;
+  student;
+  cdate;
+  
+  creview;
+  tcourses;
+  starview : any =[];
+  usman: any =[];
   eachcourseshow() {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
+
       this.result = data.Course;
+      this.starview=this.result.rating;
+      this.usman= this.starview.toString();
+      // this.starview = this.usman.toString()
+      // console.log(this.provider)
+      // console.log(this.starview.toString())
       this.introvideo = data.introvideo;
-      console.log(data,'EACH COURSE')
+      this.student = data.Student;
+      this.cdate = data.Course.postdate;
+      
+      this.creview = data.CourseReviews;
+      this.tutorreview = data.TutorReviews;
+      this.tcourses = data.TutorCourses;
+      // this.tutorId=data.Course.userid.id;
+      this.tutorId=data.Course.userid.id;
+      this.gettutorinfo(this.tutorId)
+     
+      // console.log(this.tutorId);
+
+      // this.ttid=data.userid.id;
+      // console.log(this.ttid);
+      // alert(this.result)
+      // console.log(this.result,'EACH COURSE')
     });
   }
 
@@ -147,6 +237,45 @@ export class EachcourseComponent implements OnInit {
       this.sweetalertlogin();
     }
   }
+
+
+
+// subject;
+// description;
+// school;
+// graduating;
+// major;
+// residence;
+// interest;
+// rating;
+// experience;
+// getresult:any;
+// gettutorinfo(){
+//   alert(this.result.user_id['id'])
+//   this.eachcourse.gettutorinfo(this.result.user_id['id']).subscribe(data => {
+//     // this.result = data.Course;
+//     alert('usman')
+// this.getresult = data;
+//     // this.school= data.school_attended;
+//     // alert(this.school)
+//     // this.graduating= data.graduation_year;
+//     // this.major= data.major;
+//     // this.residence= data.state_of_residence;
+//     // this.interest= data.Interests;
+//     // this.experience = data.Experience;
+//     // this.description = data.description;
+//     // this.rating = data.rating;
+//     // this.subject= data.subject;
+    
+// //     this.subject= data.subject;
+// // this.description = data.description;
+// // console.log(this.description,"subject")
+//   })
+// }
+
+
+
+
   getchapter;
   chpt;
   time;
@@ -159,12 +288,18 @@ export class EachcourseComponent implements OnInit {
       this.time = data['Total Hours'];
       this.totalvideos = data.totalvideos;
       this.totalvid = data['Total Lectures'];
+
+      
       // Abdullah
       // this.lectures = data['Lectures'];
       // this.lectures = data.Lectures;
     });
   }
   SetVideoURL(video_url, SetVideoURL){
+    // alert(SetVideoURL)
+    if (SetVideoURL == true){
+
+    
     const dialogRef = this.dialog.open(VideoShowDialogComponent, {
       width: '800px',
       data: {
@@ -173,36 +308,40 @@ export class EachcourseComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
     });
+  }else if (SetVideoURL == false){
+    swal({
+      type: 'error',
+      title: 'Oops <br> Please bought this course first',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 2500
+    })
+  }
   }
 
-  SetVideoURL1(video_url) {
-   alert(this.videos.id)
-    if(this.videos.allow_to_view== true){
-      const dialogRef = this.dialog.open(VideoShowDialogComponent, {
-        width: '1366px',
-        data: {
-          video_url: video_url,
-        }
-      });
-      dialogRef.afterClosed().subscribe(result => {
-      });
-    //   
-    }else {
-     
-         swal({
-          type: 'error',
-          title: 'Oops <br> Please bought this course first',
-          showConfirmButton: false,
-          width: '512px',
-          timer: 2500
-        })
-            
-         
-        
-        }
-    
+  // SetVideoURL1(video_url) {
+  //  alert(this.videos.id.allow_to_view)
+  //   if(this.videos.allow_to_view== true){
+  //     const dialogRef = this.dialog.open(VideoShowDialogComponent, {
+  //       width: '1366px',
+  //       data: {
+  //         video_url: video_url,
+  //       }
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //     });
+      
+  //   }else if(this.videos.allow_to_view==false){
+  //     swal({
+  //       type: 'error',
+  //       title: 'Oops <br> Please bought this course first',
+  //       showConfirmButton: false,
+  //       width: '512px',
+  //       timer: 2500
+  //     })
+  //   } 
 
-  }
+  // }
 
   reviewsss(page: number) {
     // if (page < 1 || page > this.pager.totalPages) {

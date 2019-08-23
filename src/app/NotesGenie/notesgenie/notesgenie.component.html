@@ -3,8 +3,8 @@
     <div class="col-lg-12 padding-top-40">
         <form class="search-bg"> <input placeholder="Search Notes" type="search" name=querysearch [(ngModel)]="query"
                 #querysearch="ngModel" (keyup)=filter(query) class="search-bg__text"> <button class="search-bg__btn"
-                (click)="onsubmit(query)">Search</button></form>
-        <div class="search-results">
+                (click)="onsubmit(query)">Search</button> </form>
+        <div class="search-results" id="showSearchDiv">
             <ul class="list-normal">
                 <li *ngFor="let data of searchResult;"> <a routerLink="/notes/{{data.id}}" (click)="filter(query)"> <i
                             class="material-icons">arrow_forward</i>{{data.name}}</a></li>

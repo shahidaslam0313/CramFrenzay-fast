@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import swal from 'sweetalert2';
 import { uploadnotesservice } from '../uploadnotes/uploadnotes.service';
 
+import { PagerService } from 'app/paginator.service';
+
 declare const $: any;
 @Component({
   selector: 'app-mylibrary',
@@ -18,7 +20,7 @@ declare const $: any;
   styleUrls: ['./mylibrary.component.scss']
 })
 export class MylibraryComponent implements OnInit {
-  public Imageurl = Config.Imageurleach;
+  public Imageurl = Config.Imageurlget;
   public ImageUrl = Config.Imageurlupload;
   public username;
   name;
@@ -30,6 +32,10 @@ export class MylibraryComponent implements OnInit {
   input;
   bid_status;
   id;
+  notespage: boolean = true;
+  coursepage: boolean = false;
+  bookpage: boolean = false;
+  fcardpage: boolean = false;
   modal: any = {};
   c_name;
   bookID;
@@ -42,6 +48,10 @@ export class MylibraryComponent implements OnInit {
   private productsSource;
   currentProducts;
   book_id;
+  pager: any = {};
+  Showcoursespager:any={};
+
+  item = 20;
   image;
   bidonnotes;
   author_name;
@@ -50,6 +60,7 @@ export class MylibraryComponent implements OnInit {
   ISBN;
   subcategories;
   book_rent;
+  
   cardsid;
   price;
   profile: any = {};
@@ -61,7 +72,8 @@ export class MylibraryComponent implements OnInit {
   nullvalue = null;
   cardedit: any = {};
   editcourse: any = {};
-  editnotes: any = {};
+  // editcourse: any = {};
+  editnotes;
   fcid;
   role;
   valid;
@@ -92,7 +104,7 @@ export class MylibraryComponent implements OnInit {
 
   url: string | ArrayBuffer;
   accept_offer: any;
-  constructor(private newService: uploadnotesservice, public newcoures: MylibraryService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private newService: uploadnotesservice, private pagerService: PagerService, public newcoures: MylibraryService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
@@ -111,7 +123,7 @@ export class MylibraryComponent implements OnInit {
 
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
     this.sub = this.route.params.subscribe(params => {
       this.falshcardid = +params['id'] || 0;
     });
@@ -187,14 +199,14 @@ export class MylibraryComponent implements OnInit {
       'start_time': [''],
 
     });
-    this.Showcourses();
-    this.Showbooks();
-    this.Shownotes();
-    this.Showcards();
-    this.courses();
-    this.clickcardsedit(this.id);
-    this.singlenotes(this.id);
-    this.notesss(this.id);
+    // this.Showcourses(1);
+    // this.Showbooks(1);
+    this.Shownotes(1);
+    // this.Showcards(1);
+    // this.courses();
+    // this.clickcardsedit(this.id);
+    // this.singlenotes(this.id);
+    // this.notesss(this.id);
 
 
     $('#showhide').click(function () {
@@ -260,21 +272,61 @@ export class MylibraryComponent implements OnInit {
   //   const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
   //   this.input.append('fileToUpload', target.files[0]);
   // }
-  Showcourses() {
-    this.newcoures.mycourses().subscribe(courses => {
+  ShowCourse;
+  Showcourses(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    this.newcoures.mycourses(page).subscribe(courses => {
       this.result = courses;
+      this.ShowCourse = courses['courses']
+      console.log(this.ShowCourse,'showcourse')
+      console.log(this.result['totalItems'],'result')
+      // this.coursepage = true;
+      this.pager = this.pagerService.getPager(this.result['totalItems'], page, 8);
+      // alert(this.coursepage)
+    
     });
   }
-  Showbooks() {
-    this.newcoures.mybooks().subscribe(data => {
+  Showbook;
+  Showbooks(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    this.newcoures.mybooks(page).subscribe(data => {
       this.books = data;
+      this.Showbook = data['courses']
+      console.log(this.Showbook)
+      // this.bookpage = true;
+      this.pager = this.pagerService.getPager(this.books['totalItems'], page, 8);
+      console.log(this.pager)
+      // alert(this.bookpage)
     });
   }
-  Shownotes() {
-    this.newcoures.mynotes().subscribe(notes => {
+  Shownote;
+  Shownotes(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    this.newcoures.mynotes(page).subscribe(notes => {
       this.notes = notes;
+      this.Shownote = notes['courses']
+      console.log(this.Shownote)
+      // this.notespage = true;
+      this.pager = this.pagerService.getPager(this.notes['totalItems'], page, 8);
+      //  alert(this.pager)
     });
   }
+
+  // setTrending(page: number) {
+  //   if (page < 1 || page > this.pager.totalPages) {
+  //     return;
+  //   }
+  //   this.seemore.TrendingNotes(page).subscribe(data => {
+  //     this.trendingnotes = data;
+  //     this.pager = this.pagerService.getPager(this.trendingnotes['totalItems'], page, 10);
+  //   });
+  // };
   notesss(id) {
     this.newcoures.getnotesid(id).subscribe(notes => {
       this.bidnotes = notes;
@@ -294,16 +346,37 @@ export class MylibraryComponent implements OnInit {
         timer: 1500
       })
     })
-    this.Showcards();
-    this.Showbooks();
+    this.Showcards(1);
+    this.Showbooks(1);
   }
   check($event) { }
 
   ///////////// flash cards //////////
-  Showcards() {
-    this.newcoures.mycards().subscribe(card => {
+  Showcard;
+  Showcards(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    this.newcoures.mycards(page).subscribe(card => {
       this.card = card;
+      this.Showcard = card['courses']
+      console.log(this.Showcard)
+      // this.fcardpage = true;
+      this.pager = this.pagerService.getPager(this.card['totalItems'], page, 8)
+      // alert(this.fcardpage)
     });
+
+
+    // Shownote;
+    // Shownotes(page: number) {
+    //   this.newcoures.mynotes(page).subscribe(notes => {
+    //     this.notes = notes;
+    //     this.Shownote = notes['courses']
+    //     console.log(this.Shownote['courses'])
+    //     this.pager = this.pagerService.getPager(notes['totalItems'], page, 10);
+
+    //   });
+    // }
   }
   bidflashcard: any = {};
   varr_final_get_date
@@ -311,6 +384,12 @@ export class MylibraryComponent implements OnInit {
   clickcardsedit(id) {
     this.newcoures.mycardsedit(id).subscribe(card => {
       this.cardedit = card;
+      if (typeof card.bidflashcard === 'undefined') {
+        this.bidflashcard = null;
+      }
+      else {
+        this.bidflashcard = card.bidflashcard;
+      }
       this.bidflashcard = card.bidflashcard;
       this.subcategorys();
       this.nestedcategorys();
@@ -326,32 +405,54 @@ export class MylibraryComponent implements OnInit {
           // this.sweetalertupload();
         }
         else {
-        this.cardedit.flashcard_image = data;
-        this.ifCardImageUpload();
+          this.cardedit.flashcard_image = data;
+          this.ifCardImageUpload();
         }
       });
-    }
-    // let headers = new HttpHeaders();
-    ifCardImageUpload(){
-    this.newcoures.uploadcard(this.cardedit.id, this.bidflashcard.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.cardedit.flashcard_image,
-      this.bidbooks.initial_amount, this.bidbooks.end_time, this.bidflashcard.isreserved, this.bidflashcard.reservedprice, this.bidflashcard.start_time).subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Flash Card updated Successfully',
-          showConfirmButton: false,
-          timer: 2500
+  }
+  // let headers = new HttpHeaders();
+  ifCardImageUpload() {
+    if (this.bidflashcard != null) {
+      this.newcoures.uploadcard(this.cardedit.id, this.bidflashcard.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.cardedit.flashcard_image,
+        this.bidbooks.initial_amount, this.bidbooks.end_time, this.bidflashcard.isreserved, this.bidflashcard.reservedprice, this.bidflashcard.start_time).subscribe(Res => {
+          swal({
+            type: 'success',
+            title: 'Flash Card updated Successfully',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          this.Shownotes(1);
         });
-        this.Shownotes();
-      });
+    }
+ else {
+  this.newcoures.uploadcard1(this.cardedit.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.cardedit.flashcard_image).subscribe(Res => {
+    swal({
+      type: 'success',
+      title: 'Flash Card updated Successfully',
+      showConfirmButton: false,
+      timer: 2500
+    });
+    this.Shownotes(1);
+  });
+ }
   }
   bidnote: any = {};
   var_final_get_date;
   // check(event){}
   // current_date=new Date();
   singlenotes(id) {
+    alert(id)
     this.newcoures.Eachnotes(id).subscribe(data => {
       this.editnotes = data;
+      console.log(data.detail)
+      if (typeof data.bidnotes === 'undefined') {
+        this.bidnote = null;
+      }
+      else {
+        this.bidnote = data.bidnotes;
+      }
       this.bidnote = data.bidnotes;
+
       this.accept_offer = this.editnotes.accept_offer
       // alert(this.accept_offer)
       // var var_get_start_date:any=this.bidnote.created_time.toString().slice(8, 10);
@@ -370,6 +471,7 @@ export class MylibraryComponent implements OnInit {
   courses() {
     this.newService.Coursesonnotes().subscribe(response => {
       this.c_name = response;
+
     });
   }
   subcategorys() {
@@ -384,6 +486,7 @@ export class MylibraryComponent implements OnInit {
       });
     }
     else if (this.editcourse.categories) {
+      // alert(this.editcourse.categories)
       this.newService.Catwisenotes(this.editcourse.categories).subscribe(data => {
         this.result = data;
       });
@@ -417,11 +520,22 @@ export class MylibraryComponent implements OnInit {
       });
     }
   }
-  bidcourses: any = {};
+  bidcourses;
+  udpateeditcourse;
   coursesupdate(id) {
     this.newcoures.courseedit(id).subscribe(data => {
-      this.editcourse = data;
-      this.bidcourses = data.bidcourse;
+      this.udpateeditcourse = data ;
+
+      this.editcourse = this.udpateeditcourse ;
+      console.log(this.udpateeditcourse)
+      if (typeof data.bidcourse === 'undefined') {
+        this.bidcourses = null;
+      }
+      else {
+        this.bidcourses = data.bidcourse;
+      }
+      // console.log(this.bidcourses,'BIDCOURSES')
+      // alert(this.bidcourses)
       // var var_get_start_date:any=this.current_date.toString().slice(8, 10);
       //  var var_get_end_date=this.editcourse.sell_days.toString().slice(8, 10);
       // this.var_final_get_date=var_get_end_date - var_get_start_date;
@@ -452,7 +566,7 @@ export class MylibraryComponent implements OnInit {
         showConfirmButton: false,
         timer: 2500
       });
-      this.Showcourses();
+      this.Showcourses(1);
     }, error => {
     });
   }
@@ -470,7 +584,7 @@ export class MylibraryComponent implements OnInit {
         showConfirmButton: false,
         timer: 2500
       });
-      this.Showbooks();
+      this.Showbooks(1);
     }, error => {
 
     });
@@ -487,7 +601,7 @@ export class MylibraryComponent implements OnInit {
         showConfirmButton: false,
         timer: 2500
       });
-      this.Showcards();
+      this.Showcards(1);
     }, error => {
 
     });
@@ -506,7 +620,7 @@ export class MylibraryComponent implements OnInit {
         showConfirmButton: false,
         timer: 2500
       });
-      this.Shownotes();
+      this.Shownotes(1);
     });
   }
   //////update book////////////
@@ -523,6 +637,7 @@ export class MylibraryComponent implements OnInit {
       });
   }
   ifbookImageUpload() {
+if(this.bidbooks != null)
     this.newcoures.uploading(this.profile.id, this.bidbooks.id, this.profile.name, this.profile.author_name, this.profile.categories, this.profile.subcategories, this.profile.nestedcategory, this.profile.book_detail, this.profile.book_edition, this.profile.ISBN, this.profile.min_amount, this.profile.max_amount, this.profile.sell_status, this.profile.price, this.profile.sell_days, this.profile.bid_status, this.profile.book_image, this.profile.datafile,
       this.initial_amount, this.end_time, this.bidbooks.isreserved, this.reservedprice, this.bidbooks.start_time)
       .subscribe(Res => {
@@ -532,7 +647,7 @@ export class MylibraryComponent implements OnInit {
           showConfirmButton: false,
           timer: 2500
         });
-        this.Showbooks()
+        this.Showbooks(1)
       },
         error => {
           swal({
@@ -542,38 +657,82 @@ export class MylibraryComponent implements OnInit {
             timer: 2500
           });
         });
+      else{
+        this.newcoures.uploading1(this.profile.id, this.profile.name, this.profile.author_name, this.profile.categories, this.profile.subcategories, this.profile.nestedcategory, this.profile.book_detail, this.profile.book_edition, this.profile.ISBN, this.profile.min_amount, this.profile.max_amount, this.profile.sell_status, this.profile.price, this.profile.sell_days, this.profile.bid_status, this.profile.book_image, this.profile.datafile)
+          .subscribe(Res => {
+            swal({
+              type: 'success',
+              title: 'Book Updated Successfully ',
+              showConfirmButton: false,
+              timer: 2500
+            });
+            this.Showbooks(1)
+          },
+            error => {
+              swal({
+                type: 'error',
+                title: 'error',
+                showConfirmButton: false,
+                timer: 2500
+              });
+            });
+      }
   }
-  update(id) {
-    this.http.post(
-      Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-          // this.sweetalertupload();
-        }
-        else {
-          this.editcourse.course_thumbnail = data;
-          this.ifCourseImageUpload();
-        }
-      });
-  }
+  // update(id) {
+  //   this.http.post(
+  //     Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+  //         // this.sweetalertupload();
+  //       }
+  //       else {
+  //         this.editcourse.course_thumbnail = data;
+  //         // this.ifCourseImageUpload();
+  //       }
+  //     });
+  // }
+
+
   ifCourseImageUpload() {
-    this.newcoures.updatecourse(this.editcourse.id, this.bidcourses.id, this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.editcourse.course_thumbnail,
-      this.bidcourses.initial_amount, this.bidcourses.end_time, this.bidcourses.isreserved, this.bidcourses.reservedprice, this.bidcourses.start_time, this.bidcourses.bid_status).subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'course Updated Successfully ',
-          showConfirmButton: false,
-          timer: 2500
-        });
-      },
-        error => {
+    if (this.bidcourses != null) {
+      this.newcoures.updatecourse(this.editcourse.id, this.bidcourses.id, this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.editcourse.course_thumbnail,
+        this.bidcourses.initial_amount, this.bidcourses.end_time, this.bidcourses.isreserved, this.bidcourses.reservedprice, this.bidcourses.start_time, this.bidcourses.bid_status).subscribe(Res => {
           swal({
-            type: 'error',
-            title: 'not update',
+            type: 'success',
+            title: 'course Updated Successfully ',
             showConfirmButton: false,
             timer: 2500
           });
-        });
-        this.Showcourses()
+        },
+          error => {
+            swal({
+              type: 'error',
+              title: 'not update',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          });
+      this.Showcourses(1)
+    }
+    else{
+      this.newcoures.updatecourse1(this.editcourse.id,  this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.editcourse.course_thumbnail).subscribe(Res => {
+          swal({
+            type: 'success',
+            title: 'course Updated Successfully ',
+            showConfirmButton: false,
+            timer: 2500
+          });
+        },
+          error => {
+            swal({
+              type: 'error',
+              title: 'not update',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          });
+      this.Showcourses(1)
+    }
+
   }
 
   value: any = {};
@@ -591,25 +750,46 @@ export class MylibraryComponent implements OnInit {
       });
   }
   ifImageUpload() {
-    this.newcoures.updatenote(this.editnotes.id, this.bidnote.id, this.bidnote.initial_amount, this.bidnote.end_time, this.isreserved, this.bidnote.reservedprice, this.bidnote.start_time,
-      this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.editnotes.notes_thumbnail, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
-        swal({
-          type: 'success',
-          title: 'Note Updated Successfully ',
-          showConfirmButton: false,
-          timer: 2500
-        });
-        this.Shownotes()
-      }, 
-        error => {
+    if(this.bidnote != null){
+      this.newcoures.updatenote(this.editnotes.id, this.bidnote.id, this.bidnote.initial_amount, this.bidnote.end_time, this.isreserved, this.bidnote.reservedprice, this.bidnote.start_time,
+        this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.editnotes.notes_thumbnail, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
           swal({
-            type: 'error',
-            title: 'error',
+            type: 'success',
+            title: 'Note Updated Successfully ',
             showConfirmButton: false,
             timer: 2500
           });
+          this.Shownotes(1)
+        },
+          error => {
+            swal({
+              type: 'error',
+              title: 'error',
+              showConfirmButton: false,
+              timer: 2500
+            });
+          });
+    }
+ else{
+  this.newcoures.updatenote1(this.editnotes.id,this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.editnotes.notes_thumbnail, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
+      swal({
+        type: 'success',
+        title: 'Note Updated Successfully ',
+        showConfirmButton: false,
+        timer: 2500
+      });
+      this.Shownotes(1)
+    },
+      error => {
+        swal({
+          type: 'error',
+          title: 'error',
+          showConfirmButton: false,
+          timer: 2500
         });
-      
+      });
+ }
+
   }
   onsubmit(id, name) {
     this.router.navigate(['/flashcarddetail/' + id]);
@@ -632,6 +812,12 @@ export class MylibraryComponent implements OnInit {
     this.id = id;
     this.newcoures.booksdetail(id).subscribe(data => {
       this.profile = data;
+      if (typeof data.bidbooks === 'undefined') {
+        this.bidbooks = null;
+      }
+      else {
+        this.bidbooks = data.bidbooks;
+      }
       this.bidbooks = data.bidbooks;
       this.end_time = data.bidbooks.end_time.toString().slice(8, 10);
       // alert(this.profile.sell_days)

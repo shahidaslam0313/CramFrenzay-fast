@@ -198,8 +198,10 @@ export class UploadnotesComponent implements OnInit {
         this.CourseFailure();
       }
       else {
+        // alert(this.datafile)
         this.datafile = data;
-        console.log(this.datafile);
+        // console.log(this.datafile);
+        this.ifImageUpload();
       }
     })
   }
@@ -211,12 +213,13 @@ export class UploadnotesComponent implements OnInit {
   console.log('File Name is:' ,this.fileName);
   this.uploadItemsToActivity();
   }
-  
+  imagepath;
   uploadItemsToActivity() {
     console.log('I am in 1 Component');
     this.globalimage.PostImage(this.filetoup,this.model.name  ).subscribe(
       data => {
-        // alert(data)
+      this.imagepath = data
+        alert(data)
     
       },
       error => {
@@ -224,6 +227,7 @@ export class UploadnotesComponent implements OnInit {
       });
   
   }
+  pdfviewlink;
   onSubmit(f: NgForm) {
 
     this.http.post(
@@ -232,10 +236,13 @@ export class UploadnotesComponent implements OnInit {
           this.sweetalertupload();
         }
         else {
+          
+          // alert(this.pdfviewlink)
+          this.pdfviewlink = data;
           this.model.notes_thumbnail = data;
-          console.log(this.model.notes_thumbnail);
+          // console.log(this.model.notes_thumbnail);
          
-          this.ifImageUpload(this.sell_days);
+          // this.ifImageUpload(this.sell_days);
 
         }
       });
@@ -245,18 +252,21 @@ export class UploadnotesComponent implements OnInit {
 
   subcategory;
   nestedcategory;
-   ifImageUpload( f: NgForm) {
-    console.log(this.sell_days);
+   ifImageUpload( ) {
+    // console.log(this.sell_days);
+    // alert(this.pdfviewlink)
     var date = moment(new Date, "YYYY-MM-DD");
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, new_date, this.fileName, bid_date, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
+    this.newService.uploading(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,this.file,new_date, this.notes_thumbnail, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
       .subscribe(Res => {
+        console.log(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,new_date, bid_date, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
+
       });
-      this.uploadfiles();
+     
     this.CourseSuccess();
-    f.resetForm()
+    // f.resetForm()
   }
   CourseSuccess() {
     swal({
@@ -345,6 +355,7 @@ export class UploadnotesComponent implements OnInit {
     const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
     const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
     this.input.append('fileToUpload', target.files[0]);
+    // alert(this.input)
   }
   _handleReaderLoaded(readerEvt) {
     console.log('base64');

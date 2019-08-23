@@ -101,8 +101,6 @@ mat-form-field.mat-form-field {
     margin: 0 auto;
     border-radius: 30px;
     height: 50px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex
 }
 
@@ -125,7 +123,7 @@ mat-form-field.mat-form-field {
 .search-bg__text:ebkit-input-placeholder {
     font-size: 20px!important;
     color: #616161!important;
-    font-weight: 600;
+    font-weight: 900;
     opacity: 1
 }
 
@@ -160,8 +158,7 @@ mat-form-field.mat-form-field {
     -o-transition: .5s all;
     transition: .5s all;
     width: 25%;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     text-decoration: none!important;
     height: 50px;
     display: -webkit-box;
@@ -248,10 +245,10 @@ mat-form-field.mat-form-field {
     opacity: 0;
     visibility: hidden
 }
-
+/* 
 .item {
     min-width: 240px
-}
+} */
 
 .slick-main.slick-initialized {
     opacity: 1;
@@ -265,7 +262,6 @@ mat-form-field.mat-form-field {
     visibility: visible!important
 }
 
-.slick-initialized .slick-slide,
 .slick-main .item {
     padding: 0 10px
 }
@@ -316,19 +312,6 @@ mat-form-field.mat-form-field {
     right: 0;
     border: 1px solid #000
 }
-.fc-slider .left-arrow-slider{
-    position: absolute;
-    left: 0;
-    top: 40%;
-}
-.fc-slider .right-arrow-slider{
-    position: absolute;
-    top: 40%;
-    right: 0;
-}
-.fc-slider .slick-list{
-    z-index: -1;
-}
 .homeSlider .item .item-inner a,
 .logo img {
     display: block
@@ -359,21 +342,26 @@ mat-form-field.mat-form-field {
 }
 
 .homeSlider .item .item-inner {
-    height: 140px;
+    /* height: 140px; */
     position: relative;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, .31)
+    /* border: 1px solid rgba(0, 0, 0, .4); */
+    background: rgba(0,0,0,.27);
+    padding: 5px 0 0 0;
 }
 
 .homeSlider .item .item-inner:hover {
     background-color: transparent;
     border: none
 }
-
+.homeSlider .item .item-inner:hover .homesilder-title{
+    background: #c00;
+}
 .homeSlider .item .item-inner img {
-    width: 100%;
-    height: 100%
+    max-width: 80%;
+    max-height: 100%;
+    margin: 0px auto 0;
 }
 
 .leftRs,
@@ -418,21 +406,12 @@ mat-form-field.mat-form-field {
     left: 0;
     border-radius: 50%;
     border: 1px solid #fff;
-    -webkit-transition: .5s all;
-    -o-transition: .5s all;
     transition: .5s all
 }
 
 .leftRs1,
 .rightRs {
     -webkit-border-radius: 50%;
-    -webkit-transition: .5s all;
-    -o-transition: .5s all;
-    transition: .5s all;
-    border-radius: 50%
-}
-
-.rightRs {
     right: 0;
     border: 1px solid #fff
 }
@@ -793,8 +772,6 @@ blockquote .blockquote-author {
     list-style: none;
     display: inline-block;
     width: 100%;
-    -webkit-transition: .5s all;
-    -o-transition: .5s all;
     transition: .5s all;
     border-radius: 10px;
     background-color: #fff;
@@ -802,7 +779,7 @@ blockquote .blockquote-author {
     border: 1px solid #eee;
     max-width: 230px;
     min-width: 230px;
-    margin: 0 5px 5px
+    margin: 0 8px 5px
 }
 
 .product-list__item:hover {
@@ -822,16 +799,11 @@ blockquote .blockquote-author {
 
 .product-list__img img {
     width: 100%;
+    border-radius: 10px 10px 0 0;
     display: block;
     height: 170px;
     -o-object-fit: cover;
-    object-fit: fill
-}
-
-.addtocart-time {
-    color: #fff;
-    padding-right: 6px;
-    text-align: right
+    object-fit: cover
 }
 
 .product-list__content {
@@ -857,8 +829,7 @@ blockquote .blockquote-author {
     width: 100%;
     text-transform: capitalize;
     white-space: nowrap;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis
+    text-overflow: ellipsis
 }
 
 .product-list__category {
@@ -1238,7 +1209,6 @@ mat-form-field textarea {
     text-align: center;
     border: 1px solid #000;
     -webkit-transition: .5s all;
-    -o-transition: .5s all;
     transition: .5s all;
     margin-bottom: 10px;
     font-weight: 600;
@@ -1395,13 +1365,6 @@ mat-form-field textarea {
 .user-profile .mat-form-field-infix {
     padding: .315em 0!important
 }
-.contact-us-page .mat-form-field-infix{
-    padding: 0 0 4px;
-    border-top: none;
-}
-.contact-us-page .mat-form-field-subscript-wrapper {
-    margin-top: 2px;
-}
 .modal-form mat-form-field textarea {
     height: 100px!important
 }
@@ -1417,8 +1380,7 @@ mat-form-field textarea {
 
 .img-userprofile {
     width: 150px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     padding: 10px
 }
 
@@ -1514,8 +1476,6 @@ focus {
 }
 
 .display-flex {
-    display: -webkit-box!important;
-    display: -ms-flexbox!important;
     display: flex!important
 }
 
@@ -1608,6 +1568,10 @@ fieldset {
     width: 75%
 }
 
+#edit-card-modal .modal-content {
+    margin-top: 53%
+}
+
 .width-90 {
     width: 90%
 }
@@ -1633,7 +1597,7 @@ fieldset {
     background-color: #c00;
     color: #fff;
     cursor: pointer;
-    padding: 15px 10px;
+    padding: 16px 9px;
     border-radius: 50px
 }
 
@@ -1774,14 +1738,12 @@ fieldset {
     margin: 0;
     color: #000;
     padding-left: 10px;
-    padding: .5em;
     font-weight: 600;
-    border-left: 5px solid #f2f2f2;
-    background: #f2f2f2!important
+    border-left: 5px solid #f2f2f2
 }
 
-.nav-tabs .nav-item .nav-active.active {
-    border-radius: 0!important
+.product-list__item:hover .product-list__category {
+    color: #c00
 }
 
 .user-profile-form {
@@ -1806,8 +1768,6 @@ fieldset {
     left: 40%;
     width: 40px;
     height: 40px;
-    -webkit-transition: .2s ease-in-out all;
-    -o-transition: .2s ease-in-out all;
     transition: .2s ease-in-out all;
     display: none
 }
@@ -1823,9 +1783,12 @@ fieldset {
 
 .user-profile-form img {
     width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     height: 100%
+}
+
+.user-add-ingo-form {
+    margin-top: 20px
 }
 
 .user-add-ingo-form mat-form-field {
@@ -1856,8 +1819,7 @@ fieldset {
 
 .user-add-ingo-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
     font-size: 16px!important;
-    -webkit-transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
-            transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
+    transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
     -ms-transform: translateY(-10px) scale(.75)!important
 }
 
@@ -1972,8 +1934,6 @@ body.modal-open {
 .btn-reserved {
     display: block;
     text-align: left;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     margin-bottom: 10px
 }
@@ -1997,8 +1957,7 @@ body.modal-open {
 }
 
 .course-tab {
-    -webkit-box-shadow: 1px 1px 7px 2px #ccc;
-            box-shadow: 1px 1px 7px 2px #ccc;
+    box-shadow: 1px 1px 7px 2px #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px 15px
@@ -2019,8 +1978,7 @@ body.modal-open {
 .btn,
 button {
     border-radius: 50px!important;
-    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
     background: #000;
     color: #fff;
     font-weight: 600;
@@ -2031,14 +1989,7 @@ button {
 .btn:hover,
 button:hover {
     background: #c00!important;
-    -webkit-box-shadow: none!important;
-            box-shadow: none!important;
-    color: #fff
-}
-
-.user-dashboard .sidebar {
-    -webkit-box-shadow: 0 0 10px #ccc;
-            box-shadow: 0 0 10px #ccc;
+    box-shadow: none!important;
     border-radius: 5px;
     margin-right: 10px;
     padding: 5px
@@ -2056,21 +2007,13 @@ button:hover {
 
 .rating_and_price {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between
+    justify-content: space-between
 }
 
 .heart_cart_buy {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     padding: 5px 0
 }
 
@@ -2088,8 +2031,6 @@ button:hover {
     font-size: 13px;
     font-weight: 600;
     color: #028202!important;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
     display: inline-flex
 }
 
@@ -2132,6 +2073,8 @@ button:hover {
     position: absolute;
     background: rgba(0, 0, 0, .4);
     -webkit-transition: .3s ease all 0s;
+    -moz-transition: .3s ease all 0s;
+    -ms-transition: .3s ease all 0s;
     -o-transition: .3s ease all 0s;
     transition: .3s ease all 0s
 }
@@ -2194,15 +2137,13 @@ mat-error>strong {
 .btn-red {
     background: #c00;
     border: 1px solid #c00;
-    -webkit-box-shadow: 0 0 20px -5px #c00;
-            box-shadow: 0 0 20px -5px #c00
+    box-shadow: 0 0 20px -5px #c00
 }
 
 .btn-red:hover {
     background: #000;
     border-color: #000;
-    -webkit-box-shadow: 0 0 20px -5px #000;
-            box-shadow: 0 0 20px -5px #000
+    box-shadow: 0 0 20px -5px #000
 }
 
 .btn-style {
@@ -2253,23 +2194,14 @@ mat-error>strong {
     background: #000;
     color: #fff!important;
     text-transform: capitalize;
-    -webkit-transition: .5s all;
-    -o-transition: .5s all;
     transition: .5s all;
     width: 25%;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     text-decoration: none!important;
     height: 50px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
     border: none;
     -webkit-appearance: none!important;
     border-radius: 0 50px 50px 0!important
@@ -2322,7 +2254,12 @@ mat-error>strong {
         display: block
     }
 }
-
+@media only screen and (max-width:1280px) {
+    .product-list__item {
+        max-width: 228px;
+        min-width: 228px;
+    }
+}
 @media only screen and (max-width:1199px) {
     .main-nav__list li ul li ul {
         width: 218px!important
@@ -2337,6 +2274,13 @@ mat-error>strong {
 }
 
 @media only screen and (max-width:1024px) {
+    .how-it-works-box {
+        min-height: 474px!important;
+    }
+    .product-list__item {
+        max-width: 218px;
+        min-width: 218px;
+    }
     .slick-main-btn-left {
         left: -35px
     }
@@ -2372,7 +2316,7 @@ mat-error>strong {
 
 @media only screen and (max-width:991px) {
     #main {
-        padding-top: 80px
+        padding-top: 95px
     }
     .form-1-body>form>div {
         width: 100%
@@ -2450,6 +2394,9 @@ mat-error>strong {
         -o-transition: .5s;
         transition: .5s
     }
+    .main-nav__list-bars {
+        display: none!important
+    }
     .main-nav__list_books,
     .main-nav__list_events,
     .main-nav__list_flash_cards,
@@ -2525,6 +2472,13 @@ mat-error>strong {
 }
 
 @media only screen and (max-width:768px) {
+    #main {
+        padding-top: 84px;
+    }
+    .product-list__item {
+        max-width: 205px;
+        min-width: 205px;
+    }
     .slider__title {
         width: 100%;
         font-size: 22px;
@@ -2589,6 +2543,9 @@ mat-error>strong {
     .main-nav__list_scholarship {
         display: block!important
     }
+    .main-nav__list-bars {
+        display: none!important
+    }
     .main-nav__list {
         float: left;
         width: 100%;
@@ -2624,6 +2581,12 @@ mat-error>strong {
         margin-bottom: 30px;
         line-height: 38px
     }
+    .main-nav__btn {
+        display: block;
+        position: absolute;
+        top: 8px;
+        right: 14px
+    }
     .main-nav__list .main-nav__list-icons {
         position: static;
         float: left
@@ -2631,10 +2594,11 @@ mat-error>strong {
     .main-nav__list.main-nav__list_right {
         position: static;
         width: auto;
-        float: right!important;
-        overflow: unset;
+        float: right;
+        margin-right: 20px
     }
     .main-nav__list.main-nav__list_right li {
+        float: left;
         width: auto;
         border-bottom: none
     }
@@ -2759,38 +2723,16 @@ countdown .countdown {
     font-weight: 100;
     text-align: center;
     font-size: 35px;
+    margin: 15px 0;
     display: block!important;
     background: 0 0;
     height: auto
 }
 
-.user-profile .mat-slide-toggle-content {
-    font-weight: 600;
-    font-size: 14px!important
-}
-
 .countdown .measurements {
     display: inline-block;
     padding: 10px;
-    background-image: -webkit-gradient(linear, left bottom, right top, from(#000), color-stop(#380e18), color-stop(#6a071f), color-stop(#9d001b), to(#c00));
-    background-image: -webkit-linear-gradient(left bottom, #000, #380e18, #6a071f, #9d001b, #c00);
-    background-image: -o-linear-gradient(left bottom, #000, #380e18, #6a071f, #9d001b, #c00);
-    background-image: linear-gradient(to right top, #000, #380e18, #6a071f, #9d001b, #c00);
-    width: 40%;
-    margin: 0 5px 10px
-}
-
-.mainpagee {
-    display: block
-}
-
-.mainpagee .countdown {
-    padding: 10px 0
-}
-
-.mainpagee .countdown .measurements {
-    width: 20%;
-    margin: 0 5px
+    background-image: linear-gradient(to right top, #000, #380e18, #6a071f, #9d001b, #c00)
 }
 
 .countdown .measurements p:first-child {
@@ -2826,20 +2768,14 @@ countdown .countdown {
     position: absolute;
     z-index: 9;
     left: 19%;
-    padding: 0
-}
-
-.search-fixed .search-results ul.list-normal {
+    padding: 0;
     background: rgba(0, 0, 0, .72);
-    list-style: none
+    display: none;
 }
 
 .search-fixed .list-normal li a {
     color: #fff;
-    font-weight: 600;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex
+    font-weight: 600
 }
 
 .signup-login-fonts .mat-input-element {
@@ -2858,7 +2794,7 @@ countdown .countdown {
 }
 
 .sh-signup-form-fix .mat-error strong {
-    font-weight: 700;
+    font-weight: 100
 }
 
 .sh-signup-form-fix.signup-login-fonts .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
@@ -2916,9 +2852,7 @@ countdown .countdown {
 .row.search-results .results-found {
     color: #fff;
     font-weight: 600;
-    font-size: 16px;
-    padding: 5px 50px;
-    background: rgba(0, 0, 0, .72)
+    font-size: 24px
 }
 
 .padding-l-r-60>div>a {
@@ -2929,88 +2863,13 @@ countdown .countdown {
     outline: 0
 }
 
-.signup-comp .mat-checkbox-layout {
-    display: block;
-    white-space: unset
-}
-
-.signup-comp .mat-slide-toggle-content {
-    white-space: normal!important
-}
-
-.signup-comp .mat-slide-toggle-label {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start
-}
-
-.add-video .card-content {
-    display: table;
-    min-height: 200px;
-    width: 100%
-}
-
-.add-video .form-1-header {
-    margin-top: -20px
-}
-
-.btn-file {
-    display: inline-block;
-    text-transform: capitalize;
-    position: relative;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    border: 1px solid #000;
-    -webkit-transition: .4s;
-    -o-transition: .4s;
-    transition: .4s;
-    vertical-align: top;
-    cursor: pointer;
-    background: #fff;
-    border-radius: 0;
-    color: #000;
-    padding: 5px 10px
-}
-
-.btn-file input[type=file] {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer
-}
-
-.btn-file:hover {
-    background: #000!important;
-    color: #fff!important;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    border: 1px solid #000
-}
-
-.browse_video {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center
-}
-
-.modal-dialog {
-    margin: 110px auto
-}
-
-.buttons-flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between
-}
-
 @media only screen and (max-width:1480px) {
+    .main-nav__list>li>.sub-menu>ul {
+        width: 250px
+    }
+    .main-nav__list>li>.sub-menu>ul>li>.sub-sub-menu>ul {
+        width: 230px
+    }
     .main-nav__list_events {
         display: none!important
     }
@@ -3044,6 +2903,9 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:1199px) {
+    .main-nav__list li ul {
+        width: 210px!important
+    }
     .main-nav__list li ul::after,
     .main-nav__list li ul::before {
         margin-left: -80px
@@ -3051,11 +2913,6 @@ countdown .countdown {
     .how-it-works-box {
         min-height: 520px!important
     }
-    .main-nav__list>.main-nav__list-icons>li>a,
-    .main-nav__list>li>a {
-        padding: 25px 3px
-    }
-    
 }
 
 @media only screen and (max-width:1024px) {
@@ -3072,6 +2929,7 @@ countdown .countdown {
     }
     .main-nav__list li a {
         font-size: 14px!important;
+        padding: 25px 2px!important
     }
     .slick-main-btn-left {
         left: -35px
@@ -3117,8 +2975,6 @@ countdown .countdown {
     .what-is-cramfrenzy-img-2 {
         max-width: 100%;
         height: auto;
-        -webkit-transition: all .8s ease-in-out 0s;
-        -o-transition: all .8s ease-in-out 0s;
         transition: all .8s ease-in-out 0s;
         margin: 0 0 25px
     }
@@ -3129,7 +2985,7 @@ countdown .countdown {
         border-right: none
     }
     .homeSlider .item .item-inner {
-        width: 180px!important;
+        /* width: 180px!important; */
         margin: 0 auto!important
     }
     .cat-img {
@@ -3170,17 +3026,25 @@ countdown .countdown {
     img {
         max-width: 100%
     }
+    .main-nav__btn {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 8px;
+        float: right
+    }
     .main-nav__list_books,
     .main-nav__list_events,
     .main-nav__list_flash_cards,
     .main-nav__list_scholarship {
         display: block!important
     }
+    .main-nav__list-bars {
+        display: none!important
+    }
     .main-nav__list {
         float: left;
         width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: auto;
         height: 300px
     }
     .main-nav__list>li {
@@ -3244,8 +3108,7 @@ countdown .countdown {
         height: auto;
         display: block;
         border-radius: 0;
-        -webkit-box-shadow: none;
-                box-shadow: none;
+        box-shadow: none;
         margin-top: 28px
     }
     .search-bg__text {
@@ -3299,4 +3162,9 @@ countdown .countdown {
     .form-1-sl>li {
         margin: 15px 19px
     }
+}
+
+.signup-comp .mat-checkbox-layout {
+    display: block;
+    white-space: unset;
 }

@@ -110,6 +110,7 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.firstname = localStorage.getItem('fname');
     this.lastname = localStorage.getItem('lname');
     this.profilePhoto = localStorage.getItem('pic');

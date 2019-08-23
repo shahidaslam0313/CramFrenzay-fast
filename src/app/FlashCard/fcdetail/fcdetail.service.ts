@@ -19,6 +19,17 @@ export class fcdetailservice {
     }
   }
 
+  gettutorinfo(id){
+    if(localStorage.getItem('currentUser')){
+    const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(Config.api + 'tutor/showinfo/' + id ,{headers:headers}).map((response: Response) => response.json());
+  } 
+  else{
+    return this.http.get(Config.api + 'tutor/showinfo/' + id + '').map((response: Response) => response.json());
+  }
+}
+
   uploading(name, description, flashcard_image, visibility) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

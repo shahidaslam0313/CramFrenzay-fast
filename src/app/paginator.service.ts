@@ -19,7 +19,7 @@ export class PagerService {
         startPage = 1;
         endPage = 10;
       } else if (currentPage + 4 >= totalPages) {
-        startPage = totalPages - 9;
+        startPage = totalPages - 10;
         endPage = totalPages;
       } else {
         startPage = currentPage - 5;
@@ -39,7 +39,7 @@ export class PagerService {
   //       endPage = totalPages;
   //     }
   //     // else {
-  //
+  
   //     // if((totalPages - (currentPage - 2)) == 3) {
   //     // startPage = currentPage - 1;
   //     // endPage = currentPage+3;

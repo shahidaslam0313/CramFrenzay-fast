@@ -115,7 +115,7 @@
     background: -o-linear-gradient(#29303b, #29303b, #29303b);
     background: linear-gradient(#29303b, #29303b, #29303b);
     color: #fff;
-    font-size: 25px;
+    // font-size: 25px;
     padding: 30px 0 50px;
     min-height: 250px
 }
@@ -127,7 +127,7 @@
 }
 
 .upper-banner-contact h1 {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 600;
     margin: 0 0 10px
 }
@@ -146,9 +146,11 @@
 }
 
 .upper-banner-contact span {
-    font-size: 18px
+    font-size: 16px;
 }
-
+.upper-banner-contact h4 {
+    font-size: 24px;
+}
 .details-section p {
     font-size: 18px;
     font-weight: 600
@@ -447,7 +449,26 @@
     padding-left: 60px;
     font-size: 14px;
 }
-
+.about-instructor{
+    margin: 20px 0;
+}
+.about-instructor img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+.about-instructor .padd{
+    padding: 5px 0;
+}
+.about-instructor .sub-haed{
+    margin: 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.rating-icons{
+    display: inline-block;
+}
 @media only screen and (max-width:1199px){
     .card.each-card .palyimg-div i {
         top: 30%;

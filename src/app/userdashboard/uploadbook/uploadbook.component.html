@@ -143,6 +143,7 @@
                     style="margin-left: 3px">Upload Book File (PDF) <input (change)="onChange2($event)" #book_file type="file">
                 </span> 
                 <input type="submit" class="btn-style btn margin-top-10 width100" (click)="ifImageUpload(f)" [disabled]="!f.form.valid">
+                <!-- <a class="btn-style btn margin-top-10" (click)="onSubmit(f)">Submit</a> -->
             </form>
         </div>
     </div>
