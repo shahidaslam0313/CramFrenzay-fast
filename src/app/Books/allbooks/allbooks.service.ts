@@ -90,9 +90,9 @@ else {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + this.current.token});
       headers.append('Content-Type', 'application/json');
-      return this.http.get(Config.api + 'book/recentbooks/', {headers: headers}).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'book/RecentlyViewedBook/', {headers: headers}).map((response: Response) => response.json());
     } else {
-      return this.http.get(Config.api + 'book/recentbooks/', ).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'book/RecentlyViewedBook/', ).map((response: Response) => response.json());
 
     }
   }
