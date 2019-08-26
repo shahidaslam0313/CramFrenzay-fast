@@ -63,7 +63,7 @@
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field> <textarea matInput type="text" placeholder="Description" [(ngModel)]="model.book_detail"
-                        name="book_detail" #book_detail="ngModel" id="detail" minlength="50" maxlength="300" required>
+                        name="book_detail" #book_detail="ngModel" id="detail" minlength="50" required>
                         </textarea>
                         <mat-error *ngIf="book_detail.hasError('required')"> Description is <strong>Required</strong>
                         </mat-error> 

@@ -39,7 +39,7 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field> <textarea matInput placeholder="Description" id="detail" [(ngModel)]="model.detail"
-                                name="detail" minlength="50" maxlength="300" #detail="ngModel" required></textarea>
+                                name="detail" minlength="50" #detail="ngModel" required></textarea>
                                 <mat-error *ngIf="detail.hasError('required')"> Description is <strong>Required</strong>
                                 </mat-error>
                                 <mat-error *ngIf="detail.hasError('minlength')"> Description should be at least 50 character long
@@ -174,7 +174,7 @@
                                     <mat-option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div><a class="btn-style btn margin-top-10" (click)="onSubmitt(f)">Submit</a>
+                        </div><a class="btn-style btn margin-top-10" (click)="onsubmitt(f)">Submit</a>
                     </form>
                 </div>
             </div>
