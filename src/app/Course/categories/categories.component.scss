@@ -1,0 +1,11 @@
+.card{
+    margin: 0 0 10px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.product-list__category a{
+    font-size: 20px;
+}
+.card:hover a{
+    color: #c00;
+}
