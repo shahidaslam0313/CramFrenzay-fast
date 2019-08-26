@@ -22,6 +22,8 @@ declare const $: any;
   styleUrls: ['./uploadbook.component.scss']
 })
 export class UploadbookComponent implements OnInit {
+  filetoup: FileList;
+  fileName;
   uploadedImage: File;
   imagePreview: string | ArrayBuffer;
   events;
@@ -148,8 +150,7 @@ uploadfile(){
 }
 
 notpost;
-filetoup: FileList;
-  fileName;
+
   handleFileInput(files: FileList) {
   
     // alert(files);
