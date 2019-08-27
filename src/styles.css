@@ -1612,7 +1612,7 @@ fieldset {
 
 .mainbanner {
     z-index: 1;
-    margin: 20px 0;
+    margin: 10px 0 0;
     font-size: 44px;
     color: #333;
     text-shadow: 0 2px 3px #ccc;
@@ -2939,6 +2939,16 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:1024px) {
+    .how-it-works-box > h3 {
+        min-height: 38px !important;
+        font-size: 16px !important;
+    }
+    .counter_title {
+        font-size: 14px !important;
+    }
+    .what-is-cramfrenzy h2{
+        font-size: 30px;
+    }
     .flashcard-a {
         font-size: 18px !important;
     }
@@ -3031,6 +3041,13 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:768px) {
+    .how-it-works-box > h3 {
+        min-height: 24px !important;
+        font-size: 20px !important;
+    }
+    .what-is-cramfrenzy-img-1{
+        width: 100%;
+    }
     .search-bg {
         width: 64%
     }
