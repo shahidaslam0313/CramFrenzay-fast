@@ -20,7 +20,7 @@
         <div class="tab-pane active" id="notes">
           <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Shownote">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Shownote?.notes">
                 <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
@@ -98,7 +98,7 @@
           <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
-              *ngFor="let data of result; let i=index">
+              *ngFor="let data of result?.courses; let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
                       src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">
@@ -175,7 +175,7 @@
         <div class="tab-pane" id="flashcards">
           <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showcard">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showcard?.flashcards">
                 <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
@@ -222,7 +222,7 @@
         <div class="tab-pane" id="book">
           <h3 class="mainbanner">Books Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showbook">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showbook?.books">
                 <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
@@ -285,7 +285,7 @@
           <mat-form-field> <textarea matInput placeholder="Description"   [(ngModel)]="editnotes.detail" #detail="ngModel"
               name="detail"></textarea> </mat-form-field>
           <mat-form-field id="categoties-font">
-            <mat-select placeholder="Select Categories" type="number" id="categories" [(ngModel)]="editnotes.categories"
+            <mat-select placeholder="Select Categories" type="number" [(ngModel)]="editnotes.categories"
               name="categories">
               <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
                 {{data.c_name}}</mat-option>
@@ -372,14 +372,14 @@
               alt="" allowmultiple="false" />
           </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update Note Image <input (change)="onChange($event)" type="file"
+            <span class="btn-file ">Update Note Image <input (change)="handleFileInput($event.target.files,editnotes.name)" type="file"
                 [(ngModel)]="editnotes.notes_thumbnail" name="notes_thumbnail" #notes_thumbnail
                 accept="image/gif, image/jpeg, image/png" required>
             </span>
             <span class="btn-file ">Update Note File (PDF) <input (change)="onChange2($event)" #updata type="file"
                 accept="application/pdf" required>
             </span>
-            <a class="btn-style btn " (click)="updatenotes(bidnote.id)" data-dismiss="modal">Update Note</a>
+            <a class="btn-style btn " (click)="ifImageUpload()" data-dismiss="modal">Update Note</a>
           </div>
 
         </form>
@@ -486,10 +486,10 @@
             <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false" />
           </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update FlashCard Image <input (change)="onChange($event)" type="file"
+            <span class="btn-file ">Update FlashCard Image <input (change)="handleFileInput($event.target.files,cardedit.name)" type="file"
                 name="flashcard_image" #flashcard_image [(ngModel)]="cardedit.flashcard_image"
                 accept="image/gif, image/jpeg, image/png" required>
-            </span> <a class="btn-style btn" (click)="updatecard(bidflashcard.id)" data-dismiss="modal">Update Flash Card</a>
+            </span> <a class="btn-style btn" (click)="ifCardImageUpload()" data-dismiss="modal">Update Flash Card</a>
           </div>
 
         </form>
@@ -509,11 +509,12 @@
         <form class="user-add-ingo-form" enctype="multipart/form-data">
           <mat-form-field class="margin-top-10 library-edit-course"> <input matInput type="text" placeholder="Title"
               [(ngModel)]="editcourse.name" name="name" #name="ngModel"> </mat-form-field>
-          <mat-form-field class="library-edit-course"> <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
+          <mat-form-field class="library-edit-course">
+            <textarea matInput placeholder="Description" [(ngModel)]="editcourse.description"
               #detail="ngModel" name="description"></textarea> </mat-form-field>
-          <!-- <mat-form-field id="categoties-font">
+           <mat-form-field id="categoties-font">
             <mat-select placeholder="Categories" type="number" (ngModelChange)="check($event)"
-              [(ngModel)]="editcourse.categories" #categories="ngModel" name="categories">
+              [(ngModel)]="editcourse.categories" value="{{editcourse.categories}}" #categories="ngModel" name="categories">
               <mat-option *ngFor="let data of c_name" [value]="data.id" (click)="subcategorys()">
                 {{data.c_name}}</mat-option>
             </mat-select>
@@ -530,7 +531,7 @@
               name="nestedcategory">
               <mat-option *ngFor="let data of nestedresult" [value]="data.id">{{data.name}}</mat-option>
             </mat-select>
-          </mat-form-field> -->
+          </mat-form-field>
           <mat-slide-toggle class="margin-bottom-10 d-block" [(ngModel)]="editcourse.accept_offer" name="accept_offer">
             Accept Offer</mat-slide-toggle>
           <div *ngIf="editcourse.accept_offer==true">
@@ -597,10 +598,10 @@
           <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
               alt="" allowmultiple="false" /> </div>
           <div class="buttons-flex">
-            <!-- <span class="btn-file ">Update Course Image <input (change)="onChange($event)" type="file"
+             <span class="btn-file ">Update Course Image <input (change)="handleFileInput($event.target.files,editcourse.name)" type="file"
                 [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" #course_thumbnail
-                accept="image/gif, image/jpeg, image/png" required> </span> -->
-            <a class="btn-style btn " (click)="ifCourseImageUpload()" data-dismiss="modal">Update Course</a>
+                accept="image/gif, image/jpeg, image/png" required> </span>
+            <a class="btn-style btn " (click)="ifCourseImageUpload()" >Update Course</a>
           </div>
         </form>
       </div>
@@ -724,10 +725,10 @@
               alt="" allowmultiple="false" />
           </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update Book Image <input (change)="onChange($event)" type="file" name="book_image"
+            <span class="btn-file ">Update Book Image <input (change)="handleFileInput($event.target.files,profile.name)" type="file" name="book_image"
                 #book_image accept="image/gif, image/jpeg, image/png" required>
             </span>
-            <a class="btn-style btn" (click)="onSubmit(profile.id)" data-dismiss="modal">Update Book</a>
+            <a class="btn-style btn" (click)="ifbookImageUpload(profile.id)" data-dismiss="modal">Update Book</a>
           </div>
         </form>
       </div>

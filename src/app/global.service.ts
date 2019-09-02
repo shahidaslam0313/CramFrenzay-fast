@@ -242,4 +242,10 @@ export class GlobalService {
     formData.append('name', Course_name);
 return this.http.post('https://apis.cramfrenzy.com/user/image_upload_web/', formData).map((res : Response) => res.json())
   }
+  postnotes(fileToUpload: FileList): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append('image' , fileToUpload[0]);
+    return this.http.post('https://apis.cramfrenzy.com/user/notes_upload/', formData).map((res : Response) => res.json())
+  }
+
 }

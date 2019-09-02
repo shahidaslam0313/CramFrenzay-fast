@@ -20,6 +20,7 @@ export class NestedcateroyComponent implements OnInit {
     book;
     currentuser;
     public Imageurl = Config.Imageurleach;
+    public Imagethumbnail = Config.Imageurlget;
     card;
     sub;
     catId;

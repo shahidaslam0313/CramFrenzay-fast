@@ -64,7 +64,7 @@ export class subcategoryservice {
     booknestedcat(id) {
         const headers = new Headers
         headers.append('Content-Type', 'application/json');
-        return this.http.get(Config.api + 'book/subcagtegorywisebook/' + id, 
+        return this.http.get(Config.api + 'book/nested_categorywise_book/' + id,
         {headers: headers}).map((response: Response) => response.json());
 
     }

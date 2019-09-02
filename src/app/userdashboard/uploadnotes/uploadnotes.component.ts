@@ -48,11 +48,16 @@ export class UploadnotesComponent implements OnInit {
   base64textString;
   mydate;
   startprice;
+  getimagesString=[];
   default;
   notes: FormGroup;
   filetoup: FileList;
+  ImgSrce: any = [];
+  // notesup: FileList;
+  one_pic;
 
   fileName:any ;
+  noteName:any ;
   notesTypes: FormGroup;
   uploadnotesservice: any;
   accept_offer: boolean = false;
@@ -206,9 +211,9 @@ export class UploadnotesComponent implements OnInit {
       }
     })
   }
-  
+
   handleFileInput(files: FileList) {
-  
+
     // alert(files);
     this. filetoup = files;
     console.log('uploaded filetoup  ', this.filetoup);
@@ -222,13 +227,60 @@ export class UploadnotesComponent implements OnInit {
       alert(data)
     this.fileName = data;
    alert(this.fileName.image)
-  
+
     },
     error => {
       // console.log(error);
     });
   // this.uploadItemsToActivity();
   }
+ ;
+  onChangenotes(event){
+    this.input = new FormData();
+
+    const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
+    const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
+    this.input.append('fileToUpload', event.target.files[0]);
+    this.files = target.files;
+    this.file = this.files[0];
+    console.log(this.files);
+
+    const reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+
+    const reader1 = new FileReader();
+    reader1.onload = (e: any) => {
+      this.ImgSrce = (e.target.result);
+    };
+    reader1.readAsDataURL(this.file);
+  }
+  dddd;
+  notesup;
+  notesupload(files: FileList) {
+
+    // alert(files);
+    this. notesup = files;
+    console.log('uploaded filetoup  ', this.notesup);
+    // alert(this.filetoup[0].name)
+    this.noteName =  this.notesup[0].name;
+    console.log('File Name is:' , this.noteName);
+    // alert(this.filetoup);
+
+    this.globalimage.postnotes( this.notesup ).subscribe(
+        data => {
+          // alert(data)
+          this.notesup = data;
+          // alert('noesuppppp '+this.notesup);
+          this.getimagesString.push(this.notesup.image);
+          alert('djangooooo' + this.getimagesString);
+        },
+        error => {
+          alert('frrrrrrrrrr')
+        });
+
+    // this.uploadItemsToActivity();
+  }
+
   imagepath;
   // uploadItemsToActivity() {
   //   console.log('I am in 1 Component');
@@ -275,7 +327,7 @@ export class UploadnotesComponent implements OnInit {
     var new_date = moment(date).add(this.sell_days, 'days');
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(date).add(this.end_time, 'days');
-    this.newService.uploading(this.model.name, this.model.detail, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.model.price,new_date,this.fileName.image,this.accept_offer, this.datafile, this.bid_status,bid_date, this.initial_amount,this.min_amount, this.max_amount, this.initial_amount, this.reservedprice, this.model.start_time)
+    this.newService.uploading(this.model.name, this.model.detail, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.model.price, new_date, this.fileName.image,this.accept_offer, this.datafile, this.bid_status,this.getimagesString , this.initial_amount, bid_date, this.model.isreserved ,this.reservedprice, this.model.start_time,this.min_amount, this.max_amount)
       .subscribe(Res => {
         console.log(this.model, this.model.notessubcategories, this.model.subcategory, this.model.nestedcategory, this.sell_status, this.accept_offer, this.datafile,new_date, bid_date, this.bid_status, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
 

@@ -12,6 +12,7 @@ import swal from 'sweetalert2';
 import { uploadnotesservice } from '../uploadnotes/uploadnotes.service';
 
 import { PagerService } from 'app/paginator.service';
+import {GlobalService} from '../../global.service';
 
 declare const $: any;
 @Component({
@@ -32,6 +33,7 @@ export class MylibraryComponent implements OnInit {
   input;
   bid_status;
   id;
+  notpost;
   notespage: boolean = true;
   coursepage: boolean = false;
   bookpage: boolean = false;
@@ -60,7 +62,7 @@ export class MylibraryComponent implements OnInit {
   ISBN;
   subcategories;
   book_rent;
-  
+  image222;
   cardsid;
   price;
   profile: any = {};
@@ -87,6 +89,8 @@ export class MylibraryComponent implements OnInit {
   note: FormGroup;
   course_thumbnail;
   responseType;
+  filetoup: FileList;
+  fileName;
   ranges = [
 
     { value: '10', viewValue: '10' },
@@ -104,7 +108,7 @@ export class MylibraryComponent implements OnInit {
 
   url: string | ArrayBuffer;
   accept_offer: any;
-  constructor(private newService: uploadnotesservice, private pagerService: PagerService, public newcoures: MylibraryService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private globalimage : GlobalService, private newService: uploadnotesservice, private pagerService: PagerService, public newcoures: MylibraryService, private http: HttpClient, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.productsSource = new BehaviorSubject<any>(localStorage.getItem('currentUser'));
       this.currentProducts = this.productsSource.asObservable();
@@ -295,7 +299,7 @@ export class MylibraryComponent implements OnInit {
     }
     this.newcoures.mybooks(page).subscribe(data => {
       this.books = data;
-      this.Showbook = data['courses']
+      this.Showbook = data
       console.log(this.Showbook)
       // this.bookpage = true;
       this.pager = this.pagerService.getPager(this.books['totalItems'], page, 8);
@@ -310,7 +314,7 @@ export class MylibraryComponent implements OnInit {
     }
     this.newcoures.mynotes(page).subscribe(notes => {
       this.notes = notes;
-      this.Shownote = notes['courses']
+      this.Shownote = notes
       console.log(this.Shownote)
       // this.notespage = true;
       this.pager = this.pagerService.getPager(this.notes['totalItems'], page, 8);
@@ -349,7 +353,9 @@ export class MylibraryComponent implements OnInit {
     this.Showcards(1);
     this.Showbooks(1);
   }
-  check($event) { }
+  check($event) {
+      alert($event)
+  }
 
   ///////////// flash cards //////////
   Showcard;
@@ -359,7 +365,7 @@ export class MylibraryComponent implements OnInit {
     }
     this.newcoures.mycards(page).subscribe(card => {
       this.card = card;
-      this.Showcard = card['courses']
+      this.Showcard = card;
       console.log(this.Showcard)
       // this.fcardpage = true;
       this.pager = this.pagerService.getPager(this.card['totalItems'], page, 8)
@@ -397,23 +403,23 @@ export class MylibraryComponent implements OnInit {
     });
   }
   ///////////update flashcards///////
-  updatecard(id) {
-
-    this.http.post(
-      Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-          // this.sweetalertupload();
-        }
-        else {
-          this.cardedit.flashcard_image = data;
-          this.ifCardImageUpload();
-        }
-      });
-  }
+  // updatecard(id) {
+  //
+  //   this.http.post(
+  //     Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+  //         // this.sweetalertupload();
+  //       }
+  //       else {
+  //         this.cardedit.flashcard_image = data;
+  //         this.ifCardImageUpload();
+  //       }
+  //     });
+  // }
   // let headers = new HttpHeaders();
   ifCardImageUpload() {
     if (this.bidflashcard != null) {
-      this.newcoures.uploadcard(this.cardedit.id, this.bidflashcard.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.cardedit.flashcard_image,
+      this.newcoures.uploadcard(this.cardedit.id, this.bidflashcard.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.fileName.image,
         this.bidbooks.initial_amount, this.bidbooks.end_time, this.bidflashcard.isreserved, this.bidflashcard.reservedprice, this.bidflashcard.start_time).subscribe(Res => {
           swal({
             type: 'success',
@@ -425,7 +431,7 @@ export class MylibraryComponent implements OnInit {
         });
     }
  else {
-  this.newcoures.uploadcard1(this.cardedit.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.cardedit.flashcard_image).subscribe(Res => {
+  this.newcoures.uploadcard1(this.cardedit.id, this.cardedit.name, this.cardedit.no_of_terms, this.cardedit.category, this.cardedit.subcategory, this.cardedit.nestedcategory, this.cardedit.min_amount, this.cardedit.max_amount, this.cardedit.bid_status, this.cardedit.price, this.fileName.image).subscribe(Res => {
     swal({
       type: 'success',
       title: 'Flash Card updated Successfully',
@@ -441,7 +447,7 @@ export class MylibraryComponent implements OnInit {
   // check(event){}
   // current_date=new Date();
   singlenotes(id) {
-    alert(id)
+    // alert(id)
     this.newcoures.Eachnotes(id).subscribe(data => {
       this.editnotes = data;
       console.log(data.detail)
@@ -496,6 +502,7 @@ export class MylibraryComponent implements OnInit {
         this.result = data;
       });
     }
+    // alert(this.result)
   }
   nestedresult;
   nestedcategorys() {
@@ -624,22 +631,24 @@ export class MylibraryComponent implements OnInit {
     });
   }
   //////update book////////////
-  onSubmit(id) {
-    this.http.post(
-      Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-          // this.sweetalertupload();
-        }
-        else {
-          this.profile.book_image = data;
-          this.ifbookImageUpload();
-        }
-      });
-  }
-  ifbookImageUpload() {
+  // onSubmit(id) {
+  //   this.http.post(
+  //     Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+  //         // this.sweetalertupload();
+  //       }
+  //       else {
+  //         this.profile.book_image = data;
+  //         // this.ifbookImageUpload();
+  //       }
+  //     });
+  // }
+
+
+  ifbookImageUpload(id) {
 if(this.bidbooks != null)
-    this.newcoures.uploading(this.profile.id, this.bidbooks.id, this.profile.name, this.profile.author_name, this.profile.categories, this.profile.subcategories, this.profile.nestedcategory, this.profile.book_detail, this.profile.book_edition, this.profile.ISBN, this.profile.min_amount, this.profile.max_amount, this.profile.sell_status, this.profile.price, this.profile.sell_days, this.profile.bid_status, this.profile.book_image, this.profile.datafile,
-      this.initial_amount, this.end_time, this.bidbooks.isreserved, this.reservedprice, this.bidbooks.start_time)
+    this.newcoures.uploading(this.profile.id, this.bidbooks.id, this.profile.name, this.profile.author_name, this.profile.categories, this.profile.subcategories, this.profile.nestedcategory, this.profile.book_detail, this.profile.book_edition, this.profile.ISBN, this.profile.min_amount, this.profile.max_amount, this.profile.sell_status, this.profile.price, this.profile.sell_days, this.profile.bid_status, this.fileName.image, this.profile.datafile,
+      this.initial_amount, this.bidbooks.end_time, this.bidbooks.isreserved, this.reservedprice, this.bidbooks.start_time)
       .subscribe(Res => {
         swal({
           type: 'success',
@@ -658,7 +667,7 @@ if(this.bidbooks != null)
           });
         });
       else{
-        this.newcoures.uploading1(this.profile.id, this.profile.name, this.profile.author_name, this.profile.categories, this.profile.subcategories, this.profile.nestedcategory, this.profile.book_detail, this.profile.book_edition, this.profile.ISBN, this.profile.min_amount, this.profile.max_amount, this.profile.sell_status, this.profile.price, this.profile.sell_days, this.profile.bid_status, this.profile.book_image, this.profile.datafile)
+        this.newcoures.uploading1(this.profile.id, this.profile.name, this.profile.author_name, this.profile.categories, this.profile.subcategories, this.profile.nestedcategory, this.profile.book_detail, this.profile.book_edition, this.profile.ISBN, this.profile.min_amount, this.profile.max_amount, this.profile.sell_status, this.profile.price, this.profile.sell_days, this.profile.bid_status, this.fileName.image, this.profile.datafile)
           .subscribe(Res => {
             swal({
               type: 'success',
@@ -694,7 +703,7 @@ if(this.bidbooks != null)
 
   ifCourseImageUpload() {
     if (this.bidcourses != null) {
-      this.newcoures.updatecourse(this.editcourse.id, this.bidcourses.id, this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.editcourse.course_thumbnail,
+      this.newcoures.updatecourse(this.editcourse.id, this.bidcourses.id, this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.fileName.image,
         this.bidcourses.initial_amount, this.bidcourses.end_time, this.bidcourses.isreserved, this.bidcourses.reservedprice, this.bidcourses.start_time, this.bidcourses.bid_status).subscribe(Res => {
           swal({
             type: 'success',
@@ -714,7 +723,7 @@ if(this.bidbooks != null)
       this.Showcourses(1)
     }
     else{
-      this.newcoures.updatecourse1(this.editcourse.id,  this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.editcourse.course_thumbnail).subscribe(Res => {
+      this.newcoures.updatecourse1(this.editcourse.id,  this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.fileName.image).subscribe(Res => {
           swal({
             type: 'success',
             title: 'course Updated Successfully ',
@@ -737,22 +746,22 @@ if(this.bidbooks != null)
 
   value: any = {};
   ///////////update notes//
-  updatenotes(id) {
-    this.http.post(
-      Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
-        if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
-          // this.sweetalertupload();
-        }
-        else {
-          this.editnotes.notes_thumbnail = data;
-          this.ifImageUpload();
-        }
-      });
-  }
+  // updatenotes(id) {
+  //   this.http.post(
+  //     Config.Imageurlupload, this.input, { responseType: 'text' }).subscribe(data => {
+  //       if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.,.") {
+  //         // this.sweetalertupload();
+  //       }
+  //       else {
+  //         this.editnotes.notes_thumbnail = data;
+  //         this.ifImageUpload();
+  //       }
+  //     });
+  // }
   ifImageUpload() {
     if(this.bidnote != null){
       this.newcoures.updatenote(this.editnotes.id, this.bidnote.id, this.bidnote.initial_amount, this.bidnote.end_time, this.isreserved, this.bidnote.reservedprice, this.bidnote.start_time,
-        this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.editnotes.notes_thumbnail, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
+        this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.fileName.image, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
           swal({
             type: 'success',
             title: 'Note Updated Successfully ',
@@ -771,7 +780,7 @@ if(this.bidbooks != null)
           });
     }
  else{
-  this.newcoures.updatenote1(this.editnotes.id,this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.editnotes.notes_thumbnail, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
+  this.newcoures.updatenote1(this.editnotes.id,this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.fileName.image, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
       swal({
         type: 'success',
         title: 'Note Updated Successfully ',
@@ -862,5 +871,36 @@ if(this.bidbooks != null)
         return false;
       }
     }
+  }
+  handleFileInput(files: FileList, image222) {
+    // alert(files);
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+    // alert(this.filetoup[0].name)
+    this.fileName=  this.filetoup[0].name;
+    console.log('File Name is:' , this.fileName);
+    // alert(this.filetoup);
+
+    this.globalimage.PostImage(this.filetoup, image222  ).subscribe(
+        data => {
+          // alert(data)
+          this.fileName = data;
+          // alert('han vaeeee'+ this.fileName.image)
+
+        },
+        error => {
+          if(error.status == '500')
+            this.notpost = error.status;
+          {
+            swal({
+              type: 'error',
+              title: 'Book Image is required',
+              width: '512px'
+            })
+          }
+          // console.log(error);
+        });
+    // this.uploadItemsToActivity();
+
   }
 }

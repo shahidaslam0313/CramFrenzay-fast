@@ -39,7 +39,7 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field> <textarea matInput placeholder="Description" id="detail" [(ngModel)]="model.detail"
-                                name="detail" minlength="50" maxlength="300" #detail="ngModel" required></textarea>
+                                name="detail" minlength="50" #detail="ngModel" required></textarea>
                                 <mat-error *ngIf="detail.hasError('required')"> Description is <strong>Required</strong>
                                 </mat-error>
                                 <mat-error *ngIf="detail.hasError('minlength')"> Description should be at least 50 character long
@@ -132,14 +132,15 @@
                                 #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
                                  <span  class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)
                                     <input
-                                (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> 
-                        <!-- <div>
-                            <button (click)="compressFile()">Upload and compress Image</button>
-                            <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
-                            <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
-                          </div> -->
-                          <input type="submit" class="btn-style btn margin-top-10 width100" (click)="uploadfiles()" [disabled]="!f.form.valid">
+                                (change)="onChange2($event)" #data type="file" accept="application/pdf" required></span>
+
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+                                                                                         alt="" allowmultiple="false" />
+                            <!-- <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"> -->
+                        </div><span class="btn-file margin-top-10">Upload Notes <input (change)="notesupload($event.target.files);onChange($event)" #image
+                                                                                            type="file" accept="image/gif, image/jpeg, image/png" required> </span>
+
+                        <input type="submit" class="btn-style btn margin-top-10 width100" (click)="uploadfiles()" [disabled]="!f.form.valid">
                       
                     </form>
                 </div>
@@ -174,7 +175,7 @@
                                     <mat-option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div><a class="btn-style btn margin-top-10" (click)="onSubmitt(f)">Submit</a>
+                        </div><a class="btn-style btn margin-top-10" (click)="onsubmitt(f)">Submit</a>
                     </form>
                 </div>
             </div>
