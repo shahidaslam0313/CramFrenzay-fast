@@ -20,7 +20,7 @@
         <div class="tab-pane active" id="notes">
           <h3 class="mainbanner">Notes Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Shownote?.notes">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Shownote">
                 <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/notes/{{item?.id}}"> <img
@@ -46,7 +46,7 @@
               </div>
             </div>
             <!-- Abdullah -->
-            <div class="row width100" >
+            <div class="row">
               <div class="col-lg-12">
                   <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
                       <li class="page-item" [ngClass]="{hide:pager.currentPage===1}"> <a (click)="Shownotes(1)" class="page-link">First</a>
@@ -98,7 +98,7 @@
           <h3 class="mainbanner">Courses Listed for Sale by Me </h3>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"
-              *ngFor="let data of result?.courses; let i=index">
+              *ngFor="let data of result; let i=index">
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/eachcourse/{{data?.id}}"> <img
                       src="{{Imageurl}}{{data?.course_thumbnail}}" data-filter="*" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'">
@@ -175,7 +175,7 @@
         <div class="tab-pane" id="flashcards">
           <h3 class="mainbanner">Flash Cards Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showcard?.flashcards">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showcard">
                 <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/fcdetail/{{item?.id}}"> <img
@@ -222,7 +222,7 @@
         <div class="tab-pane" id="book">
           <h3 class="mainbanner">Books Listed for Sale by Me </h3>
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showbook?.books">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let item of Showbook">
                 <!-- .slice().reverse() ; let i=index -->
               <div class="product-list__item">
                 <figure class="product-list__img"> <a routerLink="/detail/{{item?.id}}"> <img
@@ -348,7 +348,7 @@
             </mat-form-field>
             <mat-slide-toggle class="d-block" [(ngModel)]="bidnote.isreserved" name="isreserved" #isreserved="ngModel">
               Reserved!</mat-slide-toggle>
-            <div *ngIf="bidnote.isreserved" class="margin-top-10">
+            <div *ngIf="bidnote.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                   [(ngModel)]="bidnote.reservedprice" name="reservedprice" #reservedprice="ngModel"
                   onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
@@ -372,17 +372,16 @@
               alt="" allowmultiple="false" />
           </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update Note Image <input (change)="handleFileInput($event.target.files,editnotes.name)" type="file"
+            <span class="btn-file ">Update Note Image <input (change)="onChange($event)" type="file"
                 [(ngModel)]="editnotes.notes_thumbnail" name="notes_thumbnail" #notes_thumbnail
                 accept="image/gif, image/jpeg, image/png" required>
             </span>
             <span class="btn-file ">Update Note File (PDF) <input (change)="onChange2($event)" #updata type="file"
                 accept="application/pdf" required>
             </span>
+            <a class="btn-style btn " (click)="updatenotes(bidnote.id)" data-dismiss="modal">Update Note</a>
           </div>
-          <div class="update-btn">
-            <a class="btn-style btn " (click)="ifImageUpload()" data-dismiss="modal">Update Note</a>
-          </div>
+
         </form>
       </div>
     </div>
@@ -464,7 +463,7 @@
             </mat-form-field>
             <mat-slide-toggle class="d-block" [(ngModel)]="bidflashcard.isreserved" name="isreserved" #isreserved="ngModel">
               Reserved!</mat-slide-toggle>
-            <div *ngIf="bidflashcard.isreserved" class="margin-top-10">
+            <div *ngIf="bidflashcard.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                   [(ngModel)]="bidflashcard.reservedprice" name="reservedprice" #reservedprice="ngModel"
                   onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span> </mat-form-field>
@@ -487,10 +486,10 @@
             <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="" allowmultiple="false" />
           </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update FlashCard Image <input (change)="handleFileInput($event.target.files,cardedit.name)" type="file"
+            <span class="btn-file ">Update FlashCard Image <input (change)="onChange($event)" type="file"
                 name="flashcard_image" #flashcard_image [(ngModel)]="cardedit.flashcard_image"
                 accept="image/gif, image/jpeg, image/png" required>
-            </span> <a class="btn-style btn" (click)="ifCardImageUpload()" data-dismiss="modal">Update Flash Card</a>
+            </span> <a class="btn-style btn" (click)="updatecard(bidflashcard.id)" data-dismiss="modal">Update Flash Card</a>
           </div>
 
         </form>
@@ -576,7 +575,7 @@
             </mat-form-field>
             <mat-slide-toggle [(ngModel)]="bidcourses.isreserved" name="isreserved" #isreserved="ngModel">
               Reserved!</mat-slide-toggle>
-            <div *ngIf="bidcourses.isreserved" class="margin-top-10">
+            <div *ngIf="bidcourses.isreserved">
               <mat-form-field> <input matInput type="number" placeholder="Reserve Price"
                   [(ngModel)]="bidcourses.reservedprice" #reservedprice="ngModel" name="reservedprice"
                   onKeyPress="if(this.value.length==4) return false;"> <span matPrefix>$&nbsp;</span>
@@ -598,9 +597,9 @@
           <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
               alt="" allowmultiple="false" /> </div>
           <div class="buttons-flex">
-             <span class="btn-file ">Update Course Image <input (change)="handleFileInput($event.target.files,editcourse.name)" type="file"
+            <!-- <span class="btn-file ">Update Course Image <input (change)="onChange($event)" type="file"
                 [(ngModel)]="editcourse.course_thumbnail" name="course_thumbnail" #course_thumbnail
-                accept="image/gif, image/jpeg, image/png" required> </span>
+                accept="image/gif, image/jpeg, image/png" required> </span> -->
             <a class="btn-style btn " (click)="ifCourseImageUpload()" data-dismiss="modal">Update Course</a>
           </div>
         </form>
@@ -725,10 +724,10 @@
               alt="" allowmultiple="false" />
           </div>
           <div class="buttons-flex">
-            <span class="btn-file ">Update Book Image <input (change)="handleFileInput($event.target.files,profile.name)" type="file" name="book_image"
+            <span class="btn-file ">Update Book Image <input (change)="onChange($event)" type="file" name="book_image"
                 #book_image accept="image/gif, image/jpeg, image/png" required>
             </span>
-            <a class="btn-style btn" (click)="ifbookImageUpload(profile.id)" data-dismiss="modal">Update Book</a>
+            <a class="btn-style btn" (click)="onSubmit(profile.id)" data-dismiss="modal">Update Book</a>
           </div>
         </form>
       </div>
