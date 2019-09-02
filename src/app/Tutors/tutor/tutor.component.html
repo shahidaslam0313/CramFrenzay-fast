@@ -2,21 +2,22 @@
 <div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-40">
         <form class="search-bg">
-            <input class="search-bg__text" type="text" name="name" [(ngModel)]="name" placeholder="Find Tutor">
+            <input class="search-bg__text" type="text" name="name" [(ngModel)]="name" placeholder="Search Instrtuctor">
             <button class="search-bg__btn" (click)="onSubmit(name)">Search</button>
         </form>
     </div>
 </div>
 <div class="container container-wide-1">
-    <h1 class="component-title">Our Professional Teachers</h1>
+    <!-- <h1 class="component-title">Our Professional Teachers</h1> -->
+    <h1 class="component-title">Browse Instrtuctors</h1>
     <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-5" *ngFor="let data of result3 ; let i=index">
             <div class="tutor-inner">
                 <div class="tutor-image">
-                    <a (click)="onsubmit(data.id)"><img class="tutor-img" src="{{Imageurl}}{{data.profile_picture}}" alt=""></a>
+                    <a (click)="onsubmit(data.user.id)"><img class="tutor-img" src="{{Imageurl}}{{data.profile_picture}}" alt=""></a>
                 </div>
                 <div class="tutor-contact">
-                    <div class="tutor-title"> <a title="{{data.user.first_name}}&nbsp;{{data.user.last_name}}" (click)="onsubmit(data.id)">{{data.user.first_name}}&nbsp;{{data.user.last_name}}</a> </div>
+                    <div class="tutor-title"> <a title="{{data.user.first_name}}&nbsp;{{data.user.last_name}}" (click)="onsubmit(data.user.id)">{{data.user.first_name}}&nbsp;{{data.user.last_name}}</a> </div>
                     <div class="tutor-subject"> <a title="{{data.major}}">{{data.major}}</a> </div>
                     <div class="tutor-star-date">
                         <ul class="product-list__star-list float_left">

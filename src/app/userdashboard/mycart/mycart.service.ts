@@ -26,7 +26,7 @@ export class MycartService {
     if (localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
       headers.append('Content-Type', 'application/json');
-      return this.http.get(Config.api + 'purchase/getcheckoutlist/' + JSON.parse(localStorage.getItem('currentUser')).user_id, {headers: headers}).map((response: Response) => response.json());
+      return this.http.get(Config.api + 'purchase/getcheckoutlist_web/', {headers: headers}).map((response: Response) => response.json());
     }
   }
 }

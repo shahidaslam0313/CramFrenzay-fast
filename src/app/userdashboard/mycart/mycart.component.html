@@ -21,7 +21,9 @@
                 <div class="tab-pane active" id="notes">
                     <h3 class="mainbanner">Notes in My Cart </h3>
                     <h4 class="text-center" *ngIf="record?.notes==0">No Notes in my Cart yet</h4>
-                    <div class="dash-divs" *ngFor="let data of record?.notes; let i=index">
+                    <div class="dash-divs" *ngFor="let data of record.notes; let i=index">
+                            <!-- Purchased -->
+                            <!-- <h2>{{data.Purchased}}</h2> -->
                         <div class="product-list__item">
                             <figure class="product-list__img">
                                 <a routerLink=""> <img src="{{Imageurl}}{{data?.notes_thumbnail}}" data-filter="*" alt="Notes" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'"> </a>
@@ -41,7 +43,7 @@
                 <div class="tab-pane" id="courses">
                     <h3 class="mainbanner">Courses in My Cart </h3>
                     <h4 class="text-center" *ngIf="record?.courses==0">No Courses in my Cart yet</h4>
-                    <div class="dash-divs" *ngFor="let data of record?.courses; let i=index">
+                    <div class="dash-divs" *ngFor="let data of record.courses">
                         <div class="product-list__item">
                             <figure class="product-list__img">
                                 <a routerLink="/eachcourse/{{data?.id}}"> <img src="{{Imageurl}}{{data?.course_thumbnail}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" data-filter="*" alt="Course"> </a>

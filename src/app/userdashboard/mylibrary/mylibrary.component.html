@@ -365,7 +365,7 @@
               </mat-form-field>
             </div>
           </div><br>
-          <div *ngIf="changeImage==false">
+          <div >
             <img src="{{Imageurl}}{{editnotes.notes_thumbnail}}" [(ngModel)]="editnotes.notes_thumbnail"
               name="notes_thumbnail" ngDefaultControl class="img-userprofile"> </div>
           <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
@@ -479,7 +479,9 @@
               </mat-form-field>
             </div>
           </div><br>
-          <div *ngIf="changeImage==false"><img src="{{Imageurl}}{{cardedit.flashcard_image}}"
+          <!-- *ngIf="changeImage==false" -->
+          <div>
+            <img src="{{Imageurl}}{{cardedit.flashcard_image}}"
               [(ngModel)]="cardedit.flashcard_image" name="flashcard_image" ngDefaultControl class="img-userprofile">
           </div>
           <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc">

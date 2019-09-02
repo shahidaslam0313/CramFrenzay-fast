@@ -274,7 +274,9 @@ gettutorinfo(tutor){
 // }
 
 
-
+onsubmit(id) {
+  this.router.navigate(['/teachers/' + id]);
+}
 
   getchapter;
   chpt;
@@ -311,7 +313,7 @@ gettutorinfo(tutor){
   }else if (SetVideoURL == false){
     swal({
       type: 'error',
-      title: 'Oops <br> Please bought this course first',
+      title: 'Please bought this course first',
       showConfirmButton: false,
       width: '512px',
       timer: 2500
