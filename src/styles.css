@@ -2888,7 +2888,7 @@ countdown .countdown {
 
 @media only screen and (max-width:1480px) {
     .main-nav__list>li>.sub-menu>ul {
-        width: 250px
+        width: 205px
     }
     .main-nav__list>li>.sub-menu>ul>li>.sub-sub-menu>ul {
         width: 230px
