@@ -193,13 +193,17 @@
    <!-- <div class="text-center float-left" *ngIf="view==0"> <img src="../../../assets/img/No-One-Reviewed-this-Course.gif">
 
         <h4 class="card-para ">30-Day-Back Guarantee</h4>
-    </div> -->
+    </div> -->     
 
     <div class="container about-instructor">
+        
             <div class="row">
                 <h4 class="course-content col-sm-12 p-0"> About the instructor</h4>
                 <div class="col-sm-2 p-0 text-center">
+                        <a   (click)="onsubmit(tutorId)">
                     <img src="{{profile_picture}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes">
+                    </a>
+
                     <!-- <img src="{{profileurl}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Notes"> -->
                     <div class="padd"><i class="fas fa-play-circle mr-2"></i>{{tcourses}} Courses</div>
                     <div class="padd"><i class="fa fa-book mr-2"></i>{{subject}} Subjects</div>

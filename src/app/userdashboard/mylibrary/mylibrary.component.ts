@@ -353,7 +353,9 @@ export class MylibraryComponent implements OnInit {
     this.Showcards(1);
     this.Showbooks(1);
   }
-  check($event) { }
+  check($event) {
+      alert($event)
+  }
 
   ///////////// flash cards //////////
   Showcard;
@@ -448,7 +450,8 @@ export class MylibraryComponent implements OnInit {
     // alert(id)
     this.newcoures.Eachnotes(id).subscribe(data => {
       this.editnotes = data;
-      console.log(data.detail)
+      // alert(this.Imageurl+data.notes_thumbnail)
+      console.log(data.initial_amount)
       if (typeof data.bidnotes === 'undefined') {
         this.bidnote = null;
       }
@@ -500,6 +503,7 @@ export class MylibraryComponent implements OnInit {
         this.result = data;
       });
     }
+    // alert(this.result)
   }
   nestedresult;
   nestedcategorys() {
@@ -758,7 +762,7 @@ if(this.bidbooks != null)
   ifImageUpload() {
     if(this.bidnote != null){
       this.newcoures.updatenote(this.editnotes.id, this.bidnote.id, this.bidnote.initial_amount, this.bidnote.end_time, this.isreserved, this.bidnote.reservedprice, this.bidnote.start_time,
-        this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.fileName.image, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
+        this.editnotes.name, this.editnotes.detail, this.editnotes.categories, this.editnotes.subcategory, this.editnotes.nestedcategory, this.editnotes.min_amount, this.editnotes.max_amount, this.editnotes.sell_status, this.editnotes.price, this.editnotes.sell_days, this.fileName, this.editnotes.datafile, this.editnotes.bid_status).subscribe(Res => {
           swal({
             type: 'success',
             title: 'Note Updated Successfully ',

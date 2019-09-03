@@ -132,14 +132,15 @@
                                 #notes_thumbnail accept="image/gif, image/jpeg, image/png" required> </span>
                                  <span  class="btn-file margin-top-10" style="margin-left: 3px">Upload Note File (PDF)
                                     <input
-                                (change)="onChange2($event)" #data type="file" accept="application/pdf" required>
-                        </span> 
-                        <!-- <div>
-                            <button (click)="compressFile()">Upload and compress Image</button>
-                            <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
-                            <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
-                          </div> -->
-                          <input type="submit" class="btn-style btn margin-top-10 width100" (click)="uploadfiles()" [disabled]="!f.form.valid">
+                                (change)="onChange2($event)" #data type="file" accept="application/pdf" required></span>
+
+                        <div class="img-userprofile s_uploaded_img" *ngIf="ImgSrc"> <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}"
+                                                                                         alt="" allowmultiple="false" />
+                            <!-- <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)"> -->
+                        </div><span class="btn-file margin-top-10">Upload Notes <input (change)="notesupload($event.target.files);onChange($event)" #image
+                                                                                            type="file" accept="image/gif, image/jpeg, image/png" required> </span>
+
+                        <input type="submit" class="btn-style btn margin-top-10 width100" (click)="uploadfiles()" [disabled]="!f.form.valid">
                       
                     </form>
                 </div>

@@ -15,7 +15,7 @@ export class MycartComponent implements OnInit {
   Courses;
   Notes;
   Book;
-  record : any = {};
+  record:any =[];
   public Imageurl = Config.Imageurlget;
   constructor(public header: MycartService) { }
 
@@ -23,12 +23,14 @@ export class MycartComponent implements OnInit {
     window.scroll(0,0);
     this.showCartItems();
   }
+ 
   showCartItems() {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
       this.totalprice = Data.sum
       this.record = Data;
-      console.log(this.record);
+     
+ 
     })
   }
 }

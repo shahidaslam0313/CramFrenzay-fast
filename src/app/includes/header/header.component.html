@@ -104,17 +104,17 @@
                             </div>
                         </li>
                         <li>
-                            <a routerLink="/tutor"> <i class="fa fa-users"></i>Tutors</a>
+                            <a routerLink="/tutor"> <i class="fa fa-users"></i>Instructors</a>
                             <div class="sub-menu">
                                 <ul class="tutor-w">
                                     <li>
-                                        <a routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Tutors</a>
+                                        <a routerLink="/tutor"> <img class="tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Instructors</a>
                                     </li>
                                     <li *ngIf="!tutor()">
-                                        <a (click)="becometutor()"> <img class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Become a Tutor </a>
+                                        <a (click)="becometutor()"> <img class="become-a-tutor" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Become an Instructor </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/findtutor"> <img class="find-tutors" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Find a Tutor</a>
+                                        <a routerLink="/findtutor"> <img class="find-tutors" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeAQMAAAAB/jzhAAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAAAxJREFUeNpjYBiMAAAAlgABjcjBIQAAAABJRU5ErkJggg==">Find an Instructor</a>
                                     </li>
                                 </ul>
                             </div>
@@ -402,6 +402,9 @@
                                 <a routerLink="/userprofile"> <i class="fa fa-user-circle"></i>My CramFrenzy <span class="fa fa-angle-down"></span> </a>
                                 <div class="sub-menu adjustment">
                                     <ul class="cutom-pd">
+                                            <li *ngIf="check_login() && !institute() && !admin()">
+                                                    <a routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Sell Now </a>
+                                                </li>
                                         <li *ngIf="check_login() && !institute() && !admin()">
                                             <a routerLink="/mycart"> <i class="fa fa-cart-plus"></i>My Cart </a>
                                         </li>
@@ -411,9 +414,7 @@
                                         <li *ngIf="check_login() && !institute() && !admin()">
                                             <a routerLink="/userprofile"> <i class="fa fa-pencil-alt"></i>My Profile </a>
                                         </li>
-                                        <li *ngIf="check_login() && !institute() && !admin()">
-                                            <a routerLink="/uploadnotes"> <i class="fa fa-cloud-upload-alt"></i>Sell Now </a>
-                                        </li>
+                                     
                                         <li *ngIf="check_login() && !institute() && !admin()">
                                             <a routerLink="/mylibrary" class="text_normal"> <i class="fa fa-book"></i>Listed for Sale </a>
                                         </li>

@@ -1612,7 +1612,7 @@ fieldset {
 
 .mainbanner {
     z-index: 1;
-    margin: 10px 0 0;
+    margin: 20px 0;
     font-size: 44px;
     color: #333;
     text-shadow: 0 2px 3px #ccc;
@@ -1836,6 +1836,7 @@ fieldset {
 .user-add-ingo-form.edit-profile .mat-input-placeholder.mat-empty {
     top: 1.28125em!important
 }
+
 .user-profile {
     border: 1px solid #fff;
     background: #fff;
@@ -1844,8 +1845,7 @@ fieldset {
     -webkit-box-shadow: 0 0 16px -3px #868686;
     box-shadow: 0 0 16px -3px #868686;
     width: 100%;
-    max-width: 700px;
-    margin: 0 auto 15px;
+    max-width: 700px
 }
 
 .user-name {
@@ -1993,7 +1993,7 @@ button:hover {
     box-shadow: none!important;
     border-radius: 5px;
     /* margin-right: 10px; */
-    /* padding: 5px */
+    padding: 5px
 }
 
 .product-list__item-info-1 .btn-style {
@@ -2322,6 +2322,9 @@ mat-error>strong {
     }
     .rightRs1 {
         right: 30px
+    }
+    .tutor-img {
+        height: 183px
     }
     .slider__title {
         font-size: 22px!important;
@@ -2939,19 +2942,6 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:1024px) {
-    .how-it-works-box > h3 {
-        min-height: 38px !important;
-        font-size: 16px !important;
-    }
-    .counter_title {
-        font-size: 14px !important;
-    }
-    .what-is-cramfrenzy h2{
-        font-size: 30px;
-    }
-    .flashcard-a {
-        font-size: 18px !important;
-    }
     .how-it-works-box {
         min-height: 393px!important;
         padding: 10px !important;
@@ -2983,6 +2973,9 @@ countdown .countdown {
     }
     .rightRs1 {
         right: 30px
+    }
+    .tutor-img {
+        height: 183px
     }
     .main-nav-slider {
         bottom: 20px!important
@@ -3041,13 +3034,6 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:768px) {
-    .how-it-works-box > h3 {
-        min-height: 24px !important;
-        font-size: 20px !important;
-    }
-    .what-is-cramfrenzy-img-1{
-        width: 100%;
-    }
     .search-bg {
         width: 64%
     }

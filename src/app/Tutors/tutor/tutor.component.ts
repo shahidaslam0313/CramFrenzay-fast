@@ -47,6 +47,7 @@ export class TutorComponent implements OnInit {
   onsubmit(id) {
     this.router.navigate(['/teachers/' + id]);
   }
+ 
   Showtutor() {
     this.tutor.maintutorlist().subscribe(data => {
       this.loaded = true;

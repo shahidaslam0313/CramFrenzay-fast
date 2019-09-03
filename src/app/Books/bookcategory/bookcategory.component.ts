@@ -16,6 +16,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class BookcategoryComponent implements OnInit {
   public Imageurl = Config.Imageurleach;
+  public Thumbnailurl = Config.Imageurlget;
   bookcate = [];
   public bookID: any;
   private sub: Subscription;
