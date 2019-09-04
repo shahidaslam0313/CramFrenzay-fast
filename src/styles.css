@@ -1357,6 +1357,10 @@ mat-form-field textarea {
     background-color: #000!important;
     border-color: #000!important
 }
+.side-bar .nav-tabs .nav-item.show .nav-link, .side-bar .nav-tabs .nav-link.active{
+    color: #555;
+    background-color: #f5f5f5;
+}
 
 #inst_signup .mat-form-field-infix,
 #user_signup .mat-form-field-infix,
@@ -1455,7 +1459,7 @@ focus {
 }
 
 .side-tabs {
-    background: #f2f2f2;
+    /* background: #f2f2f2; */
     display: block
 }
 
@@ -1723,8 +1727,7 @@ fieldset {
 .side-tabs.nav-tabs li a:focus,
 .side-tabs.nav-tabs li a:hover {
     border: none;
-    border-left: 5px solid #000;
-    color: #000!important
+    border-left: none;
 }
 
 .side-tabs.nav-tabs li {
@@ -1732,15 +1735,11 @@ fieldset {
 }
 
 .side-tabs.nav-tabs li a {
-    border: none;
-    border-top-left-radius: 0!important;
-    border-top-right-radius: 0!important;
-    background: #f2f2f2;
-    margin: 0;
-    color: #000;
-    padding-left: 10px;
+    color: #555;
+    font-size: 16px!important;
+    padding: 12px;
+    display: block;
     font-weight: 600;
-    border-left: 5px solid #f2f2f2
 }
 
 .product-list__item:hover .product-list__category {
@@ -2241,6 +2240,7 @@ mat-error>strong {
 .search-bg__text:focus{
     outline: none;
 }
+
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
         width: 85%;

@@ -1,7 +1,7 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 ">
-      <ul class="nav nav-tabs side-tabs s_sidebar">
+<div class="">
+  <div class="dashboard-layout">
+    <div id="mySidenav" class="side-bar">
+      <ul class="nav nav-tabs side-tabs">
         <li class="nav-item"> <a href="#notes" (click)="Shownotes(1)" data-toggle="tab" class="nav-link active" title="Notes"> <i
               class="fa fa-edit"></i>Notes Listed for Sale by Me </a> </li>
         <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#courses" (click)="Showcourses(1)"  data-toggle="tab" class="nav-link"
@@ -15,7 +15,7 @@
             title="Books"> <i class="fa fa-book"></i>Books Listed for Sale by Me </a> </li>
       </ul>
     </div>
-    <div class="col-sm-9 ">
+    <div class="right-side">
       <div class="tab-content">
         <div class="tab-pane active" id="notes">
           <h3 class="mainbanner">Notes Listed for Sale by Me </h3>

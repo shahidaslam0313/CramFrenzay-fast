@@ -26,3 +26,63 @@
 .right-float{
     float: right;
 }
+
+
+
+
+// ////////////////////////
+
+.dashboard-layout{
+    display: flex;
+    min-height: 425px;
+}
+.side-bar{
+    width: 280px;
+    vertical-align: top;
+    background: #fff;
+    border-right: 1px solid #ebebeb;
+    display: table-cell;
+    margin-top: 6px;
+    min-height: 425px;
+}
+.right-side{
+    width: 100%;
+}
+.nav-tabs {
+    border-bottom: none;
+}
+.nav-tabs .nav-link{
+    border: none;
+}
+.nav-link:hover{
+    color: #555;
+    background-color: #f5f5f5;
+}
+.side-tabs.nav-tabs li{
+    padding: 0;
+}
+
+.open-btn{
+    font-size:30px;
+    cursor:pointer;
+    display: none;
+}
+.close-btn{
+    display: none;
+}
+@media only screen and (min-width:991px) {
+    .side-bar{
+        display: block;
+    }
+}
+@media only screen and (max-width:992px) {
+    .open-btn{
+        display: block;
+    }
+    .close-btn{
+        display: block;
+    }
+    .side-bar{
+        display: none;
+    }
+}

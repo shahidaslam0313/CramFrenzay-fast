@@ -1,7 +1,8 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 ">
-            <ul class="nav nav-tabs side-tabs s_sidebar">
+
+    <div class="dashboard-layout">
+        <div id="mySidenav" class="side-bar">
+                <a href="javascript:void(0)" class="close-btn" (click)="closeNav()">&times;</a>
+            <ul class="nav nav-tabs side-tabs">
                 <li class="nav-item">
                     <a href="#notes" data-toggle="tab" class="nav-link active" title="Notes"> <i class="fa fa-edit"></i>Notes in My Cart </a>
                 </li>
@@ -16,7 +17,8 @@
                 </li>
             </ul>
         </div>
-        <div class="col-sm-9 ">
+        <div class="right-side">
+                <span class="open-btn" (click)="openNav()">&#9776;</span>
             <div class="tab-content">
                 <div class="tab-pane active" id="notes">
                     <h3 class="mainbanner">Notes in My Cart </h3>

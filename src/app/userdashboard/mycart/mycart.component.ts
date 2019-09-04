@@ -23,7 +23,13 @@ export class MycartComponent implements OnInit {
     window.scroll(0,0);
     this.showCartItems();
   }
- 
+  openNav() {
+    document.getElementById("mySidenav").style.display = "block";
+  }
+  
+  closeNav() {
+    document.getElementById("mySidenav").style.display = "none";
+  }
   showCartItems() {
     this.header.showCartItem().subscribe(Data => {
       this.itemscount = Data.counts;
