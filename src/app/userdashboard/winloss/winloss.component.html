@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="">
     <ul class="nav nav-tabs nav-justified margin-top-10">
         <li class="nav-item"> <a href="#user_signup" data-toggle="tab" class="nav-link nav-active active"
                 title="Auctions Won"> Auctions Won</a> </li>
@@ -6,10 +6,10 @@
                 title="Auctions Lost"> Auctions Lost </a> </li>
     </ul>
     <div class="tab-content padding-top-5">
-        <div id="user_signup" class="form-1-body padding-top-10 tab-pane active">
-            <div class="row">
-                <div class="col-sm-3 ">
-                    <ul class="nav nav-tabs side-tabs ">
+        <div id="user_signup" class="tab-pane active">
+            <div class="dashboard-layout">
+                <div id="mySidenav" class="side-bar">
+                    <ul class="nav nav-tabs side-tabs">
                         <li class="nav-item"> <a href="#notes" data-toggle="tab" class="nav-link active"
                                 title="Purchased Notes"> <i class="fa fa-edit"></i> Notes </a> </li>
                         <li class="nav-item"> <a href="#courses" data-toggle="tab" class="nav-link"
@@ -20,7 +20,7 @@
                                 title="Purchased Books"> <i class="fas fa-book"></i> Books </a> </li>
                     </ul>
                 </div>
-                <div class="col-sm-9">
+                <div class="right-side">
                     <div class="tab-content" *ngIf="WinList">
                         <div class="tab-pane active mt-3" id="notes">
                             <div class="dash-divs" *ngFor="let winitem of WinList; let i=index;">

@@ -101,14 +101,8 @@ table {
 .side-tabs.nav-tabs li a.active,
 .side-tabs.nav-tabs li a:focus,
 .side-tabs.nav-tabs li a:hover {
-    border: none;
-    border-left: 5px solid #000;
-    color: #000!important;
-    background-color: transparent!important
-}
-
-.side-tabs {
-    margin-top: 90px
+    color: #555 !important;
+    background-color: #f5f5f5 !important;
 }
 
 .fcdetail {
@@ -139,3 +133,65 @@ table {
     min-width: 240px;
     max-width: 240px;
 }
+
+// //////////////////////////////
+.dashboard-layout{
+    display: flex;
+    min-height: 425px;
+  }
+  .side-bar{
+    width: 280px;
+    vertical-align: top;
+    background: #fff;
+    border-right: 1px solid #ebebeb;
+    display: table-cell;
+    // margin-top: 6px;
+    min-height: 425px;
+  }
+  .right-side{
+    width: 100%;
+  }
+  .nav-tabs {
+    border-bottom: none;
+  }
+  .side-bar .nav-tabs .nav-link{
+    border: none;
+    background: #fff;
+  }
+  .nav-link:hover .nav-link.active{
+    color: #555 !important;
+    background-color: #f5f5f5 !important;
+  }
+  .side-tabs.nav-tabs li{
+    padding: 0;
+  }
+  
+  .open-btn{
+    font-size:30px;
+    cursor:pointer;
+    display: none;
+  }
+  .close-btn{
+    display: none;
+  }
+  .sidebar-heading{    
+    text-align: center;
+    margin: 27px 0 10px;
+    font-size: 20px;
+}
+  @media only screen and (min-width:991px) {
+    .side-bar{
+        display: block;
+    }
+  }
+  @media only screen and (max-width:992px) {
+    .open-btn{
+        display: block;
+    }
+    .close-btn{
+        display: block;
+    }
+    .side-bar{
+        display: none;
+    }
+  }

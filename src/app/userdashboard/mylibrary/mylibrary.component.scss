@@ -10,7 +10,7 @@
   min-height: 425px;
 }
 .side-bar{
-  width: 380px;
+  width: 280px;
   vertical-align: top;
   background: #fff;
   border-right: 1px solid #ebebeb;
@@ -42,6 +42,11 @@
 }
 .close-btn{
   display: none;
+}
+.sidebar-heading{    
+  text-align: center;
+    margin: 27px 0 10px;
+    font-size: 20px;
 }
 @media only screen and (min-width:991px) {
   .side-bar{

@@ -15,8 +15,8 @@
     float: left;
 }
 .side-tabs .nav-item .nav-active.active {
-    color: #000!important;
-    background: none!important;
+  color: #555 !important;
+  background-color: #f5f5f5 !important;
 }
 .side-tabs .nav-item .nav-active{
     font-size: 16px!important;
@@ -36,6 +36,8 @@ countdown{
     box-shadow: none!important;
 }
 
+
+
 // ////////////////////////
 
 .dashboard-layout{
@@ -43,12 +45,12 @@ countdown{
     min-height: 425px;
   }
   .side-bar{
-    width: 380px;
+    width: 280px;
     vertical-align: top;
     background: #fff;
     border-right: 1px solid #ebebeb;
     display: table-cell;
-    margin-top: 6px;
+    // margin-top: 6px;
     min-height: 425px;
   }
   .right-side{
@@ -57,10 +59,11 @@ countdown{
   .nav-tabs {
     border-bottom: none;
   }
-  .nav-tabs .nav-link{
+  .side-bar .nav-tabs .nav-link{
     border: none;
+    background: #fff;
   }
-  .nav-link:hover{
+  .nav-link:hover .nav-link.active{
     color: #555 !important;
     background-color: #f5f5f5 !important;
   }
@@ -76,6 +79,11 @@ countdown{
   .close-btn{
     display: none;
   }
+  .sidebar-heading{    
+    text-align: center;
+    margin: 27px 0 10px;
+    font-size: 20px;
+}
   @media only screen and (min-width:991px) {
     .side-bar{
         display: block;

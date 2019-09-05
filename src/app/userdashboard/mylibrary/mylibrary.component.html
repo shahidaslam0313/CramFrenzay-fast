@@ -1,18 +1,17 @@
 <div class="">
   <div class="dashboard-layout">
     <div id="mySidenav" class="side-bar">
+        <h3 class="sidebar-heading">Listed for Sale by Me</h3>
       <ul class="nav nav-tabs side-tabs">
         <li class="nav-item"> <a href="#notes" (click)="Shownotes(1)" data-toggle="tab" class="nav-link active" title="Notes"> <i
-              class="fa fa-edit"></i>Notes Listed for Sale by Me </a> </li>
+              class="fa fa-edit"></i>Notes </a> </li>
         <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#courses" (click)="Showcourses(1)"  data-toggle="tab" class="nav-link"
-            title="Courses"> <i class="fa fa-th-large"></i>Courses Listed for Sale by Me
-          </a> </li>
+            title="Courses"> <i class="fa fa-th-large"></i>Courses</a> </li>
         <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#flashcards" (click)="Showcards(1)" data-toggle="tab"
-            class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>FlashCards Listed for Sale by
-            Me </a> </li>
+            class="nav-link" title="Flashcard"> <i class="fa fa-book-open"></i>FlashCards</a> </li>
         <li class="nav-item" *ngIf="check_login() && checkrole()"> <a href="#book" (click)="Showbooks(1)" 
           data-toggle="tab" class="nav-link"
-            title="Books"> <i class="fa fa-book"></i>Books Listed for Sale by Me </a> </li>
+            title="Books"> <i class="fa fa-book"></i>Books</a> </li>
       </ul>
     </div>
     <div class="right-side">
