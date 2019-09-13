@@ -152,15 +152,6 @@
     overflow: visible!important
 }
 
-.each-upper-banner {
-    background: -webkit-linear-gradient(#29303b, #29303b, #29303b);
-    background: -o-linear-gradient(#29303b, #29303b, #29303b);
-    background: linear-gradient(#29303b, #29303b, #29303b);
-    color: #fff;
-    font-size: 25px;
-    padding: 30px 0 50px;
-    min-height: 250px
-}
 
 .each-upper-banner h1 {
     font-size: 40px;
@@ -194,6 +185,20 @@
 .details-section p {
     font-size: 18px;
     font-weight: 600
+}
+.upper-banner-contact{
+    color: #000;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 23px;
+    border: 1px solid rgba(0,0,0,.125);
+    background: #f9f9f9;
+}
+.each-upper-banner {
+    color: #fff;
+    font-size: 25px;
+    padding: 30px 0 50px;
+    min-height: 250px
 }
 
 .What-will-i-learn {
@@ -402,5 +407,5 @@
     font-weight: 600;
 }
 .detail{
-    font-size: 14px;
+    font-size: 12px;
 }

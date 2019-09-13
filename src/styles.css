@@ -652,7 +652,12 @@ blockquote .blockquote-author {
 
 .page-link {
     color: #c00!important;
-    z-index: 0!important
+    z-index: 0!important;
+    border: none;
+    border-radius: 50px!important;
+    padding: 6px 12px;
+     margin: 0 5px;
+
 }
 
 .page-item.active .page-link {
@@ -660,7 +665,10 @@ blockquote .blockquote-author {
     border-color: #c00!important;
     color: #fff!important
 }
-
+.page-link:hover{
+    background-color: #c00!important;
+    color: #fff!important;
+}
 .btn-style,
 .footer-widget ul li a,
 .product-list__category a {
@@ -854,12 +862,7 @@ blockquote .blockquote-author {
     color: #000
 }
 
-.product-list__star-list {
-    margin: 2px 5px 0 0;
-    padding: 0;
-    float: none;
-    font-size: 0
-}
+product-list__price 
 
 .product-list__star-list li {
     display: inline-block;
