@@ -51,7 +51,7 @@
             </div>
             <form [formGroup]="forgotpasswordForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="modal-body my-3">
-                    <mat-form-field class="singup-feilds-padding width100">
+                    <mat-form-field class="signin-modal singup-feilds-padding width100">
                         <input class="signup-input-font" matInput type="text" id="email" formControlName="email" placeholder="Enter Email">
                         <mat-error *ngIf="email.touched && email.invalid">
                             <mat-error *ngIf="email.errors.required"> Email cannot be empty </mat-error>
