@@ -981,7 +981,8 @@ product-list__price
 }
 
 .mat-slide-toggle-content {
-    font-size: 12px!important
+    font-weight: 600!important;
+    white-space: normal!important;
 }
 
 .modal-content>.modal-footer,
@@ -1365,14 +1366,6 @@ mat-form-field textarea {
     background-color: #f5f5f5;
 }
 
-#inst_signup .mat-form-field-infix,
-#user_signup .mat-form-field-infix,
-.modal-form .mat-form-field-infix,
-.tutor-form .mat-form-field-infix,
-.user-add-ingo-form .mat-form-field-infix,
-.user-profile .mat-form-field-infix {
-    padding: .315em 0!important
-}
 .modal-form mat-form-field textarea {
     height: 100px!important
 }
@@ -1477,7 +1470,11 @@ focus {
 
 .mat-focused,
 .mat-focused .mat-form-field-label {
-    color: #000!important
+    color: #000!important;
+}
+.mat-form-field-label{
+    font-size: 16px;
+    margin: 0;
 }
 .display-block {
     display: block
@@ -1594,25 +1591,22 @@ fieldset {
 }
 
 #myBtn {
-    display: none;
     position: fixed;
     bottom: 20px;
     right: 30px;
     z-index: 99;
     font-size: 18px;
-    border: none;
-    outline: 0;
-    background-color: #c00;
-    color: #fff;
-    cursor: pointer;
-    padding: 16px 9px;
-    border-radius: 50px
+    background-color: rgb(204, 0, 0);
+    color: rgb(255, 255, 255);
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    padding: 8px 14px;
 }
-
-#myBtn:hover {
-    background-color: #555
+#myBtn i{
+    display: block;
+    text-align: center;
 }
-
 .form-1-body.sh #notesbidnow {
     margin-top: 0!important
 }
@@ -1681,19 +1675,12 @@ fieldset {
 }
 
 .sh-signup-form-fix .mat-input-element {
-    padding: 4px 0
+    padding: 5px 0
 }
 
 .mat-error {
     display: block;
     font-size: 12px
-}
-
-.sh-signup-form-fix .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
-    font-size: 16px!important;
-    -webkit-transform: translateY(-17px) scale(.75) perspective(100px) translateZ(0)!important;
-    transform: translateY(-17px) scale(.75) perspective(100px) translateZ(0)!important;
-    -ms-transform: translateY(5px) scale(.75)!important
 }
 
 .sh-signup-form-fix.edit-profile .form-group {
@@ -1802,7 +1789,8 @@ fieldset {
     border-top: 0 solid transparent
 }
 
-.user-add-ingo-form .mat-form-field-subscript-wrapper {
+.user-add-ingo-form .mat-form-field-subscript-wrapper,
+.contact-us-page .mat-form-field-subscript-wrapper {
     margin-top: 2px
 }
 
@@ -1994,8 +1982,6 @@ button:hover {
     background: #c00!important;
     box-shadow: none!important;
     border-radius: 5px;
-    /* margin-right: 10px; */
-    padding: 5px
 }
 
 .product-list__item-info-1 .btn-style {
@@ -2161,19 +2147,20 @@ mat-error>strong {
     -o-transition: .2s;
     transition: .2s;
     cursor: pointer;
+    border: none;
     -webkit-box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important;
     box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)!important
 }
 
 .login-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
     font-size: 16px!important;
-    -webkit-transform: translateY(-22px) scale(.75) perspective(100px) translateZ(0)!important;
-    transform: translateY(-22px) scale(.75) perspective(100px) translateZ(0)!important;
-    -ms-transform: translateY(-22px) scale(.75)!important
+    -webkit-transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
+    transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
+    -ms-transform: translateY(-26px) scale(.75)!important
 }
 
 .login-form .mat-form-field-label {
-    top: 2.28125em
+    top: 34px;
 }
 
 .ratingq>label:before {
@@ -2243,7 +2230,28 @@ mat-error>strong {
 .search-bg__text:focus{
     outline: none;
 }
-
+.signin-modal .mat-form-field-wrapper,
+.contact-us-page .mat-form-field-wrapper {
+    padding-bottom: 12px!important;
+}
+.signin-modal .mat-form-field-infix,
+.contact-us-page .mat-form-field-infix {
+    border: none!important;
+}
+.signin-modal .mat-input-element,
+.contact-us-page .mat-input-element {
+    padding: 2px 0 8px!important;
+    font-size: 24px;
+}
+.signin-modal .mat-form-field-label,
+.contact-us-page .mat-form-field-label {
+    top: 30px!important;
+}
+.signin-modal .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.contact-us-page .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    -webkit-transform: translateY(-26px) scale(.75) perspective(100px) translateZ(.001px)!important;
+    transform: translateY(-26px) scale(.75) perspective(100px) translateZ(.001px)!important;
+}
 @media only screen and (min-width:1600px) {
     .container-fluid.padding-l-r-60 .row .col-lg-12 .slick-initialized.slick-slider {
         width: 85%;
@@ -2808,29 +2816,22 @@ countdown .countdown {
 }
 
 .signup-login-fonts .mat-input-element {
-    padding: 6px 0;
     font-size: 24px
 }
 
 .mat-form-field-empty.mat-form-field-label {
     display: block;
-    font-size: 16px;
-    color: rgba(0, 0, 0, .5411764705882353)!important
 }
 
 .signup-login-fonts .mat-form-field-label {
-    top: 1.8em
-}
-
-.sh-signup-form-fix .mat-error strong {
-    font-weight: 100
+    top: 34px;
 }
 
 .sh-signup-form-fix.signup-login-fonts .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
     font-size: 16px!important;
-    -webkit-transform: translateY(-18px) scale(.75) perspective(100px) translateZ(0)!important;
-    transform: translateY(-18px) scale(.75) perspective(100px) translateZ(0)!important;
-    -ms-transform: translateY(5px) scale(.75)!important
+    -webkit-transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
+    transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
+    -ms-transform: translateY(-26px) scale(.75)!important
 }
 
 .text_cap {

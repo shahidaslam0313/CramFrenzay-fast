@@ -535,7 +535,9 @@ export class MylibraryComponent implements OnInit {
       this.udpateeditcourse = data ;
 
       this.editcourse = this.udpateeditcourse ;
-      console.log(this.udpateeditcourse)
+      console.log(this.editcourse)
+      // alert(this.udpateeditcourse.course_thumbnail)
+      console.log(this.Imageurl + this.udpateeditcourse.course_thumbnail)
       if (typeof data.bidcourse === 'undefined') {
         this.bidcourses = null;
       }

@@ -1,5 +1,5 @@
 .mainbanner {
-    margin: 20px 0 30px;
+    margin: 40px 0 15px;
     font-size: 36px;
     text-shadow: none;
 }
@@ -8,7 +8,8 @@
 }
 
 .mat-form-field textarea {
-    min-height: 105px;
+    min-height: 120px;
+    margin-bottom: 8px;
     resize: none;
 }
 
@@ -91,4 +92,8 @@
 .contact-map{
     padding: 20px 50px 0;
     background: #fafafa;
+}
+.align-right{
+    float: right;
+    margin-top: 36px;
 }
