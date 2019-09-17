@@ -8,6 +8,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Config } from '../../Config';
 import swal from 'sweetalert2';
+import { ViewChild } from '@angular/core';
+import { RecapchaComponent } from '../../recapcha/recapcha.component';
 
 @Component({
   selector: 'app-contactus',
@@ -15,6 +17,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./contactus.component.scss']
 })
 export class ContactusComponent {
+  @ViewChild(RecapchaComponent) captcha: RecapchaComponent;
 
   name;
   subject;

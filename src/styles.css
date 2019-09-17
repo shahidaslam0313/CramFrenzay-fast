@@ -1789,7 +1789,8 @@ fieldset {
     border-top: 0 solid transparent
 }
 
-.user-add-ingo-form .mat-form-field-subscript-wrapper {
+.user-add-ingo-form .mat-form-field-subscript-wrapper,
+.contact-us-page .mat-form-field-subscript-wrapper {
     margin-top: 2px
 }
 
@@ -2229,19 +2230,25 @@ mat-error>strong {
 .search-bg__text:focus{
     outline: none;
 }
-.signin-modal .mat-form-field-wrapper {
+.signin-modal .mat-form-field-wrapper,
+.contact-us-page .mat-form-field-wrapper {
     padding-bottom: 12px!important;
 }
-.signin-modal .mat-form-field-infix {
+.signin-modal .mat-form-field-infix,
+.contact-us-page .mat-form-field-infix {
     border: none!important;
 }
-.signin-modal .mat-input-element {
+.signin-modal .mat-input-element,
+.contact-us-page .mat-input-element {
     padding: 2px 0 8px!important;
+    font-size: 24px;
 }
-.signin-modal .mat-form-field-label {
+.signin-modal .mat-form-field-label,
+.contact-us-page .mat-form-field-label {
     top: 30px!important;
 }
-.signin-modal .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+.signin-modal .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.contact-us-page .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
     -webkit-transform: translateY(-26px) scale(.75) perspective(100px) translateZ(.001px)!important;
     transform: translateY(-26px) scale(.75) perspective(100px) translateZ(.001px)!important;
 }
