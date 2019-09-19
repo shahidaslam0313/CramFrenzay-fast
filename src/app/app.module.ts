@@ -23,6 +23,7 @@ import {
   MatCheckboxModule,
   MatInputModule,
   MatSelectModule,
+  MatRadioModule,
   MatTabsModule, MatSlideToggleModule, MatNativeDateModule, MatButtonModule,
 } from '@angular/material';
 
@@ -185,6 +186,7 @@ export function provideConfig() {
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule
   ],
   declarations: [],
 })

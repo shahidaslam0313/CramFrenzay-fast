@@ -29,8 +29,16 @@
                     </mat-error>
                     <mat-error *ngIf="name.hasError('pattern')"> Please enter a valid Title </mat-error>
                 </mat-form-field>
-                <mat-form-field> <textarea matInput placeholder="HeadLine" id="description" [(ngModel)]="model.description"
+                <mat-form-field>
+                     <textarea matInput placeholder="HeadLine" id="description" [(ngModel)]="model.description"
                         name="description"></textarea> </mat-form-field>
+                        <mat-form-field id="categoties-font">
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="model.skill">
+                            <mat-radio-button value="B">Beginner</mat-radio-button>
+                            <mat-radio-button value="I">Intermediate</mat-radio-button>
+                            <mat-radio-button value="A">Advance</mat-radio-button>
+                          </mat-radio-group>
+                        </mat-form-field>
                 <mat-form-field id="categoties-font">
                     <mat-select placeholder="Select Category" type="number" id="categories" [(ngModel)]="model.categories"
                         name="categories" required>

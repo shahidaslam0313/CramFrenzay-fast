@@ -34,7 +34,7 @@ export class uploadservice {
     return this.http2.get(Config.api + 'course/categorylist/', { headers: headers }).map((response: Response) => response.json());
   }
 
-  uploading(name, sell_days, sell_status, model, course_thumbnail, accept_offer, bid_status, end_time, start, min_amount, max_amount, initial_amount, reservedprice) {
+  uploading(name, sell_days, sell_status, model, course_thumbnail, accept_offer, bid_status,skill, end_time, start, min_amount, max_amount, initial_amount, reservedprice) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.post(Config.api + 'course/postcourse',
@@ -52,6 +52,7 @@ export class uploadservice {
         course_thumbnail: course_thumbnail,
         accept_offer: accept_offer,
         bid_status: bid_status,
+        skill:skill,
         bidcourse: {
           initial_amount: initial_amount,
           end_time: end_time,

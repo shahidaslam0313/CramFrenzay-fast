@@ -191,7 +191,7 @@ export class UploadComponent implements OnInit {
     // var date = moment(new Date,' YYYY-MM-DD ');
     var bid_date = moment(currentdate).add(this.end_time, 'days');
     console.log(new_date, this.sell_status, this.model, this.bid_status, bid_date);
-    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName.image, this.accept_offer, this.bid_status, bid_date, currentdate, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
+    this.newService.uploading(this.model.name,new_date, this.sell_status, this.model,this.fileName.image, this.accept_offer, this.bid_status,this.model.skill, bid_date, currentdate, this.min_amount, this.max_amount, this.initial_amount, this.reservedprice)
       .subscribe(Res => {
         this.CourseSuccess();
       }
