@@ -52,6 +52,7 @@ export class uploadservice {
         course_thumbnail: course_thumbnail,
         accept_offer: accept_offer,
         bid_status: bid_status,
+          skill: model.skill,
         bidcourse: {
           initial_amount: initial_amount,
           end_time: end_time,

@@ -31,7 +31,7 @@ export class detailservice {
     }
   }
   review(rating, comment, book, course, flashcard, notes) {
-    let headers = new Headers({'Authorization': 'JWT ' + this.token});
+    let headers = new Headers({'Authorization': 'JWT ' + this.current.token});
     headers.append('Content-Type', 'application/json', );
     return this.http.post(  Config.api + 'bid/reviewsPost/' ,
       JSON.stringify({

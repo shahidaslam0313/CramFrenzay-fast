@@ -174,7 +174,7 @@ export class MylibraryService {
   }
 
   /////update course/////
-  updatecourse1(id,name, description, categories, subcategories, nestedcategory, min_amount, max_amount, sell_status, price, sell_days, datafile, course_thumbnail){
+  updatecourse1(id,name, description, categories, subcategories, nestedcategory, min_amount, max_amount, sell_status, price, sell_days, datafile, course_thumbnail,skill){
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
     return this.http.put(Config.api + 'course/searchusercourse/' + id,
@@ -192,10 +192,11 @@ export class MylibraryService {
         sell_days: sell_days,
         data: datafile,
         course_thumbnail: course_thumbnail,
+          skill: skill,
       },
       { headers: headers })
   }
-  updatecourse(id, bidid, name, description, categories, subcategories, nestedcategory, min_amount, max_amount, sell_status, price, sell_days, datafile, course_thumbnail,
+  updatecourse(id, bidid, name, description, categories, subcategories, nestedcategory, min_amount, max_amount, sell_status, price, sell_days, datafile, course_thumbnail, skill,
     initial_amount, end_time, isreserved, reservedprice, start_time, bid_status) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     headers.append('Content-Type', 'application/json');
@@ -214,7 +215,9 @@ export class MylibraryService {
         sell_days: sell_days,
         data: datafile,
         course_thumbnail: course_thumbnail,
-        bidcourse: {
+          skill: skill,
+
+          bidcourse: {
           id: bidid,
           initial_amount: initial_amount,
           end_time: end_time,
