@@ -130,3 +130,8 @@ input {
 .mat-slide-toggle-content {
     white-space: normal;
 }
+@media only screen and (max-width:1070px) {
+    .form-1-img{
+        background-size: 100% 100%;
+    }
+}

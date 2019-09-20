@@ -196,7 +196,7 @@
     padding: 25px 5px;
     display: inline-block;
     vertical-align: top;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     color: #5d5d5d!important;
     font-weight: 600;
@@ -275,13 +275,13 @@
     width: 190px;
 }
 .bar-event-w{
-    width: 200px!important;
+    width: 175px!important;
 }
 .bar-schoolarship-w{
-    width: 240px!important;
+    width: 210px!important;
 }
 .cutom-pd{
-    width: 215px;
+    width: 200px;
 }
 .main-nav__list>.main-nav__list-icons>li>.sub-menu>ul>li,
 .main-nav__list>li>.sub-menu>ul>li {
@@ -387,7 +387,7 @@
 }
 
 .main-nav__list>li>.sub-menu.adjustment {
-    left: -40px
+    left: -45px
 }
 
 .main-search.active {
@@ -1122,36 +1122,40 @@ a.heart-card-btn {
         font-size: 14px;
         padding: 25px 2px;
     }
+    .main-nav__list > li > .sub-menu > ul > li > a,
+    .main-nav__list > li > .sub-menu > ul > li > .sub-sub-menu > ul > li > a{
+        font-size: 14px;
+    }
     .fa-android,
     .fa-apple {
         font-size: 20px !important;
     }
     .note-genie-w {
-        width: 165px;
+        width: 150px;
     }
     .course-w {
-        width: 175px;
+        width: 160px;
     }
     .tutor-w {
         width: 155px;
     }
     .book-w {
-        width: 160px;
+        width: 150px;
     }
     .cutsom-pd-bars {
-        width: 195px;
+        width: 175px;
     }
     .bar-event-w {
-        width: 185px !important;
+        width: 165px !important;
     }
     .bar-schoolarship-w {
-        width: 230px !important;
+        width: 200px !important;
     }
     .cutom-pd {
-        width: 212px;
+        width: 190px;
     }
     .main-nav__list > li > .sub-menu.adjustment {
-        left: -60px;
+        left: -50px;
     }    
 }
 @media only screen and (max-width:991px) {
@@ -1161,8 +1165,11 @@ a.heart-card-btn {
         top: 40px;
     }
     .main-nav__list > li > .sub-menu.adjustment {
-        left: -50px;
+        left: -40px;
         top: 40px;
+    }
+    .main-nav__list > li > .sub-menu > ul > li > .sub-sub-menu > ul > li > a {
+        padding: 0!important;
     }
     .addtocart-li:hover .addtocart-sub-meun {
         top: 40px;
@@ -1173,7 +1180,11 @@ a.heart-card-btn {
         left: -20px;
     }
     .main-nav__list > li > .sub-menu.barmenu-responsive{
-        left: -50px;
+        left: -25px;
+    }
+    .notification-box a,
+    .addtocart-cross a {
+        padding: 0 !important;
     }
 }
 @media only screen and (max-width:767px) {

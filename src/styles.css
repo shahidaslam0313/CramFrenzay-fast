@@ -7,7 +7,7 @@
 
 body {
     display: block!important;
-    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    font-family: 'Roboto', sans-serif!important;
     font-weight: 400;
     background-color: rgba(252, 248, 248, 0)
 }
@@ -19,10 +19,6 @@ ngx-slick.slick-initialized {
 .cdk-overlay-container,
 .cdk-overlay-pane {
     z-index: 9999!important
-}
-
-:not(i):not(.fa):not(.fas):not(.far):not(.mat-form-field-suffix):not(.mat-icon):not(.material-icons):not(.glyphicon) {
-    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
 @font-face {
@@ -1616,7 +1612,7 @@ fieldset {
     margin: 20px 0;
     font-size: 40px;
     color: #333;
-    text-shadow: 0 2px 3px #ccc;
+    /* text-shadow: 0 2px 3px #ccc; */
     width: 100%
 }
 
@@ -2353,7 +2349,7 @@ mat-error>strong {
 
 @media only screen and (max-width:991px) {
     #main {
-        padding-top: 95px
+        padding-top: 83px
     }
     .form-1-body>form>div {
         width: 100%
@@ -2382,10 +2378,6 @@ mat-error>strong {
     }
     .form-search mat-form-field.mat-form-field {
         font-size: 45px
-    }
-    .main-nav__list li a {
-        font-size: 14px!important;
-        padding: 15px 8px
     }
     .main-nav__list>li>.sub-menu>ul>li {
         padding: 0
@@ -2430,9 +2422,6 @@ mat-error>strong {
         -webkit-transition: .5s;
         -o-transition: .5s;
         transition: .5s
-    }
-    .main-nav__list-bars {
-        display: none!important
     }
     .main-nav__list_books,
     .main-nav__list_events,
@@ -2927,9 +2916,6 @@ countdown .countdown {
 }
 
 @media only screen and (max-width:1199px) {
-    .main-nav__list li ul {
-        width: 210px!important
-    }
     .main-nav__list li ul::after,
     .main-nav__list li ul::before {
         margin-left: -80px
@@ -2954,10 +2940,6 @@ countdown .countdown {
     }
     .sellnowbtn {
         margin: 20px 5px
-    }
-    .main-nav__list li a {
-        font-size: 14px!important;
-        padding: 25px 2px!important
     }
     .slick-main-btn-left {
         left: -35px
@@ -2997,7 +2979,6 @@ countdown .countdown {
         font-size: 14px
     }
     .main-nav__list li a {
-        font-size: 14px!important;
         padding: 10px 2px!important
     }
     .what-is-cramfrenzy-img-2 {

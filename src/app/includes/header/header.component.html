@@ -391,10 +391,10 @@
                             </li>
                         </div>
                         <div class="main-nav__list main-nav__list_right">
-                            <li *ngIf="!check_login()">
+                            <li *ngIf="!check_login()" class="sign-in">
                                 <a routerLink="/login"> <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Sign in </a>
                             </li>
-                            <li *ngIf="!check_login()" class="list-user">
+                            <li *ngIf="!check_login()" class="list-user sign-up">
                                 <a routerLink="/signup"> <i class="fas fa-user"></i>Sign up </a>
                             </li>
                             <li *ngIf="check_login()">
