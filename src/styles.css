@@ -2445,8 +2445,8 @@ mat-error>strong {
         left: 0
     }
     .list-user:before {
-        top: 15px;
-        bottom: 15px
+        top: 10px!important;
+        bottom: 10px!important;
     }
     .search-bg,
     .search-bg__btn,

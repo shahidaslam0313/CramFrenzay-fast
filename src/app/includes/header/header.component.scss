@@ -1108,6 +1108,12 @@ a.heart-card-btn {
     max-width: unset;
     min-width: unset;
 }
+.sign-up a{
+    padding: 25px 5px 25px 10px!important;
+}
+.sign-in a{
+    padding: 25px 10px 25px 5px!important;
+}
 @media only screen and (max-width:1199px) {
     .width-20-percent {
         width: 150px;
@@ -1185,6 +1191,12 @@ a.heart-card-btn {
     .notification-box a,
     .addtocart-cross a {
         padding: 0 !important;
+    }
+    .sign-up a{
+        padding: 10px 5px 10px 8px!important;
+    }
+    .sign-in a{
+        padding: 10px 8px 10px 5px!important;
     }
 }
 @media only screen and (max-width:767px) {
