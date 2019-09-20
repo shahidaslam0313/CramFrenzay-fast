@@ -32,6 +32,7 @@ export class DetailComponent implements OnInit {
   rate;
   view;
   pager;
+  model: any = {}
   reviewform = new FormGroup({
     comment: new FormControl('', [
       Validators.required
@@ -135,7 +136,7 @@ export class DetailComponent implements OnInit {
     if (this.check_login()) {
       this.id = result;
       if (this.reviewform.controls.comment.valid) {
-        this.detail.review(this.rate, this.comment, this.id, course, flashcard, notes).subscribe(data => {
+        this.detail.review(this.rate, this.reviewform.controls.comment.value, this.id, course, flashcard, notes).subscribe(data => {
           swal({
             type: 'success',
             title: 'Thanks for your Review.',

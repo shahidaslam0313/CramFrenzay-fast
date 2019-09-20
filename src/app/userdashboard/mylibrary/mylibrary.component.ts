@@ -707,7 +707,7 @@ if(this.bidbooks != null)
   ifCourseImageUpload() {
     if (this.bidcourses != null) {
       this.newcoures.updatecourse(this.editcourse.id, this.bidcourses.id, this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.fileName.image,
-        this.bidcourses.initial_amount, this.bidcourses.end_time, this.bidcourses.isreserved, this.bidcourses.reservedprice, this.bidcourses.start_time, this.bidcourses.bid_status).subscribe(Res => {
+        this.bidcourses.initial_amount, this.bidcourses.end_time, this.bidcourses.isreserved, this.bidcourses.reservedprice, this.bidcourses.start_time, this.bidcourses.bid_status, this.model.skill).subscribe(Res => {
           swal({
             type: 'success',
             title: 'course Updated Successfully ',
@@ -726,7 +726,7 @@ if(this.bidbooks != null)
       this.Showcourses(1)
     }
     else{
-      this.newcoures.updatecourse1(this.editcourse.id,  this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.fileName.image).subscribe(Res => {
+      this.newcoures.updatecourse1(this.editcourse.id,  this.editcourse.name, this.editcourse.description, this.editcourse.categories, this.editcourse.subcategories, this.editcourse.nestedcategory, this.editcourse.min_amount, this.editcourse.max_amount, this.editcourse.sell_status, this.editcourse.price, this.editcourse.sell_days, this.editcourse.datafile, this.fileName.image, this.model.skill).subscribe(Res => {
           swal({
             type: 'success',
             title: 'course Updated Successfully ',

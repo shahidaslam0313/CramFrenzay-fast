@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-8">
             <div class="d-heading">Detail</div>
-                <p class="detail">{{result?.book_detail | titlecase}}</p>
+            <p class="detail">{{result?.book_detail | titlecase}}</p>
             <!-- <div class="details-section"> <h1 class="mt-5">Details</h1> <p class="mb-5">{{result?.detail | titlecase}}</p></div>-->
             <!-- <div class="What-will-i-learn">
                 <div class="What-will-i-learn__content">
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
             </div> -->
-            <!-- <div class="reviews-ans" *ngIf="result?.bidpaid==true || result?.paid==true">
+            <div class="reviews-ans">
                 <div class="row background-grey">
                     <div class="col-lg-12">
                         <h4>Rate this course </h4>
@@ -78,25 +78,25 @@
                         </form>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="col-lg-4 col-md-4 card-1">
             <div class="card each-card">
                 <div class="palyimg-div">
                     <img class="card-img-top" src="https://storage.cramfrenzy.com/Thumbnail/{{result?.book_image}}"
-                        data-filter="*" alt="Book Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
+                         data-filter="*" alt="Book Image" onerror="this.src='/assets/img/Logo-gray.jpg'">
                 </div>
                 <div class="card-body text-center">
                     <h3 class="card-title current-card-price">{{result?.discount | currency:'USD'}}</h3>
                     <h5 class="card-title old-card-price">{{result?.price | currency:'USD'}}</h5> <a class="card-btn"
-                        *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a> 
-                      <div class=""> <p class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </p></div> <a class="card-btn"
-                        *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkbook(result?.id)">Buy Now</a>
+                                                                                                     *ngIf="result?.bidpaid==true || result?.paid==true">Book Already Bought</a>
+                    <div class=""> <p class="already-bought" *ngIf="result?.isTeacher==true"> Book Added by Me </p></div> <a class="card-btn"
+                                                                                                                             *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="checkbook(result?.id)">Buy Now</a>
                     <a class="card-btn" *ngIf="result?.paid==false && result?.bidpaid==false && result?.isTeacher==false" (click)="cart(bookID,nullvalue, nullvalue, nullvalue)">Add
                         to Cart</a> <button class="card-btn" *ngIf="result?.bidpaid==true || result?.paid==true && result?.data==true"
-                        data="https://storage.cramfrenzy.com/uploads/C_+Q+and+Answer.pdf" type="application/pdf"> <a
-                            href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>
-                    </button>
+                                            data="https://storage.cramfrenzy.com/uploads/C_+Q+and+Answer.pdf" type="application/pdf"> <a
+                        href="https://storage.cramfrenzy.com/uploads/hicss_2012_smartcities55.pdf">Download PDF</a>
+                </button>
                     <h4 class="card-isbn">ISBN:{{result?.ISBN}}</h4>
                     <h4 class="card-para">30-Day Money-Back Guarantee</h4>
                 </div>
@@ -211,8 +211,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                                    
-                                    
+
+
                                 </div>
                                 <div class="col-md-7">
                                     <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
@@ -224,32 +224,32 @@
                                 <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
 
                             </div>
-                            
-                                <!-- <div class="col-md-2 padding-0">
-                                    <div class="float-right review-box">
-                                        <div class="rating float_left width100">
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i> <i
-                                                    class="fa fa-star-half filled"></i> </div>
-                                            <div class="float_left position-relative"> <i class="far fa-star"></i>
-                                            </div>
+
+                            <!-- <div class="col-md-2 padding-0">
+                                <div class="float-right review-box">
+                                    <div class="rating float_left width100">
+                                        <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                class="fa fa-star filled"></i> </div>
+                                        <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                class="fa fa-star filled"></i> </div>
+                                        <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                class="fa fa-star filled"></i> </div>
+                                        <div class="float_left position-relative"> <i class="far fa-star"></i> <i
+                                                class="fa fa-star-half filled"></i> </div>
+                                        <div class="float_left position-relative"> <i class="far fa-star"></i>
                                         </div>
                                     </div>
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                         </div>
-                    </div><!-- <div class="float-left"> <div class="review-container"> <div class="float-left"> <div class="user-image"> <span>AT</span> </div><div class="float-left"> <div class="time-to-go"> <span>{{reviews?.commentDate}}</span> </div><div class="user-name"> <span>Anas Tahir</span> </div></div></div><div class="float-right review-box"> <div class="rating float_left width100"> <div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star-half filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> </div></div><p>{{reviews?.comment}}</p></div></div></div>-->
-                    <!-- <div class="col-md-12"> <h3>Comment:{{reviews?.comment}}</h3> <h3>Post date:{{reviews?.commentDate}}</h3> </div>-->
-                </div>
-                <!-- <div class="text-center float-left" *ngIf="item==400"> <img src="../../../assets/img/Book.gif">
-                </div> -->
-                
+                    </div>
+                </div><!-- <div class="float-left"> <div class="review-container"> <div class="float-left"> <div class="user-image"> <span>AT</span> </div><div class="float-left"> <div class="time-to-go"> <span>{{reviews?.commentDate}}</span> </div><div class="user-name"> <span>Anas Tahir</span> </div></div></div><div class="float-right review-box"> <div class="rating float_left width100"> <div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> <i class="fa fa-star-half filled"></i> </div><div class="float_left position-relative"> <i class="far fa-star"></i> </div></div><p>{{reviews?.comment}}</p></div></div></div>-->
+                <!-- <div class="col-md-12"> <h3>Comment:{{reviews?.comment}}</h3> <h3>Post date:{{reviews?.commentDate}}</h3> </div>-->
             </div>
+            <!-- <div class="text-center float-left" *ngIf="item==400"> <img src="../../../assets/img/Book.gif">
+            </div> -->
+
         </div>
+    </div>
     <!-- </div> -->
 </div>

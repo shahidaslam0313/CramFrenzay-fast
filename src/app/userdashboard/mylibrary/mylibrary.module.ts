@@ -4,6 +4,7 @@ import { MylibraryComponent }   from './mylibrary.component';
 import {RouterModule, Routes} from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../app.module';
+import {MatRadioModule} from '@angular/material';
 const mylibraryRoutes: Routes = [
   { path: '', component: MylibraryComponent }
 ];
@@ -13,7 +14,8 @@ const mylibraryRoutes: Routes = [
     RouterModule.forChild(mylibraryRoutes),
     CommonModule,
     MaterialModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    MatRadioModule
   ],
   declarations: [
     MylibraryComponent
