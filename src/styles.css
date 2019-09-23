@@ -47,14 +47,45 @@ button:focus {
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased
 }
-
-mat-form-field.mat-form-field {
-    font-size: 18px;
-    font-weight: 700
+.mat-form-field-infix {
+    border-top: none!important;
+    padding: 5px 0!important;
 }
-
-.mat-select-panel .mat-option {
+.mat-input-element {
+    font-size: 16px!important;
+    font-weight: 600!important;
+    color: #000!important;
+}
+.mat-form-field-label {
+    font-size: 16px!important;
+    font-weight: 600!important;
+    margin: 0;
+}
+.mat-select {
+    font-size: 16px;
+    font-weight: 600;
+}
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
+    -webkit-transform: translateY(-20px) scale(.75) perspective(100px) translateZ(0)!important;
+    transform: translateY(-20px) scale(.75) perspective(100px) translateZ(0)!important;
+}
+.mat-error {
+    font-size: 12px;
+    font-weight: 600;
+}
+.mat-form-field-suffix .mat-icon {
     font-size: 18px!important;
+    cursor: pointer;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+.sh-signup-form-fix .mat-form-field-suffix .mat-icon {
+    top: 16px;
+}
+.mat-select-panel .mat-option {
+    font-size: 16px!important;
     line-height: 43px!important;
     height: 33px!important;
     margin-bottom: 1px
@@ -669,11 +700,6 @@ blockquote .blockquote-author {
 .footer-widget ul li a,
 .product-list__category a {
     text-transform: capitalize
-}
-
-#categoties-font .mat-select-value,
-.mat-select-value {
-    color: #000!important
 }
 
 .results-found {
@@ -1460,17 +1486,9 @@ focus {
     max-height: 450px
 }
 
-.mat-input-element {
-    caret-color: #000!important
-}
-
 .mat-focused,
 .mat-focused .mat-form-field-label {
     color: #000!important;
-}
-.mat-form-field-label{
-    font-size: 16px;
-    margin: 0;
 }
 .display-block {
     display: block
@@ -1650,7 +1668,7 @@ fieldset {
 }
 
 .sh-signup-form-fix .mat-input-infix {
-    border-top: 0 solid transparent
+    padding: .4375em 0!important;
 }
 
 .sh-signup-form-fix .mat-input-underline {
@@ -1671,13 +1689,10 @@ fieldset {
 }
 
 .sh-signup-form-fix .mat-input-element {
-    padding: 5px 0
+    padding: 5px 0;
+    font-size: 24px!important;
 }
 
-.mat-error {
-    display: block;
-    font-size: 12px
-}
 
 .sh-signup-form-fix.edit-profile .form-group {
     padding-bottom: 0!important;
@@ -1777,37 +1792,14 @@ fieldset {
     margin-top: 20px
 }
 
-.user-add-ingo-form mat-form-field {
-    color: #000
-}
-
-.user-add-ingo-form .mat-input-infix {
-    border-top: 0 solid transparent
-}
-
 .user-add-ingo-form .mat-form-field-subscript-wrapper,
 .contact-us-page .mat-form-field-subscript-wrapper {
     margin-top: 2px
 }
 
-.user-add-ingo-form .mat-error {
-    font-size: 12px;
-    padding-top: 0
-}
 
 .user-add-ingo-form .card .card-header.card-header-icon+.card-content .card-title {
     padding-bottom: 25px
-}
-
-.user-add-ingo-form .mat-input-element {
-    font-size: 16px;
-    color: #333
-}
-
-.user-add-ingo-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
-    font-size: 16px!important;
-    transform: translateY(-14px) scale(.75) perspective(100px) translateZ(0)!important;
-    -ms-transform: translateY(-10px) scale(.75)!important
 }
 
 .user-add-ingo-form.edit-profile .form-group {
@@ -1817,10 +1809,6 @@ fieldset {
 
 .user-add-ingo-form .mat-form-field-prefix .mat-icon {
     font-size: 125%!important
-}
-
-.user-add-ingo-form.edit-profile .mat-input-placeholder.mat-empty {
-    top: 1.28125em!important
 }
 
 .user-profile {
@@ -2082,10 +2070,6 @@ mat-error>strong {
     margin: 20px auto 0
 }
 
-.mat-form-field-suffix .mat-icon {
-    font-size: 18px
-}
-
 .fa-file-pdf {
     content: "\f1c1";
     color: #fff
@@ -2149,7 +2133,6 @@ mat-error>strong {
 }
 
 .login-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
-    font-size: 16px!important;
     -webkit-transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
     transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
     -ms-transform: translateY(-26px) scale(.75)!important
@@ -2237,7 +2220,7 @@ mat-error>strong {
 .signin-modal .mat-input-element,
 .contact-us-page .mat-input-element {
     padding: 2px 0 8px!important;
-    font-size: 24px;
+    font-size: 24px!important;
 }
 .signin-modal .mat-form-field-label,
 .contact-us-page .mat-form-field-label {
@@ -2805,7 +2788,7 @@ countdown .countdown {
 }
 
 .signup-login-fonts .mat-input-element {
-    font-size: 24px
+    font-size: 24px!important;
 }
 
 .mat-form-field-empty.mat-form-field-label {
@@ -2817,7 +2800,6 @@ countdown .countdown {
 }
 
 .sh-signup-form-fix.signup-login-fonts .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
-    font-size: 16px!important;
     -webkit-transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
     transform: translateY(-26px) scale(.75) perspective(100px) translateZ(0)!important;
     -ms-transform: translateY(-26px) scale(.75)!important
