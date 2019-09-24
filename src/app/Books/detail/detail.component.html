@@ -204,24 +204,26 @@
             </div>
         </div>
         <div class="col-lg-8 col-sm-12">
-            <div class="background-grey review-section margin-bottom-20 float_left">
-                <h4>Reviews</h4>
-                <div *ngFor="let reviews of view?.reviews">
+            <div class="background-grey review-section margin-bottom-20 float_left w-100">
+                <h4>Reviews and Ratings</h4>
+                <div class="mb-3" *ngFor="let reviews of view?.reviews">
                     <div class="card" *ngIf="reviews !=null">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-2"> <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-
-
+                                <div class="col-sm-12 review-divider">
+                                    <div class="w-25 d-inline-block text-center vert-mid">
+                                            <img src="https://image.ibb.co/jw55Ex/def_face.jpg" width="50px" class="img img-rounded img-fluid"/>
+                                            <p class="m-0"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></p>
+                                    </div>
+                                    <div class="w-75 d-inline-block text-right vert-mid">
+                                            <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
+                                            <span class="review-time text-center">{{reviews?.commentDate | date:'medium' }}</span>
+                                    </div>
                                 </div>
-                                <div class="col-md-7">
-                                    <p> <a class="float-left text_cap"><strong>{{reviews?.userid.first_name}} {{reviews?.userid.last_name}}</strong></a> </p>
-                                    <div class="clearfix"></div>
-                                    <p>{{reviews?.comment }}</p>
+                                <div class="col-sm-12">
+                                    <p class="m-0 mt-3">{{reviews?.comment }}</p>
                                 </div>
-                                <div class="col-md-3 review-3"></div>
-                                <rating ngModel="{{reviews?.rating}}" [readonly]="true" titles="{{reviews?.rating}}"></rating>
-                                <p class="review-time text-center"><span>{{reviews?.commentDate | date:'medium' }}</span></p>
+                                
 
                             </div>
 
