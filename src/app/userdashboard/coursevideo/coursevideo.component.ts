@@ -32,11 +32,12 @@ public sub : Subscription;
   ]);
   public video_url: any;
   public VideoUrl = Config.VideoUrl;
-  constructor(private video: CoursevideoService , private newcoures: MylibraryService , private route: ActivatedRoute,  public dialog: MatDialog) { }
+  constructor(private video: CoursevideoService , private newcoures: MylibraryService , private route: ActivatedRoute,  public dialog: MatDialog) { };
   CourseId;
   id;
   getchaptervid;
   getcoursevid;
+  course_detail;
   data;
   ngOnInit() {
     window.scroll(0,0)
@@ -48,10 +49,11 @@ public sub : Subscription;
     this.getchaptername();
     this.getchaptedeta();
     this.coursesupdate(localStorage.getItem('courseid'));
-    this.getcousredeta();
+    this.getdetail()
+
   }
 postrequirment(f: NgForm){
-    this.video.requirment(this.model, this.id).subscribe(data =>{
+    this.video.requirment( this.model.language, this.model.learn, this.model.requirements, this.model.description, this.id).subscribe(data =>{
       swal({
         type: 'success',
         title: 'Description Added ',
@@ -132,11 +134,18 @@ postrequirment(f: NgForm){
       this.getchaptervid = data;
     });
   }
-  getcousredeta(){
-    this.video.getcoursevideo(this.id).subscribe(data => {
-      this.getcoursevid = data;
+  getdetail(){
+    this.video.getdetailservice(this.id).subscribe(data => {
+      this.course_detail = data;
+      // alert('language' + this.course_detail.language)
+      // alert('requirement' + this.course_detail.requirement)
+      // alert('description' + this.course_detail.description)
+      // alert('learning_objectives' + this.course_detail.learning_objectives)
+      // console.log(this.course_detail);
     });
     }
+
+
   editcourse: any = [];
   coursesupdate(id) {
     this.newcoures.courseedit(this.id).subscribe(data => {
@@ -173,11 +182,11 @@ postrequirment(f: NgForm){
         showConfirmButton: false,
         timer: 2500
       });
-      this.getcousredeta();
+
     }, error => {
 
-    });
-    this.getcousredeta();
+    })
+
   }
   insSetVideoURL(video_url) {
 
@@ -238,12 +247,13 @@ export class AddVideoComponent {
   clicked = false;
   public Videos;
   loaded = false;
-  id;sub;
+  id;
+  sub;
   isActive = false;
   // input: any = {};
   // video_url : any = {};
   video_title = new FormControl('', [
-    Validators.required,
+    // Validators.required,getdetailservivce
     Validators.pattern('[a-zA-Z0-9_. -,]+?')]);
   video_url = new FormControl('', [
     Validators.required,
@@ -403,13 +413,13 @@ export class IntroVideoComponent {
   }
 sub;
 getcoursevid;
-
+course_detail;
 ngOnInit() {
   this.sub = this.route.queryParams.subscribe(params => {
     this.id = +params['id'];
   });
   
-
+this.getcousredeta();
 }
 getcousredeta(){
   this.video.getcoursevideo(this.id).subscribe(data => {
@@ -460,7 +470,6 @@ getcousredeta(){
         }else{
           this.dialogRef.close(data);
           this.videoSuccess();
-          this.getcousredeta();
         }
  
       },

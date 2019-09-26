@@ -81,16 +81,23 @@ export class CoursevideoService {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
     return this.http.delete(Config.api + 'course/introvideo/' + id , { headers: headers }).map((response: Response) => response.json());
   }
-  requirment(model, id){
+  requirment(language, learn, requirements, description, id){
     if(localStorage.getItem('currentUser')) {
       const headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
       headers.append('Content-Type', 'application/json')
       return this.http.post(Config.api + 'course/postdetail', {
-        'description': model.description,
-        'language': model.language,
-        'requirement': model.requirement,
+        'language': language,
+        'learning_objectives': learn,
+        'requirement': requirements,
+        'description': description,
         'course': id,
-      },{headers : headers}).map((res: Response) => res.json()) 
+      },    {headers : headers}).map((res: Response) => res.json())
     }
   }
+
+    getdetailservice(id){
+        let headers = new Headers({ 'Authorization': 'JWT ' + this.current.token });
+        headers.append('Content-Type', 'application/json', );
+        return this.http.get(Config.api + 'course/coursedetail/' + id , {headers : headers}).map((res: Response) => res.json());
+    }
 }
