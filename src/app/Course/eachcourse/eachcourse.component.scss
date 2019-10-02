@@ -159,6 +159,26 @@
     font-size: 15px;
     margin: 0;
 }
+#para-height{
+    height: 200px;
+    overflow: hidden;
+}
+.absolute-data{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    left: 0;
+    background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0.95),#FFF);
+    padding-top: 30px;
+}
+#showless,
+#showmore {
+    cursor: pointer;
+}
+#showless{
+    display: none;
+}
 .What-will-i-learn {
     background-color: #f9f9f9;
     border: 1px solid #dedfe0;

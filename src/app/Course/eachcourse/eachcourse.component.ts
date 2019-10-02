@@ -97,6 +97,16 @@ export class EachcourseComponent implements OnInit {
     window['FB'] && window['FB'].XFBML.parse();
     
   }
+  showmore(){
+    document.getElementById("showmore").style.display="none";
+    document.getElementById("showless").style.display="block";
+    document.getElementById("para-height").style.height="auto";
+  }
+  showless(){
+    document.getElementById("showmore").style.display="block";
+    document.getElementById("showless").style.display="none";
+    document.getElementById("para-height").style.height="200px";
+  }
   get(rating) {
     this.rate = rating;
   }

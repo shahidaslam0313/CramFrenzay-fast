@@ -46,13 +46,18 @@
                 <span class="headd">What you will learn</span>
                 <p class="parra">{{detail.learning_objectives}}</p>
             </div>
-            <div class="">
+            <div class="mt-2 pl-3">
                 <span class="headd">Requirements</span>
                 <p class="parra">{{detail.requirement}}</p>
             </div>
-            <div>
+            <div class="mt-2 pl-3">
                 <span class="headd">Description</span>
-                <p class="parra">{{detail.description}}</p>
+                <p class="parra" id="para-height">{{detail.description}}
+                    <div class="absolute-data">
+                        <span id="showmore" (click)="showmore()">+ Show More</span>
+                        <span id="showless" (click)="showless()">- Show Less</span>
+                    </div>
+                </p>
             </div>
             <div *ngIf="!getchapter">
 
@@ -165,47 +170,7 @@
                     <!--</ul>-->
                 <!--</div>-->
             <!--</div>-->
-            <div class="reviews-ans">
-                <div class="row background-grey">
-                    <div class="col-lg-12">
-                        <h4>Rate this course </h4>
-                        <div class="rating-starts">
-                            <fieldset class="ratingq move-to-center"> <input type="radio" id="star5q" name="rating"
-                                    value="5" (click)="get(5)" /> <label class="full" for="star5q" title="Awesome - 5 stars"></label>
-                                <input type="radio" id="star4halfq" name="rating" value="4.5" (click)="get(4.5)" />
-                                <label class="half" for="star4halfq" title="Pretty good - 4.5 stars"></label> <input
-                                    type="radio" id="starq" name="rating" value="4" (click)="get(4)" /> <label class="full"
-                                    for="starq" title="Pretty good - 4 stars"></label> <input type="radio" id="star3halfq"
-                                    name="rating" value="3.5" (click)="get(3.5)" /> <label class="half" for="star3halfq"
-                                    title="Meh - 3.5 stars"></label> <input type="radio" id="star3q" name="rating"
-                                    value="3" (click)="get(3)" /> <label class="full" for="star3q" title="Meh - 3 stars"></label>
-                                <input type="radio" id="star2halfq" name="rating" value="2.5" (click)="get(2.5)" />
-                                <label class="half" for="star2halfq" title="Kinda bad - 2.5 stars"></label> <input type="radio"
-                                    id="star2q" name="rating" value="2" (click)="get(2)" /> <label class="full" for="star2q"
-                                    title="Kinda bad - 2 stars"></label> <input type="radio" id="star1halfq" name="rating"
-                                    value="1.5" (click)="get(1.5)" /> <label class="half" for="star1halfq" title="Meh - 1.5 stars"></label>
-                                <input type="radio" id="star1q" name="rating" value="1" (click)="get(1)" /> <label
-                                    class="full" for="star1q" title="Sucks big time - 1 star"></label> <input type="radio"
-                                    id="starhalfq" name="rating" value="0.5" (click)="get(0.5)" /> <label class="half"
-                                    for="starhalfq" title="Sucks big time - 0.5 stars"></label> </fieldset>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <form name="form" role="form" method="post" [formGroup]="reviewform" #f="ngForm">
-                            <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a review"
-                                name="comment" [(ngModel)]="model.comment" clear-field formControlName="comment"
-                                required></textarea>
-                            <mat-error *ngIf="reviewform.controls.comment.touched && reviewform.controls.comment.invalid">
-                                <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review cannot be empty
-                                </mat-error>
-                            </mat-error>
-                            <div class="text-right review-button"> <button class="btn-style btn" title="Submit Review"
-                                    type="submit" (click)="reviews(rate, comment, result.id, nullvalue, nullvalue, nullvalue,f)">
-                                    <span> <i class="far fa-thumbs-up"></i> Review </span> </button> </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            
         <div class="col-lg-4 col-md-4 card-1">
             <div class="card each-card">
                 <!-- <img class="card-img-top"  *ngIf="!introvi src="https://storage.cramfrenzy.com/images/{{result?.course_thumbnail}}" onerror="this.src='/assets/img/Logo-gray.jpg'" alt="Course Image">  -->
@@ -296,7 +261,47 @@
             </div>
         </div>
     </div>
-
+    <div class="reviews-ans">
+            <div class="row background-grey">
+                <div class="col-lg-12">
+                    <h4>Rate this course </h4>
+                    <div class="rating-starts">
+                        <fieldset class="ratingq move-to-center"> <input type="radio" id="star5q" name="rating"
+                                value="5" (click)="get(5)" /> <label class="full" for="star5q" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4halfq" name="rating" value="4.5" (click)="get(4.5)" />
+                            <label class="half" for="star4halfq" title="Pretty good - 4.5 stars"></label> <input
+                                type="radio" id="starq" name="rating" value="4" (click)="get(4)" /> <label class="full"
+                                for="starq" title="Pretty good - 4 stars"></label> <input type="radio" id="star3halfq"
+                                name="rating" value="3.5" (click)="get(3.5)" /> <label class="half" for="star3halfq"
+                                title="Meh - 3.5 stars"></label> <input type="radio" id="star3q" name="rating"
+                                value="3" (click)="get(3)" /> <label class="full" for="star3q" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2halfq" name="rating" value="2.5" (click)="get(2.5)" />
+                            <label class="half" for="star2halfq" title="Kinda bad - 2.5 stars"></label> <input type="radio"
+                                id="star2q" name="rating" value="2" (click)="get(2)" /> <label class="full" for="star2q"
+                                title="Kinda bad - 2 stars"></label> <input type="radio" id="star1halfq" name="rating"
+                                value="1.5" (click)="get(1.5)" /> <label class="half" for="star1halfq" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1q" name="rating" value="1" (click)="get(1)" /> <label
+                                class="full" for="star1q" title="Sucks big time - 1 star"></label> <input type="radio"
+                                id="starhalfq" name="rating" value="0.5" (click)="get(0.5)" /> <label class="half"
+                                for="starhalfq" title="Sucks big time - 0.5 stars"></label> </fieldset>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <form name="form" role="form" method="post" [formGroup]="reviewform" #f="ngForm">
+                        <h4>Review <sup>*</sup></h4> <textarea class="form-control" placeholder="Leave a review"
+                            name="comment" [(ngModel)]="model.comment" clear-field formControlName="comment"
+                            required></textarea>
+                        <mat-error *ngIf="reviewform.controls.comment.touched && reviewform.controls.comment.invalid">
+                            <mat-error *ngIf="reviewform.controls.comment.errors.required"> Review cannot be empty
+                            </mat-error>
+                        </mat-error>
+                        <div class="text-right review-button"> <button class="btn-style btn" title="Submit Review"
+                                type="submit" (click)="reviews(rate, comment, result.id, nullvalue, nullvalue, nullvalue,f)">
+                                <span> <i class="far fa-thumbs-up"></i> Review </span> </button> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     <div class="container">
         <!-- <div class="row">
