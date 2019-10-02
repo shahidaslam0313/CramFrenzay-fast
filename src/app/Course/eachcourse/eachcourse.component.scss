@@ -162,8 +162,9 @@
 #para-height{
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
-.absolute-data{
+#absolute-data{
     position: absolute;
     bottom: 0;
     display: block;
@@ -175,9 +176,22 @@
 #showless,
 #showmore {
     cursor: pointer;
+    color: #007791;
+}
+#showless i,
+#showmore i {
+    font-size: 12px;
+    margin-right: 6px;
 }
 #showless{
     display: none;
+}
+.review-divider{
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 10px;
+}
+.vert-mid{
+    vertical-align: middle;
 }
 .What-will-i-learn {
     background-color: #f9f9f9;

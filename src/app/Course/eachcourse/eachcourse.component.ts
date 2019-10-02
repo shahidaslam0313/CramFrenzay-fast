@@ -99,13 +99,15 @@ export class EachcourseComponent implements OnInit {
   }
   showmore(){
     document.getElementById("showmore").style.display="none";
-    document.getElementById("showless").style.display="block";
+    document.getElementById("showless").style.display="inline";
     document.getElementById("para-height").style.height="auto";
+    document.getElementById("absolute-data").style.cssText="position:unset;padding-top:0";
   }
   showless(){
-    document.getElementById("showmore").style.display="block";
+    document.getElementById("showmore").style.display="inline";
     document.getElementById("showless").style.display="none";
     document.getElementById("para-height").style.height="200px";
+    document.getElementById("absolute-data").style.cssText="position:absolute;padding-top:30px";
   }
   get(rating) {
     this.rate = rating;
