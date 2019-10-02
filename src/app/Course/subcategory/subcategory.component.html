@@ -34,7 +34,7 @@
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/notes/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
+                        <img src="https://storage.cramfrenzy.com/images/{{data?.notes_thumbnail}}" alt="Notes" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -57,7 +57,7 @@
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/eachcourse/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.course_thumbnail}}" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
+                        <img src="https://storage.cramfrenzy.com/Thumbnail/{{data?.course_thumbnail}}" alt="Course" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -80,7 +80,7 @@
             <div class="product-list__item" >
                 <figure class="product-list__img">
                     <a routerLink="/fcdetail/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.flashcard_image}}" alt="flash cards" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
+                        <img src="https://storage.cramfrenzy.com/Thumbnail/{{data?.flashcard_image}}" alt="flash cards" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">
@@ -103,7 +103,7 @@
             <div class="product-list__item">
                 <figure class="product-list__img">
                     <a routerLink="/detail/{{data?.id}}" (click)="sliderClick(data.name)">
-                        <img src="{{Imageurl}}{{data?.book_image}}" alt="book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
+                        <img src="https://storage.cramfrenzy.com/Thumbnail/{{data?.book_image}}" alt="book" onerror="this.src='/assets/img/Logo-gray.jpg'"> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category">

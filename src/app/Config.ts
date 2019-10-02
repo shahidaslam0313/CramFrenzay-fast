@@ -9,6 +9,7 @@ export class Config {
   public static Imageurl: string = 'https://apis.cramfrenzy.com/media/';
   public static webapi:string="wss://apis.cramfrenzy.com/chat/";
   // public static api: string = 'http://192.168.29.148:8000/';
+  // public static api: string = 'http://127.0.0.1:8000/';
 
   // public static api: string = 'http://192.168.18.43:8000/';
   // public static Imageurl: string = 'http://192.168.30.172:8000/media/';

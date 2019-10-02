@@ -23,7 +23,11 @@
                     <span>
                         Last updated {{ cdate | date: 'MM/yyyy'}}
                     </span>
+                    <span>
+                        {{ detail.language}}
+                    </span>
                 </div>
+
                
                 <!-- <h4>Author Name: <span> {{result?.userid.first_name | titlecase}} {{result?.userid.last_name | titlecase}}</span></h4>
                 <h4>Reviews: <span> {{ tutorreview | titlecase}} reviews</span></h4>
@@ -34,6 +38,19 @@
         </div>
     </div>
 </div>
+<div >
+    <h2>What you will learn</h2>{{detail.learning_objectives}}
+</div>
+
+
+<div >
+    <h2>Requirements</h2>{{detail.requirement}}
+</div>
+
+<div >
+    <h2>Description</h2>{{detail.description}}
+</div>
+
 <div class="container padding-top-40">
     <div class="row">
             <!-- <div class="col-lg-8" *ngIf="lecture==0"> -->

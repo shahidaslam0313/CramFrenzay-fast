@@ -159,7 +159,7 @@ gettutorinfo(tutor){
   tutorreview;
   student;
   cdate;
-  
+  detail;
   creview;
   tcourses;
   starview : any =[];
@@ -177,7 +177,7 @@ gettutorinfo(tutor){
       this.introvideo = data.introvideo;
       this.student = data.Student;
       this.cdate = data.Course.postdate;
-      
+      this.detail = data.Detail;
       this.creview = data.CourseReviews;
       this.tutorreview = data.TutorReviews;
       this.tcourses = data.TutorCourses;
