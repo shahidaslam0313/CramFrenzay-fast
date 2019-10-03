@@ -56,12 +56,12 @@
             </div>
             <div class="mt-2 pl-3">
                 <span class="headd">Description</span>
-                <p class="parra" id="para-height">{{detail.description}}
-                    <span id="absolute-data">
-                        <span id="showmore" (click)="showmore()"><i class="fa fa-plus"></i>Show More</span>
-                        <span id="showless" (click)="showless()"><i class="fa fa-minus"></i>Show Less</span>
-                    </span>
-                </p>
+                <div class="parra" id="para-height" *ngFor="let hero of detail.description?.split('\n')">{{hero}}
+                    <!--<span id="absolute-data">-->
+                        <!--<span id="showmore" (click)="showmore()"><i class="fa fa-plus"></i>Show More</span>-->
+                        <!--<span id="showless" (click)="showless()"><i class="fa fa-minus"></i>Show Less</span>-->
+                    <!--</span>-->
+                </div>
             </div>
             <div class="pl-3 mt-2" *ngIf="!getchapter">
 
