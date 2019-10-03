@@ -44,9 +44,9 @@
         <div class="col-md-8 p-0">
             <div class="upper-banner-contact">
                 <span class="headd">What you will learn</span>
-                <ul>
+                <ul class="wywl">
                     <li *ngFor="let hero of detail.learning_objectives?.split('\n')">
-                        {{ hero }}
+                       <i class="fa fa-check"></i> {{hero}}
                     </li>
                 </ul>
             </div>
