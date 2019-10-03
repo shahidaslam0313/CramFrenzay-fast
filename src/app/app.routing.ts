@@ -123,10 +123,10 @@ export const appRoutes: Routes = [
       { path: 'searchscholarship/:name', loadChildren: './Scholarships/searchscholarship/searchscholarship.module#SearchscholarshipModule' },
       { path: 'upcomingscholarship', loadChildren: './Scholarships/upcomingscholarship/upcomingscholarship.module#UpcomingscholarshipModule' },
       // Tutors Module
-      { path: 'tutor', loadChildren: './Tutors/tutor/tutor.module#TutorModule' },
+      { path: 'instructor', loadChildren: './Tutors/tutor/tutor.module#TutorModule' },
       { path: 'tutorsearch/:name', loadChildren: './Tutors/tutorsearch/tutorsearch.module#TutorsearchModule' },
       { path: 'tutorregistration', loadChildren: './Tutors/tutorregistration/tutorregistration.module#TutorregistrationModule' },
-      { path: 'findtutor', loadChildren: './Tutors/findtutor/findtutor.module#FindtutorModule' },
+      { path: 'findinstructor', loadChildren: './Tutors/findtutor/findtutor.module#FindtutorModule' },
       { path: 'teachers/:id', loadChildren: './Tutors/teachers/teachers.module#TeachersModule' },
       // Footer Module
       { path: 'comparison-matrix', loadChildren: './Footer/comparison-matrix/comparison-matrix.module#ComparisonMatrixModule' },

@@ -215,7 +215,7 @@ export class MaterialModule { }
     MatButtonModule,
     HttpModule,
     Routing,
-    Nl2BrPipeModule,
+    // Nl2BrPipeModule,
     HttpClientModule,
     RatingModule,
     SocialLoginModule,
