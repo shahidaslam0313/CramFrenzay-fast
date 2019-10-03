@@ -405,15 +405,26 @@
     object-fit: none;
 }
 .course-content{
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 600;
     color: #333;
+    margin-bottom: 10px;
 }
-.course-time{
-    float: right;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 36px;
+.course-content .cc1{
+    width: 50%;
+    display: inline-block;
+}
+.course-content .cc2{
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+}
+.pl-45{
+    padding-left: 32px;
+}
+.pl-25{
+    padding-left: 10px;
 }
 .panel-title{
     margin: 0;
@@ -423,21 +434,22 @@
     position: relative;
     background: #f9f9f9;
     border: solid 1px #e8e9eb;
-    padding: 10px 30px;
+    padding: 10px 0 10px 45px;
     color: #505763;
     font-size: 15px;
     margin-bottom: 5px;
 }
 .panel-title a .chap-name{
-    width: 70%;
+    width: 50%;
     display: inline-block;
     padding-right: 30px;
     vertical-align: middle;
 }
 .panel-title a .chap-time{
-    width: 30%;
+    width: 25%;
     display: inline-block;
     vertical-align: middle;
+    text-align: center;
 }
 .float-right{
     float: right;
@@ -445,13 +457,13 @@
 .panel-title > a:before {
     content: "\2212";
     position: absolute;
-    left: 18px;
+    left: 28px;
     top: 12px;
 }
 .panel-title > a.collapsed:before {
     content:"\002B";
     position: absolute;
-    left: 18px;
+    left: 28px;
     top: 12px;
 }
 .panel-body table{
@@ -486,7 +498,7 @@
     font-size: 14px;
 }
 .about-instructor{
-    margin: 20px 0;
+    margin: 10px 0;
 }
 .about-instructor img{
     width: 100px;

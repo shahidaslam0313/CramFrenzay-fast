@@ -63,24 +63,27 @@
                     </span>
                 </p>
             </div>
-            <div *ngIf="!getchapter">
+            <div class="pl-3 mt-2" *ngIf="!getchapter">
 
                 <!-- *ngIf="view==0" -->
                 <h1>No Videos Found</h1>
             </div>
-            <div *ngIf="getchapter">
-                <div class="course-content">Course content
-                    <div class="course-time">
-                        <span *ngIf="!time">00:00:00</span> <span>{{time}}</span>&nbsp;&nbsp;&nbsp;
-                        <span *ngIf="!totalvid">0 Chapter</span> <span>{{totalvid}} Lectures</span>
-                    </div>
+            <div class="pl-3 mt-2" *ngIf="getchapter">
+                <div class="course-content">
+                    <span class="cc1">Course content</span>
+                    <span *ngIf="!totalvid" class="cc2 pl-45">0 Lecture</span><span class="cc2 pl-45">{{totalvid}} Lectures</span>
+                    <span *ngIf="!time" class="cc2 pl-25">00:00:00</span><span class="cc2 pl-25">{{time}}</span>
                 </div>
                 <div class="panel-group float-left width100">
                     <div class="panel panel-default" *ngFor="let data of getchapter; let i=index;">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" href="#collapse1"
                                                         attr.data-target="#a{{i}}"> <div class="chap-name">{{data?.chapters.chapter_name}}</div>
-                                <div class="chap-time"> <span class="" *ngIf="data?.chapters.Lectures">{{data?.chapters.Lectures}} Lectures</span> <span class="float-right" *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
+                                <div class="chap-time">
+                                    <span *ngIf="data?.chapters.Lectures">{{data?.chapters.Lectures}} Lectures</span>
+                                </div>
+                                <div class="chap-time">
+                                    <span *ngIf="data?.chapters.Minutes">{{data?.chapters.Minutes}}</span>
                                 </div>
 
 
@@ -272,7 +275,7 @@
 
         </div> -->
         <div class="row">
-            <div class="col-lg-8 col-sm-12" >
+            <div class="col-lg-8 col-sm-12 p-0">
                     <div class="reviews-ans">
                             <div class="row background-grey">
                                 <div class="col-md-12">
