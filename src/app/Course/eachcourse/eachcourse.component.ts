@@ -97,17 +97,29 @@ export class EachcourseComponent implements OnInit {
     window['FB'] && window['FB'].XFBML.parse();
     
   }
-  showmore(){
-    document.getElementById("showmore").style.display="none";
-    document.getElementById("showless").style.display="inline";
+  showmoredescription(){
+    document.getElementById("showmoredescription").style.display="none";
+    document.getElementById("showlessdescription").style.display="inline";
     document.getElementById("para-height").style.height="auto";
-    document.getElementById("absolute-data").style.cssText="position:unset;padding-top:0";
+    document.getElementById("absolute-description").style.cssText="position:unset;padding-top:0;background:none";
   }
-  showless(){
-    document.getElementById("showmore").style.display="inline";
-    document.getElementById("showless").style.display="none";
+  showlessdescription(){
+    document.getElementById("showmoredescription").style.display="inline";
+    document.getElementById("showlessdescription").style.display="none";
     document.getElementById("para-height").style.height="200px";
-    document.getElementById("absolute-data").style.cssText="position:absolute;padding-top:30px";
+    document.getElementById("absolute-description").style.cssText="position:absolute;padding-top:30px;background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), #FFF)";
+  }
+  showmorewywl(){
+    document.getElementById("showmorewywl").style.display="none";
+    document.getElementById("showlesswywl").style.display="inline";
+    document.getElementById("wywl-box").style.height="auto";
+    document.getElementById("absolute-wywl").style.cssText="position:unset;padding-top:0;padding-bottom:0;background:none";
+  }
+  showlesswywl(){
+    document.getElementById("showmorewywl").style.display="inline";
+    document.getElementById("showlesswywl").style.display="none";
+    document.getElementById("wywl-box").style.height="270px";
+    document.getElementById("absolute-wywl").style.cssText="position:absolute;padding-top:30px;padding-bottom:5px;background:linear-gradient(rgba(255, 255, 255, 0), rgb(249, 249, 249), rgb(249, 249, 249))";
   }
   get(rating) {
     this.rate = rating;

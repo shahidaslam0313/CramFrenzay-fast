@@ -42,13 +42,17 @@
     <div class="row">
         <!-- <div class="col-lg-8" *ngIf="lecture==0"> -->
         <div class="col-md-8 p-0">
-            <div class="upper-banner-contact">
+            <div id="wywl-box" class="upper-banner-contact">
                 <span class="headd">What you will learn</span>
                 <ul class="wywl">
                     <li *ngFor="let hero of detail.learning_objectives?.split('\n')">
                        <i class="fa fa-check"></i> {{hero}}
                     </li>
                 </ul>
+                <span id="absolute-wywl">
+                    <span class="ml-5" id="showmorewywl" (click)="showmorewywl()"><i class="fa fa-plus"></i>Show More</span>
+                    <span class="ml-4" id="showlesswywl" (click)="showlesswywl()"><i class="fa fa-minus"></i>Show Less</span>
+                </span>
             </div>
             <div class="mt-2 pl-3">
                 <span class="headd">Requirements</span>
@@ -56,11 +60,12 @@
             </div>
             <div class="mt-2 pl-3">
                 <span class="headd">Description</span>
-                <div class="parra" id="para-height" *ngFor="let hero of detail.description?.split('\n')">{{hero}}
-                    <!--<span id="absolute-data">-->
-                        <!--<span id="showmore" (click)="showmore()"><i class="fa fa-plus"></i>Show More</span>-->
-                        <!--<span id="showless" (click)="showless()"><i class="fa fa-minus"></i>Show Less</span>-->
-                    <!--</span>-->
+                <div class="parra" id="para-height">
+                    <div *ngFor="let hero of detail.description?.split('\n')">{{hero}}</div>
+                    <span id="absolute-description">
+                        <span id="showmoredescription" (click)="showmoredescription()"><i class="fa fa-plus"></i>Show More</span>
+                        <span id="showlessdescription" (click)="showlessdescription()"><i class="fa fa-minus"></i>Show Less</span>
+                    </span>
                 </div>
             </div>
             <div class="pl-3 mt-2" *ngIf="!getchapter">

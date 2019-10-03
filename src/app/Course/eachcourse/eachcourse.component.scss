@@ -164,7 +164,17 @@
     overflow: hidden;
     position: relative;
 }
-#absolute-data{
+#absolute-wywl{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    left: 0;
+    right: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgb(249, 249, 249), rgb(249, 249, 249));
+    padding-top: 30px;
+    padding-bottom: 5px;
+}
+#absolute-description{
     position: absolute;
     bottom: 0;
     display: block;
@@ -173,17 +183,23 @@
     background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0.95),#FFF);
     padding-top: 30px;
 }
-#showless,
-#showmore {
+#showlessdescription,
+#showmoredescription,
+#showlesswywl,
+#showmorewywl{
     cursor: pointer;
     color: #007791;
+    font-size: 15px;
 }
-#showless i,
-#showmore i {
+#showlessdescription i,
+#showmoredescription i,
+#showlesswywl i,
+#showmorewywl i{
     font-size: 12px;
     margin-right: 6px;
 }
-#showless{
+#showlessdescription,
+#showlesswywl{
     display: none;
 }
 .review-divider{
@@ -433,13 +449,23 @@
 }
 .wywl li{
     font-size: 15px;
-    line-height: 32px;
+    line-height: 26px;
+    width: 50%;
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
 }
 .wywl li i{
-    width: 30px;
-    text-align: center;
-    font-size: 15px;
     color: #008000;
+    position: absolute;
+    left: 8px;
+    top: 6px;
+}
+#wywl-box{
+    height: 270px;
+    overflow: hidden;
+    position: relative;
 }
 .panel-title{
     margin: 0;
