@@ -176,6 +176,8 @@ gettutorinfo(tutor){
   tcourses;
   starview : any =[];
   usman: any =[];
+  detail1: any = []
+  learning_objectives=[]
   eachcourseshow() {
 
     this.eachcourse.Eachcourse(this.courseId).subscribe(data => {
@@ -190,6 +192,15 @@ gettutorinfo(tutor){
       this.student = data.Student;
       this.cdate = data.Course.postdate;
       this.detail = data.Detail;
+      // this.detail.learning_objectives;
+      this.learning_objectives.push(this.detail.learning_objectives.split('/n'));
+      // alert(this.learning_objective[0])
+      // for (let i in this.learning_objective)
+      // {
+      //   console.log(i);
+      // }
+      // this.detail1 = data.Detail["0"];
+      // console.log(this.detail1);
       this.creview = data.CourseReviews;
       this.tutorreview = data.TutorReviews;
       this.tcourses = data.TutorCourses;

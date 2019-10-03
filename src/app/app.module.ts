@@ -148,6 +148,8 @@ import { MycartComponent } from './userdashboard/mycart/mycart.component';
 import { MycartService } from './userdashboard/mycart/mycart.service';
 import { PendingoffersComponent } from './userdashboard/pendingoffers/pendingoffers.component';
 import { PendingoffersService } from './userdashboard/pendingoffers/pendingoffers.service';
+import {Nl2BrPipeModule} from 'nl2br-pipe';
+
 // import { PagerServicenew } from './pager.service';
 // import { NeutronRatingModule } from 'neutron-star-rating';
 // import { ChatComponent } from './chat/chat.component';
@@ -213,7 +215,7 @@ export class MaterialModule { }
     MatButtonModule,
     HttpModule,
     Routing,
-
+    Nl2BrPipeModule,
     HttpClientModule,
     RatingModule,
     SocialLoginModule,

@@ -44,7 +44,11 @@
         <div class="col-md-8 p-0">
             <div class="upper-banner-contact">
                 <span class="headd">What you will learn</span>
-                <p class="parra">{{detail.learning_objectives}}</p>
+                <ul>
+                    <li *ngFor="let hero of detail.learning_objectives?.split('\n')">
+                        {{ hero }}
+                    </li>
+                </ul>
             </div>
             <div class="mt-2 pl-3">
                 <span class="headd">Requirements</span>
