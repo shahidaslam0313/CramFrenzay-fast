@@ -2,14 +2,14 @@
 <div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-40">
         <form class="search-bg">
-            <input class="search-bg__text" type="text" name="name" [(ngModel)]="name" placeholder="Search Instrtuctor">
+            <input class="search-bg__text" type="text" name="name" [(ngModel)]="name" placeholder="Search Instructor">
             <button class="search-bg__btn" (click)="onSubmit(name)">Search</button>
         </form>
     </div>
 </div>
 <div class="container container-wide-1">
     <!-- <h1 class="component-title">Our Professional Teachers</h1> -->
-    <h1 class="component-title">Browse Instrtuctors</h1>
+    <h1 class="component-title">Browse Instructors</h1>
     <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-5" *ngFor="let data of result3 ; let i=index">
             <div class="tutor-inner">
