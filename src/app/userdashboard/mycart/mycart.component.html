@@ -62,7 +62,7 @@
                         <div *ngIf="data==0">no record</div>
                         <div class="product-list__item" *ngIf="data !=null">
                             <figure class="product-list__img">
-                                <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="FlashCard"> </a>
+                                <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{data?.flashcard_image}}" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'" alt="FlashCard"> </a>
                             </figure>
                             <div class="product-list__content">
                                 <a routerLink="/fcdetail/{{data?.id}}">

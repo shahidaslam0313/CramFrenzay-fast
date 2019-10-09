@@ -43,7 +43,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let data of card; let i=index">
             <div class="product-list__item">
                 <figure class="product-list__img">
-                    <a routerLink="/fcdetail/{{data.id}}"> <img src="{{Imageurl}}{{data.flashcard_image}}" alt=""> </a>
+                    <a routerLink="/fcdetail/{{data.id}}"> <img src="{{data.flashcard_image}}" alt=""> </a>
                 </figure>
                 <div class="product-list__content">
                     <div class="product-list__category"> <a routerLink="/fcdetail/{{data.id}}" title="{{data.name}}">{{data.name}}</a> </div>

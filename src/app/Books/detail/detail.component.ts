@@ -21,6 +21,7 @@ declare const $: any;
 export class DetailComponent implements OnInit {
   @ViewChild(AddtocartComponent)
   public item;
+  flashcardDetail;
   public Imageurl = Config.Imageurlget;
   result: any;
   public bookID: any;

@@ -96,7 +96,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3" *ngFor="let binding of biditems?.flashcards, let i=index">
                             <div class="product-list__item">
                                 <figure class="product-list__img">
-                                    <a routerLink="/fcdetail/{{binding.id}}"> <img src="{{Imageurl}}{{binding.flashcard_image}}" data-filter="*" alt=""> </a>
+                                    <a routerLink="/fcdetail/{{binding.id}}"> <img src="{{binding.flashcard_image}}" data-filter="*" alt=""> </a>
                                 </figure>
                                 <div class="product-list__content">
                                     <div class="product-list__category"> <a routerLink="/fcdetail/{{binding.id}}" title="{{binding.name}}">{{binding.name}}</a> </div>

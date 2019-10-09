@@ -602,7 +602,7 @@ export class MainpageComponent implements OnInit {
               })  
           },)       
     }
-    else if (this.check_login() == false) {
+    else  {
       this.sweetalertsignin();
       this.router.navigate(['/login']);
     }

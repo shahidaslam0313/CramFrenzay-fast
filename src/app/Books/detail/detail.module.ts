@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../../app.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailComponent } from './detail.component';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons'
 // import { AddtocartComponent } from '../../addtocart/addtocart.component';
 
 const detailRoutes: Routes = [
@@ -17,7 +18,8 @@ const detailRoutes: Routes = [
     MaterialModule,
     CommonModule,
     RatingModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    JwSocialButtonsModule
   ],
   declarations: [
     DetailComponent,

@@ -29,7 +29,8 @@ export class MylibraryComponent implements OnInit {
   result: [] = [];
   card: [] = [];
   bidnotes: [] = [];
-
+  notes: any = [];
+  books = [];
   input;
   bid_status;
   id;
@@ -235,7 +236,7 @@ export class MylibraryComponent implements OnInit {
       return;
     this.newcoures.mycourses(page)
       .subscribe(courses => {
-        this.showCourses = courses;
+        this.showCourses = courses.courses;
 
         this.pager = this.pagerService.getPager(this.showCourses['totalItems'], page, 8);
       });
@@ -247,7 +248,7 @@ export class MylibraryComponent implements OnInit {
       return;
     }
     this.newcoures.mybooks(page).subscribe(data => {
-      this.Showbook = data
+      this.Showbook = data.books;
       this.pager = this.pagerService.getPager(this.Showbook['totalItems'], page, 8);
     });
   }
@@ -258,7 +259,7 @@ export class MylibraryComponent implements OnInit {
       return;
     }
     this.newcoures.mynotes(page).subscribe(notes => {
-      this.Shownote = notes
+      this.Shownote = notes.notes;
       this.pager = this.pagerService.getPager(this.Shownote['totalItems'], page, 8);
     });
   }

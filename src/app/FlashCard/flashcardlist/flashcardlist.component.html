@@ -34,8 +34,8 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of bidflashcards?.flashcards; let i=index">
                     <div class="product-list__item">
-                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data.flashcard_image}}"
-                                    alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{data.flashcard_image}}"
+                                    >
                             </a> </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
@@ -85,8 +85,8 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of trendingflashcards?.flashcards; let i=index">
                     <div class="product-list__item">
-                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data.flashcard_image}}"
-                                    alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{data.flashcard_image}}"
+                                    >
                             </a> </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
@@ -136,8 +136,8 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of topratedflashcards?.flashcards; let i=index">
                     <div class="product-list__item">
-                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data?.flashcard_image}}"
-                                    alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{data?.flashcard_image}}"
+                                    >
                             </a> </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
@@ -187,8 +187,8 @@
             <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
                 <div ngxSlickItem class="slide item" *ngFor="let data of recentflashcards?.flashcards; let i=index">
                     <div class="product-list__item">
-                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{Imageurl}}{{data.flashcard_image}}"
-                                    alt="FlashCard Image" onerror="this.src='https://storage.cramfrenzy.com/Thumbnail/aging.jpg'">
+                        <figure class="product-list__img"> <a routerLink="/fcdetail/{{data?.id}}"> <img src="{{data.flashcard_image}}"
+                                    >
                             </a> </figure>
                         <div class="product-list__content">
                             <div class="product-list__category"> <a routerLink="/fcdetail/{{data?.id}}" title="{{data.name}}">{{data.name}}</a>
